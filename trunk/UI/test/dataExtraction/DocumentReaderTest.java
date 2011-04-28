@@ -21,10 +21,12 @@ public class DocumentReaderTest {
 
     @BeforeClass
     public static void setUpClass() throws Exception {
+        
     }
 
     @AfterClass
     public static void tearDownClass() throws Exception {
+       
     }
 
     /**
@@ -33,13 +35,15 @@ public class DocumentReaderTest {
     @Test
     public void testProcessFileAndGetText() {
         System.out.println("processFileAndGetText");
-        String fileName = "";
+        String fileName = "C:\\Users\\Compaq\\Desktop\\a.txt";
         DocumentReader instance = new DocumentReader();
-        String expResult = "";
+        String expResult = "First we will study plagiarism patterns.\n";
         String result = instance.processFileAndGetText(fileName);
+        System.out.println(expResult);
+        System.out.println(result);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**

@@ -12,8 +12,12 @@
 package ui;
 
 import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFileChooser;
 import javax.swing.UIManager;
+import net.didion.jwnl.JWNLException;
 
 /**
  *
@@ -427,7 +431,14 @@ public class FormMain extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
             Manager manager = new Manager();
-            StringBuilder temp=manager.manage(fileName);
+            StringBuilder temp = null;
+        try {
+            temp = manager.manage(fileName);
+        } catch (IOException ex) {
+            Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JWNLException ex) {
+            Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
             jTextArea1.setText(temp.toString());// TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
