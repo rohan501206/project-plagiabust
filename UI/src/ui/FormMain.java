@@ -688,7 +688,7 @@ String input= jTextField4.getText();
 
         String content = jTextArea2.getText();
          String content2 = jTextArea3.getText();
-        int index = content.indexOf(s, 0);
+      /**  int index = content.indexOf(s, 0);
            int index2 = content2.indexOf(s, 0);
 
         if (index >= 0) {   // match found
@@ -718,6 +718,37 @@ String input= jTextField4.getText();
             jTextField2.setBackground(ERROR_COLOR);
             message("'" + s + "' not found. Press ESC to start a new search");
         }
+       */
+
+         int index = content.indexOf(s);
+         int index2 = content2.indexOf(s);
+
+        while (index != -1) {   // match found
+            try {
+                index = content.indexOf(s,index+s.length());
+                int end = index + s.length();
+                hilit.addHighlight(index, end, painter);
+                jTextArea2.setCaretPosition(end);
+                jTextField2.setBackground(entryBg);
+                //message("'" + s + "' found. Press ESC to end search");
+            } catch (BadLocationException e) {
+                e.printStackTrace();
+            }
+        }
+
+            while (index2 != -1) {  // match found
+            try {
+                index2 = content2.indexOf(s,index2+s.length());
+                int end2 = index2 + s.length();
+                hilit2.addHighlight(index2, end2, painter);
+                jTextArea3.setCaretPosition(end2);
+                jTextField2.setBackground(entryBg);
+               // message("'" + s + "' found. Press ESC to end search");
+            } catch (BadLocationException e) {
+                e.printStackTrace();
+            }
+        }
+    
 
     }//GEN-LAST:event_jButton7ActionPerformed
 
