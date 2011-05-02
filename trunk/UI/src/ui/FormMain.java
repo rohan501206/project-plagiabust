@@ -42,8 +42,9 @@ public class FormMain extends javax.swing.JFrame {
     final static Color  HILIT_COLOR = Color.LIGHT_GRAY;
     final static Color  ERROR_COLOR = Color.PINK;
      Color entryBg;
-     Highlighter hilit;
-     Highlighter hilit2;
+     Highlighter hilit = new DefaultHighlighter();
+       Highlighter hilit2 = new DefaultHighlighter();;
+     
 
      Highlighter.HighlightPainter painter;
 
@@ -658,8 +659,7 @@ String input= jTextField4.getText();
 
        // String input= jTextField4.getText();
 
-       hilit = new DefaultHighlighter();
-       hilit2 = new DefaultHighlighter();
+       
 
 
       
@@ -667,7 +667,7 @@ String input= jTextField4.getText();
         jTextArea2.setHighlighter(hilit);
         jTextArea3.setHighlighter(hilit2);
          hilit.removeAllHighlights();
-          hilit2.removeAllHighlights();
+hilit2.removeAllHighlights();
 
 
         entryBg = jTextField2.getBackground();
@@ -725,11 +725,14 @@ String input= jTextField4.getText();
 
         while (index != -1) {   // match found
             try {
+
                 index = content.indexOf(s,index+s.length());
+                if(index!=-1){
                 int end = index + s.length();
                 hilit.addHighlight(index, end, painter);
                 jTextArea2.setCaretPosition(end);
                 jTextField2.setBackground(entryBg);
+                }
                 //message("'" + s + "' found. Press ESC to end search");
             } catch (BadLocationException e) {
                 e.printStackTrace();
@@ -739,16 +742,18 @@ String input= jTextField4.getText();
             while (index2 != -1) {  // match found
             try {
                 index2 = content2.indexOf(s,index2+s.length());
+                 if(index2!=-1){
                 int end2 = index2 + s.length();
                 hilit2.addHighlight(index2, end2, painter);
                 jTextArea3.setCaretPosition(end2);
                 jTextField2.setBackground(entryBg);
+                }
                // message("'" + s + "' found. Press ESC to end search");
             } catch (BadLocationException e) {
                 e.printStackTrace();
             }
         }
-    
+  
 
     }//GEN-LAST:event_jButton7ActionPerformed
 
