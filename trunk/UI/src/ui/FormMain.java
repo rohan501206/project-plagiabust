@@ -680,46 +680,31 @@ hilit2.removeAllHighlights();
         //am.put(CANCEL_ACTION, new CancelAction());
         // hilit.removeAllHighlights();
 
-        String s = jTextField2.getText();
-        if (s.length() <= 0) {
+        String string = jTextField2.getText();
+        String[] query=null;
+        if (string.length() <= 0) {
             //message("Nothing to search");
             return;
         }
 
+        if(string.contains(":")){
+
+           query = string.split(":");
+
+        }
+ else{
+            query=new String[1];
+            query[0]=string;
+ }
+
+
+
         String content = jTextArea2.getText();
-         String content2 = jTextArea3.getText();
-      /**  int index = content.indexOf(s, 0);
-           int index2 = content2.indexOf(s, 0);
+        String content2 = jTextArea3.getText();
 
-        if (index >= 0) {   // match found
-            try {
-                int end = index + s.length();
-                hilit.addHighlight(index, end, painter);
-                jTextArea2.setCaretPosition(end);
-                jTextField2.setBackground(entryBg);
-                //message("'" + s + "' found. Press ESC to end search");
-            } catch (BadLocationException e) {
-                e.printStackTrace();
-            }
-        }
+        for(int i=0;i<query.length;i++){
 
-            if (index2 >= 0) {   // match found
-            try {
-                int end2 = index2 + s.length();
-                hilit2.addHighlight(index2, end2, painter);
-                jTextArea3.setCaretPosition(end2);
-                jTextField2.setBackground(entryBg);
-               // message("'" + s + "' found. Press ESC to end search");
-            } catch (BadLocationException e) {
-                e.printStackTrace();
-            }
-        }
-        else {
-            jTextField2.setBackground(ERROR_COLOR);
-            message("'" + s + "' not found. Press ESC to start a new search");
-        }
-       */
-
+         String s=query[i];
          int index = content.indexOf(s);
          int index2 = content2.indexOf(s);
 
@@ -753,7 +738,7 @@ hilit2.removeAllHighlights();
                 e.printStackTrace();
             }
         }
-  
+        }
 
     }//GEN-LAST:event_jButton7ActionPerformed
 
