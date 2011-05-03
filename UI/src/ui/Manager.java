@@ -12,6 +12,9 @@ import ComparisonEngine.CosineSimilarityAlgorithm;
 import java.io.IOException;
 import java.util.ArrayList;
 import ComparisonEngine.ComparisonResult;
+import de.tud.kom.stringmatching.shinglecloud.ShingleCloudMatch;
+import java.util.HashMap;
+import java.util.List;
 import net.didion.jwnl.JWNLException;
 import preprocess.*;
 /**
@@ -25,23 +28,24 @@ CosineSimilarityAlgorithm cossim = new CosineSimilarityAlgorithm();
 DocumentReader docreader = new DocumentReader();
 StemmerWithStopWordRemover stemstopremover = new StemmerWithStopWordRemover();
 SynonymReplacer synReplaser = new SynonymReplacer();
+Stemmer stem = new Stemmer();
 //
-public StringBuilder manage(String fileFolder) throws IOException, JWNLException{
+public String [][] manage(String fileFolder) throws IOException, JWNLException{
         StringBuilder temp = new StringBuilder( );
         File dir = new File(fileFolder);
 		String[] children = dir.list();
-        String [][] filenameText = new String [children.length][1];
+        HashMap hm = new HashMap();
+        HashMap hmNew = new HashMap();
+        String [][] filenameText = new String [children.length][4];
 		if (children == null) {
 		    // Either dir does not exist or is not a directory
-            return temp.append("Either dir does not exist or is not a directory");
+            return null;
 		}
 		else {
 		    for (int i=0; i<children.length; i++) {
 		        // Get filename of file or directory
 		        String filename = children[i];
 		        String fullFilename = fileFolder+"\\"+filename;
-		        System.out.print(fullFilename);
-		        System.out.println();
                 // document reading
 		        String documentText =docreader.processFileAndGetText(fullFilename);
                 // removing numbers
@@ -50,26 +54,36 @@ public StringBuilder manage(String fileFolder) throws IOException, JWNLException
                 
                 //snawball analyser
 		        ArrayList<String> token = null;
-				token = stemstopremover.analyze(nuberRemoveText);
-				String preprocessText = synReplaser.replaceSynonyms(token);
-				filenameText[i][0] =  preprocessText;
+				//token = stemstopremover.analyze(nuberRemoveText);
+				token = stem.analyze(nuberRemoveText);
+                String preprocessText = synReplaser.replaceSynonyms(token);
+				hm.put(filename, preprocessText);
+
                 
 		    }
 
 
             for (int i=0; i<children.length; i++) {
-                temp.append("File"+(i+1)+" \n");
                 for (int j=0; j<children.length; j++) {
-                    String output = sca.getSimilarity(filenameText[i][0], filenameText[j][0]);
-                    temp.append("With File"+(j+1)+" \n");
-                    temp.append(output+"\n\n");
+                    float output = sca.getSimilarity(hm.get(children[i]).toString(), hm.get(children[j]).toString());
+                    String match = sca.getList();
+                    String firstFile = fileFolder+"\\"+children[i];
+                    String secondFile = fileFolder+"\\"+children[j];
+                    filenameText[i][0]=firstFile;
+                    filenameText[i][1]=secondFile;
+                    filenameText[i][2]= match;
+                    String Isplagarised = null;
+                    if(output>1.5){
+                        Isplagarised = "1";
+                    }
+                    else{
+                        Isplagarised = "0";
+                    }
+                    filenameText[i][3]=  Isplagarised;
                 }
                 temp.append("Next file \n\n\n");
             }
-
-
-            System.out.println("Comparison Finished");
-            return temp;
+            return filenameText;
         }
 
 }
