@@ -53,10 +53,16 @@ public String [][] manage(String fileFolder) throws IOException, JWNLException{
                 String nuberRemoveText = documentText.replaceAll("[^a-zA-Z ]", "");
                 
                 //snawball analyser
-		        ArrayList<String> token = null;
-				//token = stemstopremover.analyze(nuberRemoveText);
-				token = stem.analyze(nuberRemoveText);
-                String preprocessText = synReplaser.replaceSynonyms(token);
+                ArrayList<String> token = null;
+                ArrayList<String> tokens = null;
+				token = stemstopremover.analyze(nuberRemoveText);
+                StringBuilder out = new StringBuilder();
+                for (Object o : token){
+                     out.append(o.toString());
+                     out.append(" ");
+                }
+				tokens = stem.analyze(out.toString());
+                String preprocessText = synReplaser.replaceSynonyms(tokens);
 				hm.put(filename, preprocessText);
 
                 
