@@ -23,7 +23,7 @@ import preprocess.*;
  */
 public class Manager {
 
-    ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
+    
     ComparisonResult cr = new ComparisonResult();
     CosineSimilarityAlgorithm cossim = new CosineSimilarityAlgorithm();
     DocumentReader docreader = new DocumentReader();
@@ -35,6 +35,7 @@ public class Manager {
         File dir = new File(fileFolder);
         String[] children = dir.list();
         HashMap hm = new HashMap();
+        int fileNo=0;
         String[][] filenameText = new String[children.length][4];
         if (children == null) {
             // Either dir does not exist or is not a directory
@@ -49,13 +50,22 @@ public class Manager {
             }
             for (int i = 0; i < children.length; i++) {
                 for (int j = 0; j < children.length; j++) {
+                    ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
+                    if(i!=j){
                     float output = sca.getSimilarity(hm.get(children[i]).toString(), hm.get(children[j]).toString());
                     String match = sca.getList();
                     String firstFile = fileFolder + "\\" + children[i];
                     String secondFile = fileFolder + "\\" + children[j];
-                    filenameText[i][0] = firstFile;
-                    filenameText[i][1] = secondFile;
-                    filenameText[i][2] = match;
+                    System.out.println(firstFile);
+                    System.out.println(secondFile);
+                    //System.out.println("the string of the first text is" + hm.get(children[i]).toString( ));
+                   // System.out.println("the string of the second text is" + hm.get(children[j]).toString( ));                    
+                    System.out.println("match is "+ match);
+                    if(!match.isEmpty()){
+                    filenameText[fileNo][0] = firstFile;
+                    filenameText[fileNo][1] = secondFile;
+                    filenameText[fileNo][2] = match;
+                    fileNo++;
                     String Isplagarised = null;
                     if (output > 1.5) {
                         Isplagarised = "1";
@@ -64,6 +74,8 @@ public class Manager {
                         Isplagarised = "0";
                     }
                     filenameText[i][3] = Isplagarised;
+                        }
+                }
                 }
             }
             return filenameText;
