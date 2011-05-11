@@ -11,6 +11,7 @@
 
 package ui;
 
+import ch.randelshofer.quaqua.QuaquaManager;
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
@@ -23,6 +24,7 @@ import javax.swing.ActionMap;
 import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
+import javax.swing.JTabbedPane;
 import javax.swing.KeyStroke;
 import javax.swing.UIManager;
 import javax.swing.text.BadLocationException;
@@ -52,12 +54,19 @@ public class FormMain extends javax.swing.JFrame {
     /** Creates new form FormMain */
     public FormMain() {
         try{
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+            //UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+            UIManager.setLookAndFeel(QuaquaManager.getLookAndFeelClassName());
         }
         catch(Exception ex)
         {
 
         }
+
+        initComponents();
+
+        jTabbedPane2.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
+        jTabbedPane3.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
+        jTabbedPane4.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
 
         initComponents();
     }
