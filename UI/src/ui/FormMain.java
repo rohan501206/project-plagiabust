@@ -8,7 +8,6 @@
  *
  * Created on Apr 25, 2011, 1:10:07 PM
  */
-
 package ui;
 
 import ch.randelshofer.quaqua.QuaquaManager;
@@ -38,37 +37,34 @@ import reportingModule.TextFieldDemo;
  * @author Brave Heart
  */
 public class FormMain extends javax.swing.JFrame {
+
     private File file1;
     private File selectFile1;
     private File selectFile2;
-    final static Color  HILIT_COLOR = Color.LIGHT_GRAY;
-    final static Color  ERROR_COLOR = Color.PINK;
-     Color entryBg;
-     Highlighter hilit = new DefaultHighlighter();
-       Highlighter hilit2 = new DefaultHighlighter();;
-     
+    final static Color HILIT_COLOR = Color.LIGHT_GRAY;
+    final static Color ERROR_COLOR = Color.PINK;
+    Color entryBg;
+    Highlighter hilit = new DefaultHighlighter();
+    Highlighter hilit2 = new DefaultHighlighter();
 
-     Highlighter.HighlightPainter painter;
-
+    ;
+    Highlighter.HighlightPainter painter;
     private String fileName;
+
     /** Creates new form FormMain */
     public FormMain() {
-        try{
-            //UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        try {
             UIManager.setLookAndFeel(QuaquaManager.getLookAndFeelClassName());
-        }
-        catch(Exception ex)
-        {
-
+        } catch (Exception ex) {
         }
 
-        initComponents();
+            initComponents();
 
         jTabbedPane2.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
         jTabbedPane3.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
         jTabbedPane4.setTabLayoutPolicy(JTabbedPane.WRAP_TAB_LAYOUT);
 
-        initComponents();
+        
     }
 
     /** This method is called from within the constructor to
@@ -574,22 +570,22 @@ public class FormMain extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         final JFileChooser fc = new JFileChooser();
         fc.setApproveButtonText("Select");
-		fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         int returnVal = fc.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             file1 = fc.getSelectedFile();
             this.jTextField1.setText(file1.toString());
-	        System.out.println(fc.getSelectedFile().getAbsolutePath());
-	        fileName= fc.getSelectedFile().getAbsolutePath();
-	        fc.setVisible(false);
-	              //  jTextArea1.setText(match);
+            System.out.println(fc.getSelectedFile().getAbsolutePath());
+            fileName = fc.getSelectedFile().getAbsolutePath();
+            fc.setVisible(false);
+            //  jTextArea1.setText(match);
         }
-                // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-            Manager manager = new Manager();
-            String[][] temp = null;
+        Manager manager = new Manager();
+        String[][] temp = null;
         try {
             temp = manager.manage(fileName);
         } catch (IOException ex) {
@@ -597,31 +593,31 @@ public class FormMain extends javax.swing.JFrame {
         } catch (JWNLException ex) {
             Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-            jTextArea1.setText(temp[0][1]+"\n"+temp[0][1]+"\n"+temp[0][2]);// TODO add your handling code here
-            jTextField3.setText(temp[0][0]);
-            jTextField4.setText(temp[0][1]);
-            jTextField2.setText(temp[0][2]);
-            jTabbedPane2.setSelectedIndex(5);
+        jTextArea1.setText(temp[0][1] + "\n" + temp[0][1] + "\n" + temp[0][2]);// TODO add your handling code here
+        jTextField3.setText(temp[0][0]);
+        jTextField4.setText(temp[0][1]);
+        jTextField2.setText(temp[0][2]);
+        jTabbedPane2.setSelectedIndex(5);
 
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-       final JFileChooser fc = new JFileChooser();
+        final JFileChooser fc = new JFileChooser();
         int returnVal = fc.showOpenDialog(this);
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            selectFile2 = fc.getSelectedFile();           
+            selectFile2 = fc.getSelectedFile();
             this.jTextField4.setText(selectFile2.toString());
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-final JFileChooser fc = new JFileChooser();
+        final JFileChooser fc = new JFileChooser();
         int returnVal = fc.showOpenDialog(this);
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            selectFile1 = fc.getSelectedFile();            
+            selectFile1 = fc.getSelectedFile();
             this.jTextField3.setText(selectFile1.toString());
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -631,41 +627,41 @@ final JFileChooser fc = new JFileChooser();
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        String fileName1=jTextField3.getText();
-        String fileName2=jTextField4.getText();
+        String fileName1 = jTextField3.getText();
+        String fileName2 = jTextField4.getText();
         System.out.println(jTextField3.getText());
         System.out.println(jTextField4.getText());
 
-        File testFile1=new File(fileName1);
-        File testFile2=new File(fileName2);
-        String field1="";
-        String field2="";
+        File testFile1 = new File(fileName1);
+        File testFile2 = new File(fileName2);
+        String field1 = "";
+        String field2 = "";
         try {
             FileReader fr = new FileReader(testFile1);
             FileReader fr2 = new FileReader(testFile2);
 
-            BufferedReader br=new BufferedReader(fr);
-            BufferedReader br2=new BufferedReader(fr2);
+            BufferedReader br = new BufferedReader(fr);
+            BufferedReader br2 = new BufferedReader(fr2);
             System.out.println("testing phase");
             try {
-                while (br.readLine()!= null) {
-                    field1=field1+br.readLine();
+                while (br.readLine() != null) {
+                    field1 = field1 + br.readLine();
                 }
-                while (br2.readLine()!= null) {
-                    field2=field2+br2.readLine();
+                while (br2.readLine() != null) {
+                    field2 = field2 + br2.readLine();
                 }
-                
+
             } catch (IOException ex) {
                 Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-System.out.println(field1);
-System.out.println(field2);
-jTextArea2.setText(field1);
-jTextArea3.setText(field2);
-String input= jTextField4.getText();
+        System.out.println(field1);
+        System.out.println(field2);
+        jTextArea2.setText(field1);
+        jTextArea3.setText(field2);
+        String input = jTextField4.getText();
 
 
 
@@ -673,17 +669,17 @@ String input= jTextField4.getText();
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
 
-       // String input= jTextField4.getText();
-
-       
+        // String input= jTextField4.getText();
 
 
-      
+
+
+
         painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
         jTextArea2.setHighlighter(hilit);
         jTextArea3.setHighlighter(hilit2);
-         hilit.removeAllHighlights();
-hilit2.removeAllHighlights();
+        hilit.removeAllHighlights();
+        hilit2.removeAllHighlights();
 
 
         entryBg = jTextField2.getBackground();
@@ -697,82 +693,81 @@ hilit2.removeAllHighlights();
         // hilit.removeAllHighlights();
 
         String string = jTextField2.getText();
-        String[] query=null;
+        String[] query = null;
         if (string.length() <= 0) {
             //message("Nothing to search");
             return;
         }
 
-        if(string.contains(":")){
+        if (string.contains(":")) {
 
-           query = string.split(":");
+            query = string.split(":");
 
+        } else {
+            query = new String[1];
+            query[0] = string;
         }
- else{
-            query=new String[1];
-            query[0]=string;
- }
 
 
 
         String content = jTextArea2.getText();
         String content2 = jTextArea3.getText();
 
-        for(int i=0;i<query.length;i++){
+        for (int i = 0; i < query.length; i++) {
 
-         String s=query[i];
-         int index = content.indexOf(s);
-         int index2 = content2.indexOf(s);
+            String s = query[i];
+            int index = content.indexOf(s);
+            int index2 = content2.indexOf(s);
 
-        while (index != -1) {   // match found
-            try {
+            while (index != -1) {   // match found
+                try {
 
-                index = content.indexOf(s,index+s.length());
-                if(index!=-1){
-                int end = index + s.length();
-                hilit.addHighlight(index, end, painter);
-                jTextArea2.setCaretPosition(end);
-                jTextField2.setBackground(entryBg);
+                    index = content.indexOf(s, index + s.length());
+                    if (index != -1) {
+                        int end = index + s.length();
+                        hilit.addHighlight(index, end, painter);
+                        jTextArea2.setCaretPosition(end);
+                        jTextField2.setBackground(entryBg);
+                    }
+                    //message("'" + s + "' found. Press ESC to end search");
+                } catch (BadLocationException e) {
+                    e.printStackTrace();
                 }
-                //message("'" + s + "' found. Press ESC to end search");
-            } catch (BadLocationException e) {
-                e.printStackTrace();
             }
-        }
 
             while (index2 != -1) {  // match found
-            try {
-                index2 = content2.indexOf(s,index2+s.length());
-                 if(index2!=-1){
-                int end2 = index2 + s.length();
-                hilit2.addHighlight(index2, end2, painter);
-                jTextArea3.setCaretPosition(end2);
-                jTextField2.setBackground(entryBg);
+                try {
+                    index2 = content2.indexOf(s, index2 + s.length());
+                    if (index2 != -1) {
+                        int end2 = index2 + s.length();
+                        hilit2.addHighlight(index2, end2, painter);
+                        jTextArea3.setCaretPosition(end2);
+                        jTextField2.setBackground(entryBg);
+                    }
+                    // message("'" + s + "' found. Press ESC to end search");
+                } catch (BadLocationException e) {
+                    e.printStackTrace();
                 }
-               // message("'" + s + "' found. Press ESC to end search");
-            } catch (BadLocationException e) {
-                e.printStackTrace();
             }
-        }
         }
 
     }//GEN-LAST:event_jButton7ActionPerformed
 
-
     void message(String msg) {
         jLabel8.setText(msg);
     }
+
     /**
-    * @param args the command line arguments
-    */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
                 new FormMain().setVisible(true);
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -820,5 +815,4 @@ hilit2.removeAllHighlights();
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
-
 }
