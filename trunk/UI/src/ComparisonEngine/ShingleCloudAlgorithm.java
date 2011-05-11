@@ -22,7 +22,7 @@ public class ShingleCloudAlgorithm {
         
         ShingleCloud sc = new ShingleCloud(input1);
         sc.setNGramSize(4);
-        sc.setMinimumNumberOfOnesInMatch(6);
+        sc.setMinimumNumberOfOnesInMatch(1);
         sc.setSortMatchesByRating(false);
 
         /* searching for the needle */
@@ -30,9 +30,9 @@ public class ShingleCloudAlgorithm {
 
         /* displaying results */
         //result = "ShingleCloud Algorithm\n";
-        System.out.println("-------------------------------ShingleCloud----------------------------------");
+        //System.out.println("-------------------------------ShingleCloud----------------------------------");
        // result = result + "ShingleCloud found " + sc.getMatches().size() + " match(es).\n\n";
-        System.out.println("ShingleCloud found " + sc.getMatches().size() + " match(es).");
+        //System.out.println("ShingleCloud found " + sc.getMatches().size() + " match(es).");
 
         float containmentInHaystack = 0;
         float containmentInNeedle = 0;
@@ -44,12 +44,7 @@ public class ShingleCloudAlgorithm {
             //System.out.println("The matching shingles were: " + match.getMatchedShingles()+"\n")
             containmentInHaystack += match.getContainmentInHaystack();
             containmentInNeedle += match.getContainmentInNeedle();
-        }
-
-       // result = result + "Total Containment InHaystack " + containmentInHaystack+"\n";
-       //System.out.println("Total Containment InHaystack " + containmentInHaystack);
-      // result = result + "Totla Containment InNeedle " + containmentInNeedle;
-       // System.out.println("Totla Containment InNeedle " + containmentInNeedle);
+        }      
         float plagiarismValue = containmentInHaystack+containmentInNeedle;
         return plagiarismValue;
     }
