@@ -13,7 +13,7 @@ import java.io.File;
 public class test {
 
     public static void main(String[] args) {
-        String folder = "E:/Plagiarism Detector/Sample Data/Level 3 - Mothly reports";
+        String folder = "C:/Users/Brave Heart/Desktop/New folder";
         File souceFolder = new File(folder);
         if(souceFolder.isDirectory()){
             String destFolderPath = souceFolder.getAbsolutePath() + File.separator + souceFolder.getName();
