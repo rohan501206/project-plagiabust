@@ -36,7 +36,8 @@ public class Manager {
         String[] children = dir.list();
         HashMap hm = new HashMap();
         int fileNo=0;
-        String[][] filenameText = new String[children.length][4];
+        String[][] filenameText = new String[children.length*children.length][4];
+        System.out.println("Size of the files is"+children.length);
         if (children == null) {
             // Either dir does not exist or is not a directory
             return null;
@@ -47,6 +48,7 @@ public class Manager {
                 String filename = children[i];
                 String preprocessText = preprocessText(filename,fileFolder);
                 hm.put(filename, preprocessText);
+
             }
             for (int i = 0; i < children.length; i++) {
                 for (int j = 0; j < children.length; j++) {
@@ -61,11 +63,14 @@ public class Manager {
                     //System.out.println("the string of the first text is" + hm.get(children[i]).toString( ));
                    // System.out.println("the string of the second text is" + hm.get(children[j]).toString( ));                    
                     System.out.println("match is "+ match);
+                    System.out.println("Size of the fileNop is"+fileNo);
                     if(!match.isEmpty()){
+                             //////////////// just for testing purposes
                     filenameText[fileNo][0] = firstFile;
                     filenameText[fileNo][1] = secondFile;
                     filenameText[fileNo][2] = match;
                     fileNo++;
+                        
                     String Isplagarised = null;
                     if (output > 1.5) {
                         Isplagarised = "1";
@@ -73,7 +78,7 @@ public class Manager {
                     else {
                         Isplagarised = "0";
                     }
-                    filenameText[i][3] = Isplagarised;
+                   // filenameText[i][3] = Isplagarised;
                         }
                 }
                 }
