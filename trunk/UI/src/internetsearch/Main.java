@@ -32,7 +32,7 @@ public class Main {
 
         BingSearch bingSearch = new BingSearch("F138552F897E2CA7C264FDAC64F8EF2021ABD3AF");
         bingSearch.setMaxNumOfResults(5);
-        SourceDetectionManager sd = new SourceDetectionManager(bingSearch);
+        InternetSearchManager sd = new InternetSearchManager(bingSearch);
         sd.setRandomSelectionRatio(0.75f);
         sd.downloadSourcesForFile("C:/Users/Brave Heart/Desktop/New Text Document.txt");
         }
