@@ -690,7 +690,7 @@ System.out.println(field1);
 System.out.println(field2);
 jTextArea2.setText(field1);
 jTextArea3.setText(field2);
-String input= jTextField4.getText();
+
 
 
 
