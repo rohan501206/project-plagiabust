@@ -6,7 +6,9 @@ package peerdocumentsearch;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 /**
  *
@@ -26,18 +28,17 @@ public class test {
         } catch (Exception ex) {
         }
 
-        IndexSearch si = new IndexSearch(indexFolderPath);
-        ArrayList<String> docList;
-        try {
-            docList = si.Search("wso2 nadeeshani");
-            for (Iterator<String> it = docList.iterator(); it.hasNext();) {
-                String string = it.next();
-                System.out.println(string);
-            }
-        } catch (Exception ex) {
-            System.out.println("Error");
+        IndexSearch is = new IndexSearch(indexFolderPath);
+        PeerSearchManager psm  = new PeerSearchManager(is);
+        psm.setRandomSelectionRatio(.74f);
+        HashMap<String, Integer> selectedSources = psm.getSuspiciousDocList("C:/Users/Brave Heart/Desktop/txtFolder/_080113V_4WeeklyReport_1.pdf.txt");
+        Iterator it = selectedSources.entrySet().iterator();
+        int downloadedDocuments = 0;
+        while (it.hasNext() && downloadedDocuments <= 10) {
+            Map.Entry pair = (Map.Entry) it.next();
+            String filePath = (String) pair.getKey();
+            downloadedDocuments++;
+            System.out.println(filePath);
         }
-
-
     }
 }
