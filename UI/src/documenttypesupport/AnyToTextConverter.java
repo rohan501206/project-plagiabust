@@ -4,15 +4,27 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.text.Document;
 import javax.swing.text.rtf.RTFEditorKit;
+import org.apache.poi.POITextExtractor;
+import org.apache.poi.extractor.ExtractorFactory;
 
 import org.apache.poi.hwpf.extractor.WordExtractor;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.openxml4j.exceptions.OpenXML4JException;
+import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
+import org.apache.poi.xwpf.usermodel.XWPFDocument;
+import org.apache.xmlbeans.XmlException;
 import org.pdfbox.pdmodel.PDDocument;
 import org.pdfbox.util.PDFTextStripper;
 
@@ -32,6 +44,25 @@ public class AnyToTextConverter {
 
     // move text file to temp folder
     private void moveTextFile(String fileName) {
+        try {
+            File f1 = new File(fileName);
+
+            String moveFilePath = convertedFileFolder + File.separator + f1.getName();
+            File f2 = new File(moveFilePath);
+
+            InputStream in = new FileInputStream(f1);
+            OutputStream out = new FileOutputStream(f2, false);
+            byte[] buf = new byte[1024];
+            int len;
+            while ((len = in.read(buf)) > 0) {
+                out.write(buf, 0, len);
+            }
+            in.close();
+            out.close();
+
+        } catch (FileNotFoundException ex) {
+        } catch (IOException ex) {
+        }
     }
 
     private String pdfToString(String fileName) {
@@ -88,8 +119,19 @@ public class AnyToTextConverter {
         return fileAsText;
     }
 
-    // convert docx to text and move to temp folder
-    private void convertDocxToTxtFile(String fileName) {
+    private String docxToString(String fileName) {
+
+        String fileAsText = null;
+        try {
+            InputStream in = new FileInputStream(fileName);
+            XWPFDocument doc = new XWPFDocument(in);
+            XWPFWordExtractor extractor = new XWPFWordExtractor(doc);
+            fileAsText = extractor.getText();
+        } catch (FileNotFoundException ex) {
+        } catch (IOException ex) {
+        }
+
+        return fileAsText;
     }
 
     private void listFiles(File file) {
@@ -121,6 +163,7 @@ public class AnyToTextConverter {
                     } else if (fileName.endsWith(".doc")) {
                         documentText = docToString(fileName);
                     } else if (fileName.endsWith(".docx")) {
+                        documentText = docxToString(fileName);
                     } else if (fileName.endsWith(".odt")) {
                     }
                     // take file name without extension
