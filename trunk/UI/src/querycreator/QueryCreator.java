@@ -235,4 +235,8 @@ public class QueryCreator {
 
         return selectedSentencesList;
     }
+
+    public ArrayList<String> selectSentencesExhaustively(){
+        return sentenceList;
+    }
 }

@@ -34,31 +34,32 @@ public class IndexSearch {
         this.indexPath = path;
     }
 
-    public ArrayList<String> Search(String qStr) throws CorruptIndexException, IOException {
+    public ArrayList<String> searchIndex(String qStr) throws CorruptIndexException, IOException {
 
         ArrayList<String> docList = new ArrayList<String>();
-        QueryParser qParser = new QueryParser(Version.LUCENE_CURRENT, "contents", new StandardAnalyzer(Version.LUCENE_CURRENT));
+        QueryParser qParser = new QueryParser(Version.LUCENE_29, "contents", new StandardAnalyzer(Version.LUCENE_CURRENT));
         Query q = null;
         try {
             q = qParser.parse(qStr);
+            FSDirectory dir = FSDirectory.open(new File(indexPath));
+
+            IndexSearcher searcher = new IndexSearcher(dir, true);
+            TopScoreDocCollector collector = TopScoreDocCollector.create(numOfSourcesPerSearch, true);
+            searcher.search(q, collector);
+            ScoreDoc[] hits = collector.topDocs().scoreDocs;
+
+            for (int i = 0; i < hits.length; ++i) {
+                int docId = hits[i].doc;
+                Document d = searcher.doc(docId);
+                docList.add(d.get("path"));
+            }
+
+            searcher.close();
         } catch (ParseException ex) {
-            Logger.getLogger(IndexSearch.class.getName()).log(Level.SEVERE, null, ex);
+
+            System.out.println();
+            //Logger.getLogger(IndexSearch.class.getName()).log(Level.SEVERE, null, ex);
         }
-        FSDirectory dir = FSDirectory.open(new File(indexPath));
-
-        IndexSearcher searcher = new IndexSearcher(dir, true);
-        TopScoreDocCollector collector = TopScoreDocCollector.create(numOfSourcesPerSearch, true);
-        searcher.search(q, collector);
-        ScoreDoc[] hits = collector.topDocs().scoreDocs;
-
-        for (int i = 0; i < hits.length; ++i) {
-            int docId = hits[i].doc;
-            Document d = searcher.doc(docId);
-            docList.add(d.get("path"));
-        }
-
-        searcher.close();
-
         return docList;
     }
 

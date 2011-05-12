@@ -72,16 +72,16 @@ public class InternetSearchManager {
 
         // Create directory
         File file = new File(filePath);
-        String[]  nameAndExt = file.getName().split("[.]");
+        String[] nameAndExt = file.getName().split("[.]");
 
-        
+
         String downloadedFilesFolder = file.getParent() + File.separator + nameAndExt[0];
         boolean folderCreated = new File(downloadedFilesFolder).mkdir();
 
         // Downloading page
         int downloadedDocuments = 1;
         Iterator it = selectedSources.entrySet().iterator();
-        while (it.hasNext() && downloadedDocuments <=10) {
+        while (it.hasNext() && downloadedDocuments <= 10) {
             Map.Entry pair = (Map.Entry) it.next();
             String url = (String) pair.getKey();
             String path = downloadedFilesFolder + File.separatorChar + downloadedDocuments + ".txt";
@@ -89,8 +89,6 @@ public class InternetSearchManager {
             this.downloadWebPageAsText(url, path);
             System.out.println(url);
         }
-
-
     }
 
     private Map sortByValue(Map map) {
@@ -131,9 +129,6 @@ public class InternetSearchManager {
 
     public void setRandomSelectionRatio(float ratio) {
         qc.setRandomSelectionRatio(ratio);
-    }
-
-    private void selectTopSources() {
     }
 
     public int getMaxNumOfSourcesPerDocument() {
