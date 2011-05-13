@@ -606,7 +606,10 @@ public class FormMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-            Manager manager = new Manager();
+
+
+
+        Manager manager = new Manager();
             
         try {
             temp = manager.manage(fileName);
@@ -698,19 +701,12 @@ jTextArea3.setText(field2);
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
 
-       // String input= jTextField4.getText();
-
-       
-
-
-      
+            
         painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
         jTextArea2.setHighlighter(hilit);
         jTextArea3.setHighlighter(hilit2);
-         hilit.removeAllHighlights();
+        hilit.removeAllHighlights();
         hilit2.removeAllHighlights();
-
-
         entryBg = jTextField2.getBackground();
         //jTextField4.getDocument().addDocumentListener();
 
@@ -721,7 +717,7 @@ jTextArea3.setText(field2);
         //am.put(CANCEL_ACTION, new CancelAction());
         // hilit.removeAllHighlights();
 
-        String string = jTextField2.getText();
+        String string = jTextField2.getText().toLowerCase();
         String[] query=null;
         if (string.length() <= 0) {
             //message("Nothing to search");
@@ -748,11 +744,6 @@ jTextArea3.setText(field2);
          String s=query[i];
          int index = content.indexOf(s);
          int index2 = content2.indexOf(s);
-
-
-
-
-
         while (index != -1) {   // match found
             try {
 
@@ -763,7 +754,9 @@ jTextArea3.setText(field2);
                 jTextArea2.setCaretPosition(end);
                 jTextField2.setBackground(entryBg);
                 }
+                System.out.println("first file index= "+index);
                 index = content.indexOf(s,index+s.length());
+
                 //message("'" + s + "' found. Press ESC to end search");
             } catch (BadLocationException e) {
                 e.printStackTrace();
@@ -779,6 +772,7 @@ jTextArea3.setText(field2);
                 jTextArea3.setCaretPosition(end2);
                 jTextField2.setBackground(entryBg);
                 }
+                   System.out.println("second file index= "+index2);
                   index2 = content2.indexOf(s,index2+s.length());
                // message("'" + s + "' found. Press ESC to end search");
             } catch (BadLocationException e) {
@@ -851,8 +845,8 @@ jTextArea3.setText(field2);
         } catch (FileNotFoundException ex) {
             Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-jTextArea2.setText(field1);
-jTextArea3.setText(field2);
+jTextArea2.setText(field1.toLowerCase());
+jTextArea3.setText(field2.toLowerCase());
          }
     }
     /**
