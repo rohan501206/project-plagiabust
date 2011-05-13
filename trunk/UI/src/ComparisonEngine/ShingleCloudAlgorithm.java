@@ -2,24 +2,25 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ComparisonEngine;
 
 import de.tud.kom.stringmatching.shinglecloud.ShingleCloud;
 import de.tud.kom.stringmatching.shinglecloud.ShingleCloudMatch;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
  * @author kasun
  */
+
 public class ShingleCloudAlgorithm {
-    List <ShingleCloudMatch> shingleCloudMatchlist;
+    List<ShingleCloudMatch> shingleCloudMatchlist;
+    ArrayList<String> mactchingShingleList = new ArrayList<String>();
     String result = "";
+
     public float getSimilarity(String input1, String input2) {
         /* preparing the match object */
-
-        
         ShingleCloud sc = new ShingleCloud(input1);
         sc.setNGramSize(4);
         sc.setMinimumNumberOfOnesInMatch(1);
@@ -28,34 +29,27 @@ public class ShingleCloudAlgorithm {
         /* searching for the needle */
         sc.match(input2);
 
-        /* displaying results */
-        //result = "ShingleCloud Algorithm\n";
-        //System.out.println("-------------------------------ShingleCloud----------------------------------");
-       // result = result + "ShingleCloud found " + sc.getMatches().size() + " match(es).\n\n";
-        //System.out.println("ShingleCloud found " + sc.getMatches().size() + " match(es).");
-
         float containmentInHaystack = 0;
         float containmentInNeedle = 0;
         shingleCloudMatchlist = sc.getMatches();
 
         for (int i = 0; i < sc.getMatches().size(); i++) {
             ShingleCloudMatch match = sc.getMatches().get(i);
-            result = result+match.getMatchedShingles()+":";
-            //System.out.println("The matching shingles were: " + match.getMatchedShingles()+"\n")
+            result = result + match.getMatchedShingles() + ":";
+            mactchingShingleList.add(result);
             containmentInHaystack += match.getContainmentInHaystack();
             containmentInNeedle += match.getContainmentInNeedle();
-        }      
-        float plagiarismValue = containmentInHaystack+containmentInNeedle;
+        }
+
+        float plagiarismValue = containmentInHaystack + containmentInNeedle;
         return plagiarismValue;
     }
 
-
-    public String getList(){
+    public String getList() {
         return this.result;
     }
 
-
-
-
-
+    public ArrayList<String> GetShingleList() {
+        return this.mactchingShingleList;
+    }
 }
