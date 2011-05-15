@@ -29,6 +29,7 @@ public class IndexSearch {
 
     private String indexPath = "";
     private int numOfSourcesPerSearch = 10;
+    private QueryParser qParser = new QueryParser(Version.LUCENE_29, "contents", new StandardAnalyzer(Version. LUCENE_29));
 
     public IndexSearch(String path) {
         this.indexPath = path;
@@ -37,7 +38,6 @@ public class IndexSearch {
     public ArrayList<String> searchIndex(String qStr) throws CorruptIndexException, IOException {
 
         ArrayList<String> docList = new ArrayList<String>();
-        QueryParser qParser = new QueryParser(Version.LUCENE_29, "contents", new StandardAnalyzer(Version.LUCENE_CURRENT));
         Query q = null;
         try {
             q = qParser.parse(qStr);
