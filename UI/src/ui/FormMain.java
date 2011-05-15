@@ -11,12 +11,19 @@
 
 package ui;
 
+import documenttypesupport.AnyToTextConverter;
+import internetsearch.BingSearch;
+import internetsearch.InternetSearchManager;
 import java.awt.Color;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ActionMap;
@@ -29,6 +36,9 @@ import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultHighlighter;
 import javax.swing.text.Highlighter;
 import net.didion.jwnl.JWNLException;
+import peerdocumentsearch.IndexSearch;
+import peerdocumentsearch.PeerSearchManager;
+import peerdocumentsearch.TextFileIndexer;
 import reportingModule.TextFieldDemo;
 
 /**
@@ -43,13 +53,16 @@ public class FormMain extends javax.swing.JFrame {
     final static Color  ERROR_COLOR = Color.PINK;
     Color entryBg;
     int numberOfFiles;
+    Manager manager = new Manager();
     Highlighter hilit = new DefaultHighlighter();
     Highlighter hilit2 = new DefaultHighlighter();;
     String[][] temp = null;   /////////// declared as a global variable
-
+    String destFolderPath = null;
     Highlighter.HighlightPainter painter;
 
-    private String fileName;
+    private String sourceFolderName;
+    String indexFolderPath;
+    ArrayList<String> indexedFiles=new ArrayList<String>();
     /** Creates new form FormMain */
     public FormMain() {
         try{
@@ -61,6 +74,9 @@ public class FormMain extends javax.swing.JFrame {
         }
 
         initComponents();
+        jComboBox1.setVisible(false);
+        jButton2.setVisible(false);
+        
     }
 
     /** This method is called from within the constructor to
@@ -80,10 +96,9 @@ public class FormMain extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jComboBox1 = new javax.swing.JComboBox();
+        jButton2 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jPanel9 = new javax.swing.JPanel();
@@ -152,18 +167,19 @@ public class FormMain extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Cancel");
-
-        jButton3.setText("Check");
+        jButton3.setText("Explore");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jButton2.setText("Check");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -171,22 +187,21 @@ public class FormMain extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(47, 47, 47)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton2)
-                        .addGap(67, 67, 67))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(32, 32, 32)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)))
-                .addGap(100, 100, 100)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(39, 39, 39)
+                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton2)))
+                .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3)
                     .addComponent(jButton1))
-                .addContainerGap(271, Short.MAX_VALUE))
+                .addContainerGap(393, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -196,16 +211,13 @@ public class FormMain extends javax.swing.JFrame {
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(78, 78, 78)
-                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton3)))
-                    .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(95, 95, 95))
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addGap(37, 37, 37)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton2))
+                .addGap(195, 195, 195))
         );
 
         jTabbedPane2.addTab("Plagiarism Check", jPanel5);
@@ -331,13 +343,12 @@ public class FormMain extends javax.swing.JFrame {
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
-                .addGap(313, 313, 313))
-            .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 420, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel6Layout.createSequentialGroup()
@@ -371,12 +382,12 @@ public class FormMain extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(150, 150, 150)
                         .addComponent(jLabel8)))
-                .addContainerGap(463, Short.MAX_VALUE))
+                .addContainerGap(150, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(35, 35, 35)
+                .addGap(50, 50, 50)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -402,9 +413,9 @@ public class FormMain extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 255, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -598,7 +609,7 @@ public class FormMain extends javax.swing.JFrame {
             file1 = fc.getSelectedFile();
             this.jTextField1.setText(file1.toString());
 	        System.out.println(fc.getSelectedFile().getAbsolutePath());
-	        fileName= fc.getSelectedFile().getAbsolutePath();
+	        sourceFolderName= fc.getSelectedFile().getAbsolutePath();
 	        fc.setVisible(false);
 	              //  jTextArea1.setText(match);
         }
@@ -607,18 +618,46 @@ public class FormMain extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
+        String folder = sourceFolderName ;
+        File souceFolder = new File(folder);
+        
+        if(souceFolder.isDirectory()){
+            destFolderPath = souceFolder.getAbsolutePath() + File.separator + souceFolder.getName();
+            boolean destFolderCreated = new File(destFolderPath).mkdir();
+            if(destFolderCreated){
+                    AnyToTextConverter tc = new AnyToTextConverter(destFolderPath);
+                    tc.convertFilesInFolder(folder);
+            }
+        }
 
-
-        Manager manager = new Manager();
-            
+        TextFileIndexer indexer = null;
+        String doucmentFolderPath = destFolderPath;
+        File documentFolder = new File(doucmentFolderPath);
+        indexFolderPath = documentFolder.getAbsolutePath() + File.separator + documentFolder.getName() + "_Index";
         try {
-            temp = manager.manage(fileName);
+            indexer = new TextFileIndexer(indexFolderPath);
+            indexer.indexFileOrDirectory(doucmentFolderPath);
+            indexer.closeIndex();
+        } catch (Exception ex) {
+        }
+        
+        File[] files=manager.getFilesIntheFolder(destFolderPath);
+
+        for(int i=0;i<files.length;i++){
+            if(files[i].isFile())
+            jComboBox1.addItem(files[i].getName());
+        }
+
+        jComboBox1.setVisible(true);
+        jButton2.setVisible(true);
+        /**try {
+            temp = manager.manage(destFolderPath);
         } catch (IOException ex) {
             Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
         } catch (JWNLException ex) {
             Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-            jTextArea1.setText(temp[0][1]+"\n"+temp[0][1]+"\n"+temp[0][2]);// TODO add your handling code here
+            //jTextArea1.setText(temp[0][1]+"\n"+temp[0][1]+"\n"+temp[0][2]);// TODO add your handling code here
             jTextField3.setText(temp[0][0]);
             jTextField4.setText(temp[0][1]);
             jTextField2.setText(temp[0][2]);
@@ -628,7 +667,7 @@ public class FormMain extends javax.swing.JFrame {
 
 
             jTabbedPane2.setSelectedIndex(5);
-            setTextToTextFields(fileName1, fileName2);
+            setTextToTextFields(fileName1, fileName2); **/
             
 
 
@@ -807,6 +846,54 @@ jTextArea3.setText(field2);
 
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        String fName=(String)jComboBox1.getSelectedItem();
+        String selectedDocumentPath=sourceFolderName+File.separator+(String)jComboBox1.getSelectedItem();
+        String downloadFolderPath=null;
+        System.out.print( fName);
+        BingSearch bingSearch = new BingSearch("F138552F897E2CA7C264FDAC64F8EF2021ABD3AF");
+        bingSearch.setMaxNumOfResults(10);
+        InternetSearchManager sd = new InternetSearchManager(bingSearch);
+        sd.setRandomSelectionRatio(0.2f);
+        downloadFolderPath = sd.downloadSourcesForFile(destFolderPath+File.separator+fName );
+
+
+
+        IndexSearch is = new IndexSearch(indexFolderPath);
+        PeerSearchManager psm  = new PeerSearchManager(is);
+        psm.setRandomSelectionRatio(.75f);
+        HashMap<String, Integer> selectedSources = psm.getSuspiciousDocList(selectedDocumentPath);
+        Iterator it = selectedSources.entrySet().iterator();
+        int selectedDocuments = 0;
+        while (it.hasNext() && selectedDocuments <= 10) {
+            Map.Entry pair = (Map.Entry) it.next();
+            String filePath = (String) pair.getKey();
+            selectedDocuments++;
+            indexedFiles.add(filePath);
+            System.out.println(" found index file "+ filePath);
+
+        }
+
+        try {
+            temp = manager.compareFiles(selectedDocumentPath,downloadFolderPath,indexedFiles);
+        } catch (IOException ex) {
+            Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+            //jTextArea1.setText(temp[0][1]+"\n"+temp[0][1]+"\n"+temp[0][2]);// TODO add your handling code here
+            jTextField3.setText(temp[0][0]);
+            jTextField4.setText(temp[0][1]);
+            jTextField2.setText(temp[0][2]);
+
+            String fileName1=jTextField3.getText();
+            String fileName2=jTextField4.getText();
+
+            jTabbedPane2.setSelectedIndex(5);
+            setTextToTextFields(fileName1, fileName2);
+
+
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
 
     void message(String msg) {
         jLabel8.setText(msg);
@@ -870,6 +957,7 @@ jTextArea3.setText(field2.toLowerCase());
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
+    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -894,14 +982,12 @@ jTextArea3.setText(field2.toLowerCase());
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField1;
