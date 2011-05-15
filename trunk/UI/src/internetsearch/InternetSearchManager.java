@@ -45,7 +45,7 @@ public class InternetSearchManager {
         return qsa;
     }
 
-    public void downloadSourcesForFile(String filePath) {
+    public String downloadSourcesForFile(String filePath) {
 
         ArrayList<String> queryList = qc.getQueryList(filePath, qsa);
         for (Iterator<String> it = queryList.iterator(); it.hasNext();) {
@@ -87,8 +87,9 @@ public class InternetSearchManager {
             String path = downloadedFilesFolder + File.separatorChar + downloadedDocuments + ".txt";
             downloadedDocuments++;
             this.downloadWebPageAsText(url, path);
-            System.out.println(url);
         }
+
+        return downloadedFilesFolder;
     }
 
     private Map sortByValue(Map map) {
