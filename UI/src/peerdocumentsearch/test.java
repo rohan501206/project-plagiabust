@@ -5,10 +5,12 @@
 package peerdocumentsearch;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import org.apache.lucene.index.CorruptIndexException;
 
 /**
  *
@@ -16,9 +18,8 @@ import java.util.Map;
  */
 public class test {
 
-    public static void main(String args[]) {
-        TextFileIndexer indexer = null;
-        String doucmentFolderPath = "C:/Users/Brave Heart/Desktop/txtFolder";
+    public static void main(String args[]) throws CorruptIndexException, IOException {TextFileIndexer indexer = null;
+        String doucmentFolderPath = "C:/Users/user/Desktop/Assignments - 100/new/new";
         File documentFolder = new File(doucmentFolderPath);
         String indexFolderPath = documentFolder.getAbsolutePath() + File.separator + documentFolder.getName() + "_Index";
         try {
@@ -26,19 +27,19 @@ public class test {
             indexer.indexFileOrDirectory(doucmentFolderPath);
             indexer.closeIndex();
         } catch (Exception ex) {
+            ex.printStackTrace();
         }
 
         IndexSearch is = new IndexSearch(indexFolderPath);
         PeerSearchManager psm  = new PeerSearchManager(is);
         psm.setRandomSelectionRatio(.74f);
-        HashMap<String, Integer> selectedSources = psm.getSuspiciousDocList("C:/Users/Brave Heart/Desktop/txtFolder/_080113V_4WeeklyReport_1.pdf.txt");
-        Iterator it = selectedSources.entrySet().iterator();
+        ArrayList<String> selectedSources = is.searchIndex("software");
+        Iterator it = selectedSources.iterator();
         int downloadedDocuments = 0;
-        while (it.hasNext() && downloadedDocuments <= 10) {
-            Map.Entry pair = (Map.Entry) it.next();
-            String filePath = (String) pair.getKey();
-            downloadedDocuments++;
+        while (it.hasNext() ) {
+            String filePath = (String) it.next();
             System.out.println(filePath);
         }
     }
+        
 }

@@ -848,7 +848,9 @@ jTextArea3.setText(field2);
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String fName=(String)jComboBox1.getSelectedItem();
-        String selectedDocumentPath=sourceFolderName+File.separator+(String)jComboBox1.getSelectedItem();
+        File destFolder=new File(destFolderPath);
+
+        String selectedDocumentPath=sourceFolderName+File.separator+ destFolder.getName()+File.separator+(String)jComboBox1.getSelectedItem();
         String downloadFolderPath=null;
         System.out.print( fName);
         BingSearch bingSearch = new BingSearch("F138552F897E2CA7C264FDAC64F8EF2021ABD3AF");
@@ -869,15 +871,14 @@ jTextArea3.setText(field2);
             Map.Entry pair = (Map.Entry) it.next();
             String filePath = (String) pair.getKey();
             selectedDocuments++;
-            indexedFiles.add(filePath);
-            System.out.println(" found index file "+ filePath);
+            indexedFiles.add(filePath);        
 
         }
 
         try {
             temp = manager.compareFiles(selectedDocumentPath,downloadFolderPath,indexedFiles);
         } catch (IOException ex) {
-            Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("There are no similar files or some error has occured");
         }
             //jTextArea1.setText(temp[0][1]+"\n"+temp[0][1]+"\n"+temp[0][2]);// TODO add your handling code here
             jTextField3.setText(temp[0][0]);
