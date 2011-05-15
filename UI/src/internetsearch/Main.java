@@ -34,7 +34,7 @@ public class Main {
         bingSearch.setMaxNumOfResults(5);
         InternetSearchManager sd = new InternetSearchManager(bingSearch);
         sd.setRandomSelectionRatio(0.75f);
-        sd.downloadSourcesForFile("C:/Users/Brave Heart/Desktop/New Text Document.txt");
+        System.out.println( sd.downloadSourcesForFile("C:/Users/Brave Heart/Desktop/New Text Document.txt"));
         }
 
         
