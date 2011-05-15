@@ -853,14 +853,15 @@ jTextArea3.setText(field2);
         String selectedDocumentPath=sourceFolderName+File.separator+ destFolder.getName()+File.separator+(String)jComboBox1.getSelectedItem();
         String downloadFolderPath=null;
         System.out.print( fName);
+        System.out.println("Start Downloading the internet files........................");
         BingSearch bingSearch = new BingSearch("F138552F897E2CA7C264FDAC64F8EF2021ABD3AF");
         bingSearch.setMaxNumOfResults(10);
         InternetSearchManager sd = new InternetSearchManager(bingSearch);
         sd.setRandomSelectionRatio(0.2f);
         downloadFolderPath = sd.downloadSourcesForFile(destFolderPath+File.separator+fName );
+        System.out.println("End Downloading the internet files........................");
 
-
-
+        System.out.println("Start Indexing files........................");
         IndexSearch is = new IndexSearch(indexFolderPath);
         PeerSearchManager psm  = new PeerSearchManager(is);
         psm.setRandomSelectionRatio(.75f);
@@ -875,6 +876,9 @@ jTextArea3.setText(field2);
 
         }
 
+        System.out.println("End Indexing files........................");
+
+        System.out.println("Starting Comparing Files........................");
         try {
             temp = manager.compareFiles(selectedDocumentPath,downloadFolderPath,indexedFiles);
         } catch (IOException ex) {
@@ -891,7 +895,7 @@ jTextArea3.setText(field2);
             jTabbedPane2.setSelectedIndex(5);
             setTextToTextFields(fileName1, fileName2);
 
-
+            
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
