@@ -94,7 +94,6 @@ public class Manager {
     public String[][] compareFiles(String fileName,String downloadedFilePath, ArrayList<String> indexedFiles) throws IOException{
 
 
-        System.out.println("document to compare is"+ fileName );
         String documentToCompare= fileName;
         String downloadedFolderPath=downloadedFilePath;
         ArrayList<String> preIndexedFiles= indexedFiles;
@@ -116,15 +115,13 @@ public class Manager {
 
         String[][] filenameText = new String[100][4];
 
-
         String preprocessTextOfTheComparisonFile = preprocessText(documentToCompare);
 
         for (int i = 0; i < children.length; i++) {
-                // Get filename of file or directory
+               
                 String downloadedFileName = children[i];
                 String preprocessText = preprocessText(downloadedFileName,downloadedFolderPath);
                 hm.put(downloadedFileName, preprocessText);
-
             }
 
         for(int i=0;i< preIndexedFiles.size();i++){
@@ -134,7 +131,6 @@ public class Manager {
 
         } 
 
-
         for (int i = 0; i < children.length; i++) {
 
                     ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
@@ -142,14 +138,14 @@ public class Manager {
                     String match = sca.getList();
                     String firstFile = documentToCompare;
                     String secondFile = downloadedFolderPath+File.separator+ children[i];
-                    System.out.println("");
+                    System.out.println();
                     System.out.println(firstFile);
                     System.out.println(secondFile);
-                    System.out.println("the string of the first text is" + preprocessTextOfTheComparisonFile);
-                    System.out.println("the string of the second text is" + hm.get(children[i]).toString());
+                    System.out.println("the string of the first text is " + preprocessTextOfTheComparisonFile);
+                    System.out.println("the string of the second text is " + hm.get(children[i]).toString());
                     System.out.println("match is "+ match);
-                    System.out.println("Size of the fileNop is"+fileNo);
-                    System.out.println("");
+                    System.out.println("Size of the matched files is "+fileNo);
+                    System.out.println();
                     if(!match.isEmpty()){
                              //////////////// just for testing purposes
                     filenameText[fileNo][0] = firstFile;
@@ -177,12 +173,14 @@ public class Manager {
                     String match = sca.getList();
                     String firstFile = documentToCompare;
                     String secondFile =  preIndexedFiles.get(i);
+                    System.out.println();
                     System.out.println(firstFile);
                     System.out.println(secondFile);
                     System.out.println("the string of the first text is" + preprocessTextOfTheComparisonFile);
                     System.out.println("the string of the second text is" + hm.get(preIndexedFiles.get(i)).toString());
                     System.out.println("match is "+ match);
-                    System.out.println("Size of the fileNop is"+fileNo);
+                    System.out.println("Size of the matched files is "+fileNo);
+                    System.out.println();
                     if(!match.isEmpty()){
                              //////////////// just for testing purposes
                     filenameText[fileNo][0] = firstFile;
@@ -208,12 +206,6 @@ public class Manager {
 
             return filenameText;
         }
-
-
-
-
-
-
 
 
     public String arraylistToSting(ArrayList<String> token) {

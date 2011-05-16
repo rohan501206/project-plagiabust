@@ -197,11 +197,11 @@ public class FormMain extends javax.swing.JFrame {
                         .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton2)))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton3)
                     .addComponent(jButton1))
-                .addContainerGap(393, Short.MAX_VALUE))
+                .addContainerGap(405, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -217,7 +217,7 @@ public class FormMain extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2))
-                .addGap(195, 195, 195))
+                .addGap(216, 216, 216))
         );
 
         jTabbedPane2.addTab("Plagiarism Check", jPanel5);
@@ -853,15 +853,23 @@ jTextArea3.setText(field2);
         String selectedDocumentPath=sourceFolderName+File.separator+ destFolder.getName()+File.separator+(String)jComboBox1.getSelectedItem();
         String downloadFolderPath=null;
         System.out.print( fName);
+        //jTextArea1.setText("Start Processing files");
         System.out.println("Start Downloading the internet files........................");
+        //jTextArea1.setText("Strting");
         BingSearch bingSearch = new BingSearch("F138552F897E2CA7C264FDAC64F8EF2021ABD3AF");
         bingSearch.setMaxNumOfResults(10);
         InternetSearchManager sd = new InternetSearchManager(bingSearch);
         sd.setRandomSelectionRatio(0.2f);
-        downloadFolderPath = sd.downloadSourcesForFile(destFolderPath+File.separator+fName );
-        System.out.println("End Downloading the internet files........................");
 
-        System.out.println("Start Indexing files........................");
+        downloadFolderPath = sd.downloadSourcesForFile(destFolderPath+File.separator+fName );
+        System.out.println("downloaded folder path is "+downloadFolderPath);
+        
+        System.out.println("End Downloading the internet files........................\n");
+         //jTextArea1.append("End Downloading the internet files........................\n");
+
+        System.out.println("Start Indexing files........................\n");
+         //jTextArea1.append("Start Indexing files........................\n");
+
         IndexSearch is = new IndexSearch(indexFolderPath);
         PeerSearchManager psm  = new PeerSearchManager(is);
         psm.setRandomSelectionRatio(.75f);
@@ -872,13 +880,17 @@ jTextArea3.setText(field2);
             Map.Entry pair = (Map.Entry) it.next();
             String filePath = (String) pair.getKey();
             selectedDocuments++;
-            indexedFiles.add(filePath);        
+            if(!filePath.equalsIgnoreCase(selectedDocumentPath))
+            indexedFiles.add(filePath);      
 
         }
 
-        System.out.println("End Indexing files........................");
+        System.out.println("End Indexing files........................\n");
+         //jTextArea1.append("End  Indexing files........................\n");
 
-        System.out.println("Starting Comparing Files........................");
+        System.out.println("Starting Comparing Files........................\n");
+          //jTextArea1.append("Starting Comparing Files........................\n");
+
         try {
             temp = manager.compareFiles(selectedDocumentPath,downloadFolderPath,indexedFiles);
         } catch (IOException ex) {
