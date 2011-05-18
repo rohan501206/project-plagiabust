@@ -31,11 +31,14 @@ import javax.swing.InputMap;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import javax.swing.KeyStroke;
+import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultHighlighter;
 import javax.swing.text.Highlighter;
 import net.didion.jwnl.JWNLException;
+import net.infonode.gui.laf.InfoNodeLookAndFeel;
+import net.infonode.gui.laf.InfoNodeLookAndFeelTheme;
 import peerdocumentsearch.IndexSearch;
 import peerdocumentsearch.PeerSearchManager;
 import peerdocumentsearch.TextFileIndexer;
@@ -66,7 +69,18 @@ public class FormMain extends javax.swing.JFrame {
     /** Creates new form FormMain */
     public FormMain() {
         try{
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+
+            InfoNodeLookAndFeelTheme theme =
+        new InfoNodeLookAndFeelTheme("My Theme",
+                                     new Color(110, 120, 150),
+                                      Color.WHITE,
+                                     new Color(80, 80, 80),
+                                     Color.WHITE,
+                                     new Color(0, 170, 0),
+                                     Color.WHITE,
+                                     0.8);
+    UIManager.setLookAndFeel(new InfoNodeLookAndFeel(theme));
+    SwingUtilities.updateComponentTreeUI(this);
         }
         catch(Exception ex)
         {
