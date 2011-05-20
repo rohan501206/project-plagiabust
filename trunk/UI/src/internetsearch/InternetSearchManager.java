@@ -28,8 +28,6 @@ public class InternetSearchManager {
 
     private QuerySelectionAlgorithm qsa = QuerySelectionAlgorithm.Random;
     private QueryCreator qc = new QueryCreator();
-    private HashMap<String, Integer> sources = new HashMap<String, Integer>();
-    private HashMap<String, Integer> selectedSources = new HashMap<String, Integer>();
     private final BingSearch bingSearch;
     private int maxNumOfSourcesPerDocument = 10;
 
@@ -47,7 +45,77 @@ public class InternetSearchManager {
 
     public String downloadSourcesForFile(String filePath) {
 
+        HashMap<String, Integer> selectedSources = new HashMap<String, Integer>();
+
+        // Get list of sources
+        selectedSources = this.getInternetSourceForFile(filePath);
+
+        // Create directory
+        File file = new File(filePath);
+        String[] nameAndExt = file.getName().split("[.]");
+
+
+        String downloadedFilesFolder = file.getParent() + File.separator + nameAndExt[0];
+        boolean folderCreated = new File(downloadedFilesFolder).mkdir();
+
+        // Downloading page
+        int downloadedDocuments = 1;
+        Iterator it = selectedSources.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry) it.next();
+            String url = (String) pair.getKey();
+            String path = downloadedFilesFolder + File.separatorChar + downloadedDocuments + ".txt";
+            downloadedDocuments++;
+            this.downloadWebPageAsText(url, path);
+        }
+
+        return downloadedFilesFolder;
+    }
+
+    public HashMap<String, ArrayList<String>> downloadSourcesForFileFolder(ArrayList<String> filePathList, String fileFolderPath) {
+        // file name maps to list of downloaded sources
+        HashMap<String, ArrayList<String>> fileAndSorcesMap = new HashMap<String, ArrayList<String>>();
+        HashMap<String, String> urlAndDownloadedPathMap = new HashMap<String, String>();
+        // Search for each file and sort
+        int downloadedFileIndex = 0;
+        String downloadedFileFolderPath = fileFolderPath + File.separator + "InternetSources";
+        boolean folderCreated = new File(downloadedFileFolderPath).mkdir();
+
+        for (Iterator<String> it = filePathList.iterator(); it.hasNext();) {
+            String filePath = it.next();
+            // take sources for file
+            HashMap<String, Integer> sourcesOfFile = this.getInternetSourceForFile(filePath);
+            ArrayList<String> downloadedFilesList = new ArrayList<String>();
+            // download file
+            Iterator sourceIterator = sourcesOfFile.entrySet().iterator();
+            while (sourceIterator.hasNext()) {
+                Map.Entry pair = (Map.Entry) sourceIterator.next();
+                String url = (String) pair.getKey();
+                if (urlAndDownloadedPathMap.get(url) == null) {
+                    // mark new file and download
+                    downloadedFileIndex++;
+                    String filePathToDownload = downloadedFileFolderPath + File.separator + downloadedFileIndex + ".txt";
+                    urlAndDownloadedPathMap.put(url, filePathToDownload);
+                    
+                    this.downloadWebPageAsText(url, filePathToDownload);
+
+                    downloadedFilesList.add(filePathToDownload);
+                } else {
+                    String fileDownloadedPath = urlAndDownloadedPathMap.get(url);
+                    downloadedFilesList.add(fileDownloadedPath);
+                }
+            }
+            fileAndSorcesMap.put(filePath, downloadedFilesList);
+        }
+        return fileAndSorcesMap;
+    }
+
+    private HashMap<String, Integer> getInternetSourceForFile(String filePath) {
+        
         ArrayList<String> queryList = qc.getQueryList(filePath, qsa);
+        HashMap<String, Integer> sources = new HashMap<String, Integer>();
+        HashMap<String, Integer> selectedSources = new HashMap<String, Integer>();
+
         for (Iterator<String> it = queryList.iterator(); it.hasNext();) {
             String query = it.next();
             ArrayList<ResponseResult> response = bingSearch.searchInternet(query);
@@ -68,28 +136,18 @@ public class InternetSearchManager {
         }
 
         // Sorting hashmap
-        selectedSources = (HashMap<String, Integer>) this.sortByValue(sources);
-
-        // Create directory
-        File file = new File(filePath);
-        String[] nameAndExt = file.getName().split("[.]");
-
-
-        String downloadedFilesFolder = file.getParent() + File.separator + nameAndExt[0];
-        boolean folderCreated = new File(downloadedFilesFolder).mkdir();
-
-        // Downloading page
-        int downloadedDocuments = 1;
-        Iterator it = selectedSources.entrySet().iterator();
-        while (it.hasNext() && downloadedDocuments <= 10) {
-            Map.Entry pair = (Map.Entry) it.next();
-            String url = (String) pair.getKey();
-            String path = downloadedFilesFolder + File.separatorChar + downloadedDocuments + ".txt";
-            downloadedDocuments++;
-            this.downloadWebPageAsText(url, path);
+        HashMap<String, Integer> sortedSources = (HashMap<String, Integer>) this.sortByValue(sources);
+        Iterator sortedSourceIterator = sortedSources.entrySet().iterator();
+        int numberOfSelectedDoc = 1;
+        while(sortedSourceIterator.hasNext() && numberOfSelectedDoc <=10){
+            Map.Entry pair = (Map.Entry) sortedSourceIterator.next();
+            String key = (String) pair.getKey();
+            int value = (Integer) pair.getValue();
+            System.out.println(key);
+            selectedSources.put(key, value);
+            numberOfSelectedDoc++;
         }
-
-        return downloadedFilesFolder;
+        return selectedSources;
     }
 
     private Map sortByValue(Map map) {
