@@ -140,8 +140,8 @@ public class FormMain extends javax.swing.JFrame {
         profilePanel = new javax.swing.JPanel();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel10 = new javax.swing.JPanel();
-        jPanel11 = new javax.swing.JPanel();
         jPanel12 = new javax.swing.JPanel();
+        jPanel11 = new javax.swing.JPanel();
         settingsPanel = new javax.swing.JPanel();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel14 = new javax.swing.JPanel();
@@ -482,20 +482,33 @@ public class FormMain extends javax.swing.JFrame {
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 843, Short.MAX_VALUE)
+            .addGap(0, 825, Short.MAX_VALUE)
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 541, Short.MAX_VALUE)
         );
 
-        jTabbedPane3.addTab("Profiles", jPanel10);
+        jTabbedPane3.addTab("Search", new javax.swing.ImageIcon(getClass().getResource("/Images/Search.png")), jPanel10); // NOI18N
+
+        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
+        jPanel12.setLayout(jPanel12Layout);
+        jPanel12Layout.setHorizontalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 825, Short.MAX_VALUE)
+        );
+        jPanel12Layout.setVerticalGroup(
+            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 541, Short.MAX_VALUE)
+        );
+
+        jTabbedPane3.addTab("Enrollments", new javax.swing.ImageIcon(getClass().getResource("/Images/Add.png")), jPanel12); // NOI18N
 
         javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
         jPanel11.setLayout(jPanel11Layout);
         jPanel11Layout.setHorizontalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 843, Short.MAX_VALUE)
+            .addGap(0, 825, Short.MAX_VALUE)
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -503,19 +516,6 @@ public class FormMain extends javax.swing.JFrame {
         );
 
         jTabbedPane3.addTab("Black List", new javax.swing.ImageIcon(getClass().getResource("/Images/BlackList.png")), jPanel11); // NOI18N
-
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 843, Short.MAX_VALUE)
-        );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 541, Short.MAX_VALUE)
-        );
-
-        jTabbedPane3.addTab("Enrollments", jPanel12);
 
         javax.swing.GroupLayout profilePanelLayout = new javax.swing.GroupLayout(profilePanel);
         profilePanel.setLayout(profilePanelLayout);
