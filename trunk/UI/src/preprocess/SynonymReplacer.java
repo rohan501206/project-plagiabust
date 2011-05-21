@@ -4,6 +4,7 @@
  */
 package preprocess;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import net.didion.jwnl.JWNLException;
@@ -16,11 +17,11 @@ import net.didion.jwnl.dictionary.Dictionary;
 
 public class SynonymReplacer {
 
-	public  String  replaceSynonyms(String [] tokens) throws JWNLException {
+	public  String  replaceSynonyms(ArrayList<String> tokens) throws JWNLException {
 
 	     // Initialize the database
 	     // You must configure the properties file to point to your dictionary files
-	     WordNetHelper.initialize("JavaApplication2/prop/file_properties.xml");
+	     WordNetHelper.initialize("src" + File.separatorChar + "preprocess" + File.separatorChar + "file_properties.xml");
 
 	     System.out.println("This program will take the following paragraph and replace" +
 	     "\nall words with a synonym, if it can find one.\n\n");
@@ -34,12 +35,12 @@ public class SynonymReplacer {
 	     String newSentence = "";
 	     String newSentencefromIndex = "";
 	     // Walk through all tokens
-	     for (int i = 0; i < tokens.length; i++) {
+	     for (int i = 0; i < tokens.size(); i++) {
 	         // This will our replace word, if we don't find anything to replace it with
 	         // we just use the same word
-	         String newWord = tokens[i];
+	         String newWord = tokens.get(i);
 	         // LookUp all IndexWords and store in an array
-	         IndexWordSet set = Dictionary.getInstance().lookupAllIndexWords(tokens[i]);
+	         IndexWordSet set = Dictionary.getInstance().lookupAllIndexWords(tokens.get(i));
 	         IndexWord[] words = set.getIndexWordArray();
 
 	         // Try to get a Synonym for any IndexWord, first come first serve!
