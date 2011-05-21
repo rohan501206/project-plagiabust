@@ -26,8 +26,6 @@ import preprocess.*;
  * @author Compaq
  */
 public class Manager {
-
-    
     ComparisonResult cr = new ComparisonResult();
     CosineSimilarityAlgorithm cossim = new CosineSimilarityAlgorithm();
     DocumentReader docreader = new DocumentReader();
@@ -200,13 +198,7 @@ public class Manager {
                     }
                    // filenameText[i][3] = Isplagarised;
                         }
-
-
-
         }
-
-
-
             return filenameText;
         }
 
@@ -365,7 +357,15 @@ public class Manager {
                 numberRemovedToken = stopremover.analyze(numberRemoveText);
                 String stopwordRemovedString = this.arraylistToSting(numberRemovedToken);
                 stopWordRemovedTokens= stem.analyze(stopwordRemovedString);
-                //String preprocessText = synReplaser.replaceSynonyms(tokens);
+              /*  String preprocessText = null;
+        try {
+            preprocessText = synReplaser.replaceSynonyms(stopWordRemovedTokens);
+            System.out.print(preprocessText);
+            System.out.print("**********************************************************************");
+
+        } catch (JWNLException ex) {
+            Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
                 String preprocessText = this.arraylistToSting(stopWordRemovedTokens);
                 return preprocessText;
     }
@@ -383,6 +383,15 @@ public class Manager {
                 String stopwordRemovedString = this.arraylistToSting(numberRemovedToken);
                 stopWordRemovedTokens= stem.analyze(stopwordRemovedString);
                 //String preprocessText = synReplaser.replaceSynonyms(tokens);
+            /*    String preprocessText = null;
+        try {
+            preprocessText = synReplaser.replaceSynonyms(stopWordRemovedTokens);
+            System.out.print(preprocessText);
+            System.out.print("**********************************************************************");
+
+        } catch (JWNLException ex) {
+            Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
+        }*/
                 String preprocessText = this.arraylistToSting(stopWordRemovedTokens);
                 return preprocessText;
     }

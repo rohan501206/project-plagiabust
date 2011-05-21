@@ -19,6 +19,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,6 +54,7 @@ import reportingModule.StringDiffer;
  * @author Brave Heart
  */
 public class FormMain extends javax.swing.JFrame {
+    String keywordlist = "";
     private File file1;
     private File selectFile1;
     private File selectFile2;
@@ -95,6 +97,7 @@ public class FormMain extends javax.swing.JFrame {
         }
 
         initComponents();
+       // TextArea1 text = new TextArea1(jPanel14);
         jComboBox1.setVisible(false);
         jButton2.setVisible(false);
 //        jScrollPane1.setVisible(false);
@@ -157,6 +160,13 @@ public class FormMain extends javax.swing.JFrame {
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel14 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        jButton10 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
+        jButton11 = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
         jPanel15 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel16 = new javax.swing.JPanel();
@@ -557,21 +567,74 @@ public class FormMain extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/spinning_globe.gif"))); // NOI18N
 
+        jLabel9.setText("Key Words");
+
+        jButton10.setText("Add");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton10ActionPerformed(evt);
+            }
+        });
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
+        jButton11.setText("Ok");
+        jButton11.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton11ActionPerformed(evt);
+            }
+        });
+
+        jButton12.setText("Cancel");
+
         javax.swing.GroupLayout jPanel14Layout = new javax.swing.GroupLayout(jPanel14);
         jPanel14.setLayout(jPanel14Layout);
         jPanel14Layout.setHorizontalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel14Layout.createSequentialGroup()
-                .addContainerGap(959, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addGap(28, 28, 28)
+                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.DEFAULT_SIZE, 195, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(109, 109, 109)
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(jButton10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 401, Short.MAX_VALUE)
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addComponent(jButton11)
+                        .addGap(79, 79, 79)
+                        .addComponent(jButton12)))
                 .addContainerGap())
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel14Layout.createSequentialGroup()
                 .addContainerGap()
+<<<<<<< .mine
+                .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel14Layout.createSequentialGroup()
+                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jButton10)
+                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9))
+                        .addGap(57, 57, 57)
+                        .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jButton11)
+                                .addComponent(jButton12))))
+                    .addComponent(jLabel1))
+                .addContainerGap(126, Short.MAX_VALUE))
+=======
                 .addComponent(jLabel1)
                 .addContainerGap(355, Short.MAX_VALUE))
+>>>>>>> .r66
         );
 
         jTabbedPane4.addTab("Internet Search", jPanel14);
@@ -654,7 +717,7 @@ public class FormMain extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         final JFileChooser fc = new JFileChooser();
         fc.setApproveButtonText("Select");
-	fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         int returnVal = fc.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             file1 = fc.getSelectedFile();
@@ -831,8 +894,6 @@ jTextArea3.setText(field2);
 
          while (index != -1) {   // match found
             try {
-
-               
                 if(index!=-1){
                 int end = index + s.length();
                 hilit.addHighlight(index, end, painter);
@@ -1031,7 +1092,6 @@ jTextArea3.setText(field2);
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
 
-      
         numberOfFiles++;
         System.out.println(numberOfFiles);
         jTextField3.setText(temp[numberOfFiles][0]);
@@ -1122,8 +1182,43 @@ jTextArea3.setText(field2);
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
+<<<<<<< .mine
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+            String Keyword = jTextField5.getText();
+            keywordlist = keywordlist+"\n\n"+Keyword;
+          
+            jTextArea1.setText (keywordlist);
+            jTextField5.setText("");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton10ActionPerformed
+=======
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+>>>>>>> .r66
 
+<<<<<<< .mine
+    private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
+        String content = keywordlist;
+        System.out.print(content);
+        File file = new File("src" + File.separatorChar + "preprocess" + File.separatorChar + "StopWordList");
+        try {
+            file.createNewFile();
+            if (file.exists()) {
+                FileWriter fw = new FileWriter(file, true);
+                fw.append(content);
+                fw.close();
+            }
+        } catch (IOException ex) {
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton11ActionPerformed
+     public void actionPerformed (java.awt.event.ActionEvent evt) {
+            String Keyword = jTextField5.getText();
+            keywordlist = keywordlist+"\n"+Keyword;
+            jTextArea1.setText (keywordlist);
+            jTextField5.setText("");
+    }
+
+=======
         // One to one check of the documents
         String folder = sourceFolderName ;
         File souceFolder = new File(folder);
@@ -1263,6 +1358,7 @@ System.out.println("");
     }//GEN-LAST:event_jButton10ActionPerformed
 
 
+>>>>>>> .r66
     void message(String msg) {
         jLabel8.setText(msg);
     }
@@ -1317,7 +1413,13 @@ jTextArea3.setText(field2.toLowerCase());
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+<<<<<<< .mine
     private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+=======
+    private javax.swing.JButton jButton10;
+>>>>>>> .r66
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -1352,18 +1454,21 @@ jTextArea3.setText(field2.toLowerCase());
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTabbedPane jTabbedPane2;
     private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 
 }
