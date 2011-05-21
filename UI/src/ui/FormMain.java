@@ -153,7 +153,7 @@ public class FormMain extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
-        mainTabbedPane.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        mainTabbedPane.setFont(new java.awt.Font("Tahoma", 0, 24));
 
         javax.swing.GroupLayout overviewPanelLayout = new javax.swing.GroupLayout(overviewPanel);
         overviewPanel.setLayout(overviewPanelLayout);
@@ -476,7 +476,7 @@ public class FormMain extends javax.swing.JFrame {
         mainTabbedPane.addTab("Plagiarism Check", new javax.swing.ImageIcon(getClass().getResource("/Images/Edit.png")), newcheckPanel); // NOI18N
 
         jTabbedPane3.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        jTabbedPane3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTabbedPane3.setFont(new java.awt.Font("Tahoma", 0, 18));
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -532,7 +532,7 @@ public class FormMain extends javax.swing.JFrame {
                 .addComponent(jTabbedPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE))
         );
 
-        mainTabbedPane.addTab("Student Profiles", profilePanel);
+        mainTabbedPane.addTab("Student Profiles", new javax.swing.ImageIcon(getClass().getResource("/Images/User.png")), profilePanel); // NOI18N
 
         jTabbedPane4.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane4.setFont(new java.awt.Font("Tahoma", 0, 18));
