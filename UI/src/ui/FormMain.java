@@ -10,6 +10,8 @@
  */
 package ui;
 
+import com.pagosoft.plaf.PlafOptions;
+import com.pagosoft.plaf.ThemeFactory;
 import documenttypesupport.AnyToTextConverter;
 import internetsearch.BingSearch;
 import internetsearch.InternetSearchManager;
@@ -77,18 +79,9 @@ public class FormMain extends javax.swing.JFrame {
     /** Creates new form FormMain */
     public FormMain() {
         try {
-
-            InfoNodeLookAndFeelTheme theme =
-                    new InfoNodeLookAndFeelTheme("My Theme",
-                    new Color(110, 120, 150),
-                    Color.WHITE,
-                    new Color(80, 80, 80),
-                    Color.WHITE,
-                    new Color(0, 170, 0),
-                    Color.WHITE,
-                    0.6);
-            UIManager.setLookAndFeel(new InfoNodeLookAndFeel(theme));
-            SwingUtilities.updateComponentTreeUI(this);
+            PlafOptions.setWheelTabbedPaneEnabled(true);
+            PlafOptions.setCurrentTheme(ThemeFactory.createTheme(Color.WHITE));
+            PlafOptions.setAsLookAndFeel();
         } catch (Exception ex) {
         }
 
