@@ -13,7 +13,9 @@ import java.util.ArrayList;
 import ComparisonEngine.ComparisonResult;
 import de.tud.kom.stringmatching.shinglecloud.ShingleCloudMatch;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.didion.jwnl.JWNLException;
@@ -34,6 +36,7 @@ public class Manager {
     Stemmer stem = new Stemmer();
 
     public String[][] manage(String fileFolder) throws IOException, JWNLException {
+
         File dir = new File(fileFolder);
         String[] children = dir.list();
         HashMap hm = new HashMap();
@@ -58,8 +61,8 @@ public class Manager {
                     if(i!=j){
                     float output = sca.getSimilarity(hm.get(children[i]).toString(), hm.get(children[j]).toString());
                     String match = sca.getList();
-                    String firstFile = fileFolder + "\\" + children[i];
-                    String secondFile = fileFolder + "\\" + children[j];
+                    String firstFile = fileFolder + File.separator + children[i];
+                    String secondFile = fileFolder + File.separator + children[j];
                     System.out.println(firstFile);
                     System.out.println(secondFile);
                     //System.out.println("the string of the first text is" + hm.get(children[i]).toString( ));
@@ -113,7 +116,7 @@ public class Manager {
         HashMap hm = new HashMap();
         int fileNo=0;
 
-        String[][] filenameText = new String[100][4];
+        String[][] filenameText = new String[children.length*children.length][4];
 
         String preprocessTextOfTheComparisonFile = preprocessText(documentToCompare);
 
@@ -208,6 +211,72 @@ public class Manager {
         }
 
 
+    public String[][] compareAllFiles(HashMap<File, ArrayList<String>> indexedFilesList) throws IOException{
+
+
+        Iterator it =  indexedFilesList.entrySet().iterator();
+        ArrayList indexedFilesForFile=new  ArrayList();
+        String[][] filenameText = new String[1000][4];
+         int fileNo=0;
+        int index=0;
+        while (it.hasNext() ) {
+
+
+            Map.Entry pair = (Map.Entry) it.next();
+            File filePath = (File)pair.getKey();
+            indexedFilesForFile=indexedFilesList.get(filePath);
+            ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
+
+            for(int i=0;i< indexedFilesForFile.size();i++){
+            File createFile=new File((String)indexedFilesForFile.get(i));
+            float output = sca.getSimilarity(preprocessText(filePath.getAbsolutePath()), preprocessText(createFile.getAbsolutePath()));
+                    String match = sca.getList();
+                    String firstFile = filePath.getAbsolutePath();
+                    String secondFile = createFile.getAbsolutePath();
+                    System.out.println();
+                    System.out.println(firstFile);
+                    System.out.println(secondFile);
+                    System.out.println("the string of the first text is " + preprocessText(filePath.getAbsolutePath()));
+                    System.out.println("the string of the second text is " +preprocessText(createFile.getAbsolutePath()));
+                    System.out.println("match is "+ match);
+                    System.out.println("Size of the matched files is "+fileNo);
+                    System.out.println();
+                    if(!match.isEmpty()){
+                             //////////////// just for testing purposes
+                    filenameText[fileNo][0] = firstFile;
+                    filenameText[fileNo][1] = secondFile;
+                    filenameText[fileNo][2] = match;
+                    fileNo++;
+
+                    String Isplagarised = null;
+                    if (output > 1.5) {
+                        Isplagarised = "1";
+                    }
+                    else {
+                        Isplagarised = "0";
+                    }
+
+
+        }
+
+
+
+
+
+
+
+        }
+        }
+
+
+
+            return filenameText;
+        }
+
+    
+
+
+
     public String arraylistToSting(ArrayList<String> token) {
         StringBuilder out = new StringBuilder();
         for (Object o : token) {
@@ -260,5 +329,6 @@ public class Manager {
                 String preprocessText = this.arraylistToSting(stopWordRemovedTokens);
                 return preprocessText;
     }
+
 }
 
