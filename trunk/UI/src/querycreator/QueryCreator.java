@@ -22,6 +22,8 @@ import java.util.StringTokenizer;
 public class QueryCreator {
 
     private ArrayList<String> sentenceList = new ArrayList<String>();
+    String[] paragraphList;
+    String[] newSentenceList;
     private int totalSentences = 0;
     private int numOfSelected = 0;
     private String inputText = "";
@@ -35,7 +37,6 @@ public class QueryCreator {
     }
 
     public void setRandomSelectionRatio(float selectionRatio) {
-
         if (selectionRatio > 0.0f && selectionRatio < 1.0f) {
             this.randomSelectionRatio = selectionRatio;
         }
@@ -58,10 +59,10 @@ public class QueryCreator {
                     line = line.replaceAll("[^\\p{ASCII}]", " ");
                     line = line + "\n";
                     fileAsText.append(line);
-
                 }
 
                 inputText = fileAsText.toString();
+                paragraphList = inputText.split("\n");
             } else {
                 inputText = "";
             }
@@ -74,7 +75,6 @@ public class QueryCreator {
         this.txtToString(fileName);
 
         this.processText();
-
         if (querySelectionAlgo == QuerySelectionAlgorithm.Random) {
             return this.selectRandomSentences();
         } else {
@@ -87,6 +87,7 @@ public class QueryCreator {
         inputText = inputText.toLowerCase();
 
         String[] lineArray = inputText.split("[.:;.]");
+        newSentenceList = inputText.split("[.:;.]");
 
 
         for (int i = 0; i < lineArray.length; i++) {
@@ -123,24 +124,12 @@ public class QueryCreator {
         int lastIndex = length - 1;
 
         for (int i = 0; i < length - 1; i++) {
-            if (word.charAt(i) != 'I'
-                    && word.charAt(i) != 'V'
-                    && word.charAt(i) != 'X'
-                    && word.charAt(i) != 'L'
-                    && word.charAt(i) != 'C'
-                    && word.charAt(i) != 'D'
-                    && word.charAt(i) != 'M') {
+            if (word.charAt(i) != 'I' && word.charAt(i) != 'V' && word.charAt(i) != 'X' && word.charAt(i) != 'L' && word.charAt(i) != 'C' && word.charAt(i) != 'D' && word.charAt(i) != 'M') {
                 return false;
             }
         }
 
-        if (word.charAt(lastIndex) != 'I'
-                && word.charAt(lastIndex) != 'V'
-                && word.charAt(lastIndex) != 'X'
-                && word.charAt(lastIndex) != 'L'
-                && word.charAt(lastIndex) != 'C'
-                && word.charAt(lastIndex) != 'D'
-                && word.charAt(lastIndex) != 'M') {
+        if (word.charAt(lastIndex) != 'I' && word.charAt(lastIndex) != 'V' && word.charAt(lastIndex) != 'X' && word.charAt(lastIndex) != 'L' && word.charAt(lastIndex) != 'C' && word.charAt(lastIndex) != 'D' && word.charAt(lastIndex) != 'M') {
             return false;
         }
 
@@ -180,19 +169,16 @@ public class QueryCreator {
             }
         }
 
-        if (Character.isDigit(input.charAt(lastCharInWord))
-                || isPunctuation(input.charAt(lastCharInWord))) {
+        if (Character.isDigit(input.charAt(lastCharInWord)) || isPunctuation(input.charAt(lastCharInWord))) {
             return true;
         } else {
             return false;
         }
-
     }
 
     private boolean isPunctuation(char word) {
 
-        if (word == '.' || word == '!' || word == '?' || word == ','
-                || word == ';' || word == '-') {
+        if (word == '.' || word == '!' || word == '?' || word == ',' || word == ';' || word == '-') {
             return true;
         }
 
@@ -202,6 +188,28 @@ public class QueryCreator {
     private ArrayList<String> selectRandomSentences() {
 
         ArrayList<String> selectedSentencesList = new ArrayList<String>();
+
+        FleshKincaidLogic fkl = new FleshKincaidLogic();
+        fkl.processString(inputText);
+        System.out.println("Flesh Kincaid Grade Level:    " + fkl.getFleschKincaidGradeLevel());
+
+//        for (int j = 0; j < paragraphList.length; j++) {
+//            FleshKincaidLogic fklnew = new FleshKincaidLogic();
+//            fklnew.processString(paragraphList[j]+".");
+//            System.out.println("Flesh Kincaid Grade Level:    " + fklnew.getFleschKincaidGradeLevel());
+//        }
+
+//        for (int j = 0; j < sentenceList.size(); j++) {
+//            FleshKincaidLogic fklnew = new FleshKincaidLogic();
+//            fklnew.processString(sentenceList.get(j));
+//            System.out.println("Flesh Kincaid Grade Level:    " + fklnew.getFleschKincaidGradeLevel());
+//        }
+
+        for (int j = 0; j < newSentenceList.length; j++) {
+            FleshKincaidLogic fklnew = new FleshKincaidLogic();
+            fklnew.processString(newSentenceList[j]+".");
+            System.out.println("Flesh Kincaid Grade Level of " + j + " sentence" + fklnew.getFleschKincaidGradeLevel());
+        }
 
         totalSentences = sentenceList.size();
         numOfSelected = 0;
@@ -236,7 +244,7 @@ public class QueryCreator {
         return selectedSentencesList;
     }
 
-    public ArrayList<String> selectSentencesExhaustively(){
+    public ArrayList<String> selectSentencesExhaustively() {
         return sentenceList;
     }
 }
