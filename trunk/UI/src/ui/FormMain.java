@@ -70,6 +70,7 @@ public class FormMain extends javax.swing.JFrame {
     private String sourceFolderName;
     String indexFolderPath;
     ArrayList<String> indexedFiles=new ArrayList<String>();
+     ArrayList<String> fileArrayList=new ArrayList<String>();
     //ArrayList<String> indexedFilesTesting;
     HashMap<File, ArrayList<String>> indexedFileList= new HashMap<File, ArrayList<String>>();
     /** Creates new form FormMain */
@@ -1150,6 +1151,15 @@ jTextArea3.setText(field2);
 
         File[] files=manager.getFilesIntheFolder(destFolderPath);
 
+        for(int arr=0;arr<files.length;arr++){
+
+            fileArrayList.add(files[arr].getAbsolutePath());
+
+        }
+
+
+
+
         String fName=(String)jComboBox1.getSelectedItem();
         File destFolder=new File(destFolderPath);
 
@@ -1195,21 +1205,35 @@ System.out.println("");
         }
         System.out.println("End Indexing files........................\n");
 
-       System.out.println("Start Downloading the internet files........................");
+        System.out.println("Start Downloading the internet files........................");
 
-
-
-         /**for(int i=0;i<files.length;i++){
-
-
-
-
+    
         BingSearch bingSearch = new BingSearch("F138552F897E2CA7C264FDAC64F8EF2021ABD3AF");
         bingSearch.setMaxNumOfResults(10);
         InternetSearchManager sd = new InternetSearchManager(bingSearch);
         sd.setRandomSelectionRatio(0.2f);
 
-        downloadFolderPath = sd.downloadSourcesForFile(destFolderPath+File.separator+files[i].getAbsolutePath() );
+
+
+        //downloadFolderPath = sd.downloadSourcesForFile(destFolderPath+File.separator+files[i].getAbsolutePath() );
+        // = sd.downloadSourcesForFile(destFolderPath+File.separator+files[i].getAbsolutePath() );
+        HashMap<String, ArrayList<String>> downloadedFileList = sd.downloadSourcesForFileFolder(fileArrayList, destFolderPath);
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
         System.out.println("downloaded folder path is "+downloadFolderPath);
 
         System.out.println("End Downloading the internet files........................\n"); 
@@ -1217,9 +1241,9 @@ System.out.println("");
 
         System.out.println("Starting Comparing Files........................\n");
 
-**/
+//**/
         try {
-            temp = manager.compareAllFiles(indexedFileList);
+            temp = manager.compareAllFiles(indexedFileList,downloadedFileList);
         } catch (IOException ex) {
             System.out.println("There are no similar files or some error has occured");
         }

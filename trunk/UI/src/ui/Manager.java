@@ -211,14 +211,16 @@ public class Manager {
         }
 
 
-    public String[][] compareAllFiles(HashMap<File, ArrayList<String>> indexedFilesList) throws IOException{
+    public String[][] compareAllFiles(HashMap<File, ArrayList<String>> indexedFilesList,HashMap<String, ArrayList<String>> downloadedFilesList) throws IOException{
 
-
+        Iterator downloadIterator=downloadedFilesList.entrySet().iterator();
         Iterator it =  indexedFilesList.entrySet().iterator();
         ArrayList indexedFilesForFile=new  ArrayList();
+        ArrayList downloadedFilesForFile=new  ArrayList();
         String[][] filenameText = new String[1000][4];
-         int fileNo=0;
+        int fileNo=0;
         int index=0;
+
         while (it.hasNext() ) {
 
 
@@ -267,6 +269,61 @@ public class Manager {
 
         }
         }
+
+         while (downloadIterator.hasNext() ) {
+
+
+            Map.Entry pair = (Map.Entry) downloadIterator.next();
+            String filePath = (String)pair.getKey();
+            downloadedFilesForFile=downloadedFilesList.get(filePath);
+            ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
+
+            for(int i=0;i<  downloadedFilesForFile.size();i++){
+            File createFile=new File((String)downloadedFilesForFile.get(i));
+            float output = sca.getSimilarity(preprocessText(filePath), preprocessText(createFile.getAbsolutePath()));
+                    String match = sca.getList();
+                    String firstFile = filePath;
+                    String secondFile = createFile.getAbsolutePath();
+                    System.out.println();
+                    System.out.println(firstFile);
+                    System.out.println(secondFile);
+                    System.out.println("the string of the first text is " + preprocessText(filePath));
+                    System.out.println("the string of the second text is " +preprocessText(createFile.getAbsolutePath()));
+                    System.out.println("match is "+ match);
+                    System.out.println("Size of the matched files is "+fileNo);
+                    System.out.println();
+                    if(!match.isEmpty()){
+                             //////////////// just for testing purposes
+                    filenameText[fileNo][0] = firstFile;
+                    filenameText[fileNo][1] = secondFile;
+                    filenameText[fileNo][2] = match;
+                    fileNo++;
+
+                    String Isplagarised = null;
+                    if (output > 1.5) {
+                        Isplagarised = "1";
+                    }
+                    else {
+                        Isplagarised = "0";
+                    }
+
+
+                    }
+
+
+
+
+
+
+
+        }
+        }
+
+
+
+
+
+
 
 
 
