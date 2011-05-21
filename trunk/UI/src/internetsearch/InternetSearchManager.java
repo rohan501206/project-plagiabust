@@ -143,7 +143,7 @@ public class InternetSearchManager {
             Map.Entry pair = (Map.Entry) sortedSourceIterator.next();
             String key = (String) pair.getKey();
             int value = (Integer) pair.getValue();
-            System.out.println(key);
+            
             selectedSources.put(key, value);
             numberOfSelectedDoc++;
         }
