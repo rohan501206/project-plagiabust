@@ -8,7 +8,6 @@
  *
  * Created on Apr 25, 2011, 1:10:07 PM
  */
-
 package ui;
 
 import documenttypesupport.AnyToTextConverter;
@@ -47,60 +46,59 @@ import reportingModule.DiffMatch;
 import reportingModule.DiffMatch.Diff;
 import reportingModule.StringDiffer;
 
-
 /**
  *
  * @author Brave Heart
  */
 public class FormMain extends javax.swing.JFrame {
+
     private File file1;
     private File selectFile1;
     private File selectFile2;
-    final static Color  HILIT_COLOR = Color.LIGHT_GRAY;
-    final static Color  ERROR_COLOR = Color.PINK;
+    final static Color HILIT_COLOR = Color.LIGHT_GRAY;
+    final static Color ERROR_COLOR = Color.PINK;
     Color entryBg;
     int numberOfFiles;
     Manager manager = new Manager();
     Highlighter hilit = new DefaultHighlighter();
-    Highlighter hilit2 = new DefaultHighlighter();;
+    Highlighter hilit2 = new DefaultHighlighter();
+
+    ;
     String[][] temp = null;   /////////// declared as a global variable
     String destFolderPath = null;
     Highlighter.HighlightPainter painter;
-
     private String sourceFolderName;
     String indexFolderPath;
-    ArrayList<String> indexedFiles=new ArrayList<String>();
-     ArrayList<String> fileArrayList=new ArrayList<String>();
+    ArrayList<String> indexedFiles = new ArrayList<String>();
+    ArrayList<String> fileArrayList = new ArrayList<String>();
     //ArrayList<String> indexedFilesTesting;
-    HashMap<File, ArrayList<String>> indexedFileList= new HashMap<File, ArrayList<String>>();
+    HashMap<File, ArrayList<String>> indexedFileList = new HashMap<File, ArrayList<String>>();
+
     /** Creates new form FormMain */
     public FormMain() {
-        try{
+        try {
 
             InfoNodeLookAndFeelTheme theme =
-        new InfoNodeLookAndFeelTheme("My Theme",
-                                     new Color(110, 120, 150),
-                                      Color.WHITE,
-                                     new Color(80, 80, 80),
-                                     Color.WHITE,
-                                     new Color(0, 170, 0),
-                                     Color.WHITE,
-                                     0.6);
-    UIManager.setLookAndFeel(new InfoNodeLookAndFeel(theme));
-    SwingUtilities.updateComponentTreeUI(this);
-        }
-        catch(Exception ex)
-        {
-
+                    new InfoNodeLookAndFeelTheme("My Theme",
+                    new Color(110, 120, 150),
+                    Color.WHITE,
+                    new Color(80, 80, 80),
+                    Color.WHITE,
+                    new Color(0, 170, 0),
+                    Color.WHITE,
+                    0.6);
+            UIManager.setLookAndFeel(new InfoNodeLookAndFeel(theme));
+            SwingUtilities.updateComponentTreeUI(this);
+        } catch (Exception ex) {
         }
 
         initComponents();
         jComboBox1.setVisible(false);
         jButton2.setVisible(false);
 //        jScrollPane1.setVisible(false);
-       // jTextArea1.setVisible(false);
+        // jTextArea1.setVisible(false);
 
-        
+
     }
 
     /** This method is called from within the constructor to
@@ -643,30 +641,30 @@ public class FormMain extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         final JFileChooser fc = new JFileChooser();
         fc.setApproveButtonText("Select");
-	fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         int returnVal = fc.showOpenDialog(this);
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             file1 = fc.getSelectedFile();
             this.jTextField1.setText(file1.toString());
-	        System.out.println(fc.getSelectedFile().getAbsolutePath());
-	        sourceFolderName= fc.getSelectedFile().getAbsolutePath();
-	        fc.setVisible(false);
-	              //  jTextArea1.setText(match);
+            System.out.println(fc.getSelectedFile().getAbsolutePath());
+            sourceFolderName = fc.getSelectedFile().getAbsolutePath();
+            fc.setVisible(false);
+            //  jTextArea1.setText(match);
         }
-                // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        String folder = sourceFolderName ;
+        String folder = sourceFolderName;
         File souceFolder = new File(folder);
-        
-        if(souceFolder.isDirectory()){
+
+        if (souceFolder.isDirectory()) {
             destFolderPath = souceFolder.getAbsolutePath() + File.separator + souceFolder.getName();
             boolean destFolderCreated = new File(destFolderPath).mkdir();
-            if(destFolderCreated){
-                    AnyToTextConverter tc = new AnyToTextConverter(destFolderPath);
-                    tc.convertFilesInFolder(folder);
+            if (destFolderCreated) {
+                AnyToTextConverter tc = new AnyToTextConverter(destFolderPath);
+                tc.convertFilesInFolder(folder);
             }
         }
 
@@ -680,49 +678,47 @@ public class FormMain extends javax.swing.JFrame {
             indexer.closeIndex();
         } catch (Exception ex) {
         }
-        
-        File[] files=manager.getFilesIntheFolder(destFolderPath);
 
-        for(int i=0;i<files.length;i++){
-            if(files[i].isFile())
-            jComboBox1.addItem(files[i].getName());
+        File[] files = manager.getFilesIntheFolder(destFolderPath);
+
+        for (int i = 0; i < files.length; i++) {
+            if (files[i].isFile()) {
+                jComboBox1.addItem(files[i].getName());
+            }
         }
 
         jComboBox1.setVisible(true);
         jButton2.setVisible(true);
 
-          //jScrollPane1.setVisible(true);
+        //jScrollPane1.setVisible(true);
         //jTextArea1.setVisible(true);
         //jTextArea1.setText("selecting document");
         /**try {
-            temp = manager.manage(destFolderPath);
+        temp = manager.manage(destFolderPath);
         } catch (IOException ex) {
-            Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
         } catch (JWNLException ex) {
-            Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-            //jTextArea1.setText(temp[0][1]+"\n"+temp[0][1]+"\n"+temp[0][2]);// TODO add your handling code here
-            jTextField3.setText(temp[0][0]);
-            jTextField4.setText(temp[0][1]);
-            jTextField2.setText(temp[0][2]);
+        //jTextArea1.setText(temp[0][1]+"\n"+temp[0][1]+"\n"+temp[0][2]);// TODO add your handling code here
+        jTextField3.setText(temp[0][0]);
+        jTextField4.setText(temp[0][1]);
+        jTextField2.setText(temp[0][2]);
 
-            String fileName1=jTextField3.getText();
-            String fileName2=jTextField4.getText();
-
-
-            jTabbedPane2.setSelectedIndex(5);
-            setTextToTextFields(fileName1, fileName2); **/
-            
+        String fileName1=jTextField3.getText();
+        String fileName2=jTextField4.getText();
 
 
+        jTabbedPane2.setSelectedIndex(5);
+        setTextToTextFields(fileName1, fileName2); **/
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-       final JFileChooser fc = new JFileChooser();
+        final JFileChooser fc = new JFileChooser();
         int returnVal = fc.showOpenDialog(this);
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            selectFile2 = fc.getSelectedFile();           
+            selectFile2 = fc.getSelectedFile();
             this.jTextField4.setText(selectFile2.toString());
         }
 
@@ -733,7 +729,7 @@ public class FormMain extends javax.swing.JFrame {
         int returnVal = fc.showOpenDialog(this);
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
-            selectFile1 = fc.getSelectedFile();            
+            selectFile1 = fc.getSelectedFile();
             this.jTextField3.setText(selectFile1.toString());
         }        // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -742,41 +738,40 @@ public class FormMain extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
 
-
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        String fileName1=jTextField3.getText();
-        String fileName2=jTextField4.getText();
+        String fileName1 = jTextField3.getText();
+        String fileName2 = jTextField4.getText();
 
 
-        File testFile1=new File(fileName1);
-        File testFile2=new File(fileName2);
-        String field1="";
-        String field2="";
+        File testFile1 = new File(fileName1);
+        File testFile2 = new File(fileName2);
+        String field1 = "";
+        String field2 = "";
         try {
             FileReader fr = new FileReader(testFile1);
             FileReader fr2 = new FileReader(testFile2);
 
-            BufferedReader br=new BufferedReader(fr);
-            BufferedReader br2=new BufferedReader(fr2);
+            BufferedReader br = new BufferedReader(fr);
+            BufferedReader br2 = new BufferedReader(fr2);
             System.out.println("testing phase");
             try {
-                while (br.readLine()!= null) {
-                    field1=field1+br.readLine();
+                while (br.readLine() != null) {
+                    field1 = field1 + br.readLine();
                 }
-                while (br2.readLine()!= null) {
-                    field2=field2+br2.readLine();
+                while (br2.readLine() != null) {
+                    field2 = field2 + br2.readLine();
                 }
-                
+
             } catch (IOException ex) {
                 Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
             }
         } catch (FileNotFoundException ex) {
             Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-System.out.println(field1);
-System.out.println(field2);
-jTextArea2.setText(field1);
-jTextArea3.setText(field2);
+        System.out.println(field1);
+        System.out.println(field2);
+        jTextArea2.setText(field1);
+        jTextArea3.setText(field2);
 
 
 
@@ -785,8 +780,8 @@ jTextArea3.setText(field2);
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
 
-            
-       /** painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
+
+        /** painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
         jTextArea2.setHighlighter(hilit);
         jTextArea3.setHighlighter(hilit2);
         hilit.removeAllHighlights();
@@ -796,69 +791,64 @@ jTextArea3.setText(field2);
         String string = jTextField2.getText().toLowerCase();
         String[] query=null;
         if (string.length() <= 0) {
-            //message("Nothing to search");
-            return;
+        //message("Nothing to search");
+        return;
         }
 
         if(string.contains(":")){
 
-           query = string.split(":");
+        query = string.split(":");
 
         }
- else{
-            query=new String[1];
-            query[0]=string;
- }
+        else{
+        query=new String[1];
+        query[0]=string;
+        }
         String content = jTextArea2.getText();
         String content2 = jTextArea3.getText();
 
         for(int i=0;i<query.length;i++){
 
-         String s=query[i];
-         int index = content.indexOf(s);
-         int index2 = content2.indexOf(s);
+        String s=query[i];
+        int index = content.indexOf(s);
+        int index2 = content2.indexOf(s);
 
-         while (index != -1) {   // match found
-            try {
+        while (index != -1) {   // match found
+        try {
 
-               
-                if(index!=-1){
-                int end = index + s.length();
-                hilit.addHighlight(index, end, painter);
-                jTextArea2.setCaretPosition(end);
-                jTextField2.setBackground(entryBg);
-                }
-                System.out.println("first file index= "+index);
-                index = content.indexOf(s,index+s.length());
 
-                //message("'" + s + "' found. Press ESC to end search");
-            } catch (BadLocationException e) {
-                e.printStackTrace();
-            }
+        if(index!=-1){
+        int end = index + s.length();
+        hilit.addHighlight(index, end, painter);
+        jTextArea2.setCaretPosition(end);
+        jTextField2.setBackground(entryBg);
+        }
+        System.out.println("first file index= "+index);
+        index = content.indexOf(s,index+s.length());
+
+        //message("'" + s + "' found. Press ESC to end search");
+        } catch (BadLocationException e) {
+        e.printStackTrace();
+        }
         }
 
-            while (index2 != -1) {  // match found
-            try {
-               
-                 if(index2!=-1){
-                int end2 = index2 + s.length();
-                hilit2.addHighlight(index2, end2, painter);
-                jTextArea3.setCaretPosition(end2);
-                jTextField2.setBackground(entryBg);
-                }
-                   System.out.println("second file index= "+index2);
-                  index2 = content2.indexOf(s,index2+s.length());
-               // message("'" + s + "' found. Press ESC to end search");
-            } catch (BadLocationException e) {
-                e.printStackTrace();
-            }
+        while (index2 != -1) {  // match found
+        try {
+
+        if(index2!=-1){
+        int end2 = index2 + s.length();
+        hilit2.addHighlight(index2, end2, painter);
+        jTextArea3.setCaretPosition(end2);
+        jTextField2.setBackground(entryBg);
+        }
+        System.out.println("second file index= "+index2);
+        index2 = content2.indexOf(s,index2+s.length());
+        // message("'" + s + "' found. Press ESC to end search");
+        } catch (BadLocationException e) {
+        e.printStackTrace();
+        }
         }
         } **/
-
-
-
-
-
         painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
         jTextArea2.setHighlighter(hilit);
         jTextArea3.setHighlighter(hilit2);
@@ -867,116 +857,112 @@ jTextArea3.setText(field2);
         entryBg = jTextField2.getBackground();
 
         String string = jTextField2.getText().toLowerCase();
-        String[] query=null;
+        String[] query = null;
         if (string.length() <= 0) {
             //message("Nothing to search");
             return;
         }
 
-        if(string.contains(":")){
+        if (string.contains(":")) {
 
-           query = string.split(":");
+            query = string.split(":");
 
+        } else {
+            query = new String[1];
+            query[0] = string;
         }
- else{
-            query=new String[1];
-            query[0]=string;
- }
         String content = jTextArea2.getText();
         String content2 = jTextArea3.getText();
 
-        for(int i=0;i<query.length;i++){
+        for (int i = 0; i < query.length; i++) {
 
-         String preprocessed=query[i];
-         String s= content;
-         System.out.println("full String is "+s);
-         System.out.println("processed String is "+preprocessed);
+            String preprocessed = query[i];
+            String s = content;
+            System.out.println("full String is " + s);
+            System.out.println("processed String is " + preprocessed);
 
-        int index=0;
-        int length=0;
-        int startIndex=0;
-        int endIndex=0;
-        int count=0;
+            int index = 0;
+            int length = 0;
+            int startIndex = 0;
+            int endIndex = 0;
+            int count = 0;
 
-       ArrayList< StringDiffer> arrayDiffer=new ArrayList<StringDiffer>();
-         DiffMatch test2= new DiffMatch();
-
-
-        LinkedList<Diff> a=test2.diff_main(s,preprocessed);
-
-        for (int j = 0; j < a.size(); j++){
-
-        String token=""+ a.get(j);
-        String processedToken= token.trim();
-        System.out.println("token is "+ processedToken);
-        String[] splitter=processedToken.split("~");
+            ArrayList<StringDiffer> arrayDiffer = new ArrayList<StringDiffer>();
+            DiffMatch test2 = new DiffMatch();
 
 
+            LinkedList<Diff> a = test2.diff_main(s, preprocessed);
 
-        StringDiffer differ=new StringDiffer(splitter[0],splitter[1]);
-        arrayDiffer.add(differ);
+            for (int j = 0; j < a.size(); j++) {
 
-              }
-
-        for(int j=0;j<arrayDiffer.size();j++){
-
-            String state=arrayDiffer.get(j).getState();
-
-            System.out.println("state is "+ state);
-            String preprocessedString=arrayDiffer.get(j).getProcessedString();
-
-            System.out.println("preprocessed is "+ preprocessedString);
+                String token = "" + a.get(j);
+                String processedToken = token.trim();
+                System.out.println("token is " + processedToken);
+                String[] splitter = processedToken.split("~");
 
 
-            if(state.equalsIgnoreCase("EQUAL")){
+
+                StringDiffer differ = new StringDiffer(splitter[0], splitter[1]);
+                arrayDiffer.add(differ);
+
+            }
+
+            for (int j = 0; j < arrayDiffer.size(); j++) {
+
+                String state = arrayDiffer.get(j).getState();
+
+                System.out.println("state is " + state);
+                String preprocessedString = arrayDiffer.get(j).getProcessedString();
+
+                System.out.println("preprocessed is " + preprocessedString);
 
 
-                if(count==0){
-                    startIndex=s.indexOf(preprocessedString);
+                if (state.equalsIgnoreCase("EQUAL")) {
+
+
+                    if (count == 0) {
+                        startIndex = s.indexOf(preprocessedString);
+                    }
+                    count++;
+
+                    if (i == arrayDiffer.size() - 1) {
+
+                        index = s.indexOf(preprocessedString);
+                        endIndex = index + preprocessedString.length();
+
+                    } else {
+
+                        System.out.println("before start index " + preprocessedString);
+
+
+                        index = s.indexOf(preprocessedString);
+
+                    }
+
+
                 }
-                count++;
 
-                if(i==arrayDiffer.size()-1){
-
-                    index=s.indexOf(preprocessedString);
-                    endIndex=index +preprocessedString.length();
-
-                }
-
-            else{
-
-                System.out.println("before start index " +preprocessedString );
+                if (state.equalsIgnoreCase("DELETE")) {
 
 
-                index=s.indexOf(preprocessedString);
+
+
+                    if (i == arrayDiffer.size() - 1) {
+
+                        index = s.indexOf(preprocessedString);
+                        length = preprocessedString.length();
+                        endIndex = index;
+
+                    } else {
+                        length = preprocessedString.length();
+                        index = index + length;
+                    }
 
                 }
 
 
             }
 
-            if(state.equalsIgnoreCase("DELETE")){
-
-
-
-
-                if(i==arrayDiffer.size()-1){
-
-                    index=s.indexOf(preprocessedString);
-                    length=preprocessedString.length();
-                    endIndex=index ;
-
-                }
-
- else{
-                length=preprocessedString.length();
-                index=index+length;
-                }
-
-                     }
-
-
-        }
 
 
 
@@ -984,29 +970,28 @@ jTextArea3.setText(field2);
 
 
 
+            int index2 = content2.indexOf(preprocessed);
 
-         int index2 = content2.indexOf(preprocessed);
-
-         //while (startIndex != -1) {   // match found
+            //while (startIndex != -1) {   // match found
             try {
 
-               int end=0;
-                if(startIndex!=-1){
-                end = endIndex;
-                hilit.addHighlight(startIndex, end, painter);
-                jTextArea2.setCaretPosition(end);
-                jTextField2.setBackground(entryBg);
+                int end = 0;
+                if (startIndex != -1) {
+                    end = endIndex;
+                    hilit.addHighlight(startIndex, end, painter);
+                    jTextArea2.setCaretPosition(end);
+                    jTextField2.setBackground(entryBg);
                 }
-                System.out.println("first file index= "+startIndex);
+                System.out.println("first file index= " + startIndex);
                 //startIndex = content.indexOf(preprocessed,end);
 
                 //message("'" + s + "' found. Press ESC to end search");
             } catch (BadLocationException e) {
                 e.printStackTrace();
             }
-        //}
+            //}
 
-            
+
         }
 
 
@@ -1020,14 +1005,14 @@ jTextArea3.setText(field2);
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
 
-      
+
         numberOfFiles++;
         System.out.println(numberOfFiles);
         jTextField3.setText(temp[numberOfFiles][0]);
         jTextField4.setText(temp[numberOfFiles][1]);
         jTextField2.setText(temp[numberOfFiles][2]);
         setTextToTextFields(temp[numberOfFiles][0], temp[numberOfFiles][1]);
-        
+
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -1044,15 +1029,15 @@ jTextArea3.setText(field2);
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-    
+
 
         //this.jTextArea1.setText("Start Processing files");
-        String fName=(String)jComboBox1.getSelectedItem();
-        File destFolder=new File(destFolderPath);
+        String fName = (String) jComboBox1.getSelectedItem();
+        File destFolder = new File(destFolderPath);
 
-        String selectedDocumentPath=sourceFolderName+File.separator+ destFolder.getName()+File.separator+(String)jComboBox1.getSelectedItem();
-        String downloadFolderPath=null;
-        System.out.print( fName);        
+        String selectedDocumentPath = sourceFolderName + File.separator + destFolder.getName() + File.separator + (String) jComboBox1.getSelectedItem();
+        String downloadFolderPath = null;
+        System.out.print(fName);
         System.out.println("Start Downloading the internet files........................");
         //jTextArea1.append("Strting");
         BingSearch bingSearch = new BingSearch("F138552F897E2CA7C264FDAC64F8EF2021ABD3AF");
@@ -1060,9 +1045,9 @@ jTextArea3.setText(field2);
         InternetSearchManager sd = new InternetSearchManager(bingSearch);
         sd.setRandomSelectionRatio(0.2f);
 
-        downloadFolderPath = sd.downloadSourcesForFile(destFolderPath+File.separator+fName );
-        System.out.println("downloaded folder path is "+downloadFolderPath);
-        
+        downloadFolderPath = sd.downloadSourcesForFile(destFolderPath + File.separator + fName);
+        System.out.println("downloaded folder path is " + downloadFolderPath);
+
         System.out.println("End Downloading the internet files........................\n");
         //jTextArea1.append("End Downloading the internet files........................\n");
 
@@ -1070,7 +1055,7 @@ jTextArea3.setText(field2);
         //jTextArea1.append("Start Indexing files........................\n");
 
         IndexSearch is = new IndexSearch(indexFolderPath);
-        PeerSearchManager psm  = new PeerSearchManager(is);
+        PeerSearchManager psm = new PeerSearchManager(is);
         psm.setRandomSelectionRatio(.50f);
         HashMap<String, Integer> selectedSources = psm.getSuspiciousDocList(selectedDocumentPath);
         Iterator it = selectedSources.entrySet().iterator();
@@ -1079,49 +1064,50 @@ jTextArea3.setText(field2);
             Map.Entry pair = (Map.Entry) it.next();
             String filePath = (String) pair.getKey();
             selectedDocuments++;
-            if(!filePath.equalsIgnoreCase(selectedDocumentPath))
-            indexedFiles.add(filePath);      
+            if (!filePath.equalsIgnoreCase(selectedDocumentPath)) {
+                indexedFiles.add(filePath);
+            }
 
         }
 
         System.out.println("End Indexing files........................\n");
-       // jTextArea1.append("End  Indexing files........................\n");
+        // jTextArea1.append("End  Indexing files........................\n");
 
         System.out.println("Starting Comparing Files........................\n");
         //jTextArea1.append("Starting Comparing Files........................\n");
 
         try {
-            temp = manager.compareFiles(selectedDocumentPath,downloadFolderPath,indexedFiles);
+            temp = manager.compareFiles(selectedDocumentPath, downloadFolderPath, indexedFiles);
         } catch (IOException ex) {
             System.out.println("There are no similar files or some error has occured");
         }
-            //jTextArea1.setText(temp[0][1]+"\n"+temp[0][1]+"\n"+temp[0][2]);// TODO add your handling code here
-            jTextField3.setText(temp[0][0]);
-            jTextField4.setText(temp[0][1]);
-            jTextField2.setText(temp[0][2]);
+        //jTextArea1.setText(temp[0][1]+"\n"+temp[0][1]+"\n"+temp[0][2]);// TODO add your handling code here
+        jTextField3.setText(temp[0][0]);
+        jTextField4.setText(temp[0][1]);
+        jTextField2.setText(temp[0][2]);
 
-            String fileName1=jTextField3.getText();
-            String fileName2=jTextField4.getText();
+        String fileName1 = jTextField3.getText();
+        String fileName2 = jTextField4.getText();
 
-            jTabbedPane2.setSelectedIndex(5);
-            setTextToTextFields(fileName1, fileName2);
+        jTabbedPane2.setSelectedIndex(5);
+        setTextToTextFields(fileName1, fileName2);
 
-            
-        
+
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
 
         // One to one check of the documents
-        String folder = sourceFolderName ;
+        String folder = sourceFolderName;
         File souceFolder = new File(folder);
 
-        if(souceFolder.isDirectory()){
+        if (souceFolder.isDirectory()) {
             destFolderPath = souceFolder.getAbsolutePath() + File.separator + souceFolder.getName();
             boolean destFolderCreated = new File(destFolderPath).mkdir();
-            if(destFolderCreated){
-                    AnyToTextConverter tc = new AnyToTextConverter(destFolderPath);
-                    tc.convertFilesInFolder(folder);
+            if (destFolderCreated) {
+                AnyToTextConverter tc = new AnyToTextConverter(destFolderPath);
+                tc.convertFilesInFolder(folder);
             }
         }
 
@@ -1134,12 +1120,11 @@ jTextArea3.setText(field2);
             indexer.indexFileOrDirectory(doucmentFolderPath);
             indexer.closeIndex();
         } catch (Exception ex) {
-
         }
 
-        File[] files=manager.getFilesIntheFolder(destFolderPath);
+        File[] files = manager.getFilesIntheFolder(destFolderPath);
 
-        for(int arr=0;arr<files.length;arr++){
+        for (int arr = 0; arr < files.length; arr++) {
 
             fileArrayList.add(files[arr].getAbsolutePath());
 
@@ -1148,54 +1133,54 @@ jTextArea3.setText(field2);
 
 
 
-        String fName=(String)jComboBox1.getSelectedItem();
-        File destFolder=new File(destFolderPath);
+        String fName = (String) jComboBox1.getSelectedItem();
+        File destFolder = new File(destFolderPath);
 
         //String selectedDocumentPath=sourceFolderName+File.separator+ destFolder.getName()+File.separator+(String)jComboBox1.getSelectedItem();
-        String downloadFolderPath=null;
+        String downloadFolderPath = null;
 
 
         System.out.println("Start Indexing files........................\n");
 
 
         IndexSearch is = new IndexSearch(indexFolderPath);
-        PeerSearchManager psm  = new PeerSearchManager(is);
+        PeerSearchManager psm = new PeerSearchManager(is);
         psm.setRandomSelectionRatio(.25f);
-        System.out.println("length is "+files.length);
+        System.out.println("length is " + files.length);
 
-        for(int i=0;i<files.length;i++){
- ArrayList<String> indexedFilesTesting=new ArrayList<String>();
-        if(files[i].isFile()){
-            System.out.println("testing Indexing files........................\n");
-        HashMap<String, Integer> selectedSources = psm.getSuspiciousDocList(files[i].getAbsolutePath());
-        System.out.println("testing 2 Indexing files........................\n");
-        Iterator it = selectedSources.entrySet().iterator();
-        int selectedDocuments = 0;
-        while (it.hasNext() && selectedDocuments < 10) {
-            Map.Entry pair = (Map.Entry) it.next();
-            String filePath = (String) pair.getKey();
-            selectedDocuments++;
-            ///if(!filePath.equalsIgnoreCase(selectedDocumentPath))
-            indexedFilesTesting.add(filePath);
+        for (int i = 0; i < files.length; i++) {
+            ArrayList<String> indexedFilesTesting = new ArrayList<String>();
+            if (files[i].isFile()) {
+                System.out.println("testing Indexing files........................\n");
+                HashMap<String, Integer> selectedSources = psm.getSuspiciousDocList(files[i].getAbsolutePath());
+                System.out.println("testing 2 Indexing files........................\n");
+                Iterator it = selectedSources.entrySet().iterator();
+                int selectedDocuments = 0;
+                while (it.hasNext() && selectedDocuments < 10) {
+                    Map.Entry pair = (Map.Entry) it.next();
+                    String filePath = (String) pair.getKey();
+                    selectedDocuments++;
+                    ///if(!filePath.equalsIgnoreCase(selectedDocumentPath))
+                    indexedFilesTesting.add(filePath);
 
-        }
+                }
 
-        indexedFileList.put(files[i], indexedFilesTesting);
-        System.out.println("file "+ files[i].getAbsolutePath());
-        for(int j=0;j<indexedFilesTesting.size();j++){
-             System.out.println("indexed file "+j+" "+indexedFilesTesting.get(j));
-        }
-System.out.println("");
+                indexedFileList.put(files[i], indexedFilesTesting);
+                System.out.println("file " + files[i].getAbsolutePath());
+                for (int j = 0; j < indexedFilesTesting.size(); j++) {
+                    System.out.println("indexed file " + j + " " + indexedFilesTesting.get(j));
+                }
+                System.out.println("");
 
 
 
-        }
+            }
         }
         System.out.println("End Indexing files........................\n");
 
         System.out.println("Start Downloading the internet files........................");
 
-    
+
         BingSearch bingSearch = new BingSearch("F138552F897E2CA7C264FDAC64F8EF2021ABD3AF");
         bingSearch.setMaxNumOfResults(10);
         InternetSearchManager sd = new InternetSearchManager(bingSearch);
@@ -1208,7 +1193,6 @@ System.out.println("");
         HashMap<String, ArrayList<String>> downloadedFileList = sd.downloadSourcesForFileFolder(fileArrayList, destFolderPath);
 
 
-      
 
 
 
@@ -1222,87 +1206,87 @@ System.out.println("");
 
 
 
-        System.out.println("downloaded folder path is "+downloadFolderPath);
 
-        System.out.println("End Downloading the internet files........................\n"); 
+        System.out.println("downloaded folder path is " + downloadFolderPath);
+
+        System.out.println("End Downloading the internet files........................\n");
 
 
         System.out.println("Starting Comparing Files........................\n");
 
 //**/
         try {
-            temp = manager.compareAllFiles(indexedFileList,downloadedFileList);
+            temp = manager.compareAllFiles(indexedFileList, downloadedFileList);
         } catch (IOException ex) {
             System.out.println("There are no similar files or some error has occured");
         }
-            //jTextArea1.setText(temp[0][1]+"\n"+temp[0][1]+"\n"+temp[0][2]);// TODO add your handling code here
-            jTextField3.setText(temp[0][0]);
-            jTextField4.setText(temp[0][1]);
-            jTextField2.setText(temp[0][2]);
+        //jTextArea1.setText(temp[0][1]+"\n"+temp[0][1]+"\n"+temp[0][2]);// TODO add your handling code here
+        jTextField3.setText(temp[0][0]);
+        jTextField4.setText(temp[0][1]);
+        jTextField2.setText(temp[0][2]);
 
-            String fileName1=jTextField3.getText();
-            String fileName2=jTextField4.getText();
+        String fileName1 = jTextField3.getText();
+        String fileName2 = jTextField4.getText();
 
-            jTabbedPane2.setSelectedIndex(5);
-            setTextToTextFields(fileName1, fileName2);
+        jTabbedPane2.setSelectedIndex(5);
+        setTextToTextFields(fileName1, fileName2);
 
 
-        
+
     }//GEN-LAST:event_jButton10ActionPerformed
-
 
     void message(String msg) {
         jLabel8.setText(msg);
     }
 
-     public void setTextToTextFields(String fileName1,String fileName2){
+    public void setTextToTextFields(String fileName1, String fileName2) {
 
-         if(fileName1==null|| fileName2==null){
-             jTextArea2.setText("");
+        if (fileName1 == null || fileName2 == null) {
+            jTextArea2.setText("");
             jTextArea3.setText("");
-         }
- else{
+        } else {
 
-         File testFile1=new File(fileName1);
-        File testFile2=new File(fileName2);
-        String field1="";
-        String field2="";
-        try {
-            FileReader fr = new FileReader(testFile1);
-            FileReader fr2 = new FileReader(testFile2);
-
-            BufferedReader br=new BufferedReader(fr);
-            BufferedReader br2=new BufferedReader(fr2);
-            System.out.println("testing phase");
+            File testFile1 = new File(fileName1);
+            File testFile2 = new File(fileName2);
+            String field1 = "";
+            String field2 = "";
             try {
-                while (br.readLine()!= null) {
-                    field1=field1+br.readLine();
-                }
-                while (br2.readLine()!= null) {
-                    field2=field2+br2.readLine();
-                }
+                FileReader fr = new FileReader(testFile1);
+                FileReader fr2 = new FileReader(testFile2);
 
-            } catch (IOException ex) {
+                BufferedReader br = new BufferedReader(fr);
+                BufferedReader br2 = new BufferedReader(fr2);
+                System.out.println("testing phase");
+                try {
+                    while (br.readLine() != null) {
+                        field1 = field1 + br.readLine();
+                    }
+                    while (br2.readLine() != null) {
+                        field2 = field2 + br2.readLine();
+                    }
+
+                } catch (IOException ex) {
+                    Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } catch (FileNotFoundException ex) {
                 Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
+            jTextArea2.setText(field1.toLowerCase());
+            jTextArea3.setText(field2.toLowerCase());
         }
-jTextArea2.setText(field1.toLowerCase());
-jTextArea3.setText(field2.toLowerCase());
-         }
     }
+
     /**
-    * @param args the command line arguments
-    */
+     * @param args the command line arguments
+     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
+
             public void run() {
                 new FormMain().setVisible(true);
             }
         });
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -1352,5 +1336,4 @@ jTextArea3.setText(field2.toLowerCase());
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
-
 }
