@@ -548,7 +548,7 @@ public class FormMain extends javax.swing.JFrame {
             .addGap(0, 541, Short.MAX_VALUE)
         );
 
-        jTabbedPane4.addTab("Internet", jPanel14);
+        jTabbedPane4.addTab("Internet", new javax.swing.ImageIcon(getClass().getResource("/Images/Network.png")), jPanel14); // NOI18N
 
         javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
         jPanel15.setLayout(jPanel15Layout);
