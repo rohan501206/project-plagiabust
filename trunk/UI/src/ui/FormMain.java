@@ -168,7 +168,7 @@ public class FormMain extends javax.swing.JFrame {
             .addGap(0, 541, Short.MAX_VALUE)
         );
 
-        jTabbedPane5.addTab("About", new javax.swing.ImageIcon(getClass().getResource("/Images/Search.png")), jPanel17); // NOI18N
+        jTabbedPane5.addTab("About", jPanel17);
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
@@ -198,7 +198,7 @@ public class FormMain extends javax.swing.JFrame {
                 .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE))
         );
 
-        mainTabbedPane.addTab("Overview", overviewPanel);
+        mainTabbedPane.addTab("Overview", new javax.swing.ImageIcon(getClass().getResource("/Images/Home.png")), overviewPanel); // NOI18N
 
         jTabbedPane2.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane2.setFont(new java.awt.Font("Tahoma", 0, 18));
@@ -257,7 +257,7 @@ public class FormMain extends javax.swing.JFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton10)
                             .addComponent(jButton1))))
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addContainerGap(141, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -392,7 +392,7 @@ public class FormMain extends javax.swing.JFrame {
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel8)
                             .addGroup(jPanel6Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 379, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap())
         );
@@ -436,7 +436,7 @@ public class FormMain extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane2.addTab("Results", jPanel6);
+        jTabbedPane2.addTab("Results      ", new javax.swing.ImageIcon(getClass().getResource("/Images/results.png")), jPanel6); // NOI18N
 
         javax.swing.GroupLayout newcheckPanelLayout = new javax.swing.GroupLayout(newcheckPanel);
         newcheckPanel.setLayout(newcheckPanelLayout);
