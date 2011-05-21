@@ -2352,10 +2352,10 @@ public class DiffMatch {
      * Display a human-readable version of this Diff.
      * @return text version.
      */
-    public String toString() {
-      String prettyText = this.text.replace('\n', '\u00b6');
-      return "Diff(" + this.operation + ",\"" + prettyText + "\")";
-    }
+      public String toString() {
+          String prettyText = this.text.replace('\n', '\u00b6');
+          return  this.operation + "~" + prettyText;
+      }
 
 
     /**
