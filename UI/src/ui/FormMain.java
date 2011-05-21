@@ -168,7 +168,7 @@ public class FormMain extends javax.swing.JFrame {
             .addGap(0, 541, Short.MAX_VALUE)
         );
 
-        jTabbedPane5.addTab("About", jPanel17);
+        jTabbedPane5.addTab("About", new javax.swing.ImageIcon(getClass().getResource("/Images/Help.png")), jPanel17); // NOI18N
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
