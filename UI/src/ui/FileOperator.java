@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ui;
 
+import dataExtraction.PreprocessingError;
 import documenttypesupport.AnyToTextConverter;
 import java.io.BufferedReader;
 import java.io.File;
@@ -25,30 +25,23 @@ public class FileOperator {
     public String destinationFolder;
     public String indexFolderPath;
 
+    public FileOperator(String sourceFolder) {
 
 
-    public FileOperator(String sourceFolder){
-
-
-        this.sourceFolder=sourceFolder;
+        this.sourceFolder = sourceFolder;
     }
 
-
-    public FileOperator(){
-
-
-        
+    public FileOperator() {
     }
 
-
-    public void anyToTextConverter(){
+    public void anyToTextConverter() {
 
 
         File souceFolder = new File(sourceFolder);
 
         if (souceFolder.isDirectory()) {
             destinationFolder = souceFolder.getAbsolutePath() + File.separator + souceFolder.getName();
-            boolean destFolderCreated = new File( destinationFolder).mkdir();
+            boolean destFolderCreated = new File(destinationFolder).mkdir();
             if (destFolderCreated) {
                 AnyToTextConverter tc = new AnyToTextConverter(destinationFolder);
                 tc.convertFilesInFolder(sourceFolder);
@@ -60,17 +53,15 @@ public class FileOperator {
 
     }
 
-    public String getDestinatonFolderPath(){
+    public String getDestinatonFolderPath() {
         return destinationFolder;
     }
 
-    public String getIndexFolderPath(){
+    public String getIndexFolderPath() {
         return indexFolderPath;
     }
 
-
-
-    public void TextFileIndexer(){
+    public void TextFileIndexer() {
 
         TextFileIndexer indexer = null;
         String doucmentFolderPath = destinationFolder;
@@ -86,9 +77,9 @@ public class FileOperator {
 
     }
 
-    public String[] textSetter(String fileName1, String fileName2){
+    public String[] textSetter(String fileName1, String fileName2) {
 
-        String[] text=new String[2];
+        String[] text = new String[2];
         File testFile1 = new File(fileName1);
         File testFile2 = new File(fileName2);
         String field1 = "";
@@ -100,38 +91,32 @@ public class FileOperator {
             BufferedReader br = new BufferedReader(fr);
             BufferedReader br2 = new BufferedReader(fr2);
             System.out.println("testing phase");
-            try {
-                while (br.readLine() != null) {
-                    field1 = field1 + br.readLine();
-                }
-                while (br2.readLine() != null) {
-                    field2 = field2 + br2.readLine();
-                }
 
-            } catch (IOException ex) {
-                Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } catch (FileNotFoundException ex) {
+
+            field1 = this.bufferedReaderToString(br);
+            field2 = this.bufferedReaderToString(br2);
+        } catch (IOException ex) {
             Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        text[0]=field1;
-        text[1]=field2;
-
-
+        text[0] = field1;
+        text[1] = field2;
         return text;
-
-
-
-
-
-
-
     }
 
+    private String bufferedReaderToString(BufferedReader inputBufferedReader) {
+        StringBuffer fileAsText = new StringBuffer();
 
+        try {
+            String line = null;
+            while ((line = inputBufferedReader.readLine()) != null) {
 
+                line = line.replaceAll("[^\\p{ASCII}]", " ");
+                line = line + "\n";
+                fileAsText.append(line);
+            }
+        } catch (Exception e) {
+        }
 
-
-
+        return fileAsText.toString();
+    }
 }
