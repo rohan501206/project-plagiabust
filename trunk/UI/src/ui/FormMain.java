@@ -865,7 +865,7 @@ public class FormMain extends javax.swing.JFrame {
         jTextField2.setText(temp[0][2]);
         String fileName1 = jTextField3.getText();
         String fileName2 = jTextField4.getText();
-        jTabbedPane2.setSelectedIndex(5);
+        jTabbedPane2.setSelectedIndex(1);
 
         FileOperator setTextToTextAreas= new  FileOperator();
         String[] texts=setTextToTextAreas.textSetter(fileName1, fileName2);
