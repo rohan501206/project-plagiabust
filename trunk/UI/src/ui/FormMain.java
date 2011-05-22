@@ -93,7 +93,7 @@ public class FormMain extends javax.swing.JFrame {
         this.setUndecorated(true);
         initComponents();
         this.setLocationByPlatform(false);
-        this.mainPanel.setBackground(Color.GREEN);
+        this.mainPanel.setBackground(Color.CYAN);
         jComboBox1.setVisible(false);
         jButton2.setVisible(false);
 //        jScrollPane1.setVisible(false);
