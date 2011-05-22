@@ -104,10 +104,6 @@ public class FormMain extends javax.swing.JFrame {
     private void initComponents() {
 
         mainTabbedPane = new javax.swing.JTabbedPane();
-        overviewPanel = new javax.swing.JPanel();
-        jTabbedPane5 = new javax.swing.JTabbedPane();
-        jPanel17 = new javax.swing.JPanel();
-        jPanel18 = new javax.swing.JPanel();
         newcheckPanel = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
         jPanel5 = new javax.swing.JPanel();
@@ -146,6 +142,10 @@ public class FormMain extends javax.swing.JFrame {
         jPanel14 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
+        overviewPanel = new javax.swing.JPanel();
+        jTabbedPane5 = new javax.swing.JTabbedPane();
+        jPanel17 = new javax.swing.JPanel();
+        jPanel18 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -153,52 +153,6 @@ public class FormMain extends javax.swing.JFrame {
         setResizable(false);
 
         mainTabbedPane.setFont(new java.awt.Font("Tahoma", 0, 24));
-
-        jTabbedPane5.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        jTabbedPane5.setFont(new java.awt.Font("Tahoma", 0, 18));
-
-        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
-        jPanel17.setLayout(jPanel17Layout);
-        jPanel17Layout.setHorizontalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 825, Short.MAX_VALUE)
-        );
-        jPanel17Layout.setVerticalGroup(
-            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 541, Short.MAX_VALUE)
-        );
-
-        jTabbedPane5.addTab("About", new javax.swing.ImageIcon(getClass().getResource("/Images/Help.png")), jPanel17); // NOI18N
-
-        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
-        jPanel18.setLayout(jPanel18Layout);
-        jPanel18Layout.setHorizontalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 825, Short.MAX_VALUE)
-        );
-        jPanel18Layout.setVerticalGroup(
-            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 541, Short.MAX_VALUE)
-        );
-
-        jTabbedPane5.addTab("Developers ", new javax.swing.ImageIcon(getClass().getResource("/Images/Developer.png")), jPanel18); // NOI18N
-
-        javax.swing.GroupLayout overviewPanelLayout = new javax.swing.GroupLayout(overviewPanel);
-        overviewPanel.setLayout(overviewPanelLayout);
-        overviewPanelLayout.setHorizontalGroup(
-            overviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(overviewPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 974, Short.MAX_VALUE))
-        );
-        overviewPanelLayout.setVerticalGroup(
-            overviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(overviewPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE))
-        );
-
-        mainTabbedPane.addTab("Overview", new javax.swing.ImageIcon(getClass().getResource("/Images/Home.png")), overviewPanel); // NOI18N
 
         jTabbedPane2.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane2.setFont(new java.awt.Font("Tahoma", 0, 18));
@@ -571,7 +525,53 @@ public class FormMain extends javax.swing.JFrame {
                 .addComponent(jTabbedPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE))
         );
 
-        mainTabbedPane.addTab("Settings", new javax.swing.ImageIcon(getClass().getResource("/Images/Settings.png")), settingsPanel); // NOI18N
+        mainTabbedPane.addTab("Settings    ", new javax.swing.ImageIcon(getClass().getResource("/Images/Settings.png")), settingsPanel); // NOI18N
+
+        jTabbedPane5.setTabPlacement(javax.swing.JTabbedPane.LEFT);
+        jTabbedPane5.setFont(new java.awt.Font("Tahoma", 0, 18));
+
+        javax.swing.GroupLayout jPanel17Layout = new javax.swing.GroupLayout(jPanel17);
+        jPanel17.setLayout(jPanel17Layout);
+        jPanel17Layout.setHorizontalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 825, Short.MAX_VALUE)
+        );
+        jPanel17Layout.setVerticalGroup(
+            jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 541, Short.MAX_VALUE)
+        );
+
+        jTabbedPane5.addTab("About", new javax.swing.ImageIcon(getClass().getResource("/Images/Help.png")), jPanel17); // NOI18N
+
+        javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
+        jPanel18.setLayout(jPanel18Layout);
+        jPanel18Layout.setHorizontalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 825, Short.MAX_VALUE)
+        );
+        jPanel18Layout.setVerticalGroup(
+            jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 541, Short.MAX_VALUE)
+        );
+
+        jTabbedPane5.addTab("Developers ", new javax.swing.ImageIcon(getClass().getResource("/Images/Developer.png")), jPanel18); // NOI18N
+
+        javax.swing.GroupLayout overviewPanelLayout = new javax.swing.GroupLayout(overviewPanel);
+        overviewPanel.setLayout(overviewPanelLayout);
+        overviewPanelLayout.setHorizontalGroup(
+            overviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(overviewPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 974, Short.MAX_VALUE))
+        );
+        overviewPanelLayout.setVerticalGroup(
+            overviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(overviewPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE))
+        );
+
+        mainTabbedPane.addTab("Help         ", new javax.swing.ImageIcon(getClass().getResource("/Images/Help.png")), overviewPanel); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
