@@ -106,9 +106,6 @@ public class QueryCreator {
                 fklnew.processString(newSentenceList[j] + ".");
                 Double sentenceGradeLevel = fklnew.getFleschKincaidGradeLevel();
 
-                System.out.println
-                           ("Flesh Kincaid Grade Level of " + j + fklnew.getFleschKincaidGradeLevel());
-
                 if (!sentenceGradeLevel.isNaN()) {
                     SentenceResult sentenceResult = new SentenceResult();
                     sentenceResult.sentence = newSentenceList[j];
@@ -132,7 +129,7 @@ public class QueryCreator {
         int roundedNumberOfSentences = estimatedNumberOfSentences.intValue();
 
         for (int i = 0; i < sentenceResultList.size(); i++) {
-            
+
             if (sentenceResultList.get(i).score < 10) {
                 StopWordRemover stopWordRemover = new StopWordRemover();
                 ArrayList<String> stopWordsRemovedList;
