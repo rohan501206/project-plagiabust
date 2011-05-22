@@ -93,7 +93,7 @@ public class FormMain extends javax.swing.JFrame {
         this.setUndecorated(true);
         initComponents();
         this.setLocationByPlatform(false);
-        this.mainPanel.setBackground(Color.CYAN);
+        this.mainPanel.setBackground(Color.GREEN);
         jComboBox1.setVisible(false);
         jButton2.setVisible(false);
 //        jScrollPane1.setVisible(false);
@@ -566,7 +566,7 @@ public class FormMain extends javax.swing.JFrame {
             .addGap(0, 552, Short.MAX_VALUE)
         );
 
-        jTabbedPane5.addTab("About", new javax.swing.ImageIcon(getClass().getResource("/Images/Help.png")), jPanel17); // NOI18N
+        jTabbedPane5.addTab("About", new javax.swing.ImageIcon(getClass().getResource("/Images/Home.png")), jPanel17); // NOI18N
 
         javax.swing.GroupLayout jPanel18Layout = new javax.swing.GroupLayout(jPanel18);
         jPanel18.setLayout(jPanel18Layout);
