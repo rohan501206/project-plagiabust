@@ -87,7 +87,7 @@ public class FormMain extends javax.swing.JFrame {
         try {
 
             PlafOptions.setWheelTabbedPaneEnabled(true);
-            PlafOptions.setCurrentTheme(ThemeFactory.createTheme(new Color(150, 100, 230), Color.WHITE, Color.BLACK));
+            PlafOptions.setCurrentTheme(ThemeFactory.createTheme(new Color(150, 100, 230), new Color(245, 255, 250), Color.BLACK));
             PlafOptions.setAsLookAndFeel();
             
         } catch (Exception ex) {
