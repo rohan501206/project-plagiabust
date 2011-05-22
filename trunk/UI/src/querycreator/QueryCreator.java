@@ -13,7 +13,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
-import java.util.StringTokenizer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import preprocess.StopWordRemover;
 
 /**
  *
@@ -22,7 +24,8 @@ import java.util.StringTokenizer;
 public class QueryCreator {
 
     private ArrayList<String> sentenceList = new ArrayList<String>();
-    String[] paragraphList;
+    private ArrayList<SentenceResult> sentenceResultList = new ArrayList<SentenceResult>();
+    private Double flechKincaidGradeLevel;
     String[] newSentenceList;
     private int totalSentences = 0;
     private int numOfSelected = 0;
@@ -62,7 +65,6 @@ public class QueryCreator {
                 }
 
                 inputText = fileAsText.toString();
-                paragraphList = inputText.split("\n");
             } else {
                 inputText = "";
             }
@@ -85,104 +87,8 @@ public class QueryCreator {
     private void processText() {
 
         inputText = inputText.toLowerCase();
-
         String[] lineArray = inputText.split("[.:;.]");
         newSentenceList = inputText.split("[.:;.]");
-
-
-        for (int i = 0; i < lineArray.length; i++) {
-            String currentSentence = "";
-
-            StringTokenizer tok = new StringTokenizer(lineArray[i], " \t(){}[]\n");
-
-            while (tok.hasMoreTokens()) {
-                String currentToken = tok.nextToken();
-
-                if (!isWord(currentToken)) {
-                    continue;
-                }
-
-                currentSentence += currentToken + " ";
-            }
-
-            if (!currentSentence.equals(null) && (currentSentence.length() != 1)) {
-                sentenceList.add(currentSentence);
-            }
-        }
-    }
-
-    private boolean isWord(String input) {
-        return (!isRomanNumeral(input) && hasAlphabeticChars(input) && !isNumber(input) && !isSingleCharacter(input));
-    }
-
-    private boolean isRomanNumeral(String word) {
-        if (word.equals("I")) {
-            return false;
-        }
-
-        int length = word.length();
-        int lastIndex = length - 1;
-
-        for (int i = 0; i < length - 1; i++) {
-            if (word.charAt(i) != 'I' && word.charAt(i) != 'V' && word.charAt(i) != 'X' && word.charAt(i) != 'L' && word.charAt(i) != 'C' && word.charAt(i) != 'D' && word.charAt(i) != 'M') {
-                return false;
-            }
-        }
-
-        if (word.charAt(lastIndex) != 'I' && word.charAt(lastIndex) != 'V' && word.charAt(lastIndex) != 'X' && word.charAt(lastIndex) != 'L' && word.charAt(lastIndex) != 'C' && word.charAt(lastIndex) != 'D' && word.charAt(lastIndex) != 'M') {
-            return false;
-        }
-
-        return true;
-
-    }
-
-    private boolean hasAlphabeticChars(String input) {
-
-        for (int i = 0; i < input.length(); i++) {
-            if (Character.isLetter(input.charAt(i))) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private boolean isSingleCharacter(String input) {
-        if (input.length() == 1) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private boolean isNumber(String input) {
-        int lastCharInWord = input.length() - 1;
-
-        if (input.length() == 1) {
-            return Character.isDigit(input.charAt(0));
-        }
-
-        for (int i = 0; i < lastCharInWord; i++) {
-            if (Character.isDigit(input.charAt(i)) == false) {
-                return false;
-            }
-        }
-
-        if (Character.isDigit(input.charAt(lastCharInWord)) || isPunctuation(input.charAt(lastCharInWord))) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    private boolean isPunctuation(char word) {
-
-        if (word == '.' || word == '!' || word == '?' || word == ',' || word == ';' || word == '-') {
-            return true;
-        }
-
-        return false;
     }
 
     private ArrayList<String> selectRandomSentences() {
@@ -191,25 +97,30 @@ public class QueryCreator {
 
         FleshKincaidLogic fkl = new FleshKincaidLogic();
         fkl.processString(inputText);
+        flechKincaidGradeLevel = fkl.getFleschKincaidGradeLevel();
         System.out.println("Flesh Kincaid Grade Level:    " + fkl.getFleschKincaidGradeLevel());
-
-//        for (int j = 0; j < paragraphList.length; j++) {
-//            FleshKincaidLogic fklnew = new FleshKincaidLogic();
-//            fklnew.processString(paragraphList[j]+".");
-//            System.out.println("Flesh Kincaid Grade Level:    " + fklnew.getFleschKincaidGradeLevel());
-//        }
-
-//        for (int j = 0; j < sentenceList.size(); j++) {
-//            FleshKincaidLogic fklnew = new FleshKincaidLogic();
-//            fklnew.processString(sentenceList.get(j));
-//            System.out.println("Flesh Kincaid Grade Level:    " + fklnew.getFleschKincaidGradeLevel());
-//        }
 
         for (int j = 0; j < newSentenceList.length; j++) {
             FleshKincaidLogic fklnew = new FleshKincaidLogic();
-            fklnew.processString(newSentenceList[j]+".");
-            System.out.println("Flesh Kincaid Grade Level of " + j + " sentence" + fklnew.getFleschKincaidGradeLevel());
+
+            if (fklnew.isSentenceValid(newSentenceList[j] + ".")) {
+
+                fklnew.processString(newSentenceList[j] + ".");
+                Double sentenceGradeLevel = fklnew.getFleschKincaidGradeLevel();
+
+                System.out.println("Flesh Kincaid Grade Level of " + j + fklnew.getFleschKincaidGradeLevel());
+
+                if (!sentenceGradeLevel.isNaN()) {
+                    SentenceResult sentenceResult = new SentenceResult();
+                    sentenceResult.sentence = newSentenceList[j];
+                    sentenceResult.score = fklnew.getFleschKincaidGradeLevel();
+
+                    sentenceResultList.add(sentenceResult);
+                }
+            }
         }
+
+        getSelectedSentenceList();
 
         totalSentences = sentenceList.size();
         numOfSelected = 0;
@@ -242,6 +153,38 @@ public class QueryCreator {
         }
 
         return selectedSentencesList;
+    }
+
+    public ArrayList<String> getSelectedSentenceList() {
+        ArrayList<String> suspiciousSentenceList = new ArrayList<String>();
+
+        for (int i = 0; i < sentenceResultList.size(); i++) {
+            if (sentenceResultList.get(i).score < 10) {
+                StopWordRemover stopWordRemover = new StopWordRemover();
+                ArrayList<String> stopWordsRemovedList;
+                String stopWordsRemovedSentence = "";
+
+                try {
+                    stopWordsRemovedList = stopWordRemover.analyze(sentenceResultList.get(i).sentence);
+                    stopWordsRemovedSentence = this.arraylistToSting(stopWordsRemovedList);
+                } catch (IOException ex) {
+                    Logger.getLogger(QueryCreator.class.getName()).log(Level.SEVERE, null, ex);
+                }
+               
+                suspiciousSentenceList.add(stopWordsRemovedSentence);
+            }
+        }
+
+        return suspiciousSentenceList;
+    }
+
+    public String arraylistToSting(ArrayList<String> token) {
+        StringBuilder out = new StringBuilder();
+        for (Object o : token) {
+            out.append(o.toString());
+            out.append(" ");
+        }
+        return out.toString();
     }
 
     public ArrayList<String> selectSentencesExhaustively() {
