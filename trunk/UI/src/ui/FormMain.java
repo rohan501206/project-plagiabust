@@ -33,12 +33,15 @@ import java.util.logging.Logger;
 //import javax.swing.ActionMap;
 //import javax.swing.InputMap;
 //import javax.swing.JComponent;
+import javax.swing.BorderFactory;
 import javax.swing.JFileChooser;
 //import javax.swing.KeyStroke;
 import javax.swing.JFrame;
 import javax.swing.JRootPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import javax.swing.border.BevelBorder;
+import javax.swing.border.EtchedBorder;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultHighlighter;
 import javax.swing.text.Highlighter;
@@ -94,6 +97,8 @@ public class FormMain extends javax.swing.JFrame {
         initComponents();
         this.setLocationByPlatform(false);
         this.mainPanel.setBackground(Color.CYAN);
+        this.mainPanel.setBorder(BorderFactory.createRaisedBevelBorder());
+
         jComboBox1.setVisible(false);
         jButton2.setVisible(false);
 //        jScrollPane1.setVisible(false);
@@ -157,6 +162,7 @@ public class FormMain extends javax.swing.JFrame {
         jTabbedPane5 = new javax.swing.JTabbedPane();
         jPanel17 = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
+        titleLable = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setLocationByPlatform(true);
@@ -598,6 +604,8 @@ public class FormMain extends javax.swing.JFrame {
 
         mainTabbedPane.addTab("Help         ", new javax.swing.ImageIcon(getClass().getResource("/Images/Help.png")), helpPanel); // NOI18N
 
+        titleLable.setText("jLabel1");
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
@@ -607,6 +615,8 @@ public class FormMain extends javax.swing.JFrame {
                 .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(mainTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1009, Short.MAX_VALUE)
                     .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addComponent(titleLable, javax.swing.GroupLayout.DEFAULT_SIZE, 903, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(minimzeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -616,9 +626,11 @@ public class FormMain extends javax.swing.JFrame {
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(minimzeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, Short.MAX_VALUE)
+                        .addComponent(minimzeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, Short.MAX_VALUE))
+                    .addComponent(titleLable, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(mainTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
                 .addContainerGap())
@@ -1344,5 +1356,6 @@ public class FormMain extends javax.swing.JFrame {
     private javax.swing.JPanel newcheckPanel;
     private javax.swing.JPanel profilePanel;
     private javax.swing.JPanel settingsPanel;
+    private javax.swing.JLabel titleLable;
     // End of variables declaration//GEN-END:variables
 }
