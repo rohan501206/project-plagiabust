@@ -801,12 +801,14 @@ public class FormMain extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
 
+        if(!(numberOfFiles<0)){
         numberOfFiles--;
         System.out.println(numberOfFiles);
         jTextField3.setText(temp[numberOfFiles][0]);
         jTextField4.setText(temp[numberOfFiles][1]);
         jTextField2.setText(temp[numberOfFiles][2]);
         setTextToTextFields(temp[numberOfFiles][0], temp[numberOfFiles][1]);
+        }
 
 
     }//GEN-LAST:event_jButton9ActionPerformed
@@ -815,11 +817,13 @@ public class FormMain extends javax.swing.JFrame {
 
 
 
-         String fName = (String) jComboBox1.getSelectedItem();
+        String fName = (String) jComboBox1.getSelectedItem();
         File destFolder = new File(destFolderPath);
         String selectedDocumentPath = sourceFolderName + File.separator + destFolder.getName() + File.separator + (String) jComboBox1.getSelectedItem();
-        String downloadFolderPath = null;
 
+        System.out.println("selected document path is "+selectedDocumentPath);
+        //System.out.println("Start Downloading the internet files........................\n");
+        String downloadFolderPath = null;
         InternetDocumentDownloadManager idm=new InternetDocumentDownloadManager();
         downloadFolderPath=idm.downloadFiles(destFolderPath, fName);
 
@@ -842,6 +846,7 @@ public class FormMain extends javax.swing.JFrame {
 
         try {
             temp = manager.compareFiles(selectedDocumentPath, downloadFolderPath, indexedFiles);
+
         } catch (IOException ex) {
             System.out.println("There are no similar files or some error has occured");
         }
@@ -849,6 +854,8 @@ public class FormMain extends javax.swing.JFrame {
         jTextField3.setText(temp[0][0]);
         jTextField4.setText(temp[0][1]);
         jTextField2.setText(temp[0][2]);
+        if(!(jTextField3.getText().equalsIgnoreCase("")||jTextField4.getText().equalsIgnoreCase(""))){
+
         String fileName1 = jTextField3.getText();
         String fileName2 = jTextField4.getText();
         jTabbedPane2.setSelectedIndex(1);
@@ -860,7 +867,7 @@ public class FormMain extends javax.swing.JFrame {
 
         jTextArea2.setText(field1.toLowerCase());
         jTextArea3.setText(field2.toLowerCase());
-
+        }
 
 
     }//GEN-LAST:event_jButton2ActionPerformed
