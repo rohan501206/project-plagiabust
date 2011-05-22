@@ -35,6 +35,7 @@ import java.util.logging.Logger;
 //import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 //import javax.swing.KeyStroke;
+import javax.swing.JFrame;
 import javax.swing.JRootPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -92,7 +93,7 @@ public class FormMain extends javax.swing.JFrame {
         this.setUndecorated(true);
         initComponents();
         this.setLocationByPlatform(false);
-        
+        this.mainPanel.setBackground(Color.CYAN);
         jComboBox1.setVisible(false);
         jButton2.setVisible(false);
 //        jScrollPane1.setVisible(false);
@@ -111,6 +112,8 @@ public class FormMain extends javax.swing.JFrame {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
+        exitButton = new javax.swing.JButton();
+        minimzeButton = new javax.swing.JButton();
         mainTabbedPane = new javax.swing.JTabbedPane();
         newcheckPanel = new javax.swing.JPanel();
         jTabbedPane2 = new javax.swing.JTabbedPane();
@@ -159,6 +162,20 @@ public class FormMain extends javax.swing.JFrame {
         setLocationByPlatform(true);
         setMinimumSize(new java.awt.Dimension(800, 600));
         setResizable(false);
+
+        exitButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Close.png"))); // NOI18N
+        exitButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                exitButtonActionPerformed(evt);
+            }
+        });
+
+        minimzeButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Minimize.png"))); // NOI18N
+        minimzeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                minimzeButtonActionPerformed(evt);
+            }
+        });
 
         mainTabbedPane.setFont(new java.awt.Font("Tahoma", 0, 24));
 
@@ -240,7 +257,7 @@ public class FormMain extends javax.swing.JFrame {
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton3)
                             .addComponent(jButton10))))
-                .addContainerGap(284, Short.MAX_VALUE))
+                .addContainerGap(295, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("New Check", new javax.swing.ImageIcon(getClass().getResource("/Images/NewCheck.png")), jPanel5); // NOI18N
@@ -387,14 +404,14 @@ public class FormMain extends javax.swing.JFrame {
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE))
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addComponent(jLabel8)
                         .addGap(383, 383, 383))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)))
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 403, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -412,7 +429,7 @@ public class FormMain extends javax.swing.JFrame {
             newcheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newcheckPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE))
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE))
         );
 
         mainTabbedPane.addTab("Plagiarism Check", new javax.swing.ImageIcon(getClass().getResource("/Images/Edit.png")), newcheckPanel); // NOI18N
@@ -428,7 +445,7 @@ public class FormMain extends javax.swing.JFrame {
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 541, Short.MAX_VALUE)
+            .addGap(0, 552, Short.MAX_VALUE)
         );
 
         jTabbedPane3.addTab("Search", new javax.swing.ImageIcon(getClass().getResource("/Images/Search.png")), jPanel10); // NOI18N
@@ -441,7 +458,7 @@ public class FormMain extends javax.swing.JFrame {
         );
         jPanel12Layout.setVerticalGroup(
             jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 541, Short.MAX_VALUE)
+            .addGap(0, 552, Short.MAX_VALUE)
         );
 
         jTabbedPane3.addTab("Enrollments", new javax.swing.ImageIcon(getClass().getResource("/Images/Add.png")), jPanel12); // NOI18N
@@ -454,7 +471,7 @@ public class FormMain extends javax.swing.JFrame {
         );
         jPanel11Layout.setVerticalGroup(
             jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 541, Short.MAX_VALUE)
+            .addGap(0, 552, Short.MAX_VALUE)
         );
 
         jTabbedPane3.addTab("Black List", new javax.swing.ImageIcon(getClass().getResource("/Images/BlackList.png")), jPanel11); // NOI18N
@@ -471,7 +488,7 @@ public class FormMain extends javax.swing.JFrame {
             profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(profilePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE))
+                .addComponent(jTabbedPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE))
         );
 
         mainTabbedPane.addTab("Student Profiles", new javax.swing.ImageIcon(getClass().getResource("/Images/User.png")), profilePanel); // NOI18N
@@ -487,7 +504,7 @@ public class FormMain extends javax.swing.JFrame {
         );
         jPanel14Layout.setVerticalGroup(
             jPanel14Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 541, Short.MAX_VALUE)
+            .addGap(0, 552, Short.MAX_VALUE)
         );
 
         jTabbedPane4.addTab("Internet", new javax.swing.ImageIcon(getClass().getResource("/Images/Network.png")), jPanel14); // NOI18N
@@ -500,7 +517,7 @@ public class FormMain extends javax.swing.JFrame {
         );
         jPanel15Layout.setVerticalGroup(
             jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 541, Short.MAX_VALUE)
+            .addGap(0, 552, Short.MAX_VALUE)
         );
 
         jTabbedPane4.addTab("Peer Search", new javax.swing.ImageIcon(getClass().getResource("/Images/Users.png")), jPanel15); // NOI18N
@@ -513,7 +530,7 @@ public class FormMain extends javax.swing.JFrame {
         );
         jPanel16Layout.setVerticalGroup(
             jPanel16Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 541, Short.MAX_VALUE)
+            .addGap(0, 552, Short.MAX_VALUE)
         );
 
         jTabbedPane4.addTab("Database", new javax.swing.ImageIcon(getClass().getResource("/Images/Database.png")), jPanel16); // NOI18N
@@ -530,7 +547,7 @@ public class FormMain extends javax.swing.JFrame {
             settingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(settingsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE))
+                .addComponent(jTabbedPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE))
         );
 
         mainTabbedPane.addTab("Settings    ", new javax.swing.ImageIcon(getClass().getResource("/Images/Settings.png")), settingsPanel); // NOI18N
@@ -546,7 +563,7 @@ public class FormMain extends javax.swing.JFrame {
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 541, Short.MAX_VALUE)
+            .addGap(0, 552, Short.MAX_VALUE)
         );
 
         jTabbedPane5.addTab("About", new javax.swing.ImageIcon(getClass().getResource("/Images/Help.png")), jPanel17); // NOI18N
@@ -559,7 +576,7 @@ public class FormMain extends javax.swing.JFrame {
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 541, Short.MAX_VALUE)
+            .addGap(0, 552, Short.MAX_VALUE)
         );
 
         jTabbedPane5.addTab("Developers ", new javax.swing.ImageIcon(getClass().getResource("/Images/Developer.png")), jPanel18); // NOI18N
@@ -576,7 +593,7 @@ public class FormMain extends javax.swing.JFrame {
             helpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(helpPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE))
+                .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 557, Short.MAX_VALUE))
         );
 
         mainTabbedPane.addTab("Help         ", new javax.swing.ImageIcon(getClass().getResource("/Images/Help.png")), helpPanel); // NOI18N
@@ -587,14 +604,23 @@ public class FormMain extends javax.swing.JFrame {
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(mainTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1009, Short.MAX_VALUE)
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(mainTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 1009, Short.MAX_VALUE)
+                    .addGroup(mainPanelLayout.createSequentialGroup()
+                        .addComponent(minimzeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(mainPanelLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(mainTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
+                .addContainerGap()
+                .addGroup(mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(exitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(minimzeButton, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mainTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 614, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -1209,6 +1235,16 @@ public class FormMain extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButton10ActionPerformed
 
+    private void exitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitButtonActionPerformed
+        System.exit(0);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_exitButtonActionPerformed
+
+    private void minimzeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_minimzeButtonActionPerformed
+        this.setExtendedState(JFrame.ICONIFIED);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_minimzeButtonActionPerformed
+
     void message(String msg) {
         jLabel8.setText(msg);
     }
@@ -1262,6 +1298,7 @@ public class FormMain extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton exitButton;
     private javax.swing.JPanel helpPanel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
@@ -1303,6 +1340,7 @@ public class FormMain extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JTabbedPane mainTabbedPane;
+    private javax.swing.JButton minimzeButton;
     private javax.swing.JPanel newcheckPanel;
     private javax.swing.JPanel profilePanel;
     private javax.swing.JPanel settingsPanel;
