@@ -109,6 +109,9 @@ public class Manager {
         for(int i=0;i<children.length;i++){
              System.out.println("document downloaded "+i+" "+ children[i] );
         }
+
+
+
         for(int i=0;i<indexedFiles.size();i++){
              System.out.println("document indexed "+i+" "+indexedFiles.get(i) );
         }

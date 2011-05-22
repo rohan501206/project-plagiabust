@@ -54,6 +54,7 @@ import peerdocumentsearch.TextFileIndexer;
 import reportingModule.DiffMatch;
 import reportingModule.DiffMatch.Diff;
 import reportingModule.StringDiffer;
+import reportingModule.TextHighlighter;
 
 /**
  *
@@ -61,7 +62,7 @@ import reportingModule.StringDiffer;
  */
 public class FormMain extends javax.swing.JFrame {
 
-    private File file1;
+     private File file1;
     private File selectFile1;
     private File selectFile2;
     final static Color HILIT_COLOR = Color.LIGHT_GRAY;
@@ -69,10 +70,9 @@ public class FormMain extends javax.swing.JFrame {
     Color entryBg;
     int numberOfFiles;
     Manager manager = new Manager();
+
     Highlighter hilit = new DefaultHighlighter();
     Highlighter hilit2 = new DefaultHighlighter();
-
-    ;
     String[][] temp = null;   /////////// declared as a global variable
     String destFolderPath = null;
     Highlighter.HighlightPainter painter;
@@ -80,7 +80,6 @@ public class FormMain extends javax.swing.JFrame {
     String indexFolderPath;
     ArrayList<String> indexedFiles = new ArrayList<String>();
     ArrayList<String> fileArrayList = new ArrayList<String>();
-    //ArrayList<String> indexedFilesTesting;
     HashMap<File, ArrayList<String>> indexedFileList = new HashMap<File, ArrayList<String>>();
 
     /** Creates new form FormMain */
@@ -661,35 +660,19 @@ public class FormMain extends javax.swing.JFrame {
             System.out.println(fc.getSelectedFile().getAbsolutePath());
             sourceFolderName = fc.getSelectedFile().getAbsolutePath();
             fc.setVisible(false);
-            //  jTextArea1.setText(match);
+            
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        String folder = sourceFolderName;
-        File souceFolder = new File(folder);
+         FileOperator fileOPerator=new FileOperator(sourceFolderName);
+        fileOPerator.anyToTextConverter();
+        fileOPerator.TextFileIndexer();
 
-        if (souceFolder.isDirectory()) {
-            destFolderPath = souceFolder.getAbsolutePath() + File.separator + souceFolder.getName();
-            boolean destFolderCreated = new File(destFolderPath).mkdir();
-            if (destFolderCreated) {
-                AnyToTextConverter tc = new AnyToTextConverter(destFolderPath);
-                tc.convertFilesInFolder(folder);
-            }
-        }
-
-        TextFileIndexer indexer = null;
-        String doucmentFolderPath = destFolderPath;
-        File documentFolder = new File(doucmentFolderPath);
-        indexFolderPath = documentFolder.getAbsolutePath() + File.separator + documentFolder.getName() + "_Index";
-        try {
-            indexer = new TextFileIndexer(indexFolderPath);
-            indexer.indexFileOrDirectory(doucmentFolderPath);
-            indexer.closeIndex();
-        } catch (Exception ex) {
-        }
+        destFolderPath=fileOPerator.getDestinatonFolderPath();
+        indexFolderPath=fileOPerator.getIndexFolderPath();
 
         File[] files = manager.getFilesIntheFolder(destFolderPath);
 
@@ -701,28 +684,6 @@ public class FormMain extends javax.swing.JFrame {
 
         jComboBox1.setVisible(true);
         jButton2.setVisible(true);
-
-        //jScrollPane1.setVisible(true);
-        //jTextArea1.setVisible(true);
-        //jTextArea1.setText("selecting document");
-        /**try {
-        temp = manager.manage(destFolderPath);
-        } catch (IOException ex) {
-        Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (JWNLException ex) {
-        Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        //jTextArea1.setText(temp[0][1]+"\n"+temp[0][1]+"\n"+temp[0][2]);// TODO add your handling code here
-        jTextField3.setText(temp[0][0]);
-        jTextField4.setText(temp[0][1]);
-        jTextField2.setText(temp[0][2]);
-
-        String fileName1=jTextField3.getText();
-        String fileName2=jTextField4.getText();
-
-
-        jTabbedPane2.setSelectedIndex(5);
-        setTextToTextFields(fileName1, fileName2); **/
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -751,40 +712,16 @@ public class FormMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        String fileName1 = jTextField3.getText();
+          String fileName1 = jTextField3.getText();
         String fileName2 = jTextField4.getText();
 
+        FileOperator setTextToTextAreas= new  FileOperator();
+        String[] texts=setTextToTextAreas.textSetter(fileName1, fileName2);
+        String field1=texts[0];
+        String field2=texts[1];
 
-        File testFile1 = new File(fileName1);
-        File testFile2 = new File(fileName2);
-        String field1 = "";
-        String field2 = "";
-        try {
-            FileReader fr = new FileReader(testFile1);
-            FileReader fr2 = new FileReader(testFile2);
-
-            BufferedReader br = new BufferedReader(fr);
-            BufferedReader br2 = new BufferedReader(fr2);
-            System.out.println("testing phase");
-            try {
-                while (br.readLine() != null) {
-                    field1 = field1 + br.readLine();
-                }
-                while (br2.readLine() != null) {
-                    field2 = field2 + br2.readLine();
-                }
-
-            } catch (IOException ex) {
-                Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } catch (FileNotFoundException ex) {
-            Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        System.out.println(field1);
-        System.out.println(field2);
-        jTextArea2.setText(field1);
-        jTextArea3.setText(field2);
-
+        jTextArea2.setText(field1.toLowerCase());
+        jTextArea3.setText(field2.toLowerCase());
 
 
 
@@ -793,220 +730,69 @@ public class FormMain extends javax.swing.JFrame {
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
 
 
-        /** painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
-        jTextArea2.setHighlighter(hilit);
-        jTextArea3.setHighlighter(hilit2);
-        hilit.removeAllHighlights();
-        hilit2.removeAllHighlights();
-        entryBg = jTextField2.getBackground();     
-
-        String string = jTextField2.getText().toLowerCase();
-        String[] query=null;
-        if (string.length() <= 0) {
-        //message("Nothing to search");
-        return;
-        }
-
-        if(string.contains(":")){
-
-        query = string.split(":");
-
-        }
-        else{
-        query=new String[1];
-        query[0]=string;
-        }
-        String content = jTextArea2.getText();
-        String content2 = jTextArea3.getText();
-
-        for(int i=0;i<query.length;i++){
-
-        String s=query[i];
-        int index = content.indexOf(s);
-        int index2 = content2.indexOf(s);
-
-        while (index != -1) {   // match found
-        try {
-
-
-        if(index!=-1){
-        int end = index + s.length();
-        hilit.addHighlight(index, end, painter);
-        jTextArea2.setCaretPosition(end);
-        jTextField2.setBackground(entryBg);
-        }
-        System.out.println("first file index= "+index);
-        index = content.indexOf(s,index+s.length());
-
-        //message("'" + s + "' found. Press ESC to end search");
-        } catch (BadLocationException e) {
-        e.printStackTrace();
-        }
-        }
-
-        while (index2 != -1) {  // match found
-        try {
-
-        if(index2!=-1){
-        int end2 = index2 + s.length();
-        hilit2.addHighlight(index2, end2, painter);
-        jTextArea3.setCaretPosition(end2);
-        jTextField2.setBackground(entryBg);
-        }
-        System.out.println("second file index= "+index2);
-        index2 = content2.indexOf(s,index2+s.length());
-        // message("'" + s + "' found. Press ESC to end search");
-        } catch (BadLocationException e) {
-        e.printStackTrace();
-        }
-        }
-        } **/
-        painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
+       painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
         jTextArea2.setHighlighter(hilit);
         jTextArea3.setHighlighter(hilit2);
         hilit.removeAllHighlights();
         hilit2.removeAllHighlights();
         entryBg = jTextField2.getBackground();
+        String content = jTextArea2.getText();
+        String content2 = jTextArea3.getText();
+        String queryString = jTextField2.getText().toLowerCase();
 
-        String string = jTextField2.getText().toLowerCase();
+
         String[] query = null;
-        if (string.length() <= 0) {
-            //message("Nothing to search");
+        if (queryString.length() <= 0) {
             return;
         }
+        if (queryString.contains(":")) {
 
-        if (string.contains(":")) {
-
-            query = string.split(":");
+            query = queryString.split(":");
 
         } else {
             query = new String[1];
-            query[0] = string;
+            query[0] = queryString;
         }
-        String content = jTextArea2.getText();
-        String content2 = jTextArea3.getText();
+
 
         for (int i = 0; i < query.length; i++) {
 
-            String preprocessed = query[i];
-            String s = content;
-            System.out.println("full String is " + s);
-            System.out.println("processed String is " + preprocessed);
-
-            int index = 0;
-            int length = 0;
-            int startIndex = 0;
-            int endIndex = 0;
-            int count = 0;
-
-            ArrayList<StringDiffer> arrayDiffer = new ArrayList<StringDiffer>();
-            DiffMatch test2 = new DiffMatch();
-
-
-            LinkedList<Diff> a = test2.diff_main(s, preprocessed);
-
-            for (int j = 0; j < a.size(); j++) {
-
-                String token = "" + a.get(j);
-                String processedToken = token.trim();
-                System.out.println("token is " + processedToken);
-                String[] splitter = processedToken.split("~");
+            String searchQuery = query[i];
+            TextHighlighter highlighterFirstFile = new TextHighlighter();
+            TextHighlighter highlighterSecondFile = new TextHighlighter();
+            Integer[] highlightindexedInfoFirstFile = highlighterFirstFile.highlightTexts(content, searchQuery);
+            Integer[] highlightindexedInfoSecondFile = highlighterSecondFile.highlightTexts(content2, searchQuery);
+            int startIndexFirst = highlightindexedInfoFirstFile[0];
+            int endIndexFirst = highlightindexedInfoFirstFile[1];
+            int startIndexSecond = highlightindexedInfoSecondFile[0];
+            int endIndexSecond = highlightindexedInfoSecondFile[1];
 
 
 
-                StringDiffer differ = new StringDiffer(splitter[0], splitter[1]);
-                arrayDiffer.add(differ);
-
-            }
-
-            for (int j = 0; j < arrayDiffer.size(); j++) {
-
-                String state = arrayDiffer.get(j).getState();
-
-                System.out.println("state is " + state);
-                String preprocessedString = arrayDiffer.get(j).getProcessedString();
-
-                System.out.println("preprocessed is " + preprocessedString);
-
-
-                if (state.equalsIgnoreCase("EQUAL")) {
-
-
-                    if (count == 0) {
-                        startIndex = s.indexOf(preprocessedString);
-                    }
-                    count++;
-
-                    if (i == arrayDiffer.size() - 1) {
-
-                        index = s.indexOf(preprocessedString);
-                        endIndex = index + preprocessedString.length();
-
-                    } else {
-
-                        System.out.println("before start index " + preprocessedString);
-
-
-                        index = s.indexOf(preprocessedString);
-
-                    }
-
-
-                }
-
-                if (state.equalsIgnoreCase("DELETE")) {
-
-
-
-
-                    if (i == arrayDiffer.size() - 1) {
-
-                        index = s.indexOf(preprocessedString);
-                        length = preprocessedString.length();
-                        endIndex = index;
-
-                    } else {
-                        length = preprocessedString.length();
-                        index = index + length;
-                    }
-
-                }
-
-
-            }
-
-
-
-
-
-
-
-
-            int index2 = content2.indexOf(preprocessed);
-
-            //while (startIndex != -1) {   // match found
             try {
 
-                int end = 0;
-                if (startIndex != -1) {
-                    end = endIndex;
-                    hilit.addHighlight(startIndex, end, painter);
-                    jTextArea2.setCaretPosition(end);
+                if (startIndexFirst != -1) {
+
+                    hilit.addHighlight(startIndexFirst, endIndexFirst, painter);
+                    jTextArea2.setCaretPosition(endIndexFirst);
                     jTextField2.setBackground(entryBg);
                 }
-                System.out.println("first file index= " + startIndex);
-                //startIndex = content.indexOf(preprocessed,end);
 
-                //message("'" + s + "' found. Press ESC to end search");
+                if (startIndexSecond != -1) {
+
+                    hilit2.addHighlight(startIndexSecond, endIndexSecond, painter);
+                    jTextArea3.setCaretPosition(endIndexSecond);
+                    jTextField2.setBackground(entryBg);
+                }
+
+
             } catch (BadLocationException e) {
                 e.printStackTrace();
             }
-            //}
+
 
 
         }
-
-
 
 
 
@@ -1043,66 +829,51 @@ public class FormMain extends javax.swing.JFrame {
 
 
 
-        //this.jTextArea1.setText("Start Processing files");
-        String fName = (String) jComboBox1.getSelectedItem();
+         String fName = (String) jComboBox1.getSelectedItem();
         File destFolder = new File(destFolderPath);
-
         String selectedDocumentPath = sourceFolderName + File.separator + destFolder.getName() + File.separator + (String) jComboBox1.getSelectedItem();
         String downloadFolderPath = null;
-        System.out.print(fName);
-        System.out.println("Start Downloading the internet files........................");
-        //jTextArea1.append("Strting");
-        BingSearch bingSearch = new BingSearch("F138552F897E2CA7C264FDAC64F8EF2021ABD3AF");
-        bingSearch.setMaxNumOfResults(10);
-        InternetSearchManager sd = new InternetSearchManager(bingSearch);
-        sd.setRandomSelectionRatio(0.2f);
 
-        downloadFolderPath = sd.downloadSourcesForFile(destFolderPath + File.separator + fName);
+        InternetDocumentDownloadManager idm=new InternetDocumentDownloadManager();
+        downloadFolderPath=idm.downloadFiles(destFolderPath, fName);
+
         System.out.println("downloaded folder path is " + downloadFolderPath);
 
         System.out.println("End Downloading the internet files........................\n");
-        //jTextArea1.append("End Downloading the internet files........................\n");
 
         System.out.println("Start Indexing files........................\n");
-        //jTextArea1.append("Start Indexing files........................\n");
 
-        IndexSearch is = new IndexSearch(indexFolderPath);
-        PeerSearchManager psm = new PeerSearchManager(is);
-        psm.setRandomSelectionRatio(.50f);
-        HashMap<String, Integer> selectedSources = psm.getSuspiciousDocList(selectedDocumentPath);
-        Iterator it = selectedSources.entrySet().iterator();
-        int selectedDocuments = 0;
-        while (it.hasNext() && selectedDocuments <= 10) {
-            Map.Entry pair = (Map.Entry) it.next();
-            String filePath = (String) pair.getKey();
-            selectedDocuments++;
-            if (!filePath.equalsIgnoreCase(selectedDocumentPath)) {
-                indexedFiles.add(filePath);
-            }
 
-        }
+        DocumentIndexingManager indexingManger=new DocumentIndexingManager();
+        indexedFiles=indexingManger.indexSearch(indexFolderPath,selectedDocumentPath);
+
 
         System.out.println("End Indexing files........................\n");
-        // jTextArea1.append("End  Indexing files........................\n");
+
 
         System.out.println("Starting Comparing Files........................\n");
-        //jTextArea1.append("Starting Comparing Files........................\n");
+
 
         try {
             temp = manager.compareFiles(selectedDocumentPath, downloadFolderPath, indexedFiles);
         } catch (IOException ex) {
             System.out.println("There are no similar files or some error has occured");
         }
-        //jTextArea1.setText(temp[0][1]+"\n"+temp[0][1]+"\n"+temp[0][2]);// TODO add your handling code here
+
         jTextField3.setText(temp[0][0]);
         jTextField4.setText(temp[0][1]);
         jTextField2.setText(temp[0][2]);
-
         String fileName1 = jTextField3.getText();
         String fileName2 = jTextField4.getText();
-
         jTabbedPane2.setSelectedIndex(5);
-        setTextToTextFields(fileName1, fileName2);
+
+        FileOperator setTextToTextAreas= new  FileOperator();
+        String[] texts=setTextToTextAreas.textSetter(fileName1, fileName2);
+        String field1=texts[0];
+        String field2=texts[1];
+
+        jTextArea2.setText(field1.toLowerCase());
+        jTextArea3.setText(field2.toLowerCase());
 
 
 
@@ -1110,31 +881,14 @@ public class FormMain extends javax.swing.JFrame {
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
 
-        // One to one check of the documents
-        String folder = sourceFolderName;
-        File souceFolder = new File(folder);
-
-        if (souceFolder.isDirectory()) {
-            destFolderPath = souceFolder.getAbsolutePath() + File.separator + souceFolder.getName();
-            boolean destFolderCreated = new File(destFolderPath).mkdir();
-            if (destFolderCreated) {
-                AnyToTextConverter tc = new AnyToTextConverter(destFolderPath);
-                tc.convertFilesInFolder(folder);
-            }
-        }
-
-        TextFileIndexer indexer = null;
-        String doucmentFolderPath = destFolderPath;
-        File documentFolder = new File(doucmentFolderPath);
-        indexFolderPath = documentFolder.getAbsolutePath() + File.separator + documentFolder.getName() + "_Index";
-        try {
-            indexer = new TextFileIndexer(indexFolderPath);
-            indexer.indexFileOrDirectory(doucmentFolderPath);
-            indexer.closeIndex();
-        } catch (Exception ex) {
-        }
+        FileOperator fileOPerator=new FileOperator(sourceFolderName);
+        fileOPerator.anyToTextConverter();
+        fileOPerator.TextFileIndexer();
+        destFolderPath=fileOPerator.getDestinatonFolderPath();
+        indexFolderPath=fileOPerator.getIndexFolderPath();
 
         File[] files = manager.getFilesIntheFolder(destFolderPath);
+
 
         for (int arr = 0; arr < files.length; arr++) {
 
@@ -1142,81 +896,31 @@ public class FormMain extends javax.swing.JFrame {
 
         }
 
-
-
-
-        String fName = (String) jComboBox1.getSelectedItem();
-        File destFolder = new File(destFolderPath);
-
-        //String selectedDocumentPath=sourceFolderName+File.separator+ destFolder.getName()+File.separator+(String)jComboBox1.getSelectedItem();
         String downloadFolderPath = null;
 
 
         System.out.println("Start Indexing files........................\n");
 
 
-        IndexSearch is = new IndexSearch(indexFolderPath);
-        PeerSearchManager psm = new PeerSearchManager(is);
-        psm.setRandomSelectionRatio(.25f);
-        System.out.println("length is " + files.length);
 
-        for (int i = 0; i < files.length; i++) {
-            ArrayList<String> indexedFilesTesting = new ArrayList<String>();
-            if (files[i].isFile()) {
-                System.out.println("testing Indexing files........................\n");
-                HashMap<String, Integer> selectedSources = psm.getSuspiciousDocList(files[i].getAbsolutePath());
-                System.out.println("testing 2 Indexing files........................\n");
-                Iterator it = selectedSources.entrySet().iterator();
-                int selectedDocuments = 0;
-                while (it.hasNext() && selectedDocuments < 10) {
-                    Map.Entry pair = (Map.Entry) it.next();
-                    String filePath = (String) pair.getKey();
-                    selectedDocuments++;
-                    ///if(!filePath.equalsIgnoreCase(selectedDocumentPath))
-                    indexedFilesTesting.add(filePath);
-
-                }
-
-                indexedFileList.put(files[i], indexedFilesTesting);
-                System.out.println("file " + files[i].getAbsolutePath());
-                for (int j = 0; j < indexedFilesTesting.size(); j++) {
-                    System.out.println("indexed file " + j + " " + indexedFilesTesting.get(j));
-                }
-                System.out.println("");
+        DocumentIndexingManager indexManager=new DocumentIndexingManager();
+        indexedFileList=indexManager.indexSearchforMultiplePeers(files, indexFolderPath);
 
 
 
-            }
-        }
+
+
+
+
+
         System.out.println("End Indexing files........................\n");
 
         System.out.println("Start Downloading the internet files........................");
 
 
-        BingSearch bingSearch = new BingSearch("F138552F897E2CA7C264FDAC64F8EF2021ABD3AF");
-        bingSearch.setMaxNumOfResults(10);
-        InternetSearchManager sd = new InternetSearchManager(bingSearch);
-        sd.setRandomSelectionRatio(0.2f);
 
-
-
-        //downloadFolderPath = sd.downloadSourcesForFile(destFolderPath+File.separator+files[i].getAbsolutePath() );
-        // = sd.downloadSourcesForFile(destFolderPath+File.separator+files[i].getAbsolutePath() );
-        HashMap<String, ArrayList<String>> downloadedFileList = sd.downloadSourcesForFileFolder(fileArrayList, destFolderPath);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        InternetDocumentDownloadManager idm=new InternetDocumentDownloadManager();
+        HashMap<String, ArrayList<String>> downloadedFileList=idm.downloadFilesForMultiplePeerSearch(fileArrayList,destFolderPath);
 
 
         System.out.println("downloaded folder path is " + downloadFolderPath);
@@ -1229,10 +933,13 @@ public class FormMain extends javax.swing.JFrame {
 //**/
         try {
             temp = manager.compareAllFiles(indexedFileList, downloadedFileList);
-        } catch (IOException ex) {
+
+        }
+
+        catch (IOException ex) {
             System.out.println("There are no similar files or some error has occured");
         }
-        //jTextArea1.setText(temp[0][1]+"\n"+temp[0][1]+"\n"+temp[0][2]);// TODO add your handling code here
+
         jTextField3.setText(temp[0][0]);
         jTextField4.setText(temp[0][1]);
         jTextField2.setText(temp[0][2]);
@@ -1241,7 +948,13 @@ public class FormMain extends javax.swing.JFrame {
         String fileName2 = jTextField4.getText();
 
         jTabbedPane2.setSelectedIndex(5);
-        setTextToTextFields(fileName1, fileName2);
+        FileOperator setTextToTextAreas= new  FileOperator();
+        String[] texts=setTextToTextAreas.textSetter(fileName1, fileName2);
+        String field1=texts[0];
+        String field2=texts[1];
+
+        jTextArea2.setText(field1.toLowerCase());
+        jTextArea3.setText(field2.toLowerCase());
 
 
 
