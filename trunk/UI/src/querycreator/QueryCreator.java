@@ -85,14 +85,12 @@ public class QueryCreator {
     }
 
     private void processText() {
-
         inputText = inputText.toLowerCase();
         String[] lineArray = inputText.split("[.:;.]");
         newSentenceList = inputText.split("[.:;.]");
     }
 
     private ArrayList<String> selectRandomSentences() {
-
         ArrayList<String> selectedSentencesList = new ArrayList<String>();
 
         FleshKincaidLogic fkl = new FleshKincaidLogic();
@@ -108,7 +106,8 @@ public class QueryCreator {
                 fklnew.processString(newSentenceList[j] + ".");
                 Double sentenceGradeLevel = fklnew.getFleschKincaidGradeLevel();
 
-                System.out.println("Flesh Kincaid Grade Level of " + j + fklnew.getFleschKincaidGradeLevel());
+                System.out.println
+                           ("Flesh Kincaid Grade Level of " + j + fklnew.getFleschKincaidGradeLevel());
 
                 if (!sentenceGradeLevel.isNaN()) {
                     SentenceResult sentenceResult = new SentenceResult();
@@ -120,45 +119,20 @@ public class QueryCreator {
             }
         }
 
-        getSelectedSentenceList();
-
-        totalSentences = sentenceList.size();
-        numOfSelected = 0;
-
-        if (totalSentences > 20) {
-            numOfSelected = (int) (totalSentences * randomSelectionRatio);
-        } else {
-            numOfSelected = totalSentences;
-        }
-
-        int currentNumOfSelected = 0;
-
-        while (currentNumOfSelected < numOfSelected) {
-            Random r = new Random();
-            int nextIndex = r.nextInt(totalSentences);
-            boolean isAlreadyExist = false;
-
-            for (Iterator<String> it = selectedSentencesList.iterator(); it.hasNext();) {
-                String string = it.next();
-                if (string.equals(sentenceList.get(nextIndex))) {
-                    isAlreadyExist = true;
-                    break;
-                }
-            }
-
-            if (!isAlreadyExist) {
-                currentNumOfSelected++;
-                selectedSentencesList.add(sentenceList.get(nextIndex));
-            }
-        }
-
+        selectedSentencesList = this.getSelectedSentenceList();
         return selectedSentencesList;
     }
 
-    public ArrayList<String> getSelectedSentenceList() {
+    private ArrayList<String> getSelectedSentenceList() {
+        ArrayList<String> filteredSentenceList = new ArrayList<String>();
         ArrayList<String> suspiciousSentenceList = new ArrayList<String>();
 
+        int totalSentences = newSentenceList.length;
+        Float estimatedNumberOfSentences = totalSentences * randomSelectionRatio;
+        int roundedNumberOfSentences = estimatedNumberOfSentences.intValue();
+
         for (int i = 0; i < sentenceResultList.size(); i++) {
+            
             if (sentenceResultList.get(i).score < 10) {
                 StopWordRemover stopWordRemover = new StopWordRemover();
                 ArrayList<String> stopWordsRemovedList;
@@ -170,15 +144,59 @@ public class QueryCreator {
                 } catch (IOException ex) {
                     Logger.getLogger(QueryCreator.class.getName()).log(Level.SEVERE, null, ex);
                 }
-               
-                suspiciousSentenceList.add(stopWordsRemovedSentence);
+
+                filteredSentenceList.add(stopWordsRemovedSentence);
+            }
+        }
+
+        if (filteredSentenceList.size() < 20) {
+            suspiciousSentenceList = filteredSentenceList;
+        } else {
+            if (roundedNumberOfSentences < 20) {
+                int count = 0;
+                while (count < 20) {
+                    boolean isExist = false;
+                    Random random = new Random();
+                    int nextValue = random.nextInt(filteredSentenceList.size());
+
+                    for (Iterator<String> it = suspiciousSentenceList.iterator(); it.hasNext();) {
+                        String string = it.next();
+                        if (string.equals(filteredSentenceList.get(nextValue))) {
+                            isExist = true;
+                        }
+                    }
+
+                    if (!isExist) {
+                        suspiciousSentenceList.add(filteredSentenceList.get(nextValue));
+                        count++;
+                    }
+                }
+            } else {
+                int count = 0;
+                while (count < roundedNumberOfSentences) {
+                    boolean isExist = false;
+                    Random random = new Random();
+                    int nextValue = random.nextInt(filteredSentenceList.size());
+
+                    for (Iterator<String> it = suspiciousSentenceList.iterator(); it.hasNext();) {
+                        String string = it.next();
+                        if (string.equals(filteredSentenceList.get(nextValue))) {
+                            isExist = true;
+                        }
+                    }
+
+                    if (!isExist) {
+                        suspiciousSentenceList.add(filteredSentenceList.get(nextValue));
+                        count++;
+                    }
+                }
             }
         }
 
         return suspiciousSentenceList;
     }
 
-    public String arraylistToSting(ArrayList<String> token) {
+    private String arraylistToSting(ArrayList<String> token) {
         StringBuilder out = new StringBuilder();
         for (Object o : token) {
             out.append(o.toString());
