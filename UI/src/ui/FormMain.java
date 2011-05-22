@@ -10,6 +10,8 @@
  */
 package ui;
 
+import com.pagosoft.plaf.PgsBorders;
+import com.pagosoft.plaf.PgsLookAndFeel;
 import com.pagosoft.plaf.PlafOptions;
 import com.pagosoft.plaf.ThemeFactory;
 import documenttypesupport.AnyToTextConverter;
@@ -33,6 +35,7 @@ import java.util.logging.Logger;
 //import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 //import javax.swing.KeyStroke;
+import javax.swing.JRootPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.text.BadLocationException;
@@ -82,10 +85,13 @@ public class FormMain extends javax.swing.JFrame {
             PlafOptions.setWheelTabbedPaneEnabled(true);
             PlafOptions.setCurrentTheme(ThemeFactory.createTheme(Color.WHITE));
             PlafOptions.setAsLookAndFeel();
+            
         } catch (Exception ex) {
         }
 
         initComponents();
+        this.setLocationByPlatform(false);
+        
         jComboBox1.setVisible(false);
         jButton2.setVisible(false);
 //        jScrollPane1.setVisible(false);
@@ -142,7 +148,7 @@ public class FormMain extends javax.swing.JFrame {
         jPanel14 = new javax.swing.JPanel();
         jPanel15 = new javax.swing.JPanel();
         jPanel16 = new javax.swing.JPanel();
-        overviewPanel = new javax.swing.JPanel();
+        helpPanel = new javax.swing.JPanel();
         jTabbedPane5 = new javax.swing.JTabbedPane();
         jPanel17 = new javax.swing.JPanel();
         jPanel18 = new javax.swing.JPanel();
@@ -556,22 +562,22 @@ public class FormMain extends javax.swing.JFrame {
 
         jTabbedPane5.addTab("Developers ", new javax.swing.ImageIcon(getClass().getResource("/Images/Developer.png")), jPanel18); // NOI18N
 
-        javax.swing.GroupLayout overviewPanelLayout = new javax.swing.GroupLayout(overviewPanel);
-        overviewPanel.setLayout(overviewPanelLayout);
-        overviewPanelLayout.setHorizontalGroup(
-            overviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(overviewPanelLayout.createSequentialGroup()
+        javax.swing.GroupLayout helpPanelLayout = new javax.swing.GroupLayout(helpPanel);
+        helpPanel.setLayout(helpPanelLayout);
+        helpPanelLayout.setHorizontalGroup(
+            helpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(helpPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 974, Short.MAX_VALUE))
         );
-        overviewPanelLayout.setVerticalGroup(
-            overviewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(overviewPanelLayout.createSequentialGroup()
+        helpPanelLayout.setVerticalGroup(
+            helpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(helpPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE))
         );
 
-        mainTabbedPane.addTab("Help         ", new javax.swing.ImageIcon(getClass().getResource("/Images/Help.png")), overviewPanel); // NOI18N
+        mainTabbedPane.addTab("Help         ", new javax.swing.ImageIcon(getClass().getResource("/Images/Help.png")), helpPanel); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -1237,6 +1243,7 @@ public class FormMain extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel helpPanel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
@@ -1277,7 +1284,6 @@ public class FormMain extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTabbedPane mainTabbedPane;
     private javax.swing.JPanel newcheckPanel;
-    private javax.swing.JPanel overviewPanel;
     private javax.swing.JPanel profilePanel;
     private javax.swing.JPanel settingsPanel;
     // End of variables declaration//GEN-END:variables
