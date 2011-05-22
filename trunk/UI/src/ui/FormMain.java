@@ -815,42 +815,28 @@ public class FormMain extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-
-
         String fName = (String) jComboBox1.getSelectedItem();
+
         File destFolder = new File(destFolderPath);
         String selectedDocumentPath = sourceFolderName + File.separator + destFolder.getName() + File.separator + (String) jComboBox1.getSelectedItem();
-
         System.out.println("selected document path is "+selectedDocumentPath);
         //System.out.println("Start Downloading the internet files........................\n");
         String downloadFolderPath = null;
         InternetDocumentDownloadManager idm=new InternetDocumentDownloadManager();
         downloadFolderPath=idm.downloadFiles(destFolderPath, fName);
-
         System.out.println("downloaded folder path is " + downloadFolderPath);
-
         System.out.println("End Downloading the internet files........................\n");
-
         System.out.println("Start Indexing files........................\n");
-
-
         DocumentIndexingManager indexingManger=new DocumentIndexingManager();
         indexedFiles=indexingManger.indexSearch(indexFolderPath,selectedDocumentPath);
-
-
         System.out.println("End Indexing files........................\n");
-
-
         System.out.println("Starting Comparing Files........................\n");
-
-
         try {
             temp = manager.compareFiles(selectedDocumentPath, downloadFolderPath, indexedFiles);
 
         } catch (IOException ex) {
             System.out.println("There are no similar files or some error has occured");
         }
-
         jTextField3.setText(temp[0][0]);
         jTextField4.setText(temp[0][1]);
         jTextField2.setText(temp[0][2]);
@@ -859,15 +845,16 @@ public class FormMain extends javax.swing.JFrame {
         String fileName1 = jTextField3.getText();
         String fileName2 = jTextField4.getText();
         jTabbedPane2.setSelectedIndex(1);
-
         FileOperator setTextToTextAreas= new  FileOperator();
         String[] texts=setTextToTextAreas.textSetter(fileName1, fileName2);
         String field1=texts[0];
         String field2=texts[1];
-
         jTextArea2.setText(field1.toLowerCase());
         jTextArea3.setText(field2.toLowerCase());
+
+
         }
+
 
 
     }//GEN-LAST:event_jButton2ActionPerformed

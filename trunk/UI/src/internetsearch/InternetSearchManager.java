@@ -18,6 +18,8 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import org.htmlparser.beans.StringBean;
 
 /**
@@ -44,34 +46,91 @@ public class InternetSearchManager {
     }
 
     public String downloadSourcesForFile(String filePath) {
-
-        HashMap<String, Integer> selectedSources = new HashMap<String, Integer>();
-
-        // Get list of sources
-        selectedSources = this.getInternetSourceForFile(filePath);
-
-        // Create directory
         File file = new File(filePath);
         String[] nameAndExt = file.getName().split("[.]");
-
-
         String downloadedFilesFolder = file.getParent() + File.separator + nameAndExt[0];
-        boolean folderCreated = new File(downloadedFilesFolder).mkdir();
+        File fi= new File(downloadedFilesFolder);
 
-        // Downloading page
-        int downloadedDocuments = 1;
-        Iterator it = selectedSources.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry) it.next();
-            String url = (String) pair.getKey();
-            String path = downloadedFilesFolder + File.separatorChar + downloadedDocuments + ".txt";
-            downloadedDocuments++;
-            this.downloadWebPageAsText(url, path);
+        if (fi.exists()){
+        boolean folderExist = new File(downloadedFilesFolder).mkdir();
+            HashMap<String, Integer> selectedSources = new HashMap<String, Integer>();
+// Get list of sources
+            selectedSources = this.getInternetSourceForFile(filePath);
+// Create directory
+// Downloading page
+            int downloadedDocuments = 1;
+            Iterator it = selectedSources.entrySet().iterator();
+            while (it.hasNext()) {
+                Map.Entry pair = (Map.Entry) it.next();
+                String url = (String) pair.getKey();
+                String path = downloadedFilesFolder + File.separatorChar + downloadedDocuments + ".txt";
+                downloadedDocuments++;
+                this.downloadWebPageAsText(url, path);
+
+
+
+
+
+
+
+
+            }
+
+
+
+
+
         }
-
         return downloadedFilesFolder;
     }
 
+    /*
+    public String downloadSourcesForFile(String filePath) {         // firstcall
+
+     HashMap<String, Integer> selectedSources = new HashMap<String, Integer>();
+    // Get list of sources
+    selectedSources = this.getInternetSourceForFile(filePath);   //call
+    // Create directory
+    File file = new File(filePath);
+    String[] nameAndExt = file.getName().split("[.]");
+    String downloadedFilesFolder = file.getParent() + File.separator + nameAndExt[0];
+    boolean folderCreated = new File(downloadedFilesFolder).mkdir();
+    // Downloading page
+    int downloadedDocuments = 1;
+
+
+
+
+
+
+    //parellel code
+    /*    long t1 = System.currentTimeMillis();
+    Runnable runnable = new DownloadWebPage(selectedSources ,downloadedFilesFolder);
+    ExecutorService pool = Executors.newFixedThreadPool(3);
+    // run the task 5 times using the pool
+    for (int i = 0; i < 5; i++) {
+    pool.execute(runnable);
+    }
+    pool.shutdown();
+    while(!pool.isTerminated()){};
+    long t2 = System.currentTimeMillis();
+    System.out.print((t2-t1)/1000);*/
+
+    //remove to check for parellel
+
+    /*        long t1 = System.currentTimeMillis();
+    Iterator it = selectedSources.entrySet().iterator();
+    while (it.hasNext()) {
+    Map.Entry pair = (Map.Entry) it.next();
+    String url = (String) pair.getKey();
+    String path = downloadedFilesFolder + File.separatorChar + downloadedDocuments + ".txt";
+    downloadedDocuments++;
+    this.downloadWebPageAsText(url, path);   // secondcall
+    }
+    long t2 = System.currentTimeMillis();
+    System.out.print((t2-t1)/1000);
+    return downloadedFilesFolder;
+    }*/
     public HashMap<String, ArrayList<String>> downloadSourcesForFileFolder(ArrayList<String> filePathList, String fileFolderPath) {
         // file name maps to list of downloaded sources
         HashMap<String, ArrayList<String>> fileAndSorcesMap = new HashMap<String, ArrayList<String>>();
@@ -96,7 +155,7 @@ public class InternetSearchManager {
                     downloadedFileIndex++;
                     String filePathToDownload = downloadedFileFolderPath + File.separator + downloadedFileIndex + ".txt";
                     urlAndDownloadedPathMap.put(url, filePathToDownload);
-                    
+
                     this.downloadWebPageAsText(url, filePathToDownload);
 
                     downloadedFilesList.add(filePathToDownload);
@@ -111,7 +170,7 @@ public class InternetSearchManager {
     }
 
     private HashMap<String, Integer> getInternetSourceForFile(String filePath) {
-        
+
         ArrayList<String> queryList = qc.getQueryList(filePath, qsa);
         HashMap<String, Integer> sources = new HashMap<String, Integer>();
         HashMap<String, Integer> selectedSources = new HashMap<String, Integer>();
@@ -139,11 +198,11 @@ public class InternetSearchManager {
         HashMap<String, Integer> sortedSources = (HashMap<String, Integer>) this.sortByValue(sources);
         Iterator sortedSourceIterator = sortedSources.entrySet().iterator();
         int numberOfSelectedDoc = 1;
-        while(sortedSourceIterator.hasNext() && numberOfSelectedDoc <=10){
+        while (sortedSourceIterator.hasNext() && numberOfSelectedDoc <= 10) {
             Map.Entry pair = (Map.Entry) sortedSourceIterator.next();
             String key = (String) pair.getKey();
             int value = (Integer) pair.getValue();
-            
+
             selectedSources.put(key, value);
             numberOfSelectedDoc++;
         }
