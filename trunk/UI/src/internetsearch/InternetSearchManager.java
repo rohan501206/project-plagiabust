@@ -50,14 +50,13 @@ public class InternetSearchManager {
         String[] nameAndExt = file.getName().split("[.]");
         String downloadedFilesFolder = file.getParent() + File.separator + nameAndExt[0];
         File fi= new File(downloadedFilesFolder);
-
-        if (fi.exists()){
+        if (!(fi.exists())){
         boolean folderExist = new File(downloadedFilesFolder).mkdir();
             HashMap<String, Integer> selectedSources = new HashMap<String, Integer>();
-// Get list of sources
+        // Get list of sources
             selectedSources = this.getInternetSourceForFile(filePath);
-// Create directory
-// Downloading page
+        // Create directory
+        // Downloading page
             int downloadedDocuments = 1;
             Iterator it = selectedSources.entrySet().iterator();
             while (it.hasNext()) {
@@ -66,19 +65,7 @@ public class InternetSearchManager {
                 String path = downloadedFilesFolder + File.separatorChar + downloadedDocuments + ".txt";
                 downloadedDocuments++;
                 this.downloadWebPageAsText(url, path);
-
-
-
-
-
-
-
-
             }
-
-
-
-
 
         }
         return downloadedFilesFolder;
@@ -97,12 +84,6 @@ public class InternetSearchManager {
     boolean folderCreated = new File(downloadedFilesFolder).mkdir();
     // Downloading page
     int downloadedDocuments = 1;
-
-
-
-
-
-
     //parellel code
     /*    long t1 = System.currentTimeMillis();
     Runnable runnable = new DownloadWebPage(selectedSources ,downloadedFilesFolder);
