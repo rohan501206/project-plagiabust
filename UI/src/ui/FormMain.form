@@ -47,6 +47,8 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="mainTabbedPane" alignment="1" pref="1009" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
+                          <Component id="titleLable" pref="903" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="minimzeButton" min="-2" pref="48" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="exitButton" min="-2" pref="48" max="-2" attributes="0"/>
@@ -60,9 +62,12 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="exitButton" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
-                      <Component id="minimzeButton" alignment="3" min="-2" pref="48" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="exitButton" alignment="0" pref="48" max="32767" attributes="1"/>
+                          <Component id="minimzeButton" alignment="0" pref="48" max="32767" attributes="1"/>
+                      </Group>
+                      <Component id="titleLable" pref="48" max="32767" attributes="1"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="mainTabbedPane" pref="614" max="32767" attributes="0"/>
@@ -850,6 +855,11 @@
             </Container>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JLabel" name="titleLable">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="jLabel1"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
