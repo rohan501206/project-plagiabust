@@ -15,11 +15,4 @@ public class NumberRemover {
         String onlyText = input.replaceAll("[^a-zA-Z]", "");
         return onlyText;
     }
-
-    public static void main(String[] args){
-        String s = "yo-dude: like, ... []{}this is a string 123456";
-        s = s.replaceAll("[^a-zA-Z]", "");
-        System.out.println(s);
-    }
-
 }
