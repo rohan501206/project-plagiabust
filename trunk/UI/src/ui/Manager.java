@@ -16,6 +16,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.didion.jwnl.JWNLException;
@@ -334,9 +335,6 @@ public class Manager {
         }
 
     
-
-
-
     public String arraylistToSting(ArrayList<String> token) {
         StringBuilder out = new StringBuilder();
         for (Object o : token) {
@@ -346,6 +344,14 @@ public class Manager {
         return out.toString();
     }
 
+    public String vectorToSting(Vector token) {
+        StringBuilder out = new StringBuilder();
+        for (Object o : token) {
+            out.append(o.toString());
+            out.append("\n");
+        }
+        return out.toString();
+    }
 
     public File[] getFilesIntheFolder(String path){
 
