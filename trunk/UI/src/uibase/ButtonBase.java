@@ -17,7 +17,7 @@ public class ButtonBase extends JButton {
 
     private int horizontalAlignment = SwingConstants.LEFT;
     private int verticleAlignment = SwingConstants.CENTER;
-    private Font font = new Font("Tahoma", Font.PLAIN, 18);;
+    private Font font = new Font("Tahoma", Font.PLAIN, 14);;
 
     public ButtonBase() {
         this.setHorizontalAlignment(horizontalAlignment);

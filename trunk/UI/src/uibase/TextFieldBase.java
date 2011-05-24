@@ -16,7 +16,7 @@ public class TextFieldBase extends JTextField {
 
     private int horizontalAlignment = SwingConstants.LEFT;
     private int verticleAlignment = SwingConstants.CENTER;
-    private Font buttonFont = new Font("Tahoma", Font.PLAIN, 18);
+    private Font buttonFont = new Font("Tahoma", Font.PLAIN, 14);
 
     public TextFieldBase() {
         this.setHorizontalAlignment(horizontalAlignment);
