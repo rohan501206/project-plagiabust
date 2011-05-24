@@ -15,7 +15,7 @@ public class LableBase extends javax.swing.JLabel {
 
     private int horizontalAlignment = SwingConstants.LEFT;
     private int verticleAlignment = SwingConstants.CENTER;
-    private Font font = new Font("Tahoma", Font.PLAIN, 18);
+    private Font font = new Font("Tahoma", Font.PLAIN, 14);
 
     public LableBase() {
         this.setHorizontalAlignment(horizontalAlignment);
