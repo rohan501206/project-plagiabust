@@ -120,7 +120,6 @@ public class InternetSearchManager {
         int downloadedFileIndex = 0;
         String downloadedFileFolderPath = fileFolderPath + File.separator + "InternetSources";
         boolean folderCreated = new File(downloadedFileFolderPath).mkdir();
-
         for (Iterator<String> it = filePathList.iterator(); it.hasNext();) {
             String filePath = it.next();
             // take sources for file
@@ -136,9 +135,7 @@ public class InternetSearchManager {
                     downloadedFileIndex++;
                     String filePathToDownload = downloadedFileFolderPath + File.separator + downloadedFileIndex + ".txt";
                     urlAndDownloadedPathMap.put(url, filePathToDownload);
-
                     this.downloadWebPageAsText(url, filePathToDownload);
-
                     downloadedFilesList.add(filePathToDownload);
                 } else {
                     String fileDownloadedPath = urlAndDownloadedPathMap.get(url);
@@ -150,6 +147,14 @@ public class InternetSearchManager {
         return fileAndSorcesMap;
     }
 
+
+
+
+
+
+
+
+    
     private HashMap<String, Integer> getInternetSourceForFile(String filePath) {
 
         ArrayList<String> queryList = qc.getQueryList(filePath, qsa);
