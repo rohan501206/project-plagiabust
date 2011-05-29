@@ -50,14 +50,10 @@ public class DocumentIndexingManager {
 
 
     public HashMap<File, ArrayList<String>> indexSearchforMultiplePeers(File[] files,String indexFolderPathTemp){
-
-
         indexFolderPath=indexFolderPathTemp;
         IndexSearch is = new IndexSearch(indexFolderPath);
         PeerSearchManager psm = new PeerSearchManager(is);
         psm.setRandomSelectionRatio(.25f);
-
-
         for (int i = 0; i < files.length; i++) {
             ArrayList<String> indexedFilesTesting = new ArrayList<String>();
             if (files[i].isFile()) {
@@ -72,18 +68,13 @@ public class DocumentIndexingManager {
                     selectedDocuments++;
                     ///if(!filePath.equalsIgnoreCase(selectedDocumentPath))
                     indexedFilesTesting.add(filePath);
-
                 }
-
                 indexedFileList.put(files[i], indexedFilesTesting);
                 System.out.println("file " + files[i].getAbsolutePath());
                 for (int j = 0; j < indexedFilesTesting.size(); j++) {
                     System.out.println("indexed file " + j + " " + indexedFilesTesting.get(j));
                 }
                 System.out.println("");
-
-
-
             }
         }
 
