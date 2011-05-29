@@ -1017,48 +1017,21 @@ public class FormMain extends javax.swing.JFrame {
         fileOPerator.TextFileIndexer();
         destFolderPath=fileOPerator.getDestinatonFolderPath();
         indexFolderPath=fileOPerator.getIndexFolderPath();
-
         File[] files = manager.getFilesIntheFolder(destFolderPath);
-
-
         for (int arr = 0; arr < files.length; arr++) {
-
             fileArrayList.add(files[arr].getAbsolutePath());
-
         }
 
         String downloadFolderPath = null;
-
-
         System.out.println("Start Indexing files........................\n");
-
-
-
         DocumentIndexingManager indexManager=new DocumentIndexingManager();
         indexedFileList=indexManager.indexSearchforMultiplePeers(files, indexFolderPath);
-
-
-
-
-
-
-
-
         System.out.println("End Indexing files........................\n");
-
         System.out.println("Start Downloading the internet files........................");
-
-
-
         InternetDocumentDownloadManager idm=new InternetDocumentDownloadManager();
         HashMap<String, ArrayList<String>> downloadedFileList=idm.downloadFilesForMultiplePeerSearch(fileArrayList,destFolderPath);
-
-
         System.out.println("downloaded folder path is " + downloadFolderPath);
-
         System.out.println("End Downloading the internet files........................\n");
-
-
         System.out.println("Starting Comparing Files........................\n");
 
         //**/

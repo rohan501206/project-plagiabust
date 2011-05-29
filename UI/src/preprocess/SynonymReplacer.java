@@ -18,20 +18,9 @@ import net.didion.jwnl.dictionary.Dictionary;
 public class SynonymReplacer {
 
 	public  String  replaceSynonyms(ArrayList<String> tokens) throws JWNLException {
-
 	     // Initialize the database
 	     // You must configure the properties file to point to your dictionary files
 	     WordNetHelper.initialize("src" + File.separatorChar + "preprocess" + File.separatorChar + "file_properties.xml");
-
-	     System.out.println("This program will take the following paragraph and replace" +
-	     "\nall words with a synonym, if it can find one.\n\n");
-
-	   //  String test = "dark stormi night rain fell torrent except occasion interv when check violent gust wind which swept up street london our scene lie rattl along housetop fierc agit scanti flame lamp struggl against dark ";
-
-
-	   //  System.out.println(test + "\n\n");
-
-	   //  String[] tokens = test.split("\\b");
 	     String newSentence = "";
 	     String newSentencefromIndex = "";
 	     // Walk through all tokens
@@ -42,12 +31,8 @@ public class SynonymReplacer {
 	         // LookUp all IndexWords and store in an array
 	         IndexWordSet set = Dictionary.getInstance().lookupAllIndexWords(tokens.get(i));
 	         IndexWord[] words = set.getIndexWordArray();
-
 	         // Try to get a Synonym for any IndexWord, first come first serve!
 	         for (int j = 0; j < words.length; j++) {
-
-
-
 	             String found = getSynonym(words[j]);
 	             // If we found something let's get out of here
 	             if (found != null) {
@@ -59,7 +44,6 @@ public class SynonymReplacer {
 	         newSentence += newWord+" ";
 
 	     }
-
 	     System.out.println("\n\nHere is the revised paragraph: ");
 	     System.out.println("\n" + newSentence);
 	     return newSentence;
@@ -71,7 +55,6 @@ public class SynonymReplacer {
 	     // As long as we have a non-empty ArrayList
 	     if (a != null && !a.isEmpty()) {
 	         System.out.println("Found a synonym for " + w.getLemma() + ".");
-
 	         // Pick a random Synset
 	        // int rand = (int) (Math.random() * a.size());
 	         Synset s = (Synset) a.get(0);
