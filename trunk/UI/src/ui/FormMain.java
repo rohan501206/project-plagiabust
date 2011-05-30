@@ -133,8 +133,6 @@ public class FormMain extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         firstFileTextArea = new javax.swing.JTextArea();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        secondFileTextArea = new javax.swing.JTextArea();
         searchLabel = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -148,6 +146,8 @@ public class FormMain extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         nextButton = new javax.swing.JButton();
         previousButton = new javax.swing.JButton();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        secondFileTextArea = new javax.swing.JTextArea();
         profilePanel = new javax.swing.JPanel();
         jTabbedPane3 = new javax.swing.JTabbedPane();
         jPanel10 = new javax.swing.JPanel();
@@ -199,7 +199,7 @@ public class FormMain extends javax.swing.JFrame {
         selectDocumentLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         selectDocumentLabel.setText("Select the Document Folder");
 
-        browseButton.setFont(new java.awt.Font("Tahoma", 0, 14));
+        browseButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         browseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Explorer.png"))); // NOI18N
         browseButton.setText("Browse");
         browseButton.addActionListener(new java.awt.event.ActionListener() {
@@ -208,7 +208,7 @@ public class FormMain extends javax.swing.JFrame {
             }
         });
 
-        exploreButton.setFont(new java.awt.Font("Tahoma", 0, 14));
+        exploreButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         exploreButton.setText("Explore ");
         exploreButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -216,7 +216,7 @@ public class FormMain extends javax.swing.JFrame {
             }
         });
 
-        checkButton.setFont(new java.awt.Font("Tahoma", 0, 14));
+        checkButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         checkButton.setText("Check");
         checkButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -224,7 +224,7 @@ public class FormMain extends javax.swing.JFrame {
             }
         });
 
-        peerSearchButton.setFont(new java.awt.Font("Tahoma", 0, 14));
+        peerSearchButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         peerSearchButton.setText("Peer Search");
         peerSearchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -237,44 +237,43 @@ public class FormMain extends javax.swing.JFrame {
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(147, 147, 147)
-                .addComponent(selectDocumentLabel)
-                .addGap(5, 5, 5)
-                .addComponent(selectedFolderTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(browseButton)
-                .addGap(5, 5, 5)
-                .addComponent(exploreButton)
-                .addGap(5, 5, 5)
-                .addComponent(fileListComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(5, 5, 5)
-                .addComponent(checkButton)
-                .addGap(5, 5, 5)
-                .addComponent(peerSearchButton))
+                .addGap(61, 61, 61)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(fileListComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(265, 265, 265)
+                        .addComponent(checkButton))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(browseButton)
+                            .addGroup(jPanel5Layout.createSequentialGroup()
+                                .addComponent(selectDocumentLabel)
+                                .addGap(45, 45, 45)
+                                .addComponent(selectedFolderTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGap(18, 18, 18)
+                        .addComponent(exploreButton)
+                        .addGap(18, 18, 18)
+                        .addComponent(peerSearchButton)))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(9, 9, 9)
-                .addComponent(selectDocumentLabel))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addComponent(selectedFolderTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(browseButton))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(exploreButton))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(7, 7, 7)
-                .addComponent(fileListComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(checkButton))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
-                .addComponent(peerSearchButton))
+                .addGap(14, 14, 14)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(selectDocumentLabel)
+                    .addComponent(selectedFolderTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(49, 49, 49)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(browseButton)
+                    .addComponent(exploreButton)
+                    .addComponent(peerSearchButton))
+                .addGap(142, 142, 142)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(fileListComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkButton))
+                .addContainerGap(208, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("New Check", new javax.swing.ImageIcon(getClass().getResource("/Images/NewCheck.png")), jPanel5); // NOI18N
@@ -286,27 +285,13 @@ public class FormMain extends javax.swing.JFrame {
         firstFileTextArea.setLineWrap(true);
         firstFileTextArea.setRows(5);
         jScrollPane2.setViewportView(firstFileTextArea);
+        firstFileTextArea.getAccessibleContext().setAccessibleParent(jScrollPane2);
 
-        jPanel6.add(jScrollPane2);
-
-        secondFileTextArea.setColumns(20);
-        secondFileTextArea.setFont(new java.awt.Font("Tahoma", 0, 12));
-        secondFileTextArea.setLineWrap(true);
-        secondFileTextArea.setRows(5);
-        secondFileTextArea.setPreferredSize(new java.awt.Dimension(200, 80));
-        jScrollPane3.setViewportView(secondFileTextArea);
-
-        jPanel6.add(jScrollPane3);
-
-        searchLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
+        searchLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         searchLabel.setText("Search");
-        jPanel6.add(searchLabel);
-        jPanel6.add(jTextField2);
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14));
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("File 1");
-        jPanel6.add(jLabel6);
-        jPanel6.add(jTextField3);
 
         firstFileSlectButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         firstFileSlectButton.setText("Select");
@@ -315,18 +300,15 @@ public class FormMain extends javax.swing.JFrame {
                 firstFileSlectButtonActionPerformed(evt);
             }
         });
-        jPanel6.add(firstFileSlectButton);
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14));
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("File 2");
-        jPanel6.add(jLabel7);
 
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
             }
         });
-        jPanel6.add(jTextField4);
 
         secondFileSelectButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         secondFileSelectButton.setText("Select");
@@ -335,7 +317,6 @@ public class FormMain extends javax.swing.JFrame {
                 secondFileSelectButtonActionPerformed(evt);
             }
         });
-        jPanel6.add(secondFileSelectButton);
 
         showButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         showButton.setText("Show");
@@ -344,34 +325,108 @@ public class FormMain extends javax.swing.JFrame {
                 showButtonActionPerformed(evt);
             }
         });
-        jPanel6.add(showButton);
 
+        searchButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         searchButton.setText("Search");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 searchButtonActionPerformed(evt);
             }
         });
-        jPanel6.add(searchButton);
-        jPanel6.add(jLabel8);
 
-        nextButton.setFont(new java.awt.Font("Tahoma", 0, 14));
+        nextButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         nextButton.setText("Next");
         nextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nextButtonActionPerformed(evt);
             }
         });
-        jPanel6.add(nextButton);
 
-        previousButton.setFont(new java.awt.Font("Tahoma", 0, 14));
+        previousButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         previousButton.setText("Previous");
         previousButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 previousButtonActionPerformed(evt);
             }
         });
-        jPanel6.add(previousButton);
+
+        secondFileTextArea.setColumns(20);
+        secondFileTextArea.setRows(5);
+        jScrollPane3.setViewportView(secondFileTextArea);
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(91, 91, 91)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel7)
+                            .addComponent(searchLabel))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(33, 33, 33)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(secondFileSelectButton)
+                            .addComponent(searchButton)
+                            .addComponent(showButton)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(firstFileSlectButton)
+                                .addGap(18, 18, 18)
+                                .addComponent(nextButton)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(previousButton))))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(58, 58, 58)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(78, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(44, 44, 44)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel6)
+                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(2, 2, 2)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(firstFileSlectButton)
+                            .addComponent(nextButton)
+                            .addComponent(previousButton))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(secondFileSelectButton))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(showButton)
+                .addGap(23, 23, 23)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(searchLabel, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(searchButton)))
+                .addGap(38, 38, 38)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
 
         jTabbedPane2.addTab("Results      ", new javax.swing.ImageIcon(getClass().getResource("/Images/results.png")), jPanel6); // NOI18N
 
