@@ -21,7 +21,9 @@ public class TextHighlighter {
     public Integer[] highlightTexts(String contentOftheFile, String query){
 
 
-        String content= contentOftheFile;
+        String contenttemp= contentOftheFile;
+        String contentModified=contenttemp.replaceAll("\n"," ");
+        String content= contentModified.replaceAll("\t"," ");
         String searchQuery=query;
         int index=0;
         int length=0;
@@ -127,8 +129,7 @@ public class TextHighlighter {
 
         }
 
-        startIndex=this.getMaximum(indexArrayList);
-        System.out.println("The maximum start index is "+ startIndex );
+        startIndex=this.getMaximum(indexArrayList);      
 
 
 
@@ -136,7 +137,7 @@ public class TextHighlighter {
          System.out.println("End index is "+ endIndex);
 
 
-for(int j=0;j<indexArrayList.size();j++){
+        for(int j=0;j<indexArrayList.size();j++){
 
             int distance=endIndex-indexArrayList.get(j);
             System.out.println("distance of "+indexArrayList.get(j));
