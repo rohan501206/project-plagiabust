@@ -36,38 +36,49 @@ public class Manager {
     SynonymReplacer synReplaser = new SynonymReplacer();
     Stemmer stem = new Stemmer();
 
+
+
+    /**
+     *
+     * @param fileFolder
+     * @return Multi dimensional string array which consists of the the relevant files and the matching shingles
+     * @throws IOException
+     * @throws JWNLException
+     */
+
+
     public String[][] manage(String fileFolder) throws IOException, JWNLException {
 
         File dir = new File(fileFolder);
-        String[] children = dir.list();
+        String[] downloadedFilesList = dir.list();
         HashMap hm = new HashMap();
         int fileNo=0;
-        String[][] filenameText = new String[children.length*children.length][4];
-        System.out.println("Size of the files is"+children.length);
-        if (children == null) {
+        String[][] filenameText = new String[downloadedFilesList.length*downloadedFilesList.length][4];
+        System.out.println("Size of the files is"+downloadedFilesList.length);
+        if (downloadedFilesList == null) {
             // Either dir does not exist or is not a directory
             return null;
         }
         else {
-            for (int i = 0; i < children.length; i++) {
+            for (int i = 0; i < downloadedFilesList.length; i++) {
                 // Get filename of file or directory
-                String filename = children[i];
+                String filename = downloadedFilesList[i];
                 String preprocessText = preprocessText(filename,fileFolder);
                 hm.put(filename, preprocessText);
 
             }
-            for (int i = 0; i < children.length; i++) {
-                for (int j = 0; j < children.length; j++) {
+            for (int i = 0; i < downloadedFilesList.length; i++) {
+                for (int j = 0; j < downloadedFilesList.length; j++) {
                     ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
                     if(i!=j){
-                    float output = sca.getSimilarity(hm.get(children[i]).toString(), hm.get(children[j]).toString());
+                    float output = sca.getSimilarity(hm.get(downloadedFilesList[i]).toString(), hm.get(downloadedFilesList[j]).toString());
                     String match = sca.getList();
-                    String firstFile = fileFolder + File.separator + children[i];
-                    String secondFile = fileFolder + File.separator + children[j];
+                    String firstFile = fileFolder + File.separator + downloadedFilesList[i];
+                    String secondFile = fileFolder + File.separator + downloadedFilesList[j];
                     System.out.println(firstFile);
                     System.out.println(secondFile);
-                    //System.out.println("the string of the first text is" + hm.get(children[i]).toString( ));
-                   // System.out.println("the string of the second text is" + hm.get(children[j]).toString( ));                    
+                    //System.out.println("the string of the first text is" + hm.get(downloadedFilesList[i]).toString( ));
+                   // System.out.println("the string of the second text is" + hm.get(downloadedFilesList[j]).toString( ));
                     System.out.println("match is "+ match);
                     System.out.println("Size of the fileNop is"+fileNo);
                     if(!match.isEmpty()){
@@ -95,6 +106,17 @@ public class Manager {
     }
 
 
+
+   /**
+    * Compare the downloaded files, indexed files with the submitted document and return the possible matching phrases with relevant files.
+    * @param fileName
+    * @param downloadedFilePath
+    * @param indexedFiles
+    * @return Multi dimensional string array which consists of the the relevant files and the matching shingles
+    * @throws IOException
+    */
+
+
     public String[][] compareFiles(String fileName,String downloadedFilePath, ArrayList<String> indexedFiles) throws IOException{
 
 
@@ -102,31 +124,32 @@ public class Manager {
         String downloadedFolderPath=downloadedFilePath;
         ArrayList<String> preIndexedFiles= indexedFiles;
         File downloadedFiles = new File(downloadedFolderPath);
-        String[] children =  downloadedFiles.list();
+        String[] downloadedFilesList =  downloadedFiles.list();
+        HashMap hm = new HashMap();
+        int fileNo=0;
 
-        System.out.println("document to compare is"+ fileName );
+        
 
+        if(downloadedFilesList!=null){
 
-        for(int i=0;i<children.length;i++){
-             System.out.println("document downloaded "+i+" "+ children[i] );
+        for(int i=0;i<downloadedFilesList.length;i++){
+             System.out.println("document downloaded "+i+" "+ downloadedFilesList[i] );
         }
+        }
+        
+        
 
-
+        String[][] filenameText = new String[20][4];  // 20 because we download 10 files and index another 10 files and then we coompare
 
         for(int i=0;i<indexedFiles.size();i++){
              System.out.println("document indexed "+i+" "+indexedFiles.get(i) );
         }
-        
-        HashMap hm = new HashMap();
-        int fileNo=0;
-
-        String[][] filenameText = new String[children.length*children.length][4];
 
         String preprocessTextOfTheComparisonFile = preprocessText(documentToCompare);
 
-        for (int i = 0; i < children.length; i++) {
+        for (int i = 0; i < downloadedFilesList.length; i++) {
                
-                String downloadedFileName = children[i];
+                String downloadedFileName = downloadedFilesList[i];
                 String preprocessText = preprocessText(downloadedFileName,downloadedFolderPath);
                 hm.put(downloadedFileName, preprocessText);
             }
@@ -138,18 +161,18 @@ public class Manager {
 
         } 
 
-        for (int i = 0; i < children.length; i++) {
+        for (int i = 0; i < downloadedFilesList.length; i++) {
 
                     ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
-                    float output = sca.getSimilarity(preprocessTextOfTheComparisonFile, hm.get(children[i]).toString());
+                    float output = sca.getSimilarity(preprocessTextOfTheComparisonFile, hm.get(downloadedFilesList[i]).toString());
                     String match = sca.getList();
                     String firstFile = documentToCompare;
-                    String secondFile = downloadedFolderPath+File.separator+ children[i];
+                    String secondFile = downloadedFolderPath+File.separator+ downloadedFilesList[i];
                     System.out.println();
                     System.out.println(firstFile);
                     System.out.println(secondFile);
                     System.out.println("the string of the first text is " + preprocessTextOfTheComparisonFile);
-                    System.out.println("the string of the second text is " + hm.get(children[i]).toString());
+                    System.out.println("the string of the second text is " + hm.get(downloadedFilesList[i]).toString());
                     System.out.println("match is "+ match);
                     System.out.println("Size of the matched files is "+fileNo);
                     System.out.println();
@@ -213,6 +236,16 @@ public class Manager {
 
             return filenameText;
         }
+
+
+    /**
+     * Compare the downloaded files, indexed files with all the submitted documents and return the possible matching phrases with relevant files.
+     * @param indexedFilesList
+     * @param downloadedFilesList
+     * @return he possible matching phrases with relevant files.
+     * @throws IOException
+     */
+
 
 
     public String[][] compareAllFiles(HashMap<File, ArrayList<String>> indexedFilesList,HashMap<String, ArrayList<String>> downloadedFilesList) throws IOException{
@@ -324,17 +357,17 @@ public class Manager {
         }
 
 
-
-
-
-
-
-
-
-            return filenameText;
+        return filenameText;
         }
 
     
+
+    /**
+     * convert Arraylist to string
+     * @param token
+     * @return string
+     */
+
     public String arraylistToSting(ArrayList<String> token) {
         StringBuilder out = new StringBuilder();
         for (Object o : token) {
@@ -343,6 +376,13 @@ public class Manager {
         }
         return out.toString();
     }
+
+
+    /**
+     * convert vector to string
+     * @param token
+     * @return String
+     */
 
     public String vectorToSting(Vector token) {
         StringBuilder out = new StringBuilder();
@@ -353,13 +393,28 @@ public class Manager {
         return out.toString();
     }
 
+
+    /**
+     * return the files inside a folder
+     * @param path
+     * @return files inside the folder.
+     */
+
     public File[] getFilesIntheFolder(String path){
 
         File dir = new File(path);
-        File[] children = dir.listFiles();
-        return children;
+        File[] downloadedFilesList = dir.listFiles();
+        return downloadedFilesList;
 
     }
+
+    /**
+     * preprocess the original document texts
+     * @param filename
+     * @param fileFolder
+     * @return preprocessed text
+     * @throws IOException
+     */
 
 
     public String preprocessText(String filename,String fileFolder)throws IOException{
@@ -378,6 +433,14 @@ public class Manager {
                 String preprocessText = this.arraylistToSting(stopWordRemovedTokens);
                 return preprocessText;
     }
+
+
+    /**
+     * preprocess the original document texts.
+     * @param filename
+     * @return preprocessed String
+     * @throws IOException
+     */
 
     public String preprocessText(String filename)throws IOException{
                 String fullFilename =  filename;
