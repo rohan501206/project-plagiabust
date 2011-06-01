@@ -62,6 +62,7 @@ public class InternetSearchManager {
             while (it.hasNext()) {
                 Map.Entry pair = (Map.Entry) it.next();
                 String url = (String) pair.getKey();
+                System.out.println(url);
                 String path = downloadedFilesFolder + File.separatorChar + downloadedDocuments + ".txt";
                 downloadedDocuments++;
                 this.downloadWebPageAsText(url, path);

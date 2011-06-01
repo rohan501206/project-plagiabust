@@ -29,6 +29,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 import java.util.Vector;
+import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -40,6 +41,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JFileChooser;
 //import javax.swing.KeyStroke;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JRootPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -65,7 +67,8 @@ import uibase.ImagePanelBase;
  * @author Brave Heart
  */
 public class FormMain extends javax.swing.JFrame {
-    private	Vector	listData = new Vector();
+
+    private Vector listData = new Vector();
     private File file1;
     private File selectFile1;
     private File selectFile2;
@@ -74,7 +77,6 @@ public class FormMain extends javax.swing.JFrame {
     Color entryBg;
     int numberOfFiles;
     Manager manager = new Manager();
-
     Highlighter hilit = new DefaultHighlighter();
     Highlighter hilit2 = new DefaultHighlighter();
     String[][] temp = null;   /////////// declared as a global variable
@@ -93,18 +95,19 @@ public class FormMain extends javax.swing.JFrame {
             PlafOptions.setWheelTabbedPaneEnabled(true);
             PlafOptions.setCurrentTheme(ThemeFactory.createTheme(new Color(150, 100, 230), new Color(245, 255, 250), Color.BLACK));
             PlafOptions.setAsLookAndFeel();
-            
+
         } catch (Exception ex) {
         }
-        
+
         initComponents();
         this.setLocationByPlatform(true);
         this.mainPanel.setBackground(Color.CYAN);
-
+        singleDocProgressBar.setVisible(false);
+        processingLabel.setVisible(false);
         fileListComboBox.setVisible(false);
         checkButton.setVisible(false);
 //        jScrollPane1.setVisible(false);
-        // jTextArea1.setVisible(false);
+    // jTextArea1.setVisible(false);
 
 
     }
@@ -130,6 +133,8 @@ public class FormMain extends javax.swing.JFrame {
         fileListComboBox = new javax.swing.JComboBox();
         checkButton = new javax.swing.JButton();
         peerSearchButton = new javax.swing.JButton();
+        singleDocProgressBar = new javax.swing.JProgressBar();
+        processingLabel = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         firstFileTextArea = new javax.swing.JTextArea();
@@ -190,16 +195,16 @@ public class FormMain extends javax.swing.JFrame {
         setMinimumSize(new java.awt.Dimension(800, 600));
         setResizable(false);
 
-        mainTabbedPane.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        mainTabbedPane.setFont(new java.awt.Font("Tahoma", 0, 24));
 
         jTabbedPane2.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        jTabbedPane2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jTabbedPane2.setFont(new java.awt.Font("Tahoma", 0, 18));
         jTabbedPane2.setPreferredSize(new java.awt.Dimension(1068, 500));
 
-        selectDocumentLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        selectDocumentLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
         selectDocumentLabel.setText("Select the Document Folder");
 
-        browseButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        browseButton.setFont(new java.awt.Font("Tahoma", 0, 14));
         browseButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Explorer.png"))); // NOI18N
         browseButton.setText("Browse");
         browseButton.addActionListener(new java.awt.event.ActionListener() {
@@ -208,7 +213,7 @@ public class FormMain extends javax.swing.JFrame {
             }
         });
 
-        exploreButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        exploreButton.setFont(new java.awt.Font("Tahoma", 0, 14));
         exploreButton.setText("Explore ");
         exploreButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -232,13 +237,16 @@ public class FormMain extends javax.swing.JFrame {
             }
         });
 
+        processingLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        processingLabel.setText("Processing......");
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(61, 61, 61)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(fileListComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(265, 265, 265)
@@ -249,12 +257,15 @@ public class FormMain extends javax.swing.JFrame {
                             .addGroup(jPanel5Layout.createSequentialGroup()
                                 .addComponent(selectDocumentLabel)
                                 .addGap(45, 45, 45)
-                                .addComponent(selectedFolderTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                .addComponent(selectedFolderTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(18, 18, 18)
                         .addComponent(exploreButton)
                         .addGap(18, 18, 18)
-                        .addComponent(peerSearchButton)))
+                        .addComponent(peerSearchButton))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(processingLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(singleDocProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(73, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
@@ -273,7 +284,11 @@ public class FormMain extends javax.swing.JFrame {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(fileListComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(checkButton))
-                .addContainerGap(208, Short.MAX_VALUE))
+                .addGap(147, 147, 147)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(singleDocProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(processingLabel))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("New Check", new javax.swing.ImageIcon(getClass().getResource("/Images/NewCheck.png")), jPanel5); // NOI18N
@@ -281,19 +296,19 @@ public class FormMain extends javax.swing.JFrame {
         jPanel6.setPreferredSize(new java.awt.Dimension(800, 800));
 
         firstFileTextArea.setColumns(20);
-        firstFileTextArea.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        firstFileTextArea.setFont(new java.awt.Font("Tahoma", 0, 12));
         firstFileTextArea.setLineWrap(true);
         firstFileTextArea.setRows(5);
         jScrollPane2.setViewportView(firstFileTextArea);
         firstFileTextArea.getAccessibleContext().setAccessibleParent(jScrollPane2);
 
-        searchLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        searchLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
         searchLabel.setText("Search");
 
-        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel6.setText("File 1");
 
-        firstFileSlectButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        firstFileSlectButton.setFont(new java.awt.Font("Tahoma", 0, 14));
         firstFileSlectButton.setText("Select");
         firstFileSlectButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -301,7 +316,7 @@ public class FormMain extends javax.swing.JFrame {
             }
         });
 
-        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14));
         jLabel7.setText("File 2");
 
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
@@ -310,7 +325,7 @@ public class FormMain extends javax.swing.JFrame {
             }
         });
 
-        secondFileSelectButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        secondFileSelectButton.setFont(new java.awt.Font("Tahoma", 0, 14));
         secondFileSelectButton.setText("Select");
         secondFileSelectButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -318,7 +333,7 @@ public class FormMain extends javax.swing.JFrame {
             }
         });
 
-        showButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        showButton.setFont(new java.awt.Font("Tahoma", 0, 14));
         showButton.setText("Show");
         showButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -326,7 +341,7 @@ public class FormMain extends javax.swing.JFrame {
             }
         });
 
-        searchButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        searchButton.setFont(new java.awt.Font("Tahoma", 0, 14));
         searchButton.setText("Search");
         searchButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -334,7 +349,7 @@ public class FormMain extends javax.swing.JFrame {
             }
         });
 
-        nextButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        nextButton.setFont(new java.awt.Font("Tahoma", 0, 14));
         nextButton.setText("Next");
         nextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -342,7 +357,7 @@ public class FormMain extends javax.swing.JFrame {
             }
         });
 
-        previousButton.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        previousButton.setFont(new java.awt.Font("Tahoma", 0, 14));
         previousButton.setText("Previous");
         previousButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -507,13 +522,13 @@ public class FormMain extends javax.swing.JFrame {
 
         bingSearchIDLable.setText("Bing Search ID :");
 
-        downloadFilesCheckBox.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        downloadFilesCheckBox.setFont(new java.awt.Font("Tahoma", 0, 14));
         downloadFilesCheckBox.setText("Download Files For Cross Check");
 
-        randomSelectionRatioLabel.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        randomSelectionRatioLabel.setFont(new java.awt.Font("Tahoma", 0, 14));
         randomSelectionRatioLabel.setText("Random Selection Ratio : ");
 
-        randomSelectionRatioComboBox.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        randomSelectionRatioComboBox.setFont(new java.awt.Font("Tahoma", 0, 14));
         randomSelectionRatioComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0.10", "0.15", "0.20", "0.25", "0.30", "0.35", "0.40", "0.45", "0.50", "0.55" }));
 
         numOfSourcesLable.setText("Number of Sources per Document : ");
@@ -583,13 +598,13 @@ public class FormMain extends javax.swing.JFrame {
 
         numOfSourcesLable1.setText("Number of Sources per Document : ");
 
-        numOfPeerSourcesComboBox.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        numOfPeerSourcesComboBox.setFont(new java.awt.Font("Tahoma", 0, 14));
         numOfPeerSourcesComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "2", "3", "4", "5", "10", "15" }));
 
-        peerSearchRandomRatioComboBox.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        peerSearchRandomRatioComboBox.setFont(new java.awt.Font("Tahoma", 0, 14));
         peerSearchRandomRatioComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "0.10", "0.15", "0.20", "0.25", "0.30", "0.35", "0.40", "0.45", "0.50", "0.55" }));
 
-        randomSelectionRatioLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        randomSelectionRatioLabel1.setFont(new java.awt.Font("Tahoma", 0, 14));
         randomSelectionRatioLabel1.setText("Random Selection Ratio : ");
 
         peerSearchLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Documents.png"))); // NOI18N
@@ -822,89 +837,92 @@ public class FormMain extends javax.swing.JFrame {
 
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         listData.removeAllElements();
-        keywordList.setListData( listData );
-        // TODO add your handling code here:
+        keywordList.setListData(listData);
+    // TODO add your handling code here:
 }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
         String content = manager.vectorToSting(listData);
         listData.removeAllElements();
-        keywordList.setListData( listData );
+        keywordList.setListData(listData);
         KeyWordsRemover keyremover = new KeyWordsRemover();
         keyremover.addKeyWordsToList("src" + File.separatorChar + "preprocess" + File.separatorChar + "StopWordList", content);
-        // TODO add your handling code here:
+        JOptionPane jop = new JOptionPane();
+        jop.showMessageDialog(this, "keywords successfully added to the list");
+
+    // TODO add your handling code here:
 }//GEN-LAST:event_okButtonActionPerformed
 
     private void removeFromListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeFromListButtonActionPerformed
         // Get the current selection
         int selection = keywordList.getSelectedIndex();
-        if( selection >= 0 ) {
+        if (selection >= 0) {
             // Add this item to the list and refresh
-            listData.removeElementAt( selection );
-            keywordList.setListData( listData );
+            listData.removeElementAt(selection);
+            keywordList.setListData(listData);
             // As a nice touch, select the next item
-            if( selection >= listData.size() )
+            if (selection >= listData.size()) {
                 selection = listData.size() - 1;
-            keywordList.setSelectedIndex( selection );
+            }
+            keywordList.setSelectedIndex(selection);
         }
 
 
 
-        // TODO add your handling code here:
+    // TODO add your handling code here:
 }//GEN-LAST:event_removeFromListButtonActionPerformed
 
     private void addToListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToListButtonActionPerformed
         // Get the text field value
         String stringValue = keywordTextField.getText();
-        keywordTextField.setText( "" );
+        keywordTextField.setText("");
         // Add this item to the list and refresh
-        if( stringValue!= null ) {
+        if (stringValue != null) {
             listData.addElement(stringValue);
-            keywordList.setListData( listData );
+            keywordList.setListData(listData);
         }
-        // TODO add your handling code here:
+    // TODO add your handling code here:
 }//GEN-LAST:event_addToListButtonActionPerformed
 
     private void previousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousButtonActionPerformed
 
-       FileOperator foperator=new FileOperator();
-if(!(numberOfFiles<0)){
-numberOfFiles--;
-String fileName1=temp[numberOfFiles][0];
-String fileName2=temp[numberOfFiles][1];
+        FileOperator foperator = new FileOperator();
+        if (!(numberOfFiles < 0)) {
+            numberOfFiles--;
+            String fileName1 = temp[numberOfFiles][0];
+            String fileName2 = temp[numberOfFiles][1];
 
-jTextField3.setText(temp[numberOfFiles][0]);
-jTextField4.setText(temp[numberOfFiles][1]);
-jTextField2.setText(temp[numberOfFiles][2]);
-String[] texts=foperator.textSetter(fileName1, fileName2);
-String field1=texts[0];
-String field2=texts[1];
-firstFileTextArea.setText(field1.toLowerCase());
-secondFileTextArea.setText(field2.toLowerCase());
-}
+            jTextField3.setText(temp[numberOfFiles][0]);
+            jTextField4.setText(temp[numberOfFiles][1]);
+            jTextField2.setText(temp[numberOfFiles][2]);
+            String[] texts = foperator.textSetter(fileName1, fileName2);
+            String field1 = texts[0];
+            String field2 = texts[1];
+            firstFileTextArea.setText(field1.toLowerCase());
+            secondFileTextArea.setText(field2.toLowerCase());
+        }
 
 
 }//GEN-LAST:event_previousButtonActionPerformed
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
 
-FileOperator foperator=new FileOperator();
-numberOfFiles++;
-String fileName1=temp[numberOfFiles][0];
-String fileName2=temp[numberOfFiles][1];
-jTextField3.setText(temp[numberOfFiles][0]);
-jTextField4.setText(temp[numberOfFiles][1]);
-jTextField2.setText(temp[numberOfFiles][2]);
-String[] texts=foperator.textSetter(fileName1, fileName2);
-String field1=texts[0];
-String field2=texts[1];
-firstFileTextArea.setText(field1.toLowerCase());
-secondFileTextArea.setText(field2.toLowerCase());
+        FileOperator foperator = new FileOperator();
+        numberOfFiles++;
+        String fileName1 = temp[numberOfFiles][0];
+        String fileName2 = temp[numberOfFiles][1];
+        jTextField3.setText(temp[numberOfFiles][0]);
+        jTextField4.setText(temp[numberOfFiles][1]);
+        jTextField2.setText(temp[numberOfFiles][2]);
+        String[] texts = foperator.textSetter(fileName1, fileName2);
+        String field1 = texts[0];
+        String field2 = texts[1];
+        firstFileTextArea.setText(field1.toLowerCase());
+        secondFileTextArea.setText(field2.toLowerCase());
 
 }//GEN-LAST:event_nextButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-
 
         painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
         firstFileTextArea.setHighlighter(hilit);
@@ -915,8 +933,6 @@ secondFileTextArea.setText(field2.toLowerCase());
         String content = firstFileTextArea.getText();
         String content2 = secondFileTextArea.getText();
         String queryString = jTextField2.getText().toLowerCase();
-
-
         String[] query = null;
         if (queryString.length() <= 0) {
             return;
@@ -929,8 +945,6 @@ secondFileTextArea.setText(field2.toLowerCase());
             query = new String[1];
             query[0] = queryString;
         }
-
-
         for (int i = 0; i < query.length; i++) {
 
             String searchQuery = query[i];
@@ -942,8 +956,6 @@ secondFileTextArea.setText(field2.toLowerCase());
             int endIndexFirst = highlightindexedInfoFirstFile[1];
             int startIndexSecond = highlightindexedInfoSecondFile[0];
             int endIndexSecond = highlightindexedInfoSecondFile[1];
-
-
 
             try {
 
@@ -966,24 +978,17 @@ secondFileTextArea.setText(field2.toLowerCase());
                 e.printStackTrace();
             }
 
-
-
         }
-
-
-
-
-
 }//GEN-LAST:event_searchButtonActionPerformed
 
     private void showButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showButtonActionPerformed
         String fileName1 = jTextField3.getText();
         String fileName2 = jTextField4.getText();
 
-        FileOperator setTextToTextAreas= new  FileOperator();
-        String[] texts=setTextToTextAreas.textSetter(fileName1, fileName2);
-        String field1=texts[0];
-        String field2=texts[1];
+        FileOperator setTextToTextAreas = new FileOperator();
+        String[] texts = setTextToTextAreas.textSetter(fileName1, fileName2);
+        String field1 = texts[0];
+        String field2 = texts[1];
 
         firstFileTextArea.setText(field1.toLowerCase());
         secondFileTextArea.setText(field2.toLowerCase());
@@ -1016,111 +1021,108 @@ secondFileTextArea.setText(field2.toLowerCase());
 }//GEN-LAST:event_firstFileSlectButtonActionPerformed
 
     private void peerSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_peerSearchButtonActionPerformed
-
-        FileOperator fileOPerator=new FileOperator(sourceFolderName);
+        singleDocProgressBar.setVisible(true);
+        processingLabel.setVisible(true);
+        singleDocProgressBar.setIndeterminate(true);
+        FileOperator fileOPerator = new FileOperator(sourceFolderName);
         fileOPerator.anyToTextConverter();
         fileOPerator.TextFileIndexer();
-        destFolderPath=fileOPerator.getDestinatonFolderPath();
-        indexFolderPath=fileOPerator.getIndexFolderPath();
+        destFolderPath = fileOPerator.getDestinatonFolderPath();
+        indexFolderPath = fileOPerator.getIndexFolderPath();
         File[] files = manager.getFilesIntheFolder(destFolderPath);
         for (int arr = 0; arr < files.length; arr++) {
             fileArrayList.add(files[arr].getAbsolutePath());
         }
+        final PeerSearchWorker psworker = new PeerSearchWorker(destFolderPath,files,indexFolderPath,fileArrayList,manager) {
 
-        String downloadFolderPath = null;
-        System.out.println("Start Indexing files........................\n");
-        DocumentIndexingManager indexManager=new DocumentIndexingManager();
-        indexedFileList=indexManager.indexSearchforMultiplePeers(files, indexFolderPath);
-        System.out.println("End Indexing files........................\n");
-        System.out.println("Start Downloading the internet files........................");
-        InternetDocumentDownloadManager idm=new InternetDocumentDownloadManager();
-        HashMap<String, ArrayList<String>> downloadedFileList=idm.downloadFilesForMultiplePeerSearch(fileArrayList,destFolderPath);
-        System.out.println("downloaded folder path is " + downloadFolderPath);
-        System.out.println("End Downloading the internet files........................\n");
-        System.out.println("Starting Comparing Files........................\n");
+             // This method is invoked when the worker is finished
+            // its task
 
-        //**/
-        try {
-            temp = manager.compareAllFiles(indexedFileList, downloadedFileList);
+            @Override
+            protected void done() {
+                try {
+                    singleDocProgressBar.setVisible(false);
+                    processingLabel.setVisible(false);
+                    temp = get();
+                        jTextField3.setText(temp[0][0]);
+                        jTextField4.setText(temp[0][1]);
+                        jTextField2.setText(temp[0][2]);
 
-        }
+                        String fileName1 = jTextField3.getText();
+                        String fileName2 = jTextField4.getText();
 
-        catch (IOException ex) {
-            System.out.println("There are no similar files or some error has occured");
-        }
+                        jTabbedPane2.setSelectedIndex(5);
+                        FileOperator setTextToTextAreas = new FileOperator();
+                        String[] texts = setTextToTextAreas.textSetter(fileName1, fileName2);
+                        String field1 = texts[0];
+                        String field2 = texts[1];
 
-        jTextField3.setText(temp[0][0]);
-        jTextField4.setText(temp[0][1]);
-        jTextField2.setText(temp[0][2]);
+                        firstFileTextArea.setText(field1.toLowerCase());
+                        secondFileTextArea.setText(field2.toLowerCase());
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ExecutionException ex) {
+                    Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
 
-        String fileName1 = jTextField3.getText();
-        String fileName2 = jTextField4.getText();
+        psworker.execute();
 
-        jTabbedPane2.setSelectedIndex(5);
-        FileOperator setTextToTextAreas= new  FileOperator();
-        String[] texts=setTextToTextAreas.textSetter(fileName1, fileName2);
-        String field1=texts[0];
-        String field2=texts[1];
-
-        firstFileTextArea.setText(field1.toLowerCase());
-        secondFileTextArea.setText(field2.toLowerCase());
 
 
 }//GEN-LAST:event_peerSearchButtonActionPerformed
 
     private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
-
+        singleDocProgressBar.setVisible(true);
+        processingLabel.setVisible(true);
+        singleDocProgressBar.setIndeterminate(true);
         String fName = (String) fileListComboBox.getSelectedItem();
-
         File destFolder = new File(destFolderPath);
         String selectedDocumentPath = sourceFolderName + File.separator + destFolder.getName() + File.separator + (String) fileListComboBox.getSelectedItem();
-        System.out.println("selected document path is "+selectedDocumentPath);
-        //System.out.println("Start Downloading the internet files........................\n");
-        String downloadFolderPath = null;
-        InternetDocumentDownloadManager idm=new InternetDocumentDownloadManager();
-        downloadFolderPath=idm.downloadFiles(destFolderPath, fName);
-        System.out.println("downloaded folder path is " + downloadFolderPath);
-        System.out.println("End Downloading the internet files........................\n");
-        System.out.println("Start Indexing files........................\n");
-        DocumentIndexingManager indexingManger=new DocumentIndexingManager();
-        indexedFiles=indexingManger.indexSearch(indexFolderPath,selectedDocumentPath);
-        System.out.println("End Indexing files........................\n");
-        System.out.println("Starting Comparing Files........................\n");
-        try {
-            temp = manager.compareFiles(selectedDocumentPath, downloadFolderPath, indexedFiles);
+        final Worker sworker = new Worker(destFolderPath, fName, indexFolderPath, selectedDocumentPath, manager) {
+            // This method is invoked when the worker is finished
+            // its task
 
-        } catch (IOException ex) {
-            System.out.println("There are no similar files or some error has occured");
-        }
-        jTextField3.setText(temp[0][0]);
-        jTextField4.setText(temp[0][1]);
-        jTextField2.setText(temp[0][2]);
-        if(!(jTextField3.getText().equalsIgnoreCase("")||jTextField4.getText().equalsIgnoreCase(""))){
+            @Override
+            protected void done() {
+                try {
+                    singleDocProgressBar.setVisible(false);
+                    processingLabel.setVisible(false);
+                    temp = get();
+                    jTextField3.setText(temp[0][0]);
+                    jTextField4.setText(temp[0][1]);
+                    jTextField2.setText(temp[0][2]);
+                    if (!(jTextField3.getText().equalsIgnoreCase("") || jTextField4.getText().equalsIgnoreCase(""))) {
+                        String fileName1 = jTextField3.getText();
+                        String fileName2 = jTextField4.getText();
+                        jTabbedPane2.setSelectedIndex(1);
+                        FileOperator setTextToTextAreas = new FileOperator();
+                        String[] texts = setTextToTextAreas.textSetter(fileName1, fileName2);
+                        String field1 = texts[0];
+                        String field2 = texts[1];
+                        firstFileTextArea.setText(field1.toLowerCase());
+                        secondFileTextArea.setText(field2.toLowerCase());
+                    }
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ExecutionException ex) {
+                    Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        };
 
-            String fileName1 = jTextField3.getText();
-            String fileName2 = jTextField4.getText();
-            jTabbedPane2.setSelectedIndex(1);
-            FileOperator setTextToTextAreas= new  FileOperator();
-            String[] texts=setTextToTextAreas.textSetter(fileName1, fileName2);
-            String field1=texts[0];
-            String field2=texts[1];
-            firstFileTextArea.setText(field1.toLowerCase());
-            secondFileTextArea.setText(field2.toLowerCase());
-
-
-        }
-
-
+        sworker.execute();
 }//GEN-LAST:event_checkButtonActionPerformed
 
     private void exploreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exploreButtonActionPerformed
 
-        FileOperator fileOPerator=new FileOperator(sourceFolderName);
+        FileOperator fileOPerator = new FileOperator(sourceFolderName);
         fileOPerator.anyToTextConverter();
         fileOPerator.TextFileIndexer();
 
-        destFolderPath=fileOPerator.getDestinatonFolderPath();
-        indexFolderPath=fileOPerator.getIndexFolderPath();
+        destFolderPath = fileOPerator.getDestinatonFolderPath();
+        indexFolderPath = fileOPerator.getIndexFolderPath();
 
         File[] files = manager.getFilesIntheFolder(destFolderPath);
 
@@ -1147,7 +1149,7 @@ secondFileTextArea.setText(field2.toLowerCase());
             fc.setVisible(false);
 
         }
-        // TODO add your handling code here:
+    // TODO add your handling code here:
 }//GEN-LAST:event_browseButtonActionPerformed
 
     void message(String msg) {
@@ -1256,6 +1258,7 @@ secondFileTextArea.setText(field2.toLowerCase());
     private javax.swing.JLabel peerSearchLabel;
     private javax.swing.JComboBox peerSearchRandomRatioComboBox;
     private javax.swing.JButton previousButton;
+    private javax.swing.JLabel processingLabel;
     private javax.swing.JPanel profilePanel;
     private javax.swing.JComboBox randomSelectionRatioComboBox;
     private javax.swing.JLabel randomSelectionRatioLabel;
@@ -1269,5 +1272,6 @@ secondFileTextArea.setText(field2.toLowerCase());
     private javax.swing.JTextField selectedFolderTextField;
     private javax.swing.JPanel settingsPanel;
     private javax.swing.JButton showButton;
+    private javax.swing.JProgressBar singleDocProgressBar;
     // End of variables declaration//GEN-END:variables
 }
