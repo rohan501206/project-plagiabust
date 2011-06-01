@@ -24,14 +24,13 @@ public class StopWordRemover {
 	File file = new File("src" + File.separatorChar + "preprocess" + File.separatorChar + "StopWordList");
    // private final Analyzer analyzers =  new StopAnalyzer(org.apache.lucene.util.Version.LUCENE_29,file);
 
-
 	// stop analyser
 
 	public   ArrayList<String> analyze(String text) throws IOException {
         Analyzer analyzers =  new StopAnalyzer(org.apache.lucene.util.Version.LUCENE_29,file);
 		ArrayList<String> tokenList = new ArrayList<String>();
         TokenStream stream = analyzers.tokenStream("contents", new StringReader(text));
-        while (true) {
+        while (stream.incrementToken()) {
         	Token token = stream.next();
             if (token == null) break;
             tokenList.add(token.termText());
