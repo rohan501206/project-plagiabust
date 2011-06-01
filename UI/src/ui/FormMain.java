@@ -946,7 +946,6 @@ public class FormMain extends javax.swing.JFrame {
             query[0] = queryString;
         }
         for (int i = 0; i < query.length; i++) {
-
             String searchQuery = query[i];
             TextHighlighter highlighterFirstFile = new TextHighlighter();
             TextHighlighter highlighterSecondFile = new TextHighlighter();
@@ -956,50 +955,37 @@ public class FormMain extends javax.swing.JFrame {
             int endIndexFirst = highlightindexedInfoFirstFile[1];
             int startIndexSecond = highlightindexedInfoSecondFile[0];
             int endIndexSecond = highlightindexedInfoSecondFile[1];
-
             try {
-
                 if (startIndexFirst != -1) {
-
                     hilit.addHighlight(startIndexFirst, endIndexFirst, painter);
                     firstFileTextArea.setCaretPosition(endIndexFirst);
                     jTextField2.setBackground(entryBg);
                 }
-
                 if (startIndexSecond != -1) {
-
                     hilit2.addHighlight(startIndexSecond, endIndexSecond, painter);
                     secondFileTextArea.setCaretPosition(endIndexSecond);
                     jTextField2.setBackground(entryBg);
                 }
-
-
             } catch (BadLocationException e) {
                 e.printStackTrace();
             }
-
         }
 }//GEN-LAST:event_searchButtonActionPerformed
 
     private void showButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showButtonActionPerformed
         String fileName1 = jTextField3.getText();
         String fileName2 = jTextField4.getText();
-
         FileOperator setTextToTextAreas = new FileOperator();
         String[] texts = setTextToTextAreas.textSetter(fileName1, fileName2);
         String field1 = texts[0];
         String field2 = texts[1];
-
         firstFileTextArea.setText(field1.toLowerCase());
         secondFileTextArea.setText(field2.toLowerCase());
-
-
 }//GEN-LAST:event_showButtonActionPerformed
 
     private void secondFileSelectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_secondFileSelectButtonActionPerformed
         final JFileChooser fc = new JFileChooser();
         int returnVal = fc.showOpenDialog(this);
-
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             selectFile2 = fc.getSelectedFile();
             this.jTextField4.setText(selectFile2.toString());
@@ -1013,7 +999,6 @@ public class FormMain extends javax.swing.JFrame {
     private void firstFileSlectButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_firstFileSlectButtonActionPerformed
         final JFileChooser fc = new JFileChooser();
         int returnVal = fc.showOpenDialog(this);
-
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             selectFile1 = fc.getSelectedFile();
             this.jTextField3.setText(selectFile1.toString());
@@ -1034,10 +1019,8 @@ public class FormMain extends javax.swing.JFrame {
             fileArrayList.add(files[arr].getAbsolutePath());
         }
         final PeerSearchWorker psworker = new PeerSearchWorker(destFolderPath,files,indexFolderPath,fileArrayList,manager) {
-
              // This method is invoked when the worker is finished
             // its task
-
             @Override
             protected void done() {
                 try {
@@ -1047,16 +1030,13 @@ public class FormMain extends javax.swing.JFrame {
                         jTextField3.setText(temp[0][0]);
                         jTextField4.setText(temp[0][1]);
                         jTextField2.setText(temp[0][2]);
-
                         String fileName1 = jTextField3.getText();
                         String fileName2 = jTextField4.getText();
-
                         jTabbedPane2.setSelectedIndex(5);
                         FileOperator setTextToTextAreas = new FileOperator();
                         String[] texts = setTextToTextAreas.textSetter(fileName1, fileName2);
                         String field1 = texts[0];
                         String field2 = texts[1];
-
                         firstFileTextArea.setText(field1.toLowerCase());
                         secondFileTextArea.setText(field2.toLowerCase());
                 } catch (InterruptedException ex) {
@@ -1066,11 +1046,7 @@ public class FormMain extends javax.swing.JFrame {
                 }
             }
         };
-
         psworker.execute();
-
-
-
 }//GEN-LAST:event_peerSearchButtonActionPerformed
 
     private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
@@ -1083,7 +1059,6 @@ public class FormMain extends javax.swing.JFrame {
         final Worker sworker = new Worker(destFolderPath, fName, indexFolderPath, selectedDocumentPath, manager) {
             // This method is invoked when the worker is finished
             // its task
-
             @Override
             protected void done() {
                 try {
@@ -1111,7 +1086,6 @@ public class FormMain extends javax.swing.JFrame {
                 }
             }
         };
-
         sworker.execute();
 }//GEN-LAST:event_checkButtonActionPerformed
 
@@ -1120,18 +1094,14 @@ public class FormMain extends javax.swing.JFrame {
         FileOperator fileOPerator = new FileOperator(sourceFolderName);
         fileOPerator.anyToTextConverter();
         fileOPerator.TextFileIndexer();
-
         destFolderPath = fileOPerator.getDestinatonFolderPath();
         indexFolderPath = fileOPerator.getIndexFolderPath();
-
         File[] files = manager.getFilesIntheFolder(destFolderPath);
-
         for (int i = 0; i < files.length; i++) {
             if (files[i].isFile()) {
                 fileListComboBox.addItem(files[i].getName());
             }
         }
-
         fileListComboBox.setVisible(true);
         checkButton.setVisible(true);
 }//GEN-LAST:event_exploreButtonActionPerformed
@@ -1147,7 +1117,6 @@ public class FormMain extends javax.swing.JFrame {
             System.out.println(fc.getSelectedFile().getAbsolutePath());
             sourceFolderName = fc.getSelectedFile().getAbsolutePath();
             fc.setVisible(false);
-
         }
     // TODO add your handling code here:
 }//GEN-LAST:event_browseButtonActionPerformed
@@ -1157,12 +1126,10 @@ public class FormMain extends javax.swing.JFrame {
     }
 
     public void setTextToTextFields(String fileName1, String fileName2) {
-
         if (fileName1 == null || fileName2 == null) {
             firstFileTextArea.setText("");
             secondFileTextArea.setText("");
         } else {
-
             File testFile1 = new File(fileName1);
             File testFile2 = new File(fileName2);
             String field1 = "";
@@ -1181,7 +1148,6 @@ public class FormMain extends javax.swing.JFrame {
                     while (br2.readLine() != null) {
                         field2 = field2 + br2.readLine();
                     }
-
                 } catch (IOException ex) {
                     Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
                 }
