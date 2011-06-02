@@ -93,7 +93,7 @@ public class FormMain extends javax.swing.JFrame {
         try {
 
             PlafOptions.setWheelTabbedPaneEnabled(true);
-            PlafOptions.setCurrentTheme(ThemeFactory.createTheme(new Color(150, 100, 230), new Color(245, 255, 250), Color.BLACK));
+            PlafOptions.setCurrentTheme(ThemeFactory.createTheme(new Color(150, 100, 230), new Color(253,230,210), Color.BLACK));
             PlafOptions.setAsLookAndFeel();
 
         } catch (Exception ex) {
@@ -101,7 +101,7 @@ public class FormMain extends javax.swing.JFrame {
 
         initComponents();
         this.setLocationByPlatform(true);
-        this.mainPanel.setBackground(Color.CYAN);
+        this.mainPanel.setBackground(new Color(245,222,179));
         singleDocProgressBar.setVisible(false);
         processingLabel.setVisible(false);
         fileListComboBox.setVisible(false);
