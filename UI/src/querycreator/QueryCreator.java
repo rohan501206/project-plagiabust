@@ -189,12 +189,13 @@ public class QueryCreator {
                 }
             }
         }
-
+      
         return suspiciousSentenceList;
     }
 
     private String arraylistToSting(ArrayList<String> token) {
         StringBuilder out = new StringBuilder();
+       //out.append("\"");
         for (Object o : token) {
             out.append(o.toString());
             out.append(" ");
@@ -205,4 +206,5 @@ public class QueryCreator {
     public ArrayList<String> selectSentencesExhaustively() {
         return sentenceList;
     }
+
 }
