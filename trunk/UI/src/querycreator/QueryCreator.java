@@ -123,7 +123,7 @@ public class QueryCreator {
     private ArrayList<String> getSelectedSentenceList() {
         ArrayList<String> filteredSentenceList = new ArrayList<String>();
         ArrayList<String> suspiciousSentenceList = new ArrayList<String>();
-
+        ArrayList<String> quotedsuspiciousSentenceList = new ArrayList<String>();
         int totalSentences = newSentenceList.length;
         Float estimatedNumberOfSentences = totalSentences * randomSelectionRatio;
         int roundedNumberOfSentences = estimatedNumberOfSentences.intValue();
@@ -189,8 +189,9 @@ public class QueryCreator {
                 }
             }
         }
-      
-        return suspiciousSentenceList;
+        quotedsuspiciousSentenceList = this.getQuotedList(suspiciousSentenceList) ;
+       // System.out.println( quotedsuspiciousSentenceList);
+        return quotedsuspiciousSentenceList;
     }
 
     private String arraylistToSting(ArrayList<String> token) {
@@ -205,6 +206,18 @@ public class QueryCreator {
 
     public ArrayList<String> selectSentencesExhaustively() {
         return sentenceList;
+    }
+
+    public ArrayList<String> getQuotedList(ArrayList<String> sentenceList){
+        Iterator itr = sentenceList.iterator();
+        ArrayList<String> quotedsuspiciousSentenceList = new ArrayList<String>();
+        while(itr.hasNext()){
+            String content = itr.next().toString();
+            content = (new StringBuffer(content)).insert(0,"\"").toString();
+            content = (new StringBuffer(content)).insert(content.length(),"\"").toString();
+            quotedsuspiciousSentenceList.add(content);
+        }
+        return quotedsuspiciousSentenceList;
     }
 
 }
