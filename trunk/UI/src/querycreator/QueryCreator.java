@@ -131,18 +131,18 @@ public class QueryCreator {
         for (int i = 0; i < sentenceResultList.size(); i++) {
 
             if (sentenceResultList.get(i).score < 10) {
-                StopWordRemover stopWordRemover = new StopWordRemover();
-                ArrayList<String> stopWordsRemovedList;
-                String stopWordsRemovedSentence = "";
+//                StopWordRemover stopWordRemover = new StopWordRemover();
+//                ArrayList<String> stopWordsRemovedList;
+//                String stopWordsRemovedSentence = "";
+//
+//                try {
+//                    stopWordsRemovedList = stopWordRemover.analyze(sentenceResultList.get(i).sentence);
+//                    stopWordsRemovedSentence = this.arraylistToSting(stopWordsRemovedList);
+//                } catch (IOException ex) {
+//                    Logger.getLogger(QueryCreator.class.getName()).log(Level.SEVERE, null, ex);
+//                }
 
-                try {
-                    stopWordsRemovedList = stopWordRemover.analyze(sentenceResultList.get(i).sentence);
-                    stopWordsRemovedSentence = this.arraylistToSting(stopWordsRemovedList);
-                } catch (IOException ex) {
-                    Logger.getLogger(QueryCreator.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-                filteredSentenceList.add(stopWordsRemovedSentence);
+                filteredSentenceList.add(sentenceResultList.get(i).sentence);
             }
         }
 
