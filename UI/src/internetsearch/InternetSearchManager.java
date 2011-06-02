@@ -131,6 +131,7 @@ public class InternetSearchManager {
             while (sourceIterator.hasNext()) {
                 Map.Entry pair = (Map.Entry) sourceIterator.next();
                 String url = (String) pair.getKey();
+                System.out.println(url);
                 if (urlAndDownloadedPathMap.get(url) == null) {
                     // mark new file and download
                     downloadedFileIndex++;
