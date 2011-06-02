@@ -35,9 +35,14 @@ public class Worker extends SwingWorker<String[][], String> {
     @Override
     protected String[][] doInBackground() throws Exception {
         String downloadFolderPath = idm.downloadFiles(destFolderPath, fName);
+        System.out.println("Finished Downloading the internet files........................");
+        System.out.println("Start indexing the files........................");
         indexedFiles=indexingManger.indexSearch(indexFolderPath,selectedDocumentPath);
+        System.out.println("Finished indexing the files........................");
          try {
+            System.out.println("Start comparing files........................");
             temp = manager.compareFiles(selectedDocumentPath, downloadFolderPath, indexedFiles);
+            System.out.println("Finished comparing files........................");
 
         } catch (IOException ex) {
             System.out.println("There are no similar files or some error has occured");
