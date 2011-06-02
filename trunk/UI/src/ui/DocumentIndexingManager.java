@@ -59,7 +59,6 @@ public class DocumentIndexingManager {
             if (files[i].isFile()) {
                 System.out.println("testing Indexing files........................\n");
                 HashMap<String, Integer> selectedSources = psm.getSuspiciousDocList(files[i].getAbsolutePath());
-                System.out.println("testing 2 Indexing files........................\n");
                 Iterator it = selectedSources.entrySet().iterator();
                 int selectedDocuments = 0;
                 while (it.hasNext() && selectedDocuments < 10) {
