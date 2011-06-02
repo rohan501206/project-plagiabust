@@ -107,8 +107,6 @@ public class Manager {
      * @throws IOException
      */
     public String[][] compareFiles(String fileName, String downloadedFilePath, ArrayList<String> indexedFiles) throws IOException {
-
-
         String documentToCompare = fileName;
         String downloadedFolderPath = downloadedFilePath;
         ArrayList<String> preIndexedFiles = indexedFiles;
@@ -116,42 +114,26 @@ public class Manager {
         String[] downloadedFilesList = downloadedFiles.list();
         HashMap hm = new HashMap();
         int fileNo = 0;
-
-
-
         if (downloadedFilesList != null) {
-
             for (int i = 0; i < downloadedFilesList.length; i++) {
                 System.out.println("document downloaded " + i + " " + downloadedFilesList[i]);
             }
         }
-
-
-
         String[][] filenameText = new String[20][4];  // 20 because we download 10 files and index another 10 files and then we coompare
-
         for (int i = 0; i < indexedFiles.size(); i++) {
             System.out.println("document indexed " + i + " " + indexedFiles.get(i));
         }
-
         String preprocessTextOfTheComparisonFile = preprocessText(documentToCompare);
-
         for (int i = 0; i < downloadedFilesList.length; i++) {
-
             String downloadedFileName = downloadedFilesList[i];
             String preprocessText = preprocessText(downloadedFileName, downloadedFolderPath);
             hm.put(downloadedFileName, preprocessText);
         }
-
         for (int i = 0; i < preIndexedFiles.size(); i++) {
-
             String preprocessText = preprocessText(preIndexedFiles.get(i));
             hm.put(preIndexedFiles.get(i), preprocessText);
-
         }
-
         for (int i = 0; i < downloadedFilesList.length; i++) {
-
             ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
             float output = sca.getSimilarity(preprocessTextOfTheComparisonFile, hm.get(downloadedFilesList[i]).toString());
             String match = sca.getList();
@@ -171,7 +153,6 @@ public class Manager {
                 filenameText[fileNo][1] = secondFile;
                 filenameText[fileNo][2] = match;
                 fileNo++;
-
                 String Isplagarised = null;
                 if (output > 1.5) {
                     Isplagarised = "1";
@@ -182,8 +163,6 @@ public class Manager {
             }
 
         }
-
-
         for (int i = 0; i < preIndexedFiles.size(); i++) {
 
             ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
@@ -214,13 +193,7 @@ public class Manager {
                 }
                 // filenameText[i][3] = Isplagarised;
             }
-
-
-
         }
-
-
-
         return filenameText;
     }
 
@@ -232,7 +205,6 @@ public class Manager {
      * @throws IOException
      */
     public String[][] compareAllFiles(HashMap<File, ArrayList<String>> indexedFilesList, HashMap<String, ArrayList<String>> downloadedFilesList) throws IOException {
-
         Iterator downloadIterator = downloadedFilesList.entrySet().iterator();
         Iterator it = indexedFilesList.entrySet().iterator();
         ArrayList indexedFilesForFile = new ArrayList();
@@ -240,15 +212,11 @@ public class Manager {
         String[][] filenameText = new String[1000][4];
         int fileNo = 0;
         int index = 0;
-
         while (it.hasNext()) {
-
-
             Map.Entry pair = (Map.Entry) it.next();
             File filePath = (File) pair.getKey();
             indexedFilesForFile = indexedFilesList.get(filePath);
             ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
-
             for (int i = 0; i < indexedFilesForFile.size(); i++) {
                 File createFile = new File((String) indexedFilesForFile.get(i));
                 float output = sca.getSimilarity(preprocessText(filePath.getAbsolutePath()), preprocessText(createFile.getAbsolutePath()));
@@ -276,22 +244,11 @@ public class Manager {
                     } else {
                         Isplagarised = "0";
                     }
-
-
                 }
-
-
-
-
-
-
-
             }
         }
 
         while (downloadIterator.hasNext()) {
-
-
             Map.Entry pair = (Map.Entry) downloadIterator.next();
             String filePath = (String) pair.getKey();
             downloadedFilesForFile = downloadedFilesList.get(filePath);
@@ -324,20 +281,10 @@ public class Manager {
                     } else {
                         Isplagarised = "0";
                     }
-
-
                 }
-
-
-
-
-
-
 
             }
         }
-
-
         return filenameText;
     }
 
