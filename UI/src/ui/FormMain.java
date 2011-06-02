@@ -153,10 +153,6 @@ public class FormMain extends javax.swing.JFrame {
         previousButton = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         secondFileTextArea = new javax.swing.JTextArea();
-        profilePanel = new javax.swing.JPanel();
-        jTabbedPane3 = new javax.swing.JTabbedPane();
-        jPanel10 = new javax.swing.JPanel();
-        jPanel12 = new javax.swing.JPanel();
         settingsPanel = new javax.swing.JPanel();
         jTabbedPane4 = new javax.swing.JTabbedPane();
         jPanel2 = new ImagePanelBase("Images" + File.separator + "background.png");
@@ -248,8 +244,8 @@ public class FormMain extends javax.swing.JFrame {
                 .addGap(61, 61, 61)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel5Layout.createSequentialGroup()
-                        .addComponent(fileListComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(fileListComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(265, 265, 265)
                         .addComponent(checkButton))
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -266,7 +262,7 @@ public class FormMain extends javax.swing.JFrame {
                         .addComponent(processingLabel)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(singleDocProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 658, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -282,13 +278,13 @@ public class FormMain extends javax.swing.JFrame {
                     .addComponent(peerSearchButton))
                 .addGap(142, 142, 142)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(checkButton)
-                    .addComponent(fileListComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(fileListComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(checkButton))
                 .addGap(147, 147, 147)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(singleDocProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(processingLabel))
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         jTabbedPane2.addTab("New Check", new javax.swing.ImageIcon(getClass().getResource("/Images/NewCheck.png")), jPanel5); // NOI18N
@@ -381,7 +377,7 @@ public class FormMain extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
                             .addComponent(searchLabel))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                         .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 216, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -405,7 +401,7 @@ public class FormMain extends javax.swing.JFrame {
                     .addGroup(jPanel6Layout.createSequentialGroup()
                         .addGap(58, 58, 58)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(78, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -436,7 +432,7 @@ public class FormMain extends javax.swing.JFrame {
                         .addComponent(searchButton)))
                 .addGap(38, 38, 38)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
@@ -456,57 +452,11 @@ public class FormMain extends javax.swing.JFrame {
             newcheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(newcheckPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 486, Short.MAX_VALUE)
+                .addComponent(jTabbedPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 488, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         mainTabbedPane.addTab("Plagiarism Check", new javax.swing.ImageIcon(getClass().getResource("/Images/Edit.png")), newcheckPanel); // NOI18N
-
-        jTabbedPane3.setTabPlacement(javax.swing.JTabbedPane.LEFT);
-        jTabbedPane3.setFont(new java.awt.Font("Tahoma", 0, 18));
-
-        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
-        jPanel10.setLayout(jPanel10Layout);
-        jPanel10Layout.setHorizontalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 887, Short.MAX_VALUE)
-        );
-        jPanel10Layout.setVerticalGroup(
-            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 494, Short.MAX_VALUE)
-        );
-
-        jTabbedPane3.addTab("Search", new javax.swing.ImageIcon(getClass().getResource("/Images/Search.png")), jPanel10); // NOI18N
-
-        javax.swing.GroupLayout jPanel12Layout = new javax.swing.GroupLayout(jPanel12);
-        jPanel12.setLayout(jPanel12Layout);
-        jPanel12Layout.setHorizontalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 887, Short.MAX_VALUE)
-        );
-        jPanel12Layout.setVerticalGroup(
-            jPanel12Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 494, Short.MAX_VALUE)
-        );
-
-        jTabbedPane3.addTab("Enrollments", new javax.swing.ImageIcon(getClass().getResource("/Images/Add.png")), jPanel12); // NOI18N
-
-        javax.swing.GroupLayout profilePanelLayout = new javax.swing.GroupLayout(profilePanel);
-        profilePanel.setLayout(profilePanelLayout);
-        profilePanelLayout.setHorizontalGroup(
-            profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(profilePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 1043, Short.MAX_VALUE))
-        );
-        profilePanelLayout.setVerticalGroup(
-            profilePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(profilePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane3))
-        );
-
-        mainTabbedPane.addTab("Student Profiles", new javax.swing.ImageIcon(getClass().getResource("/Images/User.png")), profilePanel); // NOI18N
 
         jTabbedPane4.setTabPlacement(javax.swing.JTabbedPane.LEFT);
         jTabbedPane4.setFont(new java.awt.Font("Tahoma", 0, 18));
@@ -571,7 +521,7 @@ public class FormMain extends javax.swing.JFrame {
             .addGroup(intenetSourceSettingsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(intenetSourceSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(bingSearchIDLable, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(bingSearchIDLable, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
                     .addGroup(intenetSourceSettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(bingIdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(applyBindIdButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -614,7 +564,7 @@ public class FormMain extends javax.swing.JFrame {
             .addGroup(PeerSearchSettingPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PeerSearchSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(randomSelectionRatioLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+                    .addComponent(randomSelectionRatioLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                     .addComponent(numOfSourcesLable1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(56, 56, 56)
                 .addGroup(PeerSearchSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -637,7 +587,7 @@ public class FormMain extends javax.swing.JFrame {
                     .addGroup(PeerSearchSettingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(numOfSourcesLable1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(numOfPeerSourcesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(13, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -658,7 +608,7 @@ public class FormMain extends javax.swing.JFrame {
                 .addComponent(intenetSourceSettingsPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PeerSearchSettingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         jTabbedPane4.addTab("Configure  ", new javax.swing.ImageIcon(getClass().getResource("/Images/Configure.png")), jPanel2); // NOI18N
@@ -714,7 +664,7 @@ public class FormMain extends javax.swing.JFrame {
                         .addComponent(cancelButton)
                         .addGap(41, 41, 41)
                         .addComponent(okButton)))
-                .addContainerGap(346, Short.MAX_VALUE))
+                .addContainerGap(321, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -751,7 +701,7 @@ public class FormMain extends javax.swing.JFrame {
             settingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(settingsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE))
+                .addComponent(jTabbedPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE))
         );
 
         mainTabbedPane.addTab("Settings    ", new javax.swing.ImageIcon(getClass().getResource("/Images/Settings.png")), settingsPanel); // NOI18N
@@ -763,7 +713,7 @@ public class FormMain extends javax.swing.JFrame {
         jPanel17.setLayout(jPanel17Layout);
         jPanel17Layout.setHorizontalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 885, Short.MAX_VALUE)
+            .addGap(0, 895, Short.MAX_VALUE)
         );
         jPanel17Layout.setVerticalGroup(
             jPanel17Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -776,7 +726,7 @@ public class FormMain extends javax.swing.JFrame {
         jPanel18.setLayout(jPanel18Layout);
         jPanel18Layout.setHorizontalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 885, Short.MAX_VALUE)
+            .addGap(0, 895, Short.MAX_VALUE)
         );
         jPanel18Layout.setVerticalGroup(
             jPanel18Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -791,13 +741,13 @@ public class FormMain extends javax.swing.JFrame {
             helpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(helpPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1043, Short.MAX_VALUE))
+                .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1044, Short.MAX_VALUE))
         );
         helpPanelLayout.setVerticalGroup(
             helpPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(helpPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane5))
+                .addComponent(jTabbedPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE))
         );
 
         mainTabbedPane.addTab("Help         ", new javax.swing.ImageIcon(getClass().getResource("/Images/Help.png")), helpPanel); // NOI18N
@@ -836,7 +786,7 @@ public class FormMain extends javax.swing.JFrame {
     private void cancelButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelButtonActionPerformed
         listData.removeAllElements();
         keywordList.setListData(listData);
-    // TODO add your handling code here:
+        // TODO add your handling code here:
 }//GEN-LAST:event_cancelButtonActionPerformed
 
     private void okButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_okButtonActionPerformed
@@ -847,8 +797,8 @@ public class FormMain extends javax.swing.JFrame {
         keyremover.addKeyWordsToList("src" + File.separatorChar + "preprocess" + File.separatorChar + "StopWordList", content);
         JOptionPane jop = new JOptionPane();
         jop.showMessageDialog(this, "keywords successfully added to the list");
-
-    // TODO add your handling code here:
+        
+        // TODO add your handling code here:
 }//GEN-LAST:event_okButtonActionPerformed
 
     private void removeFromListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removeFromListButtonActionPerformed
@@ -864,10 +814,10 @@ public class FormMain extends javax.swing.JFrame {
             }
             keywordList.setSelectedIndex(selection);
         }
-
-
-
-    // TODO add your handling code here:
+        
+        
+        
+        // TODO add your handling code here:
 }//GEN-LAST:event_removeFromListButtonActionPerformed
 
     private void addToListButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addToListButtonActionPerformed
@@ -879,15 +829,37 @@ public class FormMain extends javax.swing.JFrame {
             listData.addElement(stringValue);
             keywordList.setListData(listData);
         }
-    // TODO add your handling code here:
+        // TODO add your handling code here:
 }//GEN-LAST:event_addToListButtonActionPerformed
 
     private void previousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousButtonActionPerformed
-
+        
         FileOperator foperator = new FileOperator();
         try{
-        if (!(numberOfFiles < 0)) {
-            numberOfFiles--;
+            if (!(numberOfFiles < 0)) {
+                numberOfFiles--;
+                String fileName1 = temp[numberOfFiles][0];
+                String fileName2 = temp[numberOfFiles][1];
+                jTextField3.setText(temp[numberOfFiles][0]);
+                jTextField4.setText(temp[numberOfFiles][1]);
+                jTextField2.setText(temp[numberOfFiles][2]);
+                String[] texts = foperator.textSetter(fileName1, fileName2);
+                String field1 = texts[0];
+                String field2 = texts[1];
+                firstFileTextArea.setText(field1.toLowerCase());
+                secondFileTextArea.setText(field2.toLowerCase());
+            }
+        } catch (Exception e){
+            
+        }
+        
+    }//GEN-LAST:event_previousButtonActionPerformed
+
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
+        
+        FileOperator foperator = new FileOperator();
+        numberOfFiles++;
+        try{
             String fileName1 = temp[numberOfFiles][0];
             String fileName2 = temp[numberOfFiles][1];
             jTextField3.setText(temp[numberOfFiles][0]);
@@ -898,39 +870,13 @@ public class FormMain extends javax.swing.JFrame {
             String field2 = texts[1];
             firstFileTextArea.setText(field1.toLowerCase());
             secondFileTextArea.setText(field2.toLowerCase());
-        }
-        }
-        catch (Exception e){
+        } catch(Exception e){
             
         }
-
-
-}//GEN-LAST:event_previousButtonActionPerformed
-
-    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
-
-        FileOperator foperator = new FileOperator();       
-        numberOfFiles++;
-        try{
-        String fileName1 = temp[numberOfFiles][0];
-        String fileName2 = temp[numberOfFiles][1];
-        jTextField3.setText(temp[numberOfFiles][0]);
-        jTextField4.setText(temp[numberOfFiles][1]);
-        jTextField2.setText(temp[numberOfFiles][2]);
-        String[] texts = foperator.textSetter(fileName1, fileName2);
-        String field1 = texts[0];
-        String field2 = texts[1];
-        firstFileTextArea.setText(field1.toLowerCase());
-        secondFileTextArea.setText(field2.toLowerCase());
-        }
-        catch(Exception e){
-            
-        }
-
-}//GEN-LAST:event_nextButtonActionPerformed
+    }//GEN-LAST:event_nextButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-
+        
         painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
         firstFileTextArea.setHighlighter(hilit);
         secondFileTextArea.setHighlighter(hilit2);
@@ -945,9 +891,9 @@ public class FormMain extends javax.swing.JFrame {
             return;
         }
         if (queryString.contains(":")) {
-
+            
             query = queryString.split(":");
-
+            
         } else {
             query = new String[1];
             query[0] = queryString;
@@ -1026,7 +972,7 @@ public class FormMain extends javax.swing.JFrame {
             fileArrayList.add(files[arr].getAbsolutePath());
         }
         final PeerSearchWorker psworker = new PeerSearchWorker(destFolderPath,files,indexFolderPath,fileArrayList,manager) {
-             // This method is invoked when the worker is finished
+            // This method is invoked when the worker is finished
             // its task
             @Override
             protected void done() {
@@ -1034,19 +980,19 @@ public class FormMain extends javax.swing.JFrame {
                     singleDocProgressBar.setVisible(false);
                     processingLabel.setVisible(false);
                     temp = get();
-                     setTempArray(temp);
-                        jTextField3.setText(temp[0][0]);
-                        jTextField4.setText(temp[0][1]);
-                        jTextField2.setText(temp[0][2]);
-                        String fileName1 = jTextField3.getText();
-                        String fileName2 = jTextField4.getText();
-                        jTabbedPane2.setSelectedIndex(5);
-                        FileOperator setTextToTextAreas = new FileOperator();
-                        String[] texts = setTextToTextAreas.textSetter(fileName1, fileName2);
-                        String field1 = texts[0];
-                        String field2 = texts[1];
-                        firstFileTextArea.setText(field1.toLowerCase());
-                        secondFileTextArea.setText(field2.toLowerCase());
+                    setTempArray(temp);
+                    jTextField3.setText(temp[0][0]);
+                    jTextField4.setText(temp[0][1]);
+                    jTextField2.setText(temp[0][2]);
+                    String fileName1 = jTextField3.getText();
+                    String fileName2 = jTextField4.getText();
+                    jTabbedPane2.setSelectedIndex(5);
+                    FileOperator setTextToTextAreas = new FileOperator();
+                    String[] texts = setTextToTextAreas.textSetter(fileName1, fileName2);
+                    String field1 = texts[0];
+                    String field2 = texts[1];
+                    firstFileTextArea.setText(field1.toLowerCase());
+                    secondFileTextArea.setText(field2.toLowerCase());
                 } catch (InterruptedException ex) {
                     Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ExecutionException ex) {
@@ -1096,12 +1042,11 @@ public class FormMain extends javax.swing.JFrame {
             }
         };
         sworker.execute();
-
-       
-}//GEN-LAST:event_checkButtonActionPerformed
+        
+    }//GEN-LAST:event_checkButtonActionPerformed
 
     private void exploreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exploreButtonActionPerformed
-
+        
         FileOperator fileOPerator = new FileOperator(sourceFolderName);
         fileOPerator.anyToTextConverter();
         fileOPerator.TextFileIndexer();
@@ -1129,7 +1074,7 @@ public class FormMain extends javax.swing.JFrame {
             sourceFolderName = fc.getSelectedFile().getAbsolutePath();
             fc.setVisible(false);
         }
-    // TODO add your handling code here:
+        // TODO add your handling code here:
 }//GEN-LAST:event_browseButtonActionPerformed
 
     void message(String msg) {
@@ -1206,8 +1151,6 @@ public class FormMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel12;
     private javax.swing.JPanel jPanel17;
     private javax.swing.JPanel jPanel18;
     private javax.swing.JPanel jPanel2;
@@ -1217,7 +1160,6 @@ public class FormMain extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane2;
-    private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JTabbedPane jTabbedPane4;
     private javax.swing.JTabbedPane jTabbedPane5;
     private javax.swing.JTextField jTextField2;
@@ -1240,7 +1182,6 @@ public class FormMain extends javax.swing.JFrame {
     private javax.swing.JComboBox peerSearchRandomRatioComboBox;
     private javax.swing.JButton previousButton;
     private javax.swing.JLabel processingLabel;
-    private javax.swing.JPanel profilePanel;
     private javax.swing.JComboBox randomSelectionRatioComboBox;
     private javax.swing.JLabel randomSelectionRatioLabel;
     private javax.swing.JLabel randomSelectionRatioLabel1;
