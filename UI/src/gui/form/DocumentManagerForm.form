@@ -1,4 +1,4 @@
-<?xml version="1.1" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
@@ -50,8 +50,8 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="NumOfDocumentsLabel" alignment="1" pref="702" max="32767" attributes="0"/>
-                  <Component id="DocumentManagerMainPanel" alignment="1" pref="702" max="32767" attributes="0"/>
+                  <Component id="NumOfDocumentsLabel" alignment="1" pref="714" max="32767" attributes="0"/>
+                  <Component id="DocumentManagerMainPanel" alignment="1" pref="714" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -92,19 +92,14 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Component id="DocumentManagerImageLabel" pref="213" max="32767" attributes="1"/>
-                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
-                          <Component id="CommandPanel" min="-2" max="-2" attributes="1"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="DocumentManagerImageLabel" min="0" pref="0" max="32767" attributes="1"/>
+                      <Component id="CommandPanel" alignment="0" max="32767" attributes="1"/>
                   </Group>
+                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="DocumentTableSeparator" min="-2" pref="2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="DocumentTableScrollPane" pref="437" max="32767" attributes="0"/>
+                  <Component id="DocumentTableScrollPane" pref="485" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -113,13 +108,13 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="1" attributes="0">
                   <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="DocumentTableSeparator" alignment="1" pref="315" max="32767" attributes="0"/>
+                      <Component id="DocumentTableScrollPane" alignment="0" pref="326" max="32767" attributes="0"/>
+                      <Component id="DocumentTableSeparator" alignment="1" pref="326" max="32767" attributes="0"/>
                       <Group type="102" alignment="1" attributes="0">
                           <Component id="DocumentManagerImageLabel" max="32767" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="CommandPanel" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="DocumentTableScrollPane" alignment="0" pref="315" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -141,12 +136,12 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="DoneButton" min="-2" max="-2" attributes="0"/>
-                          <Component id="AddFilesButton" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="RemoveFilesButton" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="DoneButton" alignment="0" min="0" pref="0" max="32767" attributes="1"/>
+                          <Component id="RemoveFilesButton" alignment="0" min="0" pref="0" max="32767" attributes="1"/>
+                          <Component id="AddFilesButton" alignment="0" pref="147" max="32767" attributes="1"/>
                       </Group>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
@@ -160,6 +155,7 @@
                       <Component id="RemoveFilesButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="DoneButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -175,6 +171,9 @@
                   <Dimension value="[180, 40]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="AddFilesButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="RemoveFilesButton">
               <Properties>
@@ -186,6 +185,9 @@
                   <Dimension value="[180, 40]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RemoveFilesButtonActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="DoneButton">
               <Properties>
@@ -197,6 +199,9 @@
                   <Dimension value="[180, 40]"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="DoneButtonActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -228,40 +233,14 @@
                   <Font name="Tahoma" size="12" style="0"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                  <Table columnCount="4" rowCount="17">
-                    <Column editable="false" title="#" type="java.lang.String"/>
-                    <Column editable="false" title="Size(KB)" type="java.lang.String"/>
-                    <Column editable="false" title="FileName" type="java.lang.String"/>
-                    <Column editable="false" title="Location" type="java.lang.String"/>
-                  </Table>
+                  <Table columnCount="0" rowCount="0"/>
                 </Property>
                 <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                  <TableColumnModel selectionModel="2">
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="42" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="55" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="180" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="160" resizable="true">
-                      <Title/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                  </TableColumnModel>
+                  <TableColumnModel selectionModel="2"/>
                 </Property>
                 <Property name="columnSelectionAllowed" type="boolean" value="true"/>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                  <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
+                  <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                 </Property>
               </Properties>
             </Component>
