@@ -24,7 +24,7 @@ public class TextFieldBase extends JTextField {
         this.setFont(buttonFont);
     }
 
-    @Override
+    
     public void setHorizontalAlignment(int alignment) {
         super.setHorizontalAlignment(alignment);
     }
