@@ -10,6 +10,16 @@
  */
 package gui.form;
 
+import java.io.File;
+import java.util.AbstractList;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
+import javax.swing.JCheckBox;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author Brave Heart
@@ -17,10 +27,13 @@ package gui.form;
 public class DocumentManagerForm extends javax.swing.JFrame {
 
     public static DocumentManagerForm documentManagerForm;
+    DefaultTableModel model;
 
     /** Creates new form DocumentManagerForm */
     private DocumentManagerForm() {
         initComponents();
+        String[] columns = {"File Name", "Destination"};
+        model = new DefaultTableModel(columns, 0);
     }
 
     public static DocumentManagerForm getInstance() {
@@ -78,14 +91,29 @@ public class DocumentManagerForm extends javax.swing.JFrame {
         AddFilesButton.setFont(new java.awt.Font("Tahoma", 0, 12));
         AddFilesButton.setText("Add Files");
         AddFilesButton.setPreferredSize(new java.awt.Dimension(180, 40));
+        AddFilesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AddFilesButtonActionPerformed(evt);
+            }
+        });
 
         RemoveFilesButton.setFont(new java.awt.Font("Tahoma", 0, 12));
         RemoveFilesButton.setText("Remove Files");
         RemoveFilesButton.setPreferredSize(new java.awt.Dimension(180, 40));
+        RemoveFilesButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemoveFilesButtonActionPerformed(evt);
+            }
+        });
 
         DoneButton.setFont(new java.awt.Font("Tahoma", 0, 12));
         DoneButton.setText("Done");
         DoneButton.setPreferredSize(new java.awt.Dimension(180, 40));
+        DoneButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DoneButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout CommandPanelLayout = new javax.swing.GroupLayout(CommandPanel);
         CommandPanel.setLayout(CommandPanelLayout);
@@ -93,10 +121,10 @@ public class DocumentManagerForm extends javax.swing.JFrame {
             CommandPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CommandPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(CommandPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(DoneButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AddFilesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(RemoveFilesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(CommandPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(DoneButton, javax.swing.GroupLayout.Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+                    .addComponent(RemoveFilesButton, javax.swing.GroupLayout.Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+                    .addComponent(AddFilesButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         CommandPanelLayout.setVerticalGroup(
@@ -106,61 +134,26 @@ public class DocumentManagerForm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(RemoveFilesButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DoneButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(DoneButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         DocumentManagerImageLabel.setBackground(new java.awt.Color(255, 255, 255));
         DocumentManagerImageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/resource/image/background/DocumentManager.png"))); // NOI18N
 
         DocumentTable.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        DocumentTable.setFont(new java.awt.Font("Tahoma", 0, 12));
+        DocumentTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         DocumentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "#", "Size(KB)", "FileName", "Location"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false
-            };
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
             }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
+        ));
         DocumentTable.setColumnSelectionAllowed(true);
-        DocumentTable.getTableHeader().setReorderingAllowed(false);
         DocumentTableScrollPane.setViewportView(DocumentTable);
         DocumentTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
-        DocumentTable.getColumnModel().getColumn(0).setPreferredWidth(42);
-        DocumentTable.getColumnModel().getColumn(1).setPreferredWidth(55);
-        DocumentTable.getColumnModel().getColumn(2).setPreferredWidth(180);
-        DocumentTable.getColumnModel().getColumn(3).setPreferredWidth(160);
 
         DocumentTableSeparator.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
@@ -170,28 +163,25 @@ public class DocumentManagerForm extends javax.swing.JFrame {
             DocumentManagerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DocumentManagerMainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(DocumentManagerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(DocumentManagerMainPanelLayout.createSequentialGroup()
-                        .addComponent(DocumentManagerImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE)
-                        .addGap(8, 8, 8))
-                    .addGroup(DocumentManagerMainPanelLayout.createSequentialGroup()
-                        .addComponent(CommandPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addGroup(DocumentManagerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(DocumentManagerImageLabel, 0, 0, Short.MAX_VALUE)
+                    .addComponent(CommandPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(DocumentTableSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(DocumentTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 437, Short.MAX_VALUE)
+                .addComponent(DocumentTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
                 .addContainerGap())
         );
         DocumentManagerMainPanelLayout.setVerticalGroup(
             DocumentManagerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DocumentManagerMainPanelLayout.createSequentialGroup()
                 .addGroup(DocumentManagerMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(DocumentTableSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                    .addComponent(DocumentTableScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                    .addComponent(DocumentTableSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
                     .addGroup(DocumentManagerMainPanelLayout.createSequentialGroup()
                         .addComponent(DocumentManagerImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CommandPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(DocumentTableScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE))
+                        .addComponent(CommandPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -205,8 +195,8 @@ public class DocumentManagerForm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(NumOfDocumentsLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 702, Short.MAX_VALUE)
-                    .addComponent(DocumentManagerMainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 702, Short.MAX_VALUE))
+                    .addComponent(NumOfDocumentsLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 714, Short.MAX_VALUE)
+                    .addComponent(DocumentManagerMainPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 714, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -221,6 +211,69 @@ public class DocumentManagerForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void bindDatatoTable(File selectedFolder) {
+        File[] selectedFileArray = selectedFolder.listFiles();
+        ArrayList<SelectedFile> selectedFileList = new ArrayList<SelectedFile>();
+
+        for (int i = 0; i < selectedFileArray.length; i++) {
+            File file = selectedFileArray[i];
+
+            if (file.isFile()) {
+                SelectedFile selectedFile = new SelectedFile();
+                selectedFile.fileName = file.getName();
+                selectedFile.location = file.getPath();
+                selectedFileList.add(selectedFile);
+            }
+        }
+
+        for (int i = 0; i < selectedFileList.size(); i++) {
+            Vector row = new Vector();
+            row.add(selectedFileList.get(i).fileName);
+            row.add(selectedFileList.get(i).location);
+            model.addRow(row);
+        }
+
+        DocumentTable.setModel(model);
+    }
+
+    private void AddFilesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddFilesButtonActionPerformed
+
+        final JFileChooser fc = new JFileChooser();
+        fc.setApproveButtonText("Select");
+        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int returnVal = fc.showOpenDialog(this);
+
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            File selectedFolder = fc.getSelectedFile();
+            this.bindDatatoTable(selectedFolder);
+            fc.setVisible(false);
+        }
+
+    // updating table
+    }//GEN-LAST:event_AddFilesButtonActionPerformed
+
+    private void RemoveFilesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveFilesButtonActionPerformed
+        int[] selectedRows = DocumentTable.getSelectedRows();
+
+        for (int i = 0; i < selectedRows.length; i++) {
+            model.removeRow(i);
+        }
+
+        DocumentTable.setModel(model);
+    }//GEN-LAST:event_RemoveFilesButtonActionPerformed
+
+    private void DoneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoneButtonActionPerformed
+        if (DocumentTable.getSelectedRowCount()>1) {
+             JOptionPane.showMessageDialog(null, "Please select a single file to continue.");
+        }
+        else{
+            int index = DocumentTable.getSelectedRow();
+            String fileName = (String) model.getValueAt(index, 0);
+            fileName.charAt(0);
+        }
+    }//GEN-LAST:event_DoneButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddFilesButton;
     private javax.swing.JPanel CommandPanel;
