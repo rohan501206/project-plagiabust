@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import ComparisonEngine.ComparisonResult;
 import de.tud.kom.stringmatching.shinglecloud.ShingleCloudMatch;
+import gui.form.ProgressBarManager;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -19,6 +20,7 @@ import java.util.Map;
 import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JProgressBar;
 import net.didion.jwnl.JWNLException;
 import preprocess.*;
 
@@ -106,7 +108,7 @@ public class Manager {
      * @return Multi dimensional string array which consists of the the relevant files and the matching shingles
      * @throws IOException
      */
-    public String[][] compareFiles(String fileName, String downloadedFilePath, ArrayList<String> indexedFiles) throws IOException {
+    public String[][] compareFiles(String fileName, String downloadedFilePath, ArrayList<String> indexedFiles,JProgressBar preprocesspbar,JProgressBar crosscheckpbar) throws IOException {
         String documentToCompare = fileName;
         String downloadedFolderPath = downloadedFilePath;
         ArrayList<String> preIndexedFiles = indexedFiles;
@@ -122,30 +124,51 @@ public class Manager {
         String[][] filenameText = new String[20][4];  // 20 because we download 10 files and index another 10 files and then we coompare
         for (int i = 0; i < indexedFiles.size(); i++) {
             System.out.println("document indexed " + i + " " + indexedFiles.get(i));
-            
-
-        }
-
-
-        
+        } 
         String preprocessTextOfTheComparisonFile = preprocessText(documentToCompare);
-        
 
+        ProgressBarManager preprocessProgressBar = new ProgressBarManager(preprocesspbar);
+        // progress bar preprocess
 
         for (int i = 0; i < downloadedFilesList.length; i++) {
             String downloadedFileName = downloadedFilesList[i];
             String preprocessText = preprocessText(downloadedFileName, downloadedFolderPath);
             hm.put(downloadedFileName, preprocessText);
+            if(i==downloadedFilesList.length-1){
+                preprocessProgressBar.runProgress(100);
+            }
+            else{
+                preprocessProgressBar.runProgress((i*100)/downloadedFilesList.length);
+            }
         }
         for (int i = 0; i < preIndexedFiles.size(); i++) {
             String preprocessText = preprocessText(preIndexedFiles.get(i));
             hm.put(preIndexedFiles.get(i), preprocessText);
+
+            if(i==preIndexedFiles.size()-1){
+                preprocessProgressBar.runProgress(100);
+            }
+            else{
+                preprocessProgressBar.runProgress((i*100)/preIndexedFiles.size());
+            }
+
         }
+
+        ProgressBarManager crossCheck = new ProgressBarManager(crosscheckpbar);
+        // progress bar cross check
+
+
+
         for (int i = 0; i < downloadedFilesList.length; i++) {
+
+             if(i==downloadedFilesList.length-1){
+                crossCheck.runProgress(100);
+             }
+             else{
+                  crossCheck.runProgress((i*100)/downloadedFilesList.length);
+             }
             ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
-            
             float output = sca.getSimilarity(preprocessTextOfTheComparisonFile, hm.get(downloadedFilesList[i]).toString());
-             
             String match = sca.getList();
             String firstFile = documentToCompare;
             String secondFile = downloadedFolderPath + File.separator + downloadedFilesList[i];
@@ -174,6 +197,14 @@ public class Manager {
 
         }
         for (int i = 0; i < preIndexedFiles.size(); i++) {
+
+
+            if(i==preIndexedFiles.size()-1){
+                crossCheck.runProgress(100);
+            }
+            else{
+                crossCheck.runProgress((i*100)/preIndexedFiles.size());
+            }
 
             ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
             float output = sca.getSimilarity(preprocessTextOfTheComparisonFile, hm.get(preIndexedFiles.get(i)).toString());
