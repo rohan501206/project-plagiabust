@@ -205,7 +205,7 @@ public class Manager {
      * @throws IOException
      */
     public String[][] compareAllFiles(HashMap<File, ArrayList<String>> indexedFilesList, HashMap<String, ArrayList<String>> downloadedFilesList) throws IOException {
-        Iterator downloadIterator = downloadedFilesList.entrySet().iterator();
+       // Iterator downloadIterator = downloadedFilesList.entrySet().iterator();
         Iterator it = indexedFilesList.entrySet().iterator();
         ArrayList indexedFilesForFile = new ArrayList();
         ArrayList downloadedFilesForFile = new ArrayList();
@@ -248,6 +248,8 @@ public class Manager {
             }
         }
 
+        /*
+
         while (downloadIterator.hasNext()) {
             Map.Entry pair = (Map.Entry) downloadIterator.next();
             String filePath = (String) pair.getKey();
@@ -284,7 +286,7 @@ public class Manager {
                 }
 
             }
-        }
+        }*/
         return filenameText;
     }
 

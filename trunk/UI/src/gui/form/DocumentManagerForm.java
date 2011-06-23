@@ -25,7 +25,8 @@ import javax.swing.table.DefaultTableModel;
  * @author Brave Heart
  */
 public class DocumentManagerForm extends javax.swing.JFrame {
-
+    public static String fileName;
+    public static String folderpath;
     public static DocumentManagerForm documentManagerForm;
     DefaultTableModel model;
 
@@ -246,6 +247,7 @@ public class DocumentManagerForm extends javax.swing.JFrame {
 
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File selectedFolder = fc.getSelectedFile();
+            folderpath = selectedFolder.getAbsolutePath();
             this.bindDatatoTable(selectedFolder);
             fc.setVisible(false);
         }
@@ -269,8 +271,7 @@ public class DocumentManagerForm extends javax.swing.JFrame {
         }
         else{
             int index = DocumentTable.getSelectedRow();
-            String fileName = (String) model.getValueAt(index, 0);
-            fileName.charAt(0);
+             fileName = (String) model.getValueAt(index, 1);
         }
     }//GEN-LAST:event_DoneButtonActionPerformed
 
