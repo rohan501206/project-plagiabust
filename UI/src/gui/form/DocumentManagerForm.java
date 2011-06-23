@@ -46,7 +46,7 @@ public class DocumentManagerForm extends javax.swing.JFrame {
     private DefaultTableModel getDefaultTableModel() {
         String[] columns = {"File Name", "Destination"};
         DefaultTableModel defaultTableModel = new DefaultTableModel(columns, 0);
-        
+
         return defaultTableModel;
     }
 
