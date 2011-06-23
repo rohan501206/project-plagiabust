@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import reportingModule.ReportingModule;
 import ui.FileOperator;
@@ -70,7 +71,7 @@ public class WizardForm extends javax.swing.JFrame {
             }
         };
 
-        System.setOut(new PrintStream(out, true));
+         System.setOut(new PrintStream(out, true));
         //System.setErr(new PrintStream(out, true));
 
     }
@@ -168,7 +169,7 @@ public class WizardForm extends javax.swing.JFrame {
         PreprocessDocumentCompletionLabel = new javax.swing.JLabel();
         IndexFilesCompletionLabel = new javax.swing.JLabel();
         CrossCheckCompletionLabel = new javax.swing.JLabel();
-        KnowledgeBaseProgressBar = new javax.swing.JProgressBar();
+        DonloadFileProgressBar = new javax.swing.JProgressBar();
         PreprocessDocumentProgressBar = new javax.swing.JProgressBar();
         CreateIndexProgressBar = new javax.swing.JProgressBar();
         CrossCheckProgressBar = new javax.swing.JProgressBar();
@@ -202,7 +203,7 @@ public class WizardForm extends javax.swing.JFrame {
 
         DescriptionTextArea.setColumns(20);
         DescriptionTextArea.setEditable(false);
-        DescriptionTextArea.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        DescriptionTextArea.setFont(new java.awt.Font("Tahoma", 0, 12));
         DescriptionTextArea.setLineWrap(true);
         DescriptionTextArea.setRows(5);
         DescriptionTextArea.setText("This area contains helpful information for each step of plagiarism detection process.");
@@ -250,7 +251,7 @@ public class WizardForm extends javax.swing.JFrame {
 
         ProjectFolderTextField.setFont(new java.awt.Font("Tahoma", 0, 12));
 
-        LocationBrowseButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        LocationBrowseButton.setFont(new java.awt.Font("Tahoma", 0, 12));
         LocationBrowseButton.setText("Browse");
         LocationBrowseButton.setPreferredSize(new java.awt.Dimension(30, 30));
 
@@ -337,7 +338,7 @@ public class WizardForm extends javax.swing.JFrame {
 
         AddDocumentPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        DocumentManagerButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        DocumentManagerButton.setFont(new java.awt.Font("Tahoma", 0, 12));
         DocumentManagerButton.setText("Document Manager");
         DocumentManagerButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         DocumentManagerButton.setPreferredSize(new java.awt.Dimension(180, 40));
@@ -415,7 +416,7 @@ public class WizardForm extends javax.swing.JFrame {
 
         KnowledgeBasePanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        KBManagerButton.setFont(new java.awt.Font("Tahoma", 0, 12));
+        KBManagerButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         KBManagerButton.setText("Knowledge Base Manager");
         KBManagerButton.setPreferredSize(new java.awt.Dimension(180, 40));
         KBManagerButton.addActionListener(new java.awt.event.ActionListener() {
@@ -429,7 +430,7 @@ public class WizardForm extends javax.swing.JFrame {
         KBManagerBannerLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         KBManagerBannerLabel.setPreferredSize(new java.awt.Dimension(254, 32));
 
-        KBManagerButton1.setFont(new java.awt.Font("Tahoma", 0, 12));
+        KBManagerButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         KBManagerButton1.setText("Keyword Manager");
         KBManagerButton1.setPreferredSize(new java.awt.Dimension(180, 40));
         KBManagerButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -565,7 +566,7 @@ public class WizardForm extends javax.swing.JFrame {
         NumOfExternalSourcesComboBox.setFont(new java.awt.Font("Tahoma", 1, 12));
         NumOfExternalSourcesComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15", "20" }));
 
-        NumOfPeerSourceComboBox.setFont(new java.awt.Font("Tahoma", 1, 12));
+        NumOfPeerSourceComboBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         NumOfPeerSourceComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15", "20" }));
 
         ModesOfCheckLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
@@ -636,7 +637,7 @@ public class WizardForm extends javax.swing.JFrame {
 
         StartCheckPanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        CheckControlButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        CheckControlButton.setFont(new java.awt.Font("Tahoma", 0, 12));
         CheckControlButton.setText("Start Check");
         CheckControlButton.setPreferredSize(new java.awt.Dimension(180, 40));
         CheckControlButton.addActionListener(new java.awt.event.ActionListener() {
@@ -645,29 +646,29 @@ public class WizardForm extends javax.swing.JFrame {
             }
         });
 
-        CheckBannerLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        CheckBannerLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
         CheckBannerLabel.setText("Step 5 - Start Plagiarism Detection Process");
         CheckBannerLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         CheckBannerLabel.setPreferredSize(new java.awt.Dimension(252, 32));
 
         Step5ImageLabel.setPreferredSize(new java.awt.Dimension(32, 32));
 
-        TaskCompletionLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        TaskCompletionLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
         TaskCompletionLabel.setText("Task Completion");
 
-        KnowledgeBaseCompletionLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        KnowledgeBaseCompletionLabel.setText("Fetch to Knowledge Base");
+        KnowledgeBaseCompletionLabel.setFont(new java.awt.Font("Tahoma", 0, 12));
+        KnowledgeBaseCompletionLabel.setText("Downloading Internet Files");
 
-        PreprocessDocumentCompletionLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        PreprocessDocumentCompletionLabel.setFont(new java.awt.Font("Tahoma", 0, 12));
         PreprocessDocumentCompletionLabel.setText("Preprocess Documents");
 
-        IndexFilesCompletionLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        IndexFilesCompletionLabel.setFont(new java.awt.Font("Tahoma", 0, 12));
         IndexFilesCompletionLabel.setText("Creating File Indexes");
 
-        CrossCheckCompletionLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        CrossCheckCompletionLabel.setFont(new java.awt.Font("Tahoma", 0, 12));
         CrossCheckCompletionLabel.setText("Document Cross Check");
 
-        CommandsLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        CommandsLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
         CommandsLabel.setText("Commands");
 
         CommandTipScrollPane.setBorder(null);
@@ -677,7 +678,7 @@ public class WizardForm extends javax.swing.JFrame {
 
         CommandTipTextArea.setColumns(20);
         CommandTipTextArea.setEditable(false);
-        CommandTipTextArea.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        CommandTipTextArea.setFont(new java.awt.Font("Tahoma", 0, 12));
         CommandTipTextArea.setLineWrap(true);
         CommandTipTextArea.setRows(5);
         CommandTipTextArea.setText("Use command button to initaite, terminate and view check results");
@@ -688,7 +689,7 @@ public class WizardForm extends javax.swing.JFrame {
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
 
-        ViewButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ViewButton.setFont(new java.awt.Font("Tahoma", 0, 12));
         ViewButton.setText("View Report");
         ViewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -716,7 +717,7 @@ public class WizardForm extends javax.swing.JFrame {
                                 .addGap(63, 63, 63)
                                 .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(StartCheckPanelLayout.createSequentialGroup()
-                                        .addComponent(KnowledgeBaseProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(DonloadFileProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(110, 110, 110)
                                         .addComponent(Step5ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(111, 111, 111)
@@ -757,7 +758,7 @@ public class WizardForm extends javax.swing.JFrame {
                         .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Step5ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(KnowledgeBaseCompletionLabel)
-                            .addComponent(KnowledgeBaseProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(DonloadFileProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(10, 10, 10)
                 .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(StartCheckPanelLayout.createSequentialGroup()
@@ -788,7 +789,7 @@ public class WizardForm extends javax.swing.JFrame {
 
         WizardTabbedPane.addTab("Start Check   ", StartCheckPanel);
 
-        WizardNextButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        WizardNextButton.setFont(new java.awt.Font("Tahoma", 0, 12));
         WizardNextButton.setText("Next Step");
         WizardNextButton.setPreferredSize(new java.awt.Dimension(180, 40));
         WizardNextButton.addActionListener(new java.awt.event.ActionListener() {
@@ -868,11 +869,13 @@ public class WizardForm extends javax.swing.JFrame {
 
     private void DocumentManagerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DocumentManagerButtonActionPerformed
         DocumentManagerForm.getInstance().setVisible(true);
+
     // TODO add your handling code here:
     }//GEN-LAST:event_DocumentManagerButtonActionPerformed
 
     private void KBManagerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KBManagerButtonActionPerformed
         KBManagerForm.getInstance().setVisible(true);
+        
     // TODO add your handling code here:
     }//GEN-LAST:event_KBManagerButtonActionPerformed
 
@@ -924,7 +927,7 @@ public class WizardForm extends javax.swing.JFrame {
         this.setup();
         File destFolder = new File(destFolderPath);
         String selectedDocumentPath = sourceFolderName + File.separator + destFolder.getName() + File.separator + fName;
-        final Worker sworker = new Worker(destFolderPath, fName, indexFolderPath, selectedDocumentPath, manager) {
+        final Worker sworker = new Worker(destFolderPath, fName, indexFolderPath, selectedDocumentPath, manager,DonloadFileProgressBar,CreateIndexProgressBar) {
             // This method is invoked when the worker is finished
             // its task
 
@@ -986,6 +989,7 @@ public class WizardForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane DescriptionScrollPane;
     private javax.swing.JTextArea DescriptionTextArea;
     private javax.swing.JButton DocumentManagerButton;
+    private javax.swing.JProgressBar DonloadFileProgressBar;
     private javax.swing.JLabel IndexFilesCompletionLabel;
     private javax.swing.JLabel KBManagerBannerLabel;
     private javax.swing.JButton KBManagerButton;
@@ -1000,7 +1004,6 @@ public class WizardForm extends javax.swing.JFrame {
     private javax.swing.JTextArea KeywordTipTextArea;
     private javax.swing.JLabel KnowledgeBaseCompletionLabel;
     private javax.swing.JPanel KnowledgeBasePanel;
-    private javax.swing.JProgressBar KnowledgeBaseProgressBar;
     private javax.swing.JButton LocationBrowseButton;
     private javax.swing.JLabel ModesOfCheckLabel;
     private javax.swing.JSeparator ModesOfCheckSeparator;

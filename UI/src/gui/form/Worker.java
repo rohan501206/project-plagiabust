@@ -14,6 +14,7 @@ package gui.form;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.swing.JProgressBar;
 import javax.swing.SwingWorker;
 import ui.Manager;
 import ui.InternetDocumentDownloadManager;
@@ -25,7 +26,8 @@ import ui.FormMain;
  * @author Compaq
  */
 public class Worker extends SwingWorker<String[][], String> {
-    InternetDocumentDownloadManager idm=new InternetDocumentDownloadManager();
+   // InternetDocumentDownloadManager idm=new InternetDocumentDownloadManager();
+    InternetDocumentDownloadManager idm;
     DocumentIndexingManager indexingManger=new DocumentIndexingManager();
     FormMain form = new FormMain();
     String[][] temp = null;
@@ -34,13 +36,17 @@ public class Worker extends SwingWorker<String[][], String> {
     String indexFolderPath;
     String selectedDocumentPath;
     Manager manager;
+    JProgressBar pbar2;
+
     ArrayList<String> indexedFiles = new ArrayList<String>();
-    public Worker(String destFolderPath,String fName,String indexFolderPath,String selectedDocumentPath,Manager manager){
+    public Worker(String destFolderPath,String fName,String indexFolderPath,String selectedDocumentPath,Manager manager,JProgressBar pbar,JProgressBar pbar2){
         this.destFolderPath = destFolderPath;
         this.fName = fName;
         this.indexFolderPath = indexFolderPath;
         this.selectedDocumentPath=  selectedDocumentPath;
         this.manager = manager;
+        this.idm = new InternetDocumentDownloadManager(pbar);
+        this.pbar2 = pbar2;
     }
 
     @Override
@@ -48,7 +54,7 @@ public class Worker extends SwingWorker<String[][], String> {
         String downloadFolderPath = idm.downloadFiles(destFolderPath, fName);
         System.out.println("Finished Downloading the internet files........................");
         System.out.println("Start indexing the files........................");
-        indexedFiles=indexingManger.indexSearch(indexFolderPath,selectedDocumentPath);
+        indexedFiles=indexingManger.indexSearch(indexFolderPath,selectedDocumentPath,pbar2);
         System.out.println("Finished indexing the files........................");
          try {
             System.out.println("Start comparing files........................");

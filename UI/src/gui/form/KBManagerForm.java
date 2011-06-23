@@ -10,6 +10,8 @@
  */
 package gui.form;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Brave Heart
@@ -54,6 +56,11 @@ public class KBManagerForm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Knowledge Base Manager");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                open(evt);
+            }
+        });
 
         KBManagerMainPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Select Sources :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
         KBManagerMainPanel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -209,6 +216,13 @@ public class KBManagerForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void open(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_open
+        //JOptionPane jop = new JOptionPane();
+        //jop.showMessageDialog(this, "Still Not implemented");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_open
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AddDocumentButton;
     private javax.swing.JButton AddWebLinkButton;

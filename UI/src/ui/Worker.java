@@ -7,6 +7,7 @@ package ui;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import javax.swing.JProgressBar;
 import javax.swing.SwingWorker;
 
 /**
@@ -14,6 +15,8 @@ import javax.swing.SwingWorker;
  * @author Compaq
  */
 public class Worker extends SwingWorker<String[][], String> {
+
+    JProgressBar pbar;
     InternetDocumentDownloadManager idm=new InternetDocumentDownloadManager();
     DocumentIndexingManager indexingManger=new DocumentIndexingManager();
     FormMain form = new FormMain();
@@ -37,7 +40,7 @@ public class Worker extends SwingWorker<String[][], String> {
         String downloadFolderPath = idm.downloadFiles(destFolderPath, fName);
         System.out.println("Finished Downloading the internet files........................");
         System.out.println("Start indexing the files........................");
-        indexedFiles=indexingManger.indexSearch(indexFolderPath,selectedDocumentPath);
+        indexedFiles=indexingManger.indexSearch(indexFolderPath,selectedDocumentPath,pbar);
         System.out.println("Finished indexing the files........................");
          try {
             System.out.println("Start comparing files........................");

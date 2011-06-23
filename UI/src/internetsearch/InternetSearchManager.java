@@ -4,6 +4,7 @@
  */
 package internetsearch;
 
+import gui.form.ProgressBarManager;
 import querycreator.QueryCreator;
 import querycreator.QuerySelectionAlgorithm;
 import java.io.File;
@@ -20,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import javax.swing.JProgressBar;
 import org.htmlparser.beans.StringBean;
 
 /**
@@ -45,7 +47,11 @@ public class InternetSearchManager {
         return qsa;
     }
 
-    public String downloadSourcesForFile(String filePath) {
+    public String downloadSourcesForFile(String filePath,JProgressBar pbar) {
+        ProgressBarManager pmanager = new ProgressBarManager(pbar);
+
+
+
         File file = new File(filePath);
         String[] nameAndExt = file.getName().split("[.]");
         String downloadedFilesFolder = file.getParent() + File.separator + nameAndExt[0];
@@ -58,6 +64,7 @@ public class InternetSearchManager {
         // Create directory
         // Downloading page
             int downloadedDocuments = 1;
+            int total = selectedSources.size();
             Iterator it = selectedSources.entrySet().iterator();
             while (it.hasNext()) {
                 Map.Entry pair = (Map.Entry) it.next();
@@ -66,6 +73,9 @@ public class InternetSearchManager {
                 String path = downloadedFilesFolder + File.separatorChar + downloadedDocuments + ".txt";
                 downloadedDocuments++;
                 this.downloadWebPageAsText(url, path);
+
+                pmanager.runProgress(downloadedDocuments*10);
+
             }
 
         }
