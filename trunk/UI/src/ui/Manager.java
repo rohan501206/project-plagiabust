@@ -71,8 +71,8 @@ public class Manager {
                         String secondFile = fileFolder + File.separator + downloadedFilesList[j];
                         System.out.println(firstFile);
                         System.out.println(secondFile);
-                        //System.out.println("the string of the first text is" + hm.get(downloadedFilesList[i]).toString( ));
-                        // System.out.println("the string of the second text is" + hm.get(downloadedFilesList[j]).toString( ));
+                        System.out.println("the string of the first text is" + hm.get(downloadedFilesList[i]).toString( ));
+                         System.out.println("the string of the second text is" + hm.get(downloadedFilesList[j]).toString( ));
                         System.out.println("match is " + match);
                         System.out.println("Size of the fileNop is" + fileNo);
                         if (!match.isEmpty()) {
@@ -122,8 +122,16 @@ public class Manager {
         String[][] filenameText = new String[20][4];  // 20 because we download 10 files and index another 10 files and then we coompare
         for (int i = 0; i < indexedFiles.size(); i++) {
             System.out.println("document indexed " + i + " " + indexedFiles.get(i));
+            
+
         }
+
+
+        
         String preprocessTextOfTheComparisonFile = preprocessText(documentToCompare);
+        
+
+
         for (int i = 0; i < downloadedFilesList.length; i++) {
             String downloadedFileName = downloadedFilesList[i];
             String preprocessText = preprocessText(downloadedFileName, downloadedFolderPath);
@@ -135,15 +143,17 @@ public class Manager {
         }
         for (int i = 0; i < downloadedFilesList.length; i++) {
             ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
+            
             float output = sca.getSimilarity(preprocessTextOfTheComparisonFile, hm.get(downloadedFilesList[i]).toString());
+             
             String match = sca.getList();
             String firstFile = documentToCompare;
             String secondFile = downloadedFolderPath + File.separator + downloadedFilesList[i];
             System.out.println();
             System.out.println(firstFile);
             System.out.println(secondFile);
-            System.out.println("the string of the first text is " + preprocessTextOfTheComparisonFile);
-            System.out.println("the string of the second text is " + hm.get(downloadedFilesList[i]).toString());
+            //System.out.println("the string of the first text is " + preprocessTextOfTheComparisonFile);
+            //System.out.println("the string of the second text is " + hm.get(downloadedFilesList[i]).toString());
             System.out.println("match is " + match);
             System.out.println("Size of the matched files is " + fileNo);
             System.out.println();
@@ -173,8 +183,8 @@ public class Manager {
             System.out.println();
             System.out.println(firstFile);
             System.out.println(secondFile);
-            System.out.println("the string of the first text is" + preprocessTextOfTheComparisonFile);
-            System.out.println("the string of the second text is" + hm.get(preIndexedFiles.get(i)).toString());
+            //System.out.println("the string of the first text is" + preprocessTextOfTheComparisonFile);
+            //System.out.println("the string of the second text is" + hm.get(preIndexedFiles.get(i)).toString());
             System.out.println("match is " + match);
             System.out.println("Size of the matched files is " + fileNo);
             System.out.println();
