@@ -20,6 +20,7 @@ import peerdocumentsearch.PeerSearchManager;
  * @author nuwan
  */
 public class DocumentIndexingManager {
+    int maxNoIndexfiles = 10;
 
     public String indexFolderPath;
     public String selectedDocumentPath;
@@ -27,9 +28,9 @@ public class DocumentIndexingManager {
     HashMap<File, ArrayList<String>> indexedFileList = new HashMap<File, ArrayList<String>>();
 
 
-    public ArrayList<String> indexSearch(String indexpath,String selectDocPath,JProgressBar pbar){
+    public ArrayList<String> indexSearch(String indexpath,String selectDocPath,JProgressBar pbar,int amaxNoIndexfiles){
         ProgressBarManager pmanager = new ProgressBarManager(pbar);
-
+        maxNoIndexfiles = amaxNoIndexfiles;
 
         selectedDocumentPath=selectDocPath;
         indexFolderPath=indexpath;
@@ -39,7 +40,7 @@ public class DocumentIndexingManager {
         HashMap<String, Integer> selectedSources = psm.getSuspiciousDocList(selectedDocumentPath);
         Iterator it = selectedSources.entrySet().iterator();
         int selectedDocuments = 0;
-        while (it.hasNext() && selectedDocuments <= 10) {
+        while (it.hasNext() && selectedDocuments <= maxNoIndexfiles) {
             Map.Entry pair = (Map.Entry) it.next();
             String filePath = (String) pair.getKey();
             selectedDocuments++;
@@ -47,7 +48,7 @@ public class DocumentIndexingManager {
                 indexedFiles.add(filePath);
             }
 
-            pmanager.runProgress(selectedDocuments*10);
+            pmanager.runProgress((selectedDocuments*100)/maxNoIndexfiles);
 
         }
 
