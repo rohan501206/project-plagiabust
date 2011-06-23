@@ -19,6 +19,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import reportingModule.ReportingModule;
@@ -54,7 +55,7 @@ public class WizardForm extends javax.swing.JFrame {
         initComponents();
         ViewButton.setVisible(false);
         OutputStream out = new OutputStream() {
-
+       
             @Override
             public void write(int b) throws IOException {
                 updateTextArea(String.valueOf((char) b));
@@ -245,15 +246,23 @@ public class WizardForm extends javax.swing.JFrame {
         NameLocationLabel.setText("Name and Location");
         NameLocationLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
-        ProjectNameTextField.setFont(new java.awt.Font("Tahoma", 0, 12));
+        ProjectNameTextField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        ProjectNameTextField.setText("PlagiarismCheckProject");
 
-        ProjectLocationTextField.setFont(new java.awt.Font("Tahoma", 0, 12));
+        ProjectLocationTextField.setEditable(false);
+        ProjectLocationTextField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
-        ProjectFolderTextField.setFont(new java.awt.Font("Tahoma", 0, 12));
+        ProjectFolderTextField.setEditable(false);
+        ProjectFolderTextField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         LocationBrowseButton.setFont(new java.awt.Font("Tahoma", 0, 12));
         LocationBrowseButton.setText("Browse");
         LocationBrowseButton.setPreferredSize(new java.awt.Dimension(30, 30));
+        LocationBrowseButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LocationBrowseButtonActionPerformed(evt);
+            }
+        });
 
         NameLocationBannerLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
         NameLocationBannerLabel.setText("Step 1 - Select Name and Location");
@@ -416,7 +425,7 @@ public class WizardForm extends javax.swing.JFrame {
 
         KnowledgeBasePanel.setBackground(new java.awt.Color(255, 255, 255));
 
-        KBManagerButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        KBManagerButton.setFont(new java.awt.Font("Tahoma", 0, 12));
         KBManagerButton.setText("Knowledge Base Manager");
         KBManagerButton.setPreferredSize(new java.awt.Dimension(180, 40));
         KBManagerButton.addActionListener(new java.awt.event.ActionListener() {
@@ -430,7 +439,7 @@ public class WizardForm extends javax.swing.JFrame {
         KBManagerBannerLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         KBManagerBannerLabel.setPreferredSize(new java.awt.Dimension(254, 32));
 
-        KBManagerButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        KBManagerButton1.setFont(new java.awt.Font("Tahoma", 0, 12));
         KBManagerButton1.setText("Keyword Manager");
         KBManagerButton1.setPreferredSize(new java.awt.Dimension(180, 40));
         KBManagerButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -566,7 +575,7 @@ public class WizardForm extends javax.swing.JFrame {
         NumOfExternalSourcesComboBox.setFont(new java.awt.Font("Tahoma", 1, 12));
         NumOfExternalSourcesComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15", "20" }));
 
-        NumOfPeerSourceComboBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        NumOfPeerSourceComboBox.setFont(new java.awt.Font("Tahoma", 1, 12));
         NumOfPeerSourceComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15", "20" }));
 
         ModesOfCheckLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
@@ -792,7 +801,7 @@ public class WizardForm extends javax.swing.JFrame {
 
         WizardTabbedPane.addTab("Start Check   ", StartCheckPanel);
 
-        WizardNextButton.setFont(new java.awt.Font("Tahoma", 0, 12));
+        WizardNextButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         WizardNextButton.setText("Next Step");
         WizardNextButton.setPreferredSize(new java.awt.Dimension(180, 40));
         WizardNextButton.addActionListener(new java.awt.event.ActionListener() {
@@ -909,15 +918,19 @@ public class WizardForm extends javax.swing.JFrame {
     }//GEN-LAST:event_WizardPreviousButtonActionPerformed
 
     private void WizardNextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WizardNextButtonActionPerformed
+        
         int currentTabIndex = WizardTabbedPane.getSelectedIndex();
         WizardTabbedPane.setSelectedIndex(++currentTabIndex);
+        
     // TODO add your handling code here:
     }//GEN-LAST:event_WizardNextButtonActionPerformed
 
     public void setup() {
         sourceFolderName = DocumentManagerForm.folderpath;
         fName = DocumentManagerForm.fileName;
-        FileOperator fileOPerator = new FileOperator(sourceFolderName);
+        File projectFolder = new File(ProjectFolderTextField.getText());
+        projectFolder.mkdir();
+        FileOperator fileOPerator = new FileOperator(sourceFolderName, projectFolder.getAbsolutePath());
         fileOPerator.anyToTextConverter();
         fileOPerator.TextFileIndexer();
         destFolderPath = fileOPerator.getDestinatonFolderPath();
@@ -969,6 +982,21 @@ public class WizardForm extends javax.swing.JFrame {
                 //rp.setData();
                 rp.setDocument(selectedDocumentPath);// TODO add your handling code here:
     }//GEN-LAST:event_ViewButtonActionPerformed
+
+    private void LocationBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LocationBrowseButtonActionPerformed
+        final JFileChooser fc = new JFileChooser();
+        fc.setApproveButtonText("Select");
+        fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+        int returnVal = fc.showOpenDialog(this);
+
+        if (returnVal == JFileChooser.APPROVE_OPTION) {
+            File selectedFolder = fc.getSelectedFile();
+            ProjectLocationTextField.setText(selectedFolder.getAbsolutePath());
+            ProjectFolderTextField.setText(selectedFolder.getAbsolutePath() + File.separatorChar + ProjectNameTextField.getText());
+            fc.setVisible(false);
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_LocationBrowseButtonActionPerformed
 
     public void setTempArray(ReportData temp) {
         this.repdata = temp;

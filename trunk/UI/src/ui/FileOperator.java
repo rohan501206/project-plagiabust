@@ -24,13 +24,18 @@ public class FileOperator {
     public String sourceFolder;
     public String destinationFolder;
     public String indexFolderPath;
+    private String projectFolderPath;
 
-    public FileOperator(String sourceFolder) {
-
+    public FileOperator(String sourceFolder, String projectFolderPath) {
 
         this.sourceFolder = sourceFolder;
+        this.projectFolderPath = projectFolderPath;
     }
 
+    public FileOperator(String sourceFolder){
+        this.sourceFolder = sourceFolder;
+    }
+    
     public FileOperator() {
     }
 
@@ -38,9 +43,8 @@ public class FileOperator {
 
 
         File souceFolder = new File(sourceFolder);
-
         if (souceFolder.isDirectory()) {
-            destinationFolder = souceFolder.getAbsolutePath() + File.separator + souceFolder.getName();
+            destinationFolder = projectFolderPath + File.separator + souceFolder.getName();
             boolean destFolderCreated = new File(destinationFolder).mkdir();
             if (destFolderCreated) {
                 AnyToTextConverter tc = new AnyToTextConverter(destinationFolder);
