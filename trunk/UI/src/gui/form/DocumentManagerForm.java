@@ -10,6 +10,7 @@
  */
 package gui.form;
 
+import dataExtraction.DocumentFilter;
 import java.io.File;
 import java.util.AbstractList;
 import java.util.ArrayList;
@@ -18,6 +19,8 @@ import java.util.Vector;
 import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -37,12 +40,13 @@ public class DocumentManagerForm extends javax.swing.JFrame {
         setFormStyle();
         tableModel = getDefaultTableModel();
         DocumentTable.setModel(tableModel);
+        DocumentTable.setDefaultRenderer(Object.class, new TableRenderer());
     }
 
     private DefaultTableModel getDefaultTableModel() {
         String[] columns = {"File Name", "Destination"};
         DefaultTableModel defaultTableModel = new DefaultTableModel(columns, 0);
-
+        
         return defaultTableModel;
     }
 
@@ -161,7 +165,7 @@ public class DocumentManagerForm extends javax.swing.JFrame {
             DocumentManagerImageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/resource/image/background/DocumentManager.png"))); // NOI18N
 
             DocumentTable.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-            DocumentTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+            DocumentTable.setFont(new java.awt.Font("Tahoma", 0, 12));
             DocumentTable.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
 
@@ -188,8 +192,8 @@ public class DocumentManagerForm extends javax.swing.JFrame {
                         .addComponent(CommandPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(DocumentTableSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(DocumentTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 485, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(DocumentTableScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 489, Short.MAX_VALUE)
                     .addContainerGap())
             );
             DocumentManagerMainPanelLayout.setVerticalGroup(
@@ -233,7 +237,7 @@ public class DocumentManagerForm extends javax.swing.JFrame {
         }// </editor-fold>//GEN-END:initComponents
 
     private void bindDatatoTable(File selectedFolder) {
-        File[] selectedFileArray = selectedFolder.listFiles();
+        File[] selectedFileArray = selectedFolder.listFiles(new DocumentFilter());
         ArrayList<SelectedFile> selectedFileList = new ArrayList<SelectedFile>();
 
         for (int i = 0; i < selectedFileArray.length; i++) {
