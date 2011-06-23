@@ -25,7 +25,7 @@ import ui.FormMain;
  *
  * @author Compaq
  */
-public class Worker extends SwingWorker<String[][], String> {
+public class Worker extends SwingWorker<ReportData, String> {
    // InternetDocumentDownloadManager idm=new InternetDocumentDownloadManager();
     InternetDocumentDownloadManager idm;
     DocumentIndexingManager indexingManger=new DocumentIndexingManager();
@@ -50,8 +50,9 @@ public class Worker extends SwingWorker<String[][], String> {
     }
 
     @Override
-    protected String[][] doInBackground() throws Exception {
+    protected ReportData doInBackground() throws Exception {
         String downloadFolderPath = idm.downloadFiles(destFolderPath, fName);
+        ArrayList<String> urlList = idm.getUrlList();
         System.out.println("Finished Downloading the internet files........................");
         System.out.println("Start indexing the files........................");
         indexedFiles=indexingManger.indexSearch(indexFolderPath,selectedDocumentPath,pbar2);
@@ -64,7 +65,10 @@ public class Worker extends SwingWorker<String[][], String> {
         } catch (IOException ex) {
             System.out.println("There are no similar files or some error has occured");
         }
-        return temp;
+        ReportData repData = new ReportData(temp, urlList);
+
+
+        return repData ;
     }
 
     public String[][] getOutPut(){

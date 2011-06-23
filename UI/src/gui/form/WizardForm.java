@@ -46,7 +46,7 @@ public class WizardForm extends javax.swing.JFrame {
     String fName;
     String indexFolderPath;
     Manager manager = new Manager();
-    String[][] temp = null;
+    ReportData repdata ;
     public static WizardForm wizardForm;
 
     /** Creates new form WizardForm */
@@ -712,22 +712,23 @@ public class WizardForm extends javax.swing.JFrame {
                             .addGroup(StartCheckPanelLayout.createSequentialGroup()
                                 .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(PreprocessDocumentCompletionLabel)
-                                    .addComponent(IndexFilesCompletionLabel)
-                                    .addComponent(KnowledgeBaseCompletionLabel))
+                                    .addComponent(KnowledgeBaseCompletionLabel)
+                                    .addComponent(IndexFilesCompletionLabel))
                                 .addGap(63, 63, 63)
                                 .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(StartCheckPanelLayout.createSequentialGroup()
-                                        .addComponent(DonloadFileProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(110, 110, 110)
-                                        .addComponent(Step5ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(111, 111, 111)
-                                        .addComponent(TaskCompletionSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(CreateIndexProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(StartCheckPanelLayout.createSequentialGroup()
                                         .addGap(539, 539, 539)
                                         .addComponent(CommandSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(PreprocessDocumentProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(CrossCheckProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addGroup(StartCheckPanelLayout.createSequentialGroup()
+                                        .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(CreateIndexProgressBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(CrossCheckProgressBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(PreprocessDocumentProgressBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(DonloadFileProgressBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(Step5ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(9, 9, 9)
+                                        .addComponent(TaskCompletionSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                     .addComponent(CommandsLabel)
                     .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, StartCheckPanelLayout.createSequentialGroup()
@@ -756,9 +757,9 @@ public class WizardForm extends javax.swing.JFrame {
                     .addGroup(StartCheckPanelLayout.createSequentialGroup()
                         .addGap(4, 4, 4)
                         .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(DonloadFileProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(Step5ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(KnowledgeBaseCompletionLabel)
-                            .addComponent(DonloadFileProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(KnowledgeBaseCompletionLabel))))
                 .addGap(10, 10, 10)
                 .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(StartCheckPanelLayout.createSequentialGroup()
@@ -766,11 +767,11 @@ public class WizardForm extends javax.swing.JFrame {
                         .addGap(14, 14, 14)
                         .addComponent(CommandSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(PreprocessDocumentCompletionLabel))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(15, 15, 15)
                 .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(IndexFilesCompletionLabel)
                     .addComponent(CreateIndexProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(31, 31, 31)
                 .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(CrossCheckCompletionLabel)
                     .addComponent(CrossCheckProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -935,15 +936,15 @@ public class WizardForm extends javax.swing.JFrame {
             protected void done() {
                 
                 try {
-                    temp = get();
+                    repdata = get();
 
                 } catch (InterruptedException ex) {
                     Logger.getLogger(WizardForm.class.getName()).log(Level.SEVERE, null, ex);
                 } catch (ExecutionException ex) {
                     Logger.getLogger(WizardForm.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                setTempArray(temp);
                 
+                setTempArray(repdata);
                 CheckControlButton.setVisible(false);
                 ViewButton.setVisible(true);
             }
@@ -961,12 +962,13 @@ public class WizardForm extends javax.swing.JFrame {
                 String selectedDocumentPath = sourceFolderName + File.separator + destFolder.getName() + File.separator + fName;
                 ReportingModule rp = new ReportingModule();
                 rp.setVisible(true);
-                rp.setTemp(temp);
+                rp.setTemp(repdata.getFolder());
+                //rp.setUrl(repdata);
                 rp.setDocument(selectedDocumentPath);// TODO add your handling code here:
     }//GEN-LAST:event_ViewButtonActionPerformed
 
-    public void setTempArray(String[][] temp) {
-        this.temp = temp;
+    public void setTempArray(ReportData temp) {
+        this.repdata = temp;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AddDocumentBannerLabel;
