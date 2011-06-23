@@ -930,7 +930,7 @@ public class WizardForm extends javax.swing.JFrame {
         this.setup();
         File destFolder = new File(destFolderPath);
         String selectedDocumentPath = sourceFolderName + File.separator + destFolder.getName() + File.separator + fName;
-        final Worker sworker = new Worker(destFolderPath, fName, indexFolderPath, selectedDocumentPath, manager,DonloadFileProgressBar,CreateIndexProgressBar,PreprocessDocumentProgressBar,CrossCheckProgressBar) {
+        final Worker sworker = new Worker(destFolderPath, fName, indexFolderPath, selectedDocumentPath, manager,DonloadFileProgressBar,CreateIndexProgressBar,PreprocessDocumentProgressBar,CrossCheckProgressBar, Integer.parseInt((String)NumOfExternalSourcesComboBox.getSelectedItem())) {
             // This method is invoked when the worker is finished
             // its task
 
