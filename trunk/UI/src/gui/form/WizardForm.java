@@ -966,6 +966,7 @@ public class WizardForm extends javax.swing.JFrame {
                 rp.setVisible(true);
                 rp.setTemp(repdata.getFolder());
                 //rp.setUrl(repdata.getUrlList());
+                //rp.setData();
                 rp.setDocument(selectedDocumentPath);// TODO add your handling code here:
     }//GEN-LAST:event_ViewButtonActionPerformed
 
