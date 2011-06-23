@@ -271,7 +271,7 @@ public class DocumentManagerForm extends javax.swing.JFrame {
         }
         else{
             int index = DocumentTable.getSelectedRow();
-             fileName = (String) model.getValueAt(index, 1);
+             fileName = (String) model.getValueAt(index, 0);
         }
     }//GEN-LAST:event_DoneButtonActionPerformed
 
