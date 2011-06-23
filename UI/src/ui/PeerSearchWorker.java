@@ -38,11 +38,13 @@ public class PeerSearchWorker extends SwingWorker<String[][], String> {
 
     @Override
     protected String[][] doInBackground() throws Exception {
+        long t1 = System.currentTimeMillis();
         System.out.println("Start indexing the files........................");
         indexedFileList = indexingManger.indexSearchforMultiplePeers(files, indexFolderPath);
         System.out.println("Finished indexing the files........................");
         System.out.println("Start Downloading the internet files........................");
-        HashMap<String, ArrayList<String>> downloadedFileList = idm.downloadFilesForMultiplePeerSearch(fileArrayList, destFolderPath);
+        //HashMap<String, ArrayList<String>> downloadedFileList = idm.downloadFilesForMultiplePeerSearch(fileArrayList, destFolderPath);
+       HashMap<String, ArrayList<String>> downloadedFileList = null;
         System.out.println("Finished Downloading the internet files........................");
         try {
             System.out.println("Start comparing files........................");
@@ -51,7 +53,14 @@ public class PeerSearchWorker extends SwingWorker<String[][], String> {
         } catch (IOException ex) {
             System.out.println("There are no similar files or some error has occured");
         }
+
+       long t2 = System.currentTimeMillis();
+       long result = (t2-t1)/1000;
+       System.out.println("**********************************************");
+       System.out.println(result);
+       
     return temp;
+
     }
 
 

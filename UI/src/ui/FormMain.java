@@ -959,6 +959,9 @@ public class FormMain extends javax.swing.JFrame {
 }//GEN-LAST:event_firstFileSlectButtonActionPerformed
 
     private void peerSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_peerSearchButtonActionPerformed
+
+        
+
         singleDocProgressBar.setVisible(true);
         processingLabel.setVisible(true);
         singleDocProgressBar.setIndeterminate(true);
@@ -986,7 +989,7 @@ public class FormMain extends javax.swing.JFrame {
                     jTextField2.setText(temp[0][2]);
                     String fileName1 = jTextField3.getText();
                     String fileName2 = jTextField4.getText();
-                    jTabbedPane2.setSelectedIndex(5);
+                   // jTabbedPane2.setSelectedIndex(5);
                     FileOperator setTextToTextAreas = new FileOperator();
                     String[] texts = setTextToTextAreas.textSetter(fileName1, fileName2);
                     String field1 = texts[0];
@@ -1001,6 +1004,8 @@ public class FormMain extends javax.swing.JFrame {
             }
         };
         psworker.execute();
+       
+
 }//GEN-LAST:event_peerSearchButtonActionPerformed
 
     private void checkButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkButtonActionPerformed
@@ -1042,7 +1047,9 @@ public class FormMain extends javax.swing.JFrame {
             }
         };
         sworker.execute();
-        
+
+
+
     }//GEN-LAST:event_checkButtonActionPerformed
 
     private void exploreButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exploreButtonActionPerformed
