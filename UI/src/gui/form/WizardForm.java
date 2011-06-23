@@ -39,8 +39,10 @@ enum TabNames {
 public class WizardForm extends javax.swing.JFrame {
 
     String destFolderPath = null;
-    String sourceFolderName = "C:\\Users\\Compaq\\Desktop\\demo";// need this
-    String fName = "Homework_Assignment_4.txt"; // need this
+    //String sourceFolderName = "C:\\Users\\Compaq\\Desktop\\demo";// need this
+   // String fName = "Homework_Assignment_4.txt"; // need this
+    String sourceFolderName ;
+    String fName;
     String indexFolderPath;
     Manager manager = new Manager();
     String[][] temp = null;
@@ -69,7 +71,7 @@ public class WizardForm extends javax.swing.JFrame {
         };
 
         System.setOut(new PrintStream(out, true));
-        System.setErr(new PrintStream(out, true));
+        //System.setErr(new PrintStream(out, true));
 
     }
 
@@ -907,6 +909,8 @@ public class WizardForm extends javax.swing.JFrame {
     }//GEN-LAST:event_WizardNextButtonActionPerformed
 
     public void setup() {
+        sourceFolderName = DocumentManagerForm.folderpath;
+        fName = DocumentManagerForm.fileName;
         FileOperator fileOPerator = new FileOperator(sourceFolderName);
         fileOPerator.anyToTextConverter();
         fileOPerator.TextFileIndexer();
