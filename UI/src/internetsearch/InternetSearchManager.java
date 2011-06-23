@@ -74,7 +74,7 @@ public class InternetSearchManager {
                 downloadedDocuments++;
                 this.downloadWebPageAsText(url, path);
                 urlList.add(url);
-                pmanager.runProgress(downloadedDocuments*10);
+                pmanager.runProgress((downloadedDocuments*100)/total);
 
             }
 

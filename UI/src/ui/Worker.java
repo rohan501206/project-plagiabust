@@ -41,7 +41,7 @@ public class Worker extends SwingWorker<String[][], String> {
         String downloadFolderPath = idm.downloadFiles(destFolderPath, fName);
         System.out.println("Finished Downloading the internet files........................");
         System.out.println("Start indexing the files........................");
-        indexedFiles=indexingManger.indexSearch(indexFolderPath,selectedDocumentPath,pbar);
+        indexedFiles=indexingManger.indexSearch(indexFolderPath,selectedDocumentPath,pbar,10);
         System.out.println("Finished indexing the files........................");
          try {
             System.out.println("Start comparing files........................");

@@ -40,9 +40,11 @@ public class Worker extends SwingWorker<ReportData, String> {
     JProgressBar pbar2;
     JProgressBar pbar3;
     JProgressBar pbar4;
+
+    int maxIndexfiles;
     
     ArrayList<String> indexedFiles = new ArrayList<String>();
-    public Worker(String destFolderPath,String fName,String indexFolderPath,String selectedDocumentPath,Manager manager,JProgressBar pbar,JProgressBar pbar2,JProgressBar pbar3,JProgressBar pbar4, int maxNumOfInternetSources){
+    public Worker(String destFolderPath,String fName,String indexFolderPath,String selectedDocumentPath,Manager manager,JProgressBar pbar,JProgressBar pbar2,JProgressBar pbar3,JProgressBar pbar4, int maxNumOfInternetSources,int maxIndexfiles){
         this.destFolderPath = destFolderPath;
         this.fName = fName;
         this.indexFolderPath = indexFolderPath;
@@ -53,6 +55,7 @@ public class Worker extends SwingWorker<ReportData, String> {
         this.pbar3 = pbar3;
         this.pbar4 = pbar4;
         this.idm.setMaxNumOfSourcesPerDocument(maxNumOfInternetSources);
+        this.maxIndexfiles = maxIndexfiles;
     }
 
     @Override
@@ -61,7 +64,7 @@ public class Worker extends SwingWorker<ReportData, String> {
         ArrayList<String> urlList = idm.getUrlList();
         System.out.println("Finished Downloading the internet files........................");
         System.out.println("Start indexing the files........................");
-        indexedFiles=indexingManger.indexSearch(indexFolderPath,selectedDocumentPath,pbar2);
+        indexedFiles=indexingManger.indexSearch(indexFolderPath,selectedDocumentPath,pbar2,maxIndexfiles);
         System.out.println("Finished indexing the files........................");
          try {
             System.out.println("Start comparing files........................");
