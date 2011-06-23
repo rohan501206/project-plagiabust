@@ -10,24 +10,31 @@ import internetsearch.InternetSearchManager;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
+import javax.swing.JProgressBar;
+import javax.swing.SwingUtilities;
 
 /**
  *
  * @author nuwan
  */
 public class InternetDocumentDownloadManager {
-
     String downloadFolderPath;
     HashMap<String, ArrayList<String>> downloadedFileList;
     ArrayList<String> fileArrayList;
+    JProgressBar pbar;
+    public InternetDocumentDownloadManager(JProgressBar pbar){
+        this.pbar = pbar;
+    }
+    public InternetDocumentDownloadManager(){
 
+    }
     public String downloadFiles(String destFolderPath,String fName){
         System.out.println("Start Downloading the internet files........................");
         BingSearch bingSearch = new BingSearch("F138552F897E2CA7C264FDAC64F8EF2021ABD3AF");
         bingSearch.setMaxNumOfResults(10);
         InternetSearchManager sd = new InternetSearchManager(bingSearch);
         sd.setRandomSelectionRatio(0.2f);
-        downloadFolderPath = sd.downloadSourcesForFile(destFolderPath + File.separator + fName);
+        downloadFolderPath = sd.downloadSourcesForFile(destFolderPath + File.separator + fName, pbar);
         return downloadFolderPath ;
     }
 
@@ -42,5 +49,6 @@ public class InternetDocumentDownloadManager {
         downloadedFileList = sd.downloadSourcesForFileFolder(fileArrayList, destFolderPath);
         return downloadedFileList;
     }
+    
 
 }

@@ -10,6 +10,13 @@
  */
 package gui.form;
 
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Vector;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import preprocess.KeyWordsRemover;
 /**
  *
  * @author Brave Heart
@@ -17,11 +24,17 @@ package gui.form;
 public class KeywordManager extends javax.swing.JFrame {
 
     public static KeywordManager keywordManager;
-
+    DefaultTableModel model;
+    ArrayList<String> KeyWordList = new ArrayList<String>();
+    int [] data = {1,2,3,4,5,6,7,8,9};
+    Vector col = new Vector();
     /** Creates new form DocumentManagerForm */
     private KeywordManager() {
         initComponents();
-    }
+        String[] columns = {"No","Keyword"};
+        model = new DefaultTableModel(columns, 0);
+
+     }
 
     public static KeywordManager getInstance() {
         if (keywordManager == null) {
@@ -43,7 +56,6 @@ public class KeywordManager extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         KeywordsManagerMainPanel = new javax.swing.JPanel();
         CommandPanel = new javax.swing.JPanel();
-        AddKeywordButton = new javax.swing.JButton();
         RemoveKeyWordButton = new javax.swing.JButton();
         DoneButton = new javax.swing.JButton();
         KeywordManagerImageLabel = new javax.swing.JLabel();
@@ -75,17 +87,23 @@ public class KeywordManager extends javax.swing.JFrame {
 
         CommandPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Commands :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
-        AddKeywordButton.setFont(new java.awt.Font("Tahoma", 0, 12));
-        AddKeywordButton.setText("Add Keyword");
-        AddKeywordButton.setPreferredSize(new java.awt.Dimension(180, 40));
-
-        RemoveKeyWordButton.setFont(new java.awt.Font("Tahoma", 0, 12));
+        RemoveKeyWordButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         RemoveKeyWordButton.setText("Remove Keyword");
         RemoveKeyWordButton.setPreferredSize(new java.awt.Dimension(180, 40));
+        RemoveKeyWordButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RemoveKeyWordButtonActionPerformed(evt);
+            }
+        });
 
-        DoneButton.setFont(new java.awt.Font("Tahoma", 0, 12));
+        DoneButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         DoneButton.setText("Done");
         DoneButton.setPreferredSize(new java.awt.Dimension(180, 40));
+        DoneButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DoneButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout CommandPanelLayout = new javax.swing.GroupLayout(CommandPanel);
         CommandPanel.setLayout(CommandPanelLayout);
@@ -95,24 +113,22 @@ public class KeywordManager extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(CommandPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(DoneButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AddKeywordButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(RemoveKeyWordButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         CommandPanelLayout.setVerticalGroup(
             CommandPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CommandPanelLayout.createSequentialGroup()
-                .addComponent(AddKeywordButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(34, 34, 34)
                 .addComponent(RemoveKeyWordButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(DoneButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         KeywordManagerImageLabel.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         KeywordsTable.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        KeywordsTable.setFont(new java.awt.Font("Tahoma", 0, 12));
+        KeywordsTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         KeywordsTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null},
@@ -192,7 +208,7 @@ public class KeywordManager extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        NumOfKeywordsLabel.setFont(new java.awt.Font("Tahoma", 0, 12));
+        NumOfKeywordsLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         NumOfKeywordsLabel.setText("Keyword added. - ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -218,8 +234,57 @@ public class KeywordManager extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+
+    private void bindData(){ 
+        for (int i = 0; i<KeywordsTable.getRowCount(); i++) {
+            if(KeywordsTable.getValueAt(i, 1)!= null){
+                KeyWordList.add(KeywordsTable.getValueAt(i, 1).toString());
+            }
+        }
+        for (int i = 0; i < KeyWordList.size(); i++) {
+            Vector row = new Vector();
+            row.add(i+1);
+            row.add(KeyWordList.get(i));
+            model.addRow(row);
+        }
+        KeywordsTable.setModel(model);
+    }
+
+
+
+    private void RemoveKeyWordButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RemoveKeyWordButtonActionPerformed
+
+        int[] selectedRows = KeywordsTable.getSelectedRows();
+        for (int i = 0; i < selectedRows.length; i++) {
+            KeywordsTable.setValueAt("",selectedRows[i],1);
+        }
+        
+        // TODO add your handling code here:
+    }//GEN-LAST:event_RemoveKeyWordButtonActionPerformed
+
+    public String arraylistToSting(ArrayList<String> token) {
+        StringBuilder out = new StringBuilder();
+        for (Object o : token) {
+            out.append(o.toString());
+            out.append(" ");
+        }
+        return out.toString();
+    }
+
+
+    private void DoneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoneButtonActionPerformed
+        this.bindData();
+        String content = this.arraylistToSting(KeyWordList);
+        KeyWordsRemover keyremover = new KeyWordsRemover();
+        keyremover.addKeyWordsToList("src" + File.separatorChar + "preprocess" + File.separatorChar + "StopWordList", content);
+        JOptionPane jop = new JOptionPane();
+        jop.showMessageDialog(this, "keywords successfully added to the list");
+        this.setVisible(false);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_DoneButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AddKeywordButton;
     private javax.swing.JPanel CommandPanel;
     private javax.swing.JButton DoneButton;
     private javax.swing.JLabel KeywordManagerImageLabel;

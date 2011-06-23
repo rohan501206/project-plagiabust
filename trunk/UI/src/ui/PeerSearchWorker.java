@@ -18,7 +18,7 @@ import javax.swing.SwingWorker;
 public class PeerSearchWorker extends SwingWorker<String[][], String> {
     ArrayList<String> fileArrayList = new ArrayList<String>();
     HashMap<File, ArrayList<String>> indexedFileList = new HashMap<File, ArrayList<String>>();
-    InternetDocumentDownloadManager idm=new InternetDocumentDownloadManager();
+    InternetDocumentDownloadManager idm = new InternetDocumentDownloadManager();
     DocumentIndexingManager indexingManger=new DocumentIndexingManager();
     FormMain form = new FormMain();
     String[][] temp = null;

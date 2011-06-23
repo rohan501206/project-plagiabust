@@ -5,11 +5,13 @@
 
 package ui;
 
+import gui.form.ProgressBarManager;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import javax.swing.JProgressBar;
 import peerdocumentsearch.IndexSearch;
 import peerdocumentsearch.PeerSearchManager;
 
@@ -25,7 +27,10 @@ public class DocumentIndexingManager {
     HashMap<File, ArrayList<String>> indexedFileList = new HashMap<File, ArrayList<String>>();
 
 
-    public ArrayList<String> indexSearch(String indexpath,String selectDocPath){
+    public ArrayList<String> indexSearch(String indexpath,String selectDocPath,JProgressBar pbar){
+        ProgressBarManager pmanager = new ProgressBarManager(pbar);
+
+
         selectedDocumentPath=selectDocPath;
         indexFolderPath=indexpath;
         IndexSearch is = new IndexSearch(indexFolderPath);
@@ -41,6 +46,8 @@ public class DocumentIndexingManager {
             if (!filePath.equalsIgnoreCase(selectedDocumentPath)) {
                 indexedFiles.add(filePath);
             }
+
+            pmanager.runProgress(selectedDocuments*10);
 
         }
 
