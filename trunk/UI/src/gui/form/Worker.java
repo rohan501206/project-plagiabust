@@ -1,0 +1,92 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package gui.form;
+
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+
+import java.io.IOException;
+import java.util.ArrayList;
+import javax.swing.SwingWorker;
+import ui.Manager;
+import ui.InternetDocumentDownloadManager;
+import ui.DocumentIndexingManager;
+import ui.FormMain;
+
+/**
+ *
+ * @author Compaq
+ */
+public class Worker extends SwingWorker<String[][], String> {
+    InternetDocumentDownloadManager idm=new InternetDocumentDownloadManager();
+    DocumentIndexingManager indexingManger=new DocumentIndexingManager();
+    FormMain form = new FormMain();
+    String[][] temp = null;
+    String destFolderPath;
+    String fName;
+    String indexFolderPath;
+    String selectedDocumentPath;
+    Manager manager;
+    ArrayList<String> indexedFiles = new ArrayList<String>();
+    public Worker(String destFolderPath,String fName,String indexFolderPath,String selectedDocumentPath,Manager manager){
+        this.destFolderPath = destFolderPath;
+        this.fName = fName;
+        this.indexFolderPath = indexFolderPath;
+        this.selectedDocumentPath=  selectedDocumentPath;
+        this.manager = manager;
+    }
+
+    @Override
+    protected String[][] doInBackground() throws Exception {
+        String downloadFolderPath = idm.downloadFiles(destFolderPath, fName);
+        System.out.println("Finished Downloading the internet files........................");
+        System.out.println("Start indexing the files........................");
+        indexedFiles=indexingManger.indexSearch(indexFolderPath,selectedDocumentPath);
+        System.out.println("Finished indexing the files........................");
+         try {
+            System.out.println("Start comparing files........................");
+            temp = manager.compareFiles(selectedDocumentPath, downloadFolderPath, indexedFiles);
+            System.out.println("Finished comparing files........................");
+
+        } catch (IOException ex) {
+            System.out.println("There are no similar files or some error has occured");
+        }
+        return temp;
+    }
+
+    public String[][] getOutPut(){
+        return this.temp;
+    }
+
+    @Override
+    protected void done(){
+
+    }
+
+
+
+    /*protected void done(){
+        form.jTextField3.setText(temp[0][0]);
+        form.jTextField4.setText(temp[0][1]);
+        form.jTextField2.setText(temp[0][2]);
+        if(!(form.jTextField3.getText().equalsIgnoreCase("")||form.jTextField4.getText().equalsIgnoreCase(""))){
+
+            String fileName1 = form.jTextField3.getText();
+            String fileName2 = form.jTextField4.getText();
+            form.jTabbedPane2.setSelectedIndex(1);
+            FileOperator setTextToTextAreas= new  FileOperator();
+            String[] texts=setTextToTextAreas.textSetter(fileName1, fileName2);
+            String field1=texts[0];
+            String field2=texts[1];
+            form.firstFileTextArea.setText(field1.toLowerCase());
+            form.secondFileTextArea.setText(field2.toLowerCase());
+    }
+}*/
+}
