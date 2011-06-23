@@ -21,6 +21,7 @@ public class InternetDocumentDownloadManager {
     String downloadFolderPath;
     HashMap<String, ArrayList<String>> downloadedFileList;
     ArrayList<String> fileArrayList;
+    ArrayList<String> urlList;
     JProgressBar pbar;
     public InternetDocumentDownloadManager(JProgressBar pbar){
         this.pbar = pbar;
@@ -35,9 +36,13 @@ public class InternetDocumentDownloadManager {
         InternetSearchManager sd = new InternetSearchManager(bingSearch);
         sd.setRandomSelectionRatio(0.2f);
         downloadFolderPath = sd.downloadSourcesForFile(destFolderPath + File.separator + fName, pbar);
+        urlList = sd.getUrlList();
         return downloadFolderPath ;
     }
 
+    public ArrayList<String> getUrlList(){
+        return this.urlList;
+    }
 
     public HashMap<String, ArrayList<String>>  downloadFilesForMultiplePeerSearch(ArrayList<String> arr,String folderPath){
         fileArrayList=arr;
