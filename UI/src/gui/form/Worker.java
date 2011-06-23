@@ -36,10 +36,13 @@ public class Worker extends SwingWorker<ReportData, String> {
     String indexFolderPath;
     String selectedDocumentPath;
     Manager manager;
+
     JProgressBar pbar2;
+    JProgressBar pbar3;
+    JProgressBar pbar4;
 
     ArrayList<String> indexedFiles = new ArrayList<String>();
-    public Worker(String destFolderPath,String fName,String indexFolderPath,String selectedDocumentPath,Manager manager,JProgressBar pbar,JProgressBar pbar2){
+    public Worker(String destFolderPath,String fName,String indexFolderPath,String selectedDocumentPath,Manager manager,JProgressBar pbar,JProgressBar pbar2,JProgressBar pbar3,JProgressBar pbar4){
         this.destFolderPath = destFolderPath;
         this.fName = fName;
         this.indexFolderPath = indexFolderPath;
@@ -47,6 +50,8 @@ public class Worker extends SwingWorker<ReportData, String> {
         this.manager = manager;
         this.idm = new InternetDocumentDownloadManager(pbar);
         this.pbar2 = pbar2;
+        this.pbar3 = pbar3;
+        this.pbar4 = pbar4;
     }
 
     @Override
@@ -59,7 +64,7 @@ public class Worker extends SwingWorker<ReportData, String> {
         System.out.println("Finished indexing the files........................");
          try {
             System.out.println("Start comparing files........................");
-            temp = manager.compareFiles(selectedDocumentPath, downloadFolderPath, indexedFiles);
+            temp = manager.compareFiles(selectedDocumentPath, downloadFolderPath, indexedFiles,pbar3,pbar4);
             System.out.println("Finished comparing files........................");
 
         } catch (IOException ex) {

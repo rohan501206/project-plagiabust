@@ -15,7 +15,8 @@ import javax.swing.SwingWorker;
  * @author Compaq
  */
 public class Worker extends SwingWorker<String[][], String> {
-
+    JProgressBar pbar2;
+    JProgressBar pbar3;
     JProgressBar pbar;
     InternetDocumentDownloadManager idm=new InternetDocumentDownloadManager();
     DocumentIndexingManager indexingManger=new DocumentIndexingManager();
@@ -44,7 +45,7 @@ public class Worker extends SwingWorker<String[][], String> {
         System.out.println("Finished indexing the files........................");
          try {
             System.out.println("Start comparing files........................");
-            temp = manager.compareFiles(selectedDocumentPath, downloadFolderPath, indexedFiles);
+            temp = manager.compareFiles(selectedDocumentPath, downloadFolderPath, indexedFiles,pbar2,pbar3);
             System.out.println("Finished comparing files........................");
 
         } catch (IOException ex) {

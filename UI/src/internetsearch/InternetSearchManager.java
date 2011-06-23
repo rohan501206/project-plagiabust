@@ -79,6 +79,7 @@ public class InternetSearchManager {
             }
 
         }
+        pmanager.runProgress(100);
         return downloadedFilesFolder;
     }
 
