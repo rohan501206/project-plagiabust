@@ -207,7 +207,7 @@ public class InternetSearchManager {
         HashMap<String, Integer> sortedSources = (HashMap<String, Integer>) this.sortByValue(sources);
         Iterator sortedSourceIterator = sortedSources.entrySet().iterator();
         int numberOfSelectedDoc = 1;
-        while (sortedSourceIterator.hasNext() && numberOfSelectedDoc <= 10) {
+        while (sortedSourceIterator.hasNext() && numberOfSelectedDoc <= maxNumOfSourcesPerDocument) {
             Map.Entry pair = (Map.Entry) sortedSourceIterator.next();
             String key = (String) pair.getKey();
             int value = (Integer) pair.getValue();

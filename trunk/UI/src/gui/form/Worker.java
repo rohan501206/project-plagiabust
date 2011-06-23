@@ -40,9 +40,9 @@ public class Worker extends SwingWorker<ReportData, String> {
     JProgressBar pbar2;
     JProgressBar pbar3;
     JProgressBar pbar4;
-
+    
     ArrayList<String> indexedFiles = new ArrayList<String>();
-    public Worker(String destFolderPath,String fName,String indexFolderPath,String selectedDocumentPath,Manager manager,JProgressBar pbar,JProgressBar pbar2,JProgressBar pbar3,JProgressBar pbar4){
+    public Worker(String destFolderPath,String fName,String indexFolderPath,String selectedDocumentPath,Manager manager,JProgressBar pbar,JProgressBar pbar2,JProgressBar pbar3,JProgressBar pbar4, int maxNumOfInternetSources){
         this.destFolderPath = destFolderPath;
         this.fName = fName;
         this.indexFolderPath = indexFolderPath;
@@ -52,6 +52,7 @@ public class Worker extends SwingWorker<ReportData, String> {
         this.pbar2 = pbar2;
         this.pbar3 = pbar3;
         this.pbar4 = pbar4;
+        this.idm.setMaxNumOfSourcesPerDocument(maxNumOfInternetSources);
     }
 
     @Override
