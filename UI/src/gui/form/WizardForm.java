@@ -963,7 +963,7 @@ public class WizardForm extends javax.swing.JFrame {
                 ReportingModule rp = new ReportingModule();
                 rp.setVisible(true);
                 rp.setTemp(repdata.getFolder());
-                //rp.setUrl(repdata);
+                //rp.setUrl(repdata.getUrlList());
                 rp.setDocument(selectedDocumentPath);// TODO add your handling code here:
     }//GEN-LAST:event_ViewButtonActionPerformed
 
