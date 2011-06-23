@@ -34,6 +34,8 @@ public class InternetSearchManager {
     private QueryCreator qc = new QueryCreator();
     private final BingSearch bingSearch;
     private int maxNumOfSourcesPerDocument = 10;
+    private ArrayList<String> urlList=new ArrayList<String>();
+
 
     public InternetSearchManager(BingSearch bingSearch) {
         this.bingSearch = bingSearch;
@@ -49,8 +51,6 @@ public class InternetSearchManager {
 
     public String downloadSourcesForFile(String filePath,JProgressBar pbar) {
         ProgressBarManager pmanager = new ProgressBarManager(pbar);
-
-
 
         File file = new File(filePath);
         String[] nameAndExt = file.getName().split("[.]");
@@ -73,7 +73,7 @@ public class InternetSearchManager {
                 String path = downloadedFilesFolder + File.separatorChar + downloadedDocuments + ".txt";
                 downloadedDocuments++;
                 this.downloadWebPageAsText(url, path);
-
+                urlList.add(url);
                 pmanager.runProgress(downloadedDocuments*10);
 
             }
@@ -81,6 +81,16 @@ public class InternetSearchManager {
         }
         return downloadedFilesFolder;
     }
+
+
+    public ArrayList<String> getUrlList(){
+        return this.urlList;
+    }
+
+
+
+
+
 
     /*
     public String downloadSourcesForFile(String filePath) {         // firstcall
