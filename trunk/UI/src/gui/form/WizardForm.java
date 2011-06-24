@@ -974,13 +974,15 @@ public class WizardForm extends javax.swing.JFrame {
 
     private void ViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewButtonActionPerformed
                 File destFolder = new File(destFolderPath);
-                String selectedDocumentPath = sourceFolderName + File.separator + destFolder.getName() + File.separator + fName;
+               String selectedDocumentPath = destFolderPath + File.separator + DocumentManagerForm.fileName;
+
                 ReportingModule rp = new ReportingModule();
                 rp.setVisible(true);
                 rp.setDocument(selectedDocumentPath);
                 rp.setTemp(repdata.getFolder());
                 rp.setUrl(repdata.getUrlList());
                 rp.setData();
+                
                 // TODO add your handling code here:
     }//GEN-LAST:event_ViewButtonActionPerformed
 
