@@ -21,9 +21,11 @@ import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
+import java.util.ResourceBundle;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -37,8 +39,8 @@ import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.swing.JRViewer;
-import net.sf.jasperreports.view.JasperViewer;
+import net.sf.jasperreports.view.JRViewer;
+
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PiePlot;
@@ -62,14 +64,19 @@ public class ReportingModule extends javax.swing.JFrame {
     Highlighter hilit2 = new DefaultHighlighter();
     final static Color HILIT_COLOR = Color.LIGHT_GRAY;
     Highlighter.HighlightPainter painter;
+    ArrayList peerDocs=new ArrayList();
+    ArrayList<String> urlArray=new ArrayList<String>();
 
     /** Creates new form NewJFrame */
     public ReportingModule() {
 
 
-
         this.setSize(500, 500);
         initComponents();
+        mainPreviousButton.setEnabled(false);
+        jTabbedPane1.setEnabledAt(1, false);
+        jTabbedPane1.setEnabledAt(2, false);
+
     }
 
     public DefaultPieDataset createPieDataset() {
@@ -77,25 +84,20 @@ public class ReportingModule extends javax.swing.JFrame {
 
 
         DefaultPieDataset dataset = new DefaultPieDataset();
-        dataset.setValue("One", new Double(43.2));
-        dataset.setValue("Two", new Double(10.0));
-        dataset.setValue("Three", new Double(27.5));
-        dataset.setValue("Four", new Double(17.5));
-        dataset.setValue("Five", new Double(11.0));
-        dataset.setValue("Six", new Double(19.4));
+        dataset.setValue("Original", new Double(43.2));
+        dataset.setValue("Plagarizm Suspected", new Double(10.0));
+        dataset.setValue("Refereenced", new Double(27.5));
+        
         return dataset;
-
-
-
-
 
 
     }
 
+
     private JFreeChart createChart(PieDataset dataset) {
 
         JFreeChart chart = ChartFactory.createPieChart3D(
-                "Pie Chart Demo 1", // chart title
+                "Plagiarism Statistics", // chart title
                 dataset, // data
                 true, // include legend
                 true,
@@ -125,54 +127,48 @@ public class ReportingModule extends javax.swing.JFrame {
 
     public void generateResults() {
 
-
         File file = new File(selectedDocumentPath);
-
-        textSetter m = new textSetter();
-        //String content=m.textSetter("C:\\Users\\user\\Desktop\\Assignments - 100\\Assignments - 100\\070039N_SAD.txt");
+        textSetter m = new textSetter();       
         String content = m.textSetter(file.getAbsolutePath());
         String fileName = file.getAbsolutePath();
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
         String time = sdf.format(cal.getTime());
-
-
         BufferedImage bf = this.createChart();
+
+
+        /**for(int i=0;i<resultArray.length;i++){
+
+           if(resultArray[i][1]!=null)
+            peerDocs.add(resultArray[i][1]);
+            
+
+        }  **/
+
 
         hm.put("image", bf);
         hm.put("field", content);
         hm.put("time", time);
         hm.put("docName", fileName);
-
+        if(peerDocs!=null){
+        hm.put("peerDocs", peerDocs);
+        }
 
         JasperReport jasperReport;
         JasperPrint jasperPrint;
+
         try {
-            //jasperReport = JasperCompileManager.compileReport(
-            //   "C:\\Users\\user\\Desktop\\jasper reporting\\report2.jrxml");
-
-
+           
             jasperReport = JasperCompileManager.compileReport(
                     "jasper/report2.jrxml");
 
             jasperPrint = JasperFillManager.fillReport(
-                    jasperReport, hm, new JREmptyDataSource());
+            jasperReport, hm, new JREmptyDataSource());
             jrv = new JRViewer(jasperPrint);
-            //JasperViewer.viewReport(jasperPrint);
-            // jrv.setPreferredSize(new Dimension(600, 410));
-
+            jrv.addHyperlinkListener(new ReportHyperlinkListner());
+            
             jScrollPane3.getViewport().add(jrv, null);
-
-
-//JScrollPane reportScroll = new JScrollPane(jrv);
-// add the scroll pane
-
-
-
-            HashMap hm = new HashMap();
-
-// add the scroll pane
-//JPanel viewer = new JPanel();
+        
 
         } catch (JRException e) {
             e.printStackTrace();
@@ -190,8 +186,9 @@ public class ReportingModule extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea3 = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -203,58 +200,65 @@ public class ReportingModule extends javax.swing.JFrame {
         jTextArea2 = new javax.swing.JTextArea();
         jButton4 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane(jrv);
         jPanel1 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
+        mainPreviousButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Configure.png"))); // NOI18N
+        jTextArea3.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
+        jTextArea3.setColumns(20);
+        jTextArea3.setLineWrap(true);
+        jTextArea3.setRows(5);
+        jTextArea3.setText("This wizard will Help you to view the Plagiarism Results in adynamically generated module. ");
+        jTextArea3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        jScrollPane4.setViewportView(jTextArea3);
 
-        jButton3.setText("Next");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/main_icon.jpg"))); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addGap(55, 55, 55)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1279, 1279, 1279))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 481, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 501, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(213, Short.MAX_VALUE)
-                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(368, 368, 368))
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 557, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(24, 24, 24)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Introduction", jPanel2);
 
         jLabel1.setText("Suspected File");
 
-        nextButton.setText("Next");
+        nextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/next-icon.png"))); // NOI18N
+        nextButton.setText("Next Match");
         nextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nextButtonActionPerformed(evt);
             }
         });
 
-        previousButton.setText("Previous");
+        previousButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/previous-icon.png"))); // NOI18N
+        previousButton.setText("Previous Match");
         previousButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 previousButtonActionPerformed(evt);
@@ -276,14 +280,12 @@ public class ReportingModule extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("jLabel4");
 
-        jButton1.setText("Next");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
+        jLabel5.setText("Selected File");
+
+        jLabel6.setText("Suspected File");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -294,59 +296,56 @@ public class ReportingModule extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(9, 9, 9)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 518, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
                                 .addComponent(jLabel1)
-                                .addGap(84, 84, 84)
-                                .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(nextButton)
-                                .addGap(53, 53, 53)
-                                .addComponent(previousButton))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(53, 53, 53)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel2)
-                                .addGap(419, 419, 419))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 444, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(611, 611, 611)))
+                                .addGap(18, 18, 18)
+                                .addComponent(previousButton)
+                                .addGap(40, 40, 40)
+                                .addComponent(nextButton)))
+                        .addGap(1195, 1195, 1195)
                         .addComponent(jButton4))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(572, 572, 572)
-                        .addComponent(jButton1)))
+                        .addContainerGap()
+                        .addComponent(jLabel5)
+                        .addGap(408, 408, 408)
+                        .addComponent(jLabel6)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(59, 59, 59)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addGap(23, 23, 23))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nextButton)
-                            .addComponent(jLabel1)
-                            .addComponent(previousButton)
-                            .addComponent(jLabel4))
-                        .addGap(18, 18, 18)))
-                .addGap(20, 20, 20)
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel4)
+                        .addComponent(nextButton)
+                        .addComponent(previousButton)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jButton4)
-                        .addGap(204, 204, 204))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                .addGap(25, 25, 25)
-                .addComponent(jButton1)
-                .addContainerGap())
+                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                            .addComponent(jButton4)
+                            .addGap(204, 204, 204))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE))
+                .addGap(30, 30, 30))
         );
 
         jTabbedPane1.addTab("Dynamic Cross Check", jPanel3);
@@ -379,7 +378,7 @@ public class ReportingModule extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(30, 30, 30)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -395,12 +394,28 @@ public class ReportingModule extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 558, Short.MAX_VALUE)
+            .addGap(0, 381, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 4, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/next-icon.png"))); // NOI18N
+        jButton3.setText("Next");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        mainPreviousButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/previous-icon.png"))); // NOI18N
+        mainPreviousButton.setText("Previous");
+        mainPreviousButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mainPreviousButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -411,7 +426,14 @@ public class ReportingModule extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(684, 684, 684)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1242, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1055, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(680, 680, 680)
+                        .addComponent(mainPreviousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(36, 36, 36)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -420,8 +442,12 @@ public class ReportingModule extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 534, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mainPreviousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(23, 23, 23))
         );
 
         pack();
@@ -431,35 +457,16 @@ public class ReportingModule extends javax.swing.JFrame {
 
         int index = jTabbedPane1.getSelectedIndex();
         jTabbedPane1.setSelectedIndex(index + 1);
+        mainPreviousButton.setEnabled(true);
+        jTabbedPane1.setEnabledAt(1, true);
+        jTabbedPane1.setEnabledAt(2, true);
 
-        //jTextField3.setText(temp[0][0]);
-        jLabel4.setText(resultArray[0][1]);
-        //jTextField2.setText(temp[0][2]);
-        if (!(jLabel4.getText().equalsIgnoreCase("") || selectedDocumentPath.equalsIgnoreCase(""))) {
-
-            String fileName1 = selectedDocumentPath;
-            String fileName2 = jLabel4.getText();
-            //jTabbedPane2.setSelectedIndex(1);
-            FileOperator setTextToTextAreas = new FileOperator();
-            String[] texts = setTextToTextAreas.textSetter(fileName1, fileName2);
-            String field1 = texts[0];
-            String field2 = texts[1];
-            jTextArea1.setText(field1.toLowerCase());
-            jTextArea2.setText(field2.toLowerCase());
-        }
-
-        // painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
-
-        this.highlighter(resultArray[0][2]);
-
-
-
-
+       
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         jTabbedPane1.setSelectedIndex(2);
-        this.generateResults();
+        
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void previousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousButtonActionPerformed
@@ -503,10 +510,11 @@ public class ReportingModule extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_nextButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       jTabbedPane1.setSelectedIndex(2);
-        this.generateResults(); // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void mainPreviousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainPreviousButtonActionPerformed
+       int index = jTabbedPane1.getSelectedIndex();
+       if(index!=0)
+        jTabbedPane1.setSelectedIndex(index - 1);
+    }//GEN-LAST:event_mainPreviousButtonActionPerformed
 
     public void setTemp(String[][] tempa) {
         resultArray = tempa;
@@ -586,13 +594,14 @@ public class ReportingModule extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -601,10 +610,44 @@ public class ReportingModule extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTextArea jTextArea3;
+    private javax.swing.JButton mainPreviousButton;
     private javax.swing.JButton nextButton;
     private javax.swing.JButton previousButton;
     // End of variables declaration//GEN-END:variables
+
+    public void setData() {
+        //jTextField3.setText(temp[0][0]);
+        jLabel4.setText(resultArray[0][1]);
+        //jTextField2.setText(temp[0][2]);
+        if (!(jLabel4.getText().equalsIgnoreCase("") || selectedDocumentPath.equalsIgnoreCase(""))) {
+
+            String fileName1 = selectedDocumentPath;
+            String fileName2 = jLabel4.getText();
+            //jTabbedPane2.setSelectedIndex(1);
+            FileOperator setTextToTextAreas = new FileOperator();
+            String[] texts = setTextToTextAreas.textSetter(fileName1, fileName2);
+            String field1 = texts[0];
+            String field2 = texts[1];
+            jTextArea1.setText(field1.toLowerCase());
+            jTextArea2.setText(field2.toLowerCase());
+        }
+
+        // painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
+
+        this.highlighter(resultArray[0][2]);
+        this.generateResults();
+    }
+
+    public void setUrl(ArrayList<String> urlList) {
+        for(int i=0;i<urlList.size();i++){
+            peerDocs.add(urlList.get(i));
+            
+        }
+
+    }
 }
