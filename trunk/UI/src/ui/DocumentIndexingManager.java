@@ -20,7 +20,7 @@ import peerdocumentsearch.PeerSearchManager;
  * @author nuwan
  */
 public class DocumentIndexingManager {
-    int maxNoIndexfiles = 10;
+    int maxNoIndexfiles = 0;
 
     public String indexFolderPath;
     public String selectedDocumentPath;
