@@ -31,7 +31,7 @@ public class ReportHyperlinkListner implements JRHyperlinkListener {
       
         String hyperlink= jrph.getHyperlinkReference();
           
-
+        if(hyperlink!=null){
 
         URI uri = null;
         try {
@@ -40,7 +40,7 @@ public class ReportHyperlinkListner implements JRHyperlinkListener {
             Logger.getLogger(ReportHyperlinkListner.class.getName()).log(Level.SEVERE, null, ex);
         }
         this.open(uri);
-
+        }
     }
 
     private static void open(URI uri) {
