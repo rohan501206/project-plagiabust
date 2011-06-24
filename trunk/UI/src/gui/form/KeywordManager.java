@@ -235,13 +235,16 @@ public class KeywordManager extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
-    private void bindData(){ 
+    private void firstBind(){
         for (int i = 0; i<KeywordsTable.getRowCount(); i++) {
             if(KeywordsTable.getValueAt(i, 1)!= null){
                 KeyWordList.add(KeywordsTable.getValueAt(i, 1).toString());
+                
             }
+            
         }
+    }
+    private void bindData(){ 
         for (int i = 0; i < KeyWordList.size(); i++) {
             Vector row = new Vector();
             row.add(i+1);
@@ -257,7 +260,13 @@ public class KeywordManager extends javax.swing.JFrame {
 
         int[] selectedRows = KeywordsTable.getSelectedRows();
         for (int i = 0; i < selectedRows.length; i++) {
-            KeywordsTable.setValueAt("",selectedRows[i],1);
+            if(KeywordsTable.getValueAt(selectedRows[i], 1) != null){
+                KeywordsTable.setValueAt(null,selectedRows[i],1);
+            }
+            else{
+                JOptionPane jop = new JOptionPane();
+                jop.showMessageDialog(this, "Nothing to remove");
+            }
         }
         
         // TODO add your handling code here:
@@ -267,20 +276,27 @@ public class KeywordManager extends javax.swing.JFrame {
         StringBuilder out = new StringBuilder();
         for (Object o : token) {
             out.append(o.toString());
-            out.append(" ");
+            out.append("\n");
         }
         return out.toString();
     }
 
 
     private void DoneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoneButtonActionPerformed
-        this.bindData();
-        String content = this.arraylistToSting(KeyWordList);
-        KeyWordsRemover keyremover = new KeyWordsRemover();
-        keyremover.addKeyWordsToList("src" + File.separatorChar + "preprocess" + File.separatorChar + "StopWordList", content);
-        JOptionPane jop = new JOptionPane();
-        jop.showMessageDialog(this, "keywords successfully added to the list");
-        this.setVisible(false);
+        this.firstBind();
+        if(KeyWordList.isEmpty()){
+            JOptionPane jop = new JOptionPane();
+            jop.showMessageDialog(this, "Nothing to add");
+        }
+        else{
+            this.bindData();
+            String content = this.arraylistToSting(KeyWordList);
+            KeyWordsRemover keyremover = new KeyWordsRemover();
+            keyremover.addKeyWordsToList("src" + File.separatorChar + "preprocess" + File.separatorChar + "StopWordList", content);
+            JOptionPane jop = new JOptionPane();
+            jop.showMessageDialog(this, "keywords successfully added to the list");
+            this.setVisible(false);
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_DoneButtonActionPerformed
 
