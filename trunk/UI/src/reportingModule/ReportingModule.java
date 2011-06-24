@@ -226,7 +226,7 @@ public class ReportingModule extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         mainPreviousButton = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jTextArea3.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
         jTextArea3.setColumns(20);
@@ -401,9 +401,9 @@ public class ReportingModule extends javax.swing.JFrame {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
+                .addGap(43, 43, 43)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Final Report", jPanel4);
@@ -656,8 +656,12 @@ public class ReportingModule extends javax.swing.JFrame {
         }
 
         // painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
-
-        this.highlighter(resultArray[0][2]);
+        try{
+            this.highlighter(resultArray[0][2]);
+        }
+        catch(Exception e){
+            
+        }
         this.generateResults();
     }
 
