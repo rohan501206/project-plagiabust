@@ -40,19 +40,23 @@ public class MainForm extends javax.swing.JFrame {
 
         NewWizardPanel = new javax.swing.JPanel();
         NewCheckButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
         KBManagerPanel = new javax.swing.JPanel();
         AdminToolsButton = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         AdministrativeToolPanel = new javax.swing.JPanel();
         KBManagerButton = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         HelpSupportPanel = new javax.swing.JPanel();
         HelpSupportButton = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
 
         NewWizardPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        NewCheckButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        NewCheckButton.setFont(new java.awt.Font("Tahoma", 0, 12));
         NewCheckButton.setText("New Plagirism Check");
         NewCheckButton.setPreferredSize(new java.awt.Dimension(180, 40));
         NewCheckButton.addActionListener(new java.awt.event.ActionListener() {
@@ -61,6 +65,8 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/plag check icon.png"))); // NOI18N
+
         javax.swing.GroupLayout NewWizardPanelLayout = new javax.swing.GroupLayout(NewWizardPanel);
         NewWizardPanel.setLayout(NewWizardPanelLayout);
         NewWizardPanelLayout.setHorizontalGroup(
@@ -68,48 +74,56 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(NewWizardPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(NewCheckButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addContainerGap(231, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, NewWizardPanelLayout.createSequentialGroup()
+                .addContainerGap(242, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
         NewWizardPanelLayout.setVerticalGroup(
             NewWizardPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(NewWizardPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(NewCheckButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         KBManagerPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        AdminToolsButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        AdminToolsButton.setFont(new java.awt.Font("Tahoma", 0, 12));
         AdminToolsButton.setText("Adminitrative Tools");
         AdminToolsButton.setPreferredSize(new java.awt.Dimension(180, 40));
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/settings icon.png"))); // NOI18N
 
         javax.swing.GroupLayout KBManagerPanelLayout = new javax.swing.GroupLayout(KBManagerPanel);
         KBManagerPanel.setLayout(KBManagerPanelLayout);
         KBManagerPanelLayout.setHorizontalGroup(
             KBManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 431, Short.MAX_VALUE)
-            .addGap(0, 431, Short.MAX_VALUE)
-            .addGap(0, 431, Short.MAX_VALUE)
             .addGroup(KBManagerPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(AdminToolsButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addContainerGap(231, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, KBManagerPanelLayout.createSequentialGroup()
+                .addContainerGap(244, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(49, 49, 49))
         );
         KBManagerPanelLayout.setVerticalGroup(
             KBManagerPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 231, Short.MAX_VALUE)
-            .addGap(0, 231, Short.MAX_VALUE)
-            .addGap(0, 231, Short.MAX_VALUE)
             .addGroup(KBManagerPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(AdminToolsButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(21, 21, 21))
         );
 
         AdministrativeToolPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        KBManagerButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        KBManagerButton.setFont(new java.awt.Font("Tahoma", 0, 12));
         KBManagerButton.setText("Knowledge Base Manager");
         KBManagerButton.setPreferredSize(new java.awt.Dimension(180, 40));
         KBManagerButton.addActionListener(new java.awt.event.ActionListener() {
@@ -118,58 +132,61 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/knowlegde_base_icon.png"))); // NOI18N
+
         javax.swing.GroupLayout AdministrativeToolPanelLayout = new javax.swing.GroupLayout(AdministrativeToolPanel);
         AdministrativeToolPanel.setLayout(AdministrativeToolPanelLayout);
         AdministrativeToolPanelLayout.setHorizontalGroup(
             AdministrativeToolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 431, Short.MAX_VALUE)
             .addGroup(AdministrativeToolPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(KBManagerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addContainerGap(251, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AdministrativeToolPanelLayout.createSequentialGroup()
+                .addContainerGap(267, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(46, 46, 46))
         );
         AdministrativeToolPanelLayout.setVerticalGroup(
             AdministrativeToolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 231, Short.MAX_VALUE)
             .addGroup(AdministrativeToolPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(KBManagerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(27, 27, 27))
         );
 
         HelpSupportPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        HelpSupportButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        HelpSupportButton.setFont(new java.awt.Font("Tahoma", 0, 12));
         HelpSupportButton.setText("Help & Support");
         HelpSupportButton.setPreferredSize(new java.awt.Dimension(180, 40));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/document-help-icon.png"))); // NOI18N
+        jLabel4.setText("jLabel4");
 
         javax.swing.GroupLayout HelpSupportPanelLayout = new javax.swing.GroupLayout(HelpSupportPanel);
         HelpSupportPanel.setLayout(HelpSupportPanelLayout);
         HelpSupportPanelLayout.setHorizontalGroup(
             HelpSupportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 431, Short.MAX_VALUE)
-            .addGap(0, 431, Short.MAX_VALUE)
-            .addGap(0, 431, Short.MAX_VALUE)
-            .addGap(0, 431, Short.MAX_VALUE)
-            .addGap(0, 431, Short.MAX_VALUE)
-            .addGap(0, 431, Short.MAX_VALUE)
             .addGroup(HelpSupportPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(HelpSupportButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(241, Short.MAX_VALUE))
+                .addContainerGap(251, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HelpSupportPanelLayout.createSequentialGroup()
+                .addContainerGap(233, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(42, 42, 42))
         );
         HelpSupportPanelLayout.setVerticalGroup(
             HelpSupportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 231, Short.MAX_VALUE)
-            .addGap(0, 231, Short.MAX_VALUE)
-            .addGap(0, 231, Short.MAX_VALUE)
-            .addGap(0, 231, Short.MAX_VALUE)
-            .addGap(0, 231, Short.MAX_VALUE)
-            .addGap(0, 231, Short.MAX_VALUE)
             .addGroup(HelpSupportPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(HelpSupportButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(180, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(25, 25, 25))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -178,29 +195,27 @@ public class MainForm extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(NewWizardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(KBManagerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(KBManagerPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(NewWizardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(HelpSupportPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(AdministrativeToolPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(AdministrativeToolPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(HelpSupportPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(AdministrativeToolPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(NewWizardPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(AdministrativeToolPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(HelpSupportPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(NewWizardPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(KBManagerPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(HelpSupportPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(KBManagerPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         setBounds(60, 60, 912, 536);
@@ -225,5 +240,9 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JPanel KBManagerPanel;
     private javax.swing.JButton NewCheckButton;
     private javax.swing.JPanel NewWizardPanel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }
