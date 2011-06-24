@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report2" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryNewPage="true">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="576"/>
+	<property name="ireport.y" value="720"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -114,7 +114,7 @@
 		<band splitType="Stretch"/>
 	</pageHeader>
 	<detail>
-		<band height="299">
+		<band height="293">
 			<textField isStretchWithOverflow="true" pattern="" isBlankWhenNull="true">
 				<reportElement x="4" y="11" width="802" height="276" isPrintWhenDetailOverflows="true"/>
 				<textElement markup="none">
@@ -123,6 +123,13 @@
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{field}]]></textFieldExpression>
 			</textField>
+		</band>
+		<band height="88">
+			<staticText>
+				<reportElement x="2" y="12" width="194" height="20"/>
+				<textElement/>
+				<text><![CDATA[Possible Peer Plagiarized Sources]]></text>
+			</staticText>
 		</band>
 	</detail>
 	<pageFooter>
@@ -155,7 +162,7 @@
 				<hyperlinkReferenceExpression><![CDATA[($P{peerDocs}).get(2)]]></hyperlinkReferenceExpression>
 			</textField>
 			<textField hyperlinkType="Reference">
-				<reportElement x="-2" y="115" width="476" height="20"/>
+				<reportElement x="4" y="115" width="476" height="20"/>
 				<textElement>
 					<font isBold="true" isItalic="true" isUnderline="false"/>
 				</textElement>
@@ -163,7 +170,7 @@
 				<hyperlinkReferenceExpression><![CDATA[($P{peerDocs}).get(3)]]></hyperlinkReferenceExpression>
 			</textField>
 			<textField hyperlinkType="Reference">
-				<reportElement x="-2" y="135" width="476" height="20"/>
+				<reportElement x="4" y="135" width="476" height="20"/>
 				<textElement>
 					<font isBold="true" isItalic="true" isUnderline="false"/>
 				</textElement>
@@ -171,7 +178,7 @@
 				<hyperlinkReferenceExpression><![CDATA[($P{peerDocs}).get(4)]]></hyperlinkReferenceExpression>
 			</textField>
 			<textField hyperlinkType="Reference">
-				<reportElement x="-2" y="155" width="476" height="20"/>
+				<reportElement x="4" y="155" width="476" height="20"/>
 				<textElement>
 					<font isBold="true" isItalic="true" isUnderline="false"/>
 				</textElement>
@@ -179,7 +186,7 @@
 				<hyperlinkReferenceExpression><![CDATA[($P{peerDocs}).get(5)]]></hyperlinkReferenceExpression>
 			</textField>
 			<textField hyperlinkType="Reference">
-				<reportElement x="0" y="175" width="476" height="20"/>
+				<reportElement x="4" y="175" width="476" height="20"/>
 				<textElement>
 					<font isBold="true" isItalic="true" isUnderline="false"/>
 				</textElement>
@@ -187,7 +194,7 @@
 				<hyperlinkReferenceExpression><![CDATA[($P{peerDocs}).get(0)]]></hyperlinkReferenceExpression>
 			</textField>
 			<textField hyperlinkType="Reference">
-				<reportElement x="2" y="195" width="476" height="20"/>
+				<reportElement x="4" y="195" width="476" height="20"/>
 				<textElement>
 					<font isBold="true" isItalic="true" isUnderline="false"/>
 				</textElement>
@@ -195,7 +202,7 @@
 				<hyperlinkReferenceExpression><![CDATA[($P{peerDocs}).get(7)]]></hyperlinkReferenceExpression>
 			</textField>
 			<textField hyperlinkType="Reference">
-				<reportElement x="2" y="215" width="474" height="20"/>
+				<reportElement x="4" y="215" width="474" height="20"/>
 				<textElement>
 					<font isBold="true" isItalic="true" isUnderline="false"/>
 				</textElement>
@@ -203,7 +210,7 @@
 				<hyperlinkReferenceExpression><![CDATA[($P{peerDocs}).get(8)]]></hyperlinkReferenceExpression>
 			</textField>
 			<textField hyperlinkType="Reference">
-				<reportElement x="0" y="235" width="474" height="20"/>
+				<reportElement x="6" y="235" width="474" height="20"/>
 				<textElement>
 					<font isBold="true" isItalic="true" isUnderline="false"/>
 				</textElement>
@@ -217,7 +224,7 @@
 				<anchorNameExpression><![CDATA["summary"]]></anchorNameExpression>
 			</textField>
 			<staticText>
-				<reportElement x="2" y="26" width="194" height="20"/>
+				<reportElement x="2" y="11" width="194" height="20"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
