@@ -977,10 +977,11 @@ public class WizardForm extends javax.swing.JFrame {
                 String selectedDocumentPath = sourceFolderName + File.separator + destFolder.getName() + File.separator + fName;
                 ReportingModule rp = new ReportingModule();
                 rp.setVisible(true);
+                rp.setDocument(selectedDocumentPath);
                 rp.setTemp(repdata.getFolder());
-                //rp.setUrl(repdata.getUrlList());
-                //rp.setData();
-                rp.setDocument(selectedDocumentPath);// TODO add your handling code here:
+                rp.setUrl(repdata.getUrlList());
+                rp.setData();
+                // TODO add your handling code here:
     }//GEN-LAST:event_ViewButtonActionPerformed
 
     private void LocationBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LocationBrowseButtonActionPerformed
