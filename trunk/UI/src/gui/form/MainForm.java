@@ -164,7 +164,6 @@ public class MainForm extends javax.swing.JFrame {
         HelpSupportButton.setPreferredSize(new java.awt.Dimension(180, 40));
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/document-help-icon.png"))); // NOI18N
-        jLabel4.setText("jLabel4");
 
         javax.swing.GroupLayout HelpSupportPanelLayout = new javax.swing.GroupLayout(HelpSupportPanel);
         HelpSupportPanel.setLayout(HelpSupportPanelLayout);
@@ -177,7 +176,7 @@ public class MainForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, HelpSupportPanelLayout.createSequentialGroup()
                 .addContainerGap(233, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addGap(42, 42, 42))
+                .addGap(80, 80, 80))
         );
         HelpSupportPanelLayout.setVerticalGroup(
             HelpSupportPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
