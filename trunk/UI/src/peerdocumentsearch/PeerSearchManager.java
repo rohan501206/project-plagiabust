@@ -35,6 +35,7 @@ public class PeerSearchManager {
         this.indexSearch = indexSearch;
     }
 
+    
     public HashMap<String, Integer> getSuspiciousDocList(String filePath) {
         ArrayList<String> queryList = qc.getQueryList(filePath, qsa);
         for (Iterator<String> it = queryList.iterator(); it.hasNext();) {
