@@ -876,7 +876,7 @@ public class FormMain extends javax.swing.JFrame {
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void searchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchButtonActionPerformed
-        
+        /*
         painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
         firstFileTextArea.setHighlighter(hilit);
         secondFileTextArea.setHighlighter(hilit2);
@@ -922,7 +922,7 @@ public class FormMain extends javax.swing.JFrame {
             } catch (BadLocationException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
 }//GEN-LAST:event_searchButtonActionPerformed
 
     private void showButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showButtonActionPerformed
@@ -959,8 +959,6 @@ public class FormMain extends javax.swing.JFrame {
 }//GEN-LAST:event_firstFileSlectButtonActionPerformed
 
     private void peerSearchButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_peerSearchButtonActionPerformed
-
-        
 
         singleDocProgressBar.setVisible(true);
         processingLabel.setVisible(true);

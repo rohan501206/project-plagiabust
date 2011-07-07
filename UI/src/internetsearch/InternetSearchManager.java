@@ -35,7 +35,7 @@ public class InternetSearchManager {
     private final BingSearch bingSearch;
     private int maxNumOfSourcesPerDocument = 10;
     private ArrayList<String> urlList=new ArrayList<String>();
-
+    HashMap<String, String> urlFileMap = new HashMap<String, String>();
 
     public InternetSearchManager(BingSearch bingSearch) {
         this.bingSearch = bingSearch;
@@ -74,6 +74,7 @@ public class InternetSearchManager {
                 downloadedDocuments++;
                 this.downloadWebPageAsText(url, path);
                 urlList.add(url);
+                urlFileMap.put(path,url);
                 pmanager.runProgress((downloadedDocuments*100)/total);
 
             }
@@ -88,7 +89,9 @@ public class InternetSearchManager {
         return this.urlList;
     }
 
-
+    public HashMap<String, String> getMap(){
+        return this.urlFileMap;
+    }
 
 
 

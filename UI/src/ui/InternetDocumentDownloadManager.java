@@ -22,6 +22,7 @@ public class InternetDocumentDownloadManager {
     HashMap<String, ArrayList<String>> downloadedFileList;
     ArrayList<String> fileArrayList;
     ArrayList<String> urlList;
+     HashMap<String, String> urlFileMap;
     JProgressBar pbar;
     int maxNumOfSourcesPerDocument = 10;
 
@@ -41,12 +42,17 @@ public class InternetDocumentDownloadManager {
         sd.setRandomSelectionRatio(0.2f);
         downloadFolderPath = sd.downloadSourcesForFile(destFolderPath + File.separator + fName, pbar);
         urlList = sd.getUrlList();
+        urlFileMap = sd.getMap();
         return downloadFolderPath;
     }
 
     public ArrayList<String> getUrlList() {
         return this.urlList;
     }
+    public HashMap<String, String> getMap(){
+        return this.urlFileMap;
+    }
+
 
     public HashMap<String, ArrayList<String>> downloadFilesForMultiplePeerSearch(ArrayList<String> arr, String folderPath) {
         fileArrayList = arr;

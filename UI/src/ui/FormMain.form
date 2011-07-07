@@ -126,6 +126,8 @@
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
+
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
                       <SubComponents>
                         <Component class="javax.swing.JLabel" name="selectDocumentLabel">
                           <Properties>
@@ -218,6 +220,8 @@
                           </JTabbedPaneConstraints>
                         </Constraint>
                       </Constraints>
+
+                      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
                       <SubComponents>
                         <Container class="javax.swing.JScrollPane" name="jScrollPane2">
                           <AuxValues>

@@ -27,7 +27,6 @@ public class FileOperator {
     private String projectFolderPath;
 
     public FileOperator(String sourceFolder, String projectFolderPath) {
-
         this.sourceFolder = sourceFolder;
         this.projectFolderPath = projectFolderPath;
     }

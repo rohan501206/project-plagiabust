@@ -44,7 +44,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="WizardMainPanel" pref="623" max="32767" attributes="0"/>
+              <Component id="WizardMainPanel" pref="629" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -100,11 +100,11 @@
               <Group type="102" attributes="0">
                   <Component id="WizardImageLabel" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="DescriptionPanel" pref="339" max="32767" attributes="0"/>
+                  <Component id="DescriptionPanel" pref="345" max="32767" attributes="0"/>
               </Group>
-              <Component id="WizardSeparator" alignment="0" pref="595" max="32767" attributes="0"/>
+              <Component id="WizardSeparator" alignment="0" pref="601" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
-                  <Component id="WizardTabbedPane" pref="537" max="32767" attributes="0"/>
+                  <Component id="WizardTabbedPane" pref="543" max="32767" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="WizardPreviousButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -149,7 +149,7 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="DescriptionScrollPane" alignment="0" pref="311" max="32767" attributes="0"/>
+                  <Component id="DescriptionScrollPane" alignment="0" pref="317" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
           </Layout>
@@ -315,7 +315,7 @@
                                   <Component id="DeleteProjectFilesCheckBox" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="219" max="32767" attributes="0"/>
+                          <EmptySpace pref="225" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -514,7 +514,7 @@
                           <Component id="AddDocumentTipScrollPane" min="-2" pref="31" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="DocumentManagerButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="353" max="32767" attributes="0"/>
+                          <EmptySpace pref="359" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -649,7 +649,7 @@
                               <Component id="peerSourceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="LocationBrowseButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="386" max="32767" attributes="0"/>
+                          <EmptySpace pref="392" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -777,7 +777,7 @@
                           <Component id="KBManagerScrollPane" min="-2" pref="31" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="KBManagerButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="226" max="32767" attributes="0"/>
+                          <EmptySpace pref="232" max="32767" attributes="0"/>
                           <Component id="KeywordLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="KeyWordSeparator" min="-2" max="-2" attributes="0"/>
@@ -1000,7 +1000,7 @@
                           <Component id="ModesOfCheckSeparator" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="PharaphraseCheckBox" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="240" max="32767" attributes="0"/>
+                          <EmptySpace pref="246" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1164,7 +1164,122 @@
                 </Constraint>
               </Constraints>
 
-              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignFlowLayout"/>
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="jScrollPane1" min="-2" pref="699" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="32" pref="32" max="32" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="TaskCompletionLabel" min="-2" max="-2" attributes="0"/>
+                                              <Component id="CheckBannerLabel" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="342" max="-2" attributes="0"/>
+                                          <Component id="Step5ImageLabel" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="IndexFilesCompletionLabel" min="-2" max="-2" attributes="0"/>
+                                              <Component id="PreprocessDocumentCompletionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="KnowledgeBaseCompletionLabel" min="-2" max="-2" attributes="0"/>
+                                              <Component id="CrossCheckCompletionLabel" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="DonloadFileProgressBar" pref="452" max="32767" attributes="1"/>
+                                              <Component id="CreateIndexProgressBar" alignment="0" pref="452" max="32767" attributes="1"/>
+                                              <Component id="CrossCheckProgressBar" alignment="0" pref="452" max="32767" attributes="1"/>
+                                              <Component id="PreprocessDocumentProgressBar" alignment="0" pref="452" max="32767" attributes="1"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="CommandSeparator" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="CommandTipScrollPane" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="155" max="32767" attributes="0"/>
+                          <Component id="CheckControlButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="ViewButton" min="-2" pref="142" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="CommandsLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="663" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Component id="Step5ImageLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Component id="CheckBannerLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="TaskCompletionLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="KnowledgeBaseCompletionLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="DonloadFileProgressBar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="PreprocessDocumentCompletionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="CommandSeparator" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="PreprocessDocumentProgressBar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="IndexFilesCompletionLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="CreateIndexProgressBar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="CrossCheckCompletionLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="CrossCheckProgressBar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                          <Component id="CommandsLabel" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="CheckControlButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="ViewButton" alignment="3" min="-2" pref="36" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="CommandTipScrollPane" min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Component id="jScrollPane1" min="-2" pref="129" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
               <SubComponents>
                 <Component class="javax.swing.JButton" name="CheckControlButton">
                   <Properties>
@@ -1291,6 +1406,17 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JButton" name="ViewButton">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="12" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="View Report"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ViewButtonActionPerformed"/>
+                  </Events>
+                </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane1">
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
@@ -1304,17 +1430,6 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Component class="javax.swing.JButton" name="ViewButton">
-                  <Properties>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="12" style="0"/>
-                    </Property>
-                    <Property name="text" type="java.lang.String" value="View Report"/>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ViewButtonActionPerformed"/>
-                  </Events>
-                </Component>
               </SubComponents>
             </Container>
           </SubComponents>

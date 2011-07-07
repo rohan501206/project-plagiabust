@@ -14,6 +14,7 @@ package gui.form;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.JProgressBar;
 import javax.swing.SwingWorker;
 import ui.Manager;
@@ -62,6 +63,7 @@ public class Worker extends SwingWorker<ReportData, String> {
     protected ReportData doInBackground() throws Exception {
         String downloadFolderPath = idm.downloadFiles(destFolderPath, fName);
         ArrayList<String> urlList = idm.getUrlList();
+        HashMap<String, String> map = idm.getMap();
         System.out.println("Finished Downloading the internet files........................");
         System.out.println("Start indexing the files........................");
         indexedFiles=indexingManger.indexSearch(indexFolderPath,selectedDocumentPath,pbar2,maxIndexfiles);
@@ -75,7 +77,7 @@ public class Worker extends SwingWorker<ReportData, String> {
             System.out.println("There are no similar files or some error has occured");
         }
         ReportData repData = new ReportData(temp, urlList);
-
+        //ReportData repData = new ReportData(temp, map);
 
         return repData ;
     }
