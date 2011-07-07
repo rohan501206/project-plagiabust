@@ -131,6 +131,7 @@ public class WizardForm extends javax.swing.JFrame {
         singleDetectionButton = new javax.swing.JRadioButton();
         peerDetectionButton = new javax.swing.JRadioButton();
         ProjectFolderLabel1 = new javax.swing.JLabel();
+        AddDocumentSeparator1 = new javax.swing.JSeparator();
         AddDocumentPanel = new javax.swing.JPanel();
         DocumentManagerButton = new javax.swing.JButton();
         AddDocumentBannerLabel = new javax.swing.JLabel();
@@ -145,6 +146,7 @@ public class WizardForm extends javax.swing.JFrame {
         ProjectLocationLabel1 = new javax.swing.JLabel();
         peerSourceTextField = new javax.swing.JTextField();
         LocationBrowseButton1 = new javax.swing.JButton();
+        AddDocumentSeparator2 = new javax.swing.JSeparator();
         KnowledgeBasePanel = new javax.swing.JPanel();
         KBManagerButton = new javax.swing.JButton();
         KBManagerBannerLabel = new javax.swing.JLabel();
@@ -307,35 +309,37 @@ public class WizardForm extends javax.swing.JFrame {
             .addGroup(ProjectLocationPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(ProjectLocationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(AddDocumentSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 724, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(ProjectLocationPanelLayout.createSequentialGroup()
                         .addComponent(NameLocationBannerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(122, 122, 122)
                         .addComponent(NameLocationTopSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ProjectLocationPanelLayout.createSequentialGroup()
-                        .addComponent(NameLocationLabel)
-                        .addGap(425, 425, 425)
-                        .addComponent(Step1ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(DeleteProjectFilesCheckBox)
-                    .addGroup(ProjectLocationPanelLayout.createSequentialGroup()
                         .addGroup(ProjectLocationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ProjectLocationLabel)
-                            .addComponent(ProjectFolderLabel)
-                            .addComponent(ProjectFolderLabel1)
-                            .addComponent(ProjectNameLabel))
-                        .addGap(41, 41, 41)
-                        .addGroup(ProjectLocationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(ProjectNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(NameLocationLabel)
+                            .addComponent(DeleteProjectFilesCheckBox)
                             .addGroup(ProjectLocationPanelLayout.createSequentialGroup()
-                                .addComponent(singleDetectionButton)
-                                .addGap(18, 18, 18)
-                                .addComponent(peerDetectionButton))
-                            .addGroup(ProjectLocationPanelLayout.createSequentialGroup()
-                                .addGroup(ProjectLocationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(ProjectFolderTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ProjectLocationTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
-                                .addGap(18, 18, 18)
-                                .addComponent(LocationBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(156, Short.MAX_VALUE))
+                                .addGroup(ProjectLocationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(ProjectLocationLabel)
+                                    .addComponent(ProjectFolderLabel)
+                                    .addComponent(ProjectFolderLabel1)
+                                    .addComponent(ProjectNameLabel))
+                                .addGap(41, 41, 41)
+                                .addGroup(ProjectLocationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(ProjectLocationPanelLayout.createSequentialGroup()
+                                        .addComponent(singleDetectionButton)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(peerDetectionButton))
+                                    .addGroup(ProjectLocationPanelLayout.createSequentialGroup()
+                                        .addGroup(ProjectLocationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addComponent(ProjectNameTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(ProjectFolderTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(ProjectLocationTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(18, 18, 18)
+                                        .addComponent(LocationBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addGap(84, 84, 84)
+                        .addComponent(Step1ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         ProjectLocationPanelLayout.setVerticalGroup(
             ProjectLocationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -343,35 +347,41 @@ public class WizardForm extends javax.swing.JFrame {
                 .addGroup(ProjectLocationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(ProjectLocationPanelLayout.createSequentialGroup()
                         .addGap(19, 19, 19)
-                        .addComponent(NameLocationTopSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(19, 19, 19)
-                        .addComponent(Step1ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(NameLocationTopSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(ProjectLocationPanelLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addComponent(NameLocationBannerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(NameLocationLabel)))
-                .addGap(12, 12, 12)
-                .addGroup(ProjectLocationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ProjectNameLabel)
-                    .addComponent(ProjectNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(ProjectLocationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ProjectLocationLabel)
-                    .addComponent(ProjectLocationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(LocationBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addGroup(ProjectLocationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ProjectFolderLabel)
-                    .addComponent(ProjectFolderTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(ProjectLocationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(ProjectFolderLabel1)
-                    .addGroup(ProjectLocationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(singleDetectionButton)
-                        .addComponent(peerDetectionButton)))
-                .addGap(18, 18, 18)
-                .addComponent(DeleteProjectFilesCheckBox)
-                .addContainerGap(221, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AddDocumentSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(ProjectLocationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(ProjectLocationPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(Step1ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(ProjectLocationPanelLayout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(ProjectLocationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ProjectNameLabel)
+                            .addComponent(ProjectNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(ProjectLocationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ProjectLocationLabel)
+                            .addComponent(ProjectLocationTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LocationBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(28, 28, 28)
+                        .addGroup(ProjectLocationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(ProjectFolderLabel)
+                            .addComponent(ProjectFolderTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21)
+                        .addGroup(ProjectLocationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(ProjectFolderLabel1)
+                            .addGroup(ProjectLocationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(singleDetectionButton)
+                                .addComponent(peerDetectionButton)))
+                        .addGap(18, 18, 18)
+                        .addComponent(DeleteProjectFilesCheckBox)))
+                .addContainerGap(219, Short.MAX_VALUE))
         );
 
         WizardTabbedPane.addTab("New Project", ProjectLocationPanel);
@@ -485,20 +495,18 @@ public class WizardForm extends javax.swing.JFrame {
         SelectDocumentsPanelLayout.setHorizontalGroup(
             SelectDocumentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SelectDocumentsPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(SelectDocumentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(AddDocumentBannerLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(AddDocumentLabel1)
+                    .addComponent(AddDocumentSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, 724, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(SelectDocumentsPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(AddDocumentBannerLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(SelectDocumentsPanelLayout.createSequentialGroup()
+                        .addComponent(ProjectLocationLabel1)
                         .addGap(35, 35, 35)
-                        .addGroup(SelectDocumentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(ProjectLocationLabel1)
-                            .addComponent(AddDocumentLabel1))
-                        .addGap(35, 35, 35)
-                        .addComponent(peerSourceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addComponent(peerSourceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
                         .addComponent(LocationBrowseButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(328, Short.MAX_VALUE))
+                .addContainerGap(6, Short.MAX_VALUE))
         );
         SelectDocumentsPanelLayout.setVerticalGroup(
             SelectDocumentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -507,12 +515,14 @@ public class WizardForm extends javax.swing.JFrame {
                 .addComponent(AddDocumentBannerLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(AddDocumentLabel1)
-                .addGap(29, 29, 29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AddDocumentSeparator2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(SelectDocumentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ProjectLocationLabel1)
                     .addComponent(peerSourceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LocationBrowseButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(383, Short.MAX_VALUE))
+                .addContainerGap(386, Short.MAX_VALUE))
         );
 
         WizardTabbedPane.addTab("Select Sources", SelectDocumentsPanel);
@@ -1063,6 +1073,8 @@ public class WizardForm extends javax.swing.JFrame {
     private javax.swing.JLabel AddDocumentLabel1;
     private javax.swing.JPanel AddDocumentPanel;
     private javax.swing.JSeparator AddDocumentSeparator;
+    private javax.swing.JSeparator AddDocumentSeparator1;
+    private javax.swing.JSeparator AddDocumentSeparator2;
     private javax.swing.JScrollPane AddDocumentTipScrollPane;
     private javax.swing.JTextArea AddDocumentTipTextArea;
     private javax.swing.JLabel CheckBannerLabel;
