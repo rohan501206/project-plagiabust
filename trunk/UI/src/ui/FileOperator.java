@@ -100,12 +100,42 @@ public class FileOperator {
             field1 = this.bufferedReaderToString(br);
             field2 = this.bufferedReaderToString(br2);
         } catch (IOException ex) {
-            Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
         }
         text[0] = field1;
         text[1] = field2;
         return text;
     }
+    
+    
+    public String textSetter(String fileName1) {
+
+      
+        File testFile1 = new File(fileName1);
+        
+        String field1 = "";
+       
+        try {
+            FileReader fr = new FileReader(testFile1);
+           
+
+            BufferedReader br = new BufferedReader(fr);
+            
+            
+
+
+            field1 = this.bufferedReaderToString(br);
+            
+        } catch (IOException ex) {
+           // Logger.getLogger(FormMain.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return   field1;
+    }
+    
+    
+    
+    
 
     private String bufferedReaderToString(BufferedReader inputBufferedReader) {
         StringBuffer fileAsText = new StringBuffer();
