@@ -217,47 +217,50 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="AddDocumentSeparator1" alignment="0" min="-2" pref="724" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Component id="NameLocationBannerLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
                                   <Component id="NameLocationTopSeparator" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="NameLocationLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="425" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="NameLocationLabel" min="-2" max="-2" attributes="0"/>
+                                      <Component id="DeleteProjectFilesCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="ProjectLocationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="ProjectFolderLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="ProjectFolderLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="ProjectNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="singleDetectionButton" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="peerDetectionButton" min="-2" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                      <Component id="ProjectNameTextField" alignment="0" max="32767" attributes="1"/>
+                                                      <Component id="ProjectFolderTextField" alignment="0" max="32767" attributes="1"/>
+                                                      <Component id="ProjectLocationTextField" alignment="0" min="-2" pref="228" max="-2" attributes="1"/>
+                                                  </Group>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="LocationBrowseButton" min="-2" pref="77" max="-2" attributes="0"/>
+                                              </Group>
+                                          </Group>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
                                   <Component id="Step1ImageLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Component id="DeleteProjectFilesCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="ProjectLocationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ProjectFolderLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ProjectFolderLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ProjectNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="ProjectNameTextField" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="singleDetectionButton" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="peerDetectionButton" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                              <Component id="ProjectFolderTextField" alignment="0" max="32767" attributes="1"/>
-                                              <Component id="ProjectLocationTextField" alignment="0" pref="228" max="32767" attributes="1"/>
-                                          </Group>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="LocationBrowseButton" min="-2" pref="77" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
                           </Group>
-                          <EmptySpace pref="156" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -265,45 +268,54 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                                   <Component id="NameLocationTopSeparator" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                                  <Component id="Step1ImageLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" attributes="0">
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
                                   <Component id="NameLocationBannerLabel" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="NameLocationLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="ProjectNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="ProjectNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="ProjectLocationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="ProjectLocationTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="LocationBrowseButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="ProjectFolderLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="ProjectFolderTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="ProjectFolderLabel1" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="singleDetectionButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="peerDetectionButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="AddDocumentSeparator1" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="102" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="Step1ImageLabel" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="ProjectNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="ProjectNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="ProjectLocationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="ProjectLocationTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="LocationBrowseButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="ProjectFolderLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="ProjectFolderTextField" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="ProjectFolderLabel1" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
+                                          <Component id="singleDetectionButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="peerDetectionButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="DeleteProjectFilesCheckBox" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="DeleteProjectFilesCheckBox" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="221" max="32767" attributes="0"/>
+                          <EmptySpace pref="219" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -440,6 +452,8 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Detection Choice"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JSeparator" name="AddDocumentSeparator1">
                 </Component>
               </SubComponents>
             </Container>
@@ -603,24 +617,20 @@
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="AddDocumentBannerLabel1" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="AddDocumentBannerLabel1" min="-2" max="-2" attributes="0"/>
+                              <Component id="AddDocumentLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="AddDocumentSeparator2" alignment="0" min="-2" pref="724" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
+                                  <Component id="ProjectLocationLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="ProjectLocationLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="AddDocumentLabel1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                  <Component id="peerSourceTextField" min="-2" pref="158" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="peerSourceTextField" min="-2" pref="215" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                                   <Component id="LocationBrowseButton1" min="-2" pref="77" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="328" max="32767" attributes="0"/>
+                          <EmptySpace pref="6" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -631,13 +641,15 @@
                           <Component id="AddDocumentBannerLabel1" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="AddDocumentLabel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="AddDocumentSeparator2" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="ProjectLocationLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="peerSourceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="LocationBrowseButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="383" max="32767" attributes="0"/>
+                          <EmptySpace pref="386" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -693,6 +705,8 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LocationBrowseButton1ActionPerformed"/>
                   </Events>
+                </Component>
+                <Component class="javax.swing.JSeparator" name="AddDocumentSeparator2">
                 </Component>
               </SubComponents>
             </Container>
