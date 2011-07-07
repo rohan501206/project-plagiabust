@@ -55,6 +55,7 @@ public class WizardForm extends javax.swing.JFrame {
     private WizardForm() {
         initComponents();
         ViewButton.setVisible(false);
+        singleDetectionButton.setSelected(true);
         OutputStream out = new OutputStream() {
 
             @Override
@@ -234,7 +235,7 @@ public class WizardForm extends javax.swing.JFrame {
 
         WizardSeparator.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        WizardTabbedPane.setFont(new java.awt.Font("Tahoma", 0, 12));
+        WizardTabbedPane.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         WizardTabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 WizardTabbedPaneStateChanged(evt);
@@ -332,7 +333,7 @@ public class WizardForm extends javax.swing.JFrame {
                                 .addGroup(ProjectLocationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(ProjectFolderTextField, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(ProjectLocationTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGap(18, 18, 18)
                                 .addComponent(LocationBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(156, Short.MAX_VALUE))
         );
@@ -484,33 +485,34 @@ public class WizardForm extends javax.swing.JFrame {
         SelectDocumentsPanelLayout.setHorizontalGroup(
             SelectDocumentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SelectDocumentsPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(SelectDocumentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(AddDocumentBannerLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AddDocumentLabel1))
-                .addContainerGap(348, Short.MAX_VALUE))
-            .addGroup(SelectDocumentsPanelLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(ProjectLocationLabel1)
-                .addGap(41, 41, 41)
-                .addComponent(peerSourceTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 176, Short.MAX_VALUE)
-                .addGap(54, 54, 54)
-                .addComponent(LocationBrowseButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(268, 268, 268))
+                    .addGroup(SelectDocumentsPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(AddDocumentBannerLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(SelectDocumentsPanelLayout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addGroup(SelectDocumentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(ProjectLocationLabel1)
+                            .addComponent(AddDocumentLabel1))
+                        .addGap(35, 35, 35)
+                        .addComponent(peerSourceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(LocationBrowseButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(328, Short.MAX_VALUE))
         );
         SelectDocumentsPanelLayout.setVerticalGroup(
             SelectDocumentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(SelectDocumentsPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(AddDocumentBannerLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(AddDocumentBannerLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(AddDocumentLabel1)
-                .addGap(49, 49, 49)
+                .addGap(29, 29, 29)
                 .addGroup(SelectDocumentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ProjectLocationLabel1)
                     .addComponent(peerSourceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LocationBrowseButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(365, Short.MAX_VALUE))
+                .addContainerGap(383, Short.MAX_VALUE))
         );
 
         WizardTabbedPane.addTab("Select Sources", SelectDocumentsPanel);
@@ -933,19 +935,27 @@ public class WizardForm extends javax.swing.JFrame {
     private void WizardPreviousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WizardPreviousButtonActionPerformed
         int currentTabIndex = WizardTabbedPane.getSelectedIndex();
         WizardTabbedPane.setSelectedIndex(--currentTabIndex);
+
+        if (peerDetectionButton.isSelected() && currentTabIndex == TabNames.AddDocument.ordinal()) {
+            WizardTabbedPane.setSelectedIndex(--currentTabIndex);
+        }
     // TODO add your handling code here:
     }//GEN-LAST:event_WizardPreviousButtonActionPerformed
 
     private void WizardNextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WizardNextButtonActionPerformed
-
-        if (singleDetectionButton.isSelected()) {
-            WizardTabbedPane.setEnabledAt(1, true);
-            int currentTabIndex = WizardTabbedPane.getSelectedIndex();
+        int currentTabIndex = WizardTabbedPane.getSelectedIndex();
+        
+        if (singleDetectionButton.isSelected() &&
+                WizardTabbedPane.getSelectedIndex() == TabNames.NewProject.ordinal()) {
+            WizardTabbedPane.setEnabledAt(TabNames.AddDocument.ordinal(), true);
             WizardTabbedPane.setSelectedIndex(++currentTabIndex);
-        }
-        if (peerDetectionButton.isSelected()) {
-            WizardTabbedPane.setEnabledAt(1, false);
-            WizardTabbedPane.setSelectedIndex(2);
+        } else if (peerDetectionButton.isSelected() &&
+                WizardTabbedPane.getSelectedIndex() == TabNames.NewProject.ordinal()) {
+            WizardTabbedPane.setEnabledAt(TabNames.AddDocument.ordinal(), false);
+            WizardTabbedPane.setSelectedIndex(TabNames.SelectDocument.ordinal());
+            currentTabIndex = TabNames.SelectDocument.ordinal();
+        } else {
+            WizardTabbedPane.setSelectedIndex(++currentTabIndex);
         }
     }//GEN-LAST:event_WizardNextButtonActionPerformed
 
