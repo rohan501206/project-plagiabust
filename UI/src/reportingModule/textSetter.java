@@ -3,9 +3,9 @@
  * and open the template in the editor.
  */
 
-package ui;
+package reportingModule;
 
-import reportingModule.*;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;

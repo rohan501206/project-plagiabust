@@ -95,7 +95,7 @@ public class DiffMatch {
   /**
    * The number of bits in an int.
    */
-  private short Match_MaxBits = 32;
+  private short Match_MaxBits = 64;
 
   /**
    * Internal class for returning results from diff_linesToChars().
@@ -193,7 +193,7 @@ public class DiffMatch {
     }
 
     // Trim off common prefix (speedup).
-    /*int commonlength = diff_commonPrefix(text1, text2);
+    int commonlength = diff_commonPrefix(text1, text2);
     String commonprefix = text1.substring(0, commonlength);
     text1 = text1.substring(commonlength);
     text2 = text2.substring(commonlength);
@@ -202,18 +202,18 @@ public class DiffMatch {
     commonlength = diff_commonSuffix(text1, text2);
     String commonsuffix = text1.substring(text1.length() - commonlength);
     text1 = text1.substring(0, text1.length() - commonlength);
-    text2 = text2.substring(0, text2.length() - commonlength);**/
+    text2 = text2.substring(0, text2.length() - commonlength);
 
     // Compute the diff on the middle block.
     diffs = diff_compute(text1, text2, checklines, deadline);
 
     // Restore the prefix and suffix.
-    /**if (commonprefix.length() != 0) {
+    if (commonprefix.length() != 0) {
       diffs.addFirst(new Diff(Operation.EQUAL, commonprefix));
     }
     if (commonsuffix.length() != 0) {
       diffs.addLast(new Diff(Operation.EQUAL, commonsuffix));
-    } **/
+    } 
 
     diff_cleanupMerge(diffs);
     return diffs;
