@@ -6,6 +6,7 @@
 package gui.form;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  *
@@ -14,10 +15,15 @@ import java.util.ArrayList;
 public class ReportData {
     private String[][] downloadFolderPath ;
     private ArrayList<String> urlList;
-
+    private HashMap<String, String> map;
     public ReportData(String[][] adownloadFolderPath,ArrayList<String> aurlList){
         this.downloadFolderPath = adownloadFolderPath;
         this.urlList = aurlList;
+    }
+
+    public ReportData(String[][] adownloadFolderPath,HashMap<String, String> amap){
+        this.downloadFolderPath = adownloadFolderPath;
+        this.map = amap;
     }
 
     public ArrayList<String> getUrlList(){
@@ -26,6 +32,10 @@ public class ReportData {
 
     public String[][] getFolder(){
         return this.downloadFolderPath;
+    }
+
+    public HashMap<String, String> getFileUrlMap(){
+        return this.map;
     }
 
 }
