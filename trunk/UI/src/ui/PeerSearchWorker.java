@@ -40,7 +40,7 @@ public class PeerSearchWorker extends SwingWorker<String[][], String> {
     protected String[][] doInBackground() throws Exception {
         long t1 = System.currentTimeMillis();
         System.out.println("Start indexing the files........................");
-        indexedFileList = indexingManger.indexSearchforMultiplePeers(files, indexFolderPath);
+        indexedFileList = indexingManger.indexSearchforMultiplePeers(files, indexFolderPath,null);
         System.out.println("Finished indexing the files........................");
         System.out.println("Start Downloading the internet files........................");
         //HashMap<String, ArrayList<String>> downloadedFileList = idm.downloadFilesForMultiplePeerSearch(fileArrayList, destFolderPath);
