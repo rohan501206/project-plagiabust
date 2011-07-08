@@ -11,6 +11,7 @@
 package reportingModule;
 
 import com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel;
+import java.awt.Graphics;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -33,6 +34,7 @@ import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
 import java.util.ResourceBundle;
+import javax.swing.Icon;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -81,7 +83,7 @@ public class ReportingModule extends javax.swing.JFrame {
     ArrayList peerDocs = new ArrayList();
     //ArrayList peerDocs=new ArrayList();
     ArrayList urlListTemp = new ArrayList();
-    HashMap<String, String> matchingToPreprocessed =new HashMap<String, String>();
+    HashMap<String, String> matchingToPreprocessed = new HashMap<String, String>();
     ArrayList<String> urlArray = new ArrayList<String>();
     HashMap<String, ArrayList<Integer>> indexHighligherMap = new HashMap<String, ArrayList<Integer>>();
     ArrayList peers = new ArrayList();
@@ -94,7 +96,7 @@ public class ReportingModule extends javax.swing.JFrame {
         initComponents();
         mainPreviousButton.setEnabled(false);
         jTabbedPane1.setEnabledAt(1, false);
-        jTabbedPane1.setEnabledAt(2, false);     
+        jTabbedPane1.setEnabledAt(2, false);
 
 
     }
@@ -640,9 +642,9 @@ public class ReportingModule extends javax.swing.JFrame {
 
         ArrayList<Integer> phraseIndexes = new ArrayList<Integer>();
         FileOperator setTextToTextAreas = new FileOperator();
-        String appendedText="";
+        String appendedText = "";
         String texts = setTextToTextAreas.textSetter(selectedDocumentPath);
-        AttributedString attributedString = new AttributedString(texts);      
+        AttributedString attributedString = new AttributedString(texts);
         jTextPane1.setText(texts);
 
         jTextPane1.setHighlighter(hilit3);
@@ -660,13 +662,14 @@ public class ReportingModule extends javax.swing.JFrame {
 
                 int startIndex = phraseIndexes.get(0);
                 int endIndex = phraseIndexes.get(1);
-               
+
                 try {
                     doc.remove(startIndex, endIndex - startIndex);
                     Style style = jTextPane1.addStyle("I'm a Style", null);
                     StyleConstants.setForeground(style, Color.red);
                     StyleConstants.setBold(style, true);
                     StyleConstants.setItalic(style, true);
+
 
                     doc.insertString(startIndex, match, style);
                 } catch (BadLocationException e) {
@@ -703,62 +706,58 @@ public class ReportingModule extends javax.swing.JFrame {
 
         ArrayList<Integer> phraseIndexes = new ArrayList<Integer>();
         Iterator it = indexHighligherMap.entrySet().iterator();
-        String matchedFile="";
+        String matchedFile = "";
         while (it.hasNext()) {
 
             Map.Entry pair = (Map.Entry) it.next();
             String match = (String) pair.getKey();
             phraseIndexes = indexHighligherMap.get(match);
 
-           
 
-                int startIndex = phraseIndexes.get(0);
-                int endIndex = phraseIndexes.get(1);
 
-                int offset = jTextPane1.viewToModel(evt.getPoint());
-                try {
-                    int start = Utilities.getWordStart(jTextPane1, offset);
-                    if((start>startIndex) && start<endIndex){
-                    String word = jTextPane1.getDocument().getText(startIndex, endIndex -startIndex );
+            int startIndex = phraseIndexes.get(0);
+            int endIndex = phraseIndexes.get(1);
 
-                    String preprocessedText=matchingToPreprocessed.get(word.trim());
-                   
-                    System.out.println("preprocessed text is "+ preprocessedText);
+            int offset = jTextPane1.viewToModel(evt.getPoint());
+            try {
+                int start = Utilities.getWordStart(jTextPane1, offset);
+                if ((start > startIndex) && start < endIndex) {
+                    String word = jTextPane1.getDocument().getText(startIndex, endIndex - startIndex);
 
-                    for(int j=0;j<resultArray.length;j++){
-                        if(resultArray[j][2]!=null){
+                    String preprocessedText = matchingToPreprocessed.get(word.trim());
+
+                    System.out.println("preprocessed text is " + preprocessedText);
+
+                    for (int j = 0; j < resultArray.length; j++) {
+                        if (resultArray[j][2] != null) {
                             //System.out.println(resultArray[j][2]);
-                            String[] matchings= resultArray[j][2].split(":");
-                            for(int k=0;k<matchings.length;k++){
+                            String[] matchings = resultArray[j][2].split(":");
+                            for (int k = 0; k < matchings.length; k++) {
                                 //System.out.println(matchings[k]);
-                                if(preprocessedText.equalsIgnoreCase(matchings[k])){
+                                if (preprocessedText.equalsIgnoreCase(matchings[k])) {
 
-                                   System.out.println("matching String found");
-                                   System.out.println(resultArray[j][1]);
-                                   matchedFile=resultArray[j][1];
-                                   
+                                    System.out.println("matching String found");
+                                    System.out.println(resultArray[j][1]);
+                                    matchedFile = resultArray[j][1];
+
+                                }
+
+
                             }
-
-                            
-                        }
                         }
 
                     }
 
                     //jTextPane1.setToolTipText(matchedFile);
                     String t2 = "View Source";
-                    String h2="<p><b>The suspected File </b>  <font color='red'>"+matchedFile+"</font><b><a href='http://www.google.com'>www.google.com</a></b></p> ";
+                    String h2 = "<p><b>The suspected File </b>  <font color='red'>" + matchedFile + "</font><b><a href='http://www.google.com'>www.google.com</a></b></p> ";
                     new ExpandableToolTip(t2, h2, jTextPane1, browser);
 
-                    }
-                    }
-
-        
-        catch(Exception e){
-
-        }
+                }
+            } catch (Exception e) {
             }
-        
+        }
+
     }//GEN-LAST:event_jTextPane1MouseClicked
 
     private void jTextPane1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextPane1MouseMoved
@@ -821,9 +820,9 @@ public class ReportingModule extends javax.swing.JFrame {
             //String match = highlightindexedInfoFirstFile[2];
             //ArrayList<Integer> arr = new ArrayList<Integer>();
             //arr.add(startIndexFirst);
-           // arr.add(endIndexFirst);
-           // indexHighligherMap.put(match, arr);
-           // matchingToPreprocessed.put(highlightindexedInfoFirstFile[2], highlightindexedInfoFirstFile[3]);
+            // arr.add(endIndexFirst);
+            // indexHighligherMap.put(match, arr);
+            // matchingToPreprocessed.put(highlightindexedInfoFirstFile[2], highlightindexedInfoFirstFile[3]);
 
             try {
 
@@ -912,14 +911,13 @@ public class ReportingModule extends javax.swing.JFrame {
                 fileComboBox.addItem(resultArray[i][1]);
                 this.setIndexDetails(resultArray[i][1]);
             }
-                }
+        }
 
         selectedFileTextField.setText(selectedDocumentPath);
         this.generateResults();
 
 
     }
-
 
     public void setUrl(ArrayList<String> urlList) {
         for (int i = 0; i < urlList.size(); i++) {
@@ -941,7 +939,6 @@ public class ReportingModule extends javax.swing.JFrame {
         for (int i = 0; i < resultArray.length; i++) {
             if (resultArray[i][1] != null) {
                 if (resultArray[i][1].equalsIgnoreCase(fileName2)) {
-
                     jTextField1.setText(resultArray[i][2]);
                     this.highlighter(resultArray[i][2]);
                 }
@@ -950,9 +947,7 @@ public class ReportingModule extends javax.swing.JFrame {
 
     }
 
-
-
-    public void setIndexDetails(String fileName){
+    public void setIndexDetails(String fileName) {
 
 
         String fileName2 = fileName;
@@ -960,7 +955,7 @@ public class ReportingModule extends javax.swing.JFrame {
             if (resultArray[i][1] != null) {
                 if (resultArray[i][1].equalsIgnoreCase(fileName2)) {
                     jTextField1.setText(resultArray[i][2]);
-                    this.highlighterDetails(resultArray[i][2],fileName);
+                    this.highlighterDetails(resultArray[i][2], fileName);
                 }
             }
         }
@@ -968,8 +963,7 @@ public class ReportingModule extends javax.swing.JFrame {
 
     }
 
-
-    public void highlighterDetails(String queryTemp,String filename) {
+    public void highlighterDetails(String queryTemp, String filename) {
 
         FileOperator setTextToTextAreas = new FileOperator();
         String[] texts = setTextToTextAreas.textSetter(selectedDocumentPath, filename);
@@ -1001,17 +995,7 @@ public class ReportingModule extends javax.swing.JFrame {
             indexHighligherMap.put(match, arr);
             matchingToPreprocessed.put(highlightindexedInfoFirstFile[2], highlightindexedInfoFirstFile[3]);
 
-                   }
+        }
 
     }
-
-
-
-
-
-
-    
-
-
-   
 }
