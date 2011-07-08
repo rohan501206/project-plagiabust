@@ -243,7 +243,8 @@ public class WizardForm extends javax.swing.JFrame {
 
         WizardSeparator.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        WizardTabbedPane.setFont(new java.awt.Font("Tahoma", 0, 12));
+        WizardTabbedPane.setEnabled(false);
+        WizardTabbedPane.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         WizardTabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 WizardTabbedPaneStateChanged(evt);
@@ -405,12 +406,12 @@ public class WizardForm extends javax.swing.JFrame {
         });
 
         AddDocumentBannerLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
-        AddDocumentBannerLabel.setText("Step 2 - Add Documents for new Plagiarism Detection Project");
+        AddDocumentBannerLabel.setText("Step 2 - Add Document for new Plagiarism Detection Project");
         AddDocumentBannerLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         AddDocumentBannerLabel.setPreferredSize(new java.awt.Dimension(327, 32));
 
         AddDocumentLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
-        AddDocumentLabel.setText("Add Documents");
+        AddDocumentLabel.setText("Add Document");
         AddDocumentLabel.setVerticalTextPosition(javax.swing.SwingConstants.TOP);
 
         Step2ImageLabel.setPreferredSize(new java.awt.Dimension(32, 32));
@@ -425,7 +426,7 @@ public class WizardForm extends javax.swing.JFrame {
         AddDocumentTipTextArea.setFont(new java.awt.Font("Tahoma", 0, 12));
         AddDocumentTipTextArea.setLineWrap(true);
         AddDocumentTipTextArea.setRows(5);
-        AddDocumentTipTextArea.setText("Select documents for the plagiarism test using Document Manger. You can select MS Word (.docx, .doc), .pdf, .rtf, .txt files.");
+        AddDocumentTipTextArea.setText("Select document for the plagiarism test using Document Manger. You can select MS Word (.docx, .doc), .pdf, .rtf, .txt files.");
         AddDocumentTipTextArea.setWrapStyleWord(true);
         AddDocumentTipScrollPane.setViewportView(AddDocumentTipTextArea);
 
@@ -468,7 +469,7 @@ public class WizardForm extends javax.swing.JFrame {
                 .addContainerGap(359, Short.MAX_VALUE))
         );
 
-        WizardTabbedPane.addTab("Select Document", AddDocumentPanel);
+        WizardTabbedPane.addTab("Select Single Document", AddDocumentPanel);
 
         SelectDocumentsPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -512,7 +513,7 @@ public class WizardForm extends javax.swing.JFrame {
                         .addComponent(peerSourceTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
                         .addComponent(LocationBrowseButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(6, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         SelectDocumentsPanelLayout.setVerticalGroup(
             SelectDocumentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -531,7 +532,7 @@ public class WizardForm extends javax.swing.JFrame {
                 .addContainerGap(392, Short.MAX_VALUE))
         );
 
-        WizardTabbedPane.addTab("Select Sources", SelectDocumentsPanel);
+        WizardTabbedPane.addTab("Select Source Documents", SelectDocumentsPanel);
 
         KnowledgeBasePanel.setBackground(new java.awt.Color(255, 255, 255));
 
