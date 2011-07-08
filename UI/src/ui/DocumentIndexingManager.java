@@ -57,12 +57,21 @@ public class DocumentIndexingManager {
 
 
 
-    public HashMap<File, ArrayList<String>> indexSearchforMultiplePeers(File[] files,String indexFolderPathTemp){
+    public HashMap<File, ArrayList<String>> indexSearchforMultiplePeers(File[] files,String indexFolderPathTemp,JProgressBar pbar){
+        ProgressBarManager pmanager = new ProgressBarManager(pbar); // progress bar
+
+
         indexFolderPath=indexFolderPathTemp;
         IndexSearch is = new IndexSearch(indexFolderPath);
         PeerSearchManager psm = new PeerSearchManager(is);
         psm.setRandomSelectionRatio(.25f);
         for (int i = 0; i < files.length; i++) {
+
+
+             // progress bar
+             pmanager.runProgress((i*100)/files.length);
+
+
             ArrayList<String> indexedFilesTesting = new ArrayList<String>();
             if (files[i].isFile()) {
                 System.out.println("testing Indexing files........................\n");
