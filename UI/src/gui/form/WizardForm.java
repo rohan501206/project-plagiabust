@@ -1103,7 +1103,7 @@ public class WizardForm extends javax.swing.JFrame {
             for (int arr = 0; arr < files.length; arr++) {
                 fileArrayList.add(files[arr].getAbsolutePath());
             }
-            final PeerSearchWorker psworker = new PeerSearchWorker(destFolderPath,files,indexFolderPath,fileArrayList,manager) {
+            final PeerSearchWorker psworker = new PeerSearchWorker(destFolderPath,files,indexFolderPath,fileArrayList,manager,CreateIndexProgressBar) {
             // This method is invoked when the worker is finished
             // its task
             @Override
@@ -1116,6 +1116,11 @@ public class WizardForm extends javax.swing.JFrame {
                         } catch (ExecutionException ex) {
                             Logger.getLogger(WizardForm.class.getName()).log(Level.SEVERE, null, ex);
                         }
+
+                    CheckControlButton.setVisible(false);
+                    ViewButton.setVisible(true);
+                    printTemp(temp);
+                    
             }
             };
             psworker.execute();
@@ -1174,6 +1179,22 @@ public class WizardForm extends javax.swing.JFrame {
     public void setTempArray(ReportData temp) {
         this.repdata = temp;
     }
+
+
+    public void printTemp(String[][] temp){
+        for(int i = 0 ;i< temp.length;i++){
+            for(int j = 0 ;j< temp[i].length;j++){
+                if(temp[i][j]!= null){
+                    System.out.println(temp[i][j]);
+                }
+            }
+        }
+    }
+
+
+
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AddDocumentBannerLabel;
     private javax.swing.JLabel AddDocumentBannerLabel1;
