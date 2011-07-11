@@ -84,7 +84,7 @@ public class TextHighlighter {
                         match=matcher.group();
                     		
 		}
-
+        
 
         startIndexTemp = content.indexOf(firstWord);
         indexArrayList.add(startIndexTemp);

@@ -87,6 +87,7 @@ public class ReportingModule extends javax.swing.JFrame {
     ArrayList<String> urlArray = new ArrayList<String>();
     HashMap<String, ArrayList<Integer>> indexHighligherMap = new HashMap<String, ArrayList<Integer>>();
     ArrayList peers = new ArrayList();
+    HashMap<String, String> fileToUrlMap = new HashMap<String, String>();
 
     /** Creates new form NewJFrame */
     public ReportingModule() {
@@ -707,6 +708,7 @@ public class ReportingModule extends javax.swing.JFrame {
         ArrayList<Integer> phraseIndexes = new ArrayList<Integer>();
         Iterator it = indexHighligherMap.entrySet().iterator();
         String matchedFile = "";
+        
         while (it.hasNext()) {
 
             Map.Entry pair = (Map.Entry) it.next();
@@ -748,13 +750,28 @@ public class ReportingModule extends javax.swing.JFrame {
 
                     }
 
+
+
+                    /**Iterator mapIterator = fileToUrlMap.entrySet().iterator();
+
+        while (mapIterator.hasNext()) {
+
+            Map.Entry fileUrlPair = (Map.Entry) mapIterator.next();
+            String downloadedFileName = (String) fileUrlPair.getKey();
+            if(matchedFile.equalsIgnoreCase(downloadedFileName)){
+
+                matchedFile= (String)fileUrlPair.getValue();
+            }
+                    } **/
                     //jTextPane1.setToolTipText(matchedFile);
-                    String t2 = "View Source";
-                    String h2 = "<p><b>The suspected File </b>  <font color='red'>" + matchedFile + "</font><b><a href='http://www.google.com'>www.google.com</a></b></p> ";
+                     String t2 = "View Source";
+                     String h2 = "<p><b>The suspected File </b>  <font color='red'>" + matchedFile + "</font><b><a href='"+matchedFile+"'>"+matchedFile+"</a></b></p> ";
                     new ExpandableToolTip(t2, h2, jTextPane1, browser);
 
                 }
-            } catch (Exception e) {
+            } catch (Exception ex) {
+
+                Logger.getLogger(ReportingModule.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 
@@ -995,6 +1012,15 @@ public class ReportingModule extends javax.swing.JFrame {
             indexHighligherMap.put(match, arr);
             matchingToPreprocessed.put(highlightindexedInfoFirstFile[2], highlightindexedInfoFirstFile[3]);
 
+        }
+
+    }
+
+    public void setMap(HashMap<String, String> fileUrlMap) {
+
+        this.fileToUrlMap=fileUrlMap;
+        if(fileUrlMap==null){
+            System.err.println("Fileurl map is null");
         }
 
     }
