@@ -217,7 +217,7 @@ public class ExpandableToolTip  implements KeyListener, MouseListener, FocusList
             }
             this.open(uri);*/
         } catch (IOException ex) {
-            Logger.getLogger(ExpandableToolTip.class.getName()).log(Level.SEVERE, null, ex);
+            //Logger.getLogger(ExpandableToolTip.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 			
