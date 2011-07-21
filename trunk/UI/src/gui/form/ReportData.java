@@ -26,6 +26,13 @@ public class ReportData {
         this.map = amap;
     }
 
+
+     public ReportData(String[][] adownloadFolderPath,HashMap<String, String> amap,ArrayList<String> aurlList){
+        this.downloadFolderPath = adownloadFolderPath;
+        this.map = amap;
+        this.urlList = aurlList;
+    }
+
     public ArrayList<String> getUrlList(){
         return this.urlList;
     }
