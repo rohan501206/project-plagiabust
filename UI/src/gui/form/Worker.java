@@ -76,9 +76,9 @@ public class Worker extends SwingWorker<ReportData, String> {
         } catch (IOException ex) {
             System.out.println("There are no similar files or some error has occured");
         }
-        ReportData repData = new ReportData(temp, urlList);
+        //ReportData repData = new ReportData(temp, urlList);
         //ReportData repData = new ReportData(temp, map);
-
+          ReportData repData = new ReportData(temp, map,urlList);
         return repData ;
     }
 

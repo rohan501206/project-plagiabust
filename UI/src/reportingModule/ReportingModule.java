@@ -752,7 +752,7 @@ public class ReportingModule extends javax.swing.JFrame {
 
 
 
-                    /**Iterator mapIterator = fileToUrlMap.entrySet().iterator();
+                    Iterator mapIterator = fileToUrlMap.entrySet().iterator();
 
         while (mapIterator.hasNext()) {
 
@@ -762,7 +762,7 @@ public class ReportingModule extends javax.swing.JFrame {
 
                 matchedFile= (String)fileUrlPair.getValue();
             }
-                    } **/
+                    } 
                     //jTextPane1.setToolTipText(matchedFile);
                      String t2 = "View Source";
                      String h2 = "<p><b>The suspected File </b>  <font color='red'>" + matchedFile + "</font><b><a href='"+matchedFile+"'>"+matchedFile+"</a></b></p> ";
