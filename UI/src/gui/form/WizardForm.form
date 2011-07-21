@@ -1187,20 +1187,25 @@
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="IndexFilesCompletionLabel" min="-2" max="-2" attributes="0"/>
-                                              <Component id="PreprocessDocumentCompletionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="KnowledgeBaseCompletionLabel" min="-2" max="-2" attributes="0"/>
-                                              <Component id="CrossCheckCompletionLabel" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="DonloadFileProgressBar" pref="452" max="32767" attributes="1"/>
-                                              <Component id="CreateIndexProgressBar" alignment="0" pref="452" max="32767" attributes="1"/>
-                                              <Component id="CrossCheckProgressBar" alignment="0" pref="452" max="32767" attributes="1"/>
-                                              <Component id="PreprocessDocumentProgressBar" alignment="0" pref="452" max="32767" attributes="1"/>
+                                              <Group type="103" alignment="0" groupAlignment="1" attributes="0">
+                                                  <Component id="CrossCheckCompletionLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                                                  <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                                      <Component id="IndexFilesCompletionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="PreprocessDocumentCompletionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                  </Group>
+                                              </Group>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="CommandSeparator" min="-2" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="CommandSeparator" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                                  <Component id="CreateIndexProgressBar" alignment="0" max="32767" attributes="1"/>
+                                                  <Component id="PreprocessDocumentProgressBar" alignment="0" max="32767" attributes="1"/>
+                                                  <Component id="DonloadFileProgressBar" max="32767" attributes="1"/>
+                                                  <Component id="CrossCheckProgressBar" alignment="1" pref="435" max="32767" attributes="1"/>
+                                              </Group>
+                                          </Group>
                                       </Group>
                                   </Group>
                               </Group>
@@ -1226,7 +1231,7 @@
                 <DimensionLayout dim="1">
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="Step5ImageLabel" min="-2" max="-2" attributes="0"/>
@@ -1243,15 +1248,20 @@
                               <Component id="KnowledgeBaseCompletionLabel" min="-2" max="-2" attributes="0"/>
                               <Component id="DonloadFileProgressBar" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="23" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="PreprocessDocumentCompletionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="CommandSeparator" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="PreprocessDocumentProgressBar" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="PreprocessDocumentProgressBar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="IndexFilesCompletionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
                           </Group>
                           <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="IndexFilesCompletionLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="PreprocessDocumentCompletionLabel" min="-2" max="-2" attributes="0"/>
                               <Component id="CreateIndexProgressBar" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
@@ -1259,7 +1269,7 @@
                               <Component id="CrossCheckCompletionLabel" min="-2" max="-2" attributes="0"/>
                               <Component id="CrossCheckProgressBar" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           <Component id="CommandsLabel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
