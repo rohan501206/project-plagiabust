@@ -259,9 +259,10 @@ public class Manager {
             Map.Entry pair = (Map.Entry) it.next();
             File filePath = (File) pair.getKey();
             indexedFilesForFile = indexedFilesList.get(filePath);
-            ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
+           
 
             for (int i = 0; i < indexedFilesForFile.size(); i++) {
+                ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
                 File createFile = new File((String) indexedFilesForFile.get(i));
                 float output = sca.getSimilarity(preprocessText(filePath.getAbsolutePath()), preprocessText(createFile.getAbsolutePath()));
                 String match = sca.getList();
@@ -291,10 +292,12 @@ public class Manager {
             String filePath = (String) pair.getKey();
             File checkfile = new File((String)pair.getKey());
             downloadedFilesForFile = downloadedFilesList.get(filePath);
-            ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
+            
 
             for (int i = 0; i < downloadedFilesForFile.size(); i++) {
+                ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
                 File createFile = new File((String) downloadedFilesForFile.get(i));
+                float output = sca.getSimilarity(preprocessText(checkfile.getAbsolutePath()), preprocessText(createFile.getAbsolutePath()));
                 String match = sca.getList();
                 String firstFile = filePath;
                 String secondFile = createFile.getAbsolutePath();
@@ -394,6 +397,7 @@ public class Manager {
         // document reading
         String documentText = docreader.processFileAndGetText(fullFilename);
         // removing numbers
+        
         String numberRemoveText = documentText.replaceAll("[^a-zA-Z ]", "");
         //snawball analyser
         ArrayList<String> numberRemovedToken = null;

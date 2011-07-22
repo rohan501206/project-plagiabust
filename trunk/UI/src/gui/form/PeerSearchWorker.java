@@ -50,14 +50,16 @@ public class PeerSearchWorker extends SwingWorker<peerSearchReportData, String> 
 
     @Override
     protected peerSearchReportData doInBackground() throws Exception {
+
+        System.out.println("Start indexing the files........................");
+        indexedFileList = indexingManger.indexSearchforMultiplePeers(files, indexFolderPath,pbar2);
+        System.out.println("Finished indexing the files........................");
         
         System.out.println("Start Downloading the internet files........................");
         HashMap<String, ArrayList<String>> downloadedFileList = idm.downloadFilesForMultiplePeerSearch(fileArrayList, destFolderPath);
         System.out.println("Finished Downloading the internet files........................");
 
-        System.out.println("Start indexing the files........................");
-        indexedFileList = indexingManger.indexSearchforMultiplePeers(files, indexFolderPath,pbar2);
-        System.out.println("Finished indexing the files........................");
+        
         
         try {
             System.out.println("Start comparing files........................");
