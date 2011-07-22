@@ -25,6 +25,7 @@ import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import reportingModule.ReportingModule;
 import ui.FileOperator;
+import ui.peerSearchReportData;
 
 
 /**
@@ -51,6 +52,7 @@ public class WizardForm extends javax.swing.JFrame {
     String indexFolderPath;
     Manager manager = new Manager();
     ReportData repdata;
+    peerSearchReportData peerRepData;
     public static WizardForm wizardForm;
 
      ArrayList<String> fileArrayList = new ArrayList<String>();
@@ -341,10 +343,10 @@ public class WizardForm extends javax.swing.JFrame {
                                         .addGroup(ProjectLocationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                             .addComponent(ProjectNameTextField, javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(ProjectFolderTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(ProjectLocationTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(ProjectLocationTextField, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
                                         .addGap(18, 18, 18)
                                         .addComponent(LocationBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(84, 84, 84)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
                         .addComponent(Step1ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -682,11 +684,13 @@ public class WizardForm extends javax.swing.JFrame {
         NumOfExternalLabel.setFont(new java.awt.Font("Tahoma", 0, 12));
         NumOfExternalLabel.setText("Maximum Number of External Sources : ");
 
-        NumOfExternalSourcesComboBox.setFont(new java.awt.Font("Tahoma", 1, 12));
+        NumOfExternalSourcesComboBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         NumOfExternalSourcesComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15", "20" }));
+        NumOfExternalSourcesComboBox.setSelectedIndex(9);
 
-        NumOfPeerSourceComboBox.setFont(new java.awt.Font("Tahoma", 1, 12));
+        NumOfPeerSourceComboBox.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         NumOfPeerSourceComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "15", "20" }));
+        NumOfPeerSourceComboBox.setSelectedIndex(9);
 
         ModesOfCheckLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
         ModesOfCheckLabel.setText("Modes of Check");
@@ -844,13 +848,13 @@ public class WizardForm extends javax.swing.JFrame {
                                             .addComponent(IndexFilesCompletionLabel)
                                             .addComponent(PreprocessDocumentCompletionLabel))))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(CommandSeparator, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addComponent(CreateIndexProgressBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(PreprocessDocumentProgressBar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(DonloadFileProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(CrossCheckProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)))))))
+                                .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(CommandSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(DonloadFileProgressBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(CrossCheckProgressBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+                                    .addComponent(PreprocessDocumentProgressBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(CreateIndexProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)))
                 .addGap(31, 31, 31))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, StartCheckPanelLayout.createSequentialGroup()
                 .addContainerGap()
@@ -887,12 +891,12 @@ public class WizardForm extends javax.swing.JFrame {
                     .addGroup(StartCheckPanelLayout.createSequentialGroup()
                         .addGap(17, 17, 17)
                         .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(PreprocessDocumentProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CreateIndexProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(IndexFilesCompletionLabel))))
                 .addGap(26, 26, 26)
-                .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PreprocessDocumentCompletionLabel)
-                    .addComponent(CreateIndexProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(PreprocessDocumentProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(31, 31, 31)
                 .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(CrossCheckCompletionLabel)
@@ -1116,7 +1120,7 @@ public class WizardForm extends javax.swing.JFrame {
             protected void done() {
 
                         try {
-                            temp = get();
+                            peerRepData= get();
                         } catch (InterruptedException ex) {
                             Logger.getLogger(WizardForm.class.getName()).log(Level.SEVERE, null, ex);
                         } catch (ExecutionException ex) {
@@ -1125,7 +1129,7 @@ public class WizardForm extends javax.swing.JFrame {
 
                     CheckControlButton.setVisible(false);
                     ViewButton.setVisible(true);
-                    printTemp(temp);
+                    printTemp(peerRepData);
                     
             }
             };
@@ -1187,14 +1191,9 @@ public class WizardForm extends javax.swing.JFrame {
     }
 
 
-    public void printTemp(String[][] temp){
-        for(int i = 0 ;i< temp.length;i++){
-            for(int j = 0 ;j< temp[i].length;j++){
-                if(temp[i][j]!= null){
-                    System.out.println(temp[i][j]);
-                }
-            }
-        }
+    public void printTemp(peerSearchReportData temp){
+        temp.getInternetFilesReportData().keySet().iterator();
+        
     }
 
 

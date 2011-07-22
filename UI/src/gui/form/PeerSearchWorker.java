@@ -14,17 +14,18 @@ import javax.swing.SwingWorker;
 import ui.DocumentIndexingManager;
 import ui.InternetDocumentDownloadManager;
 import ui.Manager;
+import ui.peerSearchReportData;
 
 /**
  *
  * @author Compaq
  */
-public class PeerSearchWorker extends SwingWorker<String[][], String> {
+public class PeerSearchWorker extends SwingWorker<peerSearchReportData, String> {
     ArrayList<String> fileArrayList = new ArrayList<String>();
     HashMap<File, ArrayList<String>> indexedFileList = new HashMap<File, ArrayList<String>>();
     InternetDocumentDownloadManager idm = new InternetDocumentDownloadManager();
     DocumentIndexingManager indexingManger=new DocumentIndexingManager();
-    String[][] temp = null;
+    peerSearchReportData temp = null;
     String destFolderPath;
     File[] files;
     String indexFolderPath;
@@ -48,7 +49,7 @@ public class PeerSearchWorker extends SwingWorker<String[][], String> {
     }
 
     @Override
-    protected String[][] doInBackground() throws Exception {
+    protected peerSearchReportData doInBackground() throws Exception {
        
         System.out.println("Start indexing the files........................");
         indexedFileList = indexingManger.indexSearchforMultiplePeers(files, indexFolderPath,pbar2);
@@ -70,7 +71,7 @@ public class PeerSearchWorker extends SwingWorker<String[][], String> {
 
 
 
-    public String[][] getOutPut(){
+    public peerSearchReportData getOutPut(){
         return this.temp;
     }
 
