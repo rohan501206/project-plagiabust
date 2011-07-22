@@ -20,6 +20,9 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
@@ -1141,7 +1144,6 @@ public class WizardForm extends javax.swing.JFrame {
     private void ViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewButtonActionPerformed
         File destFolder = new File(destFolderPath);
         String selectedDocumentPath = destFolderPath + File.separator + DocumentManagerForm.fileName;
-
         ReportingModule rp = new ReportingModule();
         rp.setVisible(true);
         rp.setDocument(selectedDocumentPath);
@@ -1192,7 +1194,18 @@ public class WizardForm extends javax.swing.JFrame {
 
 
     public void printTemp(peerSearchReportData temp){
-        temp.getInternetFilesReportData().keySet().iterator();
+        Iterator it = temp.getInternetFilesReportData().entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry) it.next();
+            String fileName = (String)pair.getKey();
+            HashMap<String,String> map = (HashMap<String,String>)pair.getValue();
+           
+            System.out.println(fileName);
+            System.out.println(map.entrySet());
+            System.out.println();
+            System.out.println();
+        }
+        
         
     }
 

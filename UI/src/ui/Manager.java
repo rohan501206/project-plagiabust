@@ -248,8 +248,8 @@ public class Manager {
     public  peerSearchReportData compareAllFiles(HashMap<File, ArrayList<String>> indexedFilesList, HashMap<String, ArrayList<String>> downloadedFilesList) throws IOException {
         peerSearchReportData repData = new peerSearchReportData();
 
-        HashMap<String,String> internetFilesReportData = null;
-        HashMap<String,String> peerFilesReportData = null;
+        HashMap<String,String> internetFilesReportData = new HashMap<String,String>() ;
+        HashMap<String,String> peerFilesReportData= new HashMap<String,String>() ;
         Iterator downloadIterator = downloadedFilesList.entrySet().iterator();
         Iterator it = indexedFilesList.entrySet().iterator();
         ArrayList indexedFilesForFile = new ArrayList();
@@ -276,7 +276,7 @@ public class Manager {
                 //System.out.println("Size of the matched files is " + fileNo);
                 System.out.println();
                 if (!match.isEmpty()) {
-                    peerFilesReportData.put(createFile.getAbsolutePath(), match);
+                    peerFilesReportData.put(secondFile, match);
                 }
             }
             

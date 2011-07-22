@@ -14,8 +14,8 @@ import java.util.HashMap;
  */
 public class peerSearchReportData {
 
-    private HashMap<String, HashMap<String,String>> internetFilesReportData ;
-    private HashMap<String, HashMap<String,String>> peerFilesReportData ;
+    private HashMap<String, HashMap<String,String>> internetFilesReportData = new HashMap<String, HashMap<String,String>>() ;
+    private HashMap<String, HashMap<String,String>> peerFilesReportData = new HashMap<String, HashMap<String,String>>();
 
 
     public HashMap<String, HashMap<String,String>> getInternetFilesReportData(){
