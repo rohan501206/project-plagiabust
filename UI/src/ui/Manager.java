@@ -276,7 +276,7 @@ public class Manager {
                 //System.out.println("Size of the matched files is " + fileNo);
                 System.out.println();
                 if (!match.isEmpty()) {
-                    peerFilesReportData.put(secondFile, match);
+                    peerFilesReportData.put(createFile.getAbsolutePath(), match);
                 }
             }
             

@@ -31,7 +31,7 @@ public class peerSearchReportData {
     }
 
     public void setPeerFilesReportData(String checkingFile, HashMap<String,String> peerSouceFileMatchMap){
-         this.internetFilesReportData.put(checkingFile, peerSouceFileMatchMap);
+         this.peerFilesReportData.put(checkingFile, peerSouceFileMatchMap);
     }
 
 }
