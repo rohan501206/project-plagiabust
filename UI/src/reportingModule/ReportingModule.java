@@ -19,11 +19,13 @@ import reportingModule.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Desktop;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.font.TextAttribute;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.text.AttributedCharacterIterator.Attribute;
 import java.text.AttributedString;
 import java.text.SimpleDateFormat;
@@ -206,7 +208,7 @@ public class ReportingModule extends javax.swing.JFrame {
 
             jrv.addHyperlinkListener(new ReportHyperlinkListner());
 
-            jScrollPane3.getViewport().add(jrv);
+            jasperReportScrollPane.getViewport().add(jrv);
 
 
         } catch (JRException e) {
@@ -228,31 +230,31 @@ public class ReportingModule extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea3 = new javax.swing.JTextArea();
         jLabel3 = new javax.swing.JLabel();
-        jPanel6 = new javax.swing.JPanel();
-        jPanel7 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane7 = new javax.swing.JScrollPane();
-        browser = new javax.swing.JEditorPane();
-        jPanel8 = new javax.swing.JPanel();
-        jScrollPane6 = new javax.swing.JScrollPane();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTextPane1 = new javax.swing.JTextPane();
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jEditorPane1 = new javax.swing.JEditorPane();
+        selectedFileEditorPane = new javax.swing.JEditorPane();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jEditorPane2 = new javax.swing.JEditorPane();
+        suspectedFileEditorPane = new javax.swing.JEditorPane();
         jButton4 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        fileComboBox = new javax.swing.JComboBox();
+        fileListComboBox = new javax.swing.JComboBox();
         jTextField1 = new javax.swing.JTextField();
         selectedFileTextField = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane(jrv);
+        jasperReportScrollPane = new javax.swing.JScrollPane(jrv);
+        jPanel6 = new javax.swing.JPanel();
+        jPanel7 = new javax.swing.JPanel();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        browser = new javax.swing.JEditorPane();
+        jButton1 = new javax.swing.JButton();
+        jPanel8 = new javax.swing.JPanel();
+        jScrollPane6 = new javax.swing.JScrollPane();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        showFileContentTextPane = new javax.swing.JTextPane();
         jPanel1 = new javax.swing.JPanel();
         jButton3 = new javax.swing.JButton();
         mainPreviousButton = new javax.swing.JButton();
@@ -295,106 +297,11 @@ public class ReportingModule extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Introduction", jPanel2);
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Results", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+        selectedFileEditorPane.setEditable(false);
+        jScrollPane1.setViewportView(selectedFileEditorPane);
 
-        jButton1.setText("Show Selected File");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        browser.setContentType("text/html");
-        jScrollPane7.setViewportView(browser);
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 879, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(49, Short.MAX_VALUE))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(49, 49, 49)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("selected File"));
-
-        jScrollPane6.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jScrollPane6MouseClicked(evt);
-            }
-        });
-
-        jTextPane1.setForeground(java.awt.Color.gray);
-        jTextPane1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTextPane1MouseClicked(evt);
-            }
-        });
-        jTextPane1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                jTextPane1MouseMoved(evt);
-            }
-        });
-        jScrollPane5.setViewportView(jTextPane1);
-
-        jScrollPane6.setViewportView(jScrollPane5);
-
-        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
-        jPanel8.setLayout(jPanel8Layout);
-        jPanel8Layout.setHorizontalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 992, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(129, Short.MAX_VALUE))
-        );
-        jPanel8Layout.setVerticalGroup(
-            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel8Layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jTabbedPane1.addTab("Report", jPanel6);
-
-        jScrollPane1.setViewportView(jEditorPane1);
-
-        jScrollPane2.setViewportView(jEditorPane2);
+        suspectedFileEditorPane.setEditable(false);
+        jScrollPane2.setViewportView(suspectedFileEditorPane);
 
         jButton4.setText("Next Step");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -409,22 +316,24 @@ public class ReportingModule extends javax.swing.JFrame {
 
         jLabel7.setText("Select the file to see the comparison");
 
-        fileComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { }));
-        fileComboBox.addItemListener(new java.awt.event.ItemListener() {
+        fileListComboBox.setModel(new javax.swing.DefaultComboBoxModel(new String[] { }));
+        fileListComboBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                fileComboBoxItemStateChanged(evt);
+                fileListComboBoxItemStateChanged(evt);
             }
         });
-        fileComboBox.addActionListener(new java.awt.event.ActionListener() {
+        fileListComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                fileComboBoxActionPerformed(evt);
+                fileListComboBoxActionPerformed(evt);
             }
         });
 
         jTextField1.setText("jTextField1");
 
         selectedFileTextField.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
-        selectedFileTextField.setFont(new java.awt.Font("Tahoma", 1, 11));
+        selectedFileTextField.setEditable(false);
+        selectedFileTextField.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        selectedFileTextField.setToolTipText("");
         selectedFileTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectedFileTextFieldActionPerformed(evt);
@@ -461,7 +370,7 @@ public class ReportingModule extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel7)
                                 .addGap(18, 18, 18)
-                                .addComponent(fileComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 712, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(fileListComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 712, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -471,7 +380,7 @@ public class ReportingModule extends javax.swing.JFrame {
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(fileComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fileListComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -506,8 +415,8 @@ public class ReportingModule extends javax.swing.JFrame {
             .addGap(0, 517, Short.MAX_VALUE)
         );
 
-        jPanel5.add(jScrollPane3);
-        jScrollPane3.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        jPanel5.add(jasperReportScrollPane);
+        jasperReportScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
         jPanel4.setLayout(null);
 
@@ -517,7 +426,7 @@ public class ReportingModule extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 1155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jasperReportScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 1155, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -530,11 +439,106 @@ public class ReportingModule extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(70, 70, 70)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jasperReportScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Final Report", jPanel4);
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Browser", javax.swing.border.TitledBorder.LEFT, javax.swing.border.TitledBorder.DEFAULT_POSITION));
+
+        browser.setContentType("text/html");
+        jScrollPane7.setViewportView(browser);
+
+        jButton1.setText("Show Selected File");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 879, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(65, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton1)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+
+        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder("selected File"));
+
+        jScrollPane6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jScrollPane6MouseClicked(evt);
+            }
+        });
+
+        showFileContentTextPane.setForeground(java.awt.Color.gray);
+        showFileContentTextPane.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                showFileContentTextPaneMouseClicked(evt);
+            }
+        });
+        showFileContentTextPane.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                showFileContentTextPaneMouseMoved(evt);
+            }
+        });
+        jScrollPane5.setViewportView(showFileContentTextPane);
+
+        jScrollPane6.setViewportView(jScrollPane5);
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 990, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(131, Short.MAX_VALUE))
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jPanel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addGap(31, 31, 31)
+                .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab("Report", jPanel6);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -622,11 +626,11 @@ public class ReportingModule extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_mainPreviousButtonActionPerformed
 
-    private void fileComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_fileComboBoxItemStateChanged
+    private void fileListComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_fileListComboBoxItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_fileComboBoxItemStateChanged
+    }//GEN-LAST:event_fileListComboBoxItemStateChanged
 
-    private void fileComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileComboBoxActionPerformed
+    private void fileListComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fileListComboBoxActionPerformed
 
         JComboBox cb = (JComboBox) evt.getSource();
         String fileName = (String) cb.getSelectedItem();
@@ -637,7 +641,7 @@ public class ReportingModule extends javax.swing.JFrame {
         } catch (Exception ex) {
             Logger.getLogger(ReportingModule.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_fileComboBoxActionPerformed
+    }//GEN-LAST:event_fileListComboBoxActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
@@ -646,11 +650,11 @@ public class ReportingModule extends javax.swing.JFrame {
         String appendedText = "";
         String texts = setTextToTextAreas.textSetter(selectedDocumentPath);
         AttributedString attributedString = new AttributedString(texts);
-        jTextPane1.setText(texts);
+        showFileContentTextPane.setText(texts);
 
-        jTextPane1.setHighlighter(hilit3);
+        showFileContentTextPane.setHighlighter(hilit3);
 
-        StyledDocument doc = jTextPane1.getStyledDocument();
+        StyledDocument doc = showFileContentTextPane.getStyledDocument();
 
         Iterator it = indexHighligherMap.entrySet().iterator();
         while (it.hasNext()) {
@@ -666,7 +670,7 @@ public class ReportingModule extends javax.swing.JFrame {
 
                 try {
                     doc.remove(startIndex, endIndex - startIndex);
-                    Style style = jTextPane1.addStyle("I'm a Style", null);
+                    Style style = showFileContentTextPane.addStyle("I'm a Style", null);
                     StyleConstants.setForeground(style, Color.red);
                     StyleConstants.setBold(style, true);
                     StyleConstants.setItalic(style, true);
@@ -702,13 +706,14 @@ public class ReportingModule extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jScrollPane6MouseClicked
 
-    private void jTextPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextPane1MouseClicked
+    private void showFileContentTextPaneMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showFileContentTextPaneMouseClicked
 
 
         ArrayList<Integer> phraseIndexes = new ArrayList<Integer>();
         Iterator it = indexHighligherMap.entrySet().iterator();
         String matchedFile = "";
-        
+        String content = "";
+
         while (it.hasNext()) {
 
             Map.Entry pair = (Map.Entry) it.next();
@@ -720,11 +725,11 @@ public class ReportingModule extends javax.swing.JFrame {
             int startIndex = phraseIndexes.get(0);
             int endIndex = phraseIndexes.get(1);
 
-            int offset = jTextPane1.viewToModel(evt.getPoint());
+            int offset = showFileContentTextPane.viewToModel(evt.getPoint());
             try {
-                int start = Utilities.getWordStart(jTextPane1, offset);
+                int start = Utilities.getWordStart(showFileContentTextPane, offset);
                 if ((start > startIndex) && start < endIndex) {
-                    String word = jTextPane1.getDocument().getText(startIndex, endIndex - startIndex);
+                    String word = showFileContentTextPane.getDocument().getText(startIndex, endIndex - startIndex);
 
                     String preprocessedText = matchingToPreprocessed.get(word.trim());
 
@@ -749,24 +754,27 @@ public class ReportingModule extends javax.swing.JFrame {
                         }
 
                     }
-
+                    content = "<p><b>The suspected File </b>  <font color='red'>" + matchedFile + "</font></p> ";
 
 
                     Iterator mapIterator = fileToUrlMap.entrySet().iterator();
 
-        while (mapIterator.hasNext()) {
+                    while (mapIterator.hasNext()) {
 
-            Map.Entry fileUrlPair = (Map.Entry) mapIterator.next();
-            String downloadedFileName = (String) fileUrlPair.getKey();
-            if(matchedFile.equalsIgnoreCase(downloadedFileName)){
+                        Map.Entry fileUrlPair = (Map.Entry) mapIterator.next();
+                        String downloadedFileName = (String) fileUrlPair.getKey();
+                        System.err.println("key value is " + downloadedFileName);
+                        System.err.println(" value is " + matchedFile);
+                        if (matchedFile.equalsIgnoreCase(downloadedFileName)) {
 
-                matchedFile= (String)fileUrlPair.getValue();
-            }
-                    } 
+                            matchedFile = (String) fileUrlPair.getValue();
+                            content = "<p><b>The suspected Online Source </b><b><a href='" + matchedFile + "'>" + matchedFile + "</a></b></p> ";
+
+                        }
+                    }
                     //jTextPane1.setToolTipText(matchedFile);
-                     String t2 = "View Source";
-                     String h2 = "<p><b>The suspected File </b>  <font color='red'>" + matchedFile + "</font><b><a href='"+matchedFile+"'>"+matchedFile+"</a></b></p> ";
-                    new ExpandableToolTip(t2, h2, jTextPane1, browser);
+                    String heading = "View Source";
+                    new ExpandableToolTip(heading, content, showFileContentTextPane, browser);
 
                 }
             } catch (Exception ex) {
@@ -775,11 +783,11 @@ public class ReportingModule extends javax.swing.JFrame {
             }
         }
 
-    }//GEN-LAST:event_jTextPane1MouseClicked
+    }//GEN-LAST:event_showFileContentTextPaneMouseClicked
 
-    private void jTextPane1MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextPane1MouseMoved
+    private void showFileContentTextPaneMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_showFileContentTextPaneMouseMoved
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextPane1MouseMoved
+    }//GEN-LAST:event_showFileContentTextPaneMouseMoved
 
     public void setTemp(String[][] tempa) {
         resultArray = tempa;
@@ -803,13 +811,13 @@ public class ReportingModule extends javax.swing.JFrame {
         colourArray.add(Color.pink);
         colourArray.add(Color.ORANGE);
 
-        jEditorPane1.setHighlighter(hilit);
-        jEditorPane2.setHighlighter(hilit2);
+        selectedFileEditorPane.setHighlighter(hilit);
+        suspectedFileEditorPane.setHighlighter(hilit2);
         hilit.removeAllHighlights();
         hilit2.removeAllHighlights();
         //entryBg = jTextField2.getBackground();
-        String content = jEditorPane1.getText();
-        String content2 = jEditorPane2.getText();
+        String content = selectedFileEditorPane.getText();
+        String content2 = suspectedFileEditorPane.getText();
         String queryString = queryTemp;
         String[] query = null;
         if (queryString.length() <= 0) {
@@ -848,7 +856,7 @@ public class ReportingModule extends javax.swing.JFrame {
                 if (startIndexFirst != -1) {
                     painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
                     hilit.addHighlight(startIndexFirst, endIndexFirst, painter);
-                    jEditorPane1.setCaretPosition(endIndexFirst);
+                    selectedFileEditorPane.setCaretPosition(endIndexFirst);
 
                 }
                 if (startIndexSecond != -1) {
@@ -857,7 +865,7 @@ public class ReportingModule extends javax.swing.JFrame {
 
                     hilit2.addHighlight(startIndexSecond, endIndexSecond, painter);
 
-                    jEditorPane2.setCaretPosition(endIndexSecond);
+                    suspectedFileEditorPane.setCaretPosition(endIndexSecond);
 
                 }
 
@@ -884,12 +892,10 @@ public class ReportingModule extends javax.swing.JFrame {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JEditorPane browser;
-    private javax.swing.JComboBox fileComboBox;
+    private javax.swing.JComboBox fileListComboBox;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JEditorPane jEditorPane1;
-    private javax.swing.JEditorPane jEditorPane2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
@@ -905,7 +911,6 @@ public class ReportingModule extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
@@ -913,9 +918,12 @@ public class ReportingModule extends javax.swing.JFrame {
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextPane jTextPane1;
+    private javax.swing.JScrollPane jasperReportScrollPane;
     private javax.swing.JButton mainPreviousButton;
+    private javax.swing.JEditorPane selectedFileEditorPane;
     private javax.swing.JTextField selectedFileTextField;
+    private javax.swing.JTextPane showFileContentTextPane;
+    private javax.swing.JEditorPane suspectedFileEditorPane;
     // End of variables declaration//GEN-END:variables
 
     public void setData() {
@@ -925,12 +933,13 @@ public class ReportingModule extends javax.swing.JFrame {
         for (int i = 0; i < resultArray.length; i++) {
 
             if (resultArray[i][1] != null) {
-                fileComboBox.addItem(resultArray[i][1]);
+                fileListComboBox.addItem(resultArray[i][1]);
                 this.setIndexDetails(resultArray[i][1]);
             }
         }
 
         selectedFileTextField.setText(selectedDocumentPath);
+        selectedFileTextField.setToolTipText(selectedDocumentPath);
         this.generateResults();
 
 
@@ -950,8 +959,8 @@ public class ReportingModule extends javax.swing.JFrame {
         String[] texts = setTextToTextAreas.textSetter(fileName1, fileName2);
         String field1 = texts[0];
         String field2 = texts[1];
-        jEditorPane1.setText(field1.toLowerCase());
-        jEditorPane2.setText(field2.toLowerCase());
+        selectedFileEditorPane.setText(field1.toLowerCase());
+        suspectedFileEditorPane.setText(field2.toLowerCase());
 
         for (int i = 0; i < resultArray.length; i++) {
             if (resultArray[i][1] != null) {
@@ -1018,8 +1027,8 @@ public class ReportingModule extends javax.swing.JFrame {
 
     public void setMap(HashMap<String, String> fileUrlMap) {
 
-        this.fileToUrlMap=fileUrlMap;
-        if(fileUrlMap==null){
+        this.fileToUrlMap = fileUrlMap;
+        if (fileUrlMap == null) {
             System.err.println("Fileurl map is null");
         }
 
