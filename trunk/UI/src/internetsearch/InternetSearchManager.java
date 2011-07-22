@@ -74,6 +74,7 @@ public class InternetSearchManager {
                 downloadedDocuments++;
                 this.downloadWebPageAsText(url, path);
                 urlList.add(url);
+                System.err.println(path);
                 urlFileMap.put(path,url);
                 pmanager.runProgress((downloadedDocuments*100)/total);
 
@@ -144,6 +145,9 @@ public class InternetSearchManager {
         // Search for each file and sort
         int downloadedFileIndex = 0;
         String downloadedFileFolderPath = fileFolderPath + File.separator + "InternetSources";
+
+        File fi= new File(downloadedFileFolderPath);
+        if (!(fi.exists())){
         boolean folderCreated = new File(downloadedFileFolderPath).mkdir();
         for (Iterator<String> it = filePathList.iterator(); it.hasNext();) {
             String filePath = it.next();
@@ -169,6 +173,7 @@ public class InternetSearchManager {
                 }
             }
             fileAndSorcesMap.put(filePath, downloadedFilesList);
+        }
         }
         return fileAndSorcesMap;
     }

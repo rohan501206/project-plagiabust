@@ -40,6 +40,7 @@ public class DocumentIndexingManager {
         HashMap<String, Integer> selectedSources = psm.getSuspiciousDocList(selectedDocumentPath);
         Iterator it = selectedSources.entrySet().iterator();
         int selectedDocuments = 0;
+        int size = selectedSources.size();
         while (it.hasNext() && selectedDocuments <= maxNoIndexfiles) {
             Map.Entry pair = (Map.Entry) it.next();
             String filePath = (String) pair.getKey();
@@ -47,9 +48,12 @@ public class DocumentIndexingManager {
             if (!filePath.equalsIgnoreCase(selectedDocumentPath)) {
                 indexedFiles.add(filePath);
             }
-
-            pmanager.runProgress((selectedDocuments*100)/maxNoIndexfiles);
-
+            if(size>=maxNoIndexfiles){
+                pmanager.runProgress((selectedDocuments*100)/maxNoIndexfiles);
+            }
+            else{
+                pmanager.runProgress((selectedDocuments*100)/size);
+            }
         }
 
         return indexedFiles;

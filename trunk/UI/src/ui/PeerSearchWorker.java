@@ -46,13 +46,11 @@ public class PeerSearchWorker extends SwingWorker<String[][], String> {
         //HashMap<String, ArrayList<String>> downloadedFileList = idm.downloadFilesForMultiplePeerSearch(fileArrayList, destFolderPath);
        HashMap<String, ArrayList<String>> downloadedFileList = null;
         System.out.println("Finished Downloading the internet files........................");
-        try {
+       
             System.out.println("Start comparing files........................");
-            temp = manager.compareAllFiles(indexedFileList, downloadedFileList);
+            //temp = manager.compareAllFiles(indexedFileList, downloadedFileList);
             System.out.println("Finished comparing files........................");
-        } catch (IOException ex) {
-            System.out.println("There are no similar files or some error has occured");
-        }
+       
 
        long t2 = System.currentTimeMillis();
        long result = (t2-t1)/1000;
