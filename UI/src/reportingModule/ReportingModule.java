@@ -97,7 +97,7 @@ public class ReportingModule extends javax.swing.JFrame {
 
         this.setSize(500, 500);
         initComponents();
-        mainPreviousButton.setEnabled(false);
+        PreviousButton.setEnabled(false);
         jTabbedPane1.setEnabledAt(1, false);
         jTabbedPane1.setEnabledAt(2, false);
 
@@ -256,8 +256,8 @@ public class ReportingModule extends javax.swing.JFrame {
         jScrollPane5 = new javax.swing.JScrollPane();
         showFileContentTextPane = new javax.swing.JTextPane();
         jPanel1 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        mainPreviousButton = new javax.swing.JButton();
+        nextButton = new javax.swing.JButton();
+        PreviousButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -551,19 +551,19 @@ public class ReportingModule extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/next-icon.png"))); // NOI18N
-        jButton3.setText("Next");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        nextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/next-icon.png"))); // NOI18N
+        nextButton.setText("Next");
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                nextButtonActionPerformed(evt);
             }
         });
 
-        mainPreviousButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/previous-icon.png"))); // NOI18N
-        mainPreviousButton.setText("Previous");
-        mainPreviousButton.addActionListener(new java.awt.event.ActionListener() {
+        PreviousButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/previous-icon.png"))); // NOI18N
+        PreviousButton.setText("Previous");
+        PreviousButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                mainPreviousButtonActionPerformed(evt);
+                PreviousButtonActionPerformed(evt);
             }
         });
 
@@ -581,9 +581,9 @@ public class ReportingModule extends javax.swing.JFrame {
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(680, 680, 680)
-                        .addComponent(mainPreviousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(PreviousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(36, 36, 36)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -595,36 +595,36 @@ public class ReportingModule extends javax.swing.JFrame {
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mainPreviousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(PreviousButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
 
         int index = jTabbedPane1.getSelectedIndex();
         jTabbedPane1.setSelectedIndex(index + 1);
-        mainPreviousButton.setEnabled(true);
+        PreviousButton.setEnabled(true);
         jTabbedPane1.setEnabledAt(1, true);
         jTabbedPane1.setEnabledAt(2, true);
 
 
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_nextButtonActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         jTabbedPane1.setSelectedIndex(2);
 
     }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void mainPreviousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainPreviousButtonActionPerformed
+    private void PreviousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreviousButtonActionPerformed
         int index = jTabbedPane1.getSelectedIndex();
         if (index != 0) {
             jTabbedPane1.setSelectedIndex(index - 1);
         }
-    }//GEN-LAST:event_mainPreviousButtonActionPerformed
+    }//GEN-LAST:event_PreviousButtonActionPerformed
 
     private void fileListComboBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_fileListComboBoxItemStateChanged
         // TODO add your handling code here:
@@ -891,10 +891,10 @@ public class ReportingModule extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton PreviousButton;
     private javax.swing.JEditorPane browser;
     private javax.swing.JComboBox fileListComboBox;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -919,7 +919,7 @@ public class ReportingModule extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea3;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JScrollPane jasperReportScrollPane;
-    private javax.swing.JButton mainPreviousButton;
+    private javax.swing.JButton nextButton;
     private javax.swing.JEditorPane selectedFileEditorPane;
     private javax.swing.JTextField selectedFileTextField;
     private javax.swing.JTextPane showFileContentTextPane;

@@ -34,9 +34,9 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="680" max="-2" attributes="0"/>
-                      <Component id="mainPreviousButton" min="-2" pref="160" max="-2" attributes="0"/>
+                      <Component id="PreviousButton" min="-2" pref="160" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" pref="158" max="-2" attributes="0"/>
+                      <Component id="nextButton" min="-2" pref="158" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -52,8 +52,8 @@
               <Component id="jTabbedPane1" pref="528" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton3" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
-                  <Component id="mainPreviousButton" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                  <Component id="nextButton" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
+                  <Component id="PreviousButton" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
           </Group>
@@ -548,7 +548,7 @@
         </DimensionLayout>
       </Layout>
     </Container>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="nextButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Images/next-icon.png"/>
@@ -556,10 +556,10 @@
         <Property name="text" type="java.lang.String" value="Next"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nextButtonActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="mainPreviousButton">
+    <Component class="javax.swing.JButton" name="PreviousButton">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
           <Image iconType="3" name="/Images/previous-icon.png"/>
@@ -567,7 +567,7 @@
         <Property name="text" type="java.lang.String" value="Previous"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mainPreviousButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="PreviousButtonActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
