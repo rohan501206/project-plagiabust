@@ -26,6 +26,7 @@ import java.util.Map;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import reportingModule.PeerSearchUI;
 import reportingModule.ReportingModule;
 import ui.FileOperator;
 import ui.peerSearchReportData;
@@ -1142,15 +1143,44 @@ public class WizardForm extends javax.swing.JFrame {
     }//GEN-LAST:event_CheckControlButtonActionPerformed
 
     private void ViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewButtonActionPerformed
-        File destFolder = new File(destFolderPath);
+        if (singleDetectionButton.isSelected()) {
+        //MsgBox msg=new MsgBox(this, true);
+        //msg.setVisible(true);
+        System.err.print("start");
+        //File destFolder = new File(destFolderPath);
         String selectedDocumentPath = destFolderPath + File.separator + DocumentManagerForm.fileName;
         ReportingModule rp = new ReportingModule();
-        rp.setVisible(true);
+        //rp.setVisible(true);
         rp.setDocument(selectedDocumentPath);
         rp.setTemp(repdata.getFolder());
         rp.setUrl(repdata.getUrlList());
         rp.setMap(repdata.getFileUrlMap());
         rp.setData();
+        System.err.print("end");
+       // msg.setVisible(false);
+        rp.setVisible(true);
+
+        }
+
+
+        if (peerDetectionButton.isSelected()) {
+
+
+            PeerSearchUI peerUI=new PeerSearchUI();
+            peerUI.setFolder(sourceFolderName);
+
+            peerUI.setData(peerRepData.getPeerFilesReportData(),peerRepData.getInternetFilesReportData());
+            
+            peerUI.processResults();
+            peerUI.setResultDetails();
+
+            peerUI.setVisible(true);
+
+
+
+
+
+        }
 
     // TODO add your handling code here:
     }//GEN-LAST:event_ViewButtonActionPerformed
@@ -1194,18 +1224,18 @@ public class WizardForm extends javax.swing.JFrame {
 
 
     public void printTemp(peerSearchReportData temp){
-        Iterator it = temp.getPeerFilesReportData().entrySet().iterator();
+        Iterator it = temp.getInternetFilesReportData().entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry) it.next();
             String fileName = (String)pair.getKey();
             HashMap<String,String> map = (HashMap<String,String>)pair.getValue();
            
-            System.out.println(fileName);
-            System.out.println();
-            System.out.println();
-            System.out.println(map.entrySet());
-            System.out.println();
-            System.out.println();
+            System.err.println(fileName);
+            System.err.println();
+            System.err.println();
+            System.err.println(map.entrySet());
+            System.err.println();
+            System.err.println();
         }
         
         
