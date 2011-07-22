@@ -1194,13 +1194,15 @@ public class WizardForm extends javax.swing.JFrame {
 
 
     public void printTemp(peerSearchReportData temp){
-        Iterator it = temp.getInternetFilesReportData().entrySet().iterator();
+        Iterator it = temp.getPeerFilesReportData().entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry pair = (Map.Entry) it.next();
             String fileName = (String)pair.getKey();
             HashMap<String,String> map = (HashMap<String,String>)pair.getValue();
            
             System.out.println(fileName);
+            System.out.println();
+            System.out.println();
             System.out.println(map.entrySet());
             System.out.println();
             System.out.println();
