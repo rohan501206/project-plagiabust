@@ -10,12 +10,14 @@
  */
 package reportingModule;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.ListModel;
 import javax.swing.ListSelectionModel;
 import ui.peerSearchReportData;
@@ -29,18 +31,15 @@ public class PeerSearchUI extends javax.swing.JFrame {
     HashMap<String, HashMap<String, String>> peerSearchResult;
     HashMap<String, HashMap<String, String>> globalSearchResult;
     ArrayList<String> fileNamesArrayList= new ArrayList<String>();
+    String documentFolder;
 
     /** Creates new form PeerSearchUI */
     public PeerSearchUI() {
         initComponents();
-        DefaultListModel model = new DefaultListModel();
-        fileNameList.setModel(model);
 
-// Initialize the list with items
-        String[] items = {"A", "B", "C", "D"};
-        for (int i = 0; i < items.length; i++) {
-            model.add(i, items[i]);
-        }
+        prevButton.setEnabled(false);
+        jTabbedPane1.setEnabledAt(1, false);
+        jTabbedPane1.setEnabledAt(2, false);
     }
 
     /** This method is called from within the constructor to
@@ -57,17 +56,17 @@ public class PeerSearchUI extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        folderNameTextField = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        documentNumberTextField = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        possiblePlagiarizedTextField = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jList4 = new javax.swing.JList();
+        topPlagTextField = new javax.swing.JList();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jList5 = new javax.swing.JList();
+        topInternetTextField = new javax.swing.JList();
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -78,6 +77,7 @@ public class PeerSearchUI extends javax.swing.JFrame {
         jPanel6 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         internetSourcesList = new javax.swing.JList();
+        viewResultsButton = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         nextButton = new javax.swing.JButton();
 
@@ -96,23 +96,23 @@ public class PeerSearchUI extends javax.swing.JFrame {
 
         jLabel1.setText("Selected Document Folder");
 
-        jTextField1.setText("jTextField1");
+        folderNameTextField.setText("jTextField1");
 
         jLabel2.setText("Number of Documents");
 
-        jTextField2.setText("jTextField2");
+        documentNumberTextField.setText("jTextField2");
 
         jLabel3.setText("Number of Possible Plagiarized Documents");
 
-        jTextField3.setText("jTextField3");
+        possiblePlagiarizedTextField.setText("jTextField3");
 
-        jLabel4.setText("Top 10 possible Plagiarized Documents");
+        jLabel4.setText("Top possible Plagiarized Documents");
 
-        jScrollPane4.setViewportView(jList4);
+        jScrollPane4.setViewportView(topPlagTextField);
 
-        jLabel5.setText("Top 10 Possble Plagiarized internet Sources");
+        jLabel5.setText("Top Possble Plagiarized internet Sources");
 
-        jScrollPane5.setViewportView(jList5);
+        jScrollPane5.setViewportView(topInternetTextField);
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
@@ -125,9 +125,9 @@ public class PeerSearchUI extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(documentNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(362, 362, 362))
-                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 743, Short.MAX_VALUE)))
+                    .addComponent(folderNameTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 743, Short.MAX_VALUE)))
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
@@ -136,7 +136,7 @@ public class PeerSearchUI extends javax.swing.JFrame {
                 .addGap(24, 24, 24)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane5)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(possiblePlagiarizedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 472, Short.MAX_VALUE))
                 .addGap(155, 155, 155))
         );
@@ -146,14 +146,14 @@ public class PeerSearchUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(folderNameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(documentNumberTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(possiblePlagiarizedTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,7 +183,7 @@ public class PeerSearchUI extends javax.swing.JFrame {
                 .addContainerGap(20, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab2", jPanel2);
+        jTabbedPane1.addTab("Result Stats", jPanel2);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
@@ -209,8 +209,8 @@ public class PeerSearchUI extends javax.swing.JFrame {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -230,9 +230,9 @@ public class PeerSearchUI extends javax.swing.JFrame {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -252,37 +252,51 @@ public class PeerSearchUI extends javax.swing.JFrame {
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        viewResultsButton.setText("View the comparison results Betweeen Selected Documents");
+        viewResultsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewResultsButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(62, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(683, 683, 683)
+                        .addComponent(viewResultsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 364, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(159, 159, 159)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(98, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(viewResultsButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(20, 20, 20))
         );
 
-        jTabbedPane1.addTab("tab3", jPanel1);
+        jTabbedPane1.addTab("Dynamic Result Viewer", jPanel1);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Possible Internet Sources"));
 
@@ -297,9 +311,14 @@ public class PeerSearchUI extends javax.swing.JFrame {
             .addGap(0, 499, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("tab1", jPanel3);
+        jTabbedPane1.addTab("Report Viewer", jPanel3);
 
         nextButton.setText("Next");
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nextButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -352,6 +371,26 @@ public class PeerSearchUI extends javax.swing.JFrame {
             fileResultDetail=peerSearchResult.get(selectedval);
             globalSourceResultDetail=globalSearchResult.get(selectedval);
 
+            if(globalSourceResultDetail==null){
+
+
+            HashMap<String, String> globalSourceResultDetailTemp= new HashMap<String, String>();
+            Iterator peerserac = peerSearchResult.entrySet().iterator();
+            
+            while (peerserac.hasNext()) {
+
+            Map.Entry pair = (Map.Entry) peerserac.next();
+            String fileName = (String) pair.getKey();
+            globalSourceResultDetailTemp.put("www.asdasdsadas.com", fileName);
+
+                
+
+            }
+            globalSourceResultDetail=globalSourceResultDetailTemp;
+
+            } 
+
+
             Iterator fileIterator = fileResultDetail.entrySet().iterator();
             Iterator globalSourceIterator = globalSourceResultDetail.entrySet().iterator();
             int i=0;
@@ -379,13 +418,65 @@ public class PeerSearchUI extends javax.swing.JFrame {
 
     private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
 
-        System.out.println((String) fileNameList.getSelectedValue());
-        System.out.println((String) suspectedFileList.getSelectedValue());
-        CrossCheckModule crossCheck = new CrossCheckModule();
-        crossCheck.setVisible(true);
+        int index = jTabbedPane1.getSelectedIndex();
+        if (index != 0) {
+            jTabbedPane1.setSelectedIndex(index - 1);
+        }
+        
+       
 
 
     }//GEN-LAST:event_prevButtonActionPerformed
+
+    private void viewResultsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewResultsButtonActionPerformed
+
+        if((((String)fileNameList.getSelectedValue())!=null) && (((String)suspectedFileList.getSelectedValue())!=null) ){
+
+            String sourceFile=((String)fileNameList.getSelectedValue());
+            String suspectedFile= ((String)suspectedFileList.getSelectedValue());
+            String matchstring="";
+
+            HashMap<String, String>  comparisonIfo= peerSearchResult.get(sourceFile);
+
+            Iterator sourceIterator = comparisonIfo.entrySet().iterator();
+
+            while (sourceIterator.hasNext()) {
+
+            Map.Entry pair = (Map.Entry) sourceIterator.next();
+            String fileName = (String) pair.getKey();
+            if(fileName.equalsIgnoreCase(suspectedFile)){
+                matchstring=(String) pair.getValue();
+            }
+            }
+
+            CrossCheckModule crossCheck=new CrossCheckModule(sourceFile, suspectedFile, matchstring);
+            crossCheck.setData();
+            crossCheck.setVisible(true);
+
+
+
+        }
+
+
+
+
+        
+
+ else{
+            JOptionPane.showMessageDialog(this, "please select two documents");
+ }
+
+
+
+    }//GEN-LAST:event_viewResultsButtonActionPerformed
+
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
+        int index = jTabbedPane1.getSelectedIndex();
+        jTabbedPane1.setSelectedIndex(index + 1);
+        prevButton.setEnabled(true);
+        jTabbedPane1.setEnabledAt(1, true);
+        jTabbedPane1.setEnabledAt(2, true);
+    }//GEN-LAST:event_nextButtonActionPerformed
 
     public void setData(HashMap<String, HashMap<String, String>> peerFilesReportData, HashMap<String, HashMap<String, String>> internetFilesReportData) {
 
@@ -399,12 +490,12 @@ public class PeerSearchUI extends javax.swing.JFrame {
 
         Iterator it = peerSearchResult.entrySet().iterator();
         while (it.hasNext()) {
-
             Map.Entry pair = (Map.Entry) it.next();
             String fileName = (String) pair.getKey();
             fileNamesArrayList.add(fileName);
-
+            System.err.print("adding");
            }
+        System.err.print("addingdsdsdsd");
         setValuestoJLists(fileNamesArrayList);
 
 
@@ -432,15 +523,15 @@ public class PeerSearchUI extends javax.swing.JFrame {
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField documentNumberTextField;
     private javax.swing.JList fileNameList;
+    private javax.swing.JTextField folderNameTextField;
     private javax.swing.JList internetSourcesList;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JList jList4;
-    private javax.swing.JList jList5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -454,11 +545,28 @@ public class PeerSearchUI extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JButton nextButton;
+    private javax.swing.JTextField possiblePlagiarizedTextField;
     private javax.swing.JButton prevButton;
     private javax.swing.JList suspectedFileList;
+    private javax.swing.JList topInternetTextField;
+    private javax.swing.JList topPlagTextField;
+    private javax.swing.JButton viewResultsButton;
     // End of variables declaration//GEN-END:variables
+
+    public void setFolder(String sourceFolderName) {
+
+        documentFolder=sourceFolderName;
+    }
+
+    public void setResultDetails() {
+
+        folderNameTextField.setText(documentFolder);
+        File f=new File(documentFolder);
+        int noOfFiles=f.listFiles().length;
+        documentNumberTextField.setText(String.valueOf(noOfFiles));
+        possiblePlagiarizedTextField.setText(String.valueOf(fileNamesArrayList.size()));
+
+
+    }
 }

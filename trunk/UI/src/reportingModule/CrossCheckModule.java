@@ -11,16 +11,142 @@
 
 package reportingModule;
 
+import java.awt.Color;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.DefaultHighlighter;
+import javax.swing.text.Highlighter;
+import ui.FileOperator;
+
 /**
  *
  * @author nuwan
  */
 public class CrossCheckModule extends javax.swing.JFrame {
 
-    /** Creates new form NewJFrame1 */
-    public CrossCheckModule() {
+    String sourceFileName;
+    String suspectedFileName;
+    String matchString;
+
+
+
+
+
+    String selectedDocumentPath;
+    int numberOfFiles;
+    Highlighter hilit = new DefaultHighlighter();
+    Highlighter hilit2 = new DefaultHighlighter();
+    Highlighter hilit3 = new DefaultHighlighter();
+    final static Color HILIT_COLOR = new Color(255, 160, 122);
+    Highlighter.HighlightPainter painter;
+
+    public CrossCheckModule(String sFile,String susFile,String match) {
+        sourceFileName=sFile;
+        suspectedFileName=susFile;
+        matchString= match;
         initComponents();
+
     }
+
+    public void setData(){
+
+        FileOperator setTextToTextAreas = new FileOperator();
+        String[] texts = setTextToTextAreas.textSetter(sourceFileName, suspectedFileName);
+        String field1 = texts[0];
+        String field2 = texts[1];
+        selectedFileEditorPane.setText(field1.toLowerCase());
+        suspectedFileEditorPane.setText(field2.toLowerCase());
+        selectedFileTextField.setText(sourceFileName);
+        suspectedFileTextField1.setText(suspectedFileName);
+selectedFileTextField.setEditable(false);
+suspectedFileTextField1.setEditable(false);
+selectedFileTextField.setToolTipText(sourceFileName);
+suspectedFileTextField1.setToolTipText(suspectedFileName);
+testMatch.setText(matchString);
+        this.highlighter(matchString);
+    }
+
+
+
+     public void highlighter(String queryTemp) {
+
+
+        ArrayList<Color> colourArray = new ArrayList<Color>();
+        colourArray.add(Color.cyan);
+        colourArray.add(Color.yellow);
+        colourArray.add(Color.gray);
+        colourArray.add(Color.LIGHT_GRAY);
+        colourArray.add(Color.MAGENTA);
+        colourArray.add(Color.pink);
+        colourArray.add(Color.ORANGE);
+
+        selectedFileEditorPane.setHighlighter(hilit);
+        suspectedFileEditorPane.setHighlighter(hilit2);
+        hilit.removeAllHighlights();
+        hilit2.removeAllHighlights();
+        //entryBg = jTextField2.getBackground();
+        String content = selectedFileEditorPane.getText();
+        String content2 = suspectedFileEditorPane.getText();
+        String queryString = queryTemp;
+        String[] query = null;
+        if (queryString.length() <= 0) {
+            return;
+        }
+        if (queryString.contains(":")) {
+
+            query = queryString.split(":");
+
+        } else {
+            query = new String[1];
+            query[0] = queryString;
+        }
+
+        for (int i = 0; i < query.length; i++) {
+            String searchQuery = query[i];
+            TextHighlighter highlighterFirstFile = new TextHighlighter();
+            TextHighlighter highlighterSecondFile = new TextHighlighter();
+            String[] highlightindexedInfoFirstFile = highlighterFirstFile.highlightTexts(content, searchQuery);
+            String[] highlightindexedInfoSecondFile = highlighterSecondFile.highlightTexts(content2, searchQuery);
+            int startIndexFirst = Integer.valueOf(highlightindexedInfoFirstFile[0]);
+            int endIndexFirst = Integer.valueOf(highlightindexedInfoFirstFile[1]);
+            int startIndexSecond = Integer.valueOf(highlightindexedInfoSecondFile[0]);
+            int endIndexSecond = Integer.valueOf(highlightindexedInfoSecondFile[1]);
+            //String match = highlightindexedInfoFirstFile[2];
+            //ArrayList<Integer> arr = new ArrayList<Integer>();
+            //arr.add(startIndexFirst);
+            // arr.add(endIndexFirst);
+            // indexHighligherMap.put(match, arr);
+            // matchingToPreprocessed.put(highlightindexedInfoFirstFile[2], highlightindexedInfoFirstFile[3]);
+
+            try {
+
+                Color HILIT_COLOR = colourArray.get(i);
+
+                if (startIndexFirst != -1) {
+                    painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
+                    hilit.addHighlight(startIndexFirst, endIndexFirst, painter);
+                    selectedFileEditorPane.setCaretPosition(endIndexFirst);
+
+                }
+                if (startIndexSecond != -1) {
+
+                    painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
+
+                    hilit2.addHighlight(startIndexSecond, endIndexSecond, painter);
+
+                    suspectedFileEditorPane.setCaretPosition(endIndexSecond);
+
+                }
+
+            } catch (BadLocationException ex) {
+                Logger.getLogger(ReportingModule.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+    }
+
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -34,20 +160,23 @@ public class CrossCheckModule extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jEditorPane1 = new javax.swing.JEditorPane();
+        selectedFileEditorPane = new javax.swing.JEditorPane();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jEditorPane2 = new javax.swing.JEditorPane();
+        suspectedFileEditorPane = new javax.swing.JEditorPane();
         jButton4 = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
         selectedFileTextField = new javax.swing.JTextField();
+        suspectedFileTextField1 = new javax.swing.JTextField();
+        testMatch = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jScrollPane1.setViewportView(jEditorPane1);
+        selectedFileEditorPane.setEditable(false);
+        jScrollPane1.setViewportView(selectedFileEditorPane);
 
-        jScrollPane2.setViewportView(jEditorPane2);
+        suspectedFileEditorPane.setEditable(false);
+        jScrollPane2.setViewportView(suspectedFileEditorPane);
 
         jButton4.setText("Next Step");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -60,8 +189,6 @@ public class CrossCheckModule extends javax.swing.JFrame {
 
         jLabel6.setText("Suspected File");
 
-        jTextField1.setText("jTextField1");
-
         selectedFileTextField.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
         selectedFileTextField.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         selectedFileTextField.addActionListener(new java.awt.event.ActionListener() {
@@ -70,6 +197,16 @@ public class CrossCheckModule extends javax.swing.JFrame {
             }
         });
 
+        suspectedFileTextField1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
+        suspectedFileTextField1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        suspectedFileTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                suspectedFileTextField1ActionPerformed(evt);
+            }
+        });
+
+        testMatch.setText("jTextField1");
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -77,47 +214,49 @@ public class CrossCheckModule extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 521, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(selectedFileTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(50, 50, 50)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(502, 502, 502)
-                                .addComponent(jLabel2)
-                                .addGap(738, 738, 738)
-                                .addComponent(jButton4))
-                            .addComponent(jLabel6)))
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 698, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(selectedFileTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(testMatch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(suspectedFileTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 558, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(502, 502, 502)
+                        .addComponent(jLabel2)
+                        .addGap(738, 738, 738)
+                        .addComponent(jButton4)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(102, 102, 102)
+                .addContainerGap()
+                .addComponent(testMatch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
+                    .addComponent(selectedFileTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(selectedFileTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(suspectedFileTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
+                        .addGap(127, 127, 127)
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                         .addComponent(jButton4)
                         .addGap(234, 234, 234))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(33, 33, 33)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE))
                         .addContainerGap())))
         );
 
@@ -125,21 +264,19 @@ public class CrossCheckModule extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1169, Short.MAX_VALUE)
+            .addGap(0, 1181, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 518, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
 
         pack();
@@ -153,29 +290,34 @@ public class CrossCheckModule extends javax.swing.JFrame {
         // TODO add your handling code here:
 }//GEN-LAST:event_selectedFileTextFieldActionPerformed
 
+    private void suspectedFileTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suspectedFileTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_suspectedFileTextField1ActionPerformed
+
     /**
     * @param args the command line arguments
     */
-    public static void main(String args[]) {
+    /**public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new CrossCheckModule().setVisible(true);
             }
         });
-    }
+    }**/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton4;
-    private javax.swing.JEditorPane jEditorPane1;
-    private javax.swing.JEditorPane jEditorPane2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JEditorPane selectedFileEditorPane;
     private javax.swing.JTextField selectedFileTextField;
+    private javax.swing.JEditorPane suspectedFileEditorPane;
+    private javax.swing.JTextField suspectedFileTextField1;
+    private javax.swing.JTextField testMatch;
     // End of variables declaration//GEN-END:variables
 
 }
