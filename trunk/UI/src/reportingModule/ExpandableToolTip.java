@@ -100,7 +100,7 @@ public class ExpandableToolTip  implements KeyListener, MouseListener, FocusList
 		String context = "<html><body><table width='"+WIDTH_HTML+"'><tr><td><p><font size=+1>"+toolTipText+"</font></p>"+helpText+"</td></tr></table></body></html>";
 		h.setText(context);
 		h.setEditable(false);
-		h.addHyperlinkListener(this);
+		//h.addHyperlinkListener(this);
 		helpContent.add(h);
 		help = new JScrollPane(helpContent);
 		help.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -108,15 +108,14 @@ public class ExpandableToolTip  implements KeyListener, MouseListener, FocusList
 		popup=new JFrame();
 		popup.setUndecorated(true);
                 helpActive=true;
-
 		popup.setLocation(MouseInfo.getPointerInfo().getLocation().x,MouseInfo.getPointerInfo().getLocation().y);
 		popup.add(help);
 		popup.pack();
 		popup.setVisible(true);
 
 			/* request Focus in editor so that it can be hidden when focus is lost */
-			h.requestFocus();
-			h.addFocusListener(this);
+		h.requestFocus();
+		h.addFocusListener(this);
 
 
 	}
@@ -208,16 +207,16 @@ public class ExpandableToolTip  implements KeyListener, MouseListener, FocusList
         try {
             //TODO add open link in default browser
             browser.setPage(event.getURL());
-            /*URL s= event.getURL();
+            URL s= event.getURL();
             URI uri = null;
             try {
             uri = new URI(s.toString());
             } catch (URISyntaxException ex) {
             Logger.getLogger(ReportHyperlinkListner.class.getName()).log(Level.SEVERE, null, ex);
             }
-            this.open(uri);*/
+            this.open(uri);
         } catch (IOException ex) {
-            //Logger.getLogger(ExpandableToolTip.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExpandableToolTip.class.getName()).log(Level.SEVERE, null, ex);
         }
 
 			
