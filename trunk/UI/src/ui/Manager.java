@@ -249,17 +249,17 @@ public class Manager {
         peerSearchReportData repData = new peerSearchReportData();
 
         HashMap<String,String> internetFilesReportData = new HashMap<String,String>() ;
-        HashMap<String,String> peerFilesReportData= new HashMap<String,String>() ;
+        
         Iterator downloadIterator = downloadedFilesList.entrySet().iterator();
         Iterator it = indexedFilesList.entrySet().iterator();
         ArrayList indexedFilesForFile = new ArrayList();
         ArrayList downloadedFilesForFile = new ArrayList();
         
         while (it.hasNext()) {
+            HashMap<String,String> peerFilesReportData= new HashMap<String,String>() ;
             Map.Entry pair = (Map.Entry) it.next();
             File filePath = (File) pair.getKey();
-            indexedFilesForFile = indexedFilesList.get(filePath);
-           
+            indexedFilesForFile = indexedFilesList.get(filePath);           
 
             for (int i = 0; i < indexedFilesForFile.size(); i++) {
                 ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
@@ -276,7 +276,7 @@ public class Manager {
                 System.out.println("match is " + match);
                 //System.out.println("Size of the matched files is " + fileNo);
                 System.out.println();
-                if (!match.isEmpty()) {
+                if (!(match.isEmpty()) &&  !(firstFile.equalsIgnoreCase(secondFile))) {
                     peerFilesReportData.put(createFile.getAbsolutePath(), match);
                 }
             }
@@ -307,7 +307,7 @@ public class Manager {
                 System.out.println("match is " + match);
                // System.out.println("Size of the matched files is " + fileNo);
                 System.out.println();
-                if (!match.isEmpty()) {
+                if (!match.isEmpty() &&  !(firstFile.equalsIgnoreCase(secondFile))) {
                        internetFilesReportData.put(createFile.getAbsolutePath(), match);
                 }
 
