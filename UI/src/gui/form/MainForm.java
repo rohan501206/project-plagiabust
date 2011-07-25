@@ -17,6 +17,7 @@ package gui.form;
 public class MainForm extends javax.swing.JFrame {
 
     public static MainForm mainForm;
+    PlagiabustServerManager plagiabustServerManager = new PlagiabustServerManager();
     /** Creates new form MainForm */
     private MainForm() {
         initComponents();
@@ -95,6 +96,11 @@ public class MainForm extends javax.swing.JFrame {
         AdminToolsButton.setFont(new java.awt.Font("Tahoma", 0, 12));
         AdminToolsButton.setText("Adminitrative Tools");
         AdminToolsButton.setPreferredSize(new java.awt.Dimension(180, 40));
+        AdminToolsButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AdminToolsButtonActionPerformed(evt);
+            }
+        });
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/settings icon.png"))); // NOI18N
 
@@ -229,6 +235,11 @@ public class MainForm extends javax.swing.JFrame {
         KBManagerForm.getInstance().setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_KBManagerButtonActionPerformed
+
+    private void AdminToolsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminToolsButtonActionPerformed
+        plagiabustServerManager.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AdminToolsButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AdminToolsButton;
