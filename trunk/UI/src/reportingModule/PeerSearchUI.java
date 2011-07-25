@@ -357,8 +357,8 @@ public class PeerSearchUI extends javax.swing.JFrame {
         DefaultListModel model2 = new DefaultListModel();
         suspectedFileList.setModel(model);
         internetSourcesList.setModel(model2);
-        HashMap<String, String> fileResultDetail= new HashMap<String, String>();
-        HashMap<String, String> globalSourceResultDetail= new HashMap<String, String>();
+        
+        
 
 
         if (!evt.getValueIsAdjusting()) {
@@ -367,9 +367,9 @@ public class PeerSearchUI extends javax.swing.JFrame {
         }
         
         if (selectedval != null) {
-            
-            fileResultDetail=peerSearchResult.get(selectedval);
-            globalSourceResultDetail=globalSearchResult.get(selectedval);
+            System.err.println("selected file is: "+ selectedval);
+            HashMap<String, String> fileResultDetail=peerSearchResult.get(selectedval);
+            HashMap<String, String> globalSourceResultDetail=globalSearchResult.get(selectedval);
 
             if(globalSourceResultDetail==null){
 
@@ -394,10 +394,12 @@ public class PeerSearchUI extends javax.swing.JFrame {
             Iterator fileIterator = fileResultDetail.entrySet().iterator();
             Iterator globalSourceIterator = globalSourceResultDetail.entrySet().iterator();
             int i=0;
+            
         while (fileIterator.hasNext()) {
 
             Map.Entry pair = (Map.Entry) fileIterator.next();
             String fileName = (String) pair.getKey();
+            System.err.println(fileName);
             model.add(i, fileName);
             i++;
 
@@ -472,10 +474,17 @@ public class PeerSearchUI extends javax.swing.JFrame {
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         int index = jTabbedPane1.getSelectedIndex();
+        if(index==2){
+            nextButton.setEnabled(false);
+        }
+        else{
+        nextButton.setEnabled(false);
         jTabbedPane1.setSelectedIndex(index + 1);
         prevButton.setEnabled(true);
         jTabbedPane1.setEnabledAt(1, true);
         jTabbedPane1.setEnabledAt(2, true);
+
+        }
     }//GEN-LAST:event_nextButtonActionPerformed
 
     public void setData(HashMap<String, HashMap<String, String>> peerFilesReportData, HashMap<String, HashMap<String, String>> internetFilesReportData) {
@@ -568,5 +577,8 @@ public class PeerSearchUI extends javax.swing.JFrame {
         possiblePlagiarizedTextField.setText(String.valueOf(fileNamesArrayList.size()));
 
 
+
+
     }
+
 }
