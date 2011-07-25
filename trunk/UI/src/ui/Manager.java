@@ -11,6 +11,7 @@ import ComparisonEngine.CosineSimilarityAlgorithm;
 import java.io.IOException;
 import java.util.ArrayList;
 import ComparisonEngine.ComparisonResult;
+import Helper.TextFileFilter;
 import de.tud.kom.stringmatching.shinglecloud.ShingleCloudMatch;
 import gui.form.ProgressBarManager;
 import java.util.HashMap;
@@ -288,16 +289,16 @@ public class Manager {
         
 
         while (downloadIterator.hasNext()) {
+
             Map.Entry pair = (Map.Entry) downloadIterator.next();
             String filePath = (String) pair.getKey();
             File checkfile = new File((String)pair.getKey());
             downloadedFilesForFile = downloadedFilesList.get(filePath);
             
-
             for (int i = 0; i < downloadedFilesForFile.size(); i++) {
                 ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
                 File createFile = new File((String) downloadedFilesForFile.get(i));
-                float output = sca.getSimilarity(preprocessText(checkfile.getAbsolutePath()), preprocessText(createFile.getAbsolutePath()));
+                float output = sca.getSimilarity(preprocessText(filePath), preprocessText(createFile.getAbsolutePath()));
                 String match = sca.getList();
                 String firstFile = filePath;
                 String secondFile = createFile.getAbsolutePath();
@@ -357,8 +358,9 @@ public class Manager {
     public File[] getFilesIntheFolder(String path) {
 
         File dir = new File(path);
-        File[] downloadedFilesList = dir.listFiles();
-        return downloadedFilesList;
+        ArrayList<File> fileArrayList=new ArrayList<File>();
+        File[] downloadedFilesList = dir.listFiles(new TextFileFilter());
+        return  downloadedFilesList;
 
     }
 
@@ -393,6 +395,7 @@ public class Manager {
      * @throws IOException
      */
     public String preprocessText(String filename) throws IOException {
+
         String fullFilename = filename;
         // document reading
         String documentText = docreader.processFileAndGetText(fullFilename);
