@@ -227,8 +227,8 @@ public class MainForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void NewCheckButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NewCheckButtonActionPerformed
-        WizardForm.getInstance().setVisible(true);
-        // TODO add your handling code here:
+        WizardForm wizardForm = new WizardForm();
+        wizardForm.setVisible(true);
     }//GEN-LAST:event_NewCheckButtonActionPerformed
 
     private void KBManagerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KBManagerButtonActionPerformed
