@@ -4,6 +4,7 @@
  */
 package peerdocumentsearch;
 
+import Helper.TextFileFilter;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
@@ -58,7 +59,7 @@ public class TextFileIndexer {
             System.out.println(file + " does not exist.");
         }
         if (file.isDirectory()) {
-            for (File f : file.listFiles()) {
+            for (File f : file.listFiles(new TextFileFilter())) {
                 listFiles(f);
             }
         } else {
