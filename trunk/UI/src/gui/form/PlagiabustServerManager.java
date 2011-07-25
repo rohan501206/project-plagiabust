@@ -173,7 +173,7 @@ public class PlagiabustServerManager extends javax.swing.JFrame {
         });
 
         DeleteDocumentLabel.setFont(new java.awt.Font("Tahoma", 0, 12));
-        DeleteDocumentLabel.setText("Select Documents To Submit");
+        DeleteDocumentLabel.setText("Delete Document From Server");
 
         javax.swing.GroupLayout DeleteDocumentPanelLayout = new javax.swing.GroupLayout(DeleteDocumentPanel);
         DeleteDocumentPanel.setLayout(DeleteDocumentPanelLayout);
@@ -182,7 +182,7 @@ public class PlagiabustServerManager extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DeleteDocumentPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(DeleteDocumentLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(DeleteDocumentButton, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(141, 141, 141))
         );
