@@ -4,6 +4,8 @@
  */
 package plagiabustwebserver;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -14,12 +16,16 @@ import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.UUID;
+import javax.swing.JLabel;
+import javax.swing.JProgressBar;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServer;
 import org.apache.solr.client.solrj.SolrServerException;
 import org.apache.solr.client.solrj.impl.CommonsHttpSolrServer;
 import org.apache.solr.client.solrj.response.QueryResponse;
 import org.apache.solr.common.SolrDocument;
+import org.apache.solr.common.SolrDocumentList;
 import org.apache.solr.common.SolrInputDocument;
 
 /**
@@ -31,33 +37,74 @@ public class Client {
     private String localhost;
     private SolrServer server = null;
     private Collection<SolrInputDocument> solrInputDocumentList = new ArrayList<SolrInputDocument>();
+    private int FirstElementIndex = 0;
 
     public Client(String localhost) {
         this.localhost = localhost;
-    }
-
-    public void commitDocumentsToSolrServer(boolean deleteExistingDocs, ArrayList<String> fileList) {
 
         try {
             server = new CommonsHttpSolrServer(localhost);
+        } catch (MalformedURLException ex) {
+            System.out.println("Error while connecting to Plagiabust Server");
+        }
 
-            if (deleteExistingDocs) {
-                server.deleteByQuery("*:*");
+    }
+
+    // set the default local host
+    public Client() {
+        this("http://localhost:8983/solr");
+    }
+
+    // Delete all documents form Solr server
+    public void deleteAllDocumentFromServer() {
+        try {
+            server.deleteByQuery("*:*");
+        } catch (SolrServerException ex) {
+        } catch (IOException ex) {
+        }
+    }
+
+    public void commitDocumentAsBackGroundWork(final JProgressBar progressBar, JLabel label, ArrayList<String> fileList) {
+        AddDocumentsBackgroundWorker addDocumentsBackGorundWorker =
+                new AddDocumentsBackgroundWorker(server, fileList, label);
+
+        addDocumentsBackGorundWorker.addPropertyChangeListener(new PropertyChangeListener() {
+
+            public void propertyChange(PropertyChangeEvent evt) {
+                                        // update the progress bar
+                        if ( evt.getPropertyName().equals( "progress" ) )
+                        {
+                           int newValue = ( Integer ) evt.getNewValue();
+                           progressBar.setValue( newValue );
+                        }
             }
+        });
 
+        addDocumentsBackGorundWorker.execute();
+    }
+
+    // Commit documents in the array list to the solr server
+    // Commit all documents or dont commit any
+    public void commitDocumentsToSolrServer(ArrayList<String> fileList) {
+
+        try {
             for (String fileName : fileList) {
                 if (fileName.endsWith(".txt")) {
                     SolrInputDocument inputDoc = this.createSolrInputDocument(new File(fileName));
                     if (inputDoc != null) {
-                        solrInputDocumentList.add(inputDoc);
+                        System.out.println(fileName + " added to the server.");
+                        server.add(inputDoc);
+                        server.commit();
+                        //solrInputDocumentList.add(inputDoc);
                     }
                 }
             }
 
-            if (solrInputDocumentList != null) {
-                server.add(solrInputDocumentList);
-                server.commit();
-            }
+            // Multiple documents commit at once : Leads to a Memory problem.
+            /*if (solrInputDocumentList != null) {
+            server.add(solrInputDocumentList);
+            server.commit();
+            }*/
 
         } catch (MalformedURLException ex) {
         } catch (IOException ex) {
@@ -65,8 +112,9 @@ public class Client {
         }
     }
 
-    public SolrInputDocument createSolrInputDocument(File file) {
-        SolrInputDocument solrInputDocument = null;
+    // Create a solr input document to be add to solr server
+    private SolrInputDocument createSolrInputDocument(File file) {
+        SolrInputDocument doc = new SolrInputDocument();
         FileInputStream stream = null;
 
         try {
@@ -80,36 +128,64 @@ public class Client {
                 stringBuilder.append(nextLine + "\n");
             }
 
-            SolrInputDocument doc = new SolrInputDocument();
+            // id is the unique identifier for documents
+            doc.addField("id", UUID.randomUUID());
             doc.addField("url", file.getAbsolutePath());
+            doc.addField("title", file.getName());
             doc.addField("content", stringBuilder.toString());
-            solrInputDocument = doc;
 
             stream.close();
         } catch (FileNotFoundException ex) {
         } catch (IOException ex) {
         }
-        return solrInputDocument;
+        return doc;
     }
 
-    public void getQueryResponse(String query) {
+    // get content from the specified url
+    // url is a unique key so only one file per url
+    public String getContentById(String id) {
+        String content = "";
 
         try {
-            server = new CommonsHttpSolrServer(localhost);
-            SolrQuery solrQuery = new SolrQuery().setQuery(query);
+            SolrQuery solrQuery = new SolrQuery().setQuery("id:" + id);
+
+            QueryResponse queryResponse = server.query(solrQuery);
+            if (!queryResponse.getResults().isEmpty()) {
+                SolrDocument resultDoc = queryResponse.getResults().get(FirstElementIndex);
+                content = resultDoc.getFirstValue("content").toString();
+            }
+        } catch (SolrServerException ex) {
+        }
+        return content;
+    }
+
+    // Return
+    public ArrayList<PlagiabustServerResponse> getQueryResponse(String query) {
+
+        ArrayList<PlagiabustServerResponse> serverResponses = new ArrayList<PlagiabustServerResponse>();
+        try {
+            SolrQuery solrQuery = new SolrQuery().setQuery("content:" + query);
+
 
             QueryResponse queryResponse = server.query(solrQuery);
 
-            Iterator<SolrDocument> iter = queryResponse.getResults().iterator();
-            while (iter.hasNext()) {
-                SolrDocument resultDoc = iter.next();
-                String url = (String) resultDoc.getFieldValue("url"); //id is the uniqueKey field
-                System.out.println(url);
+            SolrDocumentList docList = queryResponse.getResults();
+            for (Iterator<SolrDocument> it = docList.iterator(); it.hasNext();) {
+                SolrDocument resultDoc = it.next();
+                PlagiabustServerResponse response = new PlagiabustServerResponse();
+
+                response.setID(resultDoc.getFirstValue("id").toString());
+                response.setUrl(resultDoc.getFirstValue("url").toString());
+                response.setContent(resultDoc.getFirstValue("content").toString());
+                response.setTitle(resultDoc.getFirstValue("title").toString());
+
+                serverResponses.add(response);
             }
 
-        } catch (SolrServerException ex) {
-        } catch (MalformedURLException ex) {
-        }
+            Iterator<SolrDocument> iter = queryResponse.getResults().iterator();
 
+        } catch (SolrServerException ex) {
+        }
+        return serverResponses;
     }
 }
