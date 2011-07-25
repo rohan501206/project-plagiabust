@@ -865,8 +865,8 @@ public class WizardForm extends javax.swing.JFrame {
                             .addGroup(StartCheckPanelLayout.createSequentialGroup()
                                 .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(TaskCompletionLabel)
-                                    .addComponent(CheckBannerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(342, 342, 342)
+                                    .addComponent(CheckBannerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(218, 218, 218)
                                 .addComponent(Step5ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(StartCheckPanelLayout.createSequentialGroup()
                                 .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1045,6 +1045,7 @@ public class WizardForm extends javax.swing.JFrame {
 
     private void WizardTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_WizardTabbedPaneStateChanged
         int currentPanelIndex = WizardTabbedPane.getSelectedIndex();
+        sethelpData(currentPanelIndex);
         if (currentPanelIndex == TabNames.StartCheck.ordinal()) {
             WizardNextButton.setVisible(false);
             WizardPreviousButton.setVisible(true);
@@ -1122,11 +1123,57 @@ public class WizardForm extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Please select a source location of documents to continue.");
                     isValidData = false;
                 }
+                break;
             default:
                 break;
         }
 
         return isValidData;
+    }
+
+    public void sethelpData(int selectedTabIndex){
+        switch(selectedTabIndex){
+            case 0:
+                DescriptionTextArea.setText("Step 1 - Select Name and Location");
+                break;
+            case 1:
+                DescriptionTextArea.setText("Step 2 - Select a single document to check for plagiarism.");
+                break;
+            case 2:
+                if(singleDetectionButton.isSelected()){
+                    DescriptionTextArea.setText("Step 3 - Add Documents for new Plagiarism Detection Project");
+                }
+                else{
+                    DescriptionTextArea.setText("Step 2 - Add Documents for new Plagiarism Detection Project");
+                }
+                 break;
+            case 3:
+                if(singleDetectionButton.isSelected()){
+                    DescriptionTextArea.setText("Step 4 - Creating a Knowledge Base For the Subject");
+                }
+                else{
+                    DescriptionTextArea.setText("Step 3 - Creating a Knowledge Base For the Subject");
+                }
+                break;
+            case 4:
+                if(singleDetectionButton.isSelected()){
+                    DescriptionTextArea.setText("Step 5 - Apply Custom Settings for the Project");
+                }
+                else{
+                    DescriptionTextArea.setText("Step 4 - Apply Custom Settings for the Project");
+                }
+                break;
+            case 5:
+                if(singleDetectionButton.isSelected()){
+                    DescriptionTextArea.setText("Step 6 - Start Plagiarism Detection Process");
+                }
+                else{
+                    DescriptionTextArea.setText("Step 5 - Start Plagiarism Detection Process");
+                }
+                break;
+            default:
+                break;
+        }
     }
 
     public void setup() {

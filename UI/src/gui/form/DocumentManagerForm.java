@@ -295,8 +295,9 @@ public class DocumentManagerForm extends javax.swing.JFrame {
         } else {
             int index = DocumentTable.getSelectedRow();
             fileName = (String) tableModel.getValueAt(index, 0);
+            String selectedFileName = (String) tableModel.getValueAt(index, 1);
             documentManagerForm.setVisible(false);
-            WizardForm.ProjectLocationLabel3.setText(fileName);
+            WizardForm.selectedDocumentLabel.setText(selectedFileName);
         }
     }//GEN-LAST:event_DoneButtonActionPerformed
 
