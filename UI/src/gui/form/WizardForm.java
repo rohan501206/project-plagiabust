@@ -62,6 +62,7 @@ public class WizardForm extends javax.swing.JFrame {
     /** Creates new form WizardForm */
     WizardForm() {
         initComponents();
+       // this.setIconImage("D:/Project/Codes/Development/UI/src/Images/logo new.png");
         ViewButton.setVisible(false);
         singleDetectionButton.setSelected(true);
         disableTabSet();
@@ -248,7 +249,7 @@ public class WizardForm extends javax.swing.JFrame {
 
         WizardSeparator.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        WizardTabbedPane.setFont(new java.awt.Font("Tahoma", 0, 12));
+        WizardTabbedPane.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         WizardTabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 WizardTabbedPaneStateChanged(evt);
@@ -887,9 +888,9 @@ public class WizardForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, StartCheckPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(CommandTipScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
-                .addComponent(CheckControlButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
+                .addComponent(CheckControlButton, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
                 .addComponent(ViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31))
             .addGroup(StartCheckPanelLayout.createSequentialGroup()
@@ -935,8 +936,8 @@ public class WizardForm extends javax.swing.JFrame {
                 .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(StartCheckPanelLayout.createSequentialGroup()
                         .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(CheckControlButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(ViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CheckControlButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(27, 27, 27))
                     .addGroup(StartCheckPanelLayout.createSequentialGroup()
                         .addComponent(CommandTipScrollPane, 0, 0, Short.MAX_VALUE)
@@ -1045,7 +1046,7 @@ public class WizardForm extends javax.swing.JFrame {
 
     private void WizardTabbedPaneStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_WizardTabbedPaneStateChanged
         int currentPanelIndex = WizardTabbedPane.getSelectedIndex();
-        sethelpData(currentPanelIndex);
+        setDescriptionInformation(currentPanelIndex);
         if (currentPanelIndex == TabNames.StartCheck.ordinal()) {
             WizardNextButton.setVisible(false);
             WizardPreviousButton.setVisible(true);
@@ -1076,7 +1077,7 @@ public class WizardForm extends javax.swing.JFrame {
     private void WizardNextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WizardNextButtonActionPerformed
         int currentTabIndex = WizardTabbedPane.getSelectedIndex();
 
-        if (isTabDataValid(currentTabIndex)) {
+        //if (isTabDataValid(currentTabIndex)) {
             if (singleDetectionButton.isSelected() &&
                     WizardTabbedPane.getSelectedIndex() == TabNames.NewProject.ordinal()) {
                 WizardTabbedPane.setEnabledAt(TabNames.AddDocument.ordinal(), true);
@@ -1095,7 +1096,7 @@ public class WizardForm extends javax.swing.JFrame {
                 WizardTabbedPane.setSelectedIndex(++currentTabIndex);
                 WizardTabbedPane.setEnabledAt(currentTabIndex, true);
             }
-        }
+        //}
     }//GEN-LAST:event_WizardNextButtonActionPerformed
 
     public boolean isTabDataValid(int selectedTabIndex) {
@@ -1131,7 +1132,7 @@ public class WizardForm extends javax.swing.JFrame {
         return isValidData;
     }
 
-    public void sethelpData(int selectedTabIndex){
+    public void setDescriptionInformation(int selectedTabIndex){
         switch(selectedTabIndex){
             case 0:
                 DescriptionTextArea.setText("Step 1 - Select Name and Location");
@@ -1142,33 +1143,41 @@ public class WizardForm extends javax.swing.JFrame {
             case 2:
                 if(singleDetectionButton.isSelected()){
                     DescriptionTextArea.setText("Step 3 - Add Documents for new Plagiarism Detection Project");
+                    AddDocumentBannerLabel1.setText("Step 3 - Add Documents for new Plagiarism Detection Project");
                 }
                 else{
                     DescriptionTextArea.setText("Step 2 - Add Documents for new Plagiarism Detection Project");
+                    AddDocumentBannerLabel1.setText("Step 2 - Add Documents for new Plagiarism Detection Project");
                 }
                  break;
             case 3:
                 if(singleDetectionButton.isSelected()){
                     DescriptionTextArea.setText("Step 4 - Creating a Knowledge Base For the Subject");
+                    KBManagerBannerLabel.setText("Step 4 - Creating a Knowledge Base For the Subject");
                 }
                 else{
                     DescriptionTextArea.setText("Step 3 - Creating a Knowledge Base For the Subject");
+                    KBManagerBannerLabel.setText("Step 3 - Creating a Knowledge Base For the Subject");
                 }
                 break;
             case 4:
                 if(singleDetectionButton.isSelected()){
                     DescriptionTextArea.setText("Step 5 - Apply Custom Settings for the Project");
+                    SettingsBannerLabel.setText("Step 5 - Apply Custom Settings for the Project");
                 }
                 else{
                     DescriptionTextArea.setText("Step 4 - Apply Custom Settings for the Project");
+                    SettingsBannerLabel.setText("Step 4 - Apply Custom Settings for the Project");
                 }
                 break;
             case 5:
                 if(singleDetectionButton.isSelected()){
                     DescriptionTextArea.setText("Step 6 - Start Plagiarism Detection Process");
+                    CheckBannerLabel.setText("Step 6 - Start Plagiarism Detection Process");
                 }
                 else{
                     DescriptionTextArea.setText("Step 5 - Start Plagiarism Detection Process");
+                    CheckBannerLabel.setText("Step 5 - Start Plagiarism Detection Process");
                 }
                 break;
             default:
