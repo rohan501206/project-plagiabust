@@ -11,6 +11,7 @@
 package gui.form;
 
 import dataExtraction.DocumentFilter;
+import java.awt.Toolkit;
 import java.io.File;
 import java.util.AbstractList;
 import java.util.ArrayList;
@@ -37,6 +38,8 @@ public class DocumentManagerForm extends javax.swing.JFrame {
     /** Creates new form DocumentManagerForm */
     private DocumentManagerForm() {
         initComponents();
+        java.awt.Image image = Toolkit.getDefaultToolkit().getImage("D:/Project/Codes/Development/UI/src/Images/logo new.png");
+        this.setIconImage(image);
         setFormStyle();
         tableModel = getDefaultTableModel();
         DocumentTable.setModel(tableModel);
@@ -269,6 +272,7 @@ public class DocumentManagerForm extends javax.swing.JFrame {
             String selectedFileName = (String) tableModel.getValueAt(index, 1);
             documentManagerForm.setVisible(false);
             WizardForm.selectedDocumentLabel.setText(selectedFileName);
+            WizardForm.ProjectLocationLabel2.setVisible(true);
         }
     }//GEN-LAST:event_DoneButtonActionPerformed
 
