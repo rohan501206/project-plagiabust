@@ -31,7 +31,7 @@ public class PeerSearchWorker extends SwingWorker<peerSearchReportData, String> 
     String indexFolderPath;
     String selectedDocumentPath;
     Manager manager;
-
+    JProgressBar pbar;
     JProgressBar pbar2;
     JProgressBar pbar3;
     JProgressBar pbar4;
@@ -39,31 +39,37 @@ public class PeerSearchWorker extends SwingWorker<peerSearchReportData, String> 
 
 
     ArrayList<String> indexedFiles = new ArrayList<String>();
-    public PeerSearchWorker(String destFolderPath,File[] files,String indexFolderPath,ArrayList<String> fileArrayList,Manager manager,JProgressBar pbar2){
+    public PeerSearchWorker(String destFolderPath,File[] files,String indexFolderPath,ArrayList<String> fileArrayList,Manager manager,JProgressBar pbar,JProgressBar pbar2,JProgressBar pbar3,JProgressBar pbar4){
         this.destFolderPath = destFolderPath;
         this.files = files;
         this.indexFolderPath = indexFolderPath;
         this.fileArrayList =  fileArrayList;
         this.manager = manager;
         this.pbar2 = pbar2;
+        this.pbar3 = pbar3;
+        this.pbar4 = pbar4;
+        this.pbar = pbar;
     }
 
     @Override
     protected peerSearchReportData doInBackground() throws Exception {
 
+
+        System.out.println("Start Downloading the internet files........................");
+        HashMap<String, ArrayList<String>> downloadedFileList = idm.downloadFilesForMultiplePeerSearch(fileArrayList, destFolderPath,pbar);
+        System.out.println("Finished Downloading the internet files........................");
+
+
+
         System.out.println("Start indexing the files........................");
         indexedFileList = indexingManger.indexSearchforMultiplePeers(files, indexFolderPath,pbar2);
         System.out.println("Finished indexing the files........................");
         
-        System.out.println("Start Downloading the internet files........................");
-        HashMap<String, ArrayList<String>> downloadedFileList = idm.downloadFilesForMultiplePeerSearch(fileArrayList, destFolderPath);
-        System.out.println("Finished Downloading the internet files........................");
-
-        
+       
         
         try {
             System.out.println("Start comparing files........................");
-            temp = manager.compareAllFiles(indexedFileList, downloadedFileList);
+            temp = manager.compareAllFiles(indexedFileList, downloadedFileList,pbar3,pbar4);
             System.out.println("Finished comparing files........................");
         } catch (IOException ex) {
             System.out.println("There are no similar files or some error has occured");

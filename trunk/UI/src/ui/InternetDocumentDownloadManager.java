@@ -54,7 +54,7 @@ public class InternetDocumentDownloadManager {
     }
 
 
-    public HashMap<String, ArrayList<String>> downloadFilesForMultiplePeerSearch(ArrayList<String> arr, String folderPath) {
+    public HashMap<String, ArrayList<String>> downloadFilesForMultiplePeerSearch(ArrayList<String> arr, String folderPath, JProgressBar pbar) {
         fileArrayList = arr;
         String destFolderPath = folderPath;
         BingSearch bingSearch = new BingSearch("F138552F897E2CA7C264FDAC64F8EF2021ABD3AF");
@@ -62,7 +62,7 @@ public class InternetDocumentDownloadManager {
         InternetSearchManager sd = new InternetSearchManager(bingSearch);
         sd.setMaxNumOfSourcesPerDocument(maxNumOfSourcesPerDocument);
         sd.setRandomSelectionRatio(0.2f);
-        downloadedFileList = sd.downloadSourcesForFileFolder(fileArrayList, destFolderPath);
+        downloadedFileList = sd.downloadSourcesForFileFolder(fileArrayList, destFolderPath,pbar);
         return downloadedFileList;
     }
 
