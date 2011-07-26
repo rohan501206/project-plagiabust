@@ -73,7 +73,7 @@ public class DocumentIndexingManager {
 
 
              // progress bar
-             pmanager.runProgress((i*100)/files.length);
+             pmanager.runProgress(((i+1)*100)/files.length);
 
 
             ArrayList<String> indexedFilesTesting = new ArrayList<String>();

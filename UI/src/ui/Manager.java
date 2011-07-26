@@ -246,7 +246,7 @@ public class Manager {
      * @return he possible matching phrases with relevant files.
      * @throws IOException
      */
-    public  peerSearchReportData compareAllFiles(HashMap<File, ArrayList<String>> indexedFilesList, HashMap<String, ArrayList<String>> downloadedFilesList) throws IOException {
+    public  peerSearchReportData compareAllFiles(HashMap<File, ArrayList<String>> indexedFilesList, HashMap<String, ArrayList<String>> downloadedFilesList,JProgressBar preprocesspbar,JProgressBar crosscheckpbar) throws IOException {
         peerSearchReportData repData = new peerSearchReportData();
 
         HashMap<String,String> internetFilesReportData = new HashMap<String,String>() ;
@@ -255,8 +255,20 @@ public class Manager {
         Iterator it = indexedFilesList.entrySet().iterator();
         ArrayList indexedFilesForFile = new ArrayList();
         ArrayList downloadedFilesForFile = new ArrayList();
-        
+
+        ProgressBarManager preprocessProgressBar = new ProgressBarManager(preprocesspbar);
+        ProgressBarManager crossCheck = new ProgressBarManager(crosscheckpbar);
+
+        int firstCounter = 0;
+        int secondCounter = 0;
+
         while (it.hasNext()) {
+
+            firstCounter ++;
+            preprocessProgressBar.runProgress((firstCounter*100)/indexedFilesList.entrySet().size());
+
+
+
             HashMap<String,String> peerFilesReportData= new HashMap<String,String>() ;
             Map.Entry pair = (Map.Entry) it.next();
             File filePath = (File) pair.getKey();
@@ -287,8 +299,17 @@ public class Manager {
         }
 
         
+        if(!downloadIterator.hasNext()){
+            
+            crossCheck.runProgress(100);
 
+        }
         while (downloadIterator.hasNext()) {
+
+            secondCounter++;
+            crossCheck.runProgress((secondCounter*100)/downloadedFilesList.entrySet().size());
+
+
 
             Map.Entry pair = (Map.Entry) downloadIterator.next();
             String filePath = (String) pair.getKey();

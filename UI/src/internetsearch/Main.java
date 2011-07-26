@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import javax.swing.JProgressBar;
 
 /**
  *
@@ -20,6 +21,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        JProgressBar pbar2 = null;
         // TODO code application logic here
         /*BingSearch bs = new BingSearch();
         bs.setBingAppID("F138552F897E2CA7C264FDAC64F8EF2021ABD3AF");
@@ -40,7 +42,7 @@ public class Main {
         bingSearch.setMaxNumOfResults(5);
         InternetSearchManager sd = new InternetSearchManager(bingSearch);
         sd.setRandomSelectionRatio(0.1f);
-        HashMap<String, ArrayList<String>> map = sd.downloadSourcesForFileFolder(fileList, "C:/Users/Brave Heart/Desktop/New folder");
+        HashMap<String, ArrayList<String>> map = sd.downloadSourcesForFileFolder(fileList, "C:/Users/Brave Heart/Desktop/New folder",pbar2);
         
         Iterator mapIterator = map.entrySet().iterator();
         while(mapIterator.hasNext())

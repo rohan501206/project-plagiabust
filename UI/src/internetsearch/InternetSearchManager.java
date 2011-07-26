@@ -138,13 +138,16 @@ public class InternetSearchManager {
     System.out.print((t2-t1)/1000);
     return downloadedFilesFolder;
     }*/
-    public HashMap<String, ArrayList<String>> downloadSourcesForFileFolder(ArrayList<String> filePathList, String fileFolderPath) {
+    public HashMap<String, ArrayList<String>> downloadSourcesForFileFolder(ArrayList<String> filePathList, String fileFolderPath,JProgressBar pbar) {
         // file name maps to list of downloaded sources
         HashMap<String, ArrayList<String>> fileAndSorcesMap = new HashMap<String, ArrayList<String>>();
         HashMap<String, String> urlAndDownloadedPathMap = new HashMap<String, String>();
         // Search for each file and sort
         int downloadedFileIndex = 0;
         String downloadedFileFolderPath = fileFolderPath + File.separator + "InternetSources";
+
+        ProgressBarManager downloadProgressBar = new ProgressBarManager(pbar);
+        
 
         File fi= new File(downloadedFileFolderPath);
         if (!(fi.exists())){
@@ -156,7 +159,17 @@ public class InternetSearchManager {
             ArrayList<String> downloadedFilesList = new ArrayList<String>();
             // download file
             Iterator sourceIterator = sourcesOfFile.entrySet().iterator();
+
+
+            int fileCounter = 0 ;
             while (sourceIterator.hasNext()) {
+
+                // progress bar
+                fileCounter ++;
+                downloadProgressBar.runProgress((fileCounter*100)/sourcesOfFile.size());
+
+
+
                 Map.Entry pair = (Map.Entry) sourceIterator.next();
                 String url = (String) pair.getKey();
                 System.out.println(url);
@@ -174,6 +187,9 @@ public class InternetSearchManager {
             }
             fileAndSorcesMap.put(filePath, downloadedFilesList);
         }
+        }
+        else{
+            downloadProgressBar.runProgress(100);
         }
         return fileAndSorcesMap;
     }
