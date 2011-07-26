@@ -93,7 +93,7 @@ public class FileOperator {
 
             BufferedReader br = new BufferedReader(fr);
             BufferedReader br2 = new BufferedReader(fr2);
-            System.out.println("testing phase");
+            //System.out.println("testing phase");
 
 
             field1 = this.bufferedReaderToString(br);
