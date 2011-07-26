@@ -60,7 +60,7 @@ public class WizardForm extends javax.swing.JFrame {
     peerSearchReportData peerRepData;
     ArrayList<String> fileArrayList = new ArrayList<String>();
     String[][] temp = null;
-
+ReportingModule rp;
     /** Creates new form WizardForm */
     WizardForm() {
         initComponents();
@@ -1290,21 +1290,31 @@ public class WizardForm extends javax.swing.JFrame {
 
     private void ViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewButtonActionPerformed
         if (singleDetectionButton.isSelected()) {
-            //MsgBox msg=new MsgBox(this, true);
-            //msg.setVisible(true);
+            
             System.err.print("start");
             //File destFolder = new File(destFolderPath);
             String selectedDocumentPath = destFolderPath + File.separator + DocumentManagerForm.fileName;
-            ReportingModule rp = new ReportingModule();
-            //rp.setVisible(true);
-            rp.setDocument(selectedDocumentPath);
-            rp.setTemp(repdata.getFolder());
-            rp.setUrl(repdata.getUrlList());
-            rp.setMap(repdata.getFileUrlMap());
-            rp.setData();
-            System.err.print("end");
-            // msg.setVisible(false);
-            rp.setVisible(true);
+
+            final ReportWorker repworker = new ReportWorker(selectedDocumentPath,repdata) {
+                // This method is invoked when the worker is finished
+                // its task
+
+                @Override
+                protected void done() {
+
+                    try {
+                        rp = get();
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(WizardForm.class.getName()).log(Level.SEVERE, null, ex);
+                    } catch (ExecutionException ex) {
+                        Logger.getLogger(WizardForm.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+
+                    rp.setVisible(true);
+
+                }
+            };
+            repworker.execute();
         }
 
         if (peerDetectionButton.isSelected()) {
