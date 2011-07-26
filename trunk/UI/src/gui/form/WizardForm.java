@@ -1215,6 +1215,8 @@ ReportingModule rp;
     }
 
     private void CheckControlButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckControlButtonActionPerformed
+        
+        CheckControlButton.setEnabled(false);
         if (singleDetectionButton.isSelected()) {
             this.setup();
             File destFolder = new File(destFolderPath);
@@ -1292,9 +1294,12 @@ ReportingModule rp;
     }
 
     private void ViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewButtonActionPerformed
+
+        ViewButton.setEnabled(false);
         if (singleDetectionButton.isSelected()) {
             
             System.err.print("start");
+            
             //File destFolder = new File(destFolderPath);
             String selectedDocumentPath = destFolderPath + File.separator + DocumentManagerForm.fileName;
 
@@ -1307,18 +1312,19 @@ ReportingModule rp;
 
                     try {
                         rp = get();
+                        
                     } catch (InterruptedException ex) {
                         Logger.getLogger(WizardForm.class.getName()).log(Level.SEVERE, null, ex);
                     } catch (ExecutionException ex) {
                         Logger.getLogger(WizardForm.class.getName()).log(Level.SEVERE, null, ex);
                     }
-
+                    close();
                     rp.setVisible(true);
 
                 }
             };
             repworker.execute();
-            this.setVisible(false);
+
         }
 
         if (peerDetectionButton.isSelected()) {
@@ -1385,6 +1391,12 @@ ReportingModule rp;
             }
         }
     }
+
+
+
+    public void close(){
+    this.setVisible(false);
+}
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AddDocumentBannerLabel;
     private javax.swing.JLabel AddDocumentBannerLabel1;
@@ -1482,3 +1494,4 @@ ReportingModule rp;
     private javax.swing.JRadioButton singleDetectionButton;
     // End of variables declaration//GEN-END:variables
 }
+
