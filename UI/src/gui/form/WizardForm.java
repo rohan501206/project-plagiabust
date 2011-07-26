@@ -449,10 +449,10 @@ ReportingModule rp;
         AddDocumentTipTextArea.setWrapStyleWord(true);
         AddDocumentTipScrollPane.setViewportView(AddDocumentTipTextArea);
 
-        ProjectLocationLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        ProjectLocationLabel2.setFont(new java.awt.Font("Tahoma", 1, 12));
         ProjectLocationLabel2.setText("Selected Document:");
 
-        selectedDocumentLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        selectedDocumentLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
 
         javax.swing.GroupLayout AddDocumentPanelLayout = new javax.swing.GroupLayout(AddDocumentPanel);
         AddDocumentPanel.setLayout(AddDocumentPanelLayout);
@@ -851,6 +851,7 @@ ReportingModule rp;
         });
 
         jTextArea1.setColumns(20);
+        jTextArea1.setEditable(false);
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(5);
         jScrollPane1.setViewportView(jTextArea1);
@@ -1238,6 +1239,7 @@ ReportingModule rp;
                     ViewButton.setVisible(true);
                 }
             };
+            WizardPreviousButton.setEnabled(false);
             sworker.execute();
         }
         if (peerDetectionButton.isSelected()) {
@@ -1267,6 +1269,7 @@ ReportingModule rp;
 
                 }
             };
+            WizardPreviousButton.setEnabled(false);
             psworker.execute();
         }
     // TODO add your handling code here:
@@ -1315,6 +1318,7 @@ ReportingModule rp;
                 }
             };
             repworker.execute();
+            this.setVisible(false);
         }
 
         if (peerDetectionButton.isSelected()) {
@@ -1324,6 +1328,7 @@ ReportingModule rp;
             peerUI.processResults();
             peerUI.setResultDetails();
             peerUI.setVisible(true);
+            this.setVisible(false);
         }
     }//GEN-LAST:event_ViewButtonActionPerformed
 
