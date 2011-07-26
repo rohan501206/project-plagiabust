@@ -181,7 +181,7 @@ public class Manager {
             System.out.println("match is " + match);
             System.out.println("Size of the matched files is " + fileNo);
             System.out.println();
-            if (!match.isEmpty()) {
+            if (!match.isEmpty() &&  !(firstFile.equalsIgnoreCase(secondFile))) {
                 //////////////// just for testing purposes
                 filenameText[fileNo][0] = firstFile;
                 filenameText[fileNo][1] = secondFile;
@@ -220,7 +220,7 @@ public class Manager {
             System.out.println("match is " + match);
             System.out.println("Size of the matched files is " + fileNo);
             System.out.println();
-            if (!match.isEmpty()) {
+            if (!match.isEmpty() &&  !(firstFile.equalsIgnoreCase(secondFile))) {
                 //////////////// just for testing purposes
                 filenameText[fileNo][0] = firstFile;
                 filenameText[fileNo][1] = secondFile;
