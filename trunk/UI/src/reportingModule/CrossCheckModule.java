@@ -47,6 +47,7 @@ public class CrossCheckModule extends javax.swing.JFrame {
         suspectedFileName=susFile;
         matchString= match;
         initComponents();
+        testMatch.setVisible(false);
 
     }
 
@@ -190,7 +191,7 @@ testMatch.setText(matchString);
         jLabel6.setText("Suspected File");
 
         selectedFileTextField.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
-        selectedFileTextField.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        selectedFileTextField.setFont(new java.awt.Font("Tahoma", 1, 11));
         selectedFileTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 selectedFileTextFieldActionPerformed(evt);
@@ -198,13 +199,14 @@ testMatch.setText(matchString);
         });
 
         suspectedFileTextField1.setBackground(javax.swing.UIManager.getDefaults().getColor("Button.background"));
-        suspectedFileTextField1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        suspectedFileTextField1.setFont(new java.awt.Font("Tahoma", 1, 11));
         suspectedFileTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 suspectedFileTextField1ActionPerformed(evt);
             }
         });
 
+        testMatch.setEditable(false);
         testMatch.setText("jTextField1");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);

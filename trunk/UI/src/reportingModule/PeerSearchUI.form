@@ -30,9 +30,9 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace pref="644" max="32767" attributes="0"/>
               <Component id="prevButton" min="-2" pref="145" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
               <Component id="nextButton" min="-2" pref="108" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="226" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -54,6 +54,9 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="prevButton">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Images/previous-icon.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Previous"/>
       </Properties>
       <Events>
@@ -85,7 +88,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
-                      <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
+                      <Component id="jPanel7" min="-2" pref="1057" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -125,14 +128,14 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="folderNameTextField" alignment="0" pref="646" max="32767" attributes="0"/>
+                                      <Component id="folderNameTextField" alignment="0" pref="668" max="32767" attributes="0"/>
                                       <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
                                           <Component id="jScrollPane5" max="32767" attributes="1"/>
                                           <Component id="possiblePlagiarizedTextField" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jScrollPane4" alignment="0" pref="472" max="32767" attributes="1"/>
+                                          <Component id="jScrollPane4" alignment="0" min="-2" pref="668" max="-2" attributes="1"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="174" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="152" max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="documentNumberTextField" min="-2" max="-2" attributes="0"/>
@@ -162,8 +165,8 @@
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane4" min="-2" pref="114" max="-2" attributes="0"/>
                               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                              <Component id="jScrollPane4" min="-2" pref="114" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -221,7 +224,7 @@
 
                   <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
                   <SubComponents>
-                    <Component class="javax.swing.JList" name="topPlagTextField">
+                    <Component class="javax.swing.JList" name="topPlagList">
                       <Properties>
                         <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
                           <StringArray count="0"/>
@@ -414,6 +417,9 @@
                           <StringArray count="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="suspectedFileListValueChanged"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -467,6 +473,9 @@
                           <StringArray count="0"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="valueChanged" listener="javax.swing.event.ListSelectionListener" parameters="javax.swing.event.ListSelectionEvent" handler="internetSourcesListValueChanged"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
@@ -486,7 +495,7 @@
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Possible Internet Sources"/>
+                <TitledBorder title="Final Report Viewer"/>
               </Border>
             </Property>
           </Properties>
@@ -502,19 +511,49 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <EmptySpace min="0" pref="1091" max="32767" attributes="0"/>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jasperReportScrollPane" min="-2" pref="1054" max="-2" attributes="0"/>
+                          <EmptySpace pref="25" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <EmptySpace min="0" pref="499" max="32767" attributes="0"/>
+                  <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+                          <Component id="jasperReportScrollPane" min="-2" pref="459" max="-2" attributes="0"/>
+                          <EmptySpace pref="20" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
               </Group>
             </DimensionLayout>
           </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JScrollPane" name="jasperReportScrollPane">
+              <Properties>
+                <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JScrollPane(jrv)"/>
+                <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jPanel5.add(jasperReportScrollPane);"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+            </Container>
+          </SubComponents>
         </Container>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JButton" name="nextButton">
       <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/Images/next-icon.png"/>
+        </Property>
         <Property name="text" type="java.lang.String" value="Next"/>
       </Properties>
       <Events>
