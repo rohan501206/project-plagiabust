@@ -10,6 +10,8 @@
  */
 package gui.form;
 
+import com.lowagie.text.Image;
+import java.awt.Toolkit;
 import java.util.concurrent.ExecutionException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -62,8 +64,10 @@ public class WizardForm extends javax.swing.JFrame {
     /** Creates new form WizardForm */
     WizardForm() {
         initComponents();
-       // this.setIconImage("D:/Project/Codes/Development/UI/src/Images/logo new.png");
+        java.awt.Image image = Toolkit.getDefaultToolkit().getImage("D:/Project/Codes/Development/UI/src/Images/logo new.png");
+        this.setIconImage(image);
         ViewButton.setVisible(false);
+        ProjectLocationLabel2.setVisible(false);
         singleDetectionButton.setSelected(true);
         disableTabSet();
         OutputStream out = new OutputStream() {
@@ -249,7 +253,7 @@ public class WizardForm extends javax.swing.JFrame {
 
         WizardSeparator.setOrientation(javax.swing.SwingConstants.VERTICAL);
 
-        WizardTabbedPane.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        WizardTabbedPane.setFont(new java.awt.Font("Tahoma", 0, 12));
         WizardTabbedPane.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 WizardTabbedPaneStateChanged(evt);
@@ -445,10 +449,10 @@ public class WizardForm extends javax.swing.JFrame {
         AddDocumentTipTextArea.setWrapStyleWord(true);
         AddDocumentTipScrollPane.setViewportView(AddDocumentTipTextArea);
 
-        ProjectLocationLabel2.setFont(new java.awt.Font("Tahoma", 0, 12));
+        ProjectLocationLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         ProjectLocationLabel2.setText("Selected Document:");
 
-        selectedDocumentLabel.setFont(new java.awt.Font("Tahoma", 0, 12));
+        selectedDocumentLabel.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
 
         javax.swing.GroupLayout AddDocumentPanelLayout = new javax.swing.GroupLayout(AddDocumentPanel);
         AddDocumentPanel.setLayout(AddDocumentPanelLayout);
@@ -1077,7 +1081,7 @@ public class WizardForm extends javax.swing.JFrame {
     private void WizardNextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_WizardNextButtonActionPerformed
         int currentTabIndex = WizardTabbedPane.getSelectedIndex();
 
-        //if (isTabDataValid(currentTabIndex)) {
+        if (isTabDataValid(currentTabIndex)) {
             if (singleDetectionButton.isSelected() &&
                     WizardTabbedPane.getSelectedIndex() == TabNames.NewProject.ordinal()) {
                 WizardTabbedPane.setEnabledAt(TabNames.AddDocument.ordinal(), true);
@@ -1096,7 +1100,7 @@ public class WizardForm extends javax.swing.JFrame {
                 WizardTabbedPane.setSelectedIndex(++currentTabIndex);
                 WizardTabbedPane.setEnabledAt(currentTabIndex, true);
             }
-        //}
+        }
     }//GEN-LAST:event_WizardNextButtonActionPerformed
 
     public boolean isTabDataValid(int selectedTabIndex) {
@@ -1109,7 +1113,7 @@ public class WizardForm extends javax.swing.JFrame {
                     isValidData = false;
                 }
                 if(ProjectNameTextField.getText().equals("")){
-                    JOptionPane.showMessageDialog(null, "Please select a valid project name to continue.");
+                    JOptionPane.showMessageDialog(null, "Please enter a valid project name to continue.");
                     isValidData = false;
                 }
                 break;
@@ -1428,7 +1432,7 @@ public class WizardForm extends javax.swing.JFrame {
     private javax.swing.JTextField ProjectFolderTextField;
     private javax.swing.JLabel ProjectLocationLabel;
     private javax.swing.JLabel ProjectLocationLabel1;
-    private javax.swing.JLabel ProjectLocationLabel2;
+    static javax.swing.JLabel ProjectLocationLabel2;
     private javax.swing.JPanel ProjectLocationPanel;
     private javax.swing.JTextField ProjectLocationTextField;
     private javax.swing.JLabel ProjectNameLabel;

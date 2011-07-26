@@ -10,6 +10,8 @@
  */
 package gui.form;
 
+import java.awt.Toolkit;
+
 /**
  *
  * @author Brave Heart
@@ -21,6 +23,8 @@ public class MainForm extends javax.swing.JFrame {
     /** Creates new form MainForm */
     private MainForm() {
         initComponents();
+        java.awt.Image image = Toolkit.getDefaultToolkit().getImage("D:/Project/Codes/Development/UI/src/Images/logo new.png");
+        this.setIconImage(image);
     }
 
     public static MainForm getInstance(){
@@ -53,6 +57,7 @@ public class MainForm extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("PlagiaBust Plagiarism Detector");
         setResizable(false);
 
         NewWizardPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
