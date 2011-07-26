@@ -63,16 +63,17 @@ public class ExpandableToolTip  implements KeyListener, MouseListener, FocusList
 	JEditorPane h;				// editor containing the help text (hyperlinks)
 	JComponent owner;			// JCompontent the ToolTip was attached to
         JEditorPane browser;
+        JPanel browserpanel;
 	PopupFactory factory;		// factory for generating the different popUps
 	int x;						// X location for popUp
 	int y;						// Y location for popUp
 	boolean helpActive=false;	// switch indicating if the interactiv help popUp is active
 	Thread t;					// sleeping thread
 	int WIDTH_HTML=400;			// width of table in the HTML code
-	int WIDTH_SC=400;			// associated width of the help window
-	int HEIGHT_SC=100;			// height of the help window
-	int WIDTH_TT=300;			// width of the toolTip window
-	int HEIGHT_TT=25;			// height of the toolTip window
+	int WIDTH_SC=600;			// associated width of the help window
+	int HEIGHT_SC=200;			// height of the help window
+	int WIDTH_TT=400;			// width of the toolTip window
+	int HEIGHT_TT=100;			// height of the toolTip window
 	/**
 	 * Generates the two display panels that are shown
 	 * @param toolTipText
@@ -80,9 +81,11 @@ public class ExpandableToolTip  implements KeyListener, MouseListener, FocusList
 	 * @param owner
 	 */
 
-	public ExpandableToolTip(String toolTipText, String helpText,JComponent owner, JEditorPane browser){
+	public ExpandableToolTip(String toolTipText, String helpText,JComponent owner, JEditorPane browser,JPanel browserpanel){
 		this.owner = owner;
                 this.browser=browser;
+                this.browserpanel=browserpanel;
+                
 		/* Attach mouseListener to component.
 		 * If we attach the toolTip to a JComboBox our MouseListener is not
 		 * used, we therefore need to attach the MouseListener to each
@@ -207,6 +210,7 @@ public class ExpandableToolTip  implements KeyListener, MouseListener, FocusList
         try {
             //TODO add open link in default browser
             browser.setPage(event.getURL());
+            browserpanel.setVisible(true);
             URL s= event.getURL();
             URI uri = null;
             try {
