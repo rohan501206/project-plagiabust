@@ -104,10 +104,10 @@ public class AddDocumentsBackgroundWorker extends SwingWorker<Integer, Integer> 
                 stringBuilder.append(nextLine + "\n");
             }
 
-            String uniqueDocId = UUID.randomUUID().toString();
+            String uniqueDocId = file.getName() + ":" + UUID.randomUUID().toString();
             textArea.append("Unique Id : " + uniqueDocId + "\n");
             // id is the unique identifier for documents
-            doc.addField("id", file.getName() + ":" + uniqueDocId );
+            doc.addField("id", uniqueDocId );
             doc.addField("url", file.getAbsolutePath());
             doc.addField("title", file.getName());
             doc.addField("content", stringBuilder.toString());
