@@ -38,9 +38,25 @@ public class FileOperator {
     public FileOperator() {
     }
 
-    public void anyToTextConverter() {
+    public void anyToTextConverter(String selectedFile) {
 
 
+        File souceFolder = new File(sourceFolder);
+        if (souceFolder.isDirectory()) {
+            destinationFolder = projectFolderPath + File.separator + souceFolder.getName();
+            boolean destFolderCreated = new File(destinationFolder).mkdir();
+         
+            if (destFolderCreated) {
+
+                AnyToTextConverter tc = new AnyToTextConverter(destinationFolder);
+                tc.convertSingleFile(selectedFile);
+                tc.convertFilesInFolder(sourceFolder);
+            }
+        }
+
+    }
+
+public void anyToTextConverter() {
         File souceFolder = new File(sourceFolder);
         if (souceFolder.isDirectory()) {
             destinationFolder = projectFolderPath + File.separator + souceFolder.getName();
@@ -51,10 +67,9 @@ public class FileOperator {
             }
         }
 
-
-
-
     }
+
+
 
     public String getDestinatonFolderPath() {
         return destinationFolder;
