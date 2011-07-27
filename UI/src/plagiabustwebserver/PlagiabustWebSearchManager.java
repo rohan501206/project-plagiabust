@@ -73,7 +73,6 @@ public class PlagiabustWebSearchManager {
                 downloadedDocuments++;
                 this.downloadWebPageAsText(id, path);
                 idList.add(id);
-                System.err.println(path);
                 idFileMap.put(path, id);
                 pmanager.runProgress((downloadedDocuments * 100) / total);
 

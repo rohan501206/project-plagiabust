@@ -190,6 +190,7 @@ public class WizardForm extends javax.swing.JFrame {
         ModesOfCheckLabel = new javax.swing.JLabel();
         ModesOfCheckSeparator = new javax.swing.JSeparator();
         PharaphraseCheckBox = new javax.swing.JCheckBox();
+        PlagiabustWebserverCheckBox = new javax.swing.JCheckBox();
         StartCheckPanel = new javax.swing.JPanel();
         CheckControlButton = new javax.swing.JButton();
         CheckBannerLabel = new javax.swing.JLabel();
@@ -582,7 +583,7 @@ public class WizardForm extends javax.swing.JFrame {
         KnowledgeBasePanel.setBackground(new java.awt.Color(255, 255, 255));
 
         KBManagerButton.setFont(new java.awt.Font("Tahoma", 0, 12));
-        KBManagerButton.setText("Knowledge Base Manager");
+        KBManagerButton.setText("Plagiabust Server Manager");
         KBManagerButton.setPreferredSize(new java.awt.Dimension(180, 40));
         KBManagerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -634,7 +635,7 @@ public class WizardForm extends javax.swing.JFrame {
         KBManagerTextArea.setFont(new java.awt.Font("Tahoma", 0, 12));
         KBManagerTextArea.setLineWrap(true);
         KBManagerTextArea.setRows(5);
-        KBManagerTextArea.setText("Using knowledge Base Manager you can add all sort of documents and web - links to create a knwoldege base for particular subject of plagiarism test.");
+        KBManagerTextArea.setText("Using Plagiabust Server Manager you can add all sort of documents to create a knwoldege base for particular subject of plagiarism test.");
         KBManagerTextArea.setWrapStyleWord(true);
         KBManagerScrollPane.setViewportView(KBManagerTextArea);
 
@@ -745,6 +746,10 @@ public class WizardForm extends javax.swing.JFrame {
         PharaphraseCheckBox.setFont(new java.awt.Font("Tahoma", 0, 12));
         PharaphraseCheckBox.setText("Paraphrased Plagiarism Detection");
 
+        PlagiabustWebserverCheckBox.setBackground(new java.awt.Color(255, 255, 255));
+        PlagiabustWebserverCheckBox.setFont(new java.awt.Font("Tahoma", 0, 12));
+        PlagiabustWebserverCheckBox.setText("Use Plagiabust Webserver instead of Internet Search");
+
         javax.swing.GroupLayout SettingsPanelLayout = new javax.swing.GroupLayout(SettingsPanel);
         SettingsPanel.setLayout(SettingsPanelLayout);
         SettingsPanelLayout.setHorizontalGroup(
@@ -752,6 +757,7 @@ public class WizardForm extends javax.swing.JFrame {
             .addGroup(SettingsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(SettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PlagiabustWebserverCheckBox)
                     .addComponent(PharaphraseCheckBox)
                     .addComponent(ModesOfCheckSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
                     .addComponent(SettingsSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
@@ -799,7 +805,9 @@ public class WizardForm extends javax.swing.JFrame {
                 .addComponent(ModesOfCheckSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(PharaphraseCheckBox)
-                .addContainerGap(255, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PlagiabustWebserverCheckBox)
+                .addContainerGap(232, Short.MAX_VALUE))
         );
 
         WizardTabbedPane.addTab("Settings    ", SettingsPanel);
@@ -1048,8 +1056,8 @@ public class WizardForm extends javax.swing.JFrame {
     }//GEN-LAST:event_DocumentManagerButtonActionPerformed
 
     private void KBManagerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KBManagerButtonActionPerformed
-        KBManagerForm.getInstance().setVisible(true);
-
+        PlagiabustServerManager plagiabustServerManager = new PlagiabustServerManager();
+        plagiabustServerManager.setVisible(true);
     // TODO add your handling code here:
     }//GEN-LAST:event_KBManagerButtonActionPerformed
 
@@ -1244,7 +1252,7 @@ public class WizardForm extends javax.swing.JFrame {
             this.setup();
             File destFolder = new File(destFolderPath);
             String selectedDocumentPath = destFolderPath + File.separatorChar + fName;
-            final Worker sworker = new Worker(destFolderPath, fName, indexFolderPath, selectedDocumentPath, manager, DonloadFileProgressBar, CreateIndexProgressBar, PreprocessDocumentProgressBar, CrossCheckProgressBar, Integer.parseInt((String) NumOfExternalSourcesComboBox.getSelectedItem()), Integer.parseInt((String) NumOfPeerSourceComboBox.getSelectedItem())) {
+            final Worker sworker = new Worker(destFolderPath, fName, indexFolderPath, selectedDocumentPath, manager, DonloadFileProgressBar, CreateIndexProgressBar, PreprocessDocumentProgressBar, CrossCheckProgressBar, Integer.parseInt((String) NumOfExternalSourcesComboBox.getSelectedItem()), Integer.parseInt((String) NumOfPeerSourceComboBox.getSelectedItem()), PlagiabustWebserverCheckBox.isSelected()) {
                 // This method is invoked when the worker is finished
 
                 @Override
@@ -1476,6 +1484,7 @@ public class WizardForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane PerSettingsScrollPane;
     private javax.swing.JTextArea PerSettingsTipTextArea;
     private javax.swing.JCheckBox PharaphraseCheckBox;
+    private javax.swing.JCheckBox PlagiabustWebserverCheckBox;
     private javax.swing.JLabel PreprocessDocumentCompletionLabel;
     private javax.swing.JProgressBar PreprocessDocumentProgressBar;
     private javax.swing.JLabel ProjectFolderLabel;
