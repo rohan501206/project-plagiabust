@@ -87,7 +87,7 @@
                           <Component id="WizardNextButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="361" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" attributes="0">
                           <Component id="WizardTabbedPane" min="-2" pref="745" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -104,9 +104,8 @@
               </Group>
               <Component id="WizardSeparator" alignment="0" pref="629" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
                   <Component id="WizardTabbedPane" pref="552" max="32767" attributes="0"/>
-                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="WizardPreviousButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="WizardNextButton" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -680,6 +679,9 @@
                       <Font name="Tahoma" size="12" style="0"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="singleDocumentTextFieldActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="documentBrowseButton">
                   <Properties>
@@ -728,7 +730,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="ProjectLocationLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                  <Component id="peerSourceTextField" pref="405" max="32767" attributes="0"/>
+                                  <Component id="peerSourceTextField" pref="409" max="32767" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="LocationBrowseButton1" min="-2" pref="77" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
@@ -1307,10 +1309,10 @@
                                       </Group>
                                       <Group type="102" alignment="0" attributes="1">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="CommandsLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="CommandTipScrollPane" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="CommandsLabel" min="-2" max="-2" attributes="0"/>
+                                              <Component id="CommandTipScrollPane" min="-2" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace max="32767" attributes="0"/>
+                                          <EmptySpace pref="111" max="32767" attributes="0"/>
                                           <Component id="CheckControlButton" min="-2" pref="141" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                                           <Component id="ViewButton" min="-2" pref="117" max="-2" attributes="0"/>
@@ -1350,10 +1352,7 @@
                                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="1" attributes="0">
                                       <Component id="CommandSeparator" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="CreateIndexProgressBar" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="CreateIndexProgressBar" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -1374,25 +1373,24 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Component id="CommandsLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="CrossCheckProgressBar" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                              <Component id="CrossCheckProgressBar" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="CommandTipScrollPane" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="CheckControlButton" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="ViewButton" alignment="3" min="-2" pref="42" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="CommandTipScrollPane" min="-2" pref="38" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="177" max="-2" attributes="0"/>
-                          <EmptySpace pref="46" max="32767" attributes="0"/>
+                          <EmptySpace pref="47" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
