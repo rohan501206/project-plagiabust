@@ -178,6 +178,39 @@ public class AnyToTextConverter {
 
     }
 
+
+    public void convertSingleFile(String fileName) {
+        File documentFolder = new File(fileName);
+        String documentText = null;
+                if (fileName.endsWith(".txt")) {
+                    moveTextFile(fileName);
+                } else {
+                    if (fileName.endsWith(".pdf")) {
+                        documentText = pdfToString(fileName);
+                    } else if (fileName.endsWith(".rtf")) {
+                        documentText = rtfToString(fileName);
+                    } else if (fileName.endsWith(".doc")) {
+                        documentText = docToString(fileName);
+                    } else if (fileName.endsWith(".docx")) {
+                        documentText = docxToString(fileName);
+                    } else if (fileName.endsWith(".odt")) {
+                    }
+                    // take file name without extension
+                    File f = new File(fileName);
+                    String fName = convertedFileFolder + File.separator
+                            + this.getFileNameWithoutExtension(fileName) + ".txt";
+                    this.writeTexttoFile(documentText, fName);
+                }
+    }
+
+
+
+
+
+
+
+
+
     private String getFileNameWithoutExtension(String fileName) {
 
         File file = new File(fileName);
