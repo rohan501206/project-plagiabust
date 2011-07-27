@@ -514,9 +514,6 @@ public class PeerSearchUI extends javax.swing.JFrame {
         DefaultListModel model2 = new DefaultListModel();
         suspectedFileList.setModel(model);
         internetSourcesList.setModel(model2);
-        
-        
-
 
         if (!evt.getValueIsAdjusting()) {
             JList list = (JList) evt.getSource();            
@@ -618,11 +615,10 @@ public class PeerSearchUI extends javax.swing.JFrame {
             crossCheck.setVisible(true);
 
 
-
         }
 
 
-        else if((((String) fileNameList.getSelectedValue()) != null) && (((String) internetSourcesList.getSelectedValue()) != null))
+        /**else if((((String) fileNameList.getSelectedValue()) != null) && (((String) internetSourcesList.getSelectedValue()) != null))
             {
 
             String sourceFile=((String)fileNameList.getSelectedValue());
@@ -648,13 +644,13 @@ public class PeerSearchUI extends javax.swing.JFrame {
 
 
 
-        }
+        }  **/
 
 
         
 
  else{
-            JOptionPane.showMessageDialog(this, "please select one document each category");
+            JOptionPane.showMessageDialog(this, "please select a document from suspected file list to view the comparison");
  }
 
 
@@ -808,7 +804,11 @@ public class PeerSearchUI extends javax.swing.JFrame {
              model.add(i, topResults.get(sortedList.get(i)));
          }
 
+
          generateResults();
+
+
+
     }
 
 
@@ -924,7 +924,6 @@ public class PeerSearchUI extends javax.swing.JFrame {
         DefaultPieDataset pie = this.createPieDataset();
         JFreeChart jf = this.createChart(pie);
         return jf.createBufferedImage(500, 500);
-
 
 
     }
