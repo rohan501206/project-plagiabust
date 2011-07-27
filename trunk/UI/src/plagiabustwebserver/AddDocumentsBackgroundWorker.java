@@ -16,6 +16,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 import javax.swing.JLabel;
+import javax.swing.JTextArea;
 import javax.swing.SwingWorker;
 import org.apache.solr.client.solrj.SolrServer;
 import org.apache.solr.client.solrj.SolrServerException;
@@ -29,12 +30,14 @@ public class AddDocumentsBackgroundWorker extends SwingWorker<Integer, Integer> 
 
     SolrServer server = null;
     ArrayList<String> fileList = null;
-    JLabel currentMessageLable = null;
+    JLabel progressLable = null;
+    JTextArea textArea = null;
 
-    public AddDocumentsBackgroundWorker(SolrServer server, ArrayList<String> fileList, JLabel messageLabel) {
+    public AddDocumentsBackgroundWorker(SolrServer server, ArrayList<String> fileList, JLabel messageLabel, JTextArea textArea) {
         this.server = server;
         this.fileList = fileList;
-        this.currentMessageLable = messageLabel;
+        this.progressLable = messageLabel;
+        this.textArea = textArea;
     }
 
     @Override
@@ -45,15 +48,18 @@ public class AddDocumentsBackgroundWorker extends SwingWorker<Integer, Integer> 
 
             for (String fileName : fileList) {
                 if (fileName.endsWith(".txt")) {
+                    // clear the text are for information on new document
+                    textArea.setText("");
                     SolrInputDocument inputDoc = this.createSolrInputDocument(new File(fileName));
                     if (inputDoc != null) {
                         server.add(inputDoc);
                         server.commit();
 
                         // update progress
-                        currentMessageLable.setText(fileName + "Added to the server");
+                        int currentProgress = 100 * (count + 1) / numOfDocument;
+                        progressLable.setText("" + currentProgress + " %");
                         publish(count);
-                        this.setProgress(100 * (count + 1) / numOfDocument);
+                        this.setProgress(currentProgress);
                         count++;
                         //solrInputDocumentList.add(inputDoc);
                     }
@@ -67,9 +73,13 @@ public class AddDocumentsBackgroundWorker extends SwingWorker<Integer, Integer> 
 
             }
         } catch (UnsupportedOperationException ex) {
+            textArea.setText("Unsopported operation.");
         } catch (MalformedURLException ex) {
+            textArea.setText("A Malformed URL");
         } catch (IOException ex) {
+            textArea.setText("Error processing file.");
         } catch (SolrServerException ex) {
+            textArea.setText("Error connecting to Plagiabust Web Server.");
         }
         return count;
     }
@@ -80,6 +90,10 @@ public class AddDocumentsBackgroundWorker extends SwingWorker<Integer, Integer> 
         FileInputStream stream = null;
 
         try {
+            textArea.append("Source Folder : " + file.getParent() + "\n");
+            textArea.append("File Name : " + file.getName() + "\n");
+            textArea.append("Size : " + ((float)file.getTotalSpace()/1024.0f) + "KB" + "\n");
+
             FileReader fr = new FileReader(file);
             stream = new FileInputStream(file);
 
@@ -90,8 +104,10 @@ public class AddDocumentsBackgroundWorker extends SwingWorker<Integer, Integer> 
                 stringBuilder.append(nextLine + "\n");
             }
 
+            String uniqueDocId = UUID.randomUUID().toString();
+            textArea.append("Unique Id : " + uniqueDocId + "\n");
             // id is the unique identifier for documents
-            doc.addField("id", UUID.randomUUID());
+            doc.addField("id", file.getName() + ":" + uniqueDocId );
             doc.addField("url", file.getAbsolutePath());
             doc.addField("title", file.getName());
             doc.addField("content", stringBuilder.toString());
