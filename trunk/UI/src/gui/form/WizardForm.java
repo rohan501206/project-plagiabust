@@ -65,7 +65,7 @@ public class WizardForm extends javax.swing.JFrame {
     /** Creates new form WizardForm */
     WizardForm() {
         initComponents();
-        java.awt.Image image = Toolkit.getDefaultToolkit().getImage("D:/Project/Codes/Development/UI/src/Images/logo new.png");
+        java.awt.Image image = Toolkit.getDefaultToolkit().getImage("src/Images/logo new.png");
         this.setIconImage(image);
         ViewButton.setVisible(false);
         ProjectLocationLabel2.setVisible(false);
@@ -628,6 +628,11 @@ public class WizardForm extends javax.swing.JFrame {
         KBManagerButton1.setFont(new java.awt.Font("Tahoma", 0, 12));
         KBManagerButton1.setText("Keyword Manager");
         KBManagerButton1.setPreferredSize(new java.awt.Dimension(180, 40));
+        KBManagerButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                KBManagerButton1ActionPerformed(evt);
+            }
+        });
 
         KBManagerLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
         KBManagerLabel.setText("Knowledge Base");
