@@ -156,9 +156,6 @@ public class WizardForm extends javax.swing.JFrame {
         AddDocumentTipTextArea = new javax.swing.JTextArea();
         ProjectLocationLabel2 = new javax.swing.JLabel();
         selectedDocumentLabel = new javax.swing.JLabel();
-        ProjectLocationLabel3 = new javax.swing.JLabel();
-        singleDocumentTextField = new javax.swing.JTextField();
-        documentBrowseButton = new javax.swing.JButton();
         SelectDocumentsPanel = new javax.swing.JPanel();
         AddDocumentBannerLabel1 = new javax.swing.JLabel();
         AddDocumentLabel1 = new javax.swing.JLabel();
@@ -461,26 +458,6 @@ public class WizardForm extends javax.swing.JFrame {
 
         selectedDocumentLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
 
-        ProjectLocationLabel3.setFont(new java.awt.Font("Tahoma", 0, 12));
-        ProjectLocationLabel3.setText("Source Location");
-
-        singleDocumentTextField.setEditable(false);
-        singleDocumentTextField.setFont(new java.awt.Font("Tahoma", 0, 12));
-        singleDocumentTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                singleDocumentTextFieldActionPerformed(evt);
-            }
-        });
-
-        documentBrowseButton.setFont(new java.awt.Font("Tahoma", 0, 12));
-        documentBrowseButton.setText("Browse");
-        documentBrowseButton.setPreferredSize(new java.awt.Dimension(30, 30));
-        documentBrowseButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                documentBrowseButtonActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout AddDocumentPanelLayout = new javax.swing.GroupLayout(AddDocumentPanel);
         AddDocumentPanel.setLayout(AddDocumentPanelLayout);
         AddDocumentPanelLayout.setHorizontalGroup(
@@ -496,21 +473,14 @@ public class WizardForm extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 306, Short.MAX_VALUE)
                                 .addComponent(Step2ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(AddDocumentLabel)
-                            .addComponent(AddDocumentTipScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
-                            .addGroup(AddDocumentPanelLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(ProjectLocationLabel3)
-                                .addGap(18, 18, 18)
-                                .addComponent(singleDocumentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(documentBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(AddDocumentPanelLayout.createSequentialGroup()
-                        .addGap(191, 191, 191)
-                        .addComponent(selectedDocumentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(AddDocumentTipScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)))
                     .addGroup(AddDocumentPanelLayout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addComponent(ProjectLocationLabel2)
-                        .addGap(68, 68, 68)
+                        .addGap(18, 18, 18)
+                        .addComponent(selectedDocumentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(AddDocumentPanelLayout.createSequentialGroup()
+                        .addGap(88, 88, 88)
                         .addComponent(DocumentManagerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -527,18 +497,13 @@ public class WizardForm extends javax.swing.JFrame {
                 .addComponent(AddDocumentSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(AddDocumentTipScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(AddDocumentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ProjectLocationLabel3)
-                    .addComponent(documentBrowseButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(singleDocumentTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(23, 23, 23)
-                .addComponent(selectedDocumentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(AddDocumentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DocumentManagerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ProjectLocationLabel2))
-                .addContainerGap(284, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(DocumentManagerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addGroup(AddDocumentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(ProjectLocationLabel2)
+                    .addComponent(selectedDocumentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(309, Short.MAX_VALUE))
         );
 
         WizardTabbedPane.addTab("Select Single Document", AddDocumentPanel);
@@ -559,6 +524,11 @@ public class WizardForm extends javax.swing.JFrame {
 
         peerSourceTextField.setEditable(false);
         peerSourceTextField.setFont(new java.awt.Font("Tahoma", 0, 12));
+        peerSourceTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                peerSourceTextFieldActionPerformed(evt);
+            }
+        });
 
         LocationBrowseButton1.setFont(new java.awt.Font("Tahoma", 0, 12));
         LocationBrowseButton1.setText("Browse");
@@ -1243,12 +1213,13 @@ public class WizardForm extends javax.swing.JFrame {
     }
 
     public void setup() {
-        sourceFolderName = DocumentManagerForm.folderpath;
+        sourceFolderName = peerSourceTextField.getText();
         fName = DocumentManagerForm.fileName;
+        String fullPathName = DocumentManagerForm.selectedFileName;
         File projectFolder = new File(ProjectFolderTextField.getText());
         projectFolder.mkdir();
         FileOperator fileOPerator = new FileOperator(sourceFolderName, projectFolder.getAbsolutePath());
-        fileOPerator.anyToTextConverter();
+        fileOPerator.anyToTextConverter(fullPathName);
         fileOPerator.TextFileIndexer();
         destFolderPath = fileOPerator.getDestinatonFolderPath();
         indexFolderPath = fileOPerator.getIndexFolderPath();
@@ -1429,22 +1400,9 @@ public class WizardForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_ProjectNameTextFieldKeyReleased
 
-    private void documentBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_documentBrowseButtonActionPerformed
-        final JFileChooser fc = new JFileChooser();
-        fc.setApproveButtonText("Select");
-        fc.addChoosableFileFilter(new FileChooserFilter());
-        int returnVal = fc.showOpenDialog(this);
-
-        if (returnVal == JFileChooser.APPROVE_OPTION) {
-            File selectedFolder = fc.getSelectedFile();
-            singleDocumentTextField.setText(selectedFolder.getAbsolutePath());
-            fc.setVisible(false);
-        }
-}//GEN-LAST:event_documentBrowseButtonActionPerformed
-
-    private void singleDocumentTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singleDocumentTextFieldActionPerformed
+    private void peerSourceTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_peerSourceTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_singleDocumentTextFieldActionPerformed
+    }//GEN-LAST:event_peerSourceTextFieldActionPerformed
 
     public void setTempArray(ReportData temp) {
         this.repdata = temp;
@@ -1526,7 +1484,6 @@ public class WizardForm extends javax.swing.JFrame {
     private javax.swing.JLabel ProjectLocationLabel;
     private javax.swing.JLabel ProjectLocationLabel1;
     static javax.swing.JLabel ProjectLocationLabel2;
-    private javax.swing.JLabel ProjectLocationLabel3;
     private javax.swing.JPanel ProjectLocationPanel;
     private javax.swing.JTextField ProjectLocationTextField;
     private javax.swing.JLabel ProjectNameLabel;
@@ -1552,7 +1509,6 @@ public class WizardForm extends javax.swing.JFrame {
     private javax.swing.JSeparator WizardSeparator;
     private javax.swing.JTabbedPane WizardTabbedPane;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JButton documentBrowseButton;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
@@ -1560,7 +1516,6 @@ public class WizardForm extends javax.swing.JFrame {
     private javax.swing.JTextField peerSourceTextField;
     static javax.swing.JLabel selectedDocumentLabel;
     private javax.swing.JRadioButton singleDetectionButton;
-    private javax.swing.JTextField singleDocumentTextField;
     // End of variables declaration//GEN-END:variables
 }
 
