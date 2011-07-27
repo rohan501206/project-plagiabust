@@ -56,7 +56,7 @@ public class AddDocumentsBackgroundWorker extends SwingWorker<Integer, Integer> 
                         server.commit();
 
                         // update progress
-                        int currentProgress = 100 * (count + 1) / numOfDocument;
+                        int currentProgress = 100 * (count) / numOfDocument;
                         progressLable.setText("" + currentProgress + " %");
                         publish(count);
                         this.setProgress(currentProgress);
