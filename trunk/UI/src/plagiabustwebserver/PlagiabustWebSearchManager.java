@@ -138,7 +138,7 @@ public class PlagiabustWebSearchManager {
         HashMap<String, String> urlAndDownloadedPathMap = new HashMap<String, String>();
         // Search for each file and sort
         int downloadedFileIndex = 0;
-        String downloadedFileFolderPath = fileFolderPath + File.separator + "InternetSources";
+        String downloadedFileFolderPath = fileFolderPath + File.separator + "PlagiabustWebServerSources";
 
         ProgressBarManager downloadProgressBar = new ProgressBarManager(pbar);
 
