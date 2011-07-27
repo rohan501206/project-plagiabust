@@ -34,6 +34,7 @@ public class DocumentManagerForm extends javax.swing.JFrame {
     DefaultTableModel tableModel;
     public static String fileName;
     public static String folderpath;
+    public static String  selectedFileName;
 
     /** Creates new form DocumentManagerForm */
     private DocumentManagerForm() {
@@ -269,7 +270,7 @@ public class DocumentManagerForm extends javax.swing.JFrame {
         } else {
             int index = DocumentTable.getSelectedRow();
             fileName = (String) tableModel.getValueAt(index, 0);
-            String selectedFileName = (String) tableModel.getValueAt(index, 1);
+            selectedFileName = (String) tableModel.getValueAt(index, 1);
             documentManagerForm.setVisible(false);
             WizardForm.selectedDocumentLabel.setText(selectedFileName);
             WizardForm.ProjectLocationLabel2.setVisible(true);
