@@ -149,8 +149,8 @@ public class Client {
 
         try {
             SolrQuery solrQuery = new SolrQuery().setQuery("id:" + id);
-
             QueryResponse queryResponse = server.query(solrQuery);
+            
             if (!queryResponse.getResults().isEmpty()) {
                 SolrDocument resultDoc = queryResponse.getResults().get(FirstElementIndex);
                 content = resultDoc.getFirstValue("content").toString();

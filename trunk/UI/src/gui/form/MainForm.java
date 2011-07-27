@@ -98,7 +98,7 @@ public class MainForm extends javax.swing.JFrame {
         KBManagerPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
         AdminToolsButton.setFont(new java.awt.Font("Tahoma", 0, 12));
-        AdminToolsButton.setText("Adminitrative Tools");
+        AdminToolsButton.setText("Plagiabust Server Manager");
         AdminToolsButton.setPreferredSize(new java.awt.Dimension(180, 40));
         AdminToolsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
