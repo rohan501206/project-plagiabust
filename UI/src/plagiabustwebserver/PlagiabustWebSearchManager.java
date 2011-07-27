@@ -4,16 +4,22 @@
  */
 package plagiabustwebserver;
 
-import Helper.SortingHelper;
 import gui.form.ProgressBarManager;
+import internetsearch.ResponseResult;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import javax.swing.JProgressBar;
+import org.htmlparser.beans.StringBean;
 import querycreator.QueryCreator;
 import querycreator.QuerySelectionAlgorithm;
 
@@ -23,14 +29,15 @@ import querycreator.QuerySelectionAlgorithm;
  */
 public class PlagiabustWebSearchManager {
 
-    private QuerySelectionAlgorithm qsa = QuerySelectionAlgorithm.Exhaustive;
+    private QuerySelectionAlgorithm qsa = QuerySelectionAlgorithm.Random;
     private QueryCreator qc = new QueryCreator();
     private final Client searchClient;
     private int maxNumOfSourcesPerDocument = 10;
     private ArrayList<String> idList = new ArrayList<String>();
+    HashMap<String, String> idFileMap = new HashMap<String, String>();
 
-    public PlagiabustWebSearchManager(Client searchClient) {
-        this.searchClient = searchClient;
+    public PlagiabustWebSearchManager(Client client) {
+        this.searchClient = client;
     }
 
     public void setQuerySelectionAlgorithm(QuerySelectionAlgorithm selectionAlgo) {
@@ -46,13 +53,13 @@ public class PlagiabustWebSearchManager {
 
         File file = new File(filePath);
         String[] nameAndExt = file.getName().split("[.]");
-        String downloadedFilesFolder = file.getParent() + File.separator + nameAndExt[0];
+        String downloadedFilesFolder = file.getParent() + File.separator + nameAndExt[0] + "PlagiabustWebserver";
         File fi = new File(downloadedFilesFolder);
         if (!(fi.exists())) {
             boolean folderExist = new File(downloadedFilesFolder).mkdir();
             HashMap<String, Integer> selectedSources = new HashMap<String, Integer>();
             // Get list of sources
-            selectedSources = this.getPlagiabustServerSourcesForFile(filePath);
+            selectedSources = this.getPlagiabustServerSourceForFile(filePath);
             // Create directory
             // Downloading page
             int downloadedDocuments = 1;
@@ -64,8 +71,10 @@ public class PlagiabustWebSearchManager {
                 System.out.println(id);
                 String path = downloadedFilesFolder + File.separatorChar + downloadedDocuments + ".txt";
                 downloadedDocuments++;
-                this.downloadSourceContentAsText(id, path);
+                this.downloadWebPageAsText(id, path);
                 idList.add(id);
+                System.err.println(path);
+                idFileMap.put(path, id);
                 pmanager.runProgress((downloadedDocuments * 100) / total);
 
             }
@@ -79,12 +88,16 @@ public class PlagiabustWebSearchManager {
         return this.idList;
     }
 
+    public HashMap<String, String> getIdFileMap() {
+        return this.idFileMap;
+    }
+
     /*
     public String downloadSourcesForFile(String filePath) {         // firstcall
 
     HashMap<String, Integer> selectedSources = new HashMap<String, Integer>();
     // Get list of sources
-    selectedSources = this.getPlagiabustServerSourcesForFile(filePath);   //call
+    selectedSources = this.getInternetSourceForFile(filePath);   //call
     // Create directory
     File file = new File(filePath);
     String[] nameAndExt = file.getName().split("[.]");
@@ -110,71 +123,88 @@ public class PlagiabustWebSearchManager {
     Iterator it = selectedSources.entrySet().iterator();
     while (it.hasNext()) {
     Map.Entry pair = (Map.Entry) it.next();
-    String id = (String) pair.getKey();
+    String url = (String) pair.getKey();
     String path = downloadedFilesFolder + File.separatorChar + downloadedDocuments + ".txt";
     downloadedDocuments++;
-    this.downloadSourceContentAsText(id, path);   // secondcall
+    this.downloadWebPageAsText(url, path);   // secondcall
     }
     long t2 = System.currentTimeMillis();
     System.out.print((t2-t1)/1000);
     return downloadedFilesFolder;
     }*/
-    public HashMap<String, ArrayList<String>> downloadSourcesForFileFolder(ArrayList<String> filePathList, String fileFolderPath) {
+    public HashMap<String, ArrayList<String>> downloadSourcesForFileFolder(ArrayList<String> filePathList, String fileFolderPath, JProgressBar pbar) {
         // file name maps to list of downloaded sources
         HashMap<String, ArrayList<String>> fileAndSorcesMap = new HashMap<String, ArrayList<String>>();
-        HashMap<String, String> idAndDownloadedPathMap = new HashMap<String, String>();
+        HashMap<String, String> urlAndDownloadedPathMap = new HashMap<String, String>();
         // Search for each file and sort
         int downloadedFileIndex = 0;
-        String downloadedFileFolderPath = fileFolderPath + File.separator + "PlagiabustWebServer";
-        boolean folderCreated = new File(downloadedFileFolderPath).mkdir();
-        for (Iterator<String> it = filePathList.iterator(); it.hasNext();) {
-            String filePath = it.next();
-            // take sources for file
-            HashMap<String, Integer> sourcesOfFile = this.getPlagiabustServerSourcesForFile(filePath);
-            ArrayList<String> downloadedFilesList = new ArrayList<String>();
-            // download file
-            Iterator sourceIterator = sourcesOfFile.entrySet().iterator();
-            while (sourceIterator.hasNext()) {
-                Map.Entry pair = (Map.Entry) sourceIterator.next();
-                String id = (String) pair.getKey();
-                System.out.println(id);
-                if (idAndDownloadedPathMap.get(id) == null) {
-                    // mark new file and download
-                    downloadedFileIndex++;
-                    String filePathToDownload = downloadedFileFolderPath + File.separator + downloadedFileIndex + ".txt";
-                    idAndDownloadedPathMap.put(id, filePathToDownload);
-                    this.downloadSourceContentAsText(id, filePathToDownload);
-                    downloadedFilesList.add(filePathToDownload);
-                } else {
-                    String fileDownloadedPath = idAndDownloadedPathMap.get(id);
-                    downloadedFilesList.add(fileDownloadedPath);
+        String downloadedFileFolderPath = fileFolderPath + File.separator + "InternetSources";
+
+        ProgressBarManager downloadProgressBar = new ProgressBarManager(pbar);
+
+
+        File fi = new File(downloadedFileFolderPath);
+        if (!(fi.exists())) {
+            boolean folderCreated = new File(downloadedFileFolderPath).mkdir();
+            for (Iterator<String> it = filePathList.iterator(); it.hasNext();) {
+                String filePath = it.next();
+                // take sources for file
+                HashMap<String, Integer> sourcesOfFile = this.getPlagiabustServerSourceForFile(filePath);
+                ArrayList<String> downloadedFilesList = new ArrayList<String>();
+                // download file
+                Iterator sourceIterator = sourcesOfFile.entrySet().iterator();
+
+
+                int fileCounter = 0;
+                while (sourceIterator.hasNext()) {
+
+                    // progress bar
+                    fileCounter++;
+                    downloadProgressBar.runProgress((fileCounter * 100) / sourcesOfFile.size());
+
+
+
+                    Map.Entry pair = (Map.Entry) sourceIterator.next();
+                    String url = (String) pair.getKey();
+                    System.out.println(url);
+                    if (urlAndDownloadedPathMap.get(url) == null) {
+                        // mark new file and download
+                        downloadedFileIndex++;
+                        String filePathToDownload = downloadedFileFolderPath + File.separator + downloadedFileIndex + ".txt";
+                        urlAndDownloadedPathMap.put(url, filePathToDownload);
+                        this.downloadWebPageAsText(url, filePathToDownload);
+                        downloadedFilesList.add(filePathToDownload);
+                    } else {
+                        String fileDownloadedPath = urlAndDownloadedPathMap.get(url);
+                        downloadedFilesList.add(fileDownloadedPath);
+                    }
                 }
+                fileAndSorcesMap.put(filePath, downloadedFilesList);
             }
-            fileAndSorcesMap.put(filePath, downloadedFilesList);
+        } else {
+            downloadProgressBar.runProgress(100);
         }
         return fileAndSorcesMap;
     }
 
-    private HashMap<String, Integer> getPlagiabustServerSourcesForFile(String filePath) {
+    private HashMap<String, Integer> getPlagiabustServerSourceForFile(String filePath) {
 
-        ArrayList<String> queryList = qc.getQueryList(filePath, qsa);
+        ArrayList<String> queryList = qc.getQueryList(filePath, 0.01f);
         HashMap<String, Integer> sources = new HashMap<String, Integer>();
         HashMap<String, Integer> selectedSources = new HashMap<String, Integer>();
 
         for (Iterator<String> it = queryList.iterator(); it.hasNext();) {
             String query = it.next();
-            System.out.println(query);
             ArrayList<PlagiabustServerResponse> response = searchClient.getQueryResponse(query);
             if (!response.isEmpty()) {
                 for (Iterator<PlagiabustServerResponse> it1 = response.iterator(); it1.hasNext();) {
                     PlagiabustServerResponse responseResult = it1.next();
-                    System.out.println(responseResult.getID());
-                    // if id already exist
+                    // if url already exist
                     if (sources.get(responseResult.getID()) != null) {
                         String result = responseResult.getID();
                         int num = sources.get(result) + 1;
                         sources.put(result, num);
-                    } // if id doesnt exist in hashmap
+                    } // if url doesnt exist in hashmap
                     else {
                         sources.put(responseResult.getID(), 1);
                     }
@@ -183,8 +213,7 @@ public class PlagiabustWebSearchManager {
         }
 
         // Sorting hashmap
-        SortingHelper sortingHelper = new SortingHelper();
-        HashMap<String, Integer> sortedSources = (HashMap<String, Integer>) sortingHelper.sortByValue(sources);
+        HashMap<String, Integer> sortedSources = (HashMap<String, Integer>) this.sortByValue(sources);
         Iterator sortedSourceIterator = sortedSources.entrySet().iterator();
         int numberOfSelectedDoc = 1;
         while (sortedSourceIterator.hasNext() && numberOfSelectedDoc <= maxNumOfSourcesPerDocument) {
@@ -198,9 +227,25 @@ public class PlagiabustWebSearchManager {
         return selectedSources;
     }
 
-    public void downloadSourceContentAsText(String id, String fileName) {
-        String content = "";
-        content = searchClient.getContentById(id);
+    private Map sortByValue(Map map) {
+        List list = new LinkedList(map.entrySet());
+        Collections.sort(list, new Comparator() {
+
+            public int compare(Object o1, Object o2) {
+                return ((Comparable) ((Map.Entry) (o2)).getValue()).compareTo(((Map.Entry) (o1)).getValue());
+            }
+        });
+
+        Map result = new LinkedHashMap();
+        for (Iterator it = list.iterator(); it.hasNext();) {
+            Map.Entry entry = (Map.Entry) it.next();
+            result.put(entry.getKey(), entry.getValue());
+        }
+        return result;
+    }
+
+    private void downloadWebPageAsText(String id, String fileName) {
+        String content = searchClient.getContentById(id);
 
         File file = new File(fileName);
         try {

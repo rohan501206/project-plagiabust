@@ -84,6 +84,60 @@ public class QueryCreator {
         }
     }
 
+    public ArrayList<String> getQueryList(String fileName, float ratio) {
+
+        File file = new File(fileName);
+        ArrayList<String> sentenceList = new ArrayList<String>();
+        ArrayList<String> queryList = new ArrayList<String>();
+        int wordCount = 0;
+
+        try {
+            if (file.exists() && file.isFile()) {
+                FileReader fr = new FileReader(file);
+                BufferedReader bufferedReader = new BufferedReader(fr);
+                StringBuilder stringBuilder = new StringBuilder();
+                String nextLine = null;
+                while ((nextLine = bufferedReader.readLine()) != null) {
+                    if (!nextLine.equals("")) {
+                        sentenceList.add(nextLine);
+                        wordCount++;
+                    }
+                }
+            }
+        } catch (FileNotFoundException ex) {
+        } catch (IOException ex) {
+        }
+
+        if (wordCount < 20) {
+            return sentenceList;
+        } else {
+
+            int numOfSentences = sentenceList.size() - 1;
+            int numOfQueries = (int) (20 + (wordCount - 20) * ratio);
+            int count = 0;
+
+            while (count < numOfQueries) {
+                boolean isExist = false;
+                Random random = new Random();
+                int nextValue = random.nextInt(numOfSentences);
+
+                for (Iterator<String> it = queryList.iterator(); it.hasNext();) {
+                    String string = it.next();
+                    if (string.equals(sentenceList.get(nextValue))) {
+                        isExist = true;
+                    }
+                }
+
+                if (!isExist) {
+                    queryList.add(sentenceList.get(nextValue));
+                    count++;
+                }
+            }
+        }
+
+        return queryList;
+    }
+
     private void processText() {
         inputText = inputText.toLowerCase();
         String[] lineArray = inputText.split("[.:;.]");
@@ -189,14 +243,14 @@ public class QueryCreator {
                 }
             }
         }
-        quotedsuspiciousSentenceList = this.getQuotedList(suspiciousSentenceList) ;
-       // System.out.println( quotedsuspiciousSentenceList);
+        quotedsuspiciousSentenceList = this.getQuotedList(suspiciousSentenceList);
+        // System.out.println( quotedsuspiciousSentenceList);
         return quotedsuspiciousSentenceList;
     }
 
     private String arraylistToSting(ArrayList<String> token) {
         StringBuilder out = new StringBuilder();
-       //out.append("\"");
+        //out.append("\"");
         for (Object o : token) {
             out.append(o.toString());
             out.append(" ");
@@ -208,16 +262,15 @@ public class QueryCreator {
         return sentenceList;
     }
 
-    public ArrayList<String> getQuotedList(ArrayList<String> sentenceList){
+    public ArrayList<String> getQuotedList(ArrayList<String> sentenceList) {
         Iterator itr = sentenceList.iterator();
         ArrayList<String> quotedsuspiciousSentenceList = new ArrayList<String>();
-        while(itr.hasNext()){
+        while (itr.hasNext()) {
             String content = itr.next().toString();
-            content = (new StringBuffer(content)).insert(0,"\"").toString();
-            content = (new StringBuffer(content)).insert(content.length(),"\"").toString();
+            content = (new StringBuffer(content)).insert(0, "\"").toString();
+            content = (new StringBuffer(content)).insert(content.length(), "\"").toString();
             quotedsuspiciousSentenceList.add(content);
         }
         return quotedsuspiciousSentenceList;
     }
-
 }

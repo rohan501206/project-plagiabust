@@ -53,11 +53,13 @@ public class PlagiabustServerManager extends javax.swing.JFrame {
         SubmitToServerButton = new javax.swing.JButton();
         SubmitToServerLable = new javax.swing.JLabel();
         documentAddingProgressBar = new javax.swing.JProgressBar();
-        currentProgressLabel = new javax.swing.JLabel();
+        progressLabel = new javax.swing.JLabel();
         SetDefaultsButton = new javax.swing.JButton();
         DeleteDocumentPanel = new javax.swing.JPanel();
         DeleteDocumentButton = new javax.swing.JButton();
         DeleteDocumentLabel = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        currentProgressTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
@@ -108,32 +110,32 @@ public class PlagiabustServerManager extends javax.swing.JFrame {
         SubmitToServerLable.setFont(new java.awt.Font("Tahoma", 0, 12));
         SubmitToServerLable.setText("Submit To Plagiabust Server");
 
-        currentProgressLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        progressLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        progressLabel.setText("Progress");
 
         javax.swing.GroupLayout AddDocumentPanelLayout = new javax.swing.GroupLayout(AddDocumentPanel);
         AddDocumentPanel.setLayout(AddDocumentPanelLayout);
         AddDocumentPanelLayout.setHorizontalGroup(
             AddDocumentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AddDocumentPanelLayout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addGroup(AddDocumentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(AddDocumentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(AddDocumentPanelLayout.createSequentialGroup()
-                        .addComponent(SubmitToServerLable)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(SubmitToServerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(6, 6, 6)
+                        .addGroup(AddDocumentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(AddDocumentPanelLayout.createSequentialGroup()
+                                .addComponent(SubmitToServerLable)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(SubmitToServerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(AddDocumentPanelLayout.createSequentialGroup()
+                                .addComponent(SeverUrlLabel1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(DocumentManagerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(AddDocumentPanelLayout.createSequentialGroup()
-                        .addComponent(SeverUrlLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(DocumentManagerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(127, Short.MAX_VALUE))
-            .addGroup(AddDocumentPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(currentProgressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AddDocumentPanelLayout.createSequentialGroup()
-                .addContainerGap(120, Short.MAX_VALUE)
-                .addComponent(documentAddingProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57))
+                        .addContainerGap()
+                        .addComponent(documentAddingProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(10, 10, 10)
+                        .addComponent(progressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         AddDocumentPanelLayout.setVerticalGroup(
             AddDocumentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -145,11 +147,10 @@ public class PlagiabustServerManager extends javax.swing.JFrame {
                 .addGroup(AddDocumentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(SubmitToServerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(SubmitToServerLable, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(currentProgressLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(documentAddingProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addGroup(AddDocumentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(documentAddingProgressBar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(progressLabel, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
 
         SetDefaultsButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -231,13 +232,26 @@ public class PlagiabustServerManager extends javax.swing.JFrame {
                     .addComponent(DoneButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
+        currentProgressTextArea.setBackground(new java.awt.Color(0, 0, 0));
+        currentProgressTextArea.setColumns(20);
+        currentProgressTextArea.setEditable(false);
+        currentProgressTextArea.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        currentProgressTextArea.setForeground(new java.awt.Color(255, 255, 255));
+        currentProgressTextArea.setLineWrap(true);
+        currentProgressTextArea.setRows(4);
+        currentProgressTextArea.setWrapStyleWord(true);
+        currentProgressTextArea.setAutoscrolls(false);
+        jScrollPane1.setViewportView(currentProgressTextArea);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(PlagiabustServerImageLabel)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(PlagiabustServerImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(CommandPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -247,8 +261,11 @@ public class PlagiabustServerManager extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CommandPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(PlagiabustServerImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(PlagiabustServerImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))
+                    .addComponent(CommandPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -272,7 +289,7 @@ public class PlagiabustServerManager extends javax.swing.JFrame {
             String localhost = ServerUrlTextField.getText();
             Client sc = new Client(localhost);
             //sc.commitDocumentsToSolrServer(documentList);
-            sc.commitDocumentAsBackGroundWork(documentAddingProgressBar, currentProgressLabel, documentList);
+            sc.commitDocumentAsBackGroundWork(documentAddingProgressBar, progressLabel, documentList, currentProgressTextArea);
         }
         if (!ServerUrlTextField.getText().equals(DefaultSolrUrl)) {
             JOptionPane.showMessageDialog(this, "Default Solr url must be: " + DefaultSolrUrl, "Warning", JOptionPane.WARNING_MESSAGE);
@@ -321,7 +338,9 @@ public class PlagiabustServerManager extends javax.swing.JFrame {
     private javax.swing.JLabel SeverUrlLabel1;
     private javax.swing.JButton SubmitToServerButton;
     private javax.swing.JLabel SubmitToServerLable;
-    private javax.swing.JLabel currentProgressLabel;
+    private javax.swing.JTextArea currentProgressTextArea;
     private javax.swing.JProgressBar documentAddingProgressBar;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel progressLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -19,7 +19,6 @@ import java.awt.Toolkit;
 public class MainForm extends javax.swing.JFrame {
 
     public static MainForm mainForm;
-    PlagiabustServerManager plagiabustServerManager = new PlagiabustServerManager();
     /** Creates new form MainForm */
     private MainForm() {
         initComponents();
@@ -242,6 +241,7 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_KBManagerButtonActionPerformed
 
     private void AdminToolsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminToolsButtonActionPerformed
+        PlagiabustServerManager plagiabustServerManager = new PlagiabustServerManager();
         plagiabustServerManager.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_AdminToolsButtonActionPerformed

@@ -55,10 +55,10 @@ public class SolrClientTest {
 
         
         // Download document to a local directry
-       //System.out.println(sc.getContentById("00227cdf-288d-4ece-bd68-70d788c6aecb"));
+       //System.out.println(sc.DownloadFileById("00227cdf-288d-4ece-bd68-70d788c6aecb"));
         
 
-      //plagiabustServerManager.downloadSourceContentAsText("00227cdf-288d-4ece-bd68-70d788c6aecb", "C:/Users/Brave Heart/Desktop/1.txt");
+      //plagiabustServerManager.downloadSourceFileById("00227cdf-288d-4ece-bd68-70d788c6aecb", "C:/Users/Brave Heart/Desktop/1.txt");
 
         plagiabustServerManager.downloadSourcesForFile("C:/Users/Brave Heart/Desktop/suspicious-document00001.txt", new JProgressBar());
     }

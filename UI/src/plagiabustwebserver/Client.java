@@ -19,6 +19,7 @@ import java.util.Iterator;
 import java.util.UUID;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
+import javax.swing.JTextArea;
 import org.apache.solr.client.solrj.SolrQuery;
 import org.apache.solr.client.solrj.SolrServer;
 import org.apache.solr.client.solrj.SolrServerException;
@@ -64,9 +65,9 @@ public class Client {
         }
     }
 
-    public void commitDocumentAsBackGroundWork(final JProgressBar progressBar, JLabel label, ArrayList<String> fileList) {
+    public void commitDocumentAsBackGroundWork(final JProgressBar progressBar, JLabel label, ArrayList<String> fileList, JTextArea textArea) {
         AddDocumentsBackgroundWorker addDocumentsBackGorundWorker =
-                new AddDocumentsBackgroundWorker(server, fileList, label);
+                new AddDocumentsBackgroundWorker(server, fileList, label, textArea);
 
         addDocumentsBackGorundWorker.addPropertyChangeListener(new PropertyChangeListener() {
 
