@@ -466,6 +466,11 @@ public class WizardForm extends javax.swing.JFrame {
 
         singleDocumentTextField.setEditable(false);
         singleDocumentTextField.setFont(new java.awt.Font("Tahoma", 0, 12));
+        singleDocumentTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                singleDocumentTextFieldActionPerformed(evt);
+            }
+        });
 
         documentBrowseButton.setFont(new java.awt.Font("Tahoma", 0, 12));
         documentBrowseButton.setText("Browse");
@@ -580,7 +585,7 @@ public class WizardForm extends javax.swing.JFrame {
                     .addGroup(SelectDocumentsPanelLayout.createSequentialGroup()
                         .addComponent(ProjectLocationLabel1)
                         .addGap(35, 35, 35)
-                        .addComponent(peerSourceTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
+                        .addComponent(peerSourceTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
                         .addGap(18, 18, 18)
                         .addComponent(LocationBrowseButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(107, 107, 107))))
@@ -921,7 +926,7 @@ public class WizardForm extends javax.swing.JFrame {
                                 .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(CommandsLabel)
                                     .addComponent(CommandTipScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                                 .addComponent(CheckControlButton, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(25, 25, 25)
                                 .addComponent(ViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -951,9 +956,7 @@ public class WizardForm extends javax.swing.JFrame {
                         .addGap(8, 8, 8)
                         .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(CommandSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(StartCheckPanelLayout.createSequentialGroup()
-                                .addComponent(CreateIndexProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))))
+                            .addComponent(CreateIndexProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(StartCheckPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(IndexFilesCompletionLabel)))
@@ -968,20 +971,19 @@ public class WizardForm extends javax.swing.JFrame {
                         .addComponent(CrossCheckCompletionLabel)
                         .addGap(18, 18, 18)
                         .addComponent(CommandsLabel))
-                    .addGroup(StartCheckPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CrossCheckProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(CrossCheckProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CommandTipScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(StartCheckPanelLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
+                        .addGap(40, 40, 40)
                         .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(CheckControlButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(ViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(StartCheckPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(CommandTipScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(14, 14, 14)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(46, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         WizardTabbedPane.addTab("Start Check   ", StartCheckPanel);
@@ -1035,9 +1037,8 @@ public class WizardForm extends javax.swing.JFrame {
                 .addComponent(DescriptionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE))
             .addComponent(WizardSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WizardMainPanelLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(WizardTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
-                .addGap(26, 26, 26)
+                .addGap(37, 37, 37)
                 .addGroup(WizardMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(WizardPreviousButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(WizardNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -1150,6 +1151,11 @@ public class WizardForm extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null, "Please enter a valid project name to continue.");
                     isValidData = false;
                 }
+
+                if (!isValidFileName(ProjectNameTextField.getText())) {
+                    JOptionPane.showMessageDialog(null, "Project name cannot contain any of the following characters.\n / \\ ? : * : \" < > | ");
+                    isValidData = false;
+                }
                 break;
             case 1:
                 if (singleDetectionButton.isSelected() && selectedDocumentLabel.getText().equals("")) {
@@ -1168,6 +1174,18 @@ public class WizardForm extends javax.swing.JFrame {
         }
 
         return isValidData;
+    }
+
+    public boolean isValidFileName(String fileName){
+        String [] characters = {"/", "\\",":","*","?","\"","<",">","|"};
+
+        for (int i = 0; i < characters.length; i++) {
+            if (fileName.contains(characters[i])) {
+                return false;
+            }
+        }
+
+        return true;
     }
 
     public void setDescriptionInformation(int selectedTabIndex) {
@@ -1418,6 +1436,10 @@ public class WizardForm extends javax.swing.JFrame {
             fc.setVisible(false);
         }
 }//GEN-LAST:event_documentBrowseButtonActionPerformed
+
+    private void singleDocumentTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_singleDocumentTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_singleDocumentTextFieldActionPerformed
 
     public void setTempArray(ReportData temp) {
         this.repdata = temp;
