@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report2" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryNewPage="true">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="389"/>
+	<property name="ireport.y" value="343"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -125,49 +125,49 @@
 				<anchorNameExpression><![CDATA["detail"]]></anchorNameExpression>
 			</textField>
 			<textField>
-				<reportElement x="6" y="120" width="476" height="20"/>
+				<reportElement x="6" y="120" width="730" height="20"/>
 				<textElement>
 					<font isBold="true" isItalic="true" isUnderline="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[($P{peers}).get(3)]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="4" y="140" width="476" height="20"/>
+				<reportElement x="4" y="140" width="732" height="20"/>
 				<textElement>
 					<font isBold="true" isItalic="true" isUnderline="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[($P{peers}).get(4)]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="6" y="60" width="476" height="20"/>
+				<reportElement x="6" y="60" width="730" height="20"/>
 				<textElement>
 					<font isBold="true" isItalic="true" isUnderline="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[($P{peers}).get(0)]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="6" y="180" width="476" height="20"/>
+				<reportElement x="6" y="180" width="730" height="20"/>
 				<textElement>
 					<font isBold="true" isItalic="true" isUnderline="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[($P{peers}).get(6)]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="6" y="200" width="476" height="20"/>
+				<reportElement x="6" y="200" width="730" height="20"/>
 				<textElement>
 					<font isBold="true" isItalic="true" isUnderline="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[($P{peers}).get(7)]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="2" y="100" width="476" height="20"/>
+				<reportElement x="2" y="100" width="734" height="20"/>
 				<textElement>
 					<font isBold="true" isItalic="true" isUnderline="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[($P{peers}).get(2)]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="6" y="80" width="474" height="20"/>
+				<reportElement x="6" y="80" width="730" height="20"/>
 				<textElement>
 					<font isBold="true" isItalic="true" isUnderline="false"/>
 				</textElement>
@@ -179,21 +179,21 @@
 				<text><![CDATA[Possible Peer Plagiarized Sources]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="6" y="220" width="474" height="20"/>
+				<reportElement x="6" y="220" width="730" height="20"/>
 				<textElement>
 					<font isBold="true" isItalic="true" isUnderline="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[($P{peers}).get(8)]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="6" y="240" width="474" height="20"/>
+				<reportElement x="6" y="240" width="730" height="20"/>
 				<textElement>
 					<font isBold="true" isItalic="true" isUnderline="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[($P{peers}).get(9)]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="6" y="160" width="476" height="20"/>
+				<reportElement x="6" y="160" width="730" height="20"/>
 				<textElement>
 					<font isBold="true" isItalic="true" isUnderline="false"/>
 				</textElement>
