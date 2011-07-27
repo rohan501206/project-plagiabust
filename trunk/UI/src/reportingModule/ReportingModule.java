@@ -72,7 +72,6 @@ public class ReportingModule extends javax.swing.JFrame {
     /** Creates new form NewJFrame */
     public ReportingModule() {
 
-
         this.setSize(500, 500);
         initComponents();
         PreviousButton.setEnabled(false);
@@ -85,11 +84,10 @@ public class ReportingModule extends javax.swing.JFrame {
 
     public DefaultPieDataset createPieDataset() {
 
-
         DefaultPieDataset dataset = new DefaultPieDataset();
         dataset.setValue("Original", new Double(43.2));
-        dataset.setValue("Plagarizm Suspected", new Double(10.0));
-        dataset.setValue("Refereenced", new Double(27.5));
+        dataset.setValue("Plagiarizm Suspected", new Double(10.0));
+        dataset.setValue("Referenced", new Double(27.5));
         return dataset;
 
     }
@@ -137,7 +135,7 @@ public class ReportingModule extends javax.swing.JFrame {
         for (int i = 0; i < resultArray.length; i++) {
 
             if (resultArray[i][1] != null) {
-                peers.add(resultArray[i][1]);
+                peers.add(String.valueOf(i)+"). "+resultArray[i][1]);
             }
 
         }
