@@ -34,11 +34,17 @@ public class Help extends javax.swing.JFrame {
     
     public void loadFiles(File f)
     {
-        String[] files = f.list();
+        
+        
+        String[] files = f.list(); 
+        
+        
         javax.swing.DefaultListModel dm = new javax.swing.DefaultListModel();
         for(int i=0;i<files.length;i++)
         {
-            dm.addElement(files[i].replace(".txt", ""));
+            if(!files[i].equalsIgnoreCase(".svn")){
+                 dm.addElement(files[i].replace(".txt", ""));
+            }  
         }
         list.setModel(dm);
     }
