@@ -11,6 +11,10 @@
 package gui.form;
 
 import java.awt.Toolkit;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 
 /**
  *
@@ -133,7 +137,7 @@ public class MainForm extends javax.swing.JFrame {
 
         AdministrativeToolPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        KBManagerButton.setFont(new java.awt.Font("Tahoma", 0, 12));
+        KBManagerButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         KBManagerButton.setText("Knowledge Base Manager");
         KBManagerButton.setPreferredSize(new java.awt.Dimension(180, 40));
         KBManagerButton.addActionListener(new java.awt.event.ActionListener() {
@@ -169,9 +173,14 @@ public class MainForm extends javax.swing.JFrame {
 
         HelpSupportPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        HelpSupportButton.setFont(new java.awt.Font("Tahoma", 0, 12));
+        HelpSupportButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         HelpSupportButton.setText("Help & Support");
         HelpSupportButton.setPreferredSize(new java.awt.Dimension(180, 40));
+        HelpSupportButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                HelpSupportButtonActionPerformed(evt);
+            }
+        });
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/document-help-icon.png"))); // NOI18N
 
@@ -245,6 +254,17 @@ public class MainForm extends javax.swing.JFrame {
         plagiabustServerManager.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_AdminToolsButtonActionPerformed
+
+    private void HelpSupportButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_HelpSupportButtonActionPerformed
+    Help ahelp = null;
+        try {
+            ahelp = new Help();
+        } catch (IOException ex) {
+            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    ahelp.setVisible(true);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_HelpSupportButtonActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AdminToolsButton;
