@@ -1,0 +1,14 @@
+
+
+
+This Wizard will guide you to view the Plagiarism check results of the selected single Document. 
+Featues include
+
+1. On Screen View
+In the Report OnScreen View of the plagiarism Check results, you can view the document along with the possible plagirized phrases highlighted in red colour. You can view the source of the plagiarized by clicking on the phrase. The content of the file will be displayed in the browser section.
+
+2. Dynamic Cross Check
+You can select the file you want to compare from the list and the contents along with the similarity phrases will be highlighted in a relevant colours.
+
+3. Final Report
+All the Details of the plagiarism Check will be displayed in a single report, Including the possible plagiarized sources and the possible internet Sources. Document Statictics will be displayed in a graphical chart.

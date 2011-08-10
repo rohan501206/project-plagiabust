@@ -1,0 +1,14 @@
+
+
+
+This Wizard will guide you to view the Plagiarism check results of the selected single Document. 
+Featues include
+
+1. Results Stats
+In the Report OnScreen View of the plagiarism Check results, you can view the overall plagiarism results statistics icluding the top plagiarized sources and top plgiarized internet Sources
+
+2. Dynamic Results Viewer
+You can select the file you want to compare from the file list and the prefferd file to view the cross check GUI of the plagiarism Resuls
+
+3. Final Report
+All the Details of the plagiarism Check will be displayed in a single report, Including the possible plagiarized sources and the possible internet Sources. Document Statictics will be displayed in a graphical chart.
