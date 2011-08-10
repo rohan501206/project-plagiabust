@@ -1,0 +1,103 @@
+Student Plagiarism Checker FAQ
+Sign up Now!
+Why isn't the WriteCheck Paper Plagiarism Checker free?
+
+Students should be very wary of "free" plagiarism checking services. Some sites offer free student plagiarism checks and then harvest students' work for resale in global paper mills. So "free" may cost you more than you realize. For a sobering - but not uncommon - example, see "The Computer Stole My Homework." WriteCheck (powered by Turnitin) does not exploit, resell or share student papers. For the past 10 years, we have built a reputation on trust and integrity as the world's leader in intellectual property protection services.
+Does WriteCheck check my paper for plagiarism?
+
+WriteCheck identifies material that matches text from documents found in our extensive databases. Highlighted text will include text that has been properly quoted and cited so matches are not necessarily plagiarized. You’ll just need to verify that every highlighted section has been properly quoted, summarized or paraphrased. As a result, WriteCheck makes it easier for you to identify and attribute any material in your paper that you may have unintentionally plagiarized.
+Does WriteCheck add my paper to the Turnitin databases?
+
+No. WriteCheck does not add your paper to Turnitin's databases. So, if your instructor submits your paper to Turnitin, it will be seen by Turnitin as an original paper.
+What is the purpose of the WriteCheck Essay Checker?
+
+Both educators AND students had been asking for a service like WriteCheck for years. Educators consistently told us that their students do not have a clear understanding of how to work with source material and that lectures and writing handbooks have very limited impact on their students' comprehension of this topic. For many students, it is not until they can SEE the highlighting of potentially problematic material in their own work that they begin to understand their errors. Such insight and self-editing is crucial to their development as 21st-century writers and thinkers. We believe WriteCheck can be a helpful tool for students in their development as writers. The patterns of usage show that students are using WriteCheck as intended: as a writing support tool rather than as a way of avoiding doing their own work.
+What is the future direction for WriteCheck?
+
+We intend to add resources and tools to WriteCheck to help students in every discipline produce better written communications. Our first major upgrade will add an automated style, grammar and spelling check service using the e-rater® scoring engine technology from Educational Testing Service (ETS). Expect these great new features by Summer 2011! Read more…
+Does the WriteCheck Plagiarism Checker scan everything ever written?
+
+While WriteCheck does search an enormous amount of written work, it is not currently possible to search every document ever written. Since there are a number of books that are not accessible or available in digital form, they are not part of our digital databases.
+Can my instructor see my Originality Report?
+
+No. WriteCheck gives you your own personal account. No one can access it but you. If you would like your instructor to see your report, you can print it out or make a PDF and email it to them.
+Is WriteCheck only for students?
+
+Yes, WriteCheck is only for students. Instructors, corporations, non-profits, or other agencies cannot use WriteCheck.
+How do I get started and check my essay?
+
+You need to purchase credits in order to check a paper with WriteCheck. At the top left of the screen, you will see how many credits you have. If you have no credits, click “Purchase Credits.” Once you have credits, to begin submitting a paper, click the “Submit Document” button at the top left of the screen.
+How large can my document be? How many pages or words?
+
+A single paper can be up to 5000 words—approximately 10 single spaced pages or 16-17 double spaced pages. If your paper is longer than that, it will be considered 2 or more papers, depending on the total number of pages. For each 5000 words, you need to purchase an additional paper credit.
+How many times can I submit a paper?
+
+You can submit your paper once and then submit a revision of that paper once. If your revised paper is substantially longer than the first submission, WriteCheck may ask you if you would like to submit the revision as a new paper.
+How do I submit a paper?
+
+To submit a paper, click the “Browse” button and select the document you want to submit. Then click the “Submit Document” button. If you prefer submitting text directly instead of submitting a file, click the “Copy & Paste Text” link.
+What happens if I try to resubmit a paper for a 2nd time?
+
+WriteCheck will ask you if you would like to submit a new paper.
+What is a resubmission?
+
+A resubmission is when you submit a paper that you have already uploaded to WriteCheck and you have either revised it or added more material to it and want to check your paper again.
+Is there a user manual or instructions for using WriteCheck?
+
+Sure, if you would like more information on WriteCheck please download our user manual.
+What is Citation Help?
+
+Citation Help is the part of this website that provides useful information about writing such as how to cite in MLA format, tips to improve your writing and much more.
+How long will I have to wait until my results are ready?
+
+WriteCheck checks for plagiarism by analyzing your paper for matches against billions of web pages and over 140 million other student papers. Results are usually delivered within 5 minutes but may take as long as 10-15 minutes. If an unusually high volume of papers occurs temporarily, you will see information on the screen indicating whether a wait may take longer.
+How will I know if my results are ready?
+
+WriteCheck will analyze your paper for matches against billions of web pages and over 140 million other student papers. While this analysis is in progress, you will see the word “processing” in the status column next to the title of your paper. When your results are ready, you will see “view results” in the status column next to the title of your paper.
+How do I see my results?
+
+To see your results, click “view results” in the status column next to the title of your paper.
+How do I submit another paper?
+
+To submit another paper, you need paper credits. At the top left of the screen, you will see how many credits you have. If you have no credits, click “Purchase Credits.” Once you have credits, to submit another paper, click the “Submit Document” button at the top left of the screen.
+What does the percentage mean?
+
+The results include a percentage score, which indicates how much of the document matches other sources. Please note that WriteCheck does not determine whether a paper contains plagiarism. A paper submitted to WriteCheck will be checked against billions of web pages and more than 140 million other student papers. The service identifies content in a submitted paper that matches other sources, primarily to encourage the author of the paper to check that other sources have been properly cited. The results include links to helpful information on “How to Cite Sources” and to “Styles for Citing Sources.”
+What do the highlighted boxes mean?
+
+The results include highlighting of parts of the paper that match other sources. You are encouraged to look carefully at these portions to determine whether other sources have been properly cited. The results include links to helpful information on “How to Cite Sources” and to “Styles for Citing Sources.”
+What does it mean to exclude quotes and exclude bibliography?
+
+You’ll notice that your results include buttons at the top right that say “exclude quotes” and “exclude bibliography.” These options allow you to see the matches without including for the material that has been quoted or used in the bibliography. Note that the paper’s cited material cannot be excluded directly and quotations can be excluded only if block-indentation or direct quotation marks (“”) begin and end the quotation.
+General
+
+   1. Why isn't the WriteCheck Paper Plagiarism Checker free?
+   2. Does WriteCheck check my paper for plagiarism?
+   3. Does WriteCheck add my paper to the Turnitin databases?
+   4. What is the purpose of the WriteCheck Essay Checker?
+   5. What is future direction for WriteCheck?
+   6. Does the WriteCheck Plagiarism Checker scan everything ever written?
+   7. Can my instructor see my Originality Report?
+   8. Is WriteCheck only for students?
+   9. How do I get started and check my essay?
+  10. How large can my document be? How many pages or words?
+  11. How many times can I submit a paper?
+  12. How do I submit a paper?
+  13. What happens if I try to resubmit a paper for a 2nd time?
+  14. What is a resubmission?
+  15. Is there a user manual or instructions for using WriteCheck?
+  16. What is Citation Help?
+
+Inside WriteCheck
+
+   1. How long will I have to wait until my results are ready?
+   2. How will I know if my results are ready?
+   3. How do I see my results?
+   4. How do I submit another paper?
+
+Viewing WriteCheck Results
+
+   1. What does the percentage mean?
+   2. What do the highlighted boxes mean?
+   3. What does it mean to exclude quotes and exclude bibliography?
+
