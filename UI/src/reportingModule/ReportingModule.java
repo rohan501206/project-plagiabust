@@ -68,6 +68,8 @@ public class ReportingModule extends javax.swing.JFrame {
     HashMap<String, ArrayList<Integer>> indexHighligherMap = new HashMap<String, ArrayList<Integer>>();
     ArrayList peers = new ArrayList();
     HashMap<String, String> fileToUrlMap = new HashMap<String, String>();
+    ArrayList<String> fileNameList =new ArrayList<String>();
+    ArrayList<String> urlListmatch =new ArrayList<String>();
 
     /** Creates new form NewJFrame */
     public ReportingModule() {
@@ -132,11 +134,13 @@ public class ReportingModule extends javax.swing.JFrame {
         BufferedImage bf = this.createChart();
 
 
-        for (int i = 0; i < resultArray.length; i++) {
 
-            if (resultArray[i][1] != null) {
-                peers.add(String.valueOf(i)+"). "+resultArray[i][1]);
-            }
+
+        for (int i = 0; i < fileNameList.size(); i++) {
+
+           
+                peers.add(String.valueOf(i+1)+"). "+fileNameList.get(i));
+            
 
         }
 
@@ -146,12 +150,8 @@ public class ReportingModule extends javax.swing.JFrame {
 
         }
 
-
-
-
-        for (int i = 0; i < urlListTemp.size(); i++) {
-
-            peerDocs.add(urlListTemp.get(i));
+        for (int i = 0; i < urlListmatch.size(); i++) {
+            peerDocs.add(urlListmatch.get(i));
         }
 
         while (peerDocs.size() != 10) {
@@ -751,8 +751,9 @@ public class ReportingModule extends javax.swing.JFrame {
                         if (internetMatch.equalsIgnoreCase(downloadedFileName)) {
 
                             internetMatch = (String) fileUrlPair.getValue();
+                            //urlListmatch.add(internetMatch);
                             content = "<p><b>The suspected Online Source </b><b><a href='" + internetMatch + "'>" + internetMatch + "</a></b></p> ";
-
+                            //System.err.println("dasdasdasdsadsadasdasdsadas");
                         }
                     }
                     //jTextPane1.setToolTipText(matchedFile);
@@ -788,9 +789,9 @@ public class ReportingModule extends javax.swing.JFrame {
         ArrayList<Color> colourArray = new ArrayList<Color>();
         colourArray.add(Color.cyan);
         colourArray.add(Color.yellow);
-        colourArray.add(Color.gray);
-        colourArray.add(Color.LIGHT_GRAY);
         colourArray.add(Color.MAGENTA);
+        colourArray.add(Color.LIGHT_GRAY);
+        colourArray.add(Color.gray);
         colourArray.add(Color.pink);
         colourArray.add(Color.ORANGE);
 
@@ -912,18 +913,23 @@ public class ReportingModule extends javax.swing.JFrame {
     public void setData() {
 
 
-
         for (int i = 0; i < resultArray.length; i++) {
 
             if (resultArray[i][1] != null) {
-                fileListComboBox.addItem(resultArray[i][1]);
+
+                fileNameList.add(resultArray[i][1]);
+                //fileListComboBox.addItem(resultArray[i][1]);
                 this.setIndexDetails(resultArray[i][1]);
             }
         }
 
+        for (int i = fileNameList.size(); i > 0; i--) {
+
+            fileListComboBox.addItem(fileNameList.get(i-1));
+        }
+
         selectedFileTextField.setText(selectedDocumentPath);
         selectedFileTextField.setToolTipText(selectedDocumentPath);
-
 
         ArrayList<Integer> phraseIndexes = new ArrayList<Integer>();
         FileOperator setTextToTextAreas = new FileOperator();
