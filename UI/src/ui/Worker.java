@@ -43,14 +43,12 @@ public class Worker extends SwingWorker<String[][], String> {
         System.out.println("Start indexing the files........................");
         indexedFiles=indexingManger.indexSearch(indexFolderPath,selectedDocumentPath,pbar,10);
         System.out.println("Finished indexing the files........................");
-         try {
+        
             System.out.println("Start comparing files........................");
-            temp = manager.compareFiles(selectedDocumentPath, downloadFolderPath, indexedFiles,pbar2,pbar3);
+            //temp = manager.compareFiles(selectedDocumentPath, downloadFolderPath, indexedFiles,pbar2,pbar3);
             System.out.println("Finished comparing files........................");
 
-        } catch (IOException ex) {
-            System.out.println("There are no similar files or some error has occured");
-        }
+        
         return temp;
     }
 

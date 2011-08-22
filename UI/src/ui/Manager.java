@@ -14,6 +14,7 @@ import ComparisonEngine.ComparisonResult;
 import Helper.TextFileFilter;
 import de.tud.kom.stringmatching.shinglecloud.ShingleCloudMatch;
 import gui.form.ProgressBarManager;
+import java.lang.String;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -75,7 +76,7 @@ public class Manager {
                         System.out.println(firstFile);
                         System.out.println(secondFile);
                         System.out.println("the string of the first text is" + hm.get(downloadedFilesList[i]).toString( ));
-                         System.out.println("the string of the second text is" + hm.get(downloadedFilesList[j]).toString( ));
+                        System.out.println("the string of the second text is" + hm.get(downloadedFilesList[j]).toString( ));
                         System.out.println("match is " + match);
                         System.out.println("Size of the fileNop is" + fileNo);
                         if (!match.isEmpty()) {
@@ -83,6 +84,7 @@ public class Manager {
                             filenameText[fileNo][0] = firstFile;
                             filenameText[fileNo][1] = secondFile;
                             filenameText[fileNo][2] = match;
+
                             fileNo++;
 
                             String Isplagarised = null;
@@ -109,7 +111,9 @@ public class Manager {
      * @return Multi dimensional string array which consists of the the relevant files and the matching shingles
      * @throws IOException
      */
-    public String[][] compareFiles(String fileName, String downloadedFilePath, ArrayList<String> indexedFiles,JProgressBar preprocesspbar,JProgressBar crosscheckpbar) throws IOException {
+    public HashMap<String,String[]> compareFiles(String fileName, String downloadedFilePath, ArrayList<String> indexedFiles,JProgressBar preprocesspbar,JProgressBar crosscheckpbar) throws IOException {
+       
+        HashMap<String,String[]> resultsMap=new HashMap<String, String[]>();
         String documentToCompare = fileName;
         String downloadedFolderPath = downloadedFilePath;
         ArrayList<String> preIndexedFiles = indexedFiles;
@@ -162,6 +166,7 @@ public class Manager {
 
         for (int i = 0; i < downloadedFilesList.length; i++) {
 
+            String[] matchValue=new String[2];
              if(i==downloadedFilesList.length-1){
                 crossCheck.runProgress(100);
              }
@@ -183,22 +188,23 @@ public class Manager {
             System.out.println();
             if (!match.isEmpty() &&  !(firstFile.equalsIgnoreCase(secondFile))) {
                 //////////////// just for testing purposes
-                filenameText[fileNo][0] = firstFile;
-                filenameText[fileNo][1] = secondFile;
-                filenameText[fileNo][2] = match;
-                fileNo++;
-                String Isplagarised = null;
-                if (output > 1.5) {
-                    Isplagarised = "1";
-                } else {
-                    Isplagarised = "0";
-                }
+
+                matchValue[0]=match;
+                matchValue[1]=String.valueOf(roundNumber(output,2)*100/2);
+                resultsMap.put(secondFile, matchValue);
+                
+               fileNo++;
+
+
+
+
                 // filenameText[i][3] = Isplagarised;
             }
 
         }
-        for (int i = 0; i < preIndexedFiles.size(); i++) {
 
+        for (int i = 0; i < preIndexedFiles.size(); i++) {
+            String[] matchValue=new String[2];
 
             if(i==preIndexedFiles.size()-1){
                 crossCheck.runProgress(100);
@@ -222,9 +228,10 @@ public class Manager {
             System.out.println();
             if (!match.isEmpty() &&  !(firstFile.equalsIgnoreCase(secondFile))) {
                 //////////////// just for testing purposes
-                filenameText[fileNo][0] = firstFile;
-                filenameText[fileNo][1] = secondFile;
-                filenameText[fileNo][2] = match;
+                matchValue[0]=match;
+                matchValue[1]=String.valueOf(roundNumber(output,2)*100/2);;
+                resultsMap.put(secondFile, matchValue);
+
                 fileNo++;
 
                 String Isplagarised = null;
@@ -236,7 +243,7 @@ public class Manager {
                 // filenameText[i][3] = Isplagarised;
             }
         }
-        return filenameText;
+        return resultsMap;
     }
 
     /**
@@ -247,38 +254,32 @@ public class Manager {
      * @throws IOException
      */
     public  peerSearchReportData compareAllFiles(HashMap<File, ArrayList<String>> indexedFilesList, HashMap<String, ArrayList<String>> downloadedFilesList,JProgressBar preprocesspbar,JProgressBar crosscheckpbar) throws IOException {
-        peerSearchReportData repData = new peerSearchReportData();
 
-        HashMap<String,String> internetFilesReportData = new HashMap<String,String>() ;
-        
+        peerSearchReportData repData = new peerSearchReportData();             
         Iterator downloadIterator = downloadedFilesList.entrySet().iterator();
         Iterator it = indexedFilesList.entrySet().iterator();
         ArrayList indexedFilesForFile = new ArrayList();
         ArrayList downloadedFilesForFile = new ArrayList();
-
         ProgressBarManager preprocessProgressBar = new ProgressBarManager(preprocesspbar);
         ProgressBarManager crossCheck = new ProgressBarManager(crosscheckpbar);
-
         int firstCounter = 0;
         int secondCounter = 0;
 
         while (it.hasNext()) {
-
             firstCounter ++;
             preprocessProgressBar.runProgress((firstCounter*100)/indexedFilesList.entrySet().size());
-
-
-
-            HashMap<String,String> peerFilesReportData= new HashMap<String,String>() ;
+            HashMap<String,String[]> peerFilesReportData= new HashMap<String,String[]>() ;
             Map.Entry pair = (Map.Entry) it.next();
             File filePath = (File) pair.getKey();
-            indexedFilesForFile = indexedFilesList.get(filePath);           
-
+            indexedFilesForFile = indexedFilesList.get(filePath);
             for (int i = 0; i < indexedFilesForFile.size(); i++) {
+                String[] matchValuePair=new String[2];
                 ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
                 File createFile = new File((String) indexedFilesForFile.get(i));
                 float output = sca.getSimilarity(preprocessText(filePath.getAbsolutePath()), preprocessText(createFile.getAbsolutePath()));
                 String match = sca.getList();
+                matchValuePair[0]=match;
+                matchValuePair[1]=String.valueOf(roundNumber(output,2)*100/2);
                 String firstFile = filePath.getAbsolutePath();
                 String secondFile = createFile.getAbsolutePath();
                 System.out.println();
@@ -290,7 +291,7 @@ public class Manager {
                 //System.out.println("Size of the matched files is " + fileNo);
                 System.out.println();
                 if (!(match.isEmpty()) &&  !(firstFile.equalsIgnoreCase(secondFile))) {
-                    peerFilesReportData.put(createFile.getAbsolutePath(), match);
+                    peerFilesReportData.put(createFile.getAbsolutePath(), matchValuePair);
                 }
             }
             
@@ -308,7 +309,7 @@ public class Manager {
 
             secondCounter++;
             crossCheck.runProgress((secondCounter*100)/downloadedFilesList.entrySet().size());
-
+            HashMap<String, String[]> internetFilesReportData = new HashMap<String,String[]>() ;
 
 
             Map.Entry pair = (Map.Entry) downloadIterator.next();
@@ -317,10 +318,13 @@ public class Manager {
             downloadedFilesForFile = downloadedFilesList.get(filePath);
             
             for (int i = 0; i < downloadedFilesForFile.size(); i++) {
+                String[] matchValuePair=new String[2];
                 ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
                 File createFile = new File((String) downloadedFilesForFile.get(i));
                 float output = sca.getSimilarity(preprocessText(filePath), preprocessText(createFile.getAbsolutePath()));
                 String match = sca.getList();
+                matchValuePair[0]=match;
+                matchValuePair[1]=String.valueOf(roundNumber(output,2)*100/2);
                 String firstFile = filePath;
                 String secondFile = createFile.getAbsolutePath();
                 System.out.println();
@@ -330,7 +334,7 @@ public class Manager {
                // System.out.println("Size of the matched files is " + fileNo);
                 System.out.println();
                 if (!match.isEmpty() &&  !(firstFile.equalsIgnoreCase(secondFile))) {
-                       internetFilesReportData.put(createFile.getAbsolutePath(), match);
+                       internetFilesReportData.put(createFile.getAbsolutePath(), matchValuePair);
                 }
 
             }
@@ -433,4 +437,13 @@ public class Manager {
         String preprocessText = this.arraylistToSting(stopWordRemovedTokens);
         return preprocessText;
     }
+
+
+
+  public float roundNumber(float Rval, int Rpl) {
+  float p = (float)Math.pow(10,Rpl);
+  Rval = Rval * p;
+  float tmp = Math.round(Rval);
+  return (float)tmp/p;
+  }
 }
