@@ -10,19 +10,34 @@
  */
 package reportingModule;
 
+import edu.uci.ics.jung.algorithms.layout.CircleLayout;
+import edu.uci.ics.jung.algorithms.layout.Layout;
+import edu.uci.ics.jung.graph.Graph;
+import edu.uci.ics.jung.graph.SparseMultigraph;
+import edu.uci.ics.jung.visualization.VisualizationViewer;
+import edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse;
+import edu.uci.ics.jung.visualization.control.ModalGraphMouse;
+import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
+import edu.uci.ics.screencap.PNGDump;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Paint;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.text.AttributedString;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Set;
+import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.DefaultHighlighter;
@@ -33,11 +48,11 @@ import javax.swing.text.StyledDocument;
 import javax.swing.text.Utilities;
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JRViewer;
+import org.apache.commons.collections15.Transformer;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PiePlot;
@@ -53,7 +68,7 @@ public class ReportingModule extends javax.swing.JFrame {
 
     JRViewer jrv;
     HashMap hm = new HashMap();
-    String[][] resultArray;
+    HashMap<String, String[]> resultArray;
     String selectedDocumentPath;
     int numberOfFiles;
     Highlighter hilit = new DefaultHighlighter();
@@ -68,8 +83,11 @@ public class ReportingModule extends javax.swing.JFrame {
     HashMap<String, ArrayList<Integer>> indexHighligherMap = new HashMap<String, ArrayList<Integer>>();
     ArrayList peers = new ArrayList();
     HashMap<String, String> fileToUrlMap = new HashMap<String, String>();
-    ArrayList<String> fileNameList =new ArrayList<String>();
-    ArrayList<String> urlListmatch =new ArrayList<String>();
+    ArrayList<String> fileNameList = new ArrayList<String>();
+    ArrayList<String> urlListmatch = new ArrayList<String>();
+    Graph<Integer, CustomEdge> g;
+    Layout<Integer, String> layout;
+    VisualizationViewer<Integer, String> vv;
 
     /** Creates new form NewJFrame */
     public ReportingModule() {
@@ -84,114 +102,7 @@ public class ReportingModule extends javax.swing.JFrame {
         jTextField1.setVisible(false);
     }
 
-    public DefaultPieDataset createPieDataset() {
-
-        DefaultPieDataset dataset = new DefaultPieDataset();
-        dataset.setValue("Original", new Double(43.2));
-        dataset.setValue("Plagiarizm Suspected", new Double(10.0));
-        dataset.setValue("Referenced", new Double(27.5));
-        return dataset;
-
-    }
-
-    private JFreeChart createChart(PieDataset dataset) {
-
-        JFreeChart chart = ChartFactory.createPieChart3D(
-                "Plagiarism Statistics", // chart title
-                dataset, // data
-                true, // include legend
-                true,
-                false);
-
-        PiePlot plot = (PiePlot) chart.getPlot();
-        plot.setLabelFont(new Font("SansSerif", Font.PLAIN, 12));
-        plot.setNoDataMessage("No data available");
-        plot.setCircular(false);
-        plot.setLabelGap(0.02);
-        return chart;
-
-    }
-
-    public BufferedImage createChart() {
-
-        DefaultPieDataset pie = this.createPieDataset();
-        JFreeChart jf = this.createChart(pie);
-        return jf.createBufferedImage(500, 500);
-
-
-
-    }
-
-    public void generateResults() {
-
-        File file = new File(selectedDocumentPath);
-        textSetter m = new textSetter();
-        String content = m.textSetter(file.getAbsolutePath());
-        String fileName = file.getAbsolutePath();
-        Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
-        String time = sdf.format(cal.getTime());
-        BufferedImage bf = this.createChart();
-
-
-
-
-        for (int i = 0; i < fileNameList.size(); i++) {
-
-           
-                peers.add(String.valueOf(i+1)+"). "+fileNameList.get(i));
-            
-
-        }
-
-        while (peers.size() != 10) {
-
-            peers.add(" ");
-
-        }
-
-        for (int i = 0; i < urlListmatch.size(); i++) {
-            peerDocs.add(urlListmatch.get(i));
-        }
-
-        while (peerDocs.size() != 10) {
-
-            peerDocs.add(" ");
-
-        }
-
-
-
-        hm.put("image", bf);
-        hm.put("field", content);
-        hm.put("time", time);
-        hm.put("docName", fileName);
-        hm.put("peerDocs", peerDocs);
-        hm.put("peers", peers);
-
-
-        JasperReport jasperReport;
-        JasperPrint jasperPrint;
-
-        try {
-
-            //jasperReport = JasperCompileManager.compileReport(
-             //       "jasper/report2.jrxml");
-
-            jasperPrint = JasperFillManager.fillReport(
-                    "jasper/report2.jasper", hm, new JREmptyDataSource());
-            jrv = new JRViewer(jasperPrint);
-
-
-            jrv.addHyperlinkListener(new ReportHyperlinkListner());
-
-            jasperReportScrollPane.getViewport().add(jrv);
-
-
-        } catch (JRException e) {
-            e.printStackTrace();
-        }
-    }
+   
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -237,6 +148,10 @@ public class ReportingModule extends javax.swing.JFrame {
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jasperReportScrollPane = new javax.swing.JScrollPane(jrv);
+        jPanel7 = new javax.swing.JPanel();
+        graphScrollPane = new javax.swing.JScrollPane();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        graphNodeList = new javax.swing.JList();
         jPanel1 = new javax.swing.JPanel();
         nextButton = new javax.swing.JButton();
         PreviousButton = new javax.swing.JButton();
@@ -380,7 +295,7 @@ public class ReportingModule extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel3.setFont(new java.awt.Font("DejaVu Sans", 2, 11)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("DejaVu Sans", 2, 11));
         jLabel3.setText("Click on the phrases highlighted in Red to see the suspeced Source");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
@@ -562,6 +477,34 @@ public class ReportingModule extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Final Report", jPanel4);
 
+        jScrollPane4.setViewportView(graphNodeList);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(graphScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 761, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(58, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(graphScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(114, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("tab5", jPanel7);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -625,21 +568,23 @@ public class ReportingModule extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
+
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
 
         //nextButton.setEnabled(true);
         int index = jTabbedPane1.getSelectedIndex();
-        int nextIndex=index+1;
-        if(nextIndex!=4){
-        jTabbedPane1.setSelectedIndex(nextIndex);
-        PreviousButton.setEnabled(true);
-        jTabbedPane1.setEnabledAt(index, true);
-        jTabbedPane1.setEnabledAt(index+1, true);
+        int nextIndex = index + 1;
+        if (nextIndex != 4) {
+            jTabbedPane1.setSelectedIndex(nextIndex);
+            PreviousButton.setEnabled(true);
+            jTabbedPane1.setEnabledAt(index, true);
+            jTabbedPane1.setEnabledAt(index + 1, true);
         }
-        if(nextIndex==3){
+        if (nextIndex == 3) {
             nextButton.setEnabled(false);
         }
-        
+
 
 
     }//GEN-LAST:event_nextButtonActionPerformed
@@ -652,14 +597,14 @@ public class ReportingModule extends javax.swing.JFrame {
     private void PreviousButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreviousButtonActionPerformed
         nextButton.setEnabled(true);
         int index = jTabbedPane1.getSelectedIndex();
-        int prevIndex=index - 1;
+        int prevIndex = index - 1;
         if (index != 0) {
             jTabbedPane1.setSelectedIndex(prevIndex);
         }
-        if(prevIndex==0){
+        if (prevIndex == 0) {
             PreviousButton.setEnabled(false);
         }
-        
+
 
     }//GEN-LAST:event_PreviousButtonActionPerformed
 
@@ -695,7 +640,7 @@ public class ReportingModule extends javax.swing.JFrame {
         Iterator it = indexHighligherMap.entrySet().iterator();
         String matchedFile = "";
         String content = "";
-        String internetMatch="";
+        String internetMatch = "";
 
         while (it.hasNext()) {
 
@@ -718,25 +663,38 @@ public class ReportingModule extends javax.swing.JFrame {
 
                     //System.out.println("preprocessed text is " + preprocessedText);
 
-                    for (int j = 0; j < resultArray.length; j++) {
-                        if (resultArray[j][2] != null) {
-                            //System.out.println(resultArray[j][2]);
-                            String[] matchings = resultArray[j][2].split(":");
+
+                    Set<String> docList = resultArray.keySet();
+                    Iterator iter = docList.iterator();
+
+                    while (iter.hasNext()) {
+                        String suspectedfilename = (String) iter.next();
+                        String[] matchVal = resultArray.get(suspectedfilename);
+                        String matchString = matchVal[0];
+                        if (matchString != null) {
+                            String[] matchings = matchString.split(":");
                             for (int k = 0; k < matchings.length; k++) {
-                                //System.out.println(matchings[k]);
+
                                 if (preprocessedText.equalsIgnoreCase(matchings[k])) {
 
-                                    //System.out.println("matching String found");
-                                    internetMatch=resultArray[j][1];
-                                    matchedFile = matchedFile + "\n" +resultArray[j][1];
+                                    internetMatch = suspectedfilename;
+                                    matchedFile = matchedFile + "\n" + suspectedfilename;
 
                                 }
 
 
                             }
                         }
-
                     }
+
+
+
+
+
+
+
+
+
                     content = "<p><b>The suspected File </b>  <font color='red'>" + matchedFile + "</font></p> ";
 
 
@@ -758,7 +716,7 @@ public class ReportingModule extends javax.swing.JFrame {
                     }
                     //jTextPane1.setToolTipText(matchedFile);
                     String heading = "View Source";
-                    new ExpandableToolTip(heading, content, showFileContentTextPane, browser,browserPanel);
+                    new ExpandableToolTip(heading, content, showFileContentTextPane, browser, browserPanel);
 
                 }
             } catch (Exception ex) {
@@ -773,18 +731,8 @@ public class ReportingModule extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_showFileContentTextPaneMouseMoved
 
-    public void setTemp(String[][] tempa) {
-        resultArray = tempa;
-    }
 
-    public void setDocument(String doc) {
-        selectedDocumentPath = doc;
-
-
-    }
-
-    public void highlighter(String queryTemp) {
-
+   public void highlighter(String queryTemp) {
 
         ArrayList<Color> colourArray = new ArrayList<Color>();
         colourArray.add(Color.cyan);
@@ -852,99 +800,35 @@ public class ReportingModule extends javax.swing.JFrame {
                 Logger.getLogger(ReportingModule.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-
-
-
     }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                new ReportingModule().setVisible(true);
-
-            }
-        });
-    }
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton PreviousButton;
-    private javax.swing.JEditorPane browser;
-    private javax.swing.JPanel browserPanel;
-    private javax.swing.JComboBox fileListComboBox;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JScrollPane jasperReportScrollPane;
-    private javax.swing.JButton nextButton;
-    private javax.swing.JEditorPane selectedFileEditorPane;
-    private javax.swing.JTextField selectedFileTextField;
-    private javax.swing.JTextPane showFileContentTextPane;
-    private javax.swing.JEditorPane suspectedFileEditorPane;
-    // End of variables declaration//GEN-END:variables
 
     public void setData() {
 
+        Set<String> docList = resultArray.keySet();
+        Iterator iter = docList.iterator();
 
-        for (int i = 0; i < resultArray.length; i++) {
+        while (iter.hasNext()) {
+            String name = (String) iter.next();
+            fileNameList.add(name);
+            this.setIndexDetails(name);
 
-            if (resultArray[i][1] != null) {
-
-                fileNameList.add(resultArray[i][1]);
-                //fileListComboBox.addItem(resultArray[i][1]);
-                this.setIndexDetails(resultArray[i][1]);
-            }
         }
-
         for (int i = fileNameList.size(); i > 0; i--) {
 
-            fileListComboBox.addItem(fileNameList.get(i-1));
+            fileListComboBox.addItem(fileNameList.get(i - 1));
         }
-
         selectedFileTextField.setText(selectedDocumentPath);
         selectedFileTextField.setToolTipText(selectedDocumentPath);
-
         ArrayList<Integer> phraseIndexes = new ArrayList<Integer>();
         FileOperator setTextToTextAreas = new FileOperator();
         String appendedText = "";
         String texts = setTextToTextAreas.textSetter(selectedDocumentPath);
         AttributedString attributedString = new AttributedString(texts);
         showFileContentTextPane.setText(texts);
-
         showFileContentTextPane.setHighlighter(hilit3);
-
         StyledDocument doc = showFileContentTextPane.getStyledDocument();
-
         Iterator it = indexHighligherMap.entrySet().iterator();
         while (it.hasNext()) {
-
             Map.Entry pair = (Map.Entry) it.next();
             String match = (String) pair.getKey();
             phraseIndexes = indexHighligherMap.get(match);
@@ -965,29 +849,165 @@ public class ReportingModule extends javax.swing.JFrame {
                     doc.insertString(startIndex, match, style);
                 } catch (BadLocationException e) {
                 }
+            }
+        }
+        this.generateGraph();
+        this.generateResults();
+    }
 
 
+    public void generateResults() {
+
+        File file = new File(selectedDocumentPath);
+        textSetter m = new textSetter();
+        String content = m.textSetter(file.getAbsolutePath());
+        String fileName = file.getAbsolutePath();
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
+        String time = sdf.format(cal.getTime());
+        BufferedImage bf = this.createChart();
+        for (int i = 0; i < fileNameList.size(); i++) {
+            peers.add(String.valueOf(i + 1) + "). " + fileNameList.get(i));
+        }
+        while (peers.size() != 10) {
+            peers.add(" ");
+        }
+        for (int i = 0; i < urlListmatch.size(); i++) {
+            peerDocs.add(urlListmatch.get(i));
+        }
+        while (peerDocs.size() != 10) {
+            peerDocs.add(" ");
+        }
+        hm.put("image", bf);
+        hm.put("field", content);
+        hm.put("time", time);
+        hm.put("docName", fileName);
+        hm.put("peerDocs", peerDocs);
+        hm.put("peers", peers);
+        JasperReport jasperReport;
+        JasperPrint jasperPrint;
+        try {
+
+            jasperPrint = JasperFillManager.fillReport(
+                    "jasper/report2.jasper", hm, new JREmptyDataSource());
+            jrv = new JRViewer(jasperPrint);
 
 
+            jrv.addHyperlinkListener(new ReportHyperlinkListner());
+
+            jasperReportScrollPane.getViewport().add(jrv);
+
+
+        } catch (JRException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public DefaultPieDataset createPieDataset() {
+
+        DefaultPieDataset dataset = new DefaultPieDataset();
+        dataset.setValue("Original", new Double(43.2));
+        dataset.setValue("Plagiarizm Suspected", new Double(10.0));
+        dataset.setValue("Referenced", new Double(27.5));
+        return dataset;
+
+    }
+
+    private JFreeChart createChart(PieDataset dataset) {
+
+        JFreeChart chart = ChartFactory.createPieChart3D(
+                "Plagiarism Statistics", // chart title
+                dataset, // data
+                true, // include legend
+                true,
+                false);
+
+        PiePlot plot = (PiePlot) chart.getPlot();
+        plot.setLabelFont(new Font("SansSerif", Font.PLAIN, 12));
+        plot.setNoDataMessage("No data available");
+        plot.setCircular(false);
+        plot.setLabelGap(0.02);
+        return chart;
+
+    }
+
+    public BufferedImage createChart() {
+
+        DefaultPieDataset pie = this.createPieDataset();
+        JFreeChart jf = this.createChart(pie);
+        return jf.createBufferedImage(500, 500);
+    }
+
+    private void generateGraph() {
+
+        g = new SparseMultigraph<Integer, CustomEdge>();
+        HashMap<String, Integer> docToIntegerMap = new HashMap<String, Integer>();
+        int verCount = 0;
+        DefaultListModel listModel = new DefaultListModel();
+        graphNodeList.setModel(listModel);
+        Set<String> docList = resultArray.keySet();
+        Iterator iter = docList.iterator();
+
+        while (iter.hasNext()) {
+            String name = (String) iter.next();
+            int countNo = ++verCount;
+            listModel.add(verCount - 1, String.valueOf(countNo) + " -- " + name);
+            docToIntegerMap.put(name, countNo);
+            g.addVertex((Integer) countNo);
+        }
+        g.addVertex((Integer) 0);
+        Iterator it = resultArray.entrySet().iterator();
+        HashSet ha = new HashSet();
+
+        while (it.hasNext()) {
+
+            Map.Entry pair = (Map.Entry) it.next();
+            String fileName = (String) pair.getKey();
+            String[] matchArray = (String[]) pair.getValue();
+            String value = matchArray[1] + "%";
+
+            if ((g.findEdge(0, docToIntegerMap.get(fileName))) == null) {
+                g.addEdge(new CustomEdge(value), 0, docToIntegerMap.get(fileName));
             }
 
-
-
-
         }
+        layout = new CircleLayout(g);
+        layout.setSize(new Dimension(300, 300));
+        vv = new VisualizationViewer<Integer, String>(layout);
+        //vv.setPreferredSize(new Dimension(300,300));
+        vv.setSize(300, 300);
+        // Show vertex and edge labels
+        vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
+        vv.getRenderContext().setEdgeLabelTransformer(new ToStringLabeller());
+        Transformer<Integer, Paint> vertexPaint = new Transformer<Integer, Paint>() {
 
-        
+            private final Color[] palette = {Color.GREEN,
+                Color.WHITE, Color.RED};
 
-        this.generateResults();
+            public Paint transform(Integer i) {
+                if (i == 0) {
+                    return palette[0];
+                } else {
+                    return palette[2];
+                }
 
+            }
+        };
 
-    }
-
-    public void setUrl(ArrayList<String> urlList) {
-        for (int i = 0; i < urlList.size(); i++) {
-            urlListTemp.add(urlList.get(i));
+        vv.getRenderContext().setVertexFillPaintTransformer(vertexPaint);
+        // Create a graph mouse and add it to the visualization component
+        DefaultModalGraphMouse gm = new DefaultModalGraphMouse();
+        gm.setMode(ModalGraphMouse.Mode.TRANSFORMING);
+        vv.setGraphMouse(gm);
+        graphScrollPane.setViewportView(vv);
+        PNGDump dumper = new PNGDump();
+        try {
+            dumper.dumpComponent(new File("jasper/reportImages/test.png"), vv);
+        } catch (IOException e) {
+            System.err.println("dump failed");
         }
-    }
+    } 
 
     private void updateTextBoxes(String fileName) {
 
@@ -1000,31 +1020,34 @@ public class ReportingModule extends javax.swing.JFrame {
         selectedFileEditorPane.setText(field1.toLowerCase());
         suspectedFileEditorPane.setText(field2.toLowerCase());
 
-        for (int i = 0; i < resultArray.length; i++) {
-            if (resultArray[i][1] != null) {
-                if (resultArray[i][1].equalsIgnoreCase(fileName2)) {
-                    jTextField1.setText(resultArray[i][2]);
-                    this.highlighter(resultArray[i][2]);
-                }
+
+        Set<String> docList = resultArray.keySet();
+        Iterator iter = docList.iterator();
+
+        while (iter.hasNext()) {
+            String name = (String) iter.next();
+            if (name.equalsIgnoreCase(fileName2)) {
+                String[] matchVal = resultArray.get(name);
+                jTextField1.setText(matchVal[0]);
+                this.highlighter(matchVal[0]);
             }
         }
-
     }
 
     public void setIndexDetails(String fileName) {
 
-
         String fileName2 = fileName;
-        for (int i = 0; i < resultArray.length; i++) {
-            if (resultArray[i][1] != null) {
-                if (resultArray[i][1].equalsIgnoreCase(fileName2)) {
-                    jTextField1.setText(resultArray[i][2]);
-                    this.highlighterDetails(resultArray[i][2], fileName);
-                }
+        Set<String> docList = resultArray.keySet();
+        Iterator iter = docList.iterator();
+
+        while (iter.hasNext()) {
+            String name = (String) iter.next();
+            if (name.equalsIgnoreCase(fileName2)) {
+                String[] matchVal = resultArray.get(name);
+                jTextField1.setText(matchVal[0]);
+                this.highlighterDetails(matchVal[0], fileName);
             }
         }
-
-
     }
 
     public void highlighterDetails(String queryTemp, String filename) {
@@ -1058,9 +1081,7 @@ public class ReportingModule extends javax.swing.JFrame {
             arr.add(endIndexFirst);
             indexHighligherMap.put(match, arr);
             matchingToPreprocessed.put(highlightindexedInfoFirstFile[2], highlightindexedInfoFirstFile[3]);
-
         }
-
     }
 
     public void setMap(HashMap<String, String> fileUrlMap) {
@@ -1069,6 +1090,79 @@ public class ReportingModule extends javax.swing.JFrame {
         if (fileUrlMap == null) {
             System.err.println("Fileurl map is null");
         }
-
     }
+
+    public void setTemp(HashMap<String, String[]> tempa) {
+
+        resultArray = tempa;
+    }
+
+    public void setDocument(String doc) {
+        selectedDocumentPath = doc;
+    }
+
+    public void setUrl(ArrayList<String> urlList) {
+        for (int i = 0; i < urlList.size(); i++) {
+            urlListTemp.add(urlList.get(i));
+        }
+    }
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+
+            public void run() {
+                new ReportingModule().setVisible(true);
+
+            }
+        });
+    }
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton PreviousButton;
+    private javax.swing.JEditorPane browser;
+    private javax.swing.JPanel browserPanel;
+    private javax.swing.JComboBox fileListComboBox;
+    private javax.swing.JList graphNodeList;
+    private javax.swing.JScrollPane graphScrollPane;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JScrollPane jasperReportScrollPane;
+    private javax.swing.JButton nextButton;
+    private javax.swing.JEditorPane selectedFileEditorPane;
+    private javax.swing.JTextField selectedFileTextField;
+    private javax.swing.JTextPane showFileContentTextPane;
+    private javax.swing.JEditorPane suspectedFileEditorPane;
+    // End of variables declaration//GEN-END:variables
+
+    
 }
