@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report2" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryNewPage="true">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="343"/>
+	<property name="ireport.y" value="144"/>
 	<style name="Title" forecolor="#FFFFFF" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
 	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
@@ -55,7 +55,7 @@
 				</staticText>
 			</frame>
 			<image>
-				<reportElement x="12" y="110" width="286" height="230"/>
+				<reportElement x="336" y="110" width="83" height="23"/>
 				<imageExpression class="java.awt.Image"><![CDATA[$P{image}]]></imageExpression>
 			</image>
 			<staticText>
@@ -111,6 +111,10 @@
 				<textFieldExpression class="java.lang.String"><![CDATA["Go to Internet plagiarized Sources"]]></textFieldExpression>
 				<hyperlinkAnchorExpression><![CDATA["detail2"]]></hyperlinkAnchorExpression>
 			</textField>
+			<image>
+				<reportElement x="12" y="76" width="300" height="352"/>
+				<imageExpression class="java.lang.String"><![CDATA["/media/Data/project/UI/jasper/reportImages/test.png"]]></imageExpression>
+			</image>
 		</band>
 	</title>
 	<pageHeader>
