@@ -58,7 +58,7 @@ public class Worker extends SwingWorker<ReportData, String> {
         this.pbar2 = pbar2;
         this.pbar3 = pbar3;
         this.pbar4 = pbar4;
-        //this.idm.setMaxNumOfSourcesPerDocument(maxNumOfInternetSources);
+        this.idm.setMaxNumOfSourcesPerDocument(maxNumOfInternetSources);
         this.maxIndexfiles = maxIndexfiles;
         this.UsePlagiabustWebServer = UsePlagiabustWebServer;
     }

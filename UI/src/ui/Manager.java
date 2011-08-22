@@ -24,6 +24,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JProgressBar;
 import net.didion.jwnl.JWNLException;
+import paraphaseDetection.ParaphaseManage;
 import preprocess.*;
 
 /**
@@ -75,8 +76,8 @@ public class Manager {
                         String secondFile = fileFolder + File.separator + downloadedFilesList[j];
                         System.out.println(firstFile);
                         System.out.println(secondFile);
-                        System.out.println("the string of the first text is" + hm.get(downloadedFilesList[i]).toString( ));
-                        System.out.println("the string of the second text is" + hm.get(downloadedFilesList[j]).toString( ));
+                        //System.out.println("the string of the first text is" + hm.get(downloadedFilesList[i]).toString( ));
+                        //System.out.println("the string of the second text is" + hm.get(downloadedFilesList[j]).toString( ));
                         System.out.println("match is " + match);
                         System.out.println("Size of the fileNop is" + fileNo);
                         if (!match.isEmpty()) {
@@ -216,6 +217,21 @@ public class Manager {
             ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
             float output = sca.getSimilarity(preprocessTextOfTheComparisonFile, hm.get(preIndexedFiles.get(i)).toString());
             String match = sca.getList();
+            
+            // Paraphased added 
+            
+            //use paraphase detection
+            
+            ParaphaseManage paramanager = new ParaphaseManage(documentToCompare,preIndexedFiles.get(i), downloadedFolderPath);
+            String matchedText = paramanager.getMatchList();
+            System.out.println("Paraphased "+ matchedText);
+            
+            match = match+matchedText ;
+
+            
+            
+            
+            
             String firstFile = documentToCompare;
             String secondFile = preIndexedFiles.get(i);
             System.out.println();
