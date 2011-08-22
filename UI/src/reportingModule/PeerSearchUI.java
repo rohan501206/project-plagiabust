@@ -10,11 +10,22 @@
  */
 package reportingModule;
 
+import edu.uci.ics.jung.algorithms.layout.CircleLayout;
+import edu.uci.ics.jung.algorithms.layout.Layout;
+import edu.uci.ics.jung.graph.Graph;
+import edu.uci.ics.jung.graph.SparseMultigraph;
+import edu.uci.ics.jung.visualization.VisualizationViewer;
+import edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse;
+import edu.uci.ics.jung.visualization.control.ModalGraphMouse;
+import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
+import edu.uci.ics.screencap.PNGDump;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -24,22 +35,19 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Random;
+import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.ListModel;
-import javax.swing.ListSelectionModel;
-import net.infonode.util.collection.Collection;
-import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JRException;
-import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
-import net.sf.jasperreports.engine.data.JRMapArrayDataSource;
+import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
 import net.sf.jasperreports.view.JRViewer;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
@@ -52,7 +60,7 @@ import org.jgraph.graph.DefaultGraphCell;
 import org.jgraph.graph.DefaultGraphModel;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.GraphModel;
-import ui.peerSearchReportData;
+
 
 /**
  *
@@ -61,22 +69,28 @@ import ui.peerSearchReportData;
 public class PeerSearchUI extends javax.swing.JFrame {
 
     JRViewer jrv;
-    HashMap<String, HashMap<String, String>> peerSearchResult;
-    HashMap<String, HashMap<String, String>> globalSearchResult;
+    HashMap<String, HashMap<String, String[]>> peerSearchResult;
+    HashMap<String, HashMap<String, String[]>> globalSearchResult;
     ArrayList<String> fileNamesArrayList= new ArrayList<String>();
     ArrayList<String> urlarraylist= new ArrayList<String>();
     String documentFolder;
     HashMap<Integer,String> topResults= new HashMap<Integer,String>();;
     GraphModel model = new DefaultGraphModel();
-        JGraph graph = new JGraph(model);
+    JGraph graph = new JGraph(model);
+    Graph<Integer, CustomEdge> g;
+    Layout<Integer, String> layout ;
+    VisualizationViewer<Integer,String> vv;
+    private int edgecount;
 
     /** Creates new form PeerSearchUI */
     public PeerSearchUI() {
+        
         initComponents();
         prevButton.setEnabled(false);
         jTabbedPane1.setEnabledAt(1, false);
         jTabbedPane1.setEnabledAt(2, false);
         jTabbedPane1.setEnabledAt(3, false);
+
     }
 
     /** This method is called from within the constructor to
@@ -128,7 +142,9 @@ public class PeerSearchUI extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jasperReportScrollPane = new javax.swing.JScrollPane(jrv);
         jPanel10 = new javax.swing.JPanel();
-        graphScrollBar = new javax.swing.JScrollPane(graph);
+        graphScrollPane = new javax.swing.JScrollPane();
+        jScrollPane7 = new javax.swing.JScrollPane();
+        graphverticesNames = new javax.swing.JList();
         nextButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -485,21 +501,27 @@ public class PeerSearchUI extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Report Viewer", jPanel3);
 
+        jScrollPane7.setViewportView(graphverticesNames);
+
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
         jPanel10Layout.setHorizontalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(graphScrollBar, javax.swing.GroupLayout.PREFERRED_SIZE, 647, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(424, Short.MAX_VALUE))
+                .addGap(24, 24, 24)
+                .addComponent(graphScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel10Layout.setVerticalGroup(
             jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel10Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addComponent(graphScrollBar, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(122, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 246, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(graphScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("view", jPanel10);
@@ -557,23 +579,25 @@ public class PeerSearchUI extends javax.swing.JFrame {
         
         if (selectedval != null) {
             System.err.println("selected file is: "+ selectedval);
-            HashMap<String, String> fileResultDetail=peerSearchResult.get(selectedval);
-            HashMap<String, String> globalSourceResultDetail=globalSearchResult.get(selectedval);
+            HashMap<String, String[]> fileResultDetail=peerSearchResult.get(selectedval);
+            HashMap<String, String[]> globalSourceResultDetail=globalSearchResult.get(selectedval);
 
             if(globalSourceResultDetail==null){
 
-
-            HashMap<String, String> globalSourceResultDetailTemp= new HashMap<String, String>();
+            HashMap<String, String[]> globalSourceResultDetailTemp= new HashMap<String, String[]>();
             Iterator peerserac = peerSearchResult.entrySet().iterator();
             
             while (peerserac.hasNext()) {
 
             Map.Entry pair = (Map.Entry) peerserac.next();
             String fileName = (String) pair.getKey();
-            globalSourceResultDetailTemp.put("www.asdasdsadas.com", fileName);
+            String match="";
+            String[] matchvaluepair=new String[2];
+            matchvaluepair[0]=fileName;
+            matchvaluepair[1]=match;
+            globalSourceResultDetailTemp.put("www.asdasdsadas.com", matchvaluepair);
 
                 
-
             }
             globalSourceResultDetail=globalSourceResultDetailTemp;
 
@@ -630,22 +654,23 @@ public class PeerSearchUI extends javax.swing.JFrame {
 
             String sourceFile=((String)fileNameList.getSelectedValue());
             String suspectedFile= ((String)suspectedFileList.getSelectedValue());
-            String matchstring="";
+           
 
-            HashMap<String, String>  comparisonIfo= peerSearchResult.get(sourceFile);
+            HashMap<String, String[]>  comparisonIfo= peerSearchResult.get(sourceFile);
 
             Iterator sourceIterator = comparisonIfo.entrySet().iterator();
-
+            String[] matchString=new String[2];
             while (sourceIterator.hasNext()) {
 
             Map.Entry pair = (Map.Entry) sourceIterator.next();
             String fileName = (String) pair.getKey();
             if(fileName.equalsIgnoreCase(suspectedFile)){
-                matchstring=(String) pair.getValue();
-            }
+                matchString=(String[]) pair.getValue();
             }
 
-            CrossCheckModule crossCheck=new CrossCheckModule(sourceFile, suspectedFile, matchstring);
+            }
+
+            CrossCheckModule crossCheck=new CrossCheckModule(sourceFile, suspectedFile, matchString[0]);
             crossCheck.setData();
             crossCheck.setVisible(true);
 
@@ -720,13 +745,7 @@ public class PeerSearchUI extends javax.swing.JFrame {
         internetSourcesList.clearSelection();
     }//GEN-LAST:event_suspectedFileListValueChanged
 
-    public void setData(HashMap<String, HashMap<String, String>> peerFilesReportData, HashMap<String, HashMap<String, String>> internetFilesReportData) {
-
-        peerSearchResult = peerFilesReportData;
-        globalSearchResult = internetFilesReportData;
-
-
-    }
+    
 
     public void processResults() {
 
@@ -760,77 +779,17 @@ public class PeerSearchUI extends javax.swing.JFrame {
 
         DefaultListModel model = new DefaultListModel();
         fileNameList.setModel(model);
-
         for (int i = 0; i < contents.size(); i++) {
             model.add(i,contents.get(i));
         }
         fileNameList.setSelectedIndex(0);
     }
 
-    /**
-     * @param args the command line arguments
-     */
-
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-
-            public void run() {
-                new PeerSearchUI().setVisible(true);
-            }
-        });
-    }
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField documentNumberTextField;
-    private javax.swing.JList fileNameList;
-    private javax.swing.JTextField folderNameTextField;
-    private javax.swing.JScrollPane graphScrollBar;
-    private javax.swing.JList internetSourcesList;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JScrollPane jScrollPane6;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JScrollPane jasperReportScrollPane;
-    private javax.swing.JButton nextButton;
-    private javax.swing.JTextField possiblePlagiarizedTextField;
-    private javax.swing.JButton prevButton;
-    private javax.swing.JList suspectedFileList;
-    private javax.swing.JList topInternetList;
-    private javax.swing.JList topPlagList;
-    private javax.swing.JButton viewResultsButton;
-    // End of variables declaration//GEN-END:variables
-
     public void setFolder(String sourceFolderName) {
-
         documentFolder=sourceFolderName;
     }
 
     public void setResultDetails() {
-
         ArrayList sortedList=new ArrayList();
         folderNameTextField.setText(documentFolder);
         folderNameTextField.setToolTipText(documentFolder);
@@ -848,45 +807,30 @@ public class PeerSearchUI extends javax.swing.JFrame {
              sortedList.add(it.next());
              count++;
         }
-         
+
          Collections.reverse(sortedList);
 
          for(int i=0;i<sortedList.size();i++){
              model.add(i, topResults.get(sortedList.get(i)));
          }
-
-
-
         DefaultListModel model2 = new DefaultListModel();
         topInternetList.setModel(model2);
 
         for (int i = 0; i < urlarraylist.size(); i++) {
             model2.add(i,urlarraylist.get(i));
         }
-        
+        generateGraph();
         generateResults();
-
-
-
     }
-
-
-
 
      public void generateResults() {
 
         ArrayList peers = new ArrayList();
         ArrayList peerDocs = new ArrayList();
+        ArrayList<DataFetcher> myList = new ArrayList<DataFetcher>();
         HashMap hm = new HashMap();
-        JRMapArrayDataSource dataSource;
-        Map[] reportRows = new Map[1];
-        HashMap row1Map = new HashMap();
-        row1Map.put("nwuandusdas", "nsndasdnasudsdsd");
-        reportRows[0]=row1Map;
+        JRDataSource dataSource = createReportDataSource();
         String resultText="";
-        dataSource = new JRMapArrayDataSource(reportRows);
-
-
         graph.setInvokesStopCellEditing(true);
         // When over a cell, jump to its default port (we only have one, anyway)
         graph.setJumpToDefaultPort(true);
@@ -904,33 +848,27 @@ public class PeerSearchUI extends javax.swing.JFrame {
         // Fetch the ports from the new vertices, and connect them with the edge
         edge.setSource(cells[0]);
         edge.setTarget(cells[7]);
-        cells[11] = edge;        
+        cells[11] = edge;
         int arrow = GraphConstants.ARROW_TECHNICAL;
         GraphConstants.setBendable(edge.getAttributes(), true);
         GraphConstants.setLineEnd(edge.getAttributes(), arrow);
         GraphConstants.setEndFill(edge.getAttributes(), true);
         // Insert the cells via the cache, so they get selected
-        graph.getGraphLayoutCache().insert(cells);
-        // Show in Frame
-
-
-
+        graph.getGraphLayoutCache().insert(cells);      // Show in Frame
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
         String time = sdf.format(cal.getTime());
         BufferedImage bf = this.createChart();
-
-
         for (int i = 0; i < fileNamesArrayList.size(); i++) {
 
             peers.add(String.valueOf(i+1)+"). "+fileNamesArrayList.get(i));
-            HashMap<String, String> fileResultDetail=peerSearchResult.get(fileNamesArrayList.get(i));
-            HashMap<String, String> globalSourceResultDetail=globalSearchResult.get(fileNamesArrayList.get(i));
+            HashMap<String, String[]> fileResultDetail=peerSearchResult.get(fileNamesArrayList.get(i));
+            HashMap<String, String[]> globalSourceResultDetail=globalSearchResult.get(fileNamesArrayList.get(i));
             Iterator fileIterator = fileResultDetail.entrySet().iterator();
             //Iterator globalSourceIterator = globalSourceResultDetail.entrySet().iterator();
             resultText+="\n"+String.valueOf(i+1)+"). File Name:  "+fileNamesArrayList.get(i)+"\n\t"+"Suspected Plagiarized file list\n";
             int count=1;
-                                    
+
         while (fileIterator.hasNext()) {
 
             Map.Entry pair = (Map.Entry) fileIterator.next();
@@ -938,21 +876,8 @@ public class PeerSearchUI extends javax.swing.JFrame {
             resultText+= "\t\t"+count+"). "+fileName+"\n";
             count++;
         }
-            
-           
-      /*  while (globalSourceIterator.hasNext()) {
 
-            Map.Entry pair = (Map.Entry) globalSourceIterator.next();
-            String sourceName = (String) pair.getKey();
-            resultText+= "\t\t"+sourceName+"\n";        
-                       
-        }*/
-
-
-
-
-
-        }
+      }
 
         while (peers.size() != 10) {
 
@@ -971,7 +896,7 @@ public class PeerSearchUI extends javax.swing.JFrame {
         }
 
         hm.put("field", resultText);
-        hm.put("docName", documentFolder);  
+        hm.put("docName", documentFolder);
         hm.put("image", bf);
         hm.put("time", time);
         hm.put("peerDocs", peerDocs);
@@ -997,9 +922,26 @@ public class PeerSearchUI extends javax.swing.JFrame {
 
     }
 
+private JRDataSource createReportDataSource()
+{
+JRBeanArrayDataSource dataSource;
+DataFetcher[] reportRows = initializeBeanArray();
+dataSource = new JRBeanArrayDataSource(reportRows);
+return dataSource;
 
+}
 
-    public static DefaultGraphCell createVertex(String name, double x,
+private DataFetcher[] initializeBeanArray()
+{
+DataFetcher[] reportRows = new DataFetcher[4];
+reportRows[0] = new DataFetcher("N263Y", "T-11", "39 ROSCOE TRNRRACER", "R1830 SERIES");
+reportRows[1] = new DataFetcher("N4087X", "BA100-163", "BRADLEYAEROBAT", "R2800 SERIES");
+reportRows[2] = new DataFetcher("N43JE", "HAYABUSA 1", "NAKAJIMAKI-43 IIIA", "R1830 SERIES");
+reportRows[3] = new DataFetcher("N912S", "9973CC", "PA18-150","R-1820 SER");
+return reportRows;
+}
+
+public static DefaultGraphCell createVertex(String name, double x,
             double y, double w, double h, Color bg, boolean raised) {
 
         // Create vertex with the given name
@@ -1027,13 +969,10 @@ public class PeerSearchUI extends javax.swing.JFrame {
         return cell;
     }
 
-        
-      
-    
 
 
 
-     public DefaultPieDataset createPieDataset() {
+    public DefaultPieDataset createPieDataset() {
 
 
         DefaultPieDataset dataset = new DefaultPieDataset();
@@ -1070,5 +1009,151 @@ public class PeerSearchUI extends javax.swing.JFrame {
 
 
     }
+
+    private void generateGraph() {
+
+        g= new SparseMultigraph<Integer, CustomEdge>();
+        HashMap<String, Integer> docToIntegerMap=new HashMap<String, Integer>();
+        Set<String> docList=peerSearchResult.keySet();
+        Iterator iter = docList.iterator();
+        int verCount=0;
+        DefaultListModel listModel = new DefaultListModel();
+        graphverticesNames.setModel(listModel);
+
+        while (iter.hasNext()) {
+            String name=(String)iter.next();
+            int countNo=++verCount;
+            listModel.add(verCount-1,String.valueOf(countNo)+" -- "+name);
+            docToIntegerMap.put(name, countNo);
+            g.addVertex((Integer)countNo);
+
+        }
+
+        Iterator it = peerSearchResult.entrySet().iterator();
+        HashSet ha=new HashSet();
+
+        while (it.hasNext()) {
+
+            Map.Entry pair = (Map.Entry) it.next();
+            String fileName = (String) pair.getKey();
+            HashMap<String, String[]> hm=(HashMap<String, String[]>) pair.getValue();
+            Iterator valueIterator = hm.entrySet().iterator();
+
+            while (valueIterator.hasNext()) {
+                edgecount++;
+                Map.Entry matchPairs = (Map.Entry)valueIterator.next();
+                String suspectedFileName = (String) matchPairs.getKey();
+                String[] matchValuePair = (String[]) matchPairs.getValue();
+                String value=matchValuePair[1]+"%";
+                System.err.println(value);
+                ArrayList lsi = new ArrayList(g.getEdges());
+                for(int i=0;i<lsi.size();i++){
+                   ha.add(lsi.get(i));
+                }
+
+                if((g.findEdge(docToIntegerMap.get(suspectedFileName), docToIntegerMap.get(fileName)))==null)
+                g.addEdge(new CustomEdge(value),docToIntegerMap.get(fileName) , docToIntegerMap.get(suspectedFileName));
+                //}
+
+            }
+
+
+
+           }
+
+        layout = new CircleLayout(g);
+        layout.setSize(new Dimension(300,300));
+
+        vv = new VisualizationViewer<Integer,String>(layout);
+        vv.setPreferredSize(new Dimension(300,300));
+        vv.setSize(new Dimension(300,300));
+        // Show vertex and edge labels
+        vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
+        vv.getRenderContext().setEdgeLabelTransformer(new ToStringLabeller());
+        // Create a graph mouse and add it to the visualization component
+        DefaultModalGraphMouse gm = new DefaultModalGraphMouse();
+        gm.setMode(ModalGraphMouse.Mode.TRANSFORMING);
+        vv.setGraphMouse(gm);
+
+        graphScrollPane.setViewportView(vv);
+PNGDump dumper = new PNGDump();
+		try {
+			dumper.dumpComponent(new File("jasper/reportImages/test.png"), vv);
+		} catch (IOException e) {
+			System.err.println("dump failed");
+		}
+
+
+
+
+
+    }
+
+
+    public void setData(HashMap<String, HashMap<String, String[]>> peerFilesReportData, HashMap<String, HashMap<String, String[]>> internetFilesReportData) {
+
+        peerSearchResult = peerFilesReportData;
+        globalSearchResult = internetFilesReportData;
+    }
+    /**
+     * @param args the command line arguments
+     */
+
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+
+            public void run() {
+                new PeerSearchUI().setVisible(true);
+            }
+        });
+    }
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField documentNumberTextField;
+    private javax.swing.JList fileNameList;
+    private javax.swing.JTextField folderNameTextField;
+    private javax.swing.JScrollPane graphScrollPane;
+    private javax.swing.JList graphverticesNames;
+    private javax.swing.JList internetSourcesList;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane6;
+    private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jasperReportScrollPane;
+    private javax.swing.JButton nextButton;
+    private javax.swing.JTextField possiblePlagiarizedTextField;
+    private javax.swing.JButton prevButton;
+    private javax.swing.JList suspectedFileList;
+    private javax.swing.JList topInternetList;
+    private javax.swing.JList topPlagList;
+    private javax.swing.JButton viewResultsButton;
+    // End of variables declaration//GEN-END:variables
+
+    
 
 }
