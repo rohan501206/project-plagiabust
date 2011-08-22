@@ -32,7 +32,7 @@ public class Worker extends SwingWorker<ReportData, String> {
     PlagiabustServerSourceDownloadManager plagiabustServerSourceDownloadManager = new PlagiabustServerSourceDownloadManager();
     DocumentIndexingManager indexingManger=new DocumentIndexingManager();
     FormMain form = new FormMain();
-    String[][] temp = null;
+    HashMap<String,String[]> temp = null;
     String destFolderPath;
     String fName;
     String indexFolderPath;
@@ -104,7 +104,7 @@ public class Worker extends SwingWorker<ReportData, String> {
         return repData ;
     }
 
-    public String[][] getOutPut(){
+    public HashMap<String,String[]> getOutPut(){
         return this.temp;
     }
 
@@ -115,21 +115,4 @@ public class Worker extends SwingWorker<ReportData, String> {
 
 
 
-    /*protected void done(){
-        form.jTextField3.setText(temp[0][0]);
-        form.jTextField4.setText(temp[0][1]);
-        form.jTextField2.setText(temp[0][2]);
-        if(!(form.jTextField3.getText().equalsIgnoreCase("")||form.jTextField4.getText().equalsIgnoreCase(""))){
-
-            String fileName1 = form.jTextField3.getText();
-            String fileName2 = form.jTextField4.getText();
-            form.jTabbedPane2.setSelectedIndex(1);
-            FileOperator setTextToTextAreas= new  FileOperator();
-            String[] texts=setTextToTextAreas.textSetter(fileName1, fileName2);
-            String field1=texts[0];
-            String field2=texts[1];
-            form.firstFileTextArea.setText(field1.toLowerCase());
-            form.secondFileTextArea.setText(field2.toLowerCase());
-    }
-}*/
 }

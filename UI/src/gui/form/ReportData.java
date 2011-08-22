@@ -13,21 +13,21 @@ import java.util.HashMap;
  * @author Compaq
  */
 public class ReportData {
-    private String[][] downloadFolderPath ;
+    private HashMap<String,String[]> downloadFolderPath ;
     private ArrayList<String> urlList;
     private HashMap<String, String> map;
-    public ReportData(String[][] adownloadFolderPath,ArrayList<String> aurlList){
+    public ReportData(HashMap<String,String[]> adownloadFolderPath,ArrayList<String> aurlList){
         this.downloadFolderPath = adownloadFolderPath;
         this.urlList = aurlList;
     }
 
-    public ReportData(String[][] adownloadFolderPath,HashMap<String, String> amap){
+    public ReportData(HashMap<String,String[]> adownloadFolderPath,HashMap<String, String> amap){
         this.downloadFolderPath = adownloadFolderPath;
         this.map = amap;
     }
 
 
-     public ReportData(String[][] adownloadFolderPath,HashMap<String, String> amap,ArrayList<String> aurlList){
+     public ReportData(HashMap<String,String[]> adownloadFolderPath,HashMap<String, String> amap,ArrayList<String> aurlList){
         this.downloadFolderPath = adownloadFolderPath;
         this.map = amap;
         this.urlList = aurlList;
@@ -37,7 +37,7 @@ public class ReportData {
         return this.urlList;
     }
 
-    public String[][] getFolder(){
+    public HashMap<String,String[]> getFolder(){
         return this.downloadFolderPath;
     }
 

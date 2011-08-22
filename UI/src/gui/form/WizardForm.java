@@ -65,6 +65,7 @@ public class WizardForm extends javax.swing.JFrame {
     /** Creates new form WizardForm */
     WizardForm() {
         initComponents();
+        
         java.awt.Image image = Toolkit.getDefaultToolkit().getImage("src/Images/logo new.png");
         this.setIconImage(image);
         ViewButton.setVisible(false);
