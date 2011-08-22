@@ -54,12 +54,7 @@ import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
-import org.jgraph.JGraph;
-import org.jgraph.graph.DefaultEdge;
-import org.jgraph.graph.DefaultGraphCell;
-import org.jgraph.graph.DefaultGraphModel;
-import org.jgraph.graph.GraphConstants;
-import org.jgraph.graph.GraphModel;
+
 
 
 /**
@@ -75,8 +70,7 @@ public class PeerSearchUI extends javax.swing.JFrame {
     ArrayList<String> urlarraylist= new ArrayList<String>();
     String documentFolder;
     HashMap<Integer,String> topResults= new HashMap<Integer,String>();;
-    GraphModel model = new DefaultGraphModel();
-    JGraph graph = new JGraph(model);
+    
     Graph<Integer, CustomEdge> g;
     Layout<Integer, String> layout ;
     VisualizationViewer<Integer,String> vv;
@@ -831,30 +825,7 @@ public class PeerSearchUI extends javax.swing.JFrame {
         HashMap hm = new HashMap();
         JRDataSource dataSource = createReportDataSource();
         String resultText="";
-        graph.setInvokesStopCellEditing(true);
-        // When over a cell, jump to its default port (we only have one, anyway)
-        graph.setJumpToDefaultPort(true);
-        // Insert all three cells in one call, so we need an array to store them
-        DefaultGraphCell[] cells = new DefaultGraphCell[12];
-        int j=0;
-        // Create Hello Vertex
-        for(int i=0;i<cells.length;i++){
-        Random aRandom = new Random();
-        cells[i] = createVertex("Hello", aRandom.nextInt(500)+1, aRandom.nextInt(500)+1, 40, 20, Color.ORANGE, true);
-        j+=45;
-        }
-        // Create Edge
-        DefaultEdge edge = new DefaultEdge("foo");
-        // Fetch the ports from the new vertices, and connect them with the edge
-        edge.setSource(cells[0]);
-        edge.setTarget(cells[7]);
-        cells[11] = edge;
-        int arrow = GraphConstants.ARROW_TECHNICAL;
-        GraphConstants.setBendable(edge.getAttributes(), true);
-        GraphConstants.setLineEnd(edge.getAttributes(), arrow);
-        GraphConstants.setEndFill(edge.getAttributes(), true);
-        // Insert the cells via the cache, so they get selected
-        graph.getGraphLayoutCache().insert(cells);      // Show in Frame
+        // Show in Frame
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
         String time = sdf.format(cal.getTime());
@@ -941,33 +912,7 @@ reportRows[3] = new DataFetcher("N912S", "9973CC", "PA18-150","R-1820 SER");
 return reportRows;
 }
 
-public static DefaultGraphCell createVertex(String name, double x,
-            double y, double w, double h, Color bg, boolean raised) {
 
-        // Create vertex with the given name
-        DefaultGraphCell cell = new DefaultGraphCell(name);
-        // Set bounds
-        GraphConstants.setBounds(cell.getAttributes(),
-                new Rectangle2D.Double(x, y, w, h));
-        // Set fill color
-        if (bg != null) {
-            GraphConstants.setGradientColor(cell.getAttributes(), bg);
-            GraphConstants.setAutoSize(cell.getAttributes(),true);
-        }
-        // Set raised border
-        if (raised) {
-            GraphConstants.setBorder(cell.getAttributes(),
-                    BorderFactory.createRaisedBevelBorder());
-        } else // Set black border
-        {
-            GraphConstants.setBorderColor(cell.getAttributes(),
-                    Color.black);
-        }
-        // Add a Floating Port
-        cell.addPort();
-
-        return cell;
-    }
 
 
 
