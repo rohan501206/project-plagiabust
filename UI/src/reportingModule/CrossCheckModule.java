@@ -82,6 +82,14 @@ testMatch.setText(matchString);
         colourArray.add(Color.MAGENTA);
         colourArray.add(Color.pink);
         colourArray.add(Color.ORANGE);
+        colourArray.add(Color.cyan);
+        colourArray.add(Color.yellow);
+        colourArray.add(Color.gray);
+        colourArray.add(Color.LIGHT_GRAY);
+        colourArray.add(Color.MAGENTA);
+        colourArray.add(Color.pink);
+        colourArray.add(Color.ORANGE);
+
 
         selectedFileEditorPane.setHighlighter(hilit);
         suspectedFileEditorPane.setHighlighter(hilit2);
@@ -95,9 +103,9 @@ testMatch.setText(matchString);
         if (queryString.length() <= 0) {
             return;
         }
-        if (queryString.contains(":")) {
+        if (queryString.contains("~")) {
 
-            query = queryString.split(":");
+            query = queryString.split("~");
 
         } else {
             query = new String[1];
