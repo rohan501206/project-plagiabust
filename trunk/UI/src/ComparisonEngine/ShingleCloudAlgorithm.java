@@ -35,7 +35,7 @@ public class ShingleCloudAlgorithm {
 
         for (int i = 0; i < sc.getMatches().size(); i++) {
             ShingleCloudMatch match = sc.getMatches().get(i);
-            result = result + match.getMatchedShingles() + ":";
+            result = result + match.getMatchedShingles() + "~";
             mactchingShingleList.add(result);
             containmentInHaystack += match.getContainmentInHaystack();
             containmentInNeedle += match.getContainmentInNeedle();

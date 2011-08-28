@@ -1253,7 +1253,11 @@ public class WizardForm extends javax.swing.JFrame {
             this.setup();
             File destFolder = new File(destFolderPath);
             String selectedDocumentPath = destFolderPath + File.separatorChar + fName;
-            final Worker sworker = new Worker(destFolderPath, fName, indexFolderPath, selectedDocumentPath, manager, DonloadFileProgressBar, CreateIndexProgressBar, PreprocessDocumentProgressBar, CrossCheckProgressBar, Integer.parseInt((String) NumOfExternalSourcesComboBox.getSelectedItem()), Integer.parseInt((String) NumOfPeerSourceComboBox.getSelectedItem()), PlagiabustWebserverCheckBox.isSelected()) {
+            final Worker sworker = new Worker(destFolderPath, fName, indexFolderPath, selectedDocumentPath, 
+                    manager, DonloadFileProgressBar, CreateIndexProgressBar, PreprocessDocumentProgressBar, 
+                    CrossCheckProgressBar, Integer.parseInt((String) NumOfExternalSourcesComboBox.getSelectedItem()), 
+                    Integer.parseInt((String) NumOfPeerSourceComboBox.getSelectedItem()), 
+                    PlagiabustWebserverCheckBox.isSelected(),PharaphraseCheckBox.isSelected()) {
                 // This method is invoked when the worker is finished
 
                 @Override

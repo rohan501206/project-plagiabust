@@ -3,6 +3,7 @@
  * and open the template in the editor.
  */
 package paraphaseDetection;
+import dataExtraction.DocumentReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -15,6 +16,10 @@ import org.apache.lucene.wordnet.SynonymMap;
  * @author Compaq
  */
 public class WordNetTest {
+    
+    
+    
+    
     SynonymMap map = null;
 
     public WordNetTest() {
@@ -24,26 +29,41 @@ public class WordNetTest {
                 Logger.getLogger(WordNetTest.class.getName()).log(Level.SEVERE, null, ex);
             }
     }
+ 
+ 
+    
+    public String[] getSynonyms(String word){
+        String[] synonyms = map.getSynonyms(word);
+        return synonyms;
+    }
+    
+    
+    
+    
 
     public static void main(String[] args) {
-        String[] words = new String[]{"hard", "woods", "forest", "wolfish", "xxxx"};
+        DocumentReader docreader = new DocumentReader();
+	String documentText = docreader.processFileAndGetText("C:\\Users\\Compaq\\Desktop\\sysnonym test\\50.txt");
+        String[] words = documentText.split("\\b");
+       
         SynonymMap map = null;
         try {
             map = new SynonymMap(new FileInputStream("Resources"+File.separatorChar+"wn"+File.separatorChar+"wn_s.pl"));
         } catch (IOException ex) {
             Logger.getLogger(WordNetTest.class.getName()).log(Level.SEVERE, null, ex);
         }
+        long t1 = System.currentTimeMillis();
         for (int i = 0; i < words.length; i++) {
             String[] synonyms = map.getSynonyms(words[i]);
             System.out.println(words[i] + ":" + java.util.Arrays.asList(synonyms).toString());
         }
+        long t2 = System.currentTimeMillis();
+        System.out.println();
+	System.out.println("Time taken :" + (t2-t1));
     }
 
 
-    public String[] getSynonyms(String word){
-        String[] synonyms = map.getSynonyms(word);
-        return synonyms;
-    }
+   
 
 
 }
