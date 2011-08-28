@@ -36,6 +36,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Random;
 import java.util.Set;
 import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
@@ -46,11 +47,13 @@ import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 import javax.swing.text.Utilities;
+import net.sf.jasperreports.engine.JRDataSource;
 import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
 import net.sf.jasperreports.view.JRViewer;
 import org.apache.commons.collections15.Transformer;
 import org.jfree.chart.ChartFactory;
@@ -68,7 +71,7 @@ public class ReportingModule extends javax.swing.JFrame {
 
     JRViewer jrv;
     HashMap hm = new HashMap();
-    HashMap<String, String[]> resultArray;
+    HashMap<String, String[]> resultMap;
     String selectedDocumentPath;
     int numberOfFiles;
     Highlighter hilit = new DefaultHighlighter();
@@ -85,13 +88,13 @@ public class ReportingModule extends javax.swing.JFrame {
     HashMap<String, String> fileToUrlMap = new HashMap<String, String>();
     ArrayList<String> fileNameList = new ArrayList<String>();
     ArrayList<String> urlListmatch = new ArrayList<String>();
-    Graph<Integer, CustomEdge> g;
+    Graph<Integer, CustomEdge> connectedGraph;
     Layout<Integer, String> layout;
-    VisualizationViewer<Integer, String> vv;
+    VisualizationViewer<Integer, String> visualizationViewer;
+    DefaultListModel listModelGraph = new DefaultListModel();
 
     /** Creates new form NewJFrame */
     public ReportingModule() {
-
         this.setSize(500, 500);
         initComponents();
         PreviousButton.setEnabled(false);
@@ -101,8 +104,6 @@ public class ReportingModule extends javax.swing.JFrame {
         browserPanel.setVisible(false);
         jTextField1.setVisible(false);
     }
-
-   
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -568,8 +569,6 @@ public class ReportingModule extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
-
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
 
         //nextButton.setEnabled(true);
@@ -616,8 +615,18 @@ public class ReportingModule extends javax.swing.JFrame {
 
         JComboBox cb = (JComboBox) evt.getSource();
         String fileName = (String) cb.getSelectedItem();
-        try {
+        Iterator it = fileToUrlMap.entrySet().iterator();
+        while (it.hasNext()) {
 
+            Map.Entry pair = (Map.Entry) it.next();
+            String fileNameTemp = (String) pair.getKey();
+            String url = (String) pair.getValue();
+            if (url.equalsIgnoreCase(fileName)) {
+                fileName = fileNameTemp;
+            }
+        }
+
+        try {
             updateTextBoxes(fileName);
 
         } catch (Exception ex) {
@@ -664,15 +673,15 @@ public class ReportingModule extends javax.swing.JFrame {
                     //System.out.println("preprocessed text is " + preprocessedText);
 
 
-                    Set<String> docList = resultArray.keySet();
+                    Set<String> docList = resultMap.keySet();
                     Iterator iter = docList.iterator();
 
                     while (iter.hasNext()) {
                         String suspectedfilename = (String) iter.next();
-                        String[] matchVal = resultArray.get(suspectedfilename);
+                        String[] matchVal = resultMap.get(suspectedfilename);
                         String matchString = matchVal[0];
                         if (matchString != null) {
-                            String[] matchings = matchString.split(":");
+                            String[] matchings = matchString.split("~");
                             for (int k = 0; k < matchings.length; k++) {
 
                                 if (preprocessedText.equalsIgnoreCase(matchings[k])) {
@@ -711,10 +720,9 @@ public class ReportingModule extends javax.swing.JFrame {
                             internetMatch = (String) fileUrlPair.getValue();
                             //urlListmatch.add(internetMatch);
                             content = "<p><b>The suspected Online Source </b><b><a href='" + internetMatch + "'>" + internetMatch + "</a></b></p> ";
-                            //System.err.println("dasdasdasdsadsadasdasdsadas");
+
                         }
                     }
-                    //jTextPane1.setToolTipText(matchedFile);
                     String heading = "View Source";
                     new ExpandableToolTip(heading, content, showFileContentTextPane, browser, browserPanel);
 
@@ -732,40 +740,15 @@ public class ReportingModule extends javax.swing.JFrame {
     }//GEN-LAST:event_showFileContentTextPaneMouseMoved
 
 
-   public void highlighter(String queryTemp) {
 
-        ArrayList<Color> colourArray = new ArrayList<Color>();
-        colourArray.add(Color.cyan);
-        colourArray.add(Color.yellow);
-        colourArray.add(Color.MAGENTA);
-        colourArray.add(Color.LIGHT_GRAY);
-        colourArray.add(Color.gray);
-        colourArray.add(Color.pink);
-        colourArray.add(Color.ORANGE);
+    public void setHighlighterToBothTextFiles(String[] queryArray,String contentTemp,String content2Temp,ArrayList<Color> colourArrayTemp){
 
-        selectedFileEditorPane.setHighlighter(hilit);
-        suspectedFileEditorPane.setHighlighter(hilit2);
-        hilit.removeAllHighlights();
-        hilit2.removeAllHighlights();
-        //entryBg = jTextField2.getBackground();
-        String content = selectedFileEditorPane.getText();
-        String content2 = suspectedFileEditorPane.getText();
-        String queryString = queryTemp;
-        String[] query = null;
-        if (queryString.length() <= 0) {
-            return;
-        }
-        if (queryString.contains(":")) {
+       String content=contentTemp;
+       String content2=content2Temp;
+       ArrayList<Color> colourArray =colourArrayTemp;
 
-            query = queryString.split(":");
-
-        } else {
-            query = new String[1];
-            query[0] = queryString;
-        }
-
-        for (int i = 0; i < query.length; i++) {
-            String searchQuery = query[i];
+       for (int i = 0; i < queryArray.length; i++) {
+            String searchQuery = queryArray[i];
             TextHighlighter highlighterFirstFile = new TextHighlighter();
             TextHighlighter highlighterSecondFile = new TextHighlighter();
             String[] highlightindexedInfoFirstFile = highlighterFirstFile.highlightTexts(content, searchQuery);
@@ -774,10 +757,7 @@ public class ReportingModule extends javax.swing.JFrame {
             int endIndexFirst = Integer.valueOf(highlightindexedInfoFirstFile[1]);
             int startIndexSecond = Integer.valueOf(highlightindexedInfoSecondFile[0]);
             int endIndexSecond = Integer.valueOf(highlightindexedInfoSecondFile[1]);
-
-
             try {
-
                 Color HILIT_COLOR = colourArray.get(i);
 
                 if (startIndexFirst != -1) {
@@ -800,22 +780,159 @@ public class ReportingModule extends javax.swing.JFrame {
                 Logger.getLogger(ReportingModule.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+
+
+   }
+
+    public void setHighlighterToFirstTextFiles(String[] queryArray,String contentTemp,String content2Temp,ArrayList<Color> colourArrayTemp){
+
+       String content=contentTemp;
+       ArrayList<Color> colourArray =colourArrayTemp;
+
+
+       for (int i = 0; i < queryArray.length; i++) {
+            String searchQuery = queryArray[i];
+            TextHighlighter highlighterFirstFile = new TextHighlighter();
+            String[] highlightindexedInfoFirstFile = highlighterFirstFile.highlightTexts(content, searchQuery);
+            int startIndexFirst = Integer.valueOf(highlightindexedInfoFirstFile[0]);
+            int endIndexFirst = Integer.valueOf(highlightindexedInfoFirstFile[1]);
+            try {
+
+                Color HILIT_COLOR = colourArray.get(i);
+                if (startIndexFirst != -1) {
+                    painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
+                    hilit.addHighlight(startIndexFirst, endIndexFirst, painter);
+                    selectedFileEditorPane.setCaretPosition(endIndexFirst);
+
+                }
+
+            } catch (BadLocationException ex) {
+                Logger.getLogger(ReportingModule.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+
+   }
+
+
+    public void setHighlighterToSecondTextFiles(String[] queryArray,String contentTemp,String content2Temp,ArrayList<Color> colourArrayTemp){
+
+       String content=contentTemp;
+       String content2=content2Temp;
+       ArrayList<Color> colourArray =colourArrayTemp;
+
+       for (int i = 0; i < queryArray.length; i++) {
+            String searchQuery = queryArray[i];
+            TextHighlighter highlighterSecondFile = new TextHighlighter();
+            String[] highlightindexedInfoSecondFile = highlighterSecondFile.highlightTexts(content2, searchQuery);
+            int startIndexSecond = Integer.valueOf(highlightindexedInfoSecondFile[0]);
+            int endIndexSecond = Integer.valueOf(highlightindexedInfoSecondFile[1]);
+            try {
+                Color HILIT_COLOR = colourArray.get(i);
+
+                if (startIndexSecond != -1) {
+
+                    painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
+
+                    hilit2.addHighlight(startIndexSecond, endIndexSecond, painter);
+
+                    suspectedFileEditorPane.setCaretPosition(endIndexSecond);
+
+                }
+
+            } catch (BadLocationException ex) {
+                Logger.getLogger(ReportingModule.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+
+   }
+
+
+
+
+
+
+
+    public void highlighter(String queryTemp,String paraphrasedFirstPhraseTemp,String paraphrasedSecondPhraseTemp) {
+
+       String paraphrasedFirstPhrase=paraphrasedFirstPhraseTemp;
+       String paraphrasedSecondPhrase=paraphrasedSecondPhraseTemp;
+       String queryString = queryTemp;
+        ArrayList<Color> colourArray = new ArrayList<Color>();
+        colourArray.add(Color.cyan);
+        colourArray.add(Color.yellow);
+        colourArray.add(Color.MAGENTA);
+        colourArray.add(Color.LIGHT_GRAY);
+        colourArray.add(Color.gray);
+        colourArray.add(Color.pink);
+        colourArray.add(Color.ORANGE);
+        colourArray.add(Color.cyan);
+        colourArray.add(Color.yellow);
+        colourArray.add(Color.MAGENTA);
+        colourArray.add(Color.LIGHT_GRAY);
+        colourArray.add(Color.gray);
+        colourArray.add(Color.pink);
+        colourArray.add(Color.ORANGE);
+        selectedFileEditorPane.setHighlighter(hilit);
+        suspectedFileEditorPane.setHighlighter(hilit2);
+        hilit.removeAllHighlights();
+        hilit2.removeAllHighlights();
+        String content = selectedFileEditorPane.getText();
+        String content2 = suspectedFileEditorPane.getText();
+        String[] query = null;
+        String[] queryforFirstFile = null;
+        String[] queryforSecondFile = null;
+
+        if ((queryString.length() <= 0) && (paraphrasedFirstPhrase.length()<=0)) {
+            return;
+        }
+
+        query = queryString.split("~");
+        queryforFirstFile=paraphrasedFirstPhrase.split("~");
+        queryforSecondFile=paraphrasedSecondPhrase.split("~");
+
+
+
+        if(queryString.length() !=0){
+
+            setHighlighterToBothTextFiles(query,content,content2,colourArray);
+        }
+        if(queryforFirstFile.length !=1){
+
+            setHighlighterToFirstTextFiles(queryforFirstFile, content2, content2, colourArray);
+        }
+        if(queryforSecondFile.length !=1){
+
+            setHighlighterToSecondTextFiles(queryforSecondFile, content2, content2, colourArray);
+        }
+
     }
 
     public void setData() {
 
-        Set<String> docList = resultArray.keySet();
+        Set<String> docList = resultMap.keySet();
+        Set<String> filenameListofurls = fileToUrlMap.keySet();
         Iterator iter = docList.iterator();
-
         while (iter.hasNext()) {
             String name = (String) iter.next();
             fileNameList.add(name);
             this.setIndexDetails(name);
-
         }
-        for (int i = fileNameList.size(); i > 0; i--) {
 
-            fileListComboBox.addItem(fileNameList.get(i - 1));
+        for (int i = fileNameList.size(); i > 0; i--) {
+            String fileName = fileNameList.get(i - 1);
+            if (filenameListofurls != null) {
+                if ((filenameListofurls.contains(fileName)) == false) {
+                    fileListComboBox.addItem(fileNameList.get(i - 1));
+
+                } else {
+                    fileListComboBox.addItem((String) fileToUrlMap.get(fileName));
+
+                }
+            } else {
+                fileListComboBox.addItem(fileNameList.get(i - 1));
+            }
         }
         selectedFileTextField.setText(selectedDocumentPath);
         selectedFileTextField.setToolTipText(selectedDocumentPath);
@@ -855,41 +972,48 @@ public class ReportingModule extends javax.swing.JFrame {
         this.generateResults();
     }
 
-
     public void generateResults() {
 
         File file = new File(selectedDocumentPath);
-        textSetter m = new textSetter();
-        String content = m.textSetter(file.getAbsolutePath());
+        ArrayList<String> onlineSourceArray = new ArrayList<String>();
+        textSetter textsetter = new textSetter();
+        String content = textsetter.textSetter(file.getAbsolutePath());
         String fileName = file.getAbsolutePath();
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
         String time = sdf.format(cal.getTime());
-        BufferedImage bf = this.createChart();
-        for (int i = 0; i < fileNameList.size(); i++) {
-            peers.add(String.valueOf(i + 1) + "). " + fileNameList.get(i));
+
+        String nodeList = "";
+        for (int i = 0; i < listModelGraph.size(); i++) {
+            String node = (String) listModelGraph.get(i);
+            //System.err.println(node);
+            nodeList = nodeList + "\n" + node;
         }
-        while (peers.size() != 10) {
-            peers.add(" ");
+
+        Set<String> filenameListofurls = fileToUrlMap.keySet();
+        Iterator it = filenameListofurls.iterator();
+        while (it.hasNext()) {
+            String fName = (String) it.next();
+            onlineSourceArray.add(fileToUrlMap.get(fName));
         }
-        for (int i = 0; i < urlListmatch.size(); i++) {
-            peerDocs.add(urlListmatch.get(i));
+        if (onlineSourceArray.size() < 15) {
+            while (onlineSourceArray.size() != 15) {
+                onlineSourceArray.add("");
+            }
         }
-        while (peerDocs.size() != 10) {
-            peerDocs.add(" ");
-        }
-        hm.put("image", bf);
-        hm.put("field", content);
+
+        System.err.println(nodeList);
+        hm.put("SUBREPORT_DIR", "jasper/");
+        hm.put("onlineSource", onlineSourceArray);
+        hm.put("field", nodeList);
         hm.put("time", time);
         hm.put("docName", fileName);
-        hm.put("peerDocs", peerDocs);
-        hm.put("peers", peers);
-        JasperReport jasperReport;
+
+        JRDataSource dataSource = createReportDataSource();
         JasperPrint jasperPrint;
         try {
-
             jasperPrint = JasperFillManager.fillReport(
-                    "jasper/report2.jasper", hm, new JREmptyDataSource());
+                    "jasper/report3.jasper", hm, dataSource);
             jrv = new JRViewer(jasperPrint);
 
 
@@ -903,6 +1027,40 @@ public class ReportingModule extends javax.swing.JFrame {
         }
     }
 
+    public JRDataSource createReportDataSource() {
+        JRBeanArrayDataSource dataSource;
+        DataFetcherSingleSearch[] reportRows = initializeBeanArray();
+        dataSource = new JRBeanArrayDataSource(reportRows);
+        return dataSource;
+
+    }
+
+    public DataFetcherSingleSearch[] initializeBeanArray() {
+
+        Set<String> docList = resultMap.keySet();
+        DataFetcherSingleSearch[] reportRows = new DataFetcherSingleSearch[docList.size()];
+        Iterator iter = docList.iterator();
+        int i = 0;
+        while (iter.hasNext()) {
+            ArrayList<InternetSourceStore> onlineSourceArray = new ArrayList<InternetSourceStore>();
+            Set<String> filenameListofurls = fileToUrlMap.keySet();
+            Iterator it = filenameListofurls.iterator();
+            while (it.hasNext()) {
+                String fName = (String) it.next();
+                onlineSourceArray.add(new InternetSourceStore(fileToUrlMap.get(fName)));
+            }
+            String suspectedfilename = (String) iter.next();
+            String[] matchVal = resultMap.get(suspectedfilename);
+            String matchValue = matchVal[1] + "%";
+            if (filenameListofurls.contains(suspectedfilename)) {
+                suspectedfilename = (String) fileToUrlMap.get(suspectedfilename);
+            }
+
+            reportRows[i] = new DataFetcherSingleSearch(suspectedfilename, matchValue, onlineSourceArray);
+            i++;
+        }
+        return reportRows;
+    }
 
     public DefaultPieDataset createPieDataset() {
 
@@ -939,47 +1097,40 @@ public class ReportingModule extends javax.swing.JFrame {
         return jf.createBufferedImage(500, 500);
     }
 
-    private void generateGraph() {
+    public void generateGraph() {
 
-        g = new SparseMultigraph<Integer, CustomEdge>();
+        connectedGraph = new SparseMultigraph<Integer, CustomEdge>();
         HashMap<String, Integer> docToIntegerMap = new HashMap<String, Integer>();
         int verCount = 0;
-        DefaultListModel listModel = new DefaultListModel();
-        graphNodeList.setModel(listModel);
-        Set<String> docList = resultArray.keySet();
-        Iterator iter = docList.iterator();
 
+        graphNodeList.setModel(listModelGraph);
+        Set<String> docList = resultMap.keySet();
+        Iterator iter = docList.iterator();
         while (iter.hasNext()) {
             String name = (String) iter.next();
             int countNo = ++verCount;
-            listModel.add(verCount - 1, String.valueOf(countNo) + " -- " + name);
+            listModelGraph.add(verCount - 1, String.valueOf(countNo) + " -- " + name);
             docToIntegerMap.put(name, countNo);
-            g.addVertex((Integer) countNo);
+            connectedGraph.addVertex((Integer) countNo);
         }
-        g.addVertex((Integer) 0);
-        Iterator it = resultArray.entrySet().iterator();
-        HashSet ha = new HashSet();
-
+        connectedGraph.addVertex((Integer) 0);
+        Iterator it = resultMap.entrySet().iterator();
         while (it.hasNext()) {
-
             Map.Entry pair = (Map.Entry) it.next();
             String fileName = (String) pair.getKey();
             String[] matchArray = (String[]) pair.getValue();
             String value = matchArray[1] + "%";
 
-            if ((g.findEdge(0, docToIntegerMap.get(fileName))) == null) {
-                g.addEdge(new CustomEdge(value), 0, docToIntegerMap.get(fileName));
+            if ((connectedGraph.findEdge(0, docToIntegerMap.get(fileName))) == null) {
+                connectedGraph.addEdge(new CustomEdge(value), 0, docToIntegerMap.get(fileName));
             }
-
         }
-        layout = new CircleLayout(g);
+        layout = new CircleLayout(connectedGraph);
         layout.setSize(new Dimension(300, 300));
-        vv = new VisualizationViewer<Integer, String>(layout);
-        //vv.setPreferredSize(new Dimension(300,300));
-        vv.setSize(300, 300);
-        // Show vertex and edge labels
-        vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
-        vv.getRenderContext().setEdgeLabelTransformer(new ToStringLabeller());
+        visualizationViewer = new VisualizationViewer<Integer, String>(layout);
+        visualizationViewer.setSize(300, 300);
+        visualizationViewer.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
+        visualizationViewer.getRenderContext().setEdgeLabelTransformer(new ToStringLabeller());
         Transformer<Integer, Paint> vertexPaint = new Transformer<Integer, Paint>() {
 
             private final Color[] palette = {Color.GREEN,
@@ -991,23 +1142,22 @@ public class ReportingModule extends javax.swing.JFrame {
                 } else {
                     return palette[2];
                 }
-
             }
         };
-
-        vv.getRenderContext().setVertexFillPaintTransformer(vertexPaint);
+        visualizationViewer.getRenderContext().setVertexFillPaintTransformer(vertexPaint);
         // Create a graph mouse and add it to the visualization component
         DefaultModalGraphMouse gm = new DefaultModalGraphMouse();
         gm.setMode(ModalGraphMouse.Mode.TRANSFORMING);
-        vv.setGraphMouse(gm);
-        graphScrollPane.setViewportView(vv);
+        visualizationViewer.setGraphMouse(gm);
+        graphScrollPane.setViewportView(visualizationViewer);
+
         PNGDump dumper = new PNGDump();
         try {
-            dumper.dumpComponent(new File("jasper/reportImages/test.png"), vv);
+            dumper.dumpComponent(new File("jasper/reportImages/test.png"), visualizationViewer);
         } catch (IOException e) {
             System.err.println("dump failed");
         }
-    } 
+    }
 
     private void updateTextBoxes(String fileName) {
 
@@ -1020,16 +1170,15 @@ public class ReportingModule extends javax.swing.JFrame {
         selectedFileEditorPane.setText(field1.toLowerCase());
         suspectedFileEditorPane.setText(field2.toLowerCase());
 
-
-        Set<String> docList = resultArray.keySet();
+        Set<String> docList = resultMap.keySet();
         Iterator iter = docList.iterator();
 
         while (iter.hasNext()) {
             String name = (String) iter.next();
             if (name.equalsIgnoreCase(fileName2)) {
-                String[] matchVal = resultArray.get(name);
-                jTextField1.setText(matchVal[0]);
-                this.highlighter(matchVal[0]);
+                String[] matchVal = resultMap.get(name);
+                //jTextField1.setText(matchVal[0]);
+                this.highlighter(matchVal[0],matchVal[2],matchVal[3]);
             }
         }
     }
@@ -1037,13 +1186,13 @@ public class ReportingModule extends javax.swing.JFrame {
     public void setIndexDetails(String fileName) {
 
         String fileName2 = fileName;
-        Set<String> docList = resultArray.keySet();
+        Set<String> docList = resultMap.keySet();
         Iterator iter = docList.iterator();
 
         while (iter.hasNext()) {
             String name = (String) iter.next();
             if (name.equalsIgnoreCase(fileName2)) {
-                String[] matchVal = resultArray.get(name);
+                String[] matchVal = resultMap.get(name);
                 jTextField1.setText(matchVal[0]);
                 this.highlighterDetails(matchVal[0], fileName);
             }
@@ -1060,9 +1209,9 @@ public class ReportingModule extends javax.swing.JFrame {
         if (queryString.length() <= 0) {
             return;
         }
-        if (queryString.contains(":")) {
+        if (queryString.contains("~")) {
 
-            query = queryString.split(":");
+            query = queryString.split("~");
 
         } else {
             query = new String[1];
@@ -1094,7 +1243,7 @@ public class ReportingModule extends javax.swing.JFrame {
 
     public void setTemp(HashMap<String, String[]> tempa) {
 
-        resultArray = tempa;
+        resultMap = tempa;
     }
 
     public void setDocument(String doc) {
@@ -1163,6 +1312,4 @@ public class ReportingModule extends javax.swing.JFrame {
     private javax.swing.JTextPane showFileContentTextPane;
     private javax.swing.JEditorPane suspectedFileEditorPane;
     // End of variables declaration//GEN-END:variables
-
-    
 }

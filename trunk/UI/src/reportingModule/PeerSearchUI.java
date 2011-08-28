@@ -43,11 +43,13 @@ import javax.swing.DefaultListModel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.view.JRViewer;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.JFreeChart;
@@ -70,7 +72,7 @@ public class PeerSearchUI extends javax.swing.JFrame {
     ArrayList<String> urlarraylist= new ArrayList<String>();
     String documentFolder;
     HashMap<Integer,String> topResults= new HashMap<Integer,String>();;
-    
+    DefaultListModel listModelGraph = new DefaultListModel();
     Graph<Integer, CustomEdge> g;
     Layout<Integer, String> layout ;
     VisualizationViewer<Integer,String> vv;
@@ -819,68 +821,28 @@ public class PeerSearchUI extends javax.swing.JFrame {
 
      public void generateResults() {
 
-        ArrayList peers = new ArrayList();
-        ArrayList peerDocs = new ArrayList();
-        ArrayList<DataFetcher> myList = new ArrayList<DataFetcher>();
         HashMap hm = new HashMap();
-        JRDataSource dataSource = createReportDataSource();
-        String resultText="";
-        // Show in Frame
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("h:mm a");
         String time = sdf.format(cal.getTime());
-        BufferedImage bf = this.createChart();
-        for (int i = 0; i < fileNamesArrayList.size(); i++) {
 
-            peers.add(String.valueOf(i+1)+"). "+fileNamesArrayList.get(i));
-            HashMap<String, String[]> fileResultDetail=peerSearchResult.get(fileNamesArrayList.get(i));
-            HashMap<String, String[]> globalSourceResultDetail=globalSearchResult.get(fileNamesArrayList.get(i));
-            Iterator fileIterator = fileResultDetail.entrySet().iterator();
-            //Iterator globalSourceIterator = globalSourceResultDetail.entrySet().iterator();
-            resultText+="\n"+String.valueOf(i+1)+"). File Name:  "+fileNamesArrayList.get(i)+"\n\t"+"Suspected Plagiarized file list\n";
-            int count=1;
 
-        while (fileIterator.hasNext()) {
-
-            Map.Entry pair = (Map.Entry) fileIterator.next();
-            String fileName = (String) pair.getKey();
-            resultText+= "\t\t"+count+"). "+fileName+"\n";
-            count++;
+        String nodeList="";
+        for (int i = 0; i < listModelGraph.size(); i++) {
+            String node= (String)listModelGraph.get(i);
+            nodeList=nodeList+"\n"+node;
         }
 
-      }
-
-        while (peers.size() != 10) {
-
-            peers.add(" ");
-
-        }
-
-        for (int i = 0; i < urlarraylist.size(); i++) {
-            peerDocs.add(urlarraylist.get(i));
-        }
-
-        while (peerDocs.size() != 10) {
-
-            peerDocs.add(" ");
-
-        }
-
-        hm.put("field", resultText);
-        hm.put("docName", documentFolder);
-        hm.put("image", bf);
+        hm.put("field", nodeList);
         hm.put("time", time);
-        hm.put("peerDocs", peerDocs);
-        hm.put("peers", peers);
-
-        JasperReport jasperReport;
+        hm.put("docName", documentFolder);
+        JRDataSource dataSource = createReportDataSource();
         JasperPrint jasperPrint;
-
         try {
-
             jasperPrint = JasperFillManager.fillReport(
-                    "jasper/peerReport.jasper", hm, dataSource);
+                    "jasper/peerfinalReport.jasper", hm, dataSource);
             jrv = new JRViewer(jasperPrint);
+
 
             jrv.addHyperlinkListener(new ReportHyperlinkListner());
 
@@ -893,22 +855,47 @@ public class PeerSearchUI extends javax.swing.JFrame {
 
     }
 
-private JRDataSource createReportDataSource()
+public JRDataSource createReportDataSource()
 {
-JRBeanArrayDataSource dataSource;
-DataFetcher[] reportRows = initializeBeanArray();
-dataSource = new JRBeanArrayDataSource(reportRows);
+JRBeanCollectionDataSource dataSource;
+ArrayList<DataFetcherPeerSearch> reportRows = initializeBeanArray();
+dataSource = new JRBeanCollectionDataSource(reportRows);
 return dataSource;
 
 }
 
-private DataFetcher[] initializeBeanArray()
+public ArrayList<DataFetcherPeerSearch> initializeBeanArray()
 {
-DataFetcher[] reportRows = new DataFetcher[4];
-reportRows[0] = new DataFetcher("N263Y", "T-11", "39 ROSCOE TRNRRACER", "R1830 SERIES");
-reportRows[1] = new DataFetcher("N4087X", "BA100-163", "BRADLEYAEROBAT", "R2800 SERIES");
-reportRows[2] = new DataFetcher("N43JE", "HAYABUSA 1", "NAKAJIMAKI-43 IIIA", "R1830 SERIES");
-reportRows[3] = new DataFetcher("N912S", "9973CC", "PA18-150","R-1820 SER");
+
+ArrayList<DataFetcherPeerSearch> reportRows = new ArrayList<DataFetcherPeerSearch>();
+
+Iterator peerit = peerSearchResult.entrySet().iterator();
+Iterator globalit = globalSearchResult.entrySet().iterator();
+int i=0;
+
+        while (peerit.hasNext()) {
+            Map.Entry pair = (Map.Entry) peerit.next();
+            String fileName = (String) pair.getKey();
+            HashMap<String, String[]> hm=(HashMap<String, String[]>) pair.getValue();
+            Iterator resultIterator = hm.entrySet().iterator();
+            while (resultIterator.hasNext()) {
+                 Map.Entry pair2 = (Map.Entry) resultIterator.next();
+                 String suspectedFile = (String) pair2.getKey();
+                 String[] matchdetails=(String[]) pair2.getValue();
+                 String plagValue=matchdetails[1]+"%";
+                 reportRows.add(new DataFetcherPeerSearch(fileName,suspectedFile,plagValue));
+                 i++;
+
+             }
+            
+
+
+           }
+
+
+
+
+
 return reportRows;
 }
 
@@ -952,7 +939,6 @@ return reportRows;
         JFreeChart jf = this.createChart(pie);
         return jf.createBufferedImage(500, 500);
 
-
     }
 
     private void generateGraph() {
@@ -962,13 +948,13 @@ return reportRows;
         Set<String> docList=peerSearchResult.keySet();
         Iterator iter = docList.iterator();
         int verCount=0;
-        DefaultListModel listModel = new DefaultListModel();
-        graphverticesNames.setModel(listModel);
+        
+        graphverticesNames.setModel(listModelGraph);
 
         while (iter.hasNext()) {
             String name=(String)iter.next();
             int countNo=++verCount;
-            listModel.add(verCount-1,String.valueOf(countNo)+" -- "+name);
+            listModelGraph.add(verCount-1,String.valueOf(countNo)+" -- "+name);
             docToIntegerMap.put(name, countNo);
             g.addVertex((Integer)countNo);
 
