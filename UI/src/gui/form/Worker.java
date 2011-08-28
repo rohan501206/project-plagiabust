@@ -45,9 +45,11 @@ public class Worker extends SwingWorker<ReportData, String> {
 
     int maxIndexfiles;
     boolean UsePlagiabustWebServer = false;
+    boolean paraphaseDetection = false;
 
     ArrayList<String> indexedFiles = new ArrayList<String>();
-    public Worker(String destFolderPath,String fName,String indexFolderPath,String selectedDocumentPath,Manager manager,JProgressBar pbar,JProgressBar pbar2,JProgressBar pbar3,JProgressBar pbar4, int maxNumOfInternetSources,int maxIndexfiles, boolean UsePlagiabustWebServer){
+    public Worker(String destFolderPath,String fName,String indexFolderPath,String selectedDocumentPath,Manager manager,JProgressBar pbar,
+            JProgressBar pbar2,JProgressBar pbar3,JProgressBar pbar4, int maxNumOfInternetSources,int maxIndexfiles, boolean UsePlagiabustWebServer,boolean paraphaseDetection){
         this.destFolderPath = destFolderPath;
         this.fName = fName;
         this.indexFolderPath = indexFolderPath;
@@ -61,6 +63,7 @@ public class Worker extends SwingWorker<ReportData, String> {
         this.idm.setMaxNumOfSourcesPerDocument(maxNumOfInternetSources);
         this.maxIndexfiles = maxIndexfiles;
         this.UsePlagiabustWebServer = UsePlagiabustWebServer;
+        this.paraphaseDetection = paraphaseDetection;
     }
 
     @Override
@@ -91,15 +94,13 @@ public class Worker extends SwingWorker<ReportData, String> {
         System.out.println("Finished indexing the files........................");
          try {
             System.out.println("Start comparing files........................");
-            //temp = manager.compareFiles(selectedDocumentPath, downloadFolderPath, indexedFiles,pbar3,pbar4);
-            temp = manager.compareFiles(selectedDocumentPath, downloadFolderPath, indexedFiles,pbar3,pbar4);
+            temp = manager.compareFiles(selectedDocumentPath, downloadFolderPath, indexedFiles,pbar3,pbar4,paraphaseDetection);
             System.out.println("Finished comparing files........................");
 
         } catch (IOException ex) {
             System.out.println("There are no similar files or some error has occured");
         }
-        //ReportData repData = new ReportData(temp, urlList);
-        //ReportData repData = new ReportData(temp, map);
+        
         ReportData repData = new ReportData(temp, map,urlList);
         return repData ;
     }

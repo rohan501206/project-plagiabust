@@ -95,8 +95,7 @@ public class Manager {
     public double maxSimilarity(String word, String sentence){
         double similarity = 0.0 ;
         String [] arrayOfWords = sentence.split(" ");
-        for(int i = 0 ; i<arrayOfWords.length;i++){
-            
+        for(int i = 0 ; i<arrayOfWords.length;i++){     
             int distance = this.getLevenshteinDistance(word, arrayOfWords[i]);
             double similarityScore;
             if(distance==0){
@@ -110,19 +109,8 @@ public class Manager {
             similarity = similarity + similarityScore;
         }
         double synonymSimilarity = this.synonymSimilarity(word, sentence);
-        
-        // *******using synonym replacement******//
-        
-        //double averageSimilarity = (similarity+synonymSimilarity)/arrayOfWords.length;
-        
-         double averageSimilarity = similarity+synonymSimilarity;
-        // System.out.println( "Total similarity:"+averageSimilarity);
-         //System.out.println("Edit distanse similarity:"+similarity);
-        // System.out.println("Synonym similarity:"+synonymSimilarity);
-        //******* with out synonym replacement*****//
-        
-       // double averageSimilarity = (similarity)/arrayOfWords.length;
-        return averageSimilarity;
+        double finalSimilarity = similarity+synonymSimilarity;
+        return finalSimilarity;
     }
 
     public double synonymSimilarity(String word, String sentence){
@@ -142,28 +130,25 @@ public class Manager {
     }
 
 
-    public double lenthSimilarity(String firstSentence, String secondSentence){
+    public double lenthSimilarity(String firstSentence, String secondSentence) {
         double firstSentenceSize = firstSentence.length();
-        double secondSentenceSize =   secondSentence.length();
+        double secondSentenceSize = secondSentence.length();
         double score = 0;
-        if((firstSentenceSize-secondSentenceSize) == 0){
+        if ((firstSentenceSize - secondSentenceSize) == 0) {
             score = 0.5;
-        }
-        else {
-            if(Math.abs(firstSentenceSize-secondSentenceSize) > 0 && Math.abs(firstSentenceSize-secondSentenceSize) <= 5){ 
-                            score = -0.08;
+        } else {
+            if (Math.abs(firstSentenceSize - secondSentenceSize) > 0 && Math.abs(firstSentenceSize - secondSentenceSize) <= 5) {
+                score = -0.08;
 
-            }
-            else if(Math.abs(firstSentenceSize-secondSentenceSize) > 5 && Math.abs(firstSentenceSize-secondSentenceSize) <= 10){
-                            score = -0.10;
+            } else if (Math.abs(firstSentenceSize - secondSentenceSize) > 5 && Math.abs(firstSentenceSize - secondSentenceSize) <= 10) {
+                score = -0.10;
 
-            }
-            else{
-                            score = -0.20;
+            } else {
+                score = -0.20;
 
             }
         }
-        
+
         return score;
     }
     

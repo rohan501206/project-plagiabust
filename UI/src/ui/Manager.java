@@ -112,7 +112,7 @@ public class Manager {
      * @return Multi dimensional string array which consists of the the relevant files and the matching shingles
      * @throws IOException
      */
-    public HashMap<String,String[]> compareFiles(String fileName, String downloadedFilePath, ArrayList<String> indexedFiles,JProgressBar preprocesspbar,JProgressBar crosscheckpbar) throws IOException {
+    public HashMap<String,String[]> compareFiles(String fileName, String downloadedFilePath, ArrayList<String> indexedFiles,JProgressBar preprocesspbar,JProgressBar crosscheckpbar,boolean paraphaseDetection) throws IOException {
        
         HashMap<String,String[]> resultsMap=new HashMap<String, String[]>();
         String documentToCompare = fileName;
@@ -127,7 +127,7 @@ public class Manager {
                 System.out.println("document downloaded " + i + " " + downloadedFilesList[i]);
             }
         }
-        String[][] filenameText = new String[20][4];  // 20 because we download 10 files and index another 10 files and then we coompare
+        
         for (int i = 0; i < indexedFiles.size(); i++) {
             System.out.println("document indexed " + i + " " + indexedFiles.get(i));
         } 
@@ -166,8 +166,10 @@ public class Manager {
 
 
         for (int i = 0; i < downloadedFilesList.length; i++) {
+            
+            
 
-            String[] matchValue=new String[2];
+            String[] matchValue=new String[4];
              if(i==downloadedFilesList.length-1){
                 crossCheck.runProgress(100);
              }
@@ -179,33 +181,55 @@ public class Manager {
             String match = sca.getList();
             String firstFile = documentToCompare;
             String secondFile = downloadedFolderPath + File.separator + downloadedFilesList[i];
+            
+            
+            String[] matchedText=new String[2];
+            // Paraphased added 
+            
+            //use paraphase detection
+            if(paraphaseDetection){
+                ParaphaseManage paramanager = new ParaphaseManage(firstFile,secondFile, downloadedFolderPath);
+                matchedText = paramanager.getMatchList();
+            }
+            else{
+                matchedText[0] = "";
+                matchedText[1] = "";
+            }
+            
+            
+            
+            
+            
+            
             System.out.println();
             System.out.println(firstFile);
             System.out.println(secondFile);
-            //System.out.println("the string of the first text is " + preprocessTextOfTheComparisonFile);
-            //System.out.println("the string of the second text is " + hm.get(downloadedFilesList[i]).toString());
             System.out.println("match is " + match);
             System.out.println("Size of the matched files is " + fileNo);
             System.out.println();
-            if (!match.isEmpty() &&  !(firstFile.equalsIgnoreCase(secondFile))) {
+            
+           
+            
+            
+            
+            if ((!match.isEmpty() &&  !(firstFile.equalsIgnoreCase(secondFile)))  || (!(firstFile.equalsIgnoreCase(secondFile)) && !matchedText[0].isEmpty() )) {
                 //////////////// just for testing purposes
 
-                matchValue[0]=match;
-                matchValue[1]=String.valueOf(roundNumber(output,2)*100/2);
+                matchValue[0] = match;
+                matchValue[1] = String.valueOf(roundNumber(output,2)*100/2);
+                matchValue[2] = matchedText[0];
+                matchValue[3] = matchedText[1];
                 resultsMap.put(secondFile, matchValue);
+                
                 
                fileNo++;
 
-
-
-
-                // filenameText[i][3] = Isplagarised;
             }
 
         }
 
         for (int i = 0; i < preIndexedFiles.size(); i++) {
-            String[] matchValue=new String[2];
+            String[] matchValue=new String[4];
 
             if(i==preIndexedFiles.size()-1){
                 crossCheck.runProgress(100);
@@ -218,45 +242,36 @@ public class Manager {
             float output = sca.getSimilarity(preprocessTextOfTheComparisonFile, hm.get(preIndexedFiles.get(i)).toString());
             String match = sca.getList();
             
+            String[] matchedText=new String[2];
             // Paraphased added 
             
             //use paraphase detection
-            
-            ParaphaseManage paramanager = new ParaphaseManage(documentToCompare,preIndexedFiles.get(i), downloadedFolderPath);
-            String matchedText = paramanager.getMatchList();
-            System.out.println("Paraphased "+ matchedText);
-            
-            match = match+matchedText ;
-
-            
-            
-            
-            
+            if(paraphaseDetection){
+                ParaphaseManage paramanager = new ParaphaseManage(documentToCompare,preIndexedFiles.get(i), downloadedFolderPath);
+                matchedText = paramanager.getMatchList();
+            }
+            else{
+                matchedText[0] = "";
+                matchedText[1] = "";
+            }
             String firstFile = documentToCompare;
             String secondFile = preIndexedFiles.get(i);
             System.out.println();
             System.out.println(firstFile);
             System.out.println(secondFile);
-            //System.out.println("the string of the first text is" + preprocessTextOfTheComparisonFile);
-            //System.out.println("the string of the second text is" + hm.get(preIndexedFiles.get(i)).toString());
             System.out.println("match is " + match);
             System.out.println("Size of the matched files is " + fileNo);
             System.out.println();
-            if (!match.isEmpty() &&  !(firstFile.equalsIgnoreCase(secondFile))) {
+            if ((!match.isEmpty() &&  !(firstFile.equalsIgnoreCase(secondFile))) || (!(firstFile.equalsIgnoreCase(secondFile)) && !matchedText[0].isEmpty() )) {
                 //////////////// just for testing purposes
                 matchValue[0]=match;
                 matchValue[1]=String.valueOf(roundNumber(output,2)*100/2);;
+                matchValue[2] = matchedText[0];
+                matchValue[3] = matchedText[1];    
                 resultsMap.put(secondFile, matchValue);
-
                 fileNo++;
 
-                String Isplagarised = null;
-                if (output > 1.5) {
-                    Isplagarised = "1";
-                } else {
-                    Isplagarised = "0";
-                }
-                // filenameText[i][3] = Isplagarised;
+                
             }
         }
         return resultsMap;

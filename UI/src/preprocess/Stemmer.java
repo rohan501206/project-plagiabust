@@ -637,20 +637,11 @@ public class Stemmer {
                                 s.add(w[c]);
                             }
 
-                            /* or, to test add(char[] w, int j) */
-                            /* s.add(w, j); */
-
                             s.stem();
                             {
-                                String u;
-
-                                /* and now, to test toString() : */
+                                String u; 
                                 u = s.toString();
-                                tokenList.add(u);
-                                /* to test getResultBuffer(), getResultLength() : */
-                                /* u = new String(s.getResultBuffer(), 0, s.getResultLength()); */
-
-                                
+                                tokenList.add(u);                               
                             }
                             break;
                         }
@@ -659,7 +650,7 @@ public class Stemmer {
                 if (ch < 0) {
                     break;
                 }
-                System.out.print((char) ch);
+                //System.out.print((char) ch);
             }
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
