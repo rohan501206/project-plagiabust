@@ -146,13 +146,13 @@ public class ReportingModule extends javax.swing.JFrame {
         fileListComboBox = new javax.swing.JComboBox();
         jTextField1 = new javax.swing.JTextField();
         selectedFileTextField = new javax.swing.JTextField();
-        jPanel4 = new javax.swing.JPanel();
-        jPanel5 = new javax.swing.JPanel();
-        jasperReportScrollPane = new javax.swing.JScrollPane(jrv);
         jPanel7 = new javax.swing.JPanel();
         graphScrollPane = new javax.swing.JScrollPane();
         jScrollPane4 = new javax.swing.JScrollPane();
         graphNodeList = new javax.swing.JList();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jasperReportScrollPane = new javax.swing.JScrollPane(jrv);
         jPanel1 = new javax.swing.JPanel();
         nextButton = new javax.swing.JButton();
         PreviousButton = new javax.swing.JButton();
@@ -207,7 +207,7 @@ public class ReportingModule extends javax.swing.JFrame {
                             .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -311,7 +311,7 @@ public class ReportingModule extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(browserPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jLabel3))
-                .addContainerGap(19, Short.MAX_VALUE))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -436,6 +436,34 @@ public class ReportingModule extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Dynamic Cross Check", jPanel3);
 
+        jScrollPane4.setViewportView(graphNodeList);
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(graphScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 761, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(68, 68, 68)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(60, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(graphScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(114, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Connectivity Graph", jPanel7);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -478,39 +506,11 @@ public class ReportingModule extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Final Report", jPanel4);
 
-        jScrollPane4.setViewportView(graphNodeList);
-
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(graphScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 761, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(68, 68, 68)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(58, Short.MAX_VALUE))
-        );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(graphScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 424, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(114, Short.MAX_VALUE))
-        );
-
-        jTabbedPane1.addTab("tab5", jPanel7);
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 503, Short.MAX_VALUE)
+            .addGap(0, 505, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -541,7 +541,7 @@ public class ReportingModule extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1175, Short.MAX_VALUE))
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1177, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(684, 684, 684)
                         .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -627,7 +627,7 @@ public class ReportingModule extends javax.swing.JFrame {
         }
 
         try {
-            updateTextBoxes(fileName);
+            updateFileDisplayers(fileName);
 
         } catch (Exception ex) {
             Logger.getLogger(ReportingModule.class.getName()).log(Level.SEVERE, null, ex);
@@ -668,9 +668,7 @@ public class ReportingModule extends javax.swing.JFrame {
                 if ((start > startIndex) && start < endIndex) {
                     String word = showFileContentTextPane.getDocument().getText(startIndex, endIndex - startIndex);
 
-                    String preprocessedText = matchingToPreprocessed.get(word.trim());
-
-                    //System.out.println("preprocessed text is " + preprocessedText);
+                    String preprocessedText = matchingToPreprocessed.get(word.trim());                  
 
 
                     Set<String> docList = resultMap.keySet();
@@ -740,180 +738,15 @@ public class ReportingModule extends javax.swing.JFrame {
     }//GEN-LAST:event_showFileContentTextPaneMouseMoved
 
 
-
-    public void setHighlighterToBothTextFiles(String[] queryArray,String contentTemp,String content2Temp,ArrayList<Color> colourArrayTemp){
-
-       String content=contentTemp;
-       String content2=content2Temp;
-       ArrayList<Color> colourArray =colourArrayTemp;
-
-       for (int i = 0; i < queryArray.length; i++) {
-            String searchQuery = queryArray[i];
-            TextHighlighter highlighterFirstFile = new TextHighlighter();
-            TextHighlighter highlighterSecondFile = new TextHighlighter();
-            String[] highlightindexedInfoFirstFile = highlighterFirstFile.highlightTexts(content, searchQuery);
-            String[] highlightindexedInfoSecondFile = highlighterSecondFile.highlightTexts(content2, searchQuery);
-            int startIndexFirst = Integer.valueOf(highlightindexedInfoFirstFile[0]);
-            int endIndexFirst = Integer.valueOf(highlightindexedInfoFirstFile[1]);
-            int startIndexSecond = Integer.valueOf(highlightindexedInfoSecondFile[0]);
-            int endIndexSecond = Integer.valueOf(highlightindexedInfoSecondFile[1]);
-            try {
-                Color HILIT_COLOR = colourArray.get(i);
-
-                if (startIndexFirst != -1) {
-                    painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
-                    hilit.addHighlight(startIndexFirst, endIndexFirst, painter);
-                    selectedFileEditorPane.setCaretPosition(endIndexFirst);
-
-                }
-                if (startIndexSecond != -1) {
-
-                    painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
-
-                    hilit2.addHighlight(startIndexSecond, endIndexSecond, painter);
-
-                    suspectedFileEditorPane.setCaretPosition(endIndexSecond);
-
-                }
-
-            } catch (BadLocationException ex) {
-                Logger.getLogger(ReportingModule.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-
-   }
-
-    public void setHighlighterToFirstTextFiles(String[] queryArray,String contentTemp,String content2Temp,ArrayList<Color> colourArrayTemp){
-
-       String content=contentTemp;
-       ArrayList<Color> colourArray =colourArrayTemp;
-
-
-       for (int i = 0; i < queryArray.length; i++) {
-            String searchQuery = queryArray[i];
-            TextHighlighter highlighterFirstFile = new TextHighlighter();
-            String[] highlightindexedInfoFirstFile = highlighterFirstFile.highlightTexts(content, searchQuery);
-            int startIndexFirst = Integer.valueOf(highlightindexedInfoFirstFile[0]);
-            int endIndexFirst = Integer.valueOf(highlightindexedInfoFirstFile[1]);
-            try {
-
-                Color HILIT_COLOR = colourArray.get(i);
-                if (startIndexFirst != -1) {
-                    painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
-                    hilit.addHighlight(startIndexFirst, endIndexFirst, painter);
-                    selectedFileEditorPane.setCaretPosition(endIndexFirst);
-
-                }
-
-            } catch (BadLocationException ex) {
-                Logger.getLogger(ReportingModule.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-
-   }
-
-
-    public void setHighlighterToSecondTextFiles(String[] queryArray,String contentTemp,String content2Temp,ArrayList<Color> colourArrayTemp){
-
-       String content=contentTemp;
-       String content2=content2Temp;
-       ArrayList<Color> colourArray =colourArrayTemp;
-
-       for (int i = 0; i < queryArray.length; i++) {
-            String searchQuery = queryArray[i];
-            TextHighlighter highlighterSecondFile = new TextHighlighter();
-            String[] highlightindexedInfoSecondFile = highlighterSecondFile.highlightTexts(content2, searchQuery);
-            int startIndexSecond = Integer.valueOf(highlightindexedInfoSecondFile[0]);
-            int endIndexSecond = Integer.valueOf(highlightindexedInfoSecondFile[1]);
-            try {
-                Color HILIT_COLOR = colourArray.get(i);
-
-                if (startIndexSecond != -1) {
-
-                    painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
-
-                    hilit2.addHighlight(startIndexSecond, endIndexSecond, painter);
-
-                    suspectedFileEditorPane.setCaretPosition(endIndexSecond);
-
-                }
-
-            } catch (BadLocationException ex) {
-                Logger.getLogger(ReportingModule.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-
-   }
-
-
-
-
-
-
-
-    public void highlighter(String queryTemp,String paraphrasedFirstPhraseTemp,String paraphrasedSecondPhraseTemp) {
-
-       String paraphrasedFirstPhrase=paraphrasedFirstPhraseTemp;
-       String paraphrasedSecondPhrase=paraphrasedSecondPhraseTemp;
-       String queryString = queryTemp;
-        ArrayList<Color> colourArray = new ArrayList<Color>();
-        colourArray.add(Color.cyan);
-        colourArray.add(Color.yellow);
-        colourArray.add(Color.MAGENTA);
-        colourArray.add(Color.LIGHT_GRAY);
-        colourArray.add(Color.gray);
-        colourArray.add(Color.pink);
-        colourArray.add(Color.ORANGE);
-        colourArray.add(Color.cyan);
-        colourArray.add(Color.yellow);
-        colourArray.add(Color.MAGENTA);
-        colourArray.add(Color.LIGHT_GRAY);
-        colourArray.add(Color.gray);
-        colourArray.add(Color.pink);
-        colourArray.add(Color.ORANGE);
-        selectedFileEditorPane.setHighlighter(hilit);
-        suspectedFileEditorPane.setHighlighter(hilit2);
-        hilit.removeAllHighlights();
-        hilit2.removeAllHighlights();
-        String content = selectedFileEditorPane.getText();
-        String content2 = suspectedFileEditorPane.getText();
-        String[] query = null;
-        String[] queryforFirstFile = null;
-        String[] queryforSecondFile = null;
-
-        if ((queryString.length() <= 0) && (paraphrasedFirstPhrase.length()<=0)) {
-            return;
-        }
-
-        query = queryString.split("~");
-        queryforFirstFile=paraphrasedFirstPhrase.split("~");
-        queryforSecondFile=paraphrasedSecondPhrase.split("~");
-
-
-
-        if(queryString.length() !=0){
-
-            setHighlighterToBothTextFiles(query,content,content2,colourArray);
-        }
-        if(queryforFirstFile.length !=1){
-
-            setHighlighterToFirstTextFiles(queryforFirstFile, content2, content2, colourArray);
-        }
-        if(queryforSecondFile.length !=1){
-
-            setHighlighterToSecondTextFiles(queryforSecondFile, content2, content2, colourArray);
-        }
-
-    }
-
-    public void setData() {
+public void setData() {
 
         Set<String> docList = resultMap.keySet();
         Set<String> filenameListofurls = fileToUrlMap.keySet();
         Iterator iter = docList.iterator();
+        ArrayList<Integer> phraseIndexes = new ArrayList<Integer>();
+        FileOperator setTextToTextAreas = new FileOperator();
+        String appendedText = "";
+        
         while (iter.hasNext()) {
             String name = (String) iter.next();
             fileNameList.add(name);
@@ -934,11 +767,10 @@ public class ReportingModule extends javax.swing.JFrame {
                 fileListComboBox.addItem(fileNameList.get(i - 1));
             }
         }
+
         selectedFileTextField.setText(selectedDocumentPath);
         selectedFileTextField.setToolTipText(selectedDocumentPath);
-        ArrayList<Integer> phraseIndexes = new ArrayList<Integer>();
-        FileOperator setTextToTextAreas = new FileOperator();
-        String appendedText = "";
+        
         String texts = setTextToTextAreas.textSetter(selectedDocumentPath);
         AttributedString attributedString = new AttributedString(texts);
         showFileContentTextPane.setText(texts);
@@ -957,7 +789,7 @@ public class ReportingModule extends javax.swing.JFrame {
 
                 try {
                     doc.remove(startIndex, endIndex - startIndex);
-                    Style style = showFileContentTextPane.addStyle("I'm a Style", null);
+                    Style style = showFileContentTextPane.addStyle("", null);
                     StyleConstants.setForeground(style, Color.red);
                     StyleConstants.setBold(style, true);
                     StyleConstants.setItalic(style, true);
@@ -969,10 +801,212 @@ public class ReportingModule extends javax.swing.JFrame {
             }
         }
         this.generateGraph();
-        this.generateResults();
+        this.generateFinalReport();
     }
 
-    public void generateResults() {
+
+public void setIndexDetails(String fileName) {
+
+        String fileName2 = fileName;
+        Set<String> docList = resultMap.keySet();
+        Iterator iter = docList.iterator();
+
+        while (iter.hasNext()) {
+            String name = (String) iter.next();
+            if (name.equalsIgnoreCase(fileName2)) {
+                String[] matchVal = resultMap.get(name);
+                jTextField1.setText(matchVal[0]);
+                this.highlighterDetails(matchVal[0], fileName);
+            }
+        }
+    }
+
+    public void highlighterDetails(String queryTemp, String filename) {
+
+        FileOperator setTextToTextAreas = new FileOperator();
+        String[] texts = setTextToTextAreas.textSetter(selectedDocumentPath, filename);
+        String content = texts[0].toLowerCase();
+        String queryString = queryTemp;
+        String[] query = null;
+        if (queryString.length() <= 0) {
+            return;
+        }
+        if (queryString.contains("~")) {
+
+            query = queryString.split("~");
+
+        } else {
+            query = new String[1];
+            query[0] = queryString;
+        }
+
+        for (int i = 0; i < query.length; i++) {
+            String searchQuery = query[i];
+            TextHighlighter highlighterFirstFile = new TextHighlighter();
+            String[] highlightindexedInfoFirstFile = highlighterFirstFile.highlightTexts(content, searchQuery);
+            int startIndexFirst = Integer.valueOf(highlightindexedInfoFirstFile[0]);
+            int endIndexFirst = Integer.valueOf(highlightindexedInfoFirstFile[1]);
+            String match = highlightindexedInfoFirstFile[2];
+            ArrayList<Integer> arr = new ArrayList<Integer>();
+            arr.add(startIndexFirst);
+            arr.add(endIndexFirst);
+            indexHighligherMap.put(match, arr);
+            matchingToPreprocessed.put(highlightindexedInfoFirstFile[2], highlightindexedInfoFirstFile[3]);
+        }
+    }
+
+
+
+
+    public void highlighter(String queryTemp,String paraphrasedFirstPhraseTemp,String paraphrasedSecondPhraseTemp) {
+
+       String paraphrasedFirstPhrase=paraphrasedFirstPhraseTemp;
+       String paraphrasedSecondPhrase=paraphrasedSecondPhraseTemp;
+       String queryString = queryTemp;
+        
+        selectedFileEditorPane.setHighlighter(hilit);
+        suspectedFileEditorPane.setHighlighter(hilit2);
+        hilit.removeAllHighlights();
+        hilit2.removeAllHighlights();
+        String content = selectedFileEditorPane.getText();
+        String content2 = suspectedFileEditorPane.getText();
+        String[] query = null;
+        String[] queryforFirstFile = null;
+        String[] queryforSecondFile = null;
+
+        if ((queryString.length() <= 0) && (paraphrasedFirstPhrase.length()<=0)) {
+            return;
+        }
+        query = queryString.split("~");
+        queryforFirstFile=paraphrasedFirstPhrase.split("~");
+        queryforSecondFile=paraphrasedSecondPhrase.split("~");
+
+        if(queryString.length() !=0){
+            ArrayList<Color> colourArray=getColourArray(query);
+            setHighlighterToBothTextFiles(query,content,content2,colourArray);
+        }
+        if(queryforFirstFile.length !=1){
+            ArrayList<Color> colourArray=getColourArray(queryforFirstFile);
+            setHighlighterToFirstTextFile(queryforFirstFile, content2, content2, colourArray);
+        }
+        if(queryforSecondFile.length !=1){
+            ArrayList<Color> colourArray=getColourArray(queryforSecondFile);
+            setHighlighterToSecondTextFile(queryforSecondFile, content2, content2, colourArray);
+        }
+
+    }
+
+
+     public void setHighlighterToBothTextFiles(String[] queryArray,String contentTemp,String content2Temp,ArrayList<Color> colourArrayTemp){
+
+       String content=contentTemp;
+       String content2=content2Temp;
+       ArrayList<Color> colourArray =colourArrayTemp;
+
+       for (int i = 0; i < queryArray.length; i++) {
+            String searchQuery = queryArray[i];
+            TextHighlighter highlighterFirstFile = new TextHighlighter();
+            TextHighlighter highlighterSecondFile = new TextHighlighter();
+            String[] highlightindexedInfoFirstFile = highlighterFirstFile.highlightTexts(content, searchQuery);
+            String[] highlightindexedInfoSecondFile = highlighterSecondFile.highlightTexts(content2, searchQuery);
+            int startIndexFirst = Integer.valueOf(highlightindexedInfoFirstFile[0]);
+            int endIndexFirst = Integer.valueOf(highlightindexedInfoFirstFile[1]);
+            int startIndexSecond = Integer.valueOf(highlightindexedInfoSecondFile[0]);
+            int endIndexSecond = Integer.valueOf(highlightindexedInfoSecondFile[1]);
+            try {
+                Color HILIT_COLOR = colourArray.get(i);
+
+                if (startIndexFirst != -1) {
+                    painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
+                    hilit.addHighlight(startIndexFirst, endIndexFirst, painter);
+                    selectedFileEditorPane.setCaretPosition(endIndexFirst);
+
+                }
+                if (startIndexSecond != -1) {
+
+                    painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
+
+                    hilit2.addHighlight(startIndexSecond, endIndexSecond, painter);
+
+                    suspectedFileEditorPane.setCaretPosition(endIndexSecond);
+
+                }
+
+            } catch (BadLocationException ex) {
+                Logger.getLogger(ReportingModule.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+
+   }
+
+    public void setHighlighterToFirstTextFile(String[] queryArray,String contentTemp,String content2Temp,ArrayList<Color> colourArrayTemp){
+
+       String content=contentTemp;
+       ArrayList<Color> colourArray =colourArrayTemp;
+
+
+       for (int i = 0; i < queryArray.length; i++) {
+            String searchQuery = queryArray[i];
+            TextHighlighter highlighterFirstFile = new TextHighlighter();
+            String[] highlightindexedInfoFirstFile = highlighterFirstFile.highlightTexts(content, searchQuery);
+            int startIndexFirst = Integer.valueOf(highlightindexedInfoFirstFile[0]);
+            int endIndexFirst = Integer.valueOf(highlightindexedInfoFirstFile[1]);
+            try {
+
+                Color HILIT_COLOR = colourArray.get(i);
+                if (startIndexFirst != -1) {
+                    painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
+                    hilit.addHighlight(startIndexFirst, endIndexFirst, painter);
+                    selectedFileEditorPane.setCaretPosition(endIndexFirst);
+
+                }
+
+            } catch (BadLocationException ex) {
+                Logger.getLogger(ReportingModule.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+
+   }
+
+
+    public void setHighlighterToSecondTextFile(String[] queryArray,String contentTemp,String content2Temp,ArrayList<Color> colourArrayTemp){
+
+       String content=contentTemp;
+       String content2=content2Temp;
+       ArrayList<Color> colourArray =colourArrayTemp;
+
+       for (int i = 0; i < queryArray.length; i++) {
+            String searchQuery = queryArray[i];
+            TextHighlighter highlighterSecondFile = new TextHighlighter();
+            String[] highlightindexedInfoSecondFile = highlighterSecondFile.highlightTexts(content2, searchQuery);
+            int startIndexSecond = Integer.valueOf(highlightindexedInfoSecondFile[0]);
+            int endIndexSecond = Integer.valueOf(highlightindexedInfoSecondFile[1]);
+            try {
+                Color HILIT_COLOR = colourArray.get(i);
+
+                if (startIndexSecond != -1) {
+
+                    painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
+
+                    hilit2.addHighlight(startIndexSecond, endIndexSecond, painter);
+
+                    suspectedFileEditorPane.setCaretPosition(endIndexSecond);
+
+                }
+
+            } catch (BadLocationException ex) {
+                Logger.getLogger(ReportingModule.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+
+   }
+
+
+
+    public void generateFinalReport() {
 
         File file = new File(selectedDocumentPath);
         ArrayList<String> onlineSourceArray = new ArrayList<String>();
@@ -1062,40 +1096,7 @@ public class ReportingModule extends javax.swing.JFrame {
         return reportRows;
     }
 
-    public DefaultPieDataset createPieDataset() {
-
-        DefaultPieDataset dataset = new DefaultPieDataset();
-        dataset.setValue("Original", new Double(43.2));
-        dataset.setValue("Plagiarizm Suspected", new Double(10.0));
-        dataset.setValue("Referenced", new Double(27.5));
-        return dataset;
-
-    }
-
-    private JFreeChart createChart(PieDataset dataset) {
-
-        JFreeChart chart = ChartFactory.createPieChart3D(
-                "Plagiarism Statistics", // chart title
-                dataset, // data
-                true, // include legend
-                true,
-                false);
-
-        PiePlot plot = (PiePlot) chart.getPlot();
-        plot.setLabelFont(new Font("SansSerif", Font.PLAIN, 12));
-        plot.setNoDataMessage("No data available");
-        plot.setCircular(false);
-        plot.setLabelGap(0.02);
-        return chart;
-
-    }
-
-    public BufferedImage createChart() {
-
-        DefaultPieDataset pie = this.createPieDataset();
-        JFreeChart jf = this.createChart(pie);
-        return jf.createBufferedImage(500, 500);
-    }
+   
 
     public void generateGraph() {
 
@@ -1159,7 +1160,7 @@ public class ReportingModule extends javax.swing.JFrame {
         }
     }
 
-    private void updateTextBoxes(String fileName) {
+    private void updateFileDisplayers(String fileName) {
 
         String fileName1 = selectedDocumentPath;
         String fileName2 = fileName;
@@ -1183,58 +1184,9 @@ public class ReportingModule extends javax.swing.JFrame {
         }
     }
 
-    public void setIndexDetails(String fileName) {
-
-        String fileName2 = fileName;
-        Set<String> docList = resultMap.keySet();
-        Iterator iter = docList.iterator();
-
-        while (iter.hasNext()) {
-            String name = (String) iter.next();
-            if (name.equalsIgnoreCase(fileName2)) {
-                String[] matchVal = resultMap.get(name);
-                jTextField1.setText(matchVal[0]);
-                this.highlighterDetails(matchVal[0], fileName);
-            }
-        }
-    }
-
-    public void highlighterDetails(String queryTemp, String filename) {
-
-        FileOperator setTextToTextAreas = new FileOperator();
-        String[] texts = setTextToTextAreas.textSetter(selectedDocumentPath, filename);
-        String content = texts[0].toLowerCase();
-        String queryString = queryTemp;
-        String[] query = null;
-        if (queryString.length() <= 0) {
-            return;
-        }
-        if (queryString.contains("~")) {
-
-            query = queryString.split("~");
-
-        } else {
-            query = new String[1];
-            query[0] = queryString;
-        }
-
-        for (int i = 0; i < query.length; i++) {
-            String searchQuery = query[i];
-            TextHighlighter highlighterFirstFile = new TextHighlighter();
-            String[] highlightindexedInfoFirstFile = highlighterFirstFile.highlightTexts(content, searchQuery);
-            int startIndexFirst = Integer.valueOf(highlightindexedInfoFirstFile[0]);
-            int endIndexFirst = Integer.valueOf(highlightindexedInfoFirstFile[1]);
-            String match = highlightindexedInfoFirstFile[2];
-            ArrayList<Integer> arr = new ArrayList<Integer>();
-            arr.add(startIndexFirst);
-            arr.add(endIndexFirst);
-            indexHighligherMap.put(match, arr);
-            matchingToPreprocessed.put(highlightindexedInfoFirstFile[2], highlightindexedInfoFirstFile[3]);
-        }
-    }
+    
 
     public void setMap(HashMap<String, String> fileUrlMap) {
-
         this.fileToUrlMap = fileUrlMap;
         if (fileUrlMap == null) {
             System.err.println("Fileurl map is null");
@@ -1254,6 +1206,53 @@ public class ReportingModule extends javax.swing.JFrame {
         for (int i = 0; i < urlList.size(); i++) {
             urlListTemp.add(urlList.get(i));
         }
+    }
+
+
+
+    public ArrayList<Color> getColourArray(String[] queries){
+
+        int queryCount=queries.length;
+        ArrayList<Color> colourArray = new ArrayList<Color>();
+        HashMap<Integer, Color> colorToIntegerMap = new HashMap<Integer, Color>();
+        colourArray.add(Color.cyan);
+        colorToIntegerMap.put(0, Color.cyan);
+        colourArray.add(Color.yellow);
+        colorToIntegerMap.put(1, Color.yellow);
+        colourArray.add(Color.MAGENTA);
+        colorToIntegerMap.put(2, Color.MAGENTA);
+        colourArray.add(Color.LIGHT_GRAY);
+        colorToIntegerMap.put(3, Color.LIGHT_GRAY);
+        colourArray.add(Color.pink);
+        colorToIntegerMap.put(4, Color.pink);
+        colourArray.add(Color.ORANGE);
+        colorToIntegerMap.put(5, Color.ORANGE);
+        colourArray.add(Color.gray);
+        colorToIntegerMap.put(6, Color.gray);
+        colourArray.add(Color.cyan);
+        colorToIntegerMap.put(7, Color.cyan);
+        colourArray.add(Color.yellow);
+        colorToIntegerMap.put(8, Color.yellow);
+        colourArray.add(Color.MAGENTA);
+        colorToIntegerMap.put(9, Color.LIGHT_GRAY);
+        colourArray.add(Color.LIGHT_GRAY);
+        colorToIntegerMap.put(10, Color.LIGHT_GRAY);
+        colourArray.add(Color.pink);
+        colorToIntegerMap.put(11, Color.pink);
+        colourArray.add(Color.ORANGE);
+        colorToIntegerMap.put(12, Color.ORANGE);
+        colourArray.add(Color.gray);
+        colorToIntegerMap.put(13, Color.gray);
+
+        if (colourArray.size() < queryCount) {
+
+            while (colourArray.size() != queryCount) {
+                Random randomGenerator = new Random();
+                int randomInt = randomGenerator.nextInt(12);
+                colourArray.add((Color) colorToIntegerMap.get(randomInt));
+            }
+        }
+        return colourArray;
     }
 
     /**
