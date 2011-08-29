@@ -32,7 +32,6 @@ public class test {
 
         IndexSearch is = new IndexSearch(indexFolderPath);
         PeerSearchManager psm  = new PeerSearchManager(is);
-        psm.setRandomSelectionRatio(.74f);
         ArrayList<String> selectedSources = is.searchIndex("software");
         Iterator it = selectedSources.iterator();
         int downloadedDocuments = 0;

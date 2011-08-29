@@ -37,7 +37,6 @@ public class PlagiabustServerSourceDownloadManager {
         Client client = new Client();
         PlagiabustWebSearchManager sd = new PlagiabustWebSearchManager(client);
         sd.setMaxNumOfSourcesPerDocument(maxNumOfSourcesPerDocument);
-        sd.setRandomSelectionRatio(0.2f);
         downloadFolderPath = sd.downloadSourcesForFile(destFolderPath + File.separator + fName, pbar);
         idList = sd.getIdList();
         idFileMap = sd.getIdFileMap();
@@ -59,7 +58,6 @@ public class PlagiabustServerSourceDownloadManager {
         PlagiabustWebSearchManager sd = new PlagiabustWebSearchManager(client);
 
         sd.setMaxNumOfSourcesPerDocument(maxNumOfSourcesPerDocument);
-        sd.setRandomSelectionRatio(0.2f);
         downloadedFileList = sd.downloadSourcesForFileFolder(fileArrayList, destFolderPath, pbar);
         return downloadedFileList;
     }

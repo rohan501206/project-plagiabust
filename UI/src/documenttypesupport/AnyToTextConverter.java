@@ -1,5 +1,6 @@
 package documenttypesupport;
 
+import com.lowagie.text.pdf.PdfDocument;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -25,6 +26,8 @@ import org.apache.poi.openxml4j.exceptions.OpenXML4JException;
 import org.apache.poi.xwpf.extractor.XWPFWordExtractor;
 import org.apache.poi.xwpf.usermodel.XWPFDocument;
 import org.apache.xmlbeans.XmlException;
+import org.pdfbox.cos.COSDocument;
+import org.pdfbox.pdfparser.PDFParser;
 import org.pdfbox.pdmodel.PDDocument;
 import org.pdfbox.util.PDFTextStripper;
 
@@ -67,22 +70,22 @@ public class AnyToTextConverter {
 
     private String pdfToString(String fileName) {
         String fileAsText = null;
-        PDDocument pdfDoc = null;
-
+        COSDocument cosdoc = null;
+        PDDocument pddoc = null;
         try {
-            PDFTextStripper myPDFTextStripper = new PDFTextStripper();
-
-            pdfDoc = PDDocument.load(fileName);
-            myPDFTextStripper.setStartPage(1);
-            fileAsText = myPDFTextStripper.getText(pdfDoc);
-
-            pdfDoc.close();
+            File pdfFilePath = new File(fileName);
+            PDFParser parser = new PDFParser(new FileInputStream(pdfFilePath));
+            parser.parse();
+            cosdoc = parser.getDocument();
+            PDFTextStripper stripper = new PDFTextStripper();
+            pddoc = new PDDocument(cosdoc);
+            fileAsText = stripper.getText(pddoc);
+           
         } catch (Exception e) {
         } finally {
             try {
-                if (pdfDoc != null) {
-                    pdfDoc.close();
-                }
+                cosdoc.close();
+                pddoc.close();
             } catch (Exception e) {
             }
         }
@@ -94,12 +97,14 @@ public class AnyToTextConverter {
         String rtfContents = null;
 
         try {
+
             FileInputStream stream = new FileInputStream(fileName);
             RTFEditorKit kit = new RTFEditorKit();
             Document doc = kit.createDefaultDocument();
             kit.read(stream, doc, 0);
 
             rtfContents = doc.getText(0, doc.getLength());
+
         } catch (Exception e) {
         }
 

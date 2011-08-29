@@ -8,7 +8,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
-import querycreator.QueryCreator;
+import querycreator.QueryBuilder;
 import querycreator.QuerySelectionAlgorithm;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -26,7 +26,7 @@ public class PeerSearchManager {
 
     private int numOfSourcesPerDoc = 10;
     private QuerySelectionAlgorithm qsa = QuerySelectionAlgorithm.Random;
-    private QueryCreator qc = new QueryCreator();
+    private QueryBuilder qc = new QueryBuilder();
     private HashMap<String, Integer> sources = new HashMap<String, Integer>();
     private HashMap<String, Integer> selectedSources = new HashMap<String, Integer>();
     private final IndexSearch indexSearch;
@@ -37,7 +37,7 @@ public class PeerSearchManager {
 
     
     public HashMap<String, Integer> getSuspiciousDocList(String filePath) {
-        ArrayList<String> queryList = qc.getQueryList(filePath, qsa);
+        ArrayList<String> queryList = qc.getQueryList(filePath);
         for (Iterator<String> it = queryList.iterator(); it.hasNext();) {
             String query = it.next();
             try {
@@ -92,10 +92,6 @@ public class PeerSearchManager {
 
     public QuerySelectionAlgorithm getQuerySelectionAlgorithm() {
         return qsa;
-    }
-
-    public void setRandomSelectionRatio(float ratio) {
-        qc.setRandomSelectionRatio(ratio);
     }
 
     public int getNumOfSourcesPerDoc() {
