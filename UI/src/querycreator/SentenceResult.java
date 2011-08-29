@@ -10,6 +10,6 @@ package querycreator;
  * @author kasun
  */
 public class SentenceResult {
-   String sentence;
-   Double score;
+   public String sentence;
+   public Double score;
 }
