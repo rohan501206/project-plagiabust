@@ -19,10 +19,8 @@ import edu.uci.ics.jung.visualization.control.DefaultModalGraphMouse;
 import edu.uci.ics.jung.visualization.control.ModalGraphMouse;
 import edu.uci.ics.jung.visualization.decorators.ToStringLabeller;
 import edu.uci.ics.screencap.PNGDump;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -57,8 +55,6 @@ import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
 import org.jfree.data.general.PieDataset;
 
-
-
 /**
  *
  * @author nuwan
@@ -68,19 +64,21 @@ public class PeerSearchUI extends javax.swing.JFrame {
     JRViewer jrv;
     HashMap<String, HashMap<String, String[]>> peerSearchResult;
     HashMap<String, HashMap<String, String[]>> globalSearchResult;
-    ArrayList<String> fileNamesArrayList= new ArrayList<String>();
-    ArrayList<String> urlarraylist= new ArrayList<String>();
+    ArrayList<String> fileNamesArrayList = new ArrayList<String>();
+    ArrayList<String> urlarraylist = new ArrayList<String>();
     String documentFolder;
-    HashMap<Integer,String> topResults= new HashMap<Integer,String>();;
+    HashMap<Integer, String> topResults = new HashMap<Integer, String>();
+
+    ;
     DefaultListModel listModelGraph = new DefaultListModel();
     Graph<Integer, CustomEdge> g;
-    Layout<Integer, String> layout ;
-    VisualizationViewer<Integer,String> vv;
+    Layout<Integer, String> layout;
+    VisualizationViewer<Integer, String> vv;
     private int edgecount;
 
     /** Creates new form PeerSearchUI */
     public PeerSearchUI() {
-        
+
         initComponents();
         prevButton.setEnabled(false);
         jTabbedPane1.setEnabledAt(1, false);
@@ -569,164 +567,154 @@ public class PeerSearchUI extends javax.swing.JFrame {
         internetSourcesList.setModel(model2);
 
         if (!evt.getValueIsAdjusting()) {
-            JList list = (JList) evt.getSource();            
+            JList list = (JList) evt.getSource();
             selectedval = (String) list.getSelectedValue();
         }
-        
+
         if (selectedval != null) {
-            System.err.println("selected file is: "+ selectedval);
-            HashMap<String, String[]> fileResultDetail=peerSearchResult.get(selectedval);
-            HashMap<String, String[]> globalSourceResultDetail=globalSearchResult.get(selectedval);
+            System.err.println("selected file is: " + selectedval);
+            HashMap<String, String[]> fileResultDetail = peerSearchResult.get(selectedval);
+            HashMap<String, String[]> globalSourceResultDetail = globalSearchResult.get(selectedval);
 
-            if(globalSourceResultDetail==null){
+            if (globalSourceResultDetail == null) {
 
-            HashMap<String, String[]> globalSourceResultDetailTemp= new HashMap<String, String[]>();
-            Iterator peerserac = peerSearchResult.entrySet().iterator();
-            
-            while (peerserac.hasNext()) {
+                HashMap<String, String[]> globalSourceResultDetailTemp = new HashMap<String, String[]>();
+                Iterator peerserac = peerSearchResult.entrySet().iterator();
 
-            Map.Entry pair = (Map.Entry) peerserac.next();
-            String fileName = (String) pair.getKey();
-            String match="";
-            String[] matchvaluepair=new String[2];
-            matchvaluepair[0]=fileName;
-            matchvaluepair[1]=match;
-            globalSourceResultDetailTemp.put("www.asdasdsadas.com", matchvaluepair);
+                while (peerserac.hasNext()) {
 
-                
+                    Map.Entry pair = (Map.Entry) peerserac.next();
+                    String fileName = (String) pair.getKey();
+                    String match = "";
+                    String[] matchvaluepair = new String[2];
+                    matchvaluepair[0] = fileName;
+                    matchvaluepair[1] = match;
+                    globalSourceResultDetailTemp.put("www.asdasdsadas.com", matchvaluepair);
+
+
+                }
+                globalSourceResultDetail = globalSourceResultDetailTemp;
+
             }
-            globalSourceResultDetail=globalSourceResultDetailTemp;
-
-            } 
 
 
             Iterator fileIterator = fileResultDetail.entrySet().iterator();
             Iterator globalSourceIterator = globalSourceResultDetail.entrySet().iterator();
-            int i=0;
-            
-        while (fileIterator.hasNext()) {
+            int i = 0;
 
-            Map.Entry pair = (Map.Entry) fileIterator.next();
-            String fileName = (String) pair.getKey();
-            System.err.println(fileName);
-            model.add(i, fileName);
-            i++;
+            while (fileIterator.hasNext()) {
+
+                Map.Entry pair = (Map.Entry) fileIterator.next();
+                String fileName = (String) pair.getKey();
+                System.err.println(fileName);
+                model.add(i, fileName);
+                i++;
+
+            }
+
+            i = 0;
+            while (globalSourceIterator.hasNext()) {
+
+                Map.Entry pair = (Map.Entry) globalSourceIterator.next();
+                String sourceName = (String) pair.getKey();
+                model2.add(i, sourceName);
+                i++;
+
+            }
 
         }
-         
-        i=0;    
-        while (globalSourceIterator.hasNext()) {
-
-            Map.Entry pair = (Map.Entry) globalSourceIterator.next();
-            String sourceName = (String) pair.getKey();
-            model2.add(i, sourceName);        
-            i++;        
-                       
-        }
-
-          }
     }//GEN-LAST:event_fileNameListValueChanged
 
     private void prevButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_prevButtonActionPerformed
 
-       nextButton.setEnabled(true);
+        nextButton.setEnabled(true);
         int index = jTabbedPane1.getSelectedIndex();
-        int prevIndex=index - 1;
+        int prevIndex = index - 1;
         if (index != 0) {
             jTabbedPane1.setSelectedIndex(prevIndex);
         }
-        if(prevIndex==0){
+        if (prevIndex == 0) {
             prevButton.setEnabled(false);
         }
-        
-       
-
 
     }//GEN-LAST:event_prevButtonActionPerformed
 
     private void viewResultsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewResultsButtonActionPerformed
 
-        if((((String)fileNameList.getSelectedValue())!=null) && (((String)suspectedFileList.getSelectedValue())!=null) ){
+        if ((((String) fileNameList.getSelectedValue()) != null) && (((String) suspectedFileList.getSelectedValue()) != null)) {
 
-            String sourceFile=((String)fileNameList.getSelectedValue());
-            String suspectedFile= ((String)suspectedFileList.getSelectedValue());
-           
+            String sourceFile = ((String) fileNameList.getSelectedValue());
+            String suspectedFile = ((String) suspectedFileList.getSelectedValue());
 
-            HashMap<String, String[]>  comparisonIfo= peerSearchResult.get(sourceFile);
+
+            HashMap<String, String[]> comparisonIfo = peerSearchResult.get(sourceFile);
 
             Iterator sourceIterator = comparisonIfo.entrySet().iterator();
-            String[] matchString=new String[2];
+            String[] matchString = new String[2];
             while (sourceIterator.hasNext()) {
 
-            Map.Entry pair = (Map.Entry) sourceIterator.next();
-            String fileName = (String) pair.getKey();
-            if(fileName.equalsIgnoreCase(suspectedFile)){
-                matchString=(String[]) pair.getValue();
-            }
+                Map.Entry pair = (Map.Entry) sourceIterator.next();
+                String fileName = (String) pair.getKey();
+                if (fileName.equalsIgnoreCase(suspectedFile)) {
+                    matchString = (String[]) pair.getValue();
+                }
 
             }
 
-            CrossCheckModule crossCheck=new CrossCheckModule(sourceFile, suspectedFile, matchString[0]);
+            CrossCheckModule crossCheck = new CrossCheckModule(sourceFile, suspectedFile, matchString[0]);
             crossCheck.setData();
             crossCheck.setVisible(true);
 
 
+        } /**else if((((String) fileNameList.getSelectedValue()) != null) && (((String) internetSourcesList.getSelectedValue()) != null))
+        {
+
+        String sourceFile=((String)fileNameList.getSelectedValue());
+        String suspectedInternetFile= ((String)internetSourcesList.getSelectedValue());
+        String matchstring="";
+
+        HashMap<String, String>  comparisonIfoInternet= globalSearchResult.get(sourceFile);
+
+        Iterator globleSourceIterator = comparisonIfoInternet.entrySet().iterator();
+
+        while (globleSourceIterator.hasNext()) {
+
+        Map.Entry pair = (Map.Entry) globleSourceIterator.next();
+        String fileName = (String) pair.getKey();
+        if(fileName.equalsIgnoreCase(suspectedInternetFile)){
+        matchstring=(String) pair.getValue();
+        }
         }
 
-
-        /**else if((((String) fileNameList.getSelectedValue()) != null) && (((String) internetSourcesList.getSelectedValue()) != null))
-            {
-
-            String sourceFile=((String)fileNameList.getSelectedValue());
-            String suspectedInternetFile= ((String)internetSourcesList.getSelectedValue());
-            String matchstring="";
-
-            HashMap<String, String>  comparisonIfoInternet= globalSearchResult.get(sourceFile);
-
-            Iterator globleSourceIterator = comparisonIfoInternet.entrySet().iterator();
-
-            while (globleSourceIterator.hasNext()) {
-
-            Map.Entry pair = (Map.Entry) globleSourceIterator.next();
-            String fileName = (String) pair.getKey();
-            if(fileName.equalsIgnoreCase(suspectedInternetFile)){
-                matchstring=(String) pair.getValue();
-            }
-            }
-
-            CrossCheckModule crossCheck=new CrossCheckModule(sourceFile,suspectedInternetFile, matchstring);
-            crossCheck.setData();
-            crossCheck.setVisible(true);
+        CrossCheckModule crossCheck=new CrossCheckModule(sourceFile,suspectedInternetFile, matchstring);
+        crossCheck.setData();
+        crossCheck.setVisible(true);
 
 
 
         }  **/
-
-
-        
-
- else{
+        else {
             JOptionPane.showMessageDialog(this, "please select a document from suspected file list to view the comparison");
- }
+        }
 
 
 
     }//GEN-LAST:event_viewResultsButtonActionPerformed
 
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
-       int index = jTabbedPane1.getSelectedIndex();
-        int nextIndex=index+1;
-        if(nextIndex!=4){
-        jTabbedPane1.setSelectedIndex(nextIndex);
-        prevButton.setEnabled(true);
-        jTabbedPane1.setEnabledAt(index, true);
-        jTabbedPane1.setEnabledAt(index+1, true);
+        int index = jTabbedPane1.getSelectedIndex();
+        int nextIndex = index + 1;
+        if (nextIndex != 4) {
+            jTabbedPane1.setSelectedIndex(nextIndex);
+            prevButton.setEnabled(true);
+            jTabbedPane1.setEnabledAt(index, true);
+            jTabbedPane1.setEnabledAt(index + 1, true);
         }
-        if(nextIndex==3){
+        if (nextIndex == 3) {
             nextButton.setEnabled(false);
         }
 
-        
+
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void internetSourcesListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_internetSourcesListValueChanged
@@ -741,8 +729,6 @@ public class PeerSearchUI extends javax.swing.JFrame {
         internetSourcesList.clearSelection();
     }//GEN-LAST:event_suspectedFileListValueChanged
 
-    
-
     public void processResults() {
 
         Iterator it = peerSearchResult.entrySet().iterator();
@@ -751,18 +737,18 @@ public class PeerSearchUI extends javax.swing.JFrame {
             Map.Entry pair = (Map.Entry) it.next();
             String fileName = (String) pair.getKey();
             fileNamesArrayList.add(fileName);
-            HashMap<String, String> hm=(HashMap<String, String>) pair.getValue();
-            topResults.put(hm.size(),fileName);
-           }
+            HashMap<String, String> hm = (HashMap<String, String>) pair.getValue();
+            topResults.put(hm.size(), fileName);
+        }
         while (globalit.hasNext()) {
-            Map.Entry pair = (Map.Entry) globalit.next();            
-            HashMap<String, String> hm=(HashMap<String, String>) pair.getValue();
+            Map.Entry pair = (Map.Entry) globalit.next();
+            HashMap<String, String> hm = (HashMap<String, String>) pair.getValue();
             Iterator globalittemp = hm.entrySet().iterator();
             while (globalittemp.hasNext()) {
                 Map.Entry pair2 = (Map.Entry) globalittemp.next();
-                urlarraylist.add((String)pair2.getKey());
-                
-                       }
+                urlarraylist.add((String) pair2.getKey());
+
+            }
         }
         HashSet set = new HashSet(urlarraylist);
         urlarraylist.clear();
@@ -771,55 +757,55 @@ public class PeerSearchUI extends javax.swing.JFrame {
         setValuestoJLists(fileNamesArrayList);
     }
 
-    public void setValuestoJLists(ArrayList<String> contents){
+    public void setValuestoJLists(ArrayList<String> contents) {
 
         DefaultListModel model = new DefaultListModel();
         fileNameList.setModel(model);
         for (int i = 0; i < contents.size(); i++) {
-            model.add(i,contents.get(i));
+            model.add(i, contents.get(i));
         }
         fileNameList.setSelectedIndex(0);
     }
 
     public void setFolder(String sourceFolderName) {
-        documentFolder=sourceFolderName;
+        documentFolder = sourceFolderName;
     }
 
     public void setResultDetails() {
-        ArrayList sortedList=new ArrayList();
+        ArrayList sortedList = new ArrayList();
         folderNameTextField.setText(documentFolder);
         folderNameTextField.setToolTipText(documentFolder);
-        File f=new File(documentFolder);
-        int noOfFiles=f.listFiles().length;
+        File f = new File(documentFolder);
+        int noOfFiles = f.listFiles().length;
         documentNumberTextField.setText(String.valueOf(noOfFiles));
         possiblePlagiarizedTextField.setText(String.valueOf(fileNamesArrayList.size()));
         DefaultListModel model = new DefaultListModel();
         topPlagList.setModel(model);
-        SortedSet<Integer> sortedset= new TreeSet<Integer>(topResults.keySet());
+        SortedSet<Integer> sortedset = new TreeSet<Integer>(topResults.keySet());
         Iterator<Integer> it = sortedset.iterator();
-        int count=0;
-        while (it.hasNext() && count<10 ) {
+        int count = 0;
+        while (it.hasNext() && count < 10) {
 
-             sortedList.add(it.next());
-             count++;
+            sortedList.add(it.next());
+            count++;
         }
 
-         Collections.reverse(sortedList);
+        Collections.reverse(sortedList);
 
-         for(int i=0;i<sortedList.size();i++){
-             model.add(i, topResults.get(sortedList.get(i)));
-         }
+        for (int i = 0; i < sortedList.size(); i++) {
+            model.add(i, topResults.get(sortedList.get(i)));
+        }
         DefaultListModel model2 = new DefaultListModel();
         topInternetList.setModel(model2);
 
         for (int i = 0; i < urlarraylist.size(); i++) {
-            model2.add(i,urlarraylist.get(i));
+            model2.add(i, urlarraylist.get(i));
         }
         generateGraph();
-        generateResults();
+        generateFinalReport();
     }
 
-     public void generateResults() {
+    public void generateFinalReport() {
 
         HashMap hm = new HashMap();
         Calendar cal = Calendar.getInstance();
@@ -827,10 +813,10 @@ public class PeerSearchUI extends javax.swing.JFrame {
         String time = sdf.format(cal.getTime());
 
 
-        String nodeList="";
+        String nodeList = "";
         for (int i = 0; i < listModelGraph.size(); i++) {
-            String node= (String)listModelGraph.get(i);
-            nodeList=nodeList+"\n"+node;
+            String node = (String) listModelGraph.get(i);
+            nodeList = nodeList + "\n" + node;
         }
 
         hm.put("field", nodeList);
@@ -855,149 +841,97 @@ public class PeerSearchUI extends javax.swing.JFrame {
 
     }
 
-public JRDataSource createReportDataSource()
-{
-JRBeanCollectionDataSource dataSource;
-ArrayList<DataFetcherPeerSearch> reportRows = initializeBeanArray();
-dataSource = new JRBeanCollectionDataSource(reportRows);
-return dataSource;
+    public JRDataSource createReportDataSource() {
+        JRBeanCollectionDataSource dataSource;
+        ArrayList<DataFetcherPeerSearch> reportRows = initializeBeanArray();
+        dataSource = new JRBeanCollectionDataSource(reportRows);
+        return dataSource;
 
-}
+    }
 
-public ArrayList<DataFetcherPeerSearch> initializeBeanArray()
-{
+    public ArrayList<DataFetcherPeerSearch> initializeBeanArray() {
 
-ArrayList<DataFetcherPeerSearch> reportRows = new ArrayList<DataFetcherPeerSearch>();
+        ArrayList<DataFetcherPeerSearch> reportRows = new ArrayList<DataFetcherPeerSearch>();
 
-Iterator peerit = peerSearchResult.entrySet().iterator();
-Iterator globalit = globalSearchResult.entrySet().iterator();
-int i=0;
+        Iterator peerit = peerSearchResult.entrySet().iterator();
+        Iterator globalit = globalSearchResult.entrySet().iterator();
+        int i = 0;
 
         while (peerit.hasNext()) {
             Map.Entry pair = (Map.Entry) peerit.next();
             String fileName = (String) pair.getKey();
-            HashMap<String, String[]> hm=(HashMap<String, String[]>) pair.getValue();
+            HashMap<String, String[]> hm = (HashMap<String, String[]>) pair.getValue();
             Iterator resultIterator = hm.entrySet().iterator();
             while (resultIterator.hasNext()) {
-                 Map.Entry pair2 = (Map.Entry) resultIterator.next();
-                 String suspectedFile = (String) pair2.getKey();
-                 String[] matchdetails=(String[]) pair2.getValue();
-                 String plagValue=matchdetails[1]+"%";
-                 reportRows.add(new DataFetcherPeerSearch(fileName,suspectedFile,plagValue));
-                 i++;
-
-             }
-            
-
-
-           }
-
-
-
-
-
-return reportRows;
-}
-
-
-
-
-
-
-    public DefaultPieDataset createPieDataset() {
-
-
-        DefaultPieDataset dataset = new DefaultPieDataset();
-        dataset.setValue("Original", new Double(43.2));
-        dataset.setValue("Plagarizm Suspected", new Double(10.0));
-        dataset.setValue("Refereenced", new Double(27.5));
-        return dataset;
-
-    }
-
-    private JFreeChart createChart(PieDataset dataset) {
-
-        JFreeChart chart = ChartFactory.createPieChart3D(
-                "Plagiarism Statistics", // chart title
-                dataset, // data
-                true, // include legend
-                true,
-                false);
-
-        PiePlot plot = (PiePlot) chart.getPlot();
-        plot.setLabelFont(new Font("SansSerif", Font.PLAIN, 12));
-        plot.setNoDataMessage("No data available");
-        plot.setCircular(false);
-        plot.setLabelGap(0.02);
-        return chart;
-
-    }
-
-    public BufferedImage createChart() {
-
-        DefaultPieDataset pie = this.createPieDataset();
-        JFreeChart jf = this.createChart(pie);
-        return jf.createBufferedImage(500, 500);
-
-    }
-
-    private void generateGraph() {
-
-        g= new SparseMultigraph<Integer, CustomEdge>();
-        HashMap<String, Integer> docToIntegerMap=new HashMap<String, Integer>();
-        Set<String> docList=peerSearchResult.keySet();
-        Iterator iter = docList.iterator();
-        int verCount=0;
-        
-        graphverticesNames.setModel(listModelGraph);
-
-        while (iter.hasNext()) {
-            String name=(String)iter.next();
-            int countNo=++verCount;
-            listModelGraph.add(verCount-1,String.valueOf(countNo)+" -- "+name);
-            docToIntegerMap.put(name, countNo);
-            g.addVertex((Integer)countNo);
-
-        }
-
-        Iterator it = peerSearchResult.entrySet().iterator();
-        HashSet ha=new HashSet();
-
-        while (it.hasNext()) {
-
-            Map.Entry pair = (Map.Entry) it.next();
-            String fileName = (String) pair.getKey();
-            HashMap<String, String[]> hm=(HashMap<String, String[]>) pair.getValue();
-            Iterator valueIterator = hm.entrySet().iterator();
-
-            while (valueIterator.hasNext()) {
-                edgecount++;
-                Map.Entry matchPairs = (Map.Entry)valueIterator.next();
-                String suspectedFileName = (String) matchPairs.getKey();
-                String[] matchValuePair = (String[]) matchPairs.getValue();
-                String value=matchValuePair[1]+"%";
-                System.err.println(value);
-                ArrayList lsi = new ArrayList(g.getEdges());
-                for(int i=0;i<lsi.size();i++){
-                   ha.add(lsi.get(i));
-                }
-
-                if((g.findEdge(docToIntegerMap.get(suspectedFileName), docToIntegerMap.get(fileName)))==null)
-                g.addEdge(new CustomEdge(value),docToIntegerMap.get(fileName) , docToIntegerMap.get(suspectedFileName));
-                //}
+                Map.Entry pair2 = (Map.Entry) resultIterator.next();
+                String suspectedFile = (String) pair2.getKey();
+                String[] matchdetails = (String[]) pair2.getValue();
+                String plagValue = matchdetails[1] + "%";
+                reportRows.add(new DataFetcherPeerSearch(fileName, suspectedFile, plagValue));
+                i++;
 
             }
 
 
 
-           }
+        }
+        return reportRows;
+    }
+
+    private void generateGraph() {
+
+        g = new SparseMultigraph<Integer, CustomEdge>();
+        HashMap<String, Integer> docToIntegerMap = new HashMap<String, Integer>();
+        Set<String> docList = peerSearchResult.keySet();
+        Iterator iter = docList.iterator();
+        int verCount = 0;
+
+        graphverticesNames.setModel(listModelGraph);
+
+        while (iter.hasNext()) {
+            String name = (String) iter.next();
+            int countNo = ++verCount;
+            listModelGraph.add(verCount - 1, String.valueOf(countNo) + " -- " + name);
+            docToIntegerMap.put(name, countNo);
+            g.addVertex((Integer) countNo);
+
+        }
+
+        Iterator it = peerSearchResult.entrySet().iterator();
+        HashSet ha = new HashSet();
+
+        while (it.hasNext()) {
+
+            Map.Entry pair = (Map.Entry) it.next();
+            String fileName = (String) pair.getKey();
+            HashMap<String, String[]> hm = (HashMap<String, String[]>) pair.getValue();
+            Iterator valueIterator = hm.entrySet().iterator();
+
+            while (valueIterator.hasNext()) {
+                edgecount++;
+                Map.Entry matchPairs = (Map.Entry) valueIterator.next();
+                String suspectedFileName = (String) matchPairs.getKey();
+                String[] matchValuePair = (String[]) matchPairs.getValue();
+                String value = matchValuePair[1] + "%";
+                System.err.println(value);
+                ArrayList lsi = new ArrayList(g.getEdges());
+                for (int i = 0; i < lsi.size(); i++) {
+                    ha.add(lsi.get(i));
+                }
+
+                if ((g.findEdge(docToIntegerMap.get(suspectedFileName), docToIntegerMap.get(fileName))) == null) {
+                    g.addEdge(new CustomEdge(value), docToIntegerMap.get(fileName), docToIntegerMap.get(suspectedFileName));
+                }
+
+            }
+        }
 
         layout = new CircleLayout(g);
-        layout.setSize(new Dimension(300,300));
+        layout.setSize(new Dimension(300, 300));
 
-        vv = new VisualizationViewer<Integer,String>(layout);
-        vv.setPreferredSize(new Dimension(300,300));
-        vv.setSize(new Dimension(300,300));
+        vv = new VisualizationViewer<Integer, String>(layout);
+        vv.setPreferredSize(new Dimension(300, 300));
+        vv.setSize(new Dimension(300, 300));
         // Show vertex and edge labels
         vv.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
         vv.getRenderContext().setEdgeLabelTransformer(new ToStringLabeller());
@@ -1007,29 +941,28 @@ return reportRows;
         vv.setGraphMouse(gm);
 
         graphScrollPane.setViewportView(vv);
-PNGDump dumper = new PNGDump();
-		try {
-			dumper.dumpComponent(new File("jasper/reportImages/test.png"), vv);
-		} catch (IOException e) {
-			System.err.println("dump failed");
-		}
+        PNGDump dumper = new PNGDump();
+        try {
+            dumper.dumpComponent(new File("jasper/reportImages/test.png"), vv);
+        } catch (IOException e) {
+            System.err.println("dump failed");
+        }
 
 
 
 
 
     }
-
 
     public void setData(HashMap<String, HashMap<String, String[]>> peerFilesReportData, HashMap<String, HashMap<String, String[]>> internetFilesReportData) {
 
         peerSearchResult = peerFilesReportData;
         globalSearchResult = internetFilesReportData;
     }
+
     /**
      * @param args the command line arguments
      */
-
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
 
@@ -1084,7 +1017,4 @@ PNGDump dumper = new PNGDump();
     private javax.swing.JList topPlagList;
     private javax.swing.JButton viewResultsButton;
     // End of variables declaration//GEN-END:variables
-
-    
-
 }
