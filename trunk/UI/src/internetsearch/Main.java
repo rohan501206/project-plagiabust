@@ -39,9 +39,8 @@ public class Main {
         fileList.add("C:/Users/Brave Heart/Desktop/New folder/060501P-CS3200-Software_Architecture_Document_2.txt");
         fileList.add("C:/Users/Brave Heart/Desktop/New folder/070014J_Software_Architecture_Document.txt");
         BingSearch bingSearch = new BingSearch("F138552F897E2CA7C264FDAC64F8EF2021ABD3AF");
-        bingSearch.setMaxNumOfResults(5);
+        
         InternetSearchManager sd = new InternetSearchManager(bingSearch);
-        sd.setRandomSelectionRatio(0.1f);
         HashMap<String, ArrayList<String>> map = sd.downloadSourcesForFileFolder(fileList, "C:/Users/Brave Heart/Desktop/New folder",pbar2);
         
         Iterator mapIterator = map.entrySet().iterator();

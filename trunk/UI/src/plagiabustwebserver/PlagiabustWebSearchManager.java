@@ -20,7 +20,7 @@ import java.util.List;
 import java.util.Map;
 import javax.swing.JProgressBar;
 import org.htmlparser.beans.StringBean;
-import querycreator.QueryCreator;
+import querycreator.QueryBuilder;
 import querycreator.QuerySelectionAlgorithm;
 
 /**
@@ -30,7 +30,7 @@ import querycreator.QuerySelectionAlgorithm;
 public class PlagiabustWebSearchManager {
 
     private QuerySelectionAlgorithm qsa = QuerySelectionAlgorithm.Random;
-    private QueryCreator qc = new QueryCreator();
+    private QueryBuilder qc = new QueryBuilder();
     private final Client searchClient;
     private int maxNumOfSourcesPerDocument = 10;
     private ArrayList<String> idList = new ArrayList<String>();
@@ -72,6 +72,7 @@ public class PlagiabustWebSearchManager {
                 String path = downloadedFilesFolder + File.separatorChar + downloadedDocuments + ".txt";
                 downloadedDocuments++;
                 this.downloadWebPageAsText(id, path);
+                id = "http://localhost:8983/solr/select/?q=id%3A"+ id +"&version=2.2&start=0&rows=10&indent=on";
                 idList.add(id);
                 idFileMap.put(path, id);
                 pmanager.runProgress((downloadedDocuments * 100) / total);
@@ -188,7 +189,7 @@ public class PlagiabustWebSearchManager {
 
     private HashMap<String, Integer> getPlagiabustServerSourceForFile(String filePath) {
 
-        ArrayList<String> queryList = qc.getQueryList(filePath, 0.01f);
+        ArrayList<String> queryList = qc.getQueryList(filePath);
         HashMap<String, Integer> sources = new HashMap<String, Integer>();
         HashMap<String, Integer> selectedSources = new HashMap<String, Integer>();
 
@@ -257,10 +258,6 @@ public class PlagiabustWebSearchManager {
         } catch (IOException ex) {
         }
 
-    }
-
-    public void setRandomSelectionRatio(float ratio) {
-        qc.setRandomSelectionRatio(ratio);
     }
 
     public int getMaxNumOfSourcesPerDocument() {

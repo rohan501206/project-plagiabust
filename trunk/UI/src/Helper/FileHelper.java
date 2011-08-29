@@ -15,9 +15,9 @@ import java.util.ArrayList;
  */
 public class FileHelper {
     
-    public ArrayList<String> queue = new ArrayList<String>();
+    private static ArrayList<String> queue = new ArrayList<String>();
     
-    public ArrayList<String> listFilesInFolder(File file){
+    public static ArrayList<String> listFilesInFolder(File file){
         if(!queue.isEmpty()){
             queue.clear();
         }
@@ -27,7 +27,7 @@ public class FileHelper {
         return queue;
     }
     
-    private void listFiles(File file) {
+    private static void listFiles(File file) {
         if (!file.exists()) {
             System.out.println(file + " does not exist.");
         }

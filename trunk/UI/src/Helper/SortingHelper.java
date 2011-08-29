@@ -21,7 +21,7 @@ public class SortingHelper {
     public SortingHelper() {
     }
 
-    public Map sortByValue(Map map) {
+    public static Map sortByValue(Map map) {
         List list = new LinkedList(map.entrySet());
         Collections.sort(list, new Comparator() {
 

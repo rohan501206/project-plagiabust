@@ -29,7 +29,7 @@ public class IndexSearch {
 
     private String indexPath = "";
     private int numOfSourcesPerSearch = 10;
-    private QueryParser qParser = new QueryParser(Version.LUCENE_29, "contents", new StandardAnalyzer(Version. LUCENE_29));
+    private QueryParser qParser = new QueryParser(Version.LUCENE_29, "contents", new StandardAnalyzer(Version.LUCENE_29));
 
     public IndexSearch(String path) {
         this.indexPath = path;
@@ -56,8 +56,6 @@ public class IndexSearch {
 
             searcher.close();
         } catch (ParseException ex) {
-
-            System.out.println();
             //Logger.getLogger(IndexSearch.class.getName()).log(Level.SEVERE, null, ex);
         }
         return docList;

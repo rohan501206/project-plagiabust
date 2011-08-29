@@ -36,7 +36,6 @@ public class DocumentIndexingManager {
         indexFolderPath=indexpath;
         IndexSearch is = new IndexSearch(indexFolderPath);
         PeerSearchManager psm = new PeerSearchManager(is);
-        psm.setRandomSelectionRatio(.50f);
         HashMap<String, Integer> selectedSources = psm.getSuspiciousDocList(selectedDocumentPath);
         Iterator it = selectedSources.entrySet().iterator();
         int selectedDocuments = 0;
@@ -68,7 +67,6 @@ public class DocumentIndexingManager {
         indexFolderPath=indexFolderPathTemp;
         IndexSearch is = new IndexSearch(indexFolderPath);
         PeerSearchManager psm = new PeerSearchManager(is);
-        psm.setRandomSelectionRatio(.25f);
         for (int i = 0; i < files.length; i++) {
 
 

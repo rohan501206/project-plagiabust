@@ -2,8 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package internetsearch;
+package TestingFrameWork.QueryBuilders;
 
+import internetsearch.ResponseResult;
 import com.google.code.bing.search.client.BingSearchClient;
 import com.google.code.bing.search.client.BingSearchClient.SearchRequestBuilder;
 import com.google.code.bing.search.client.BingSearchServiceClientFactory;
@@ -19,16 +20,16 @@ import java.util.ArrayList;
  *
  * @author Brave Heart
  */
-public class BingSearch {
+public class BingSearchAPI extends InternetSearchAPI {
 
     private final String bingSearchId;
     // Search Internet and get results
 
-    public BingSearch(String bingSearchId) {
+    public BingSearchAPI(String bingSearchId) {
         this.bingSearchId = bingSearchId;
     }
 
-    public BingSearch() {
+    public BingSearchAPI() {
         this("F138552F897E2CA7C264FDAC64F8EF2021ABD3AF");
     }
 
