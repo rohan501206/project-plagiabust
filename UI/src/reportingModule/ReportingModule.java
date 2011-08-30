@@ -101,6 +101,8 @@ public class ReportingModule extends javax.swing.JFrame {
         jTabbedPane1.setEnabledAt(1, false);
         jTabbedPane1.setEnabledAt(2, false);
         jTabbedPane1.setEnabledAt(3, false);
+        jTabbedPane1.setEnabledAt(4, false);
+
         browserPanel.setVisible(false);
         jTextField1.setVisible(false);
     }
@@ -574,13 +576,13 @@ public class ReportingModule extends javax.swing.JFrame {
         //nextButton.setEnabled(true);
         int index = jTabbedPane1.getSelectedIndex();
         int nextIndex = index + 1;
-        if (nextIndex != 4) {
+        if (nextIndex != 5) {
             jTabbedPane1.setSelectedIndex(nextIndex);
             PreviousButton.setEnabled(true);
             jTabbedPane1.setEnabledAt(index, true);
             jTabbedPane1.setEnabledAt(index + 1, true);
         }
-        if (nextIndex == 3) {
+        if (nextIndex == 4) {
             nextButton.setEnabled(false);
         }
 
@@ -917,7 +919,7 @@ public class ReportingModule extends javax.swing.JFrame {
 
         for (int i = 0; i < queryArray.length; i++) {
             String searchQuery = queryArray[i];
-            TextHighlighter highlighterFirstFile = new TextHighlighter();
+            TextHighlighterParaphrase highlighterFirstFile = new TextHighlighterParaphrase();
             String[] highlightindexedInfoFirstFile = highlighterFirstFile.highlightTexts(content, searchQuery);
             int startIndexFirst = Integer.valueOf(highlightindexedInfoFirstFile[0]);
             int endIndexFirst = Integer.valueOf(highlightindexedInfoFirstFile[1]);
@@ -947,7 +949,7 @@ public class ReportingModule extends javax.swing.JFrame {
 
         for (int i = 0; i < queryArray.length; i++) {
             String searchQuery = queryArray[i];
-            TextHighlighter highlighterSecondFile = new TextHighlighter();
+            TextHighlighterParaphrase highlighterSecondFile = new TextHighlighterParaphrase();
             String[] highlightindexedInfoSecondFile = highlighterSecondFile.highlightTexts(content2, searchQuery);
             int startIndexSecond = Integer.valueOf(highlightindexedInfoSecondFile[0]);
             int endIndexSecond = Integer.valueOf(highlightindexedInfoSecondFile[1]);
@@ -1116,13 +1118,13 @@ public class ReportingModule extends javax.swing.JFrame {
             }
         };
 
-       /** Transformer<CustomEdge, Paint> edgesPaint = new Transformer<CustomEdge, Paint>() {
+        Transformer<String, Paint> edgesPaint = new Transformer<String, Paint>() {
 
             private final Color[] palette = {Color.GREEN,
                 Color.YELLOW, Color.RED};
 
-            public Paint transform(CustomEdge edgeValue) {
 
+            public Paint transform(String edgeValue) {
                 String stringvalue=edgeValue.toString();
                 stringvalue=stringvalue.replaceAll("%","");
                 int value=Integer.valueOf(stringvalue);
@@ -1136,7 +1138,7 @@ public class ReportingModule extends javax.swing.JFrame {
                     return palette[2];
                 }
             }
-        };  **/
+        };  
         visualizationViewer.getRenderContext().setVertexFillPaintTransformer(vertexPaint);
         //visualizationViewer.getRenderContext().setEdgeFillPaintTransformer(edgesPaint);
         // Create a graph mouse and add it to the visualization component
