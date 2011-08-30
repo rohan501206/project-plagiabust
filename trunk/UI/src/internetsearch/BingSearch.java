@@ -26,10 +26,6 @@ public class BingSearch extends InternetSearchAPI{
         super(appId);
     }
 
-    public BingSearch() {
-        this("F138552F897E2CA7C264FDAC64F8EF2021ABD3AF");
-    }
-
     @Override
     public ArrayList<ResponseResult> searchInternet(String searchWord) {
         ArrayList<ResponseResult> responseResultsList = new ArrayList<ResponseResult>();
