@@ -4,7 +4,9 @@
  */
 package ui;
 
+import gui.form.AdminInforForm;
 import internetsearch.BingSearch;
+import internetsearch.InternetSearchAPI;
 import internetsearch.InternetSearchManager;
 import java.io.File;
 import java.util.ArrayList;
@@ -22,22 +24,27 @@ public class InternetDocumentDownloadManager {
     HashMap<String, ArrayList<String>> downloadedFileList;
     ArrayList<String> fileArrayList;
     ArrayList<String> urlList;
-     HashMap<String, String> urlFileMap;
+    HashMap<String, String> urlFileMap;
     JProgressBar pbar;
     int maxNumOfSourcesPerDocument = 10;
+    InternetSearchAPI searchAPI;
 
-    public InternetDocumentDownloadManager(JProgressBar pbar) {
+    public InternetDocumentDownloadManager(JProgressBar pbar, InternetSearchAPI searchAPI) {
         this.pbar = pbar;
+        this.searchAPI = searchAPI;
     }
 
     public InternetDocumentDownloadManager() {
     }
 
     public String downloadFiles(String destFolderPath, String fName) {
-        System.out.println("Start Downloading the internet files........................");
-        BingSearch bingSearch = new BingSearch("F138552F897E2CA7C264FDAC64F8EF2021ABD3AF");
-        
-        InternetSearchManager sd = new InternetSearchManager(bingSearch);
+        System.out.println("Start Downloading the internet files........");
+        if (AdminInforForm.getInternetSearchAPI() instanceof BingSearch) {
+            System.out.println("Internet Search is powered by Bing Live Search 2.0");
+        } else {
+            System.out.println("Internet Search is powered by Google");
+        }
+        InternetSearchManager sd = new InternetSearchManager(searchAPI);
         sd.setMaxNumOfSourcesPerDocument(maxNumOfSourcesPerDocument);
         downloadFolderPath = sd.downloadSourcesForFile(destFolderPath + File.separator + fName, pbar);
         urlList = sd.getUrlList();
@@ -48,18 +55,18 @@ public class InternetDocumentDownloadManager {
     public ArrayList<String> getUrlList() {
         return this.urlList;
     }
-    public HashMap<String, String> getMap(){
+
+    public HashMap<String, String> getMap() {
         return this.urlFileMap;
     }
-
 
     public HashMap<String, ArrayList<String>> downloadFilesForMultiplePeerSearch(ArrayList<String> arr, String folderPath, JProgressBar pbar) {
         fileArrayList = arr;
         String destFolderPath = folderPath;
-        BingSearch bingSearch = new BingSearch("F138552F897E2CA7C264FDAC64F8EF2021ABD3AF");
-        InternetSearchManager sd = new InternetSearchManager(bingSearch);
+
+        InternetSearchManager sd = new InternetSearchManager(searchAPI);
         sd.setMaxNumOfSourcesPerDocument(maxNumOfSourcesPerDocument);
-        downloadedFileList = sd.downloadSourcesForFileFolder(fileArrayList, destFolderPath,pbar);
+        downloadedFileList = sd.downloadSourcesForFileFolder(fileArrayList, destFolderPath, pbar);
         return downloadedFileList;
     }
 

@@ -12,6 +12,8 @@ package gui.form;
 
 
 
+import internetsearch.BingSearch;
+import internetsearch.GoogleSearch;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,7 +57,7 @@ public class Worker extends SwingWorker<ReportData, String> {
         this.indexFolderPath = indexFolderPath;
         this.selectedDocumentPath=  selectedDocumentPath;
         this.manager = manager;
-        this.idm = new InternetDocumentDownloadManager(pbar);
+        this.idm = new InternetDocumentDownloadManager(pbar, AdminInforForm.getInternetSearchAPI());
         this.plagiabustServerSourceDownloadManager = new PlagiabustServerSourceDownloadManager(pbar);
         this.pbar2 = pbar2;
         this.pbar3 = pbar3;

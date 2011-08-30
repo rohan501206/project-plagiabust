@@ -23,6 +23,7 @@ import java.util.logging.Logger;
 public class MainForm extends javax.swing.JFrame {
 
     public static MainForm mainForm;
+    AdminInforForm admingForm = new AdminInforForm();
     /** Creates new form MainForm */
     private MainForm() {
         initComponents();
@@ -53,7 +54,7 @@ public class MainForm extends javax.swing.JFrame {
         AdminToolsButton = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         AdministrativeToolPanel = new javax.swing.JPanel();
-        KBManagerButton = new javax.swing.JButton();
+        InternetSearchSettingsButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         HelpSupportPanel = new javax.swing.JPanel();
         HelpSupportButton = new javax.swing.JButton();
@@ -137,12 +138,12 @@ public class MainForm extends javax.swing.JFrame {
 
         AdministrativeToolPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        KBManagerButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        KBManagerButton.setText("Knowledge Base Manager");
-        KBManagerButton.setPreferredSize(new java.awt.Dimension(180, 40));
-        KBManagerButton.addActionListener(new java.awt.event.ActionListener() {
+        InternetSearchSettingsButton.setFont(new java.awt.Font("Tahoma", 0, 12));
+        InternetSearchSettingsButton.setText("Internet Search Settings");
+        InternetSearchSettingsButton.setPreferredSize(new java.awt.Dimension(180, 40));
+        InternetSearchSettingsButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                KBManagerButtonActionPerformed(evt);
+                InternetSearchSettingsButtonActionPerformed(evt);
             }
         });
 
@@ -154,7 +155,7 @@ public class MainForm extends javax.swing.JFrame {
             AdministrativeToolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AdministrativeToolPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(KBManagerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(InternetSearchSettingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(251, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, AdministrativeToolPanelLayout.createSequentialGroup()
                 .addContainerGap(267, Short.MAX_VALUE)
@@ -165,7 +166,7 @@ public class MainForm extends javax.swing.JFrame {
             AdministrativeToolPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(AdministrativeToolPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(KBManagerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(InternetSearchSettingsButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(27, 27, 27))
@@ -173,7 +174,7 @@ public class MainForm extends javax.swing.JFrame {
 
         HelpSupportPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        HelpSupportButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        HelpSupportButton.setFont(new java.awt.Font("Tahoma", 0, 12));
         HelpSupportButton.setText("Help & Support");
         HelpSupportButton.setPreferredSize(new java.awt.Dimension(180, 40));
         HelpSupportButton.addActionListener(new java.awt.event.ActionListener() {
@@ -244,12 +245,11 @@ public class MainForm extends javax.swing.JFrame {
         wizardForm.setVisible(true);
     }//GEN-LAST:event_NewCheckButtonActionPerformed
 
-    private void KBManagerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KBManagerButtonActionPerformed
+    private void InternetSearchSettingsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InternetSearchSettingsButtonActionPerformed
         //KBManagerForm.getInstance().setVisible(true);
-        AdminInforForm admingForm = new AdminInforForm();
         admingForm.setVisible(true);
         // TODO add your handling code here:
-    }//GEN-LAST:event_KBManagerButtonActionPerformed
+    }//GEN-LAST:event_InternetSearchSettingsButtonActionPerformed
 
     private void AdminToolsButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdminToolsButtonActionPerformed
         PlagiabustServerManager plagiabustServerManager = new PlagiabustServerManager();
@@ -273,7 +273,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JPanel AdministrativeToolPanel;
     private javax.swing.JButton HelpSupportButton;
     private javax.swing.JPanel HelpSupportPanel;
-    private javax.swing.JButton KBManagerButton;
+    private javax.swing.JButton InternetSearchSettingsButton;
     private javax.swing.JPanel KBManagerPanel;
     private javax.swing.JButton NewCheckButton;
     private javax.swing.JPanel NewWizardPanel;
