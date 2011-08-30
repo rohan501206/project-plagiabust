@@ -12,6 +12,11 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -155,9 +160,49 @@ public class AnyToTextConverter {
     public void convertFilesInFolder(String folderPath) {
         File documentFolder = new File(folderPath);
         String documentText = null;
+        int threads = Runtime.getRuntime().availableProcessors();
+        ExecutorService service = Executors.newFixedThreadPool(threads);
+        List<Future> futures = new ArrayList<Future>();
+
+        Long start=System.currentTimeMillis();        
+
         if (documentFolder.isDirectory()) {
             this.listFiles(documentFolder);
-            for (String fileName : queueOfFiles) {
+
+        for (final String fileName : queueOfFiles) {
+        Callable callable = new Callable() {
+            public String call() throws Exception {
+                String  documentText="";
+                if (fileName.endsWith(".txt")) {
+                    moveTextFile(fileName);
+                } else {
+                    if (fileName.endsWith(".pdf")) {
+                        documentText = pdfToString(fileName);
+                    } else if (fileName.endsWith(".rtf")) {
+                        documentText = rtfToString(fileName);
+                    } else if (fileName.endsWith(".doc")) {
+                        documentText = docToString(fileName);
+                    } else if (fileName.endsWith(".docx")) {
+                        documentText = docxToString(fileName);
+                    } else if (fileName.endsWith(".odt")) {
+                    }                   
+                    File f = new File(fileName);
+                    String fName = convertedFileFolder + File.separator
+                            + AnyToTextConverter.this.getFileNameWithoutExtension(fileName) + ".txt";
+                    AnyToTextConverter.this.writeTexttoFile(documentText, fName);
+                }
+
+                return documentText;
+            }
+        };
+        futures.add(service.submit(callable));
+    }
+
+    service.shutdown();
+        }
+
+
+          /** for (String fileName : queueOfFiles) {
                 if (fileName.endsWith(".txt")) {
                     moveTextFile(fileName);
                 } else {
@@ -178,8 +223,16 @@ public class AnyToTextConverter {
                     this.writeTexttoFile(documentText, fName);
                 }
             }
+ }
 
-        }
+
+       */
+        
+ Long end=System.currentTimeMillis();
+
+ System.err.println("Execution Time is "+ String.valueOf(end-start));
+
+ 
 
     }
 
