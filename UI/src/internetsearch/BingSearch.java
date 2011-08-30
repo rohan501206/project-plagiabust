@@ -19,26 +19,25 @@ import java.util.ArrayList;
  *
  * @author Brave Heart
  */
-public class BingSearch {
-
-    private final String bingSearchId;
+public class BingSearch extends InternetSearchAPI{
     // Search Internet and get results
 
-    public BingSearch(String bingSearchId) {
-        this.bingSearchId = bingSearchId;
+    public BingSearch(String appId) {
+        super(appId);
     }
 
     public BingSearch() {
         this("F138552F897E2CA7C264FDAC64F8EF2021ABD3AF");
     }
 
+    @Override
     public ArrayList<ResponseResult> searchInternet(String searchWord) {
         ArrayList<ResponseResult> responseResultsList = new ArrayList<ResponseResult>();
 
         BingSearchServiceClientFactory factory = BingSearchServiceClientFactory.newInstance();
         BingSearchClient client = factory.createBingSearchClient();
 
-        SearchResponse response = client.search(createSearchRequest(client, bingSearchId, searchWord));
+        SearchResponse response = client.search(createSearchRequest(client, appId, searchWord));
 
         for (WebResult result : response.getWeb().getResults()) {
 

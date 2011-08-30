@@ -32,13 +32,13 @@ public class InternetSearchManager {
 
     private QuerySelectionAlgorithm qsa = QuerySelectionAlgorithm.Random;
     private QueryBuilder qc = new QueryBuilder();
-    private final BingSearch bingSearch;
+    private final InternetSearchAPI searchAPI;
     private int maxNumOfSourcesPerDocument = 10;
     private ArrayList<String> urlList = new ArrayList<String>();
     HashMap<String, String> urlFileMap = new HashMap<String, String>();
 
-    public InternetSearchManager(BingSearch bingSearch) {
-        this.bingSearch = bingSearch;
+    public InternetSearchManager(InternetSearchAPI searchAPI) {
+        this.searchAPI = searchAPI;
     }
 
     public void setQuerySelectionAlgorithm(QuerySelectionAlgorithm selectionAlgo) {
@@ -196,7 +196,7 @@ public class InternetSearchManager {
 
         for (Iterator<String> it = queryList.iterator(); it.hasNext();) {
             String query = it.next();
-            ArrayList<ResponseResult> response = bingSearch.searchInternet(query);
+            ArrayList<ResponseResult> response = searchAPI.searchInternet(query);
 
             if (!response.isEmpty()) {
                 for (Iterator<ResponseResult> it1 = response.iterator(); it1.hasNext();) {
