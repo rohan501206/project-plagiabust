@@ -204,9 +204,7 @@ public class InternetSearchManager {
                     // if url already exist
                     String result = responseResult.getUrl();
                     int increment = 1;
-                    if (result.startsWith("http://en.wikipedia.org/")) {
-                        increment = 2;
-                    }
+
                     if (sources.get(result) != null) {
                         int num = sources.get(result) + increment;
                         sources.put(result, num);
