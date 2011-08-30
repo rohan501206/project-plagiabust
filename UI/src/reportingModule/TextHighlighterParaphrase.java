@@ -25,7 +25,7 @@ public class TextHighlighterParaphrase {
 
         String searchQuery = query;
 
-        Pattern pattern = Pattern.compile(searchQuery);
+        Pattern pattern = Pattern.compile(Pattern.quote(searchQuery));
         Matcher matcher = pattern.matcher(contentOftheFile);
         while (matcher.find()) {
             startIndex = matcher.start();
