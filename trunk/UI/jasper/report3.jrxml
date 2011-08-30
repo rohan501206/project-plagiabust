@@ -142,7 +142,7 @@
 	<summary>
 		<band height="1100" splitType="Stretch">
 			<staticText>
-				<reportElement x="12" y="51" width="281" height="20" forecolor="#808080"/>
+				<reportElement x="2" y="44" width="281" height="20" forecolor="#808080"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -153,8 +153,9 @@
 				<imageExpression class="java.lang.String"><![CDATA["jasper/reportImages/test.png"]]></imageExpression>
 			</image>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
-				<reportElement x="12" y="84" width="586" height="20"/>
+				<reportElement x="2" y="81" width="658" height="86"/>
 				<textElement>
+					<font size="7"/>
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{field}]]></textFieldExpression>
