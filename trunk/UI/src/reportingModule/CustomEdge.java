@@ -11,7 +11,7 @@ package reportingModule;
  */
 public class CustomEdge {
 
-    double capacity; // should be private
+double capacity; // should be private
 double weight;
 String edgeName;
 // should be private for good practice
