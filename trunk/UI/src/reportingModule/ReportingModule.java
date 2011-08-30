@@ -652,28 +652,19 @@ public class ReportingModule extends javax.swing.JFrame {
         String internetMatch = "";
 
         while (it.hasNext()) {
-
             Map.Entry pair = (Map.Entry) it.next();
             String match = (String) pair.getKey();
             phraseIndexes = indexHighligherMap.get(match);
-
-
-
             int startIndex = phraseIndexes.get(0);
             int endIndex = phraseIndexes.get(1);
-
             int offset = showFileContentTextPane.viewToModel(evt.getPoint());
             try {
                 int start = Utilities.getWordStart(showFileContentTextPane, offset);
                 if ((start > startIndex) && start < endIndex) {
                     String word = showFileContentTextPane.getDocument().getText(startIndex, endIndex - startIndex);
-
-                    String preprocessedText = matchingToPreprocessed.get(word.trim());                  
-
-
+                    String preprocessedText = matchingToPreprocessed.get(word.trim());
                     Set<String> docList = resultMap.keySet();
                     Iterator iter = docList.iterator();
-
                     while (iter.hasNext()) {
                         String suspectedfilename = (String) iter.next();
                         String[] matchVal = resultMap.get(suspectedfilename);
@@ -681,44 +672,23 @@ public class ReportingModule extends javax.swing.JFrame {
                         if (matchString != null) {
                             String[] matchings = matchString.split("~");
                             for (int k = 0; k < matchings.length; k++) {
-
                                 if (preprocessedText.equalsIgnoreCase(matchings[k])) {
-
                                     internetMatch = suspectedfilename;
                                     matchedFile = matchedFile + "\n" + suspectedfilename;
-
                                 }
-
-
                             }
                         }
                     }
-
-
-
-
-
-
-
-
-
                     content = "<p><b>The suspected File </b>  <font color='red'>" + matchedFile + "</font></p> ";
-
-
                     Iterator mapIterator = fileToUrlMap.entrySet().iterator();
-
                     while (mapIterator.hasNext()) {
-
                         Map.Entry fileUrlPair = (Map.Entry) mapIterator.next();
                         String downloadedFileName = (String) fileUrlPair.getKey();
                         System.err.println("key value is " + downloadedFileName);
                         System.err.println(" value is " + internetMatch);
                         if (internetMatch.equalsIgnoreCase(downloadedFileName)) {
-
-                            internetMatch = (String) fileUrlPair.getValue();
-                            //urlListmatch.add(internetMatch);
+                            internetMatch = (String) fileUrlPair.getValue();                           
                             content = "<p><b>The suspected Online Source </b><b><a href='" + internetMatch + "'>" + internetMatch + "</a></b></p> ";
-
                         }
                     }
                     String heading = "View Source";
@@ -737,75 +707,29 @@ public class ReportingModule extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_showFileContentTextPaneMouseMoved
 
-
-public void setData() {
+    public void setData() {
 
         Set<String> docList = resultMap.keySet();
-        Set<String> filenameListofurls = fileToUrlMap.keySet();
         Iterator iter = docList.iterator();
-        ArrayList<Integer> phraseIndexes = new ArrayList<Integer>();
         FileOperator setTextToTextAreas = new FileOperator();
-        String appendedText = "";
-        
+
         while (iter.hasNext()) {
             String name = (String) iter.next();
             fileNameList.add(name);
             this.setIndexDetails(name);
         }
-
-        for (int i = fileNameList.size(); i > 0; i--) {
-            String fileName = fileNameList.get(i - 1);
-            if (filenameListofurls != null) {
-                if ((filenameListofurls.contains(fileName)) == false) {
-                    fileListComboBox.addItem(fileNameList.get(i - 1));
-
-                } else {
-                    fileListComboBox.addItem((String) fileToUrlMap.get(fileName));
-
-                }
-            } else {
-                fileListComboBox.addItem(fileNameList.get(i - 1));
-            }
-        }
-
+        this.setFilesToFileSelector();
         selectedFileTextField.setText(selectedDocumentPath);
         selectedFileTextField.setToolTipText(selectedDocumentPath);
-        
         String texts = setTextToTextAreas.textSetter(selectedDocumentPath);
-        AttributedString attributedString = new AttributedString(texts);
         showFileContentTextPane.setText(texts);
         showFileContentTextPane.setHighlighter(hilit3);
-        StyledDocument doc = showFileContentTextPane.getStyledDocument();
-        Iterator it = indexHighligherMap.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry) it.next();
-            String match = (String) pair.getKey();
-            phraseIndexes = indexHighligherMap.get(match);
-
-            for (int i = 0; i < phraseIndexes.size(); i++) {
-
-                int startIndex = phraseIndexes.get(0);
-                int endIndex = phraseIndexes.get(1);
-
-                try {
-                    doc.remove(startIndex, endIndex - startIndex);
-                    Style style = showFileContentTextPane.addStyle("", null);
-                    StyleConstants.setForeground(style, Color.red);
-                    StyleConstants.setBold(style, true);
-                    StyleConstants.setItalic(style, true);
-
-
-                    doc.insertString(startIndex, match, style);
-                } catch (BadLocationException e) {
-                }
-            }
-        }
+        texthighlighterOnScreenView();
         this.generateGraph();
         this.generateFinalReport();
     }
 
-
-public void setIndexDetails(String fileName) {
+    public void setIndexDetails(String fileName) {
 
         String fileName2 = fileName;
         Set<String> docList = resultMap.keySet();
@@ -855,15 +779,61 @@ public void setIndexDetails(String fileName) {
         }
     }
 
+    public void setFilesToFileSelector() {
+        Set<String> filenameListofurls = fileToUrlMap.keySet();
+        for (int i = fileNameList.size(); i > 0; i--) {
+            String fileName = fileNameList.get(i - 1);
+            if (filenameListofurls != null) {
+                if ((filenameListofurls.contains(fileName)) == false) {
+                    fileListComboBox.addItem(fileNameList.get(i - 1));
+
+                } else {
+                    fileListComboBox.addItem((String) fileToUrlMap.get(fileName));
+
+                }
+            } else {
+                fileListComboBox.addItem(fileNameList.get(i - 1));
+            }
+        }
+
+    }
+
+    public void texthighlighterOnScreenView() {
+
+        Iterator it = indexHighligherMap.entrySet().iterator();
+        ArrayList<Integer> phraseIndexes = new ArrayList<Integer>();
+        StyledDocument doc = showFileContentTextPane.getStyledDocument();
+        while (it.hasNext()) {
+            Map.Entry pair = (Map.Entry) it.next();
+            String match = (String) pair.getKey();
+            phraseIndexes = indexHighligherMap.get(match);
+
+            for (int i = 0; i < phraseIndexes.size(); i++) {
+
+                int startIndex = phraseIndexes.get(0);
+                int endIndex = phraseIndexes.get(1);
+
+                try {
+                    doc.remove(startIndex, endIndex - startIndex);
+                    Style style = showFileContentTextPane.addStyle("", null);
+                    StyleConstants.setForeground(style, Color.red);
+                    StyleConstants.setBold(style, true);
+                    StyleConstants.setItalic(style, true);
 
 
+                    doc.insertString(startIndex, match, style);
+                } catch (BadLocationException e) {
+                }
+            }
+        }
+    }
 
-    public void highlighter(String queryTemp,String paraphrasedFirstPhraseTemp,String paraphrasedSecondPhraseTemp) {
+    public void highlighter(String queryTemp, String paraphrasedFirstPhraseTemp, String paraphrasedSecondPhraseTemp) {
 
-       String paraphrasedFirstPhrase=paraphrasedFirstPhraseTemp;
-       String paraphrasedSecondPhrase=paraphrasedSecondPhraseTemp;
-       String queryString = queryTemp;
-        
+        String paraphrasedFirstPhrase = paraphrasedFirstPhraseTemp;
+        String paraphrasedSecondPhrase = paraphrasedSecondPhraseTemp;
+        String queryString = queryTemp;
+
         selectedFileEditorPane.setHighlighter(hilit);
         suspectedFileEditorPane.setHighlighter(hilit2);
         hilit.removeAllHighlights();
@@ -874,36 +844,35 @@ public void setIndexDetails(String fileName) {
         String[] queryforFirstFile = null;
         String[] queryforSecondFile = null;
 
-        if ((queryString.length() <= 0) && (paraphrasedFirstPhrase.length()<=0)) {
+        if ((queryString.length() <= 0) && (paraphrasedFirstPhrase.length() <= 0)) {
             return;
         }
         query = queryString.split("~");
-        queryforFirstFile=paraphrasedFirstPhrase.split("~");
-        queryforSecondFile=paraphrasedSecondPhrase.split("~");
+        queryforFirstFile = paraphrasedFirstPhrase.split("~");
+        queryforSecondFile = paraphrasedSecondPhrase.split("~");
 
-        if(queryString.length() !=0){
-            ArrayList<Color> colourArray=getColourArray(query);
-            setHighlighterToBothTextFiles(query,content,content2,colourArray);
+        if (queryString.length() != 0) {
+            ArrayList<Color> colourArray = getColourArray(query);
+            setHighlighterToBothTextFiles(query, content, content2, colourArray);
         }
-        if(queryforFirstFile.length !=1){
-            ArrayList<Color> colourArray=getColourArray(queryforFirstFile);
+        if (queryforFirstFile.length != 1) {
+            ArrayList<Color> colourArray = getColourArray(queryforFirstFile);
             setHighlighterToFirstTextFile(queryforFirstFile, content2, content2, colourArray);
         }
-        if(queryforSecondFile.length !=1){
-            ArrayList<Color> colourArray=getColourArray(queryforSecondFile);
+        if (queryforSecondFile.length != 1) {
+            ArrayList<Color> colourArray = getColourArray(queryforSecondFile);
             setHighlighterToSecondTextFile(queryforSecondFile, content2, content2, colourArray);
         }
 
     }
 
+    public void setHighlighterToBothTextFiles(String[] queryArray, String contentTemp, String content2Temp, ArrayList<Color> colourArrayTemp) {
 
-     public void setHighlighterToBothTextFiles(String[] queryArray,String contentTemp,String content2Temp,ArrayList<Color> colourArrayTemp){
+        String content = contentTemp;
+        String content2 = content2Temp;
+        ArrayList<Color> colourArray = colourArrayTemp;
 
-       String content=contentTemp;
-       String content2=content2Temp;
-       ArrayList<Color> colourArray =colourArrayTemp;
-
-       for (int i = 0; i < queryArray.length; i++) {
+        for (int i = 0; i < queryArray.length; i++) {
             String searchQuery = queryArray[i];
             TextHighlighter highlighterFirstFile = new TextHighlighter();
             TextHighlighter highlighterSecondFile = new TextHighlighter();
@@ -938,15 +907,15 @@ public void setIndexDetails(String fileName) {
         }
 
 
-   }
+    }
 
-    public void setHighlighterToFirstTextFile(String[] queryArray,String contentTemp,String content2Temp,ArrayList<Color> colourArrayTemp){
+    public void setHighlighterToFirstTextFile(String[] queryArray, String contentTemp, String content2Temp, ArrayList<Color> colourArrayTemp) {
 
-       String content=contentTemp;
-       ArrayList<Color> colourArray =colourArrayTemp;
+        String content = contentTemp;
+        ArrayList<Color> colourArray = colourArrayTemp;
 
 
-       for (int i = 0; i < queryArray.length; i++) {
+        for (int i = 0; i < queryArray.length; i++) {
             String searchQuery = queryArray[i];
             TextHighlighter highlighterFirstFile = new TextHighlighter();
             String[] highlightindexedInfoFirstFile = highlighterFirstFile.highlightTexts(content, searchQuery);
@@ -968,16 +937,15 @@ public void setIndexDetails(String fileName) {
         }
 
 
-   }
+    }
 
+    public void setHighlighterToSecondTextFile(String[] queryArray, String contentTemp, String content2Temp, ArrayList<Color> colourArrayTemp) {
 
-    public void setHighlighterToSecondTextFile(String[] queryArray,String contentTemp,String content2Temp,ArrayList<Color> colourArrayTemp){
+        String content = contentTemp;
+        String content2 = content2Temp;
+        ArrayList<Color> colourArray = colourArrayTemp;
 
-       String content=contentTemp;
-       String content2=content2Temp;
-       ArrayList<Color> colourArray =colourArrayTemp;
-
-       for (int i = 0; i < queryArray.length; i++) {
+        for (int i = 0; i < queryArray.length; i++) {
             String searchQuery = queryArray[i];
             TextHighlighter highlighterSecondFile = new TextHighlighter();
             String[] highlightindexedInfoSecondFile = highlighterSecondFile.highlightTexts(content2, searchQuery);
@@ -1002,9 +970,7 @@ public void setIndexDetails(String fileName) {
         }
 
 
-   }
-
-
+    }
 
     public void generateFinalReport() {
 
@@ -1020,8 +986,14 @@ public void setIndexDetails(String fileName) {
         String nodeList = "";
         for (int i = 0; i < listModelGraph.size(); i++) {
             String node = (String) listModelGraph.get(i);
-            //System.err.println(node);
-            nodeList = nodeList + "\n" + node;
+
+            if (i % 2 == 1) {
+                nodeList = nodeList + "\t \t" + node;
+            }
+            if (i % 2 == 0) {
+                nodeList = nodeList + "\n" + node;
+            }
+
         }
 
         Set<String> filenameListofurls = fileToUrlMap.keySet();
@@ -1096,8 +1068,6 @@ public void setIndexDetails(String fileName) {
         return reportRows;
     }
 
-   
-
     public void generateGraph() {
 
         connectedGraph = new SparseMultigraph<Integer, CustomEdge>();
@@ -1145,7 +1115,30 @@ public void setIndexDetails(String fileName) {
                 }
             }
         };
+
+       /** Transformer<CustomEdge, Paint> edgesPaint = new Transformer<CustomEdge, Paint>() {
+
+            private final Color[] palette = {Color.GREEN,
+                Color.YELLOW, Color.RED};
+
+            public Paint transform(CustomEdge edgeValue) {
+
+                String stringvalue=edgeValue.toString();
+                stringvalue=stringvalue.replaceAll("%","");
+                int value=Integer.valueOf(stringvalue);
+                if (value<= 10) {
+                    return palette[0];
+                }
+                if (value> 10 && value<=20 ) {
+                    return palette[1];
+                }
+                else {
+                    return palette[2];
+                }
+            }
+        };  **/
         visualizationViewer.getRenderContext().setVertexFillPaintTransformer(vertexPaint);
+        //visualizationViewer.getRenderContext().setEdgeFillPaintTransformer(edgesPaint);
         // Create a graph mouse and add it to the visualization component
         DefaultModalGraphMouse gm = new DefaultModalGraphMouse();
         gm.setMode(ModalGraphMouse.Mode.TRANSFORMING);
@@ -1179,12 +1172,10 @@ public void setIndexDetails(String fileName) {
             if (name.equalsIgnoreCase(fileName2)) {
                 String[] matchVal = resultMap.get(name);
                 //jTextField1.setText(matchVal[0]);
-                this.highlighter(matchVal[0],matchVal[2],matchVal[3]);
+                this.highlighter(matchVal[0], matchVal[2], matchVal[3]);
             }
         }
     }
-
-    
 
     public void setMap(HashMap<String, String> fileUrlMap) {
         this.fileToUrlMap = fileUrlMap;
@@ -1208,11 +1199,9 @@ public void setIndexDetails(String fileName) {
         }
     }
 
+    public ArrayList<Color> getColourArray(String[] queries) {
 
-
-    public ArrayList<Color> getColourArray(String[] queries){
-
-        int queryCount=queries.length;
+        int queryCount = queries.length;
         ArrayList<Color> colourArray = new ArrayList<Color>();
         HashMap<Integer, Color> colorToIntegerMap = new HashMap<Integer, Color>();
         colourArray.add(Color.cyan);
