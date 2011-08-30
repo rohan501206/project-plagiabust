@@ -14,6 +14,10 @@ import org.apache.lucene.analysis.Token;
 import java.io.StringReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 ;
 
@@ -38,5 +42,25 @@ public class StopWordRemover {
         }
         return tokenList;
     }
+    
+    public ArrayList<String> removeStopwordInstopwordArray(String text,String[] stopwords ) throws IOException{
+        List list = Arrays.asList(stopwords);
+        Set ENGLISH_STOP_WORDS_SET =  new HashSet(list);
+        ArrayList<String> tokenList = new ArrayList<String>();
+        Analyzer analyzers = new StopAnalyzer(org.apache.lucene.util.Version.LUCENE_29, ENGLISH_STOP_WORDS_SET);
+        TokenStream stream = analyzers.tokenStream("contents", new StringReader(text));
+        while (stream.incrementToken()) {
+            Token token = stream.next();
+            if (token == null) {
+                break;
+            }
+            tokenList.add(token.termText());
+        }
+        return tokenList;
+    }
+    
+    
+    
+    
     
 }
