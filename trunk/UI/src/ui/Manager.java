@@ -132,7 +132,6 @@ public class Manager {
             System.out.println("document indexed " + i + " " + indexedFiles.get(i));
         } 
         String preprocessTextOfTheComparisonFile = preprocessText(documentToCompare);
-
         ProgressBarManager preprocessProgressBar = new ProgressBarManager(preprocesspbar);
         // progress bar preprocess
 
@@ -162,14 +161,8 @@ public class Manager {
 
         ProgressBarManager crossCheck = new ProgressBarManager(crosscheckpbar);
         // progress bar cross check
-
-
-
         for (int i = 0; i < downloadedFilesList.length; i++) {
-            
-            
-
-            String[] matchValue=new String[4];
+             String[] matchValue=new String[4];
              if(i==downloadedFilesList.length-1){
                 crossCheck.runProgress(100);
              }
@@ -180,79 +173,74 @@ public class Manager {
             float output = sca.getSimilarity(preprocessTextOfTheComparisonFile, hm.get(downloadedFilesList[i]).toString());
             String match = sca.getList();
             String firstFile = documentToCompare;
-            String secondFile = downloadedFolderPath + File.separator + downloadedFilesList[i];
-            
-            
+            String secondFile = downloadedFolderPath + File.separator + downloadedFilesList[i];  
             String[] matchedText=new String[2];
             // Paraphased added 
-            
+            float paraphasedValue = 0;
             //use paraphase detection
             if(paraphaseDetection){
                 ParaphaseManage paramanager = new ParaphaseManage(firstFile,secondFile, downloadedFolderPath);
                 matchedText = paramanager.getMatchList();
+                paraphasedValue = paramanager.getPlagiarismValueForParaphraseDetect(match);
             }
             else{
                 matchedText[0] = "";
                 matchedText[1] = "";
-            }
-            
-            
-            
-            
-            
-            
+                paraphasedValue = 0;
+            }     
             System.out.println();
             System.out.println(firstFile);
             System.out.println(secondFile);
             System.out.println("match is " + match);
             System.out.println("Size of the matched files is " + fileNo);
             System.out.println();
-            
-           
-            
-            
-            
             if ((!match.isEmpty() &&  !(firstFile.equalsIgnoreCase(secondFile)))  || (!(firstFile.equalsIgnoreCase(secondFile)) && !matchedText[0].isEmpty() )) {
                 //////////////// just for testing purposes
-
                 matchValue[0] = match;
-                matchValue[1] = String.valueOf(roundNumber(output,2)*100/2);
+                matchValue[1] = String.valueOf((roundNumber(output,2)*100/2) + paraphasedValue);
                 matchValue[2] = matchedText[0];
                 matchValue[3] = matchedText[1];
                 resultsMap.put(secondFile, matchValue);
-                
-                
-               fileNo++;
-
+                fileNo++;
             }
-
         }
 
+        
+        
         for (int i = 0; i < preIndexedFiles.size(); i++) {
             String[] matchValue=new String[4];
-
             if(i==preIndexedFiles.size()-1){
                 crossCheck.runProgress(100);
             }
             else{
                 crossCheck.runProgress((i*100)/preIndexedFiles.size());
             }
-
             ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
+            
+            long t1 = System.currentTimeMillis();
             float output = sca.getSimilarity(preprocessTextOfTheComparisonFile, hm.get(preIndexedFiles.get(i)).toString());
+            long t2 = System.currentTimeMillis();
+            
+            System.err.println("Time for single for document"+i+":"+(t2-t1));
+           
             String match = sca.getList();
-            
-            String[] matchedText=new String[2];
+            String[] matchedText = new String[2];
+           
+            float paraphasedValue = 0;
             // Paraphased added 
-            
-            //use paraphase detection
             if(paraphaseDetection){
                 ParaphaseManage paramanager = new ParaphaseManage(documentToCompare,preIndexedFiles.get(i), downloadedFolderPath);
+               
+                long t3 = System.currentTimeMillis();
                 matchedText = paramanager.getMatchList();
+                long t4 = System.currentTimeMillis();
+                System.err.println("Time for single for document"+i+":"+(t4-t3));
+                paraphasedValue = paramanager.getPlagiarismValueForParaphraseDetect(match);
             }
             else{
                 matchedText[0] = "";
                 matchedText[1] = "";
+                paraphasedValue = 0;
             }
             String firstFile = documentToCompare;
             String secondFile = preIndexedFiles.get(i);
@@ -262,10 +250,10 @@ public class Manager {
             System.out.println("match is " + match);
             System.out.println("Size of the matched files is " + fileNo);
             System.out.println();
+            
             if ((!match.isEmpty() &&  !(firstFile.equalsIgnoreCase(secondFile))) || (!(firstFile.equalsIgnoreCase(secondFile)) && !matchedText[0].isEmpty() )) {
-                //////////////// just for testing purposes
                 matchValue[0]=match;
-                matchValue[1]=String.valueOf(roundNumber(output,2)*100/2);;
+                matchValue[1]=String.valueOf((roundNumber(output,2)*100/2)+(paraphasedValue));
                 matchValue[2] = matchedText[0];
                 matchValue[3] = matchedText[1];    
                 resultsMap.put(secondFile, matchValue);

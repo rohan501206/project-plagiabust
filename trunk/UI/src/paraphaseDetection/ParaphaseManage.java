@@ -43,28 +43,27 @@ public class ParaphaseManage {
     
     public String[] checkForParaPhase(String firstString,String secondString) throws IOException{
         ArrayList<String> firstStringSentences = new ArrayList<String> ();
-        ArrayList<String> secondStringSentences = new ArrayList<String> ();
-        
+        ArrayList<String> secondStringSentences = new ArrayList<String> ();        
         firstStringSentences = this.getSentences(firstString);
         secondStringSentences = this.getSentences(secondString);
         String result[] = new String[2];
         String firstfileMatch = "";
-        String secondfileMatch = "";
-        for (int i = 0; i < firstStringSentences.size(); i++) {
-            for (int j = 0; j < secondStringSentences.size(); j++) {
+        String secondfileMatch = "";       
+      
+        for (int i = 0; i < firstStringSentences.size(); i++) {   
+            boolean isParaphased = false;
+            for (int j = 0; j < secondStringSentences.size(); j++) {           
                 double similarityValue = manager.similarity(firstStringSentences.get(i),secondStringSentences.get(j));  
                 if (similarityValue > threshod) { 
-                    firstfileMatch = firstfileMatch+firstStringSentences.get(i)+"~";
-                    secondfileMatch = secondfileMatch+secondStringSentences.get(j)+"~";             
+                    isParaphased = true;
+                    secondfileMatch = secondfileMatch+secondStringSentences.get(j).toLowerCase()+"~";             
                 }
             }
-            
+            if(isParaphased){
+                firstfileMatch = firstfileMatch+firstStringSentences.get(i).toLowerCase()+"~";
+            }
         }
-        //System.err.println(firstfileName);
-        //System.err.println(firstfileMatch);
-        //System.err.println(secondfileName);
-        //System.err.println(secondfileMatch);
-        
+       
         result[0] = firstfileMatch;
         result[1] = secondfileMatch;
         return result;
@@ -79,7 +78,28 @@ public class ParaphaseManage {
         return out.toString();
     }
     
-    
+    public float getPlagiarismValueForParaphraseDetect(String match) throws IOException{
+        
+        String paraphasedString = this.matchList[0];
+        String matchOnlyText = match.replaceAll("~"," ");
+        String paraphasedOnlyText = paraphasedString.replaceAll("~"," ");
+        String [] machedTextArray = matchOnlyText.split(" ");
+        String onlyParaphasedText = this.arraylistToSting(stopremover.removeStopwordInstopwordArray(paraphasedOnlyText, machedTextArray));
+        int all = firstString.length();
+        int para = onlyParaphasedText.length();
+        
+        /*System.err.println(firstfileName);
+        System.err.println(secondfileName);
+        System.err.println("Shingle cloud match:"+match);
+        System.err.println("paraphaseed string:"+paraphasedString);
+        System.err.println("onlyparapahrase text:"+onlyParaphasedText);
+        System.err.println("File lenth:"+all);
+        System.err.println("Only paraphas lenth:"+para);
+        System.err.println();*/
+        
+        return (para*100)/all;
+        
+    }
     
     
     
