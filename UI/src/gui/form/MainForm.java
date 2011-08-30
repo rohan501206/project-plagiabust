@@ -245,7 +245,9 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_NewCheckButtonActionPerformed
 
     private void KBManagerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KBManagerButtonActionPerformed
-        KBManagerForm.getInstance().setVisible(true);
+        //KBManagerForm.getInstance().setVisible(true);
+        AdminInforForm admingForm = new AdminInforForm();
+        admingForm.setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_KBManagerButtonActionPerformed
 
