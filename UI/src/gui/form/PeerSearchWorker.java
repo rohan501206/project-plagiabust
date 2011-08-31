@@ -61,7 +61,7 @@ public class PeerSearchWorker extends SwingWorker<peerSearchReportData, String> 
     protected peerSearchReportData doInBackground() throws Exception {
         HashMap<String, ArrayList<String>> downloadedFileList;
         if (UsePlagiabustWebServer) {
-            System.out.println("Start Downloading the internet files........................");
+            System.out.println("Start Downloading from Plagiabust Web server........................");
             downloadedFileList = plagiabustServerSourceDownloadManager.downloadFilesForMultiplePeerSearch(fileArrayList, destFolderPath, pbar);
             System.out.println("Finished Downloading the internet files........................");
 
