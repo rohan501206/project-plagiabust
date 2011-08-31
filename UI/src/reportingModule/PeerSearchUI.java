@@ -984,7 +984,7 @@ public class PeerSearchUI extends javax.swing.JFrame {
                 }
 
                 if ((g.findEdge(docToIntegerMap.get(suspectedFileName), docToIntegerMap.get(fileName))) == null) {
-                    g.addEdge(new CustomEdge(value,0), docToIntegerMap.get(fileName), docToIntegerMap.get(suspectedFileName));
+                    g.addEdge(new CustomEdge(value), docToIntegerMap.get(fileName), docToIntegerMap.get(suspectedFileName));
                 }
 
             }
@@ -1013,6 +1013,16 @@ public class PeerSearchUI extends javax.swing.JFrame {
                 else {
                     return palette[2];
                 }
+            }
+        };
+
+        Transformer<Integer, Paint> vertexPaint = new Transformer<Integer, Paint>() {
+
+
+
+            public Paint transform(Integer i) {
+
+                  return Color.WHITE;
             }
         };
 
