@@ -1330,7 +1330,7 @@ public class WizardForm extends javax.swing.JFrame {
     }
 
     private void ViewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewButtonActionPerformed
-
+        File projectFolder = new File(ProjectFolderTextField.getText());
         ViewButton.setEnabled(false);
         if (singleDetectionButton.isSelected()) {
 
@@ -1339,7 +1339,7 @@ public class WizardForm extends javax.swing.JFrame {
             //File destFolder = new File(destFolderPath);
             String selectedDocumentPath = destFolderPath + File.separator + DocumentManagerForm.fileName;
 
-            final ReportWorker repworker = new ReportWorker(selectedDocumentPath, repdata) {
+            final ReportWorker repworker = new ReportWorker(selectedDocumentPath, repdata,projectFolder,DeleteProjectFilesCheckBox.isSelected()) {
                 // This method is invoked when the worker is finished
                 // its task
 
