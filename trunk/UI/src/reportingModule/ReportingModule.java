@@ -90,9 +90,10 @@ public class ReportingModule extends javax.swing.JFrame {
     ArrayList<String> fileNameList = new ArrayList<String>();
     ArrayList<String> urlListmatch = new ArrayList<String>();
     Graph<Integer, CustomEdge> connectedGraph;
-    Layout<Integer, String> layout;
-    VisualizationViewer<Integer, String> visualizationViewer;
+    Layout<Integer, CustomEdge> layout;
+    VisualizationViewer<Integer, CustomEdge> visualizationViewer;
     DefaultListModel listModelGraph = new DefaultListModel();
+    ArrayList<String> urlArrayList=new ArrayList<String>() ;
 
     /** Creates new form NewJFrame */
     public ReportingModule() {
@@ -738,12 +739,9 @@ public class ReportingModule extends javax.swing.JFrame {
     return dir.delete();
 }
 
-    
-    
-    
-    
-    
-    public void setData(File projectFolder,boolean deletefolder) {
+     
+      
+    public void setData() {
         this.deletefolder = deletefolder;
         this.projectFolder = projectFolder;
         Set<String> docList = resultMap.keySet();
@@ -826,7 +824,7 @@ public class ReportingModule extends javax.swing.JFrame {
 
                 } else {
                     fileListComboBox.addItem((String) fileToUrlMap.get(fileName));
-
+                    urlArrayList.add((String) fileToUrlMap.get(fileName));
                 }
             } else {
                 fileListComboBox.addItem(fileNameList.get(i - 1));
@@ -894,7 +892,7 @@ public class ReportingModule extends javax.swing.JFrame {
         }
         if (queryforFirstFile.length != 1) {
             ArrayList<Color> colourArray = getColourArray(queryforFirstFile);
-            setHighlighterToFirstTextFile(queryforFirstFile, content2, content2, colourArray);
+            setHighlighterToFirstTextFile(queryforFirstFile, content, content, colourArray);
         }
         if (queryforSecondFile.length != 1) {
             ArrayList<Color> colourArray = getColourArray(queryforSecondFile);
@@ -1025,7 +1023,7 @@ public class ReportingModule extends javax.swing.JFrame {
             String node = (String) listModelGraph.get(i);
 
             if (i % 2 == 1) {
-                nodeList = nodeList + "\t \t" + node;
+                nodeList = nodeList + "\t" + node;
             }
             if (i % 2 == 0) {
                 nodeList = nodeList + "\n" + node;
@@ -1033,11 +1031,8 @@ public class ReportingModule extends javax.swing.JFrame {
 
         }
 
-        Set<String> filenameListofurls = fileToUrlMap.keySet();
-        Iterator it = filenameListofurls.iterator();
-        while (it.hasNext()) {
-            String fName = (String) it.next();
-            onlineSourceArray.add(fileToUrlMap.get(fName));
+        for (int i = 0; i < urlArrayList.size(); i++) {
+            onlineSourceArray.add(urlArrayList.get(i));
         }
         if (onlineSourceArray.size() < 15) {
             while (onlineSourceArray.size() != 15) {
@@ -1045,7 +1040,7 @@ public class ReportingModule extends javax.swing.JFrame {
             }
         }
 
-        System.err.println(nodeList);
+        //System.err.println(nodeList);
         hm.put("SUBREPORT_DIR", "jasper/");
         hm.put("onlineSource", onlineSourceArray);
         hm.put("field", nodeList);
@@ -1134,14 +1129,16 @@ public class ReportingModule extends javax.swing.JFrame {
             }
         }
         layout = new CircleLayout(connectedGraph);
-        layout.setSize(new Dimension(300, 300));
-        visualizationViewer = new VisualizationViewer<Integer, String>(layout);
-        visualizationViewer.setSize(300, 300);
+        layout.setSize(new Dimension(600, 600));
+        visualizationViewer = new VisualizationViewer<Integer, CustomEdge>(layout);
+        visualizationViewer.setSize(600, 600);
         visualizationViewer.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
         visualizationViewer.getRenderContext().setEdgeLabelTransformer(new ToStringLabeller());
+       
+
         Transformer<Integer, Paint> vertexPaint = new Transformer<Integer, Paint>() {
 
-            private final Color[] palette = {Color.GREEN,
+            private final Color[] palette = {Color.WHITE,
                 Color.WHITE, Color.RED};
 
             public Paint transform(Integer i) {
@@ -1153,41 +1150,36 @@ public class ReportingModule extends javax.swing.JFrame {
             }
         };
 
-        Transformer<String, Paint> edgesPaint = new Transformer<String, Paint>() {
+        Transformer<CustomEdge, Paint> edgesPaint = new Transformer<CustomEdge, Paint>() {
 
             private final Color[] palette = {Color.GREEN,
                 Color.YELLOW, Color.RED};
 
-
-            public Paint transform(String edgeValue) {
+            public Paint transform(CustomEdge edgeValue) {
                 String stringvalue=edgeValue.toString();
                 stringvalue=stringvalue.replaceAll("%","");
-                int value=Integer.valueOf(stringvalue);
-                if (value<= 10) {
+                Double value=Double.valueOf(stringvalue);
+                int intval=value.intValue();
+                if (intval<= 10) {
                     return palette[0];
                 }
-                if (value> 10 && value<=20 ) {
+                if (intval> 10 && intval<=20 ) {
                     return palette[1];
                 }
                 else {
                     return palette[2];
                 }
             }
-        };  
+        };
         visualizationViewer.getRenderContext().setVertexFillPaintTransformer(vertexPaint);
-        //visualizationViewer.getRenderContext().setEdgeFillPaintTransformer(edgesPaint);
+        visualizationViewer.getRenderContext().setEdgeFillPaintTransformer(edgesPaint);
         // Create a graph mouse and add it to the visualization component
         DefaultModalGraphMouse gm = new DefaultModalGraphMouse();
         gm.setMode(ModalGraphMouse.Mode.TRANSFORMING);
         visualizationViewer.setGraphMouse(gm);
         graphScrollPane.setViewportView(visualizationViewer);
 
-        PNGDump dumper = new PNGDump();
-        try {
-            dumper.dumpComponent(new File("jasper/reportImages/test.png"), visualizationViewer);
-        } catch (IOException e) {
-            System.err.println("dump failed");
-        }
+         saveGraph(visualizationViewer);
     }
 
     private void updateFileDisplayers(String fileName) {
@@ -1279,6 +1271,16 @@ public class ReportingModule extends javax.swing.JFrame {
             }
         }
         return colourArray;
+    }
+
+
+    public void saveGraph(VisualizationViewer<Integer, CustomEdge> visualizationViewer) {
+        PNGDump dumper = new PNGDump();
+        try {
+            dumper.dumpComponent(new File("jasper/reportImages/test.png"), visualizationViewer);
+        } catch (IOException e) {
+            System.err.println("dump failed");
+        }
     }
 
     /**
