@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report3" language="groovy" pageWidth="700" pageHeight="842" columnWidth="660" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="768"/>
+	<property name="ireport.y" value="528"/>
 	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -163,12 +163,42 @@
 				<text><![CDATA[Connected Graph View of the Results]]></text>
 			</staticText>
 			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="14" y="526" width="562" height="20"/>
+				<reportElement x="14" y="511" width="621" height="20"/>
 				<textElement>
+					<font size="7"/>
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{field}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="448" y="246" width="173" height="20"/>
+				<textElement/>
+				<text><![CDATA[Plagiarism Results Percentages]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="523" y="289" width="36" height="10" backcolor="#0CF00C"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="523" y="337" width="36" height="10" backcolor="#F31010"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="448" y="337" width="58" height="15"/>
+				<textElement/>
+				<text><![CDATA[>20%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="448" y="312" width="58" height="16"/>
+				<textElement/>
+				<text><![CDATA[10%-20%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="448" y="289" width="58" height="16"/>
+				<textElement/>
+				<text><![CDATA[0%-10%]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="523" y="312" width="36" height="10" backcolor="#F3F309"/>
+			</rectangle>
 		</band>
 	</summary>
 </jasperReport>

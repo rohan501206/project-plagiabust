@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report3" language="groovy" pageWidth="700" pageHeight="1200" columnWidth="660" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="384"/>
+	<property name="ireport.y" value="499"/>
 	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -287,6 +287,35 @@
 				<textFieldExpression class="java.lang.String"><![CDATA[($P{onlineSource}).get(13)]]></textFieldExpression>
 				<hyperlinkReferenceExpression><![CDATA[($P{onlineSource}).get(13)]]></hyperlinkReferenceExpression>
 			</textField>
+			<staticText>
+				<reportElement x="455" y="284" width="173" height="20"/>
+				<textElement/>
+				<text><![CDATA[Plagiarism Results Percentages]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="530" y="318" width="36" height="10" backcolor="#05F405"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="455" y="318" width="58" height="20"/>
+				<textElement/>
+				<text><![CDATA[0% - 10%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="350" width="58" height="16"/>
+				<textElement/>
+				<text><![CDATA[10%-20%]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="455" y="380" width="58" height="15"/>
+				<textElement/>
+				<text><![CDATA[>20%]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="530" y="350" width="36" height="10" backcolor="#F6F60A"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="530" y="380" width="36" height="10" backcolor="#F91212"/>
+			</rectangle>
 		</band>
 	</summary>
 </jasperReport>
