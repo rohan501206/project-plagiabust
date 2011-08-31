@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
  *
  * @author user
  */
-public class Test {
+public class RegexTested {
 
 
     public static void main(String[] args){
