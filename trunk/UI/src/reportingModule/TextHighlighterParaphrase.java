@@ -22,7 +22,6 @@ public class TextHighlighterParaphrase {
         int startIndex=0;
         int endIndex=0;
         String match="";
-
         String searchQuery = query;
 
         Pattern pattern = Pattern.compile(Pattern.quote(searchQuery));
