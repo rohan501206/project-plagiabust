@@ -1286,7 +1286,9 @@ public class WizardForm extends javax.swing.JFrame {
             for (int arr = 0; arr < files.length; arr++) {
                 fileArrayList.add(files[arr].getAbsolutePath());
             }
-            final PeerSearchWorker psworker = new PeerSearchWorker(destFolderPath, files, indexFolderPath, fileArrayList, manager, DonloadFileProgressBar, CreateIndexProgressBar, PreprocessDocumentProgressBar, CrossCheckProgressBar) {
+            final PeerSearchWorker psworker = new PeerSearchWorker(destFolderPath, files, indexFolderPath, fileArrayList,
+                    manager, DonloadFileProgressBar, CreateIndexProgressBar, PreprocessDocumentProgressBar,
+                    CrossCheckProgressBar, Integer.parseInt((String) NumOfExternalSourcesComboBox.getSelectedItem()),Integer.parseInt((String) NumOfPeerSourceComboBox.getSelectedItem())) {
                 // This method is invoked when the worker is finished
                 // its task
 

@@ -31,7 +31,6 @@ public class DocumentIndexingManager {
     public ArrayList<String> indexSearch(String indexpath,String selectDocPath,JProgressBar pbar,int amaxNoIndexfiles){
         ProgressBarManager pmanager = new ProgressBarManager(pbar);
         maxNoIndexfiles = amaxNoIndexfiles;
-
         selectedDocumentPath=selectDocPath;
         indexFolderPath=indexpath;
         IndexSearch is = new IndexSearch(indexFolderPath);
@@ -54,37 +53,30 @@ public class DocumentIndexingManager {
                 pmanager.runProgress((selectedDocuments*100)/size);
             }
         }
-
         return indexedFiles;
     }
 
 
 
-    public HashMap<File, ArrayList<String>> indexSearchforMultiplePeers(File[] files,String indexFolderPathTemp,JProgressBar pbar){
+    public HashMap<File, ArrayList<String>> indexSearchforMultiplePeers(File[] files,String indexFolderPathTemp,JProgressBar pbar,int amaxNoIndexfiles){
+        maxNoIndexfiles = amaxNoIndexfiles;
         ProgressBarManager pmanager = new ProgressBarManager(pbar); // progress bar
-
-
         indexFolderPath=indexFolderPathTemp;
         IndexSearch is = new IndexSearch(indexFolderPath);
         PeerSearchManager psm = new PeerSearchManager(is);
         for (int i = 0; i < files.length; i++) {
-
-
              // progress bar
-             pmanager.runProgress(((i+1)*100)/files.length);
-
-
+            pmanager.runProgress(((i+1)*100)/files.length);
             ArrayList<String> indexedFilesTesting = new ArrayList<String>();
             if (files[i].isFile()) {
                 System.out.println("testing Indexing files........................\n");
                 HashMap<String, Integer> selectedSources = psm.getSuspiciousDocList(files[i].getAbsolutePath());
                 Iterator it = selectedSources.entrySet().iterator();
                 int selectedDocuments = 0;
-                while (it.hasNext() && selectedDocuments < 10) {
+                while (it.hasNext() && selectedDocuments < maxNoIndexfiles) {
                     Map.Entry pair = (Map.Entry) it.next();
                     String filePath = (String) pair.getKey();
                     selectedDocuments++;
-                    ///if(!filePath.equalsIgnoreCase(selectedDocumentPath))
                     indexedFilesTesting.add(filePath);
                 }
                 indexedFileList.put(files[i], indexedFilesTesting);
