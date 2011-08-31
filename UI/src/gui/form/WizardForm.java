@@ -21,13 +21,16 @@ import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
+import org.apache.poi.hwpf.usermodel.DateAndTime;
 import reportingModule.PeerSearchUI;
 import reportingModule.ReportingModule;
 import ui.FileOperator;
@@ -123,10 +126,10 @@ public class WizardForm extends javax.swing.JFrame {
         jLabel20 = new javax.swing.JLabel();
         buttonGroup1 = new javax.swing.ButtonGroup();
         WizardMainPanel = new javax.swing.JPanel();
-        WizardImageLabel = new javax.swing.JLabel();
         DescriptionPanel = new javax.swing.JPanel();
         DescriptionScrollPane = new javax.swing.JScrollPane();
         DescriptionTextArea = new javax.swing.JTextArea();
+        WizardImageLabel = new javax.swing.JLabel();
         WizardSeparator = new javax.swing.JSeparator();
         WizardTabbedPane = new javax.swing.JTabbedPane();
         ProjectLocationPanel = new javax.swing.JPanel();
@@ -220,28 +223,31 @@ public class WizardForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("New Project");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
 
         WizardMainPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "New Plagiarism Check Wizard :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
         WizardMainPanel.setPreferredSize(new java.awt.Dimension(780, 380));
-
-        WizardImageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/logo new.png"))); // NOI18N
-        WizardImageLabel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        WizardImageLabel.setPreferredSize(new java.awt.Dimension(300, 250));
 
         DescriptionPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Description", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
         DescriptionPanel.setPreferredSize(new java.awt.Dimension(300, 50));
 
         DescriptionScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 
+        DescriptionTextArea.setBackground(new java.awt.Color(240, 240, 240));
         DescriptionTextArea.setColumns(20);
         DescriptionTextArea.setEditable(false);
-        DescriptionTextArea.setFont(new java.awt.Font("Tahoma", 0, 12));
+        DescriptionTextArea.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         DescriptionTextArea.setLineWrap(true);
         DescriptionTextArea.setRows(5);
         DescriptionTextArea.setText("This area contains helpful information for each step of plagiarism detection process.");
         DescriptionTextArea.setBorder(null);
         DescriptionScrollPane.setViewportView(DescriptionTextArea);
+
+        WizardImageLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        WizardImageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/New folder.png"))); // NOI18N
+        WizardImageLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        WizardImageLabel.setPreferredSize(new java.awt.Dimension(300, 250));
 
         javax.swing.GroupLayout DescriptionPanelLayout = new javax.swing.GroupLayout(DescriptionPanel);
         DescriptionPanel.setLayout(DescriptionPanelLayout);
@@ -249,12 +255,17 @@ public class WizardForm extends javax.swing.JFrame {
             DescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DescriptionPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(DescriptionScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                .addGroup(DescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(WizardImageLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                    .addComponent(DescriptionScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE))
                 .addContainerGap())
         );
         DescriptionPanelLayout.setVerticalGroup(
             DescriptionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(DescriptionScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DescriptionPanelLayout.createSequentialGroup()
+                .addComponent(WizardImageLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 202, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(DescriptionScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 370, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         WizardSeparator.setOrientation(javax.swing.SwingConstants.VERTICAL);
@@ -290,10 +301,10 @@ public class WizardForm extends javax.swing.JFrame {
         });
 
         ProjectLocationTextField.setEditable(false);
-        ProjectLocationTextField.setFont(new java.awt.Font("Tahoma", 0, 12));
+        ProjectLocationTextField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         ProjectFolderTextField.setEditable(false);
-        ProjectFolderTextField.setFont(new java.awt.Font("Tahoma", 0, 12));
+        ProjectFolderTextField.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
         LocationBrowseButton.setFont(new java.awt.Font("Tahoma", 0, 12));
         LocationBrowseButton.setText("Browse");
@@ -315,8 +326,9 @@ public class WizardForm extends javax.swing.JFrame {
 
         Step1ImageLabel.setPreferredSize(new java.awt.Dimension(32, 32));
 
+        singleDetectionButton.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(singleDetectionButton);
-        singleDetectionButton.setFont(new java.awt.Font("Tahoma", 0, 12));
+        singleDetectionButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         singleDetectionButton.setText("Single");
         singleDetectionButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -324,6 +336,7 @@ public class WizardForm extends javax.swing.JFrame {
             }
         });
 
+        peerDetectionButton.setBackground(new java.awt.Color(255, 255, 255));
         buttonGroup1.add(peerDetectionButton);
         peerDetectionButton.setFont(new java.awt.Font("Tahoma", 0, 12));
         peerDetectionButton.setText("Peer");
@@ -424,6 +437,7 @@ public class WizardForm extends javax.swing.JFrame {
         DocumentManagerButton.setText("Select Document");
         DocumentManagerButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         DocumentManagerButton.setPreferredSize(new java.awt.Dimension(180, 40));
+        DocumentManagerButton.setVerifyInputWhenFocusTarget(false);
         DocumentManagerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DocumentManagerButtonActionPerformed(evt);
@@ -508,7 +522,7 @@ public class WizardForm extends javax.swing.JFrame {
                 .addContainerGap(309, Short.MAX_VALUE))
         );
 
-        WizardTabbedPane.addTab("Select Single Document", AddDocumentPanel);
+        WizardTabbedPane.addTab("Suspicious Document", AddDocumentPanel);
 
         SelectDocumentsPanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -557,10 +571,10 @@ public class WizardForm extends javax.swing.JFrame {
                     .addGroup(SelectDocumentsPanelLayout.createSequentialGroup()
                         .addComponent(ProjectLocationLabel1)
                         .addGap(35, 35, 35)
-                        .addComponent(peerSourceTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
+                        .addComponent(peerSourceTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(LocationBrowseButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(107, 107, 107))))
+                        .addGap(186, 186, 186))))
         );
         SelectDocumentsPanelLayout.setVerticalGroup(
             SelectDocumentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -579,7 +593,7 @@ public class WizardForm extends javax.swing.JFrame {
                 .addContainerGap(401, Short.MAX_VALUE))
         );
 
-        WizardTabbedPane.addTab("Select Source Documents", SelectDocumentsPanel);
+        WizardTabbedPane.addTab("Source Documents", SelectDocumentsPanel);
 
         KnowledgeBasePanel.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -891,32 +905,34 @@ public class WizardForm extends javax.swing.JFrame {
                             .addComponent(TaskCompletionLabel))
                         .addGap(1459, 1459, 1459)
                         .addComponent(Step5ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(CrossCheckCompletionLabel)
                     .addGroup(StartCheckPanelLayout.createSequentialGroup()
-                        .addComponent(KnowledgeBaseCompletionLabel)
-                        .addGap(31, 31, 31)
-                        .addComponent(DonloadFileProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 421, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(StartCheckPanelLayout.createSequentialGroup()
-                        .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(StartCheckPanelLayout.createSequentialGroup()
+                        .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, StartCheckPanelLayout.createSequentialGroup()
+                                .addComponent(KnowledgeBaseCompletionLabel)
+                                .addGap(31, 31, 31)
+                                .addComponent(DonloadFileProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, StartCheckPanelLayout.createSequentialGroup()
                                 .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(IndexFilesCompletionLabel)
                                     .addComponent(PreprocessDocumentCompletionLabel))
                                 .addGap(52, 52, 52)
                                 .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(PreprocessDocumentProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
-                                    .addComponent(CreateIndexProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(CrossCheckProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)))
-                            .addGroup(StartCheckPanelLayout.createSequentialGroup()
-                                .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(CommandsLabel)
-                                    .addComponent(CommandTipScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                                    .addComponent(CrossCheckProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+                                    .addComponent(CreateIndexProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, StartCheckPanelLayout.createSequentialGroup()
+                                .addComponent(CommandTipScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 140, Short.MAX_VALUE)
                                 .addComponent(CheckControlButton, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(25, 25, 25)
-                                .addComponent(ViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(129, 129, 129)
-                        .addComponent(CommandSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(CrossCheckCompletionLabel))
+                                .addGap(18, 18, 18)
+                                .addComponent(ViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(7, 7, 7))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, StartCheckPanelLayout.createSequentialGroup()
+                                .addComponent(CommandsLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 560, Short.MAX_VALUE)))
+                        .addGap(100, 100, 100)
+                        .addComponent(CommandSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         StartCheckPanelLayout.setVerticalGroup(
@@ -933,17 +949,17 @@ public class WizardForm extends javax.swing.JFrame {
                         .addComponent(TaskCompletionLabel)))
                 .addGap(18, 18, 18)
                 .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(KnowledgeBaseCompletionLabel)
-                    .addComponent(DonloadFileProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(DonloadFileProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(KnowledgeBaseCompletionLabel))
                 .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(StartCheckPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(IndexFilesCompletionLabel))
                     .addGroup(StartCheckPanelLayout.createSequentialGroup()
                         .addGap(8, 8, 8)
                         .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(CommandSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(CreateIndexProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(StartCheckPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(IndexFilesCompletionLabel)))
+                            .addComponent(CreateIndexProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CommandSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(PreprocessDocumentProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -961,18 +977,19 @@ public class WizardForm extends javax.swing.JFrame {
                         .addGap(40, 40, 40)
                         .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(CheckControlButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(ViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(StartCheckPanelLayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(CommandTipScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(14, 14, 14)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(47, Short.MAX_VALUE))
+                .addContainerGap(46, Short.MAX_VALUE))
         );
 
         WizardTabbedPane.addTab("Start Check   ", StartCheckPanel);
 
         WizardNextButton.setFont(new java.awt.Font("Tahoma", 0, 12));
+        WizardNextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/next-icon.png"))); // NOI18N
         WizardNextButton.setText("Next Step");
         WizardNextButton.setPreferredSize(new java.awt.Dimension(180, 40));
         WizardNextButton.addActionListener(new java.awt.event.ActionListener() {
@@ -983,6 +1000,7 @@ public class WizardForm extends javax.swing.JFrame {
 
         WizardPreviousButton.setBackground(new java.awt.Color(255, 255, 255));
         WizardPreviousButton.setFont(new java.awt.Font("Tahoma", 0, 12));
+        WizardPreviousButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/previous-icon.png"))); // NOI18N
         WizardPreviousButton.setText("Previous Step");
         WizardPreviousButton.setPreferredSize(new java.awt.Dimension(180, 40));
         WizardPreviousButton.addActionListener(new java.awt.event.ActionListener() {
@@ -997,9 +1015,7 @@ public class WizardForm extends javax.swing.JFrame {
             WizardMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(WizardMainPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(WizardMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(WizardImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DescriptionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(DescriptionPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
                 .addComponent(WizardSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1015,17 +1031,17 @@ public class WizardForm extends javax.swing.JFrame {
         );
         WizardMainPanelLayout.setVerticalGroup(
             WizardMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(WizardMainPanelLayout.createSequentialGroup()
-                .addComponent(WizardImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(DescriptionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE))
             .addComponent(WizardSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 629, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WizardMainPanelLayout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(WizardTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
-                .addGap(37, 37, 37)
+                .addGap(26, 26, 26)
                 .addGroup(WizardMainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(WizardPreviousButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(WizardNextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WizardMainPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(DescriptionPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 618, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -1175,14 +1191,20 @@ public class WizardForm extends javax.swing.JFrame {
     public void setDescriptionInformation(int selectedTabIndex) {
         switch (selectedTabIndex) {
             case 0:
-                DescriptionTextArea.setText("Step 1 - Select Name and Location");
+                ImageIcon selectIcon = new ImageIcon("src\\Images\\New folder.png");
+                WizardImageLabel.setIcon(selectIcon);
+                DescriptionTextArea.setText("Step 1 - Select Name and Location \nSelect a suitable project name and then a location. \nAll the documents and internet downloaded documents are saved here.");
                 break;
             case 1:
-                DescriptionTextArea.setText("Step 2 - Select a single document to check for plagiarism.");
+                ImageIcon documentIcon = new ImageIcon("src\\Images\\New document.png");
+                WizardImageLabel.setIcon(documentIcon);
+                DescriptionTextArea.setText("Step 2 - Select a single document to check for plagiarism. This document is cross checked for plagiarism with the set of documents chosen in the next step.");
                 break;
             case 2:
+                ImageIcon documentsIcon = new ImageIcon("src\\Images\\Add documents.png");
+                WizardImageLabel.setIcon(documentsIcon);
                 if (singleDetectionButton.isSelected()) {
-                    DescriptionTextArea.setText("Step 3 - Add Documents for new Plagiarism Detection Project");
+                    DescriptionTextArea.setText("Step 3 - Add Documents for new Plagiarism Detection Project. These documents are used to compare with the document ealier selected.");
                     AddDocumentBannerLabel1.setText("Step 3 - Add Documents for new Plagiarism Detection Project");
                 } else {
                     DescriptionTextArea.setText("Step 2 - Add Documents for new Plagiarism Detection Project");
@@ -1190,6 +1212,8 @@ public class WizardForm extends javax.swing.JFrame {
                 }
                 break;
             case 3:
+                ImageIcon knowledgeBaseIcon = new ImageIcon("src\\Images\\knowlegde_base_icon.png");
+                WizardImageLabel.setIcon(knowledgeBaseIcon);
                 if (singleDetectionButton.isSelected()) {
                     DescriptionTextArea.setText("Step 4 - Creating a Knowledge Base For the Subject");
                     KBManagerBannerLabel.setText("Step 4 - Creating a Knowledge Base For the Subject");
@@ -1199,6 +1223,8 @@ public class WizardForm extends javax.swing.JFrame {
                 }
                 break;
             case 4:
+                ImageIcon settingsIcon = new ImageIcon("src\\Images\\Wizard settings.png");
+                WizardImageLabel.setIcon(settingsIcon);
                 if (singleDetectionButton.isSelected()) {
                     DescriptionTextArea.setText("Step 5 - Apply Custom Settings for the Project");
                     SettingsBannerLabel.setText("Step 5 - Apply Custom Settings for the Project");
@@ -1208,6 +1234,8 @@ public class WizardForm extends javax.swing.JFrame {
                 }
                 break;
             case 5:
+                ImageIcon startCheckIcon = new ImageIcon("src\\Images\\Start check.png");
+                WizardImageLabel.setIcon(startCheckIcon);
                 if (singleDetectionButton.isSelected()) {
                     DescriptionTextArea.setText("Step 6 - Start Plagiarism Detection Process");
                     CheckBannerLabel.setText("Step 6 - Start Plagiarism Detection Process");
