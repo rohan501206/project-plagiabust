@@ -4,9 +4,12 @@
  */
 package gui.form;
 
+import ch.randelshofer.quaqua.QuaquaButtonUI;
+import ch.randelshofer.quaqua.QuaquaManager;
+import java.awt.Color;
+import javax.swing.JButton;
 import javax.swing.UIManager;
-import javax.swing.UIManager.LookAndFeelInfo;
-import javax.swing.UnsupportedLookAndFeelException;
+import javax.vecmath.Color3b;
 
 /**
  *
@@ -17,16 +20,11 @@ public class Main {
     public static void main(String[] args) {
 
         // Set look and feel
-        try {
-            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());    
-        } catch (UnsupportedLookAndFeelException ex) {
-            ex.printStackTrace();
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-        } catch (InstantiationException ex) {
-            ex.printStackTrace();
-        } catch (IllegalAccessException ex) {
-            ex.printStackTrace();
+        try {            
+            System.setProperty("Quaqua.design", "panther");
+            UIManager.setLookAndFeel(QuaquaManager.getLookAndFeel());
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
         MainForm.getInstance().setVisible(true);
