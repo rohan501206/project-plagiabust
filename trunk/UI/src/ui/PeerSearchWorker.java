@@ -5,6 +5,7 @@
 
 package ui;
 
+import gui.form.AdminInforForm;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import javax.swing.SwingWorker;
 public class PeerSearchWorker extends SwingWorker<String[][], String> {
     ArrayList<String> fileArrayList = new ArrayList<String>();
     HashMap<File, ArrayList<String>> indexedFileList = new HashMap<File, ArrayList<String>>();
-    InternetDocumentDownloadManager idm = new InternetDocumentDownloadManager();
+    InternetDocumentDownloadManager idm = new InternetDocumentDownloadManager(AdminInforForm.getInternetSearchAPI());
     DocumentIndexingManager indexingManger=new DocumentIndexingManager();
     FormMain form = new FormMain();
     String[][] temp = null;
@@ -40,7 +41,7 @@ public class PeerSearchWorker extends SwingWorker<String[][], String> {
     protected String[][] doInBackground() throws Exception {
         long t1 = System.currentTimeMillis();
         System.out.println("Start indexing the files........................");
-        indexedFileList = indexingManger.indexSearchforMultiplePeers(files, indexFolderPath,null);
+        indexedFileList = indexingManger.indexSearchforMultiplePeers(files, indexFolderPath,null, 10);
         System.out.println("Finished indexing the files........................");
         System.out.println("Start Downloading the internet files........................");
         //HashMap<String, ArrayList<String>> downloadedFileList = idm.downloadFilesForMultiplePeerSearch(fileArrayList, destFolderPath);

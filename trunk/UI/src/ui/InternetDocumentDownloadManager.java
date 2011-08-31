@@ -34,7 +34,8 @@ public class InternetDocumentDownloadManager {
         this.searchAPI = searchAPI;
     }
 
-    public InternetDocumentDownloadManager() {
+    public InternetDocumentDownloadManager(InternetSearchAPI searchAPI) {
+        this.searchAPI = searchAPI;
     }
 
     public String downloadFiles(String destFolderPath, String fName) {

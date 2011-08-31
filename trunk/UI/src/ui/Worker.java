@@ -5,6 +5,7 @@
 
 package ui;
 
+import gui.form.AdminInforForm;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.JProgressBar;
@@ -18,7 +19,7 @@ public class Worker extends SwingWorker<String[][], String> {
     JProgressBar pbar2;
     JProgressBar pbar3;
     JProgressBar pbar;
-    InternetDocumentDownloadManager idm=new InternetDocumentDownloadManager();
+    InternetDocumentDownloadManager idm=new InternetDocumentDownloadManager(AdminInforForm.getInternetSearchAPI());
     DocumentIndexingManager indexingManger=new DocumentIndexingManager();
     FormMain form = new FormMain();
     String[][] temp = null;
