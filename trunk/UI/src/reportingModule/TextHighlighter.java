@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
 
 public class TextHighlighter {
 
-   /* public String[] highlightTexts(String contentOftheFile, String query) {
+    public String[] highlightTexts(String contentOftheFile, String query) {
 
         String contenttemp = contentOftheFile;
         String contentModified = contenttemp.replaceAll("\n", " ");
@@ -108,8 +108,8 @@ public class TextHighlighter {
     }
 
 
-    **/
-
+    
+/**
      public String[] highlightTexts(String contentOftheFile, String query) {
 
         String contenttemp = contentOftheFile;
@@ -245,9 +245,9 @@ public class TextHighlighter {
         }
         return SearchQuery;
 
+**/
 
-
-    }
+    
 
 
 
