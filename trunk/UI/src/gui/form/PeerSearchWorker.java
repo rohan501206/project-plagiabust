@@ -35,11 +35,12 @@ public class PeerSearchWorker extends SwingWorker<peerSearchReportData, String> 
     JProgressBar pbar2;
     JProgressBar pbar3;
     JProgressBar pbar4;
-
+    int maxIndexfiles;
 
 
     ArrayList<String> indexedFiles = new ArrayList<String>();
-    public PeerSearchWorker(String destFolderPath,File[] files,String indexFolderPath,ArrayList<String> fileArrayList,Manager manager,JProgressBar pbar,JProgressBar pbar2,JProgressBar pbar3,JProgressBar pbar4){
+    public PeerSearchWorker(String destFolderPath,File[] files,String indexFolderPath,ArrayList<String> fileArrayList,Manager manager,
+        JProgressBar pbar,JProgressBar pbar2,JProgressBar pbar3,JProgressBar pbar4,int maxNumOfInternetSources,int maxIndexfiles){
         this.destFolderPath = destFolderPath;
         this.files = files;
         this.indexFolderPath = indexFolderPath;
@@ -49,6 +50,8 @@ public class PeerSearchWorker extends SwingWorker<peerSearchReportData, String> 
         this.pbar3 = pbar3;
         this.pbar4 = pbar4;
         this.pbar = pbar;
+        this.idm.setMaxNumOfSourcesPerDocument(maxNumOfInternetSources);
+        this.maxIndexfiles = maxIndexfiles;
     }
 
     @Override
@@ -62,7 +65,7 @@ public class PeerSearchWorker extends SwingWorker<peerSearchReportData, String> 
 
 
         System.out.println("Start indexing the files........................");
-        indexedFileList = indexingManger.indexSearchforMultiplePeers(files, indexFolderPath,pbar2);
+        indexedFileList = indexingManger.indexSearchforMultiplePeers(files, indexFolderPath,pbar2,maxIndexfiles);
         System.out.println("Finished indexing the files........................");
         
        
