@@ -16,6 +16,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingWorker;
 import org.apache.solr.client.solrj.SolrServer;
@@ -73,13 +74,15 @@ public class AddDocumentsBackgroundWorker extends SwingWorker<Integer, Integer> 
 
             }
         } catch (UnsupportedOperationException ex) {
-            textArea.setText("Unsopported operation.");
+            JOptionPane.showMessageDialog(null, "Unsopported operation.", "Error", JOptionPane.ERROR_MESSAGE);
         } catch (MalformedURLException ex) {
-            textArea.setText("A Malformed URL");
+            JOptionPane.showMessageDialog(null, "A Malformed URL", "Error", JOptionPane.ERROR_MESSAGE);
         } catch (IOException ex) {
-            textArea.setText("Error processing file.");
+            JOptionPane.showMessageDialog(null, "Error processing file.", "Error", JOptionPane.ERROR_MESSAGE);
+
         } catch (SolrServerException ex) {
-            textArea.setText("Error connecting to Plagiabust Web Server.");
+            JOptionPane.showMessageDialog(null, "Error connecting to Plagiabust Web Server.", "Error", JOptionPane.ERROR_MESSAGE);
+            
         }
         return count;
     }
