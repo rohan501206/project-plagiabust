@@ -64,13 +64,17 @@ public class SingleSearchDownloadFileProcessor implements Callable {
 
             String[] matchedText=new String[2];
 
+            float paraphasedValue = 0;
+            
             if(paraphaseDetection){
                 ParaphaseManage paramanager = new ParaphaseManage(firstFile,secondFile, downloadedFolderPath);
                 matchedText = paramanager.getMatchList();
+                paraphasedValue = paramanager.getPlagiarismValueForParaphraseDetect(match);
             }
             else{
                 matchedText[0] = "";
                 matchedText[1] = "";
+                 paraphasedValue = 0;
             }
 
             System.out.println();
@@ -84,7 +88,7 @@ public class SingleSearchDownloadFileProcessor implements Callable {
             if ((!match.isEmpty() &&  !(firstFile.equalsIgnoreCase(secondFile)))  || (!(firstFile.equalsIgnoreCase(secondFile)) && !matchedText[0].isEmpty() )) {
 
                 matchValue[0] = match;
-                matchValue[1] = String.valueOf(roundNumber(output,2)*100/2);
+                matchValue[1] = String.valueOf(roundNumber(output,2)*100/2 + +paraphasedValue);
                 matchValue[2] = matchedText[0];
                 matchValue[3] = matchedText[1];
                 resultsMap.put(secondFile, matchValue);
