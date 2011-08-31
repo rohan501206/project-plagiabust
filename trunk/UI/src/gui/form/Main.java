@@ -4,12 +4,11 @@
  */
 package gui.form;
 
-import ch.randelshofer.quaqua.QuaquaButtonUI;
 import ch.randelshofer.quaqua.QuaquaManager;
-import java.awt.Color;
-import javax.swing.JButton;
+import java.util.HashSet;
+import java.util.Set;
+import javax.swing.JOptionPane;
 import javax.swing.UIManager;
-import javax.vecmath.Color3b;
 
 /**
  *
@@ -20,13 +19,12 @@ public class Main {
     public static void main(String[] args) {
 
         // Set look and feel
-        try {            
-            System.setProperty("Quaqua.design", "panther");
+        try {
+            System.setProperty("Quaqua.design", "jaguar");
             UIManager.setLookAndFeel(QuaquaManager.getLookAndFeel());
         } catch (Exception e) {
-            e.printStackTrace();
+            JOptionPane.showMessageDialog(null, "Error", "Couldn't apply quaqua", JOptionPane.ERROR_MESSAGE);
         }
-
         MainForm.getInstance().setVisible(true);
     }
 }
