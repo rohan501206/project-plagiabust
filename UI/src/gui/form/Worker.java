@@ -30,7 +30,7 @@ import ui.PlagiabustServerSourceDownloadManager;
  * @author Compaq
  */
 public class Worker extends SwingWorker<ReportData, String> {
-    InternetDocumentDownloadManager idm=new InternetDocumentDownloadManager();
+    InternetDocumentDownloadManager idm;
     PlagiabustServerSourceDownloadManager plagiabustServerSourceDownloadManager = new PlagiabustServerSourceDownloadManager();
     DocumentIndexingManager indexingManger=new DocumentIndexingManager();
     FormMain form = new FormMain();
