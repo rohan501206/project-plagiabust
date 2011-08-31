@@ -147,7 +147,7 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/knowlegde_base_icon.png"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Internet settings.png"))); // NOI18N
 
         javax.swing.GroupLayout AdministrativeToolPanelLayout = new javax.swing.GroupLayout(AdministrativeToolPanel);
         AdministrativeToolPanel.setLayout(AdministrativeToolPanelLayout);
