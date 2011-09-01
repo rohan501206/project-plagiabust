@@ -39,7 +39,6 @@ public class InternetDocumentDownloadManager {
     }
 
     public String downloadFiles(String destFolderPath, String fName) {
-        System.out.println("Start Downloading the internet files........");
         if (AdminInforForm.getInternetSearchAPI() instanceof BingSearch) {
             System.out.println("Internet Search is powered by Bing Live Search 2.0");
         } else {
