@@ -110,12 +110,12 @@ if( downloadedFilesList!=null){
             if (i == downloadedFilesList2.length - 1) {
                 preprocessProgressBar.runProgress(100);
             } else {
-                preprocessProgressBar.runProgress((i * 100) / downloadedFilesList.length);
+                preprocessProgressBar.runProgress((i * 100) / downloadedFilesList2.length);
             }
         }
         number = 0;
         for (final String downloadedFileName : downloadedFilesList2) {
-            SingleSearchDownloadFileProcessor processFiles = new SingleSearchDownloadFileProcessor(downloadedFilesList, crossCheck, preprocessTextOfTheComparisonFile, hm, downloadedFolderPath2, documentToCompare, paraphaseDetection, number, resultsMap);
+            SingleSearchDownloadFileProcessor processFiles = new SingleSearchDownloadFileProcessor(downloadedFilesList2, crossCheck, preprocessTextOfTheComparisonFile, hm, downloadedFolderPath2, documentToCompare, paraphaseDetection, number, resultsMap);
             number++;
             futures.add(service.submit(processFiles));
         }
@@ -137,27 +137,10 @@ if( downloadedFilesList!=null){
             futures.add(service.submit(processFiles));
         }
                
-        
-        
+              
         
         service.shutdown();
-        List outputs = new ArrayList();
-        for (Future future : futures) {
-            try {
-                HashMap<String, String[]> results = (HashMap<String, String[]>) future.get();
-                Iterator it = results.entrySet().iterator();
-                while (it.hasNext()) {
-                    Map.Entry pair = (Map.Entry) it.next();
-                    String filename = (String) pair.getKey();
-                    String[] matchinfo = (String[]) pair.getValue();
-                    resultsMap.put(filename, matchinfo);
-                }
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ExecutionException ex) {
-                Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+        resultsMap = setDetailsToOutput(futures);
         return resultsMap;
     }
 
@@ -174,7 +157,13 @@ if( downloadedFilesList!=null){
     public peerSearchReportData compareAllFiles(HashMap<File, ArrayList<String>> indexedFilesList, HashMap<String, ArrayList<String>> downloadedFilesList, JProgressBar preprocesspbar, JProgressBar crosscheckpbar) throws IOException {
 
         peerSearchReportData repData = new peerSearchReportData();
-        Iterator downloadIterator = downloadedFilesList.entrySet().iterator();
+        Iterator downloadIterator = null;
+
+        if(downloadedFilesList!=null){
+        downloadIterator=downloadedFilesList.entrySet().iterator();
+        }
+
+       
         Iterator it = indexedFilesList.entrySet().iterator();
         ArrayList<String> indexedFilesForFile = new ArrayList<String>();
         ArrayList<String> downloadedFilesForFile = new ArrayList<String>();
@@ -200,28 +189,13 @@ if( downloadedFilesList!=null){
                 futures.add(service.submit(processFiles));
             }   
             service.shutdown();
-            List outputs = new ArrayList();
-            for (Future future : futures) {
-                try {
-                    HashMap<String, String[]> results = (HashMap<String, String[]>) future.get();
-                    Iterator iterator = results.entrySet().iterator();
-                    while (iterator.hasNext()) {
-                        Map.Entry pair2 = (Map.Entry) iterator.next();
-                        String filename = (String) pair2.getKey();
-                        String[] matchinfo = (String[]) pair2.getValue();
-                        peerFilesReportData.put(filename, matchinfo);
-                    }
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ExecutionException ex) {
-                    Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-            }
+            peerFilesReportData = setDetailsToOutput(futures);
             repData.setPeerFilesReportData(filePath.getAbsolutePath(), peerFilesReportData);
 
         }
 
+
+       if(downloadIterator!=null){
         if (!downloadIterator.hasNext()) {
             crossCheck.runProgress(100);
         }
@@ -244,28 +218,41 @@ if( downloadedFilesList!=null){
                 futures.add(service.submit(processFiles));
             }
             service.shutdown();
-            List outputs = new ArrayList();
-            for (Future future : futures) {
-                try {
-                    HashMap<String, String[]> results = (HashMap<String, String[]>) future.get();
-                    Iterator iterator = results.entrySet().iterator();
-                    while (iterator.hasNext()) {
-
-                        Map.Entry pair2 = (Map.Entry) iterator.next();
-                        String filename = (String) pair2.getKey();
-                        String[] matchinfo = (String[]) pair2.getValue();
-                        internetFilesReportData.put(filename, matchinfo);
-                    }
-                } catch (InterruptedException ex) {
-                    Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ExecutionException ex) {
-                    Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
-                }          
-                  }
+            internetFilesReportData = setDetailsToOutput(futures);
         repData.setInternetFilesReportData(checkfile.getAbsolutePath(), internetFilesReportData);
+        }
         }
         return repData;
     }
+
+
+
+    public HashMap<String, String[]> setDetailsToOutput(List<Future> futureList) {
+
+        HashMap<String, String[]> resultsMap = new HashMap<String, String[]>();
+        for (Future futureT : futureList) {
+            try {
+                HashMap<String, String[]> results = (HashMap<String, String[]>) futureT.get();
+                Iterator futureIterator = results.entrySet().iterator();
+                while (futureIterator.hasNext()) {
+                    Map.Entry pair = (Map.Entry) futureIterator.next();
+                    String filename = (String) pair.getKey();
+                    String[] matchinfo = (String[]) pair.getValue();
+                    resultsMap.put(filename, matchinfo);
+                }
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ExecutionException ex) {
+                Logger.getLogger(Manager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        return resultsMap;
+
+
+
+    }
+
+
     /**
      * convert Arraylist to string
      * @param token
