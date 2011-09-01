@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report3" language="groovy" pageWidth="700" pageHeight="842" columnWidth="660" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="528"/>
+	<property name="ireport.y" value="192"/>
 	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -10,6 +10,10 @@
 	<parameter name="docName" class="java.lang.String"/>
 	<parameter name="time" class="java.lang.String"/>
 	<parameter name="field" class="java.lang.String"/>
+	<parameter name="fileSourceList" class="java.util.ArrayList"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/media/Data/project/UI/jasper/"]]></defaultValueExpression>
+	</parameter>
 	<field name="documentName" class="java.lang.String"/>
 	<field name="plagValue" class="java.lang.String"/>
 	<field name="suspectedDocName" class="java.lang.String"/>
@@ -162,14 +166,6 @@
 				</textElement>
 				<text><![CDATA[Connected Graph View of the Results]]></text>
 			</staticText>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
-				<reportElement x="14" y="511" width="621" height="20"/>
-				<textElement>
-					<font size="7"/>
-					<paragraph lineSpacing="1_1_2"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{field}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="448" y="246" width="173" height="20"/>
 				<textElement/>
@@ -199,6 +195,11 @@
 			<rectangle>
 				<reportElement x="523" y="312" width="36" height="10" backcolor="#F3F309"/>
 			</rectangle>
+			<subreport>
+				<reportElement x="14" y="472" width="626" height="100"/>
+				<dataSourceExpression><![CDATA[new  net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{fileSourceList})]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "report3_subreport5.jasper"]]></subreportExpression>
+			</subreport>
 		</band>
 	</summary>
 </jasperReport>
