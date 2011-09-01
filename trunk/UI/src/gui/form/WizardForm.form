@@ -697,7 +697,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="ProjectLocationLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                  <Component id="peerSourceTextField" pref="334" max="32767" attributes="0"/>
+                                  <Component id="peerSourceTextField" pref="338" max="32767" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="LocationBrowseButton1" min="-2" pref="77" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>

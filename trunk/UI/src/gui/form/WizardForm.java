@@ -1191,17 +1191,18 @@ public class WizardForm extends javax.swing.JFrame {
     public void setDescriptionInformation(int selectedTabIndex) {
         switch (selectedTabIndex) {
             case 0:
-                ImageIcon selectIcon = new ImageIcon("src\\Images\\New folder.png");
+                ImageIcon selectIcon = new ImageIcon("src"+ File.separator + "Images"+File.separator+"New folder.png");
                 WizardImageLabel.setIcon(selectIcon);
                 DescriptionTextArea.setText("Step 1 - Select Name and Location \nSelect a suitable project name and then a location. \nAll the documents and internet downloaded documents are saved here.");
                 break;
             case 1:
-                ImageIcon documentIcon = new ImageIcon("src\\Images\\New document.png");
+                String fname = "src"+ File.separator +"Images"+ File.separator +"New document.png";
+                ImageIcon documentIcon = new ImageIcon(fname);
                 WizardImageLabel.setIcon(documentIcon);
                 DescriptionTextArea.setText("Step 2 - Select a single document to check for plagiarism. This document is cross checked for plagiarism with the set of documents chosen in the next step.");
                 break;
             case 2:
-                ImageIcon documentsIcon = new ImageIcon("src\\Images\\Add documents.png");
+                ImageIcon documentsIcon = new ImageIcon("src"+ File.separator +"Images"+ File.separator +"Add documents.png");
                 WizardImageLabel.setIcon(documentsIcon);
                 if (singleDetectionButton.isSelected()) {
                     DescriptionTextArea.setText("Step 3 - Add Documents for new Plagiarism Detection Project. These documents are used to compare with the document ealier selected.");
@@ -1212,7 +1213,7 @@ public class WizardForm extends javax.swing.JFrame {
                 }
                 break;
             case 3:
-                ImageIcon knowledgeBaseIcon = new ImageIcon("src\\Images\\knowlegde_base_icon.png");
+                ImageIcon knowledgeBaseIcon = new ImageIcon("src"+ File.separator +"Images"+ File.separator +"knowlegde_base_icon.png");
                 WizardImageLabel.setIcon(knowledgeBaseIcon);
                 if (singleDetectionButton.isSelected()) {
                     DescriptionTextArea.setText("Step 4 - Creating a Knowledge Base For the Subject");
@@ -1223,7 +1224,7 @@ public class WizardForm extends javax.swing.JFrame {
                 }
                 break;
             case 4:
-                ImageIcon settingsIcon = new ImageIcon("src\\Images\\Wizard settings.png");
+                ImageIcon settingsIcon = new ImageIcon("src"+ File.separator +"Images"+ File.separator +"Wizard settings.png");
                 WizardImageLabel.setIcon(settingsIcon);
                 if (singleDetectionButton.isSelected()) {
                     DescriptionTextArea.setText("Step 5 - Apply Custom Settings for the Project");
@@ -1234,7 +1235,7 @@ public class WizardForm extends javax.swing.JFrame {
                 }
                 break;
             case 5:
-                ImageIcon startCheckIcon = new ImageIcon("src\\Images\\Start check.png");
+                ImageIcon startCheckIcon = new ImageIcon("src"+ File.separator +"Images"+ File.separator +"Start check.png");
                 WizardImageLabel.setIcon(startCheckIcon);
                 if (singleDetectionButton.isSelected()) {
                     DescriptionTextArea.setText("Step 6 - Start Plagiarism Detection Process");
