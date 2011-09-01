@@ -53,8 +53,6 @@ enum TabNames {
 public class WizardForm extends javax.swing.JFrame {
 
     String destFolderPath = null;
-    //String sourceFolderName = "C:\\Users\\Compaq\\Desktop\\demo";// need this
-    // String fName = "Homework_Assignment_4.txt"; // need this
     String sourceFolderName;
     String fName;
     String indexFolderPath;
@@ -94,6 +92,9 @@ public class WizardForm extends javax.swing.JFrame {
         };
 
         System.setOut(new PrintStream(out, true));
+        
+        ProjectLocationTextField.setText(Main.getDesktop().getAbsolutePath());
+        ProjectFolderTextField.setText(new File(Main.getDesktop().getAbsolutePath() + File.separatorChar + ProjectNameTextField.getText()).getAbsolutePath());
 
         InternetSearchCompletionLabel.setVisible(false);
         PlagiabustSearchCompletionLabel.setVisible(false);
@@ -1478,7 +1479,7 @@ public class WizardForm extends javax.swing.JFrame {
     }//GEN-LAST:event_ViewButtonActionPerformed
 
     private void LocationBrowseButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LocationBrowseButtonActionPerformed
-        final JFileChooser fc = new JFileChooser();
+        final JFileChooser fc = new JFileChooser(Main.getDesktop());
         fc.setApproveButtonText("Select");
         fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         int returnVal = fc.showOpenDialog(this);
@@ -1497,7 +1498,7 @@ public class WizardForm extends javax.swing.JFrame {
 }//GEN-LAST:event_singleDetectionButtonActionPerformed
 
     private void LocationBrowseButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LocationBrowseButton1ActionPerformed
-        final JFileChooser fc = new JFileChooser();
+        final JFileChooser fc = new JFileChooser(Main.getDesktop());
         fc.setApproveButtonText("Select");
         fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         int returnVal = fc.showOpenDialog(this);

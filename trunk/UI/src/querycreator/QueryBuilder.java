@@ -89,7 +89,7 @@ public class QueryBuilder{
     }
 
     private void createQueryFromParagraph(ArrayList<String> paragraphWordList) {
-        if (paragraphWordList.size() > 4 && paragraphWordList.size() < 8) {
+        if (paragraphWordList.size() > 3 && paragraphWordList.size() < 8) {
             String query = "";
             for (Iterator<String> it = paragraphWordList.iterator(); it.hasNext();) {
                 query += it.next() + " ";
