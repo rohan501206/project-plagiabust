@@ -7,7 +7,6 @@ package gui.form;
 import java.io.File;
 import javax.swing.SwingWorker;
 import reportingModule.ReportingModule;
-import reportingModule.MsgBox;
 /**
  *
  * @author Compaq
