@@ -1021,10 +1021,10 @@
               <Layout>
                 <DimensionLayout dim="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="PlagiabustWebserverCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
                               <Component id="PharaphraseCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="ModesOfCheckSeparator" alignment="0" pref="720" max="32767" attributes="0"/>
                               <Component id="SettingsSeparator" alignment="0" pref="720" max="32767" attributes="0"/>
@@ -1081,9 +1081,9 @@
                           <Component id="ModesOfCheckSeparator" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="PharaphraseCheckBox" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="PlagiabustWebserverCheckBox" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="232" max="32767" attributes="0"/>
+                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="124" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1233,17 +1233,76 @@
                     <Property name="text" type="java.lang.String" value="Paraphrased Plagiarism Detection"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JCheckBox" name="PlagiabustWebserverCheckBox">
+                <Container class="javax.swing.JPanel" name="jPanel1">
                   <Properties>
                     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
-                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-                      <Font name="Tahoma" size="12" style="0"/>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                        <TitledBorder title="Externel Source Detection">
+                          <Font PropertyName="font" name="Tahoma" size="12" style="0"/>
+                        </TitledBorder>
+                      </Border>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Use Plagiabust Webserver instead of Internet Search"/>
                   </Properties>
-                </Component>
+
+                  <Layout>
+                    <DimensionLayout dim="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="PlagiabustWebserverCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="InternetSearchCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace pref="519" max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                    <DimensionLayout dim="1">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="PlagiabustWebserverCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="InternetSearchCheckBox" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                    </DimensionLayout>
+                  </Layout>
+                  <SubComponents>
+                    <Component class="javax.swing.JCheckBox" name="PlagiabustWebserverCheckBox">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="12" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Plagiabust Webserver Search"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="PlagiabustWebserverCheckBoxItemStateChanged"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="InternetSearchCheckBox">
+                      <Properties>
+                        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                        </Property>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Tahoma" size="12" style="0"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" value="Internet Search"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="InternetSearchCheckBoxItemStateChanged"/>
+                      </Events>
+                    </Component>
+                  </SubComponents>
+                </Container>
               </SubComponents>
             </Container>
             <Container class="javax.swing.JPanel" name="StartCheckPanel">
@@ -1266,53 +1325,59 @@
                       <Group type="102" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane1" alignment="0" min="-2" pref="707" max="-2" attributes="0"/>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="CheckBannerLabel" min="-2" pref="295" max="-2" attributes="0"/>
-                                      <Component id="TaskCompletionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jScrollPane1" alignment="0" min="-2" pref="707" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="CheckBannerLabel" min="-2" pref="295" max="-2" attributes="0"/>
+                                              <Component id="TaskCompletionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="1459" max="-2" attributes="0"/>
+                                          <Component id="Step5ImageLabel" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <EmptySpace min="-2" pref="177" max="-2" attributes="0"/>
+                                                      <Group type="103" groupAlignment="0" attributes="0">
+                                                          <Component id="CrossCheckProgressBar" alignment="0" pref="421" max="32767" attributes="1"/>
+                                                          <Component id="PreprocessDocumentProgressBar" alignment="0" pref="421" max="32767" attributes="1"/>
+                                                          <Component id="DownloadFromInternetProgressBar" alignment="0" max="32767" attributes="0"/>
+                                                          <Component id="DownloadFromPlagiabustProgressBar" alignment="0" pref="460" max="32767" attributes="0"/>
+                                                          <Component id="CreateIndexProgressBar" alignment="0" pref="460" max="32767" attributes="1"/>
+                                                      </Group>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="CommandTipScrollPane" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace pref="150" max="32767" attributes="0"/>
+                                                      <Component id="CheckControlButton" min="-2" pref="141" max="-2" attributes="0"/>
+                                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                      <Component id="ViewButton" min="-2" pref="117" max="-2" attributes="0"/>
+                                                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="CommandsLabel" min="-2" max="-2" attributes="0"/>
+                                                      <EmptySpace pref="570" max="32767" attributes="0"/>
+                                                  </Group>
+                                              </Group>
+                                              <Component id="InternetSearchCompletionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="90" max="-2" attributes="0"/>
+                                          <Component id="CommandSeparator" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="CrossCheckCompletionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="PreprocessDocumentCompletionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="IndexFilesCompletionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="-2" pref="1459" max="-2" attributes="0"/>
-                                  <Component id="Step5ImageLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="32767" attributes="0"/>
                               </Group>
-                              <Component id="CrossCheckCompletionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                      <Group type="102" alignment="0" attributes="1">
-                                          <Component id="KnowledgeBaseCompletionLabel" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                                          <Component id="DonloadFileProgressBar" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="IndexFilesCompletionLabel" min="-2" max="-2" attributes="0"/>
-                                              <Component id="PreprocessDocumentCompletionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="PreprocessDocumentProgressBar" pref="421" max="32767" attributes="1"/>
-                                              <Component id="CrossCheckProgressBar" alignment="0" pref="421" max="32767" attributes="1"/>
-                                              <Component id="CreateIndexProgressBar" alignment="0" min="-2" pref="450" max="-2" attributes="1"/>
-                                          </Group>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="CommandTipScrollPane" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="140" max="32767" attributes="0"/>
-                                          <Component id="CheckControlButton" min="-2" pref="141" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="ViewButton" min="-2" pref="117" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="CommandsLabel" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace pref="560" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                                  <Component id="CommandSeparator" min="-2" max="-2" attributes="0"/>
+                                  <Component id="PlagiabustSearchCompletionLabel" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="1159" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1331,39 +1396,36 @@
                                   <Component id="TaskCompletionLabel" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="DonloadFileProgressBar" min="-2" max="-2" attributes="0"/>
-                              <Component id="KnowledgeBaseCompletionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="PlagiabustSearchCompletionLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="DownloadFromPlagiabustProgressBar" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="IndexFilesCompletionLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="CreateIndexProgressBar" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="CommandSeparator" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="CommandSeparator" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Group type="103" alignment="1" groupAlignment="0" attributes="0">
+                                  <Component id="DownloadFromInternetProgressBar" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="InternetSearchCompletionLabel" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
-                              <Component id="PreprocessDocumentProgressBar" min="-2" max="-2" attributes="0"/>
-                              <Component id="PreprocessDocumentCompletionLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="IndexFilesCompletionLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="CreateIndexProgressBar" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
-                                  <Component id="CrossCheckCompletionLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="CommandsLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="CrossCheckProgressBar" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="PreprocessDocumentCompletionLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="PreprocessDocumentProgressBar" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="CrossCheckCompletionLabel" min="-2" max="-2" attributes="0"/>
+                              <Component id="CrossCheckProgressBar" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="CommandsLabel" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
@@ -1379,7 +1441,7 @@
                           </Group>
                           <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="177" max="-2" attributes="0"/>
-                          <EmptySpace pref="46" max="32767" attributes="0"/>
+                          <EmptySpace pref="44" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -1428,12 +1490,12 @@
                 </Component>
                 <Component class="javax.swing.JSeparator" name="TaskCompletionSeparator">
                 </Component>
-                <Component class="javax.swing.JLabel" name="KnowledgeBaseCompletionLabel">
+                <Component class="javax.swing.JLabel" name="InternetSearchCompletionLabel">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Tahoma" size="12" style="0"/>
                     </Property>
-                    <Property name="text" type="java.lang.String" value="Downloading Internet Files"/>
+                    <Property name="text" type="java.lang.String" value="Downloading From Internet "/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JLabel" name="PreprocessDocumentCompletionLabel">
@@ -1460,7 +1522,7 @@
                     <Property name="text" type="java.lang.String" value="Document Cross Check"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JProgressBar" name="DonloadFileProgressBar">
+                <Component class="javax.swing.JProgressBar" name="DownloadFromInternetProgressBar">
                 </Component>
                 <Component class="javax.swing.JProgressBar" name="PreprocessDocumentProgressBar">
                 </Component>
@@ -1535,6 +1597,16 @@
                     </Component>
                   </SubComponents>
                 </Container>
+                <Component class="javax.swing.JLabel" name="PlagiabustSearchCompletionLabel">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Tahoma" size="12" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Downloading From Plagiabust"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JProgressBar" name="DownloadFromPlagiabustProgressBar">
+                </Component>
               </SubComponents>
             </Container>
           </SubComponents>
