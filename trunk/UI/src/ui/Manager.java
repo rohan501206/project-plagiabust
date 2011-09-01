@@ -107,7 +107,7 @@ if( downloadedFilesList!=null){
             String downloadedFileName = downloadedFilesList2[i];
             String preprocessText = preprocessText(downloadedFileName, downloadedFilePathforServer);
             hm.put(downloadedFileName, preprocessText);
-            if (i == downloadedFilesList.length - 1) {
+            if (i == downloadedFilesList2.length - 1) {
                 preprocessProgressBar.runProgress(100);
             } else {
                 preprocessProgressBar.runProgress((i * 100) / downloadedFilesList.length);
