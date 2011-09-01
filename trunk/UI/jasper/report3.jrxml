@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report3" language="groovy" pageWidth="700" pageHeight="1200" columnWidth="660" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="499"/>
+	<property name="ireport.y" value="0"/>
 	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -11,6 +11,8 @@
 	<parameter name="time" class="java.lang.String"/>
 	<parameter name="field" class="java.lang.String"/>
 	<parameter name="onlineSource" class="java.util.ArrayList"/>
+	<parameter name="onlineSourceList" class="java.util.ArrayList"/>
+	<parameter name="fileSourceList" class="java.util.ArrayList"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
 		<defaultValueExpression><![CDATA["/media/Data/project/UI/jasper/"]]></defaultValueExpression>
 	</parameter>
@@ -51,6 +53,13 @@
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{time}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="-20" y="59" width="219" height="20" forecolor="#808080"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Online Plagiarized Sources]]></text>
+			</staticText>
 		</band>
 	</title>
 	<pageHeader>
@@ -140,153 +149,18 @@
 		</band>
 	</pageFooter>
 	<summary>
-		<band height="1100" splitType="Stretch">
+		<band height="809" splitType="Stretch">
 			<staticText>
-				<reportElement x="2" y="44" width="281" height="20" forecolor="#808080"/>
+				<reportElement x="0" y="29" width="281" height="20" forecolor="#808080"/>
 				<textElement>
 					<font size="12" isBold="true"/>
 				</textElement>
 				<text><![CDATA[Connected Graph View of the Results]]></text>
 			</staticText>
 			<image>
-				<reportElement x="12" y="179" width="381" height="360"/>
+				<reportElement x="2" y="60" width="381" height="360"/>
 				<imageExpression class="java.lang.String"><![CDATA["jasper/reportImages/test.png"]]></imageExpression>
 			</image>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
-				<reportElement x="2" y="81" width="658" height="86"/>
-				<textElement>
-					<font size="7"/>
-					<paragraph lineSpacing="1_1_2"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{field}]]></textFieldExpression>
-			</textField>
-			<staticText>
-				<reportElement x="12" y="605" width="219" height="20" forecolor="#808080"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Online Plagiarized Sources]]></text>
-			</staticText>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true" hyperlinkType="Reference">
-				<reportElement x="24" y="821" width="614" height="20"/>
-				<textElement>
-					<font isItalic="true"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[($P{onlineSource}).get(9)]]></textFieldExpression>
-				<hyperlinkReferenceExpression><![CDATA[($P{onlineSource}).get(9)]]></hyperlinkReferenceExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true" hyperlinkType="Reference">
-				<reportElement x="24" y="801" width="614" height="20"/>
-				<textElement>
-					<font isItalic="true"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[($P{onlineSource}).get(8)]]></textFieldExpression>
-				<hyperlinkReferenceExpression><![CDATA[($P{onlineSource}).get(8)]]></hyperlinkReferenceExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true" hyperlinkType="Reference">
-				<reportElement x="24" y="761" width="614" height="20"/>
-				<textElement>
-					<font isItalic="true"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[($P{onlineSource}).get(6)]]></textFieldExpression>
-				<hyperlinkReferenceExpression><![CDATA[($P{onlineSource}).get(6)]]></hyperlinkReferenceExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true" hyperlinkType="Reference">
-				<reportElement x="24" y="661" width="614" height="20"/>
-				<textElement>
-					<font isItalic="true"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[($P{onlineSource}).get(1)]]></textFieldExpression>
-				<hyperlinkReferenceExpression><![CDATA[($P{onlineSource}).get(1)]]></hyperlinkReferenceExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true" hyperlinkType="Reference">
-				<reportElement x="24" y="641" width="614" height="20"/>
-				<textElement>
-					<font isItalic="true"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[($P{onlineSource}).get(0)]]></textFieldExpression>
-				<hyperlinkReferenceExpression><![CDATA[($P{onlineSource}).get(0)]]></hyperlinkReferenceExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true" hyperlinkType="Reference">
-				<reportElement x="24" y="741" width="614" height="20"/>
-				<textElement>
-					<font isItalic="true"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[($P{onlineSource}).get(5)]]></textFieldExpression>
-				<hyperlinkReferenceExpression><![CDATA[($P{onlineSource}).get(5)]]></hyperlinkReferenceExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true" hyperlinkType="Reference">
-				<reportElement x="24" y="781" width="614" height="20"/>
-				<textElement>
-					<font isItalic="true"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[($P{onlineSource}).get(7)]]></textFieldExpression>
-				<hyperlinkReferenceExpression><![CDATA[($P{onlineSource}).get(7)]]></hyperlinkReferenceExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true" hyperlinkType="Reference">
-				<reportElement x="24" y="841" width="614" height="20"/>
-				<textElement>
-					<font isItalic="true"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[($P{onlineSource}).get(10)]]></textFieldExpression>
-				<hyperlinkReferenceExpression><![CDATA[($P{onlineSource}).get(10)]]></hyperlinkReferenceExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true" hyperlinkType="Reference">
-				<reportElement x="24" y="721" width="614" height="20"/>
-				<textElement>
-					<font isItalic="true"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[($P{onlineSource}).get(4)]]></textFieldExpression>
-				<hyperlinkReferenceExpression><![CDATA[($P{onlineSource}).get(4)]]></hyperlinkReferenceExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true" hyperlinkType="Reference">
-				<reportElement x="24" y="701" width="614" height="20"/>
-				<textElement>
-					<font isItalic="true"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[($P{onlineSource}).get(3)]]></textFieldExpression>
-				<hyperlinkReferenceExpression><![CDATA[($P{onlineSource}).get(3)]]></hyperlinkReferenceExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true" hyperlinkType="Reference">
-				<reportElement x="24" y="921" width="614" height="20"/>
-				<textElement>
-					<font isItalic="true"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[($P{onlineSource}).get(14)]]></textFieldExpression>
-				<hyperlinkReferenceExpression><![CDATA[($P{onlineSource}).get(14)]]></hyperlinkReferenceExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true" hyperlinkType="Reference">
-				<reportElement x="24" y="881" width="614" height="20"/>
-				<textElement>
-					<font isItalic="true"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[($P{onlineSource}).get(12)]]></textFieldExpression>
-				<hyperlinkReferenceExpression><![CDATA[($P{onlineSource}).get(12)]]></hyperlinkReferenceExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true" hyperlinkType="Reference">
-				<reportElement x="24" y="861" width="614" height="20"/>
-				<textElement>
-					<font isItalic="true"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[($P{onlineSource}).get(11)]]></textFieldExpression>
-				<hyperlinkReferenceExpression><![CDATA[($P{onlineSource}).get(11)]]></hyperlinkReferenceExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true" hyperlinkType="Reference">
-				<reportElement x="24" y="681" width="614" height="20"/>
-				<textElement>
-					<font isItalic="true"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[($P{onlineSource}).get(2)]]></textFieldExpression>
-				<hyperlinkReferenceExpression><![CDATA[($P{onlineSource}).get(2)]]></hyperlinkReferenceExpression>
-			</textField>
-			<textField isStretchWithOverflow="true" isBlankWhenNull="true" hyperlinkType="Reference">
-				<reportElement x="24" y="901" width="614" height="20"/>
-				<textElement>
-					<font isItalic="true"/>
-				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[($P{onlineSource}).get(13)]]></textFieldExpression>
-				<hyperlinkReferenceExpression><![CDATA[($P{onlineSource}).get(13)]]></hyperlinkReferenceExpression>
-			</textField>
 			<staticText>
 				<reportElement x="455" y="284" width="173" height="20"/>
 				<textElement/>
@@ -316,6 +190,37 @@
 			<rectangle>
 				<reportElement x="530" y="380" width="36" height="10" backcolor="#F91212"/>
 			</rectangle>
+			<subreport isUsingCache="false" runToBottom="false">
+				<reportElement x="0" y="717" width="628" height="79"/>
+				<dataSourceExpression><![CDATA[new  net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{onlineSourceList})]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "report3_subreport3.jasper"]]></subreportExpression>
+			</subreport>
+			<subreport>
+				<reportElement x="2" y="439" width="626" height="100"/>
+				<subreportParameter name="field">
+					<subreportParameterExpression><![CDATA[$P{field}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="fileSourceList">
+					<subreportParameterExpression><![CDATA[$P{fileSourceList}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="docName">
+					<subreportParameterExpression><![CDATA[$P{docName}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="time">
+					<subreportParameterExpression><![CDATA[$P{time}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="onlineSourceList">
+					<subreportParameterExpression><![CDATA[$P{onlineSourceList}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="onlineSource">
+					<subreportParameterExpression><![CDATA[$P{onlineSource}]]></subreportParameterExpression>
+				</subreportParameter>
+				<dataSourceExpression><![CDATA[new  net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{fileSourceList})]]></dataSourceExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "report3_subreport5.jasper"]]></subreportExpression>
+			</subreport>
 		</band>
 	</summary>
 </jasperReport>
