@@ -24,13 +24,17 @@ public class PlagiabustServerManager extends javax.swing.JFrame {
     private PlagiabustServerDocumentManagerForm serverDocumentServerManager = null;
     private ArrayList<String> documentList = null;
     private String DefaultSolrUrl = "http://localhost:8983/solr";
-
+    private static String solrUrl = "http://localhost:8983/solr";
     /** Creates new form PlagiabustServerManager */
     public PlagiabustServerManager() {
         initComponents();
         serverDocumentServerManager = new PlagiabustServerDocumentManagerForm();
         documentList = new ArrayList<String>();
         ServerUrlTextField.setText(DefaultSolrUrl);
+    }
+
+    public static String getSolrURL(){
+        return solrUrl;
     }
 
     /** This method is called from within the constructor to
@@ -279,6 +283,7 @@ public class PlagiabustServerManager extends javax.swing.JFrame {
 }//GEN-LAST:event_DocumentManagerButtonActionPerformed
 
     private void DoneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoneButtonActionPerformed
+        solrUrl = ServerUrlTextField.getText();
         this.dispose();
 }//GEN-LAST:event_DoneButtonActionPerformed
 

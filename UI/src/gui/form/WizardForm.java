@@ -10,7 +10,6 @@
  */
 package gui.form;
 
-import com.lowagie.text.Image;
 import java.awt.Toolkit;
 import java.awt.event.ItemEvent;
 import java.util.concurrent.ExecutionException;
@@ -22,7 +21,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
-import java.sql.Time;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -31,7 +31,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
-import org.apache.poi.hwpf.usermodel.DateAndTime;
 import reportingModule.PeerSearchUI;
 import reportingModule.ReportingModule;
 import ui.FileOperator;
@@ -119,6 +118,24 @@ public class WizardForm extends javax.swing.JFrame {
         for (int i = 1; i <= TabNames.StartCheck.ordinal(); i++) {
             WizardTabbedPane.setEnabledAt(i, false);
         }
+    }
+
+    private boolean checkConnectivity(boolean isLocalHost) {
+        boolean connected = false;
+        try {
+            URL url = new URL("http://www.google.com");
+            //make a URL to a known source
+            if (isLocalHost) {
+                url = new URL(PlagiabustServerManager.getSolrURL());
+            }
+            //open a connection to that source
+            HttpURLConnection urlConnect = (HttpURLConnection) url.openConnection();
+            if (urlConnect.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                connected = true;
+            }
+        } catch (Exception ex) {
+        }
+        return connected;
     }
 
     /** This method is called from within the constructor to
@@ -1504,20 +1521,33 @@ public class WizardForm extends javax.swing.JFrame {
     }//GEN-LAST:event_peerSourceTextFieldActionPerformed
 
     private void PlagiabustWebserverCheckBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_PlagiabustWebserverCheckBoxItemStateChanged
+
         if (evt.getStateChange() == ItemEvent.SELECTED) {
-            DownloadFromPlagiabustProgressBar.setVisible(true);
-            PlagiabustSearchCompletionLabel.setVisible(true);
+            if (this.checkConnectivity(true)) {
+                DownloadFromPlagiabustProgressBar.setVisible(true);
+                PlagiabustSearchCompletionLabel.setVisible(true);
+            } else {
+                PlagiabustWebserverCheckBox.setSelected(false);
+                JOptionPane.showMessageDialog(this, "Plagiabust Web Server is unavailable", "Connection Failed", JOptionPane.ERROR_MESSAGE);
+            }
         } else {
             DownloadFromPlagiabustProgressBar.setVisible(false);
             PlagiabustSearchCompletionLabel.setVisible(false);
         }
+
         // TODO add your handling code here:
     }//GEN-LAST:event_PlagiabustWebserverCheckBoxItemStateChanged
 
     private void InternetSearchCheckBoxItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_InternetSearchCheckBoxItemStateChanged
+
         if (evt.getStateChange() == ItemEvent.SELECTED) {
-            DownloadFromInternetProgressBar.setVisible(true);
-            InternetSearchCompletionLabel.setVisible(true);
+            if (this.checkConnectivity(false)) {
+                DownloadFromInternetProgressBar.setVisible(true);
+                InternetSearchCompletionLabel.setVisible(true);
+            } else {
+                InternetSearchCheckBox.setSelected(false);
+                JOptionPane.showMessageDialog(this, "Internet connection is unavailable", "Connection Failed", JOptionPane.ERROR_MESSAGE);
+            }
         } else {
             DownloadFromInternetProgressBar.setVisible(false);
             InternetSearchCompletionLabel.setVisible(false);
