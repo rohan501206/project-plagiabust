@@ -49,6 +49,7 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.view.JRViewer;
 import org.apache.commons.collections15.Transformer;
 
+
 /**
  *
  * @author nuwan
@@ -67,6 +68,7 @@ public class PeerSearchUI extends javax.swing.JFrame {
     Layout<Integer, CustomEdge> layout;
     VisualizationViewer<Integer, CustomEdge> visualizationViewer;
     private int edgecount;
+    ArrayList<FileMarkerGraph> fileSourceList=new ArrayList<FileMarkerGraph>();
 
     /** Creates new form PeerSearchUI */
     public PeerSearchUI() {
@@ -875,17 +877,13 @@ public class PeerSearchUI extends javax.swing.JFrame {
         String nodeList = "";
         for (int i = 0; i < listModelGraph.size(); i++) {
             String node = (String) listModelGraph.get(i);
-
-            if (i % 2 == 1) {
-                nodeList = nodeList + "\t" + node;
-            }
-            if (i % 2 == 0) {
-                nodeList = nodeList + "\n" + node;
-            }
+            fileSourceList.add(new FileMarkerGraph(node));
         }
         hm.put("field", nodeList);
         hm.put("time", time);
         hm.put("docName", documentFolder);
+        hm.put("fileSourceList", fileSourceList);
+
         JRDataSource dataSource = createReportDataSource();
         JasperPrint jasperPrint;
         try {
@@ -1033,6 +1031,7 @@ public class PeerSearchUI extends javax.swing.JFrame {
         visualizationViewer.getRenderContext().setVertexLabelTransformer(new ToStringLabeller());
         visualizationViewer.getRenderContext().setEdgeLabelTransformer(new ToStringLabeller());
         visualizationViewer.getRenderContext().setEdgeFillPaintTransformer(edgesPaint);
+        visualizationViewer.getRenderContext().setVertexFillPaintTransformer(vertexPaint);
         // Create a graph mouse and add it to the visualization component
         DefaultModalGraphMouse gm = new DefaultModalGraphMouse();
         gm.setMode(ModalGraphMouse.Mode.TRANSFORMING);
