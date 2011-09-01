@@ -5,8 +5,7 @@
 package gui.form;
 
 import ch.randelshofer.quaqua.QuaquaManager;
-import java.util.HashSet;
-import java.util.Set;
+import java.io.File;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -15,6 +14,12 @@ import javax.swing.UIManager;
  * @author Brave Heart
  */
 public class Main {
+    
+    private static File desktop = new File(System.getProperty("user.home") + File.separatorChar + "Desktop");
+
+    public static File getDesktop(){
+        return desktop;
+    }
 
     public static void main(String[] args) {
 

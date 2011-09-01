@@ -268,7 +268,7 @@ public class PlagiabustServerDocumentManagerForm extends javax.swing.JFrame {
 
     private void AddFilesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddFilesButtonActionPerformed
 
-        final JFileChooser fc = new JFileChooser();
+        final JFileChooser fc = new JFileChooser(Main.getDesktop());
         fc.setApproveButtonText("Select");
         fc.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
         int returnVal = fc.showOpenDialog(this);
