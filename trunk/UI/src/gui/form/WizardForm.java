@@ -96,6 +96,8 @@ public class WizardForm extends javax.swing.JFrame {
         ProjectLocationTextField.setText(Main.getDesktop().getAbsolutePath());
         ProjectFolderTextField.setText(new File(Main.getDesktop().getAbsolutePath() + File.separatorChar + ProjectNameTextField.getText()).getAbsolutePath());
 
+        DeleteProjectFilesCheckBox.setSelected(true);
+
         InternetSearchCompletionLabel.setVisible(false);
         PlagiabustSearchCompletionLabel.setVisible(false);
         DownloadFromInternetProgressBar.setVisible(false);
