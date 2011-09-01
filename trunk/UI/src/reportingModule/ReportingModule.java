@@ -94,6 +94,8 @@ public class ReportingModule extends javax.swing.JFrame {
     VisualizationViewer<Integer, CustomEdge> visualizationViewer;
     DefaultListModel listModelGraph = new DefaultListModel();
     ArrayList<String> urlArrayList=new ArrayList<String>() ;
+    ArrayList<InternetSourcesInfo> onlineSourceList=new ArrayList<InternetSourcesInfo>();
+    ArrayList<FileMarkerGraph> fileSourceList=new ArrayList<FileMarkerGraph>();
 
     /** Creates new form NewJFrame */
     public ReportingModule() {
@@ -1105,17 +1107,19 @@ public class ReportingModule extends javax.swing.JFrame {
         for (int i = 0; i < listModelGraph.size(); i++) {
             String node = (String) listModelGraph.get(i);
 
-            if (i % 2 == 1) {
+           /* if (i % 2 == 1) {
                 nodeList = nodeList + "\t" + node;
             }
             if (i % 2 == 0) {
                 nodeList = nodeList + "\n" + node;
-            }
+            }*/
+            fileSourceList.add(new FileMarkerGraph(node));
 
         }
 
         for (int i = 0; i < urlArrayList.size(); i++) {
             onlineSourceArray.add(urlArrayList.get(i));
+            onlineSourceList.add(new InternetSourcesInfo(urlArrayList.get(i)));
         }
         if (onlineSourceArray.size() < 15) {
             while (onlineSourceArray.size() != 15) {
@@ -1126,6 +1130,8 @@ public class ReportingModule extends javax.swing.JFrame {
         //System.err.println(nodeList);
         hm.put("SUBREPORT_DIR", "jasper/");
         hm.put("onlineSource", onlineSourceArray);
+        hm.put("onlineSourceList", onlineSourceList);
+        hm.put("fileSourceList", fileSourceList);
         hm.put("field", nodeList);
         hm.put("time", time);
         hm.put("docName", fileName);
@@ -1188,6 +1194,7 @@ public class ReportingModule extends javax.swing.JFrame {
         connectedGraph = new SparseMultigraph<Integer, CustomEdge>();
         HashMap<String, Integer> docToIntegerMap = new HashMap<String, Integer>();
         int verCount = 0;
+        Set<String> filenameListofurls = fileToUrlMap.keySet();
 
         graphNodeList.setModel(listModelGraph);
         Set<String> docList = resultMap.keySet();
@@ -1195,7 +1202,20 @@ public class ReportingModule extends javax.swing.JFrame {
         while (iter.hasNext()) {
             String name = (String) iter.next();
             int countNo = ++verCount;
-            listModelGraph.add(verCount - 1, String.valueOf(countNo) + " -- " + name);
+            if(filenameListofurls!=null){
+                if ((filenameListofurls.contains(name)) == false) {
+                    listModelGraph.add(verCount - 1, String.valueOf(countNo) + " -- " + name);
+                }
+            else{
+                    listModelGraph.add(verCount - 1, String.valueOf(countNo) + " -- " + fileToUrlMap.get(name));
+                     }
+            }
+
+
+ else{
+                listModelGraph.add(verCount - 1, String.valueOf(countNo) + " -- " + name);
+ }
+            //listModelGraph.add(verCount - 1, String.valueOf(countNo) + " -- " + name);
             docToIntegerMap.put(name, countNo);
             connectedGraph.addVertex((Integer) countNo);
         }
