@@ -108,6 +108,8 @@ public class TextHighlighter {
     }
 
 
+
+
     
 /**
      public String[] highlightTexts(String contentOftheFile, String query) {
@@ -224,7 +226,7 @@ public class TextHighlighter {
     }
 
 
-
+**/
 
 
     public String getSearchQueryPattern(ArrayList<String> preprocessedModifiedArrayList) {
@@ -245,7 +247,7 @@ public class TextHighlighter {
         }
         return SearchQuery;
 
-**/
+    }
 
     
 
