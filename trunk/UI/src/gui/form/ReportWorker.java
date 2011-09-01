@@ -37,8 +37,8 @@ public class ReportWorker extends SwingWorker<ReportingModule, String> {
         rp.setTemp(repdata.getFolder());
         rp.setUrl(repdata.getUrlList());
         rp.setMap(repdata.getFileUrlMap());
-        //rp.setData(projectFolder,deletefolder);
-        rp.setData();
+        rp.setData(projectFolder,deletefolder);
+        //rp.setData();
         System.err.print("end");
         //msg.setVisible(false);
 
