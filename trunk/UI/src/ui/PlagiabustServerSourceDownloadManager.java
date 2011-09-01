@@ -33,7 +33,6 @@ public class PlagiabustServerSourceDownloadManager {
     }
 
     public String downloadFiles(String destFolderPath, String fName) {
-        System.out.println("Start downloading sources from Plagiabust Web Server...");
         Client client = new Client();
         PlagiabustWebSearchManager sd = new PlagiabustWebSearchManager(client);
         sd.setMaxNumOfSourcesPerDocument(maxNumOfSourcesPerDocument);

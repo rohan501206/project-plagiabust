@@ -45,15 +45,33 @@ public class Manager {
     Stemmer stem = new Stemmer();
 
     
-    public HashMap<String, String[]> compareFiles(String fileName, String downloadedFilePath, ArrayList<String> indexedFiles, JProgressBar preprocesspbar, JProgressBar crosscheckpbar, boolean paraphaseDetection) throws IOException {
+    public HashMap<String, String[]> compareFiles(String fileName, String downloadedFilePathforInternet,String downloadedFilePathforServer, ArrayList<String> indexedFiles, JProgressBar preprocesspbar, JProgressBar crosscheckpbar, boolean paraphaseDetection) throws IOException {
 
         HashMap<String, String[]> resultsMap = new HashMap<String, String[]>();
         String documentToCompare = fileName;
-        String downloadedFolderPath = downloadedFilePath;
+        String downloadedFolderPath = downloadedFilePathforInternet;
+        String downloadedFolderPath2 = downloadedFilePathforServer;
         ArrayList<String> preIndexedFiles = indexedFiles;
-        File downloadedFiles = new File(downloadedFolderPath);
-        String[] downloadedFilesList = downloadedFiles.list();
-        HashMap hm = new HashMap();        
+        HashMap hm = new HashMap();
+        String[] downloadedFilesList=null;
+        String[] downloadedFilesList2=null;
+        ProgressBarManager crossCheck = new ProgressBarManager(crosscheckpbar);
+        int threads = Runtime.getRuntime().availableProcessors();
+        ExecutorService service = Executors.newFixedThreadPool(threads);
+        List<Future> futures = new ArrayList<Future>();
+        int number = 0;
+
+if(downloadedFolderPath!=null){
+        File downloadedFiles = new File(downloadedFolderPath);        
+        downloadedFilesList = downloadedFiles.list();
+        }
+
+
+ if(downloadedFilePathforServer!=null){
+        File downloadedFiles2 = new File(downloadedFilePathforServer);
+        downloadedFilesList2 = downloadedFiles2.list();
+        }
+                
         if (downloadedFilesList != null) {
             for (int i = 0; i < downloadedFilesList.length; i++) {
                 System.out.println("document downloaded " + i + " " + downloadedFilesList[i]);
@@ -66,7 +84,7 @@ public class Manager {
         String preprocessTextOfTheComparisonFile = preprocessText(documentToCompare);
         ProgressBarManager preprocessProgressBar = new ProgressBarManager(preprocesspbar);
        
-
+if( downloadedFilesList!=null){
         for (int i = 0; i < downloadedFilesList.length; i++) {
             String downloadedFileName = downloadedFilesList[i];
             String preprocessText = preprocessText(downloadedFileName, downloadedFolderPath);
@@ -76,6 +94,31 @@ public class Manager {
             } else {
                 preprocessProgressBar.runProgress((i * 100) / downloadedFilesList.length);
             }
+        }
+        for (final String downloadedFileName : downloadedFilesList) {
+            SingleSearchDownloadFileProcessor processFiles = new SingleSearchDownloadFileProcessor(downloadedFilesList, crossCheck, preprocessTextOfTheComparisonFile, hm, downloadedFolderPath, documentToCompare, paraphaseDetection, number, resultsMap);
+            number++;
+            futures.add(service.submit(processFiles));
+        }
+        }
+
+        if( downloadedFilesList2!=null){
+        for (int i = 0; i < downloadedFilesList2.length; i++) {
+            String downloadedFileName = downloadedFilesList2[i];
+            String preprocessText = preprocessText(downloadedFileName, downloadedFilePathforServer);
+            hm.put(downloadedFileName, preprocessText);
+            if (i == downloadedFilesList.length - 1) {
+                preprocessProgressBar.runProgress(100);
+            } else {
+                preprocessProgressBar.runProgress((i * 100) / downloadedFilesList.length);
+            }
+        }
+        number = 0;
+        for (final String downloadedFileName : downloadedFilesList2) {
+            SingleSearchDownloadFileProcessor processFiles = new SingleSearchDownloadFileProcessor(downloadedFilesList, crossCheck, preprocessTextOfTheComparisonFile, hm, downloadedFolderPath2, documentToCompare, paraphaseDetection, number, resultsMap);
+            number++;
+            futures.add(service.submit(processFiles));
+        }
         }
         for (int i = 0; i < preIndexedFiles.size(); i++) {
             String preprocessText = preprocessText(preIndexedFiles.get(i));
@@ -87,22 +130,16 @@ public class Manager {
                 preprocessProgressBar.runProgress((i * 100) / preIndexedFiles.size());
             }
         }
-        ProgressBarManager crossCheck = new ProgressBarManager(crosscheckpbar);                    
-        int threads = Runtime.getRuntime().availableProcessors();
-        ExecutorService service = Executors.newFixedThreadPool(threads);
-        List<Future> futures = new ArrayList<Future>();
-        int number = 0;        
-        for (final String downloadedFileName : downloadedFilesList) {
-            SingleSearchDownloadFileProcessor processFiles = new SingleSearchDownloadFileProcessor(downloadedFilesList, crossCheck, preprocessTextOfTheComparisonFile, hm, downloadedFolderPath, documentToCompare, paraphaseDetection, number, resultsMap);
-            number++;
-            futures.add(service.submit(processFiles));
-        }
         number = 0;
         for (final String indexedFileName : preIndexedFiles) {
             SingleSearchIndexedFileProcessor processFiles = new SingleSearchIndexedFileProcessor(preIndexedFiles, crossCheck, preprocessTextOfTheComparisonFile, hm, downloadedFolderPath, documentToCompare, paraphaseDetection, number, resultsMap);
             number++;
             futures.add(service.submit(processFiles));
         }
+               
+        
+        
+        
         service.shutdown();
         List outputs = new ArrayList();
         for (Future future : futures) {
