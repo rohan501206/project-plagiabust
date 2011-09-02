@@ -273,6 +273,7 @@ public class DocumentManagerForm extends javax.swing.JFrame {
             selectedFileName = (String) tableModel.getValueAt(index, 1);
             documentManagerForm.setVisible(false);
             WizardForm.selectedDocumentLabel.setText(selectedFileName);
+            WizardForm.selectedDocumentLabel.setToolTipText(selectedFileName);
             WizardForm.ProjectLocationLabel2.setVisible(true);
         }
     }//GEN-LAST:event_DoneButtonActionPerformed
