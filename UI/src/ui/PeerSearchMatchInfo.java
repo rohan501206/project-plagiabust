@@ -49,9 +49,7 @@ public class PeerSearchMatchInfo implements Callable {
     public HashMap<String, String[]> call() throws Exception {
 
         //String[] matchValuePair=new String[2];
-
         String[] matchValuePair = new String[4];
-
         ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
         File createFile = new File((String) indexedFilesForFile.get(counter));
         float output = sca.getSimilarity(preprocessText(filePath.getAbsolutePath()), preprocessText(createFile.getAbsolutePath()));
