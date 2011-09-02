@@ -183,10 +183,9 @@ public class WizardForm extends javax.swing.JFrame {
         AddDocumentLabel = new javax.swing.JLabel();
         AddDocumentSeparator = new javax.swing.JSeparator();
         Step2ImageLabel = new javax.swing.JLabel();
-        AddDocumentTipScrollPane = new javax.swing.JScrollPane();
-        AddDocumentTipTextArea = new javax.swing.JTextArea();
         ProjectLocationLabel2 = new javax.swing.JLabel();
         selectedDocumentLabel = new javax.swing.JLabel();
+        AddDocumentBannerLabel2 = new javax.swing.JLabel();
         SelectDocumentsPanel = new javax.swing.JPanel();
         AddDocumentBannerLabel1 = new javax.swing.JLabel();
         AddDocumentLabel1 = new javax.swing.JLabel();
@@ -202,18 +201,15 @@ public class WizardForm extends javax.swing.JFrame {
         KBManagerSeparator = new javax.swing.JSeparator();
         KeywordLabel = new javax.swing.JLabel();
         KeyWordSeparator = new javax.swing.JSeparator();
-        KeywordTipScrollPane = new javax.swing.JScrollPane();
-        KeywordTipTextArea = new javax.swing.JTextArea();
-        KBManagerScrollPane = new javax.swing.JScrollPane();
-        KBManagerTextArea = new javax.swing.JTextArea();
         Step3ImageLabel = new javax.swing.JLabel();
+        AddDocumentBannerLabel3 = new javax.swing.JLabel();
+        AddDocumentBannerLabel4 = new javax.swing.JLabel();
+        AddDocumentBannerLabel5 = new javax.swing.JLabel();
         SettingsPanel = new javax.swing.JPanel();
         SettingsBannerLabel = new javax.swing.JLabel();
         Step4ImageLabel = new javax.swing.JLabel();
         SettingsLabel = new javax.swing.JLabel();
         SettingsSeparator = new javax.swing.JSeparator();
-        PerSettingsScrollPane = new javax.swing.JScrollPane();
-        PerSettingsTipTextArea = new javax.swing.JTextArea();
         NumOfPeerDocLabel = new javax.swing.JLabel();
         NumOfExternalLabel = new javax.swing.JLabel();
         NumOfExternalSourcesComboBox = new javax.swing.JComboBox();
@@ -224,6 +220,8 @@ public class WizardForm extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         PlagiabustWebserverCheckBox = new javax.swing.JCheckBox();
         InternetSearchCheckBox = new javax.swing.JCheckBox();
+        AddDocumentBannerLabel9 = new javax.swing.JLabel();
+        AddDocumentBannerLabel8 = new javax.swing.JLabel();
         StartCheckPanel = new javax.swing.JPanel();
         CheckControlButton = new javax.swing.JButton();
         CheckBannerLabel = new javax.swing.JLabel();
@@ -240,13 +238,13 @@ public class WizardForm extends javax.swing.JFrame {
         CrossCheckProgressBar = new javax.swing.JProgressBar();
         CommandSeparator = new javax.swing.JSeparator();
         CommandsLabel = new javax.swing.JLabel();
-        CommandTipScrollPane = new javax.swing.JScrollPane();
-        CommandTipTextArea = new javax.swing.JTextArea();
         ViewButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         PlagiabustSearchCompletionLabel = new javax.swing.JLabel();
         DownloadFromPlagiabustProgressBar = new javax.swing.JProgressBar();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         WizardNextButton = new javax.swing.JButton();
         WizardPreviousButton = new javax.swing.JButton();
 
@@ -268,10 +266,11 @@ public class WizardForm extends javax.swing.JFrame {
         DescriptionTextArea.setBackground(new java.awt.Color(240, 240, 240));
         DescriptionTextArea.setColumns(20);
         DescriptionTextArea.setEditable(false);
-        DescriptionTextArea.setFont(new java.awt.Font("Tahoma", 0, 12));
+        DescriptionTextArea.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         DescriptionTextArea.setLineWrap(true);
         DescriptionTextArea.setRows(5);
         DescriptionTextArea.setText("This area contains helpful information for each step of plagiarism detection process.");
+        DescriptionTextArea.setWrapStyleWord(true);
         DescriptionTextArea.setBorder(null);
         DescriptionScrollPane.setViewportView(DescriptionTextArea);
 
@@ -486,24 +485,15 @@ public class WizardForm extends javax.swing.JFrame {
 
         Step2ImageLabel.setPreferredSize(new java.awt.Dimension(32, 32));
 
-        AddDocumentTipScrollPane.setBorder(null);
-        AddDocumentTipScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        AddDocumentTipScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-        AddDocumentTipScrollPane.setFont(new java.awt.Font("Tahoma", 0, 12));
-
-        AddDocumentTipTextArea.setColumns(20);
-        AddDocumentTipTextArea.setEditable(false);
-        AddDocumentTipTextArea.setFont(new java.awt.Font("Tahoma", 0, 12));
-        AddDocumentTipTextArea.setLineWrap(true);
-        AddDocumentTipTextArea.setRows(5);
-        AddDocumentTipTextArea.setText("Select a single document for the plagiarism test. You can select MS Word (.docx, .doc), .pdf, .rtf, .txt files.");
-        AddDocumentTipTextArea.setWrapStyleWord(true);
-        AddDocumentTipScrollPane.setViewportView(AddDocumentTipTextArea);
-
         ProjectLocationLabel2.setFont(new java.awt.Font("Tahoma", 1, 12));
         ProjectLocationLabel2.setText("Selected Document:");
 
         selectedDocumentLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
+
+        AddDocumentBannerLabel2.setFont(new java.awt.Font("Tahoma", 0, 12));
+        AddDocumentBannerLabel2.setText("Select a single document for the plagiarism test. You can select MS Word (.docx, .doc), .pdf, .rtf, .txt files.");
+        AddDocumentBannerLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        AddDocumentBannerLabel2.setPreferredSize(new java.awt.Dimension(327, 32));
 
         javax.swing.GroupLayout AddDocumentPanelLayout = new javax.swing.GroupLayout(AddDocumentPanel);
         AddDocumentPanel.setLayout(AddDocumentPanelLayout);
@@ -519,8 +509,7 @@ public class WizardForm extends javax.swing.JFrame {
                                 .addComponent(AddDocumentBannerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 306, Short.MAX_VALUE)
                                 .addComponent(Step2ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(AddDocumentLabel)
-                            .addComponent(AddDocumentTipScrollPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)))
+                            .addComponent(AddDocumentLabel)))
                     .addGroup(AddDocumentPanelLayout.createSequentialGroup()
                         .addGap(38, 38, 38)
                         .addComponent(ProjectLocationLabel2)
@@ -528,7 +517,10 @@ public class WizardForm extends javax.swing.JFrame {
                         .addComponent(selectedDocumentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(AddDocumentPanelLayout.createSequentialGroup()
                         .addGap(88, 88, 88)
-                        .addComponent(DocumentManagerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(DocumentManagerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(AddDocumentPanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(AddDocumentBannerLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 666, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         AddDocumentPanelLayout.setVerticalGroup(
@@ -542,9 +534,9 @@ public class WizardForm extends javax.swing.JFrame {
                 .addComponent(AddDocumentLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(AddDocumentSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AddDocumentTipScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
+                .addComponent(AddDocumentBannerLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(DocumentManagerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
                 .addGroup(AddDocumentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -657,35 +649,22 @@ public class WizardForm extends javax.swing.JFrame {
         KeywordLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
         KeywordLabel.setText("List of Keywords");
 
-        KeywordTipScrollPane.setBorder(null);
-        KeywordTipScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        KeywordTipScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-        KeywordTipScrollPane.setFont(new java.awt.Font("Tahoma", 0, 12));
-
-        KeywordTipTextArea.setColumns(20);
-        KeywordTipTextArea.setEditable(false);
-        KeywordTipTextArea.setFont(new java.awt.Font("Tahoma", 0, 12));
-        KeywordTipTextArea.setLineWrap(true);
-        KeywordTipTextArea.setRows(5);
-        KeywordTipTextArea.setText("Using Keyword Manager create a list of Keywords that are particular to the subject of plagiarism test.");
-        KeywordTipTextArea.setWrapStyleWord(true);
-        KeywordTipScrollPane.setViewportView(KeywordTipTextArea);
-
-        KBManagerScrollPane.setBorder(null);
-        KBManagerScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        KBManagerScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-        KBManagerScrollPane.setFont(new java.awt.Font("Tahoma", 0, 12));
-
-        KBManagerTextArea.setColumns(20);
-        KBManagerTextArea.setEditable(false);
-        KBManagerTextArea.setFont(new java.awt.Font("Tahoma", 0, 12));
-        KBManagerTextArea.setLineWrap(true);
-        KBManagerTextArea.setRows(5);
-        KBManagerTextArea.setText("Using Plagiabust Server Manager you can add all sort of documents to create a knwoldege base for particular subject of plagiarism test.");
-        KBManagerTextArea.setWrapStyleWord(true);
-        KBManagerScrollPane.setViewportView(KBManagerTextArea);
-
         Step3ImageLabel.setPreferredSize(new java.awt.Dimension(32, 32));
+
+        AddDocumentBannerLabel3.setFont(new java.awt.Font("Tahoma", 0, 12));
+        AddDocumentBannerLabel3.setText("Using Plagiabust Server Manager you can add all sort of documents to create a knwoldege base for particular subject of plagiarism");
+        AddDocumentBannerLabel3.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        AddDocumentBannerLabel3.setPreferredSize(new java.awt.Dimension(327, 32));
+
+        AddDocumentBannerLabel4.setFont(new java.awt.Font("Tahoma", 0, 12));
+        AddDocumentBannerLabel4.setText("test.");
+        AddDocumentBannerLabel4.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        AddDocumentBannerLabel4.setPreferredSize(new java.awt.Dimension(327, 32));
+
+        AddDocumentBannerLabel5.setFont(new java.awt.Font("Tahoma", 0, 12));
+        AddDocumentBannerLabel5.setText("Using Keyword Manager create a list of Keywords that are particular to the subject of plagiarism test.");
+        AddDocumentBannerLabel5.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        AddDocumentBannerLabel5.setPreferredSize(new java.awt.Dimension(327, 32));
 
         javax.swing.GroupLayout KnowledgeBasePanelLayout = new javax.swing.GroupLayout(KnowledgeBasePanel);
         KnowledgeBasePanel.setLayout(KnowledgeBasePanelLayout);
@@ -701,23 +680,32 @@ public class WizardForm extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, KnowledgeBasePanelLayout.createSequentialGroup()
                                 .addComponent(KBManagerBannerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 358, Short.MAX_VALUE)
-                                .addComponent(Step3ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(KBManagerScrollPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)))
+                                .addComponent(Step3ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(KnowledgeBasePanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(KBManagerLabel))
                     .addGroup(KnowledgeBasePanelLayout.createSequentialGroup()
-                        .addGap(180, 180, 180)
-                        .addComponent(KBManagerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(KnowledgeBasePanelLayout.createSequentialGroup()
-                        .addContainerGap()
+                        .addGap(182, 182, 182)
                         .addGroup(KnowledgeBasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(KeywordLabel)
-                            .addComponent(KeywordTipScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
-                            .addGroup(KnowledgeBasePanelLayout.createSequentialGroup()
-                                .addGap(169, 169, 169)
-                                .addComponent(KBManagerButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                            .addComponent(KBManagerButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(KBManagerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
+            .addGroup(KnowledgeBasePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(KnowledgeBasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(AddDocumentBannerLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, KnowledgeBasePanelLayout.createSequentialGroup()
+                        .addComponent(AddDocumentBannerLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
+                        .addGap(351, 351, 351)))
+                .addGap(20, 20, 20))
+            .addGroup(KnowledgeBasePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(KeywordLabel)
+                .addContainerGap(627, Short.MAX_VALUE))
+            .addGroup(KnowledgeBasePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(AddDocumentBannerLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 710, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
         );
         KnowledgeBasePanelLayout.setVerticalGroup(
             KnowledgeBasePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -730,17 +718,19 @@ public class WizardForm extends javax.swing.JFrame {
                 .addComponent(KBManagerLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(KBManagerSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(AddDocumentBannerLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(KBManagerScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(AddDocumentBannerLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(KBManagerButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
                 .addComponent(KeywordLabel)
-                .addGap(14, 14, 14)
-                .addComponent(KeywordTipScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(AddDocumentBannerLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addComponent(KBManagerButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52)
+                .addGap(84, 84, 84)
                 .addComponent(KeyWordSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(104, 104, 104))
         );
@@ -758,18 +748,6 @@ public class WizardForm extends javax.swing.JFrame {
 
         SettingsLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
         SettingsLabel.setText("Per Document Settings");
-
-        PerSettingsScrollPane.setBorder(null);
-        PerSettingsScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        PerSettingsScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-        PerSettingsScrollPane.setFont(new java.awt.Font("Tahoma", 0, 12));
-
-        PerSettingsTipTextArea.setFont(new java.awt.Font("Tahoma", 0, 12));
-        PerSettingsTipTextArea.setLineWrap(true);
-        PerSettingsTipTextArea.setRows(5);
-        PerSettingsTipTextArea.setText("Each document can be plagiarised by external sources and other peer documents. Set approximated value for number of each kind of sources.");
-        PerSettingsTipTextArea.setWrapStyleWord(true);
-        PerSettingsScrollPane.setViewportView(PerSettingsTipTextArea);
 
         NumOfPeerDocLabel.setFont(new java.awt.Font("Tahoma", 0, 12));
         NumOfPeerDocLabel.setText("Maximum Number of Peer Documents : ");
@@ -796,7 +774,7 @@ public class WizardForm extends javax.swing.JFrame {
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Externel Source Detection", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
         PlagiabustWebserverCheckBox.setBackground(new java.awt.Color(255, 255, 255));
-        PlagiabustWebserverCheckBox.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        PlagiabustWebserverCheckBox.setFont(new java.awt.Font("Tahoma", 0, 12));
         PlagiabustWebserverCheckBox.setText("Plagiabust Webserver Search");
         PlagiabustWebserverCheckBox.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
@@ -834,32 +812,43 @@ public class WizardForm extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        AddDocumentBannerLabel9.setFont(new java.awt.Font("Tahoma", 0, 12));
+        AddDocumentBannerLabel9.setText("Each document can be plagiarised by external sources and other peer documents. Set approximated value for number of each");
+        AddDocumentBannerLabel9.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        AddDocumentBannerLabel9.setPreferredSize(new java.awt.Dimension(327, 32));
+
+        AddDocumentBannerLabel8.setFont(new java.awt.Font("Tahoma", 0, 12));
+        AddDocumentBannerLabel8.setText("kind of sources.");
+        AddDocumentBannerLabel8.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        AddDocumentBannerLabel8.setPreferredSize(new java.awt.Dimension(327, 32));
+
         javax.swing.GroupLayout SettingsPanelLayout = new javax.swing.GroupLayout(SettingsPanel);
         SettingsPanel.setLayout(SettingsPanelLayout);
         SettingsPanelLayout.setHorizontalGroup(
             SettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SettingsPanelLayout.createSequentialGroup()
+            .addGroup(SettingsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(SettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(PharaphraseCheckBox, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ModesOfCheckSeparator, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
-                    .addComponent(SettingsSeparator, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
-                    .addGroup(SettingsPanelLayout.createSequentialGroup()
+                .addGroup(SettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(PharaphraseCheckBox)
+                    .addComponent(ModesOfCheckSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+                    .addComponent(SettingsSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SettingsPanelLayout.createSequentialGroup()
                         .addComponent(SettingsBannerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 307, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 381, Short.MAX_VALUE)
                         .addComponent(Step4ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(SettingsLabel, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(PerSettingsScrollPane, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, SettingsPanelLayout.createSequentialGroup()
+                    .addComponent(SettingsLabel)
+                    .addGroup(SettingsPanelLayout.createSequentialGroup()
                         .addComponent(NumOfPeerDocLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(NumOfPeerSourceComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, SettingsPanelLayout.createSequentialGroup()
+                    .addGroup(SettingsPanelLayout.createSequentialGroup()
                         .addComponent(NumOfExternalLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(NumOfExternalSourcesComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(ModesOfCheckLabel, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(ModesOfCheckLabel)
+                    .addComponent(AddDocumentBannerLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
+                    .addComponent(AddDocumentBannerLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE))
                 .addContainerGap())
         );
         SettingsPanelLayout.setVerticalGroup(
@@ -873,9 +862,11 @@ public class WizardForm extends javax.swing.JFrame {
                 .addComponent(SettingsLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(SettingsSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(AddDocumentBannerLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(PerSettingsScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(AddDocumentBannerLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(SettingsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(NumOfPeerSourceComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(NumOfPeerDocLabel))
@@ -932,20 +923,6 @@ public class WizardForm extends javax.swing.JFrame {
         CommandsLabel.setFont(new java.awt.Font("Tahoma", 1, 12));
         CommandsLabel.setText("Commands");
 
-        CommandTipScrollPane.setBorder(null);
-        CommandTipScrollPane.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        CommandTipScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-        CommandTipScrollPane.setFont(new java.awt.Font("Tahoma", 0, 12));
-
-        CommandTipTextArea.setColumns(20);
-        CommandTipTextArea.setEditable(false);
-        CommandTipTextArea.setFont(new java.awt.Font("Tahoma", 0, 12));
-        CommandTipTextArea.setLineWrap(true);
-        CommandTipTextArea.setRows(5);
-        CommandTipTextArea.setText("Use command button to initaite, terminate and view check results");
-        CommandTipTextArea.setWrapStyleWord(true);
-        CommandTipScrollPane.setViewportView(CommandTipTextArea);
-
         ViewButton.setFont(new java.awt.Font("Tahoma", 0, 12));
         ViewButton.setText("View Report");
         ViewButton.addActionListener(new java.awt.event.ActionListener() {
@@ -963,102 +940,127 @@ public class WizardForm extends javax.swing.JFrame {
         PlagiabustSearchCompletionLabel.setFont(new java.awt.Font("Tahoma", 0, 12));
         PlagiabustSearchCompletionLabel.setText("Downloading From Plagiabust");
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel1.setText("Use command button to initaite,");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jLabel2.setText("terminate and view check results");
+
         javax.swing.GroupLayout StartCheckPanelLayout = new javax.swing.GroupLayout(StartCheckPanel);
         StartCheckPanel.setLayout(StartCheckPanelLayout);
         StartCheckPanelLayout.setHorizontalGroup(
             StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(TaskCompletionSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
             .addGroup(StartCheckPanelLayout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(10, 10, 10)
                 .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CheckBannerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(TaskCompletionLabel))
+                .addGap(1459, 1459, 1459)
+                .addComponent(Step5ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(StartCheckPanelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(PlagiabustSearchCompletionLabel)
+                .addGap(18, 18, 18)
+                .addComponent(DownloadFromPlagiabustProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(StartCheckPanelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(InternetSearchCompletionLabel)
+                .addGap(22, 22, 22)
+                .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(DownloadFromInternetProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(StartCheckPanelLayout.createSequentialGroup()
-                        .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(StartCheckPanelLayout.createSequentialGroup()
-                                .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(CheckBannerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 295, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(TaskCompletionLabel))
-                                .addGap(1459, 1459, 1459)
-                                .addComponent(Step5ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(StartCheckPanelLayout.createSequentialGroup()
-                                .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, StartCheckPanelLayout.createSequentialGroup()
-                                            .addGap(177, 177, 177)
-                                            .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(CrossCheckProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
-                                                .addComponent(PreprocessDocumentProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
-                                                .addComponent(DownloadFromInternetProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                .addComponent(DownloadFromPlagiabustProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)
-                                                .addComponent(CreateIndexProgressBar, javax.swing.GroupLayout.DEFAULT_SIZE, 460, Short.MAX_VALUE)))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, StartCheckPanelLayout.createSequentialGroup()
-                                            .addComponent(CommandTipScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 150, Short.MAX_VALUE)
-                                            .addComponent(CheckControlButton, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(18, 18, 18)
-                                            .addComponent(ViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGap(7, 7, 7))
-                                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, StartCheckPanelLayout.createSequentialGroup()
-                                            .addComponent(CommandsLabel)
-                                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 570, Short.MAX_VALUE)))
-                                    .addComponent(InternetSearchCompletionLabel))
-                                .addGap(90, 90, 90)
-                                .addComponent(CommandSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(CrossCheckCompletionLabel)
-                            .addComponent(PreprocessDocumentCompletionLabel)
-                            .addComponent(IndexFilesCompletionLabel))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(68, 68, 68)
+                        .addComponent(CommandSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+            .addGroup(StartCheckPanelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(IndexFilesCompletionLabel)
+                .addGap(64, 64, 64)
+                .addComponent(CreateIndexProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(StartCheckPanelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(PreprocessDocumentCompletionLabel)
+                .addGap(52, 52, 52)
+                .addComponent(PreprocessDocumentProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(StartCheckPanelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(CommandsLabel))
+            .addGroup(StartCheckPanelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(StartCheckPanelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(StartCheckPanelLayout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addGroup(StartCheckPanelLayout.createSequentialGroup()
-                        .addComponent(PlagiabustSearchCompletionLabel)
-                        .addGap(1159, 1159, 1159))))
+                        .addComponent(jLabel2)
+                        .addGap(173, 173, 173)
+                        .addComponent(CheckControlButton, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(ViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, StartCheckPanelLayout.createSequentialGroup()
+                        .addComponent(CrossCheckCompletionLabel)
+                        .addGap(51, 51, 51)
+                        .addComponent(CrossCheckProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, 460, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
         StartCheckPanelLayout.setVerticalGroup(
             StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(StartCheckPanelLayout.createSequentialGroup()
+                .addComponent(TaskCompletionSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
                 .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(StartCheckPanelLayout.createSequentialGroup()
-                        .addGap(34, 34, 34)
-                        .addComponent(Step5ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(StartCheckPanelLayout.createSequentialGroup()
-                        .addContainerGap()
                         .addComponent(CheckBannerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(TaskCompletionLabel)))
+                        .addGap(6, 6, 6)
+                        .addComponent(TaskCompletionLabel))
+                    .addGroup(StartCheckPanelLayout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(Step5ImageLabel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(19, 19, 19)
                 .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(PlagiabustSearchCompletionLabel)
                     .addComponent(DownloadFromPlagiabustProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(CommandSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(DownloadFromInternetProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(InternetSearchCompletionLabel)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(IndexFilesCompletionLabel)
-                    .addComponent(CreateIndexProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(PreprocessDocumentCompletionLabel)
-                    .addComponent(PreprocessDocumentProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(CrossCheckCompletionLabel)
-                    .addComponent(CrossCheckProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CommandsLabel)
+                .addGap(6, 6, 6)
                 .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(InternetSearchCompletionLabel)
+                    .addComponent(DownloadFromInternetProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(StartCheckPanelLayout.createSequentialGroup()
-                        .addGap(40, 40, 40)
+                        .addGap(13, 13, 13)
+                        .addComponent(CommandSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(6, 6, 6)
+                .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(IndexFilesCompletionLabel)
+                    .addGroup(StartCheckPanelLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(CreateIndexProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(6, 6, 6)
+                .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(PreprocessDocumentCompletionLabel)
+                    .addGroup(StartCheckPanelLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(PreprocessDocumentProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(6, 6, 6)
+                .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CrossCheckCompletionLabel)
+                    .addGroup(StartCheckPanelLayout.createSequentialGroup()
+                        .addGap(1, 1, 1)
+                        .addComponent(CrossCheckProgressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(6, 6, 6)
+                .addComponent(CommandsLabel)
+                .addGap(6, 6, 6)
+                .addComponent(jLabel1)
+                .addGap(4, 4, 4)
+                .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addGroup(StartCheckPanelLayout.createSequentialGroup()
+                        .addGap(16, 16, 16)
                         .addGroup(StartCheckPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(CheckControlButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(StartCheckPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CommandTipScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(14, 14, 14)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(44, Short.MAX_VALUE))
+                            .addComponent(ViewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(23, 23, 23)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         WizardTabbedPane.addTab("Start Check   ", StartCheckPanel);
@@ -1578,19 +1580,21 @@ public class WizardForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AddDocumentBannerLabel;
     private javax.swing.JLabel AddDocumentBannerLabel1;
+    private javax.swing.JLabel AddDocumentBannerLabel2;
+    private javax.swing.JLabel AddDocumentBannerLabel3;
+    private javax.swing.JLabel AddDocumentBannerLabel4;
+    private javax.swing.JLabel AddDocumentBannerLabel5;
+    private javax.swing.JLabel AddDocumentBannerLabel8;
+    private javax.swing.JLabel AddDocumentBannerLabel9;
     private javax.swing.JLabel AddDocumentLabel;
     private javax.swing.JLabel AddDocumentLabel1;
     private javax.swing.JPanel AddDocumentPanel;
     private javax.swing.JSeparator AddDocumentSeparator;
     private javax.swing.JSeparator AddDocumentSeparator1;
     private javax.swing.JSeparator AddDocumentSeparator2;
-    private javax.swing.JScrollPane AddDocumentTipScrollPane;
-    private javax.swing.JTextArea AddDocumentTipTextArea;
     private javax.swing.JLabel CheckBannerLabel;
     private javax.swing.JButton CheckControlButton;
     private javax.swing.JSeparator CommandSeparator;
-    private javax.swing.JScrollPane CommandTipScrollPane;
-    private javax.swing.JTextArea CommandTipTextArea;
     private javax.swing.JLabel CommandsLabel;
     private javax.swing.JProgressBar CreateIndexProgressBar;
     private javax.swing.JLabel CrossCheckCompletionLabel;
@@ -1609,13 +1613,9 @@ public class WizardForm extends javax.swing.JFrame {
     private javax.swing.JButton KBManagerButton;
     private javax.swing.JButton KBManagerButton1;
     private javax.swing.JLabel KBManagerLabel;
-    private javax.swing.JScrollPane KBManagerScrollPane;
     private javax.swing.JSeparator KBManagerSeparator;
-    private javax.swing.JTextArea KBManagerTextArea;
     private javax.swing.JSeparator KeyWordSeparator;
     private javax.swing.JLabel KeywordLabel;
-    private javax.swing.JScrollPane KeywordTipScrollPane;
-    private javax.swing.JTextArea KeywordTipTextArea;
     private javax.swing.JPanel KnowledgeBasePanel;
     private javax.swing.JButton LocationBrowseButton;
     private javax.swing.JButton LocationBrowseButton1;
@@ -1629,8 +1629,6 @@ public class WizardForm extends javax.swing.JFrame {
     private javax.swing.JComboBox NumOfExternalSourcesComboBox;
     private javax.swing.JLabel NumOfPeerDocLabel;
     private javax.swing.JComboBox NumOfPeerSourceComboBox;
-    private javax.swing.JScrollPane PerSettingsScrollPane;
-    private javax.swing.JTextArea PerSettingsTipTextArea;
     private javax.swing.JCheckBox PharaphraseCheckBox;
     private javax.swing.JLabel PlagiabustSearchCompletionLabel;
     private javax.swing.JCheckBox PlagiabustWebserverCheckBox;
@@ -1667,6 +1665,8 @@ public class WizardForm extends javax.swing.JFrame {
     private javax.swing.JSeparator WizardSeparator;
     private javax.swing.JTabbedPane WizardTabbedPane;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
