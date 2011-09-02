@@ -27,7 +27,9 @@ public class CrossCheckModule extends javax.swing.JFrame {
 
     String sourceFileName;
     String suspectedFileName;
-    String matchString;
+    String matchStringShingleCloud;
+    String matchStringfirstFile;
+    String matchStringsecondFile;
     String selectedDocumentPath;
     int numberOfFiles;
     Highlighter hilit = new DefaultHighlighter();
@@ -39,14 +41,25 @@ public class CrossCheckModule extends javax.swing.JFrame {
     public CrossCheckModule(String sFile, String susFile, String match) {
         sourceFileName = sFile;
         suspectedFileName = susFile;
-        matchString = match;
+        matchStringShingleCloud = match;
         initComponents();
         testMatch.setVisible(false);
 
     }
 
-    public void setData() {
+    CrossCheckModule(String sourceFile, String suspectedFile, String matchstring, String matchstring1, String matchstring2) {
 
+        sourceFileName = sourceFile;
+        suspectedFileName = suspectedFile;
+        matchStringShingleCloud = matchstring;
+        matchStringfirstFile=matchstring1;
+        matchStringsecondFile=matchstring2;
+        initComponents();
+        testMatch.setVisible(false);
+
+   }
+
+    public void setData() {
         FileOperator setTextToTextAreas = new FileOperator();
         String[] texts = setTextToTextAreas.textSetter(sourceFileName, suspectedFileName);
         String field1 = texts[0];
@@ -59,35 +72,56 @@ public class CrossCheckModule extends javax.swing.JFrame {
         suspectedFileTextField1.setEditable(false);
         selectedFileTextField.setToolTipText(sourceFileName);
         suspectedFileTextField1.setToolTipText(suspectedFileName);
-        testMatch.setText(matchString);
-        this.highlighter(matchString);
+        this.highlighter(matchStringShingleCloud,matchStringfirstFile,matchStringsecondFile);
     }
 
-    public void highlighter(String queryTemp) {
+    public void highlighter(String queryTemp,String firstFileMatch,String secondFileMatch) {
 
-       selectedFileEditorPane.setHighlighter(hilit);
+
+        selectedFileEditorPane.setHighlighter(hilit);
         suspectedFileEditorPane.setHighlighter(hilit2);
         hilit.removeAllHighlights();
         hilit2.removeAllHighlights();
         String content = selectedFileEditorPane.getText();
         String content2 = suspectedFileEditorPane.getText();
         String queryString = queryTemp;
-        String[] query = null;
-        if (queryString.length() <= 0) {
+        String queryStringFirstFile = firstFileMatch;
+        String queryStringSecondFile = secondFileMatch;
+        String[] query = null;                  
+        
+
+        if ((queryString.length() <= 0) && (queryStringFirstFile.length() <= 0)) {
             return;
         }
-        if (queryString.contains("~")) {
 
-            query = queryString.split("~");
+        String[] queryforFirstFile = null;
+        String[] queryforSecondFile = null;
+        query = queryString.split("~");
+        queryforFirstFile = queryStringFirstFile.split("~");
+        queryforSecondFile = queryStringSecondFile.split("~");
 
-        } else {
-            query = new String[1];
-            query[0] = queryString;
-        }       
-        
-        ArrayList<Color> colourArray = new ColourMap().getColourArray(query);
-               
+        if (queryString.length() != 0) {
+            ColourMap colourMap=new ColourMap();
+            ArrayList<Color> colourArray = colourMap.getColourArray(query);
+            highlighterForBothFields(query, content, content2, colourArray);
+        }
+        if (queryforFirstFile.length != 1) {
+            ColourMap colourMap=new ColourMap();
+            ArrayList<Color> colourArray = colourMap.getColourArray(queryforFirstFile);
+            setHighlighterToFirstTextFile(queryforFirstFile, content, colourArray);
+        }
+        if (queryforSecondFile.length != 1) {
+            ColourMap colourMap=new ColourMap();
+            ArrayList<Color> colourArray = colourMap.getColourArray(queryforSecondFile);
+            setHighlighterToSecondTextFile(queryforSecondFile, content2, colourArray);
+        }
 
+
+    }
+
+    public void highlighterForBothFields(String[] query,String content,String content2,ArrayList<Color> colourArrayTemp){
+
+        ArrayList<Color> colourArray = colourArrayTemp;
         for (int i = 0; i < query.length; i++) {
             String searchQuery = query[i];
             TextHighlighter highlighterFirstFile = new TextHighlighter();
@@ -100,17 +134,13 @@ public class CrossCheckModule extends javax.swing.JFrame {
             int endIndexSecond = Integer.valueOf(highlightindexedInfoSecondFile[1]);
             
             try {
-
                 Color HILIT_COLOR = colourArray.get(i);
-
                 if (startIndexFirst != -1) {
                     painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
                     hilit.addHighlight(startIndexFirst, endIndexFirst, painter);
                     selectedFileEditorPane.setCaretPosition(endIndexFirst);
-
                 }
                 if (startIndexSecond != -1) {
-
                     painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
 
                     hilit2.addHighlight(startIndexSecond, endIndexSecond, painter);
@@ -286,4 +316,75 @@ public class CrossCheckModule extends javax.swing.JFrame {
     private javax.swing.JTextField suspectedFileTextField1;
     private javax.swing.JTextField testMatch;
     // End of variables declaration//GEN-END:variables
+
+    private void setHighlighterToFirstTextFile(String[] queryforFirstFile, String content, ArrayList<Color> colourArrayTemp) {
+
+        ArrayList<Color> colourArray = colourArrayTemp;
+        for (int i = 0; i < queryforFirstFile.length; i++) {
+            String searchQuery = queryforFirstFile[i];
+            TextHighlighterParaphrase highlighterFirstFile = new TextHighlighterParaphrase();
+            String[] highlightindexedInfoFirstFile = highlighterFirstFile.highlightTexts(content, searchQuery);
+            int startIndexFirst = Integer.valueOf(highlightindexedInfoFirstFile[0]);
+            int endIndexFirst = Integer.valueOf(highlightindexedInfoFirstFile[1]);
+
+            try {
+
+                Color HILIT_COLOR = colourArray.get(i);
+
+                if (startIndexFirst != -1) {
+                    painter = new UnderLineHIghlighter.UnderlineHighlightPainter(HILIT_COLOR);
+                    hilit.addHighlight(startIndexFirst, endIndexFirst, painter);
+                    selectedFileEditorPane.setCaretPosition(endIndexFirst);
+
+                }
+
+
+            } catch (BadLocationException ex) {
+                Logger.getLogger(ReportingModule.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+
+
+
+
+    }
+
+    private void setHighlighterToSecondTextFile(String[] queryforSecondFile, String content, ArrayList<Color> colourArrayTemp) {
+
+
+        ArrayList<Color> colourArray = colourArrayTemp;
+        for (int i = 0; i < queryforSecondFile.length; i++) {
+            String searchQuery = queryforSecondFile[i];
+            TextHighlighterParaphrase highlighterSecondFile = new TextHighlighterParaphrase();
+
+            String[] highlightindexedInfoSecondFile = highlighterSecondFile.highlightTexts(content, searchQuery);
+
+            int startIndexSecond = Integer.valueOf(highlightindexedInfoSecondFile[0]);
+            int endIndexSecond = Integer.valueOf(highlightindexedInfoSecondFile[1]);
+
+            try {
+
+                Color HILIT_COLOR = colourArray.get(i);
+
+
+                if (startIndexSecond != -1) {
+
+                    painter = new UnderLineHIghlighter.UnderlineHighlightPainter(HILIT_COLOR);
+
+                    hilit2.addHighlight(startIndexSecond, endIndexSecond, painter);
+
+                    suspectedFileEditorPane.setCaretPosition(endIndexSecond);
+
+                }
+
+            } catch (BadLocationException ex) {
+                Logger.getLogger(ReportingModule.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+
+
+
+    }
 }
