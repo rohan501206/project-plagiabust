@@ -32,7 +32,7 @@ public class TextHighlighterParaphrase {
             match = matcher.group();
         }
 
-
+        
         indexedInfo[0] = String.valueOf(startIndex);
         indexedInfo[1] = String.valueOf(endIndex);
         indexedInfo[2] = match;
