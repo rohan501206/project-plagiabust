@@ -8,7 +8,6 @@
  *
  * Created on Jul 17, 2011, 6:56:04 PM
  */
-
 package reportingModule;
 
 import java.awt.Color;
@@ -29,11 +28,6 @@ public class CrossCheckModule extends javax.swing.JFrame {
     String sourceFileName;
     String suspectedFileName;
     String matchString;
-
-
-
-
-
     String selectedDocumentPath;
     int numberOfFiles;
     Highlighter hilit = new DefaultHighlighter();
@@ -42,16 +36,16 @@ public class CrossCheckModule extends javax.swing.JFrame {
     final static Color HILIT_COLOR = new Color(255, 160, 122);
     Highlighter.HighlightPainter painter;
 
-    public CrossCheckModule(String sFile,String susFile,String match) {
-        sourceFileName=sFile;
-        suspectedFileName=susFile;
-        matchString= match;
+    public CrossCheckModule(String sFile, String susFile, String match) {
+        sourceFileName = sFile;
+        suspectedFileName = susFile;
+        matchString = match;
         initComponents();
         testMatch.setVisible(false);
 
     }
 
-    public void setData(){
+    public void setData() {
 
         FileOperator setTextToTextAreas = new FileOperator();
         String[] texts = setTextToTextAreas.textSetter(sourceFileName, suspectedFileName);
@@ -61,41 +55,20 @@ public class CrossCheckModule extends javax.swing.JFrame {
         suspectedFileEditorPane.setText(field2.toLowerCase());
         selectedFileTextField.setText(sourceFileName);
         suspectedFileTextField1.setText(suspectedFileName);
-selectedFileTextField.setEditable(false);
-suspectedFileTextField1.setEditable(false);
-selectedFileTextField.setToolTipText(sourceFileName);
-suspectedFileTextField1.setToolTipText(suspectedFileName);
-testMatch.setText(matchString);
+        selectedFileTextField.setEditable(false);
+        suspectedFileTextField1.setEditable(false);
+        selectedFileTextField.setToolTipText(sourceFileName);
+        suspectedFileTextField1.setToolTipText(suspectedFileName);
+        testMatch.setText(matchString);
         this.highlighter(matchString);
     }
 
+    public void highlighter(String queryTemp) {
 
-
-     public void highlighter(String queryTemp) {
-
-
-        ArrayList<Color> colourArray = new ArrayList<Color>();
-        colourArray.add(Color.cyan);
-        colourArray.add(Color.yellow);
-        colourArray.add(Color.gray);
-        colourArray.add(Color.LIGHT_GRAY);
-        colourArray.add(Color.MAGENTA);
-        colourArray.add(Color.pink);
-        colourArray.add(Color.ORANGE);
-        colourArray.add(Color.cyan);
-        colourArray.add(Color.yellow);
-        colourArray.add(Color.gray);
-        colourArray.add(Color.LIGHT_GRAY);
-        colourArray.add(Color.MAGENTA);
-        colourArray.add(Color.pink);
-        colourArray.add(Color.ORANGE);
-
-
-        selectedFileEditorPane.setHighlighter(hilit);
+       selectedFileEditorPane.setHighlighter(hilit);
         suspectedFileEditorPane.setHighlighter(hilit2);
         hilit.removeAllHighlights();
         hilit2.removeAllHighlights();
-        //entryBg = jTextField2.getBackground();
         String content = selectedFileEditorPane.getText();
         String content2 = suspectedFileEditorPane.getText();
         String queryString = queryTemp;
@@ -110,7 +83,10 @@ testMatch.setText(matchString);
         } else {
             query = new String[1];
             query[0] = queryString;
-        }
+        }       
+        
+        ArrayList<Color> colourArray = new ColourMap().getColourArray(query);
+               
 
         for (int i = 0; i < query.length; i++) {
             String searchQuery = query[i];
@@ -122,13 +98,7 @@ testMatch.setText(matchString);
             int endIndexFirst = Integer.valueOf(highlightindexedInfoFirstFile[1]);
             int startIndexSecond = Integer.valueOf(highlightindexedInfoSecondFile[0]);
             int endIndexSecond = Integer.valueOf(highlightindexedInfoSecondFile[1]);
-            //String match = highlightindexedInfoFirstFile[2];
-            //ArrayList<Integer> arr = new ArrayList<Integer>();
-            //arr.add(startIndexFirst);
-            // arr.add(endIndexFirst);
-            // indexHighligherMap.put(match, arr);
-            // matchingToPreprocessed.put(highlightindexedInfoFirstFile[2], highlightindexedInfoFirstFile[3]);
-
+            
             try {
 
                 Color HILIT_COLOR = colourArray.get(i);
@@ -155,7 +125,6 @@ testMatch.setText(matchString);
         }
 
     }
-
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -293,7 +262,6 @@ testMatch.setText(matchString);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-    
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void selectedFileTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_selectedFileTextFieldActionPerformed
@@ -303,18 +271,7 @@ testMatch.setText(matchString);
     private void suspectedFileTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_suspectedFileTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_suspectedFileTextField1ActionPerformed
-
-    /**
-    * @param args the command line arguments
-    */
-    /**public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CrossCheckModule().setVisible(true);
-            }
-        });
-    }**/
-
+   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel2;
@@ -329,5 +286,4 @@ testMatch.setText(matchString);
     private javax.swing.JTextField suspectedFileTextField1;
     private javax.swing.JTextField testMatch;
     // End of variables declaration//GEN-END:variables
-
 }
