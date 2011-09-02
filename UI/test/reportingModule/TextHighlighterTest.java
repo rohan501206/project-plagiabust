@@ -78,4 +78,34 @@ public class TextHighlighterTest {
         fail("failed");
     }
 
+    /**
+     * Test of getSearchQueryPattern method, of class TextHighlighter.
+     */
+    @Test
+    public void testGetSearchQueryPattern() {
+        System.out.println("getSearchQueryPattern");
+        ArrayList<String> preprocessedModifiedArrayList = null;
+        TextHighlighter instance = new TextHighlighter();
+        String expResult = "";
+        String result = instance.getSearchQueryPattern(preprocessedModifiedArrayList);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getSecondMaximum method, of class TextHighlighter.
+     */
+    @Test
+    public void testGetSecondMaximum() throws Exception {
+        System.out.println("getSecondMaximum");
+        ArrayList<Integer> array = null;
+        TextHighlighter instance = new TextHighlighter();
+        int expResult = 0;
+        int result = instance.getSecondMaximum(array);
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
 }
