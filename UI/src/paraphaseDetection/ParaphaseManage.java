@@ -50,20 +50,25 @@ public class ParaphaseManage {
         String firstfileMatch = "";
         String secondfileMatch = "";       
       
+        System.err.println(firstfileName);
+        System.err.println(secondfileName);
+        
         for (int i = 0; i < firstStringSentences.size(); i++) {   
             boolean isParaphased = false;
             for (int j = 0; j < secondStringSentences.size(); j++) {           
                 double similarityValue = manager.similarity(firstStringSentences.get(i),secondStringSentences.get(j));  
                 if (similarityValue > threshod) { 
                     isParaphased = true;
-                    secondfileMatch = secondfileMatch+secondStringSentences.get(j).toLowerCase()+"~";             
+                    secondfileMatch = secondfileMatch+secondStringSentences.get(j).toLowerCase()+"~";  
+                    break;
                 }
             }
             if(isParaphased){
                 firstfileMatch = firstfileMatch+firstStringSentences.get(i).toLowerCase()+"~";
             }
         }
-       
+        System.err.println(firstfileMatch);
+        System.err.println(secondfileMatch);
         result[0] = firstfileMatch;
         result[1] = secondfileMatch;
         return result;
