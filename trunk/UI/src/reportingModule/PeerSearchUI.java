@@ -719,7 +719,7 @@ public class PeerSearchUI extends javax.swing.JFrame {
             String suspectedFile = ((String) suspectedFileList.getSelectedValue());
             HashMap<String, String[]> comparisonIfo = peerSearchResult.get(sourceFile);
             Iterator sourceIterator = comparisonIfo.entrySet().iterator();
-            String[] matchString = new String[2];
+            String[] matchString = new String[4];
             while (sourceIterator.hasNext()) {
                 Map.Entry pair = (Map.Entry) sourceIterator.next();
                 String fileName = (String) pair.getKey();
@@ -727,7 +727,7 @@ public class PeerSearchUI extends javax.swing.JFrame {
                     matchString = (String[]) pair.getValue();
                 }
             }
-            CrossCheckModule crossCheck = new CrossCheckModule(sourceFile, suspectedFile, matchString[0]);
+            CrossCheckModule crossCheck = new CrossCheckModule(sourceFile, suspectedFile, matchString[0],matchString[2],matchString[3]);
             crossCheck.setData();
             crossCheck.setVisible(true);
         }

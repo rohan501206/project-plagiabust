@@ -66,6 +66,8 @@ public class ReportingModule extends javax.swing.JFrame {
     Highlighter hilit = new DefaultHighlighter();
     Highlighter hilit2 = new DefaultHighlighter();
     Highlighter hilit3 = new DefaultHighlighter();
+    //Highlighter hilitparaphrase1 = new UnderLineHIghlighter(null);
+    //Highlighter hilitparaphrase2 = new UnderLineHIghlighter(null);
     final static Color HILIT_COLOR = new Color(255, 160, 122);
     Highlighter.HighlightPainter painter;
     ArrayList peerDocs = new ArrayList();
@@ -917,20 +919,15 @@ public class ReportingModule extends javax.swing.JFrame {
             Map.Entry pair = (Map.Entry) it.next();
             String match = (String) pair.getKey();
             phraseIndexes = indexHighligherMap.get(match);
-
             for (int i = 0; i < phraseIndexes.size(); i++) {
-
                 int startIndex = phraseIndexes.get(0);
                 int endIndex = phraseIndexes.get(1);
-
                 try {
                     doc.remove(startIndex, endIndex - startIndex);
                     Style style = showFileContentTextPane.addStyle("", null);
                     StyleConstants.setForeground(style, Color.red);
                     StyleConstants.setBold(style, true);
                     StyleConstants.setItalic(style, true);
-
-
                     doc.insertString(startIndex, match, style);
                 } catch (BadLocationException e) {
                 }
@@ -945,8 +942,8 @@ public class ReportingModule extends javax.swing.JFrame {
         String queryString = queryTemp;
         selectedFileEditorPane.setHighlighter(hilit);
         suspectedFileEditorPane.setHighlighter(hilit2);
-        hilit.removeAllHighlights();
-        hilit2.removeAllHighlights();
+        //hilit.removeAllHighlights();
+        //hilit2.removeAllHighlights();
         String content = selectedFileEditorPane.getText();
         String content2 = suspectedFileEditorPane.getText();
         String[] query = null;
@@ -975,6 +972,7 @@ public class ReportingModule extends javax.swing.JFrame {
             ArrayList<Color> colourArray = colourMap.getColourArray(queryforSecondFile);
             setHighlighterToSecondTextFile(queryforSecondFile, content2, content2, colourArray);
         }
+      
 
     }
 
@@ -982,7 +980,7 @@ public class ReportingModule extends javax.swing.JFrame {
 
         String content = contentTemp;
         String content2 = content2Temp;
-        ArrayList<Color> colourArray = colourArrayTemp;
+        ArrayList<Color> colourArray = colourArrayTemp;        
 
         for (int i = 0; i < queryArray.length; i++) {
             String searchQuery = queryArray[i];
@@ -1025,7 +1023,7 @@ public class ReportingModule extends javax.swing.JFrame {
 
         String content = contentTemp;
         ArrayList<Color> colourArray = colourArrayTemp;
-
+        //selectedFileEditorPane.setHighlighter(hilitparaphrase1);
 
         for (int i = 0; i < queryArray.length; i++) {
             String searchQuery = queryArray[i];
@@ -1037,7 +1035,7 @@ public class ReportingModule extends javax.swing.JFrame {
 
                 Color HILIT_COLOR = colourArray.get(i);
                 if (startIndexFirst != -1) {
-                    painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
+                    painter = new UnderLineHIghlighter.UnderlineHighlightPainter(HILIT_COLOR);
                     hilit.addHighlight(startIndexFirst, endIndexFirst, painter);
                     selectedFileEditorPane.setCaretPosition(endIndexFirst);
 
@@ -1056,7 +1054,7 @@ public class ReportingModule extends javax.swing.JFrame {
         String content = contentTemp;
         String content2 = content2Temp;
         ArrayList<Color> colourArray = colourArrayTemp;
-
+        ///suspectedFileEditorPane.setHighlighter(hilitparaphrase2);
         for (int i = 0; i < queryArray.length; i++) {
             String searchQuery = queryArray[i];
             TextHighlighterParaphrase highlighterSecondFile = new TextHighlighterParaphrase();
@@ -1068,7 +1066,7 @@ public class ReportingModule extends javax.swing.JFrame {
 
                 if (startIndexSecond != -1) {
 
-                    painter = new DefaultHighlighter.DefaultHighlightPainter(HILIT_COLOR);
+                    painter = new UnderLineHIghlighter.UnderlineHighlightPainter(HILIT_COLOR);
 
                     hilit2.addHighlight(startIndexSecond, endIndexSecond, painter);
 
