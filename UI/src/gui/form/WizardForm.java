@@ -92,7 +92,7 @@ public class WizardForm extends javax.swing.JFrame {
         };
 
         System.setOut(new PrintStream(out, true));
-        
+
         ProjectLocationTextField.setText(Main.getDesktop().getAbsolutePath());
         ProjectFolderTextField.setText(new File(Main.getDesktop().getAbsolutePath() + File.separatorChar + ProjectNameTextField.getText()).getAbsolutePath());
 
@@ -1329,7 +1329,7 @@ public class WizardForm extends javax.swing.JFrame {
 
     public void setup() {
         sourceFolderName = peerSourceTextField.getText();
-        fName = DocumentManagerForm.fileName;
+        fName = fileNameConverter(DocumentManagerForm.fileName);
         String fullPathName = DocumentManagerForm.selectedFileName;
         File projectFolder = new File(ProjectFolderTextField.getText());
         projectFolder.mkdir();
@@ -1338,7 +1338,18 @@ public class WizardForm extends javax.swing.JFrame {
         fileOPerator.TextFileIndexer();
         destFolderPath = fileOPerator.getDestinatonFolderPath();
         indexFolderPath = fileOPerator.getIndexFolderPath();
+    }
 
+    public String fileNameConverter(String fName) {
+        File fil = new File(fName);
+        int index = fil.getName().lastIndexOf('.');
+        String fileName = "";
+        
+        if (index > 0 && index <= fil.getName().length() - 2) {
+            fileName = fil.getName().substring(0, index) + ".txt";
+        }
+        
+        return fileName;
     }
 
     public void peerSetup() {
@@ -1445,7 +1456,7 @@ public class WizardForm extends javax.swing.JFrame {
             System.err.print("start");
 
             //File destFolder = new File(destFolderPath);
-            String selectedDocumentPath = destFolderPath + File.separator + DocumentManagerForm.fileName;
+            String selectedDocumentPath = destFolderPath + File.separator + fileNameConverter(DocumentManagerForm.fileName);
 
             final ReportWorker repworker = new ReportWorker(selectedDocumentPath, repdata, projectFolder, DeleteProjectFilesCheckBox.isSelected()) {
                 // This method is invoked when the worker is finished
