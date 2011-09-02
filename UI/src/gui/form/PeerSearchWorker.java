@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 import javax.swing.JProgressBar;
 import javax.swing.SwingWorker;
 import ui.DocumentIndexingManager;
@@ -33,18 +35,19 @@ public class PeerSearchWorker extends SwingWorker<peerSearchReportData, String> 
     String indexFolderPath;
     String selectedDocumentPath;
     Manager manager;
-    JProgressBar pbar;
+    JProgressBar internetSearchProgressBar;
+    JProgressBar plagiabustSearchProgressBar;
     JProgressBar pbar2;
     JProgressBar pbar3;
     JProgressBar pbar4;
     int maxIndexfiles;
     boolean UsePlagiabustWebServer;
-    
+    boolean UseInternetSearch;
     boolean paraphaseDetection = false;
     ArrayList<String> indexedFiles = new ArrayList<String>();
 
     public PeerSearchWorker(String destFolderPath, File[] files, String indexFolderPath, ArrayList<String> fileArrayList, Manager manager,
-            JProgressBar pbar, JProgressBar pbar2, JProgressBar pbar3, JProgressBar pbar4, int maxNumOfInternetSources, int maxIndexfiles, boolean UsePlagiabustWebServer,boolean paraphaseDetection) {
+            JProgressBar internetSearchProgressBar, JProgressBar plagiabustSearchProgressBar, JProgressBar pbar2, JProgressBar pbar3, JProgressBar pbar4, int maxNumOfInternetSources, int maxIndexfiles, boolean UsePlagiabustWebServer, boolean UseInternetSource, boolean paraphaseDetection) {
         this.destFolderPath = destFolderPath;
         this.files = files;
         this.indexFolderPath = indexFolderPath;
@@ -53,37 +56,48 @@ public class PeerSearchWorker extends SwingWorker<peerSearchReportData, String> 
         this.pbar2 = pbar2;
         this.pbar3 = pbar3;
         this.pbar4 = pbar4;
-        this.pbar = pbar;
+        this.internetSearchProgressBar = internetSearchProgressBar;
+        this.plagiabustSearchProgressBar = plagiabustSearchProgressBar;
         this.idm.setMaxNumOfSourcesPerDocument(maxNumOfInternetSources);
         this.maxIndexfiles = maxIndexfiles;
         this.UsePlagiabustWebServer = UsePlagiabustWebServer;
+        this.UseInternetSearch = UseInternetSource;
         this.paraphaseDetection = paraphaseDetection;
     }
 
     @Override
     protected peerSearchReportData doInBackground() throws Exception {
-        HashMap<String, ArrayList<String>> downloadedFileList;
+        HashMap<String, ArrayList<String>> downloadedFileList = new HashMap<String, ArrayList<String>>();
         if (UsePlagiabustWebServer) {
-            System.out.println("Start Downloading from Plagiabust Web server........................");
-            downloadedFileList = plagiabustServerSourceDownloadManager.downloadFilesForMultiplePeerSearch(fileArrayList, destFolderPath, pbar);
-            System.out.println("Finished Downloading the internet files........................");
+            System.out.println("Start Downloading Sources From Plaiabust Web Server.");
+            downloadedFileList = plagiabustServerSourceDownloadManager.downloadFilesForMultiplePeerSearch(fileArrayList, destFolderPath, plagiabustSearchProgressBar);
+            System.out.println("Finished Downloading the Plaiabust Web Server files.");
 
-        } else {
-            System.out.println("Start Downloading the internet files........................");
-            downloadedFileList = idm.downloadFilesForMultiplePeerSearch(fileArrayList, destFolderPath, pbar);
-            System.out.println("Finished Downloading the internet files........................");
+        }
+        if (UseInternetSearch) {
+            System.out.println("Start Downloading Sources From Internet.");
+
+            // Append to Hashmap
+            HashMap<String, ArrayList<String>> tempMap = idm.downloadFilesForMultiplePeerSearch(fileArrayList, destFolderPath, internetSearchProgressBar);
+            Iterator it = tempMap.entrySet().iterator();
+            while (it.hasNext()) {
+                Map.Entry pairs = (Map.Entry) it.next();
+                downloadedFileList.put((String)pairs.getKey(), (ArrayList<String>)pairs.getValue());
+            }
+            
+            System.out.println("Finished Downloading the Internet Sources.");
         }
 
 
-        System.out.println("Start indexing the files........................");
+        System.out.println("Start Searching File Index.");
         indexedFileList = indexingManger.indexSearchforMultiplePeers(files, indexFolderPath, pbar2, maxIndexfiles);
-        System.out.println("Finished indexing the files........................");
+        System.out.println("Finished Searching in Index.");
 
 
 
         try {
             System.out.println("Start comparing files........................");
-            temp = manager.compareAllFiles(indexedFileList, downloadedFileList, pbar3, pbar4,paraphaseDetection);
+            temp = manager.compareAllFiles(indexedFileList, downloadedFileList, pbar3, pbar4, paraphaseDetection);
             System.out.println("Finished comparing files........................");
         } catch (IOException ex) {
             System.out.println("There are no similar files or some error has occured");
