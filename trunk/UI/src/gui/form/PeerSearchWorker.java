@@ -39,10 +39,12 @@ public class PeerSearchWorker extends SwingWorker<peerSearchReportData, String> 
     JProgressBar pbar4;
     int maxIndexfiles;
     boolean UsePlagiabustWebServer;
+    
+    boolean paraphaseDetection = false;
     ArrayList<String> indexedFiles = new ArrayList<String>();
 
     public PeerSearchWorker(String destFolderPath, File[] files, String indexFolderPath, ArrayList<String> fileArrayList, Manager manager,
-            JProgressBar pbar, JProgressBar pbar2, JProgressBar pbar3, JProgressBar pbar4, int maxNumOfInternetSources, int maxIndexfiles, boolean UsePlagiabustWebServer) {
+            JProgressBar pbar, JProgressBar pbar2, JProgressBar pbar3, JProgressBar pbar4, int maxNumOfInternetSources, int maxIndexfiles, boolean UsePlagiabustWebServer,boolean paraphaseDetection) {
         this.destFolderPath = destFolderPath;
         this.files = files;
         this.indexFolderPath = indexFolderPath;
@@ -55,6 +57,7 @@ public class PeerSearchWorker extends SwingWorker<peerSearchReportData, String> 
         this.idm.setMaxNumOfSourcesPerDocument(maxNumOfInternetSources);
         this.maxIndexfiles = maxIndexfiles;
         this.UsePlagiabustWebServer = UsePlagiabustWebServer;
+        this.paraphaseDetection = paraphaseDetection;
     }
 
     @Override
@@ -80,7 +83,7 @@ public class PeerSearchWorker extends SwingWorker<peerSearchReportData, String> 
 
         try {
             System.out.println("Start comparing files........................");
-            temp = manager.compareAllFiles(indexedFileList, downloadedFileList, pbar3, pbar4);
+            temp = manager.compareAllFiles(indexedFileList, downloadedFileList, pbar3, pbar4,paraphaseDetection);
             System.out.println("Finished comparing files........................");
         } catch (IOException ex) {
             System.out.println("There are no similar files or some error has occured");

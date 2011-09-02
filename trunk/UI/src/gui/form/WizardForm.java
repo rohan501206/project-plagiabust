@@ -1405,7 +1405,8 @@ public class WizardForm extends javax.swing.JFrame {
             }
             final PeerSearchWorker psworker = new PeerSearchWorker(destFolderPath, files, indexFolderPath, fileArrayList,
                     manager, DownloadFromInternetProgressBar, CreateIndexProgressBar, PreprocessDocumentProgressBar,
-                    CrossCheckProgressBar, Integer.parseInt((String) NumOfExternalSourcesComboBox.getSelectedItem()), Integer.parseInt((String) NumOfPeerSourceComboBox.getSelectedItem()), PlagiabustWebserverCheckBox.isSelected()) {
+                    CrossCheckProgressBar, Integer.parseInt((String) NumOfExternalSourcesComboBox.getSelectedItem()), 
+                    Integer.parseInt((String) NumOfPeerSourceComboBox.getSelectedItem()), PlagiabustWebserverCheckBox.isSelected(), PharaphraseCheckBox.isSelected()) {
                 // This method is invoked when the worker is finished
                 // its task
 

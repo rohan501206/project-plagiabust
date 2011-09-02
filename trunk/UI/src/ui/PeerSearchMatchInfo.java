@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package ui;
 
 import ComparisonEngine.ComparisonResult;
@@ -15,6 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Callable;
+import paraphaseDetection.ParaphaseManage;
 import preprocess.Stemmer;
 import preprocess.StopWordRemover;
 import preprocess.SynonymReplacer;
@@ -24,7 +24,7 @@ import preprocess.SynonymReplacer;
  * @author nuwan
  */
 public class PeerSearchMatchInfo implements Callable {
-    
+
     ComparisonResult cr = new ComparisonResult();
     CosineSimilarityAlgorithm cossim = new CosineSimilarityAlgorithm();
     DocumentReader docreader = new DocumentReader();
@@ -32,74 +32,75 @@ public class PeerSearchMatchInfo implements Callable {
     SynonymReplacer synReplaser = new SynonymReplacer();
     Stemmer stem = new Stemmer();
     ArrayList<String> indexedFilesForFile;
-    HashMap<String,String[]> peerFilesReportData= new HashMap<String,String[]>() ;
+    HashMap<String, String[]> peerFilesReportData = new HashMap<String, String[]>();
     int counter;
     File filePath;
+    boolean paraphaseDetection = false;
 
-    PeerSearchMatchInfo(ArrayList<String> indexedFilesForFileTemp, int counterTemp, File filePathTemp) {
+    PeerSearchMatchInfo(ArrayList<String> indexedFilesForFileTemp, int counterTemp, File filePathTemp, boolean paraphraseDetection) {
 
-        indexedFilesForFile=indexedFilesForFileTemp;
-        counter=counterTemp;
-        filePath=filePathTemp;
+        indexedFilesForFile = indexedFilesForFileTemp;
+        counter = counterTemp;
+        filePath = filePathTemp;
+        this.paraphaseDetection = paraphraseDetection;
 
     }
 
+    public HashMap<String, String[]> call() throws Exception {
+
+        //String[] matchValuePair=new String[2];
+
+        String[] matchValuePair = new String[4];
+
+        ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
+        File createFile = new File((String) indexedFilesForFile.get(counter));
+        float output = sca.getSimilarity(preprocessText(filePath.getAbsolutePath()), preprocessText(createFile.getAbsolutePath()));
+        String match = sca.getList();
+
+        String[] matchedText = new String[2];
+        String downloadedFolderPath = "";
+        float paraphasedValue = 0;
+
+        if (paraphaseDetection) {
+            ParaphaseManage paramanager = new ParaphaseManage(filePath.getAbsolutePath(), createFile.getAbsolutePath(), downloadedFolderPath);
+            matchedText = paramanager.getMatchList();
+            paraphasedValue = paramanager.getPlagiarismValueForParaphraseDetect(match);
+        } else {
+            matchedText[0] = "";
+            matchedText[1] = "";
+            paraphasedValue = 0;
+        }
+
+        matchValuePair[0] = match;
+        matchValuePair[1] = String.valueOf(roundNumber(output, 2) * 100 / 2 + paraphasedValue);
+        matchValuePair[2] = matchedText[0];
+        matchValuePair[3] = matchedText[1];
 
 
+        String firstFile = filePath.getAbsolutePath();
+        String secondFile = createFile.getAbsolutePath();
+        System.out.println();
+        System.out.println(firstFile);
+        System.out.println(secondFile);
+        System.out.println("match is " + match);
+        System.out.println();
 
-    public HashMap<String,String[]> call() throws Exception {
+        if (!(match.isEmpty()) && !(firstFile.equalsIgnoreCase(secondFile))) {
+            peerFilesReportData.put(createFile.getAbsolutePath(), matchValuePair);
+        }
 
+        return peerFilesReportData;
 
+    }
 
-                String[] matchValuePair=new String[2];
-                ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
-                File createFile = new File((String) indexedFilesForFile.get(counter));
-                float output = sca.getSimilarity(preprocessText(filePath.getAbsolutePath()), preprocessText(createFile.getAbsolutePath()));
-                String match = sca.getList();
-                matchValuePair[0]=match;
-                matchValuePair[1]=String.valueOf(roundNumber(output,2)*100/2);
-                String firstFile = filePath.getAbsolutePath();
-                String secondFile = createFile.getAbsolutePath();
-                System.out.println();
-                System.out.println(firstFile);
-                System.out.println(secondFile);
-                System.out.println("match is " + match);
-                System.out.println();
+    public float roundNumber(float Rval, int Rpl) {
+        float p = (float) Math.pow(10, Rpl);
+        Rval = Rval * p;
+        float tmp = Math.round(Rval);
+        return (float) tmp / p;
+    }
 
-                if (!(match.isEmpty()) &&  !(firstFile.equalsIgnoreCase(secondFile))) {
-                    peerFilesReportData.put(createFile.getAbsolutePath(), matchValuePair);
-                }
-
-                return peerFilesReportData;
-
-            }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-public float roundNumber(float Rval, int Rpl) {
-  float p = (float)Math.pow(10,Rpl);
-  Rval = Rval * p;
-  float tmp = Math.round(Rval);
-  return (float)tmp/p;
-  }
-
-
-
-public String preprocessText(String filename) throws IOException {
+    public String preprocessText(String filename) throws IOException {
 
         String fullFilename = filename;
         // document reading
@@ -118,8 +119,7 @@ public String preprocessText(String filename) throws IOException {
         return preprocessText;
     }
 
-
-public String arraylistToSting(ArrayList<String> token) {
+    public String arraylistToSting(ArrayList<String> token) {
         StringBuilder out = new StringBuilder();
         for (Object o : token) {
             out.append(o.toString());
@@ -127,7 +127,4 @@ public String arraylistToSting(ArrayList<String> token) {
         }
         return out.toString();
     }
-
-
-
 }

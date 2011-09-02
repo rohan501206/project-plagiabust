@@ -123,7 +123,7 @@ public class Manager {
      * @return he possible matching phrases with relevant files.
      * @throws IOException
      */
-    public peerSearchReportData compareAllFiles(HashMap<File, ArrayList<String>> indexedFilesList, HashMap<String, ArrayList<String>> downloadedFilesList, JProgressBar preprocesspbar, JProgressBar crosscheckpbar) throws IOException {
+    public peerSearchReportData compareAllFiles(HashMap<File, ArrayList<String>> indexedFilesList, HashMap<String, ArrayList<String>> downloadedFilesList, JProgressBar preprocesspbar, JProgressBar crosscheckpbar,boolean paraphraseDetection) throws IOException {
 
         peerSearchReportData repData = new peerSearchReportData();
         Iterator downloadIterator = null;
@@ -153,7 +153,7 @@ public class Manager {
             List<Future> futures = new ArrayList<Future>();
             int counter = 0;
             for (final String indexedFileName : indexedFilesForFile) {
-                PeerSearchMatchInfo processFiles = new PeerSearchMatchInfo(indexedFilesForFile, counter, filePath);
+                PeerSearchMatchInfo processFiles = new PeerSearchMatchInfo(indexedFilesForFile, counter, filePath,paraphraseDetection);
                 counter++;
                 futures.add(service.submit(processFiles));
             }
@@ -182,7 +182,7 @@ public class Manager {
                 List<Future> futures = new ArrayList<Future>();
                 int counter = 0;
                 for (final String indexedFileName : downloadedFilesForFile) {
-                    PeerSearchMatchInfo processFiles = new PeerSearchMatchInfo(downloadedFilesForFile, counter, checkfile);
+                    PeerSearchMatchInfo processFiles = new PeerSearchMatchInfo(downloadedFilesForFile, counter, checkfile,paraphraseDetection);
                     counter++;
                     futures.add(service.submit(processFiles));
                 }
