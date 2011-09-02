@@ -23,20 +23,15 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Paint;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.text.AttributedString;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Random;
 import java.util.Set;
 import javax.swing.DefaultListModel;
 import javax.swing.JComboBox;
@@ -48,19 +43,12 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 import javax.swing.text.Utilities;
 import net.sf.jasperreports.engine.JRDataSource;
-import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
-import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanArrayDataSource;
 import net.sf.jasperreports.view.JRViewer;
 import org.apache.commons.collections15.Transformer;
-import org.jfree.chart.ChartFactory;
-import org.jfree.chart.JFreeChart;
-import org.jfree.chart.plot.PiePlot;
-import org.jfree.data.general.DefaultPieDataset;
-import org.jfree.data.general.PieDataset;
 import ui.FileOperator;
 
 /**
@@ -713,7 +701,6 @@ public class ReportingModule extends javax.swing.JFrame {
         String fileName = (String) cb.getSelectedItem();
         Iterator it = fileToUrlMap.entrySet().iterator();
         while (it.hasNext()) {
-
             Map.Entry pair = (Map.Entry) it.next();
             String fileNameTemp = (String) pair.getKey();
             String url = (String) pair.getValue();
@@ -827,6 +814,9 @@ public class ReportingModule extends javax.swing.JFrame {
      
       
     public void setData(File projectFolderTemp,boolean deleteFolderTemp ) {
+
+
+        System.err.println("selected document path for the report is "+ selectedDocumentPath);
         this.deletefolder = deleteFolderTemp;
         this.projectFolder = projectFolderTemp;
         Set<String> docList = resultMap.keySet();
@@ -953,7 +943,6 @@ public class ReportingModule extends javax.swing.JFrame {
         String paraphrasedFirstPhrase = paraphrasedFirstPhraseTemp;
         String paraphrasedSecondPhrase = paraphrasedSecondPhraseTemp;
         String queryString = queryTemp;
-
         selectedFileEditorPane.setHighlighter(hilit);
         suspectedFileEditorPane.setHighlighter(hilit2);
         hilit.removeAllHighlights();
@@ -972,15 +961,18 @@ public class ReportingModule extends javax.swing.JFrame {
         queryforSecondFile = paraphrasedSecondPhrase.split("~");
 
         if (queryString.length() != 0) {
-            ArrayList<Color> colourArray = getColourArray(query);
+            ColourMap colourMap=new ColourMap();
+            ArrayList<Color> colourArray = colourMap.getColourArray(query);
             setHighlighterToBothTextFiles(query, content, content2, colourArray);
         }
         if (queryforFirstFile.length != 1) {
-            ArrayList<Color> colourArray = getColourArray(queryforFirstFile);
+            ColourMap colourMap=new ColourMap();
+            ArrayList<Color> colourArray = colourMap.getColourArray(queryforFirstFile);
             setHighlighterToFirstTextFile(queryforFirstFile, content, content, colourArray);
         }
         if (queryforSecondFile.length != 1) {
-            ArrayList<Color> colourArray = getColourArray(queryforSecondFile);
+            ColourMap colourMap=new ColourMap();
+            ArrayList<Color> colourArray = colourMap.getColourArray(queryforSecondFile);
             setHighlighterToSecondTextFile(queryforSecondFile, content2, content2, colourArray);
         }
 
@@ -1242,7 +1234,7 @@ public class ReportingModule extends javax.swing.JFrame {
         Transformer<Integer, Paint> vertexPaint = new Transformer<Integer, Paint>() {
 
             private final Color[] palette = {Color.WHITE,
-                Color.WHITE, Color.RED};
+                Color.WHITE, Color.black};
 
             public Paint transform(Integer i) {
                 if (i == 0) {
@@ -1329,52 +1321,7 @@ public class ReportingModule extends javax.swing.JFrame {
         for (int i = 0; i < urlList.size(); i++) {
             urlListTemp.add(urlList.get(i));
         }
-    }
-
-    public ArrayList<Color> getColourArray(String[] queries) {
-
-        int queryCount = queries.length;
-        ArrayList<Color> colourArray = new ArrayList<Color>();
-        HashMap<Integer, Color> colorToIntegerMap = new HashMap<Integer, Color>();
-        colourArray.add(Color.cyan);
-        colorToIntegerMap.put(0, Color.cyan);
-        colourArray.add(Color.yellow);
-        colorToIntegerMap.put(1, Color.yellow);
-        colourArray.add(Color.MAGENTA);
-        colorToIntegerMap.put(2, Color.MAGENTA);
-        colourArray.add(Color.LIGHT_GRAY);
-        colorToIntegerMap.put(3, Color.LIGHT_GRAY);
-        colourArray.add(Color.pink);
-        colorToIntegerMap.put(4, Color.pink);
-        colourArray.add(Color.ORANGE);
-        colorToIntegerMap.put(5, Color.ORANGE);
-        colourArray.add(Color.gray);
-        colorToIntegerMap.put(6, Color.gray);
-        colourArray.add(Color.cyan);
-        colorToIntegerMap.put(7, Color.cyan);
-        colourArray.add(Color.yellow);
-        colorToIntegerMap.put(8, Color.yellow);
-        colourArray.add(Color.MAGENTA);
-        colorToIntegerMap.put(9, Color.LIGHT_GRAY);
-        colourArray.add(Color.LIGHT_GRAY);
-        colorToIntegerMap.put(10, Color.LIGHT_GRAY);
-        colourArray.add(Color.pink);
-        colorToIntegerMap.put(11, Color.pink);
-        colourArray.add(Color.ORANGE);
-        colorToIntegerMap.put(12, Color.ORANGE);
-        colourArray.add(Color.gray);
-        colorToIntegerMap.put(13, Color.gray);
-
-        if (colourArray.size() < queryCount) {
-
-            while (colourArray.size() != queryCount) {
-                Random randomGenerator = new Random();
-                int randomInt = randomGenerator.nextInt(12);
-                colourArray.add((Color) colorToIntegerMap.get(randomInt));
-            }
-        }
-        return colourArray;
-    }
+    }    
 
 
     public void saveGraph(VisualizationViewer<Integer, CustomEdge> visualizationViewer) {
