@@ -883,6 +883,7 @@ public class PeerSearchUI extends javax.swing.JFrame {
         hm.put("time", time);
         hm.put("docName", documentFolder);
         hm.put("fileSourceList", fileSourceList);
+        hm.put("SUBREPORT_DIR", "jasper/");
 
         JRDataSource dataSource = createReportDataSource();
         JasperPrint jasperPrint;
