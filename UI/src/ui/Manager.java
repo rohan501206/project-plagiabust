@@ -94,14 +94,8 @@ if( downloadedFilesList!=null){
             } else {
                 preprocessProgressBar.runProgress((i * 100) / downloadedFilesList.length);
             }
-        }
-        for (final String downloadedFileName : downloadedFilesList) {
-            SingleSearchDownloadFileProcessor processFiles = new SingleSearchDownloadFileProcessor(downloadedFilesList, crossCheck, preprocessTextOfTheComparisonFile, hm, downloadedFolderPath, documentToCompare, paraphaseDetection, number, resultsMap);
-            number++;
-            futures.add(service.submit(processFiles));
-        }
-        }
-
+        }        
+        }        
         if( downloadedFilesList2!=null){
         for (int i = 0; i < downloadedFilesList2.length; i++) {
             String downloadedFileName = downloadedFilesList2[i];
@@ -112,13 +106,7 @@ if( downloadedFilesList!=null){
             } else {
                 preprocessProgressBar.runProgress((i * 100) / downloadedFilesList2.length);
             }
-        }
-        number = 0;
-        for (final String downloadedFileName : downloadedFilesList2) {
-            SingleSearchDownloadFileProcessor processFiles = new SingleSearchDownloadFileProcessor(downloadedFilesList2, crossCheck, preprocessTextOfTheComparisonFile, hm, downloadedFolderPath2, documentToCompare, paraphaseDetection, number, resultsMap);
-            number++;
-            futures.add(service.submit(processFiles));
-        }
+        }        
         }
         for (int i = 0; i < preIndexedFiles.size(); i++) {
             String preprocessText = preprocessText(preIndexedFiles.get(i));
@@ -129,6 +117,21 @@ if( downloadedFilesList!=null){
             } else {
                 preprocessProgressBar.runProgress((i * 100) / preIndexedFiles.size());
             }
+        }
+        if( downloadedFilesList!=null){
+        for (final String downloadedFileName : downloadedFilesList) {
+            SingleSearchDownloadFileProcessor processFiles = new SingleSearchDownloadFileProcessor(downloadedFilesList, crossCheck, preprocessTextOfTheComparisonFile, hm, downloadedFolderPath, documentToCompare, paraphaseDetection, number, resultsMap);
+            number++;
+            futures.add(service.submit(processFiles));
+        }
+        }
+        if( downloadedFilesList2!=null){
+        number = 0;
+        for (final String downloadedFileName : downloadedFilesList2) {
+            SingleSearchDownloadFileProcessor processFiles = new SingleSearchDownloadFileProcessor(downloadedFilesList2, crossCheck, preprocessTextOfTheComparisonFile, hm, downloadedFolderPath2, documentToCompare, paraphaseDetection, number, resultsMap);
+            number++;
+            futures.add(service.submit(processFiles));
+        }
         }
         number = 0;
         for (final String indexedFileName : preIndexedFiles) {
