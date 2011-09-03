@@ -4,16 +4,14 @@
  */
 package paraphaseDetection;
 
-import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
  *
- * @author Kasun
+ * @author Compaq
  */
 public class ManagerTest {
     
@@ -27,14 +25,6 @@ public class ManagerTest {
     @AfterClass
     public static void tearDownClass() throws Exception {
     }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
 
     /**
      * Test of manage method, of class Manager.
@@ -47,7 +37,7 @@ public class ManagerTest {
         Manager instance = new Manager();
         instance.manage(sentenceOne, sentenceTwo);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
 
     /**
@@ -56,15 +46,14 @@ public class ManagerTest {
     @Test
     public void testIdf() {
         System.out.println("idf");
-        String word = "";
-        String sentence = "";
-        String secondSentence = "";
+        String word = "test";
+        String sentence = "this is a test";
+        String secondSentence = "test for correctness";
         Manager instance = new Manager();
-        double expResult = 0.0;
+        double expResult = 0.5108256237659906;
         double result = instance.idf(word, sentence, secondSentence);
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -73,14 +62,13 @@ public class ManagerTest {
     @Test
     public void testGetLevenshteinDistance() {
         System.out.println("getLevenshteinDistance");
-        String s = "";
-        String t = "";
+        String s = "this is a test";
+        String t = "test for correctness";
         Manager instance = new Manager();
-        int expResult = 0;
+        int expResult = 14;
         int result = instance.getLevenshteinDistance(s, t);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -89,14 +77,13 @@ public class ManagerTest {
     @Test
     public void testMaxSimilarity() {
         System.out.println("maxSimilarity");
-        String word = "";
-        String sentence = "";
+        String word = "test";
+        String sentence = "test for correctness";
         Manager instance = new Manager();
-        double expResult = 0.0;
+        double expResult = 1.0;
         double result = instance.maxSimilarity(word, sentence);
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
 
     /**
@@ -105,14 +92,13 @@ public class ManagerTest {
     @Test
     public void testSynonymSimilarity() {
         System.out.println("synonymSimilarity");
-        String word = "";
-        String sentence = "";
+        String word = "get";
+        String sentence = "take the bus";
         Manager instance = new Manager();
-        double expResult = 0.0;
+        double expResult = 1.0;
         double result = instance.synonymSimilarity(word, sentence);
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -121,14 +107,13 @@ public class ManagerTest {
     @Test
     public void testLenthSimilarity() {
         System.out.println("lenthSimilarity");
-        String firstSentence = "";
-        String secondSentence = "";
+        String firstSentence = "test for correctness";
+        String secondSentence = "test for correctness";
         Manager instance = new Manager();
-        double expResult = 0.0;
+        double expResult = 0.5;
         double result = instance.lenthSimilarity(firstSentence, secondSentence);
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -137,13 +122,12 @@ public class ManagerTest {
     @Test
     public void testSimilarity() {
         System.out.println("similarity");
-        String firstSentence = "";
-        String secondSentence = "";
+        String firstSentence = "test for correctness";
+        String secondSentence = "test for correctness and bugs";
         Manager instance = new Manager();
-        double expResult = 0.0;
+        double expResult = 0.6625208947993662;
         double result = instance.similarity(firstSentence, secondSentence);
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 }

@@ -42,12 +42,12 @@ public class NumberRemoverTest {
     @Test
     public void testRemoveNumbersAndOtherChars() {
         System.out.println("removeNumbersAndOtherChars");
-        String input = "";
+        String input = "udana12chathuranga @ 123";
         NumberRemover instance = new NumberRemover();
-        String expResult = "";
+        String expResult = "udanachathuranga";
         String result = instance.removeNumbersAndOtherChars(input);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 }
