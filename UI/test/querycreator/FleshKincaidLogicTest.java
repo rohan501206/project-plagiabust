@@ -35,72 +35,6 @@ public class FleshKincaidLogicTest {
     @After
     public void tearDown() {
     }
-
-    /**
-     * Test of processString method, of class FleshKincaidLogic.
-     */
-    @Test
-    public void testProcessString() {
-        System.out.println("processString");
-        String inputText = "";
-        FleshKincaidLogic instance = new FleshKincaidLogic();
-        instance.processString(inputText);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of processText method, of class FleshKincaidLogic.
-     */
-    @Test
-    public void testProcessText() {
-        System.out.println("processText");
-        String inputText = "";
-        FleshKincaidLogic instance = new FleshKincaidLogic();
-        instance.processText(inputText);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of addPunctuationThatEndsASentence method, of class FleshKincaidLogic.
-     */
-    @Test
-    public void testAddPunctuationThatEndsASentence() {
-        System.out.println("addPunctuationThatEndsASentence");
-        String punctuation = "";
-        FleshKincaidLogic instance = new FleshKincaidLogic();
-        instance.addPunctuationThatEndsASentence(punctuation);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of removePunctuationThatEndsASentence method, of class FleshKincaidLogic.
-     */
-    @Test
-    public void testRemovePunctuationThatEndsASentence() {
-        System.out.println("removePunctuationThatEndsASentence");
-        String punctuation = "";
-        FleshKincaidLogic instance = new FleshKincaidLogic();
-        instance.removePunctuationThatEndsASentence(punctuation);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setCountingFragment method, of class FleshKincaidLogic.
-     */
-    @Test
-    public void testSetCountingFragment() {
-        System.out.println("setCountingFragment");
-        boolean inputBoolean = false;
-        FleshKincaidLogic instance = new FleshKincaidLogic();
-        instance.setCountingFragment(inputBoolean);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
     /**
      * Test of getCountingFragments method, of class FleshKincaidLogic.
      */
@@ -181,8 +115,6 @@ public class FleshKincaidLogicTest {
         double expResult = 0.0;
         double result = instance.getFleschKincaidGradeLevel();
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
