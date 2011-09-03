@@ -60,6 +60,9 @@ public class Manager {
         List<Future> futures = new ArrayList<Future>();
         int number = 0;
 
+
+
+
         if (downloadedFolderPath != null) {
             File downloadedFiles = new File(downloadedFolderPath);
             downloadedFilesList = downloadedFiles.list();
@@ -78,6 +81,7 @@ public class Manager {
         for (int i = 0; i < indexedFiles.size(); i++) {
             System.out.println("document indexed " + i + " " + indexedFiles.get(i));
         }
+
 
         String preprocessTextOfTheComparisonFile = preprocessText(documentToCompare);
         ProgressBarManager preprocessProgressBar = new ProgressBarManager(preprocesspbar);
@@ -153,14 +157,15 @@ public class Manager {
             List<Future> futures = new ArrayList<Future>();
             int counter = 0;
             for (final String indexedFileName : indexedFilesForFile) {
-                PeerSearchMatchInfo processFiles = new PeerSearchMatchInfo(indexedFilesForFile, counter, filePath,paraphraseDetection);
+                PeerSearchMatchInfo processFiles = new PeerSearchMatchInfo(indexedFilesForFile, indexedFileName, filePath,paraphraseDetection);
                 counter++;
                 futures.add(service.submit(processFiles));
             }
             service.shutdown();
             peerFilesReportData = setDetailsToOutput(futures);
+            if(!peerFilesReportData.isEmpty()){
             repData.setPeerFilesReportData(filePath.getAbsolutePath(), peerFilesReportData);
-
+            }
         }
 
 
@@ -182,13 +187,15 @@ public class Manager {
                 List<Future> futures = new ArrayList<Future>();
                 int counter = 0;
                 for (final String indexedFileName : downloadedFilesForFile) {
-                    PeerSearchMatchInfo processFiles = new PeerSearchMatchInfo(downloadedFilesForFile, counter, checkfile,paraphraseDetection);
+                    PeerSearchMatchInfo processFiles = new PeerSearchMatchInfo(downloadedFilesForFile, indexedFileName, checkfile,paraphraseDetection);
                     counter++;
                     futures.add(service.submit(processFiles));
                 }
                 service.shutdown();
                 internetFilesReportData = setDetailsToOutput(futures);
+                if(!internetFilesReportData.isEmpty()){
                 repData.setInternetFilesReportData(checkfile.getAbsolutePath(), internetFilesReportData);
+                }
             }
         }
         return repData;
