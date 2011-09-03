@@ -50,8 +50,7 @@ public class ParaphaseManageTest {
         String[] expResult = null;
         String[] result = instance.checkForParaPhase(firstString, secondString);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -65,8 +64,7 @@ public class ParaphaseManageTest {
         String expResult = "";
         String result = instance.arraylistToSting(token);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -80,8 +78,7 @@ public class ParaphaseManageTest {
         float expResult = 0.0F;
         float result = instance.getPlagiarismValueForParaphraseDetect(match);
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -95,8 +92,7 @@ public class ParaphaseManageTest {
         List expResult = null;
         List result = instance.getParagraphs(document);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       
     }
 
     /**
@@ -110,8 +106,7 @@ public class ParaphaseManageTest {
         ArrayList expResult = null;
         ArrayList result = instance.getSentences(paragraph);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 
     /**
@@ -124,7 +119,6 @@ public class ParaphaseManageTest {
         String[] expResult = null;
         String[] result = instance.getMatchList();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        
     }
 }
