@@ -1127,28 +1127,28 @@ public class WizardForm extends javax.swing.JFrame {
         switch (selectedTabIndex) {
             case 0:
                 if (ProjectLocationTextField.getText().equals("")) {
-                    JOptionPane.showMessageDialog(null, "Please select a valid project location to continue.");
+                    JOptionPane.showMessageDialog(null, "Please select a valid project location to continue.", "Notification", JOptionPane.INFORMATION_MESSAGE, Main.getPlagiabustIcon());
                     isValidData = false;
                 }
                 if (ProjectNameTextField.getText().equals("")) {
-                    JOptionPane.showMessageDialog(null, "Please enter a valid project name to continue.");
+                    JOptionPane.showMessageDialog(null, "Please enter a valid project name to continue.", "Notification", JOptionPane.INFORMATION_MESSAGE, Main.getPlagiabustIcon());
                     isValidData = false;
                 }
 
                 if (!isValidFileName(ProjectNameTextField.getText())) {
-                    JOptionPane.showMessageDialog(null, "Project name cannot contain any of the following characters.\n / \\ ? : * : \" < > | ");
+                    JOptionPane.showMessageDialog(null, "Project name cannot contain any of the following characters.\n / \\ ? : * : \" < > | ", "Notification", JOptionPane.INFORMATION_MESSAGE, Main.getPlagiabustIcon());
                     isValidData = false;
                 }
                 break;
             case 1:
                 if (singleDetectionButton.isSelected() && selectedDocumentLabel.getText().equals("")) {
-                    JOptionPane.showMessageDialog(null, "Please select a file to continue.");
+                    JOptionPane.showMessageDialog(null, "Please select a file to continue.", "Notification", JOptionPane.INFORMATION_MESSAGE, Main.getPlagiabustIcon());
                     isValidData = false;
                 }
                 break;
             case 2:
                 if (peerSourceTextField.getText().equals("")) {
-                    JOptionPane.showMessageDialog(null, "Please select a source location of documents to continue.");
+                    JOptionPane.showMessageDialog(null, "Please select a source location of documents to continue.", "Notification", JOptionPane.INFORMATION_MESSAGE, Main.getPlagiabustIcon());
                     isValidData = false;
                 }
                 break;
@@ -1453,7 +1453,7 @@ public class WizardForm extends javax.swing.JFrame {
                 PlagiabustSearchCompletionLabel.setVisible(true);
             } else {
                 PlagiabustWebserverCheckBox.setSelected(false);
-                JOptionPane.showMessageDialog(this, "Plagiabust Web Server is unavailable", "Connection Failed", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Plagiabust Web Server is unavailable", "Connection Failed", JOptionPane.ERROR_MESSAGE, Main.getPlagiabustIcon());
             }
         } else {
             DownloadFromPlagiabustProgressBar.setVisible(false);
@@ -1471,7 +1471,7 @@ public class WizardForm extends javax.swing.JFrame {
                 InternetSearchCompletionLabel.setVisible(true);
             } else {
                 InternetSearchCheckBox.setSelected(false);
-                JOptionPane.showMessageDialog(this, "Internet connection is unavailable", "Connection Failed", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Internet connection is unavailable", "Connection Failed", JOptionPane.ERROR_MESSAGE, Main.getPlagiabustIcon());
             }
         } else {
             DownloadFromInternetProgressBar.setVisible(false);
