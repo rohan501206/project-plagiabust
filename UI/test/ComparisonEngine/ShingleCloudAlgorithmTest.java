@@ -42,7 +42,6 @@ public class ShingleCloudAlgorithmTest {
      */
     @Test
     public void testGetSimilarity() {
-        System.out.println("getSimilarity");
         String input1 = "This is a test";
         String input2 = "This is a test";
         ShingleCloudAlgorithm instance = new ShingleCloudAlgorithm();
