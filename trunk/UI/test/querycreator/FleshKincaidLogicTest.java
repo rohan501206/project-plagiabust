@@ -110,9 +110,9 @@ public class FleshKincaidLogicTest {
      */
     @Test
     public void testGetFleschKincaidGradeLevel() {
-        System.out.println("getFleschKincaidGradeLevel");
         FleshKincaidLogic instance = new FleshKincaidLogic();
-        double expResult = 0.0;
+        instance.processString("The use of electronic documents became increasingly popular and nowadays almost every academic institute uses online submission of assignments, projects, reports, etc.");
+        double expResult = 19.808181818181826;
         double result = instance.getFleschKincaidGradeLevel();
         assertEquals(expResult, result, 0.0);
     }
@@ -141,33 +141,6 @@ public class FleshKincaidLogicTest {
         double expResult = 0.0;
         double result = instance.getAverageWordsPerSentence();
         assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of setStoreResults method, of class FleshKincaidLogic.
-     */
-    @Test
-    public void testSetStoreResults() {
-        System.out.println("setStoreResults");
-        boolean newValue = false;
-        FleshKincaidLogic instance = new FleshKincaidLogic();
-        instance.setStoreResults(newValue);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getStoreResults method, of class FleshKincaidLogic.
-     */
-    @Test
-    public void testGetStoreResults() {
-        System.out.println("getStoreResults");
-        FleshKincaidLogic instance = new FleshKincaidLogic();
-        boolean expResult = false;
-        boolean result = instance.getStoreResults();
-        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
