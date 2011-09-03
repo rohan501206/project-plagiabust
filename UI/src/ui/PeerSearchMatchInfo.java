@@ -35,12 +35,13 @@ public class PeerSearchMatchInfo implements Callable {
     HashMap<String, String[]> peerFilesReportData = new HashMap<String, String[]>();
     int counter;
     File filePath;
+    String file;
     boolean paraphaseDetection = false;
 
-    PeerSearchMatchInfo(ArrayList<String> indexedFilesForFileTemp, int counterTemp, File filePathTemp, boolean paraphraseDetection) {
+    PeerSearchMatchInfo(ArrayList<String> indexedFilesForFileTemp, String fileTemp, File filePathTemp, boolean paraphraseDetection) {
 
         indexedFilesForFile = indexedFilesForFileTemp;
-        counter = counterTemp;
+        file = fileTemp;
         filePath = filePathTemp;
         this.paraphaseDetection = paraphraseDetection;
 
@@ -48,13 +49,12 @@ public class PeerSearchMatchInfo implements Callable {
 
     public HashMap<String, String[]> call() throws Exception {
 
-        //String[] matchValuePair=new String[2];
+        
         String[] matchValuePair = new String[4];
         ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
-        File createFile = new File((String) indexedFilesForFile.get(counter));
+        File createFile = new File(file);
         float output = sca.getSimilarity(preprocessText(filePath.getAbsolutePath()), preprocessText(createFile.getAbsolutePath()));
         String match = sca.getList();
-
         String[] matchedText = new String[2];
         String downloadedFolderPath = "";
         float paraphasedValue = 0;
