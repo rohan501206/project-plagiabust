@@ -11,6 +11,7 @@
 package gui.form;
 
 import java.awt.Toolkit;
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,7 +28,7 @@ public class MainForm extends javax.swing.JFrame {
     /** Creates new form MainForm */
     private MainForm() {
         initComponents();
-        java.awt.Image image = Toolkit.getDefaultToolkit().getImage("src/Images/logo new.png");
+        java.awt.Image image = Toolkit.getDefaultToolkit().getImage("src"+File.separator+"Images"+File.separator+"IconImage.png");
         this.setIconImage(image);
     }
 
