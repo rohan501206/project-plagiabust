@@ -14,6 +14,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
@@ -87,6 +88,8 @@ public class AnyToTextConverter {
             fileAsText = stripper.getText(pddoc);
            
         } catch (Exception e) {
+            System.err.println(fileName);
+            //System.err.println(e);
         } finally {
             try {
                 cosdoc.close();
@@ -111,6 +114,7 @@ public class AnyToTextConverter {
             rtfContents = doc.getText(0, doc.getLength());
 
         } catch (Exception e) {
+            System.err.println(fileName);
         }
 
         return rtfContents;
@@ -124,6 +128,7 @@ public class AnyToTextConverter {
             WordExtractor extractor = new WordExtractor(in);
             fileAsText = extractor.getText();
         } catch (Exception e) {
+            System.err.println(fileName);
         }
 
         return fileAsText;
@@ -139,6 +144,7 @@ public class AnyToTextConverter {
             fileAsText = extractor.getText();
         } catch (FileNotFoundException ex) {
         } catch (IOException ex) {
+            System.err.println(fileName);
         }
 
         return fileAsText;
@@ -158,6 +164,8 @@ public class AnyToTextConverter {
     }
 
     public void convertFilesInFolder(String folderPath) {
+
+
         File documentFolder = new File(folderPath);
         String documentText = null;
         int threads = Runtime.getRuntime().availableProcessors();
@@ -166,7 +174,7 @@ public class AnyToTextConverter {
 
         Long start=System.currentTimeMillis();        
 
-        if (documentFolder.isDirectory()) {
+       if (documentFolder.isDirectory()) {
             this.listFiles(documentFolder);
 
         for (final String fileName : queueOfFiles) {
@@ -198,11 +206,22 @@ public class AnyToTextConverter {
         futures.add(service.submit(callable));
     }
 
+        for ( Future future : futures) {
+                try {
+                    String s = (String) future.get();
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(AnyToTextConverter.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ExecutionException ex) {
+                    Logger.getLogger(AnyToTextConverter.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+           }
+
     service.shutdown();
         }
+/**
 
-
-          /** for (String fileName : queueOfFiles) {
+           for (String fileName : queueOfFiles) {
                 if (fileName.endsWith(".txt")) {
                     moveTextFile(fileName);
                 } else {
@@ -223,10 +242,11 @@ public class AnyToTextConverter {
                     this.writeTexttoFile(documentText, fName);
                 }
             }
+
  }
+**/
 
-
-       */
+       
         
  Long end=System.currentTimeMillis();
 
