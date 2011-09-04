@@ -145,6 +145,7 @@ public class PlagiabustWebSearchManager {
 
         File fi = new File(downloadedFileFolderPath);
         if (!(fi.exists())) {
+            int fileCounter = 0;
             boolean folderCreated = new File(downloadedFileFolderPath).mkdir();
             for (Iterator<String> it = filePathList.iterator(); it.hasNext();) {
                 String filePath = it.next();
@@ -155,14 +156,8 @@ public class PlagiabustWebSearchManager {
                 Iterator sourceIterator = sourcesOfFile.entrySet().iterator();
 
 
-                int fileCounter = 0;
+                
                 while (sourceIterator.hasNext()) {
-
-                    // progress bar
-                    fileCounter++;
-                    downloadProgressBar.runProgress((fileCounter * 100) / sourcesOfFile.size());
-
-
 
                     Map.Entry pair = (Map.Entry) sourceIterator.next();
                     String url = (String) pair.getKey();
@@ -180,6 +175,12 @@ public class PlagiabustWebSearchManager {
                     }
                 }
                 fileAndSorcesMap.put(filePath, downloadedFilesList);
+                
+                // progress bar
+                 fileCounter++;
+                 downloadProgressBar.runProgress((fileCounter * 100) / filePathList.size());
+                
+                
             }
             Iterator it = urlAndDownloadedPathMap.entrySet().iterator();
             while (it.hasNext()) {
