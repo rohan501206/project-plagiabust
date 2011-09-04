@@ -83,7 +83,11 @@ public class ParaphaseManage {
         return result;
     }
     
-    
+    /**
+     * Convert arraylist to a string
+     * @param token
+     * @return 
+     */
     public String arraylistToSting(ArrayList<String> token) {
         StringBuilder out = new StringBuilder();
         for (Object o : token) {
@@ -93,9 +97,13 @@ public class ParaphaseManage {
         return out.toString();
     }
     
-    
-    public float getPlagiarismValueForParaphraseDetect(String match) throws IOException{
-        
+    /**
+     * Calaculate the Plagiarism value for the paraphrase match
+     * @param match
+     * @return
+     * @throws IOException 
+     */
+    public float getPlagiarismValueForParaphraseDetect(String match) throws IOException{        
         String paraphasedString = this.matchList[0];
         String matchOnlyText = match.replaceAll("~"," ");
         String paraphasedOnlyText = paraphasedString.replaceAll("~"," ");
@@ -104,17 +112,24 @@ public class ParaphaseManage {
         int all = firstString.length();
         int para = onlyParaphasedText.length();
         
-        return (para*100)/all;
-        
+        return (para*100)/all;        
     }
     
-   
+   /**
+     * Split a document into paragraphs
+     * @param document
+     * @return 
+     */
     public List<String> getParagraphs (String document){
 		String [] temp = document.split("[\\r\\n]+");
 		return Arrays.asList(temp);
 	}
 
-    
+    /**
+     * Split a paragraph into sentences
+     * @param paragraph
+     * @return 
+     */
     public ArrayList<String> getSentences(String paragraph) {
         BreakIterator bi = BreakIterator.getSentenceInstance();
         bi.setText(paragraph);
@@ -129,7 +144,11 @@ public class ParaphaseManage {
     }
     
     
-
+    /**
+     * Return the paraphrased match list 
+     * @return
+     * @throws IOException 
+     */
     public String[] getMatchList() throws IOException{
         matchList = this.checkForParaPhase(firstString, secondString);
         return matchList;

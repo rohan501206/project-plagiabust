@@ -16,12 +16,12 @@ import org.apache.lucene.wordnet.SynonymMap;
  * @author Compaq
  */
 public class WordNetTest {
-    
-    
-    
-    
     SynonymMap map = null;
 
+    
+    /**
+     * Constructor for WordNetTest
+     */
     public WordNetTest() {
             try {
                 this.map = new SynonymMap(new FileInputStream("Resources"+File.separatorChar+"wn"+File.separatorChar+"wn_s.pl"));
@@ -30,20 +30,25 @@ public class WordNetTest {
             }
     }
  
- 
     
+    /**
+     * Get synonyms for a given word
+     * @param word
+     * @return 
+     */
     public String[] getSynonyms(String word){
         String[] synonyms = map.getSynonyms(word);
         return synonyms;
     }
     
     
-    
-    
-
+    /**
+     * Main method to testing
+     * @param args 
+     */
     public static void main(String[] args) {
         DocumentReader docreader = new DocumentReader();
-	String documentText = docreader.processFileAndGetText("C:\\Users\\Compaq\\Desktop\\sysnonym test\\50.txt");
+	String documentText = docreader.processFileAndGetText("50.txt");
         String[] words = documentText.split("\\b");
        
         SynonymMap map = null;
