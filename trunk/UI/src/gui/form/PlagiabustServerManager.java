@@ -290,7 +290,7 @@ public class PlagiabustServerManager extends javax.swing.JFrame {
 
     private void SubmitToServerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SubmitToServerButtonActionPerformed
         if (documentList.isEmpty()) {
-            JOptionPane.showMessageDialog(this, "No documents are selected to be submitted.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "No documents are selected to submit.", "Error", JOptionPane.ERROR_MESSAGE, Main.getPlagiabustIcon());
         } else {
             String localhost = ServerUrlTextField.getText();
             Client sc = new Client(localhost);
@@ -298,7 +298,7 @@ public class PlagiabustServerManager extends javax.swing.JFrame {
             sc.commitDocumentAsBackGroundWork(documentAddingProgressBar, progressLabel, documentList, currentProgressTextArea);
         }
         if (!ServerUrlTextField.getText().equals(DefaultSolrUrl)) {
-            JOptionPane.showMessageDialog(this, "Default Solr url must be: " + DefaultSolrUrl, "Warning", JOptionPane.WARNING_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Default Solr url must be: " + DefaultSolrUrl, "Warning", JOptionPane.WARNING_MESSAGE, Main.getPlagiabustIcon());
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_SubmitToServerButtonActionPerformed
