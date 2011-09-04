@@ -21,6 +21,8 @@ import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
@@ -51,6 +53,12 @@ public class PlagiabustServerDocumentManagerForm extends javax.swing.JFrame {
         tableModel = getDefaultTableModel();
         DocumentTable.setModel(tableModel);
         DocumentTable.setDefaultRenderer(Object.class, new TableRenderer());
+        DocumentTable.getModel().addTableModelListener(new TableModelListener() {
+
+            public void tableChanged(TableModelEvent e) {
+                NumOfDocumentsLabel.setText("Documents added. - " + DocumentTable.getRowCount());
+            }
+        });
     }
 
     private DefaultTableModel getDefaultTableModel() {
@@ -168,7 +176,7 @@ public class PlagiabustServerDocumentManagerForm extends javax.swing.JFrame {
             DocumentManagerImageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/resource/image/background/DocumentManager.png"))); // NOI18N
 
             DocumentTable.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-            DocumentTable.setFont(new java.awt.Font("Tahoma", 0, 12));
+            DocumentTable.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
             DocumentTable.setModel(new javax.swing.table.DefaultTableModel(
                 new Object [][] {
 
@@ -213,7 +221,6 @@ public class PlagiabustServerDocumentManagerForm extends javax.swing.JFrame {
             );
 
             NumOfDocumentsLabel.setFont(new java.awt.Font("Tahoma", 0, 12));
-            NumOfDocumentsLabel.setText("Documents added. - ");
 
             javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
             getContentPane().setLayout(layout);
