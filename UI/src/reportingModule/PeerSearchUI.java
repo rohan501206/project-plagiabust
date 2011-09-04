@@ -49,7 +49,6 @@ import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import net.sf.jasperreports.view.JRViewer;
 import org.apache.commons.collections15.Transformer;
 
-
 /**
  *
  * @author nuwan
@@ -68,9 +67,11 @@ public class PeerSearchUI extends javax.swing.JFrame {
     Layout<Integer, CustomEdge> layout;
     VisualizationViewer<Integer, CustomEdge> visualizationViewer;
     private int edgecount;
-    ArrayList<FileMarkerGraph> fileSourceList=new ArrayList<FileMarkerGraph>();
+    ArrayList<FileMarkerGraph> fileSourceList = new ArrayList<FileMarkerGraph>();
     boolean deletefolder;
     File projectFolder;
+    HashMap<String,String> fileToUrlMap ;
+    
 
     /** Creates new form PeerSearchUI */
     public PeerSearchUI() {
@@ -734,38 +735,35 @@ public class PeerSearchUI extends javax.swing.JFrame {
                     matchString = (String[]) pair.getValue();
                 }
             }
-            CrossCheckModule crossCheck = new CrossCheckModule(sourceFile, suspectedFile, matchString[0],matchString[2],matchString[3]);
+            CrossCheckModule crossCheck = new CrossCheckModule(sourceFile, suspectedFile, matchString[0], matchString[2], matchString[3]);
             crossCheck.setData();
             crossCheck.setVisible(true);
-        }
-        else if((((String) fileNameList.getSelectedValue()) != null) && (((String) internetSourcesList.getSelectedValue()) != null))
-        {
+        } else if ((((String) fileNameList.getSelectedValue()) != null) && (((String) internetSourcesList.getSelectedValue()) != null)) {
 
-        String sourceFile=((String)fileNameList.getSelectedValue());
-        String suspectedInternetFile= ((String)internetSourcesList.getSelectedValue());
-        String[] matchString = new String[2];
+            String sourceFile = ((String) fileNameList.getSelectedValue());
+            String suspectedInternetFile = ((String) internetSourcesList.getSelectedValue());
+            String[] matchString = new String[2];
 
-        HashMap<String, String[]>  comparisonIfoInternet= globalSearchResult.get(sourceFile);
+            HashMap<String, String[]> comparisonIfoInternet = globalSearchResult.get(sourceFile);
 
-        Iterator globleSourceIterator = comparisonIfoInternet.entrySet().iterator();
+            Iterator globleSourceIterator = comparisonIfoInternet.entrySet().iterator();
 
-        while (globleSourceIterator.hasNext()) {
+            while (globleSourceIterator.hasNext()) {
 
-        Map.Entry pair = (Map.Entry) globleSourceIterator.next();
-        String fileName = (String) pair.getKey();
-        if(fileName.equalsIgnoreCase(suspectedInternetFile)){
-        matchString=(String[]) pair.getValue();
-        }
-        }
+                Map.Entry pair = (Map.Entry) globleSourceIterator.next();
+                String fileName = (String) pair.getKey();
+                if (fileName.equalsIgnoreCase(suspectedInternetFile)) {
+                    matchString = (String[]) pair.getValue();
+                }
+            }
 
-        CrossCheckModule crossCheck=new CrossCheckModule(sourceFile,suspectedInternetFile, matchString[0]);
-        crossCheck.setData();
-        crossCheck.setVisible(true);
+            CrossCheckModule crossCheck = new CrossCheckModule(sourceFile, suspectedInternetFile, matchString[0]);
+            crossCheck.setData();
+            crossCheck.setVisible(true);
 
 
 
-        }  
-        else {
+        } else {
             JOptionPane.showMessageDialog(this, "please select a document from suspected file list to view the comparison");
         }
 
@@ -804,31 +802,28 @@ public class PeerSearchUI extends javax.swing.JFrame {
     private void fileClosedhandler(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_fileClosedhandler
 
 
-        if(this.deletefolder){
-this.deleteDir(projectFolder);
-}
+        if (this.deletefolder) {
+            this.deleteDir(projectFolder);
+        }
 
 
 
     }//GEN-LAST:event_fileClosedhandler
 
-
-
-
     public static boolean deleteDir(File dir) {
-if (dir.isDirectory()) {
-String[] children = dir.list();
-for (int i=0; i<children.length; i++) {
-boolean success = deleteDir(new File(dir, children[i]));
-if (!success) {
-return false;
-}
-}
-}
+        if (dir.isDirectory()) {
+            String[] children = dir.list();
+            for (int i = 0; i < children.length; i++) {
+                boolean success = deleteDir(new File(dir, children[i]));
+                if (!success) {
+                    return false;
+                }
+            }
+        }
 
 // The directory is now empty so delete it
-return dir.delete();
-}
+        return dir.delete();
+    }
 
     public void processResults() {
 
@@ -839,14 +834,13 @@ return dir.delete();
             String fileName = (String) pair.getKey();
             fileNamesArrayList.add(fileName);
             HashMap<String, String> hm = (HashMap<String, String>) pair.getValue();
-            String fName=(String)topResults.get(hm.size());
-            if(fName!=null){
-                fName=fName+"~"+fileName;
+            String fName = (String) topResults.get(hm.size());
+            if (fName != null) {
+                fName = fName + "~" + fileName;
                 topResults.put(hm.size(), fName);
-            }
-                else{
+            } else {
                 topResults.put(hm.size(), fileName);
-                 }
+            }
 
 
         }
@@ -882,7 +876,7 @@ return dir.delete();
 
     public void setResultDetails() {
         ArrayList<Integer> sortedList = new ArrayList<Integer>();
-        int topFileCount=0;
+        int topFileCount = 0;
         folderNameTextField.setText(documentFolder);
         folderNameTextField.setToolTipText(documentFolder);
         File f = new File(documentFolder);
@@ -901,16 +895,15 @@ return dir.delete();
 
         Collections.reverse(sortedList);
 
-        for (Integer number:sortedList ) {
-            String list=topResults.get(number);
-            if(list.split("~")!=null){
-                String[] fileNameArray=list.split("~");
-                for(int j=0;j<fileNameArray.length;j++){
+        for (Integer number : sortedList) {
+            String list = topResults.get(number);
+            if (list.split("~") != null) {
+                String[] fileNameArray = list.split("~");
+                for (int j = 0; j < fileNameArray.length; j++) {
                     model.add(topFileCount, fileNameArray[j]);
                     topFileCount++;
                 }
-            }
-            else{
+            } else {
                 model.add(topFileCount, topResults.get(number));
                 topFileCount++;
             }
@@ -1035,7 +1028,7 @@ return dir.delete();
         while (peerit2.hasNext()) {
             Map.Entry peerIt = (Map.Entry) peerit2.next();
             String oriFileName = (String) peerIt.getKey();
-            HashMap<String, String[]> hm2 = (HashMap<String, String[]>)peerIt.getValue();
+            HashMap<String, String[]> hm2 = (HashMap<String, String[]>) peerIt.getValue();
             Iterator valueIterator = hm2.entrySet().iterator();
 
             while (valueIterator.hasNext()) {
@@ -1043,7 +1036,7 @@ return dir.delete();
                 Map.Entry matchPairs = (Map.Entry) valueIterator.next();
                 String suspectedFileName = (String) matchPairs.getKey();
                 String[] matchValuePair = (String[]) matchPairs.getValue();
-                String value = matchValuePair[1] + "%";                
+                String value = matchValuePair[1] + "%";
                 ArrayList lsi = new ArrayList(g.getEdges());
                 for (int i = 0; i < lsi.size(); i++) {
                     ha.add(lsi.get(i));
@@ -1064,17 +1057,16 @@ return dir.delete();
                 Color.YELLOW, Color.RED};
 
             public Paint transform(CustomEdge edgeValue) {
-                String stringvalue=edgeValue.toString();
-                stringvalue=stringvalue.replaceAll("%","");
-                Double value=Double.valueOf(stringvalue);
-                int intval=value.intValue();
-                if (intval<= 10) {
+                String stringvalue = edgeValue.toString();
+                stringvalue = stringvalue.replaceAll("%", "");
+                Double value = Double.valueOf(stringvalue);
+                int intval = value.intValue();
+                if (intval <= 10) {
                     return palette[0];
                 }
-                if (intval> 10 && intval<=20 ) {
+                if (intval > 10 && intval <= 20) {
                     return palette[1];
-                }
-                else {
+                } else {
                     return palette[2];
                 }
             }
@@ -1082,11 +1074,9 @@ return dir.delete();
 
         Transformer<Integer, Paint> vertexPaint = new Transformer<Integer, Paint>() {
 
-
-
             public Paint transform(Integer i) {
 
-                  return Color.WHITE;
+                return Color.WHITE;
             }
         };
 
@@ -1112,12 +1102,13 @@ return dir.delete();
 
     }
 
-    public void setData(HashMap<String, HashMap<String, String[]>> peerFilesReportData, HashMap<String, HashMap<String, String[]>> internetFilesReportData, boolean deleteFolder,File projectFolderTemp) {
-this.deletefolder = deleteFolder;
-this.projectFolder = projectFolderTemp;
-peerSearchResult = peerFilesReportData;
-globalSearchResult = internetFilesReportData;
-}
+    public void setData(HashMap<String, HashMap<String, String[]>> peerFilesReportData, HashMap<String, HashMap<String, String[]>> internetFilesReportData, boolean deleteFolder, File projectFolderTemp,HashMap<String,String> peerUrlList) {
+        this.deletefolder = deleteFolder;
+        this.projectFolder = projectFolderTemp;
+        peerSearchResult = peerFilesReportData;
+        globalSearchResult = internetFilesReportData;
+        this.fileToUrlMap = peerUrlList;
+    }
 
     public void saveGraph(VisualizationViewer<Integer, CustomEdge> visualizationViewer) {
         PNGDump dumper = new PNGDump();

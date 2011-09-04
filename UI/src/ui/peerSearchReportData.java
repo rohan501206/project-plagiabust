@@ -16,7 +16,7 @@ public class peerSearchReportData {
 
     private HashMap<String, HashMap<String,String[]>> internetFilesReportData = new HashMap<String, HashMap<String,String[]>>() ;
     private HashMap<String, HashMap<String,String[]>> peerFilesReportData = new HashMap<String, HashMap<String,String[]>>();
-
+    private HashMap<String ,String> peerUrlList = new HashMap<String, String>();
 
     public HashMap<String, HashMap<String,String[]>> getInternetFilesReportData(){
         return this.internetFilesReportData;
@@ -34,4 +34,14 @@ public class peerSearchReportData {
          this.peerFilesReportData.put(checkingFile, peerSouceFileMatchMap);
     }
 
+    public void setPeerUrlList(HashMap<String ,String> aPeerUrlList){
+        this.peerUrlList = aPeerUrlList;
+    }
+    
+    public HashMap<String ,String> getPeerUrlList(){
+        return this.peerUrlList;
+    }
+    
+    
+    
 }

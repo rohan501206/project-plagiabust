@@ -130,6 +130,7 @@ public class Manager {
     public peerSearchReportData compareAllFiles(HashMap<File, ArrayList<String>> indexedFilesList, HashMap<String, ArrayList<String>> downloadedFilesList, HashMap<String, String> urlFileMap, JProgressBar preprocesspbar, JProgressBar crosscheckpbar,boolean paraphraseDetection) throws IOException {
 
         peerSearchReportData repData = new peerSearchReportData();
+        repData.setPeerUrlList(urlFileMap);
         Iterator downloadIterator = null;
 
         if (downloadedFilesList != null) {

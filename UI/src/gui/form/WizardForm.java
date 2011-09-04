@@ -1394,7 +1394,7 @@ public class WizardForm extends javax.swing.JFrame {
         if (peerDetectionButton.isSelected()) {
             PeerSearchUI peerUI = new PeerSearchUI();
             peerUI.setFolder(sourceFolderName);
-            peerUI.setData(peerRepData.getPeerFilesReportData(), peerRepData.getInternetFilesReportData(),DeleteProjectFilesCheckBox.isSelected(),projectFolder);
+            peerUI.setData(peerRepData.getPeerFilesReportData(), peerRepData.getInternetFilesReportData(),DeleteProjectFilesCheckBox.isSelected(),projectFolder,peerRepData.getPeerUrlList());
             peerUI.processResults();
             peerUI.setResultDetails();
             peerUI.setVisible(true);
