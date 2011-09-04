@@ -69,6 +69,8 @@ public class PeerSearchWorker extends SwingWorker<peerSearchReportData, String> 
     protected peerSearchReportData doInBackground() throws Exception {
         HashMap<String, ArrayList<String>> downloadedFileList = new HashMap<String, ArrayList<String>>();
         HashMap<String, String> urlFileMap = new HashMap<String, String>();
+        
+        long Start = System.currentTimeMillis();
         if (UsePlagiabustWebServer) {
             System.out.println("Start Downloading Sources From Plaiabust Web Server.");
             downloadedFileList = plagiabustServerSourceDownloadManager.downloadFilesForMultiplePeerSearch(fileArrayList, destFolderPath, plagiabustSearchProgressBar);
@@ -111,7 +113,16 @@ public class PeerSearchWorker extends SwingWorker<peerSearchReportData, String> 
         } catch (IOException ex) {
             System.out.println("There are no similar files or some error has occured");
         }
-
+        
+        long End = System.currentTimeMillis();
+        long timeInSeconds = (End-Start)/1000;
+        if(timeInSeconds > 60){
+            System.out.println("Execution Time: "+(timeInSeconds)/60+"min");
+        }
+        else{
+            System.out.println("Execution Time: "+timeInSeconds+"s");
+        }
+  
         return temp;
 
     }
