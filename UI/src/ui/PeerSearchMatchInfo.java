@@ -12,7 +12,6 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.Callable;
 import paraphaseDetection.ParaphaseManage;
 import preprocess.Stemmer;
@@ -25,31 +24,26 @@ import preprocess.SynonymReplacer;
  */
 public class PeerSearchMatchInfo implements Callable {
 
-    ComparisonResult cr = new ComparisonResult();
-    CosineSimilarityAlgorithm cossim = new CosineSimilarityAlgorithm();
-    DocumentReader docreader = new DocumentReader();
-    StopWordRemover stopremover = new StopWordRemover();
-    SynonymReplacer synReplaser = new SynonymReplacer();
-    Stemmer stem = new Stemmer();
-    ArrayList<String> indexedFilesForFile;
-    HashMap<String, String[]> peerFilesReportData = new HashMap<String, String[]>();
-    int counter;
-    File filePath;
-    String file;
-    boolean paraphaseDetection = false;
+    private DocumentReader docreader = new DocumentReader();
+    private StopWordRemover stopremover = new StopWordRemover();
+    private Stemmer stem = new Stemmer();
+    private HashMap<String, String[]> peerFilesReportData = new HashMap<String, String[]>();
+    private File filePath;
+    private String file;
+    private boolean paraphaseDetection = false;
 
     PeerSearchMatchInfo(ArrayList<String> indexedFilesForFileTemp, String fileTemp, File filePathTemp, boolean paraphraseDetection) {
-
-        indexedFilesForFile = indexedFilesForFileTemp;
         file = fileTemp;
         filePath = filePathTemp;
         this.paraphaseDetection = paraphraseDetection;
-
     }
 
+    /**
+     * implementation of the call method
+     * @return comparison results
+     * @throws Exception
+     */
     public HashMap<String, String[]> call() throws Exception {
-
-        
         String[] matchValuePair = new String[4];
         ShingleCloudAlgorithm sca = new ShingleCloudAlgorithm();
         File createFile = new File(file);
@@ -58,7 +52,6 @@ public class PeerSearchMatchInfo implements Callable {
         String[] matchedText = new String[2];
         String downloadedFolderPath = "";
         float paraphasedValue = 0;
-
         if (paraphaseDetection) {
             ParaphaseManage paramanager = new ParaphaseManage(filePath.getAbsolutePath(), createFile.getAbsolutePath(), downloadedFolderPath);
             matchedText = paramanager.getMatchList();
@@ -68,19 +61,20 @@ public class PeerSearchMatchInfo implements Callable {
             matchedText[1] = "";
             paraphasedValue = 0;
         }
-
         matchValuePair[0] = match;
         matchValuePair[1] = String.valueOf(roundNumber(output, 2) * 100 / 2 + paraphasedValue);
         matchValuePair[2] = matchedText[0];
         matchValuePair[3] = matchedText[1];
-
-
         String firstFile = filePath.getAbsolutePath();
         String secondFile = createFile.getAbsolutePath();
         System.out.println();
         System.out.println(firstFile);
         System.out.println(secondFile);
-        System.out.println("match is " + match);
+        if (match.length() > 0) {
+            System.out.println("match is " + match);
+        } else {
+            System.out.println("There is no match between the above two files");
+        }
         System.out.println();
 
         if (!(match.isEmpty()) && !(firstFile.equalsIgnoreCase(secondFile))) {
