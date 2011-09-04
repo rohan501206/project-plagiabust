@@ -764,8 +764,8 @@ public class ReportingModule extends javax.swing.JFrame {
                         }
                     }
                     String heading = "View Source";
-                    new SourceViewer(heading, content, showFileContentTextPane, browser, browserPanel);
-
+                    SourceViewer tooltip=new SourceViewer(heading, content, showFileContentTextPane, browser, browserPanel);
+                    tooltip.showDetails();
                 }
             } catch (Exception ex) {
 

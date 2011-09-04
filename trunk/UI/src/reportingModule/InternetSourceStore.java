@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package reportingModule;
 
 /**
@@ -10,19 +9,17 @@ package reportingModule;
  * @author nuwan
  */
 public class InternetSourceStore {
-private String name;
 
-public InternetSourceStore(String nameTemp){
+    private String name;
 
-    name=nameTemp;
+    public InternetSourceStore(String nameTemp) {
 
-}
+        name = nameTemp;
 
-public InternetSourceStore()
-{
-    
-}
+    }
 
+    public InternetSourceStore() {
+    }
 
     /**
      * @return the name
@@ -37,6 +34,4 @@ public InternetSourceStore()
     public void setName(String name) {
         this.name = name;
     }
-
-
 }
