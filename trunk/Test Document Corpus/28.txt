@@ -1,0 +1,86 @@
+HandsinTechnology | Scrum Agile
+HomeWelcome !
+|
+About UsAbout HandsinTechnology
+|
+DepartmentDepartment in HandsinTechnology
+|
+ServicesServices HandsinTechnology Offers
+|
+Contact UsContact HandsinTechnology
+Scrum Agile
+Of all the agile methodologies, Scrum is unique because it introduced the idea of “empirical process control.
+Scrum Agile
+Of all the agile methodologies, Scrum is unique because it introduced the idea of “empirical process control.” That is, Scrum uses the real-world progress of a project — not a best guess or uninformed forecast — to plan and schedule releases. In Scrum, projects are divided into succinct work cadences, known as sprints, which are typically one week, two weeks, or three weeks in duration. At the end of each sprint, stakeholders and team members meet to assess the progress of a project and plan its next steps. This allows a project’s direction to be adjusted or reoriented based on completed work, not speculation or predictions.
+Philosophically, this emphasis on an ongoing assessment of completed work is largely responsible for its popularity with managers and developers alike. But what allows the Scrum methodology to really work is a set of roles, responsibilities, and meetings that never change. If Scrum’s capacity for adaption and flexibility makes it an appealing option, the stability of its practices give teams something to lean on when development gets chaotic.
+The Roles of Scrum
+Scrum has three fundamental roles: Product Owner, ScrumMaster, and team member.
+Product Owner: In Scrum, the Product Owner is responsible for communicating the vision of the product to the development team. He or she must also represent the customer’s interests through requirements and prioritization. Because the Product Owner has the most authority of the three roles, it’s also the role with the most responsibility. In other words, the Product Owner is the single individual who must face the music when a project goes awry.
+The tension between authority and responsibility means that it’s hard for Product Owners to strike the right balance of involvement. Because Scrum values self-organization among teams, a Product Owner must fight the urge to micro-manage. At the same time, Product Owners must be available to answer questions from the team.
+ScrumMaster: The ScrumMaster acts as a liaison between the Product Owner and the team. The ScrumMaster does not manage the team. Instead, he or she works to remove any impediments that are obstructing the team from achieving its sprint goals. In short, this role helps the team remain creative and productive, while making sure its successes are visible to the Product Owner. The ScrumMaster also works to advise the Product Owner about how to maximize ROI for the team.
+Team Member: In the Scrum methodology, the team is responsible for completing work. Ideally, teams consist of seven cross-functional members, plus or minus two individuals. For software projects, a typical team includes a mix of software engineers, architects, programmers, analysts, QA experts, testers, and UI designers. Each sprint, the team is responsible for determining how it will accomplish the work to be completed. This grants teams a great deal of autonomy, but, similar to the Product Owner’s situation, that freedom is accompanied by a responsibility to meet the goals of the sprint.
+TECHNOLOGY OPTIONS
+iPhone Apps
+iPhone Thought Apps
+Drupal
+Symfony
+Joomla
+Zend
+Offshore Software products
+Facebook Apps
+X-Cart
+Cake PHP
+Amazon Cloud Computing
+ZenCart
+PHP
+E-learning
+Ajax
+Magento
+Web Portal
+Scrum Agile
+Rapid Application
+e-Tendering
+Social Networking Software
+Data Processing
+Newsletter Sign Up -
+*We respect your privacy.
+OUR PORTFOLIO IMAGES
+|
+General Targets
+Home
+About Us
+Department
+Services
+Contact Us
+Featured Services
+Web
+Mobile
+Software
+Mobile Platform
+iPhone Apps
+iPad Apps
+Android
+Blackberry
+Nokia
+Symbian
+Technology
+Drupal
+Symfony
+Joomla
+Zend
+Facebook Apps
+X-Cart
+Cake PHP
+Web Portal
+Scrum Agile
+Technology
+Amazon Cloud Computing
+ZenCart
+PHP
+E-learning
+Ajax
+Magento
+Rapid Application
+Social Networking Software
+Copyright © 2010 HandsinTechnology
+Presented by HandsinTechnology

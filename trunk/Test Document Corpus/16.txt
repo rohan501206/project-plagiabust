@@ -1,0 +1,1399 @@
+InformIT: Agile Software Development Ecosystems
+Home > Store > Software Development & Management > Agile
+View Larger Image
+Add To My Wish List
+Share|
+Agile Software Development Ecosystems
+By Jim Highsmith
+Published Mar 26, 2002 by Addison-Wesley Professional. Part of the Agile Software Development Series series.
+Copyright 2002
+Dimensions: 7-3/8x9-1/4
+Pages: 448
+Edition: 1st
+Book
+ISBN-10: 0-201-76043-6
+ISBN-13: 978-0-201-76043-9
+Register your product to gain access to bonus material or receive a coupon.
+Description
+Extras
+Reviews
+Sample Content
+In a highly volatile software development environment, developers must be nimble, responsive, and able to hit a moving target--in short, they must be agile. Agile software development is designed to address this need for speed and flexibility. Agility describes a holistic, collaborative environment in which you can both create and respond to change by focusing on adaptability over predictability, people over process. Agile software development incorporates proven software engineering techniques, but without the overhead and restrictions of traditional development methodologies. Above all, it fulfills its promise of delivering software that serves the client's business needs.
+Written by one of the leaders of the Agile movement, and including interviews with Agile gurus Kent Beck, Robert Charette, Alistair Cockburn, Martin Fowler, Ken Schwaber, and Ward Cunningham, Agile Software Development Ecosystems crystallizes the current understanding of this flexible and highly successful approach to software development. It presents the key practices of all Agile development approaches, offers overviews of specific techniques, and shows how you can choose the approach that best suits your organization.
+This book describes--in depth--the most important principles of Agile development: delivering value to the customer, focusing on individual developers and their skills, collaboration, an emphasis on producing working software, the critical contribution of technical excellence, and a willingness to change course when demands shift. All major Agile methods are presented:
+Scrum
+Dynamic Systems Development Method
+Crystal Methods
+Feature-Driven Development
+Lean Development
+Extreme Programming
+Adaptive Software Development
+Throughout the book, case stories are used to illustrate how Agile practices empower success around the world in today's chaotic software development industry. Agile Software Development Ecosystems also examines how to determine your organization's Agile readiness, how to design a custom Agile methodology, and how to transform your company into a truly Agile organization.
+0201760436B03042002
+Related Articles
+Agile Software Development and the Three Faces of Simplicity
+Agile Software Development: Why It's Hot!
+Conventional Software Testing on a Scrum Team
+Reuse as a Knowledge Management Problem
+Web Resources
+Click below for Web Resources related to this title:
+Author Web Site
+Customer Reviews
+8 of 8 people found the following review helpful:
+good overview, good description of what agile means, June 19, 2002
+By
+C. K. Ray "agile sw developer" (Silicon Valley, CA United States) - See all my reviews
+This review is from: Agile Software Development Ecosystems (Paperback) I found Jim Highsmith's Agile Software Development Ecosystems to be an easier read than his first book Adaptive Software Development.
+This one is an overview of the Agile methods and people behind them -- Scrum, Dynamic Systems Development Method, Crystal Clear, Feature Driven Development, Lean Development, Extreme Programming, Adaptive Software Development, Kent Beck, Alistair Cockburn, Ken Schwaber, Martin Fowler, Ward Cunningham, himself, Bob Charette -- and descriptions of some projects each method was used on.
+None of the method descriptions are in-depth enough to actually do them, but they provide enough information to point you into a direction for further investigation. There is some discussion about Agile principles and values, and Agile methods versus non-Agile methods and Company Culture and Market Style, and some discussion on "how to make your own agile methodology" (or how to adapt one to your company's requirements).
+I recommend it.
+Help other customers find the most helpful reviews
+Was this review helpful to you?
+Report abuse | Permalink
+Comment
+6 of 6 people found the following review helpful:
+Not bad, but read this second :), January 7, 2004
+By
+xFlibble (Australia) - See all my reviews
+This review is from: Agile Software Development Ecosystems (Paperback) I found the book a good read, but feel that for trying to "show people the light", it gives sceptics a bit too much ammunition. Craig Larman's "Agile and Iterative Development: A Manager's Guide" is better written, of more immediate practical value and more likely to win over the sceptics. Try Larman's book first, then this one for further perspectives...
+Help other customers find the most helpful reviews
+Was this review helpful to you?
+Report abuse | Permalink
+Comment
+6 of 6 people found the following review helpful:
+A good book with GREAT insight into the Agile methodologists, September 25, 2002
+By
+Kyle G. Brown (Apex, NC United States) - See all my reviews
+This review is from: Agile Software Development Ecosystems (Paperback) This book is a good overview of the Agile movement, it's goals and aims, and provides a passable description of several of the methods that have now been labeled as "Agile" as opposed to the lumbering, dinosaur-like methods we have previously used (like the Rational Unified Process and its ancestors).
+But that's not why you should buy this book. The best thing about the book are the personal interviews with several of the members of the Agile alliance like Kent Beck, Martin Fowler and Alistair Cockburn. The interviews give you special insight into their personalities that reading their own work won't give you, and helps you place their work in context.
+The book is light and very readable (rare for a book on software methodology) and you given its structure you can even put it down for a few days and then come back without losing the thread of what is being discussed. Overall, it's a good "endcap" addition to any software developer's bookshelf right after... Read more
+Help other customers find the most helpful reviews
+Was this review helpful to you?
+Report abuse | Permalink
+Comment
+Share your thoughts with other customers: › See all 11 customer reviews...
+Online Sample Chapter
+Agility in Software Development
+Index
+Abstraction
+levels of, 157
+technical excellence and, 157-160
+transition from, to concrete implementation, 101-103
+Acceptance tests, 69
+Adaptation
+agility ratings and, 378
+ASD and, 202, 213, 318, 319
+balancing, with anticipation, 214-216
+Cellular, Inc. and, 199-203
+changing business ecosystems and, 206-208
+chaordic perspectives and, 197, 201-202, 219, 227
+chaos theory and, 196-197
+embracing change and, 208-214
+measuring success and, 221-226
+methodology design and, 335-336, 350
+as a mindset, 226-227
+overview of, 199-227
+plans and, 214-216, 222-223, 225-226
+simplicity and, 184, 187-188
+Adaptive Software Development. See ASD (Adaptive Software Development)
+Adaptive Software Development: A Collaboration Approach to Managing Complex Systems, (Highsmith), xxvi, xxxvii, 100, 191, 194, 196-197, 265, 309, 358, 379
+ADM (Advanced Development Methods), 106
+Aesthetics, of code, 46, 49
+AgileAlliance Web site, xxxvii
+Agile Competitors and Virtual Organizations (Goldman, Nagel, and Preiss), 27, 28
+Agile Management Practice (Cutter Consortium), 191
+Agile Manifesto, xvii-xviii, xx-xxii, xxviii, 58, 92-93
+Agile Modeling (AM), 159-160
+Agile Project Management service (Cutter Consortium), 16
+Agile Software Development (Cockburn), 80
+Agility
+basic description of, xxiii, 27-31
+conformance to business value and, 32-33
+cost of, mistakes as, 30
+Dove on, 27
+improvisation and, 30-31
+nimbleness and, 30-31
+problems best solved by, xxii
+AM (Agile Modeling), 159-160
+Ambler, Scott, 158, 159
+Analysis Patterns: Reusable Object Models (Fowler), 133, 137
+Anti-establishment style, 166
+Archer, Rowland, 55
+Architecture
+as a form of abstraction, 158
+scaling, 363-366
+ASD (Adaptive Software Development), xxxiv, 265, 368
+adaptation and, 202, 213, 318, 319
+basic description of, 309-319
+Cockburn on, 80, 368
+contributions of, 319
+customer-developer interface and, 67, 68
+encouraging collaboration and, 115, 120
+FDD and, comparison of, 282
+focus groups, 67, 69
+generative rules and, 184-187
+Leadership-Collaboration management and, 317-319
+life cycle, 313-316
+methodology design and, 340
+simplicity and, 180-181, 184-187
+Web site, xxxvii
+ASDEs (Agile Software Development Ecosystems). See also specific types
+basic description of, xxiii-xiv
+as practice-centered, xxviii
+criticisms of, 97, 150, 256
+major, xxxi-xxxvi
+problems best solved by, xxii
+Austin, Rob, 37-39, 75
+"Average people," use of the phrase, 92-93
+Axelrod, Robert, 199
+Backlog features, xxxii, 69, 243-245, 247-249
+Bayer, Sam, 55-58, 63, 194-195, 309
+creative collaboration and, 175-176
+on trust, 380
+Beck, Kent, xix-xx, xxii, xxvi, xxix, xxxiii
+on communication, 142
+Cunningham and, relationship of, 170-176
+deeply-held beliefs of, 204
+on the design process, 154, 183
+Extreme Programming Explained: Embrace Change, 4-5, 46, 143, 220, 298, 309, 379
+on feedback, 305
+on methodology, 62
+on pair programming, 302-303
+Planning Extreme Programming, 46, 133, 136
+on processes, 241-242
+on refactoring, 301-302
+Scrum and, 241-242, 244-245, 248
+on small releases, 299
+on software teams, 93
+technical excellence and, 150, 154, 160
+on working with customers, 76
+on XP, 45-52, 297-298
+Beedle, Mike, xxxii, 105, 244, 358
+Bennekum, Arie van, xxxii, 251-253
+Big-bang approach, 156-157
+Boehm, Barry, 220-221, 313
+Bolles, Jack, 89-92, 103, 142
+Bonabeau, Eric, 186
+Bowling Alley market phase, 324, 327, 330-332
+Brown, John Seely, xxvi, 121
+Brown, Shona, 32, 201, 214-215
+Buckingham, Marcus, 95-96
+CAS (complex adaptive systems) theory, 48, 217, 218
+CASE tools, 106, 143, 194, 289
+CCBs (change control boards), 208-210
+Change. See also Dynamism
+accelerated pace of, 4, 13
+adaptation and, 206-214
+ASD and, 310-313
+balancing structure with, 33-34
+in business ecosystems, 206-208
+cost of, 220-221
+creating and responding to, 29-30, 33-34
+-driven economy, 3-17
+embracing, 4-17, 208-214
+facilitating, 209-210
+LD and, 292-293
+management, 206-207
+orders, 74
+risk entrepreneurship and, 10
+XP and, 298
+Chaordic perspective, xxiv-xxvi, xxviii
+adaptation and, 197, 201-202, 219, 227
+agility ratings and, 377, 378
+ASD and, 317
+basic description of, 368-372
+Scrum and, 242
+Chaos (Gleick), 47
+Chaos theory, 196, 318
+adaptation and, 215, 217, 219, 227
+improvisational businesses and, 215
+LD and, 290
+Scrum and, 241
+Charette, Bob, xxvi, xxxiii, 27-30, 40, 120, 285
+on baselines, 290
+on CMM, 236-237
+on competitive advantage, 286-287
+on documentation, 289-290, 342
+on front-end architectural components, 158
+interview with, 229-237
+on risk entrepreneurship, 10, 286-288, 296
+scaling issues and, 358
+on success factors for LD, 291-292
+on the "virtuous circle" created by LD, 295
+Checklists, processes and, confusion between, 97-98
+Christensen, Clayton, 34, 206-207
+Chrysler Comprehensive Compensation system (C3 project), 45, 48-49, 135-143, 174-175, 298
+CIO (magazine), 248
+CMM (Capability Maturity Model), 59, 91, 326
+barely-sufficient methodologies and, 376, 378
+Charette on, 236-237
+LD and, 289, 291
+publications, 165, 166
+quality and, 306
+simplicity and, 189
+technical excellence and, 165, 166
+versions of, 165
+Coad, Peter, xxxiii, 269-272
+Cockburn, Alistair, xix, xxvi, xxviii-xxix, xxxii, 40, 91
+on ASD, 80, 368
+on communication, 120, 127
+on the cost of removing defects, 221
+on Crystal Methods, 79-88, 261-262, 265, 267-268
+on embellishment, 52
+FDD and, 284
+heavy Agile projects and, 36
+on increasing personal interaction, 99
+on incremental development, 80, 81, 82
+on methodology, 52, 79-88, 323
+Musashi and, 180
+PDFS team and, 147-148
+on software development as a a game, 379
+Surviving Object-Oriented Projects, xxxvi, 80, 82, 159
+technical excellence and, 160
+on working with customers, 111
+Writing Effective Use Cases, xxxvi, 80
+Code. See also Defects; Testing
+aesthetics of, 46, 49
+compiling, 47, 101
+focus on, 152-154
+Coffman, Curt, 95-96
+Coldewey, Jens, 145-149
+Collaboration. See also Leadership-Collaboration management model
+agility ratings and, 378
+ASD and, 309-310, 311-313, 315
+communication and, 120-121
+cultural, 127-129, 328
+decision-making and, 127-129
+dimensions of, 127-129
+DSDM and, 258
+encouraging, 115-131
+Fowler on, 142
+invention and, 120-121
+LD and, 291
+methodology design and, 341-343, 350-355, 361-363
+Orr on, 309
+practices, 339
+principle of, 355, 372-375
+technical excellence and, 149
+values related to, xxvi, 372-375
+Collective ownership, 120, 130, 303, 341, 362
+Command-Control management style, 6, 15-17, 324, 379
+adaptation and, 219, 224
+ASD and, 317
+hierarchical nature of, 219
+FDD and, 284
+mistrust and, 94
+Scrum and, 242
+Communication
+Crystal Methods and, 265
+documentation versus, 124-126, 161-162
+encouraging collaboration and, 120-121, 125-127
+face-to-face, relying on, 120, 127
+Fowler on, 143
+methodology design and, 342
+modeling and, 158, 160
+"software through people" motto and, 103
+technical excellence and, 158, 160
+trust and, 93-95
+XP and, 304-305
+Competence culture, 327
+Complexity: The Emerging Science at the Edge of Order and Chaos (Waldrop), 196
+Complexity theory, 196, 309-310
+Computer Society of India, 115
+ComputerWorld, 16
+Consistency, as a goal, 337
+Constantine, Larry, 97, 267, 301
+Continuous integration, 303
+Contracts, xvii, xviii-xix, 72-76
+delivered-feature, 74-76
+fixed-price, 73, 75
+fixed-schedule, variable-scope, 74
+Control. See also Command-Control management style
+culture, 241, 327
+of projects, shifting, 59-60
+"Controlled Chaos: Living on the Edge" (Schwaber), 241
+Courage, importance of, 305-306
+Creativity
+adaptation and, 219
+approaches to processes and, 96, 99-100
+origins of, 371
+paramount importance of, 4
+simplicity and, 184-186
+XP and, 304-305
+Criticality, 351, 352
+Cross-application integration, 61
+Crouching Tiger, Hidden Dragon (film), 31
+Crystal Clear (Cockburn), xxxvi
+Crystal Clear method, xxxvi, 145, 147, 149, 265
+examples of, 266-267
+methodology design and, 347, 349, 365
+problem domain templates and, 357
+Crystal Methods, xvii, xxii, xxviii. See also Crystal Clear method
+barely-sufficient methodologies and, 376, 377
+basic description of, xxxii, 261-268, 368
+Cockburn on, 79-88, 261-262, 265, 267-268
+collaborative culture and, 17
+contributions of, 267-268
+customer-developer interface, 68-69
+development of, 80-81
+examples of, 266-267
+family of, diagram of, 264
+framework for, 263-265
+methodology design and, 262-263, 365
+simplicity and, 181, 188-189
+technical excellence and, 145-150, 160
+Web site, xxxvii
+Crystal Orange, 82, 263
+Crystal Red, 265, 268, 365
+Cultivation culture, 328
+Cultural relativism, 79-80, 85, 328-329
+Cunningham, Ward, xxii, 45
+adaptation and, 204
+Beck and, relationship of, 170-176
+development of XP by, xxxiii, 169-175
+emphasis of, on technical mastery, 46
+Customer(s). See also Focus groups
+conformance to business value and, 32-33
+constant involvement of, 66-67
+contracts with, xvii, xviii-xix, 72-76
+delivery principles and, 58-67
+-developer interface, 68-69, 71, 72
+-driven development, 40
+handling conflict with, 76
+on-site, with XP, 67, 68-69, 257, 304
+value, delivering, 58-60, 66, 291
+voice of, 61-63
+Customization, mass, 28
+Cutter Consortium, 16, 191
+IT Journal, 241
+Summit conference (2001), 76
+Datamation magazine, 300
+Data Structured Software Maintenance (Higgins), 211-212
+Data Structured Systems Development, 169
+David Consulting Group, 357-358
+DeCarlo, Doug, 226-227
+Decision-making
+adaptation and, 188, 219, 227
+methodology design and, 344-345
+process, collaborative, 127-129
+Defects. See also Testing
+defining quality and, 306
+removal of, 151-152, 220-221
+number of, production speed and, relationship between, 163-165
+Delivery
+frequent, 65-66
+principles, 58-67
+time, technical excellence and, 155, 156
+Dell Computer, 37, 205, 232
+De Luca, Jeff, xxviii, 269-272, 281-283
+the development of FDD and, xxxiii
+Java Modeling in Color with UML, 159, 269, 279
+methodology design and, 341, 358
+scaling issues and, 358
+DeMarco, Tom, 14, 221
+Design
+and Build iteration, 254-256, 258
+Beck's criteria for, 183
+by features, 277-278
+of methodologies, 262-263, 335-366
+responsibility-driven, 81-82
+simplicity as good, 183-184, 340-341, 355
+Discipline
+courage and, 305-306
+formality and, difference between, 142-143
+importance of, 14-15
+methodology design and, 343, 359-360
+as a requirement of agility, 21
+scaling and, 359-360
+Discovery workshops, 56
+Dixon, Nancy, 98, 123, 125
+Documentation
+LD and, 289-290, 292
+methodology design and, 342
+minimalist, 126
+scaling and, 359, 361
+shifting attention from, to discussion, 124-126
+simplicity and, 182
+technical excellence and, 161-162
+zero-based, 161
+Domain-knowledgeable developers, 70-72
+Dotcom businesses. See also eBusiness; eCommerce
+adaptation and, 207
+eBusiness revolution and, 6-7
+lack of discipline among, 14
+rise and fall of, 4-8
+DSDM (Dynamic Systems Development Method), xvii, 64
+barely-sufficient methodologies and, 376, 377
+basic description of, xxxii, 251-260
+Consortium, 258
+contributions of, 259-260
+development of, xxxii
+FDD and, comparison of, 284
+methodology design and, 352
+principles, 253-254, 259
+process, 254-258
+simplicity and, 185
+Duguid, Paul, xxvi, 121-122
+Dynamism, 5-6, 201-204, 290. See also Change
+Early Market phase, 324, 327, 329-331
+eBusiness. See also eCommerce; Dotcom businesses
+adaptation and, 207
+domain-knowledgeable developers and, 71
+DSDM and, 260
+revolution, 6-7
+eCommerce, 325, 352. See also eBusiness; Dotcom businesses
+adaptation and, 207
+domain-knowledgeable developers and, 71
+DSDM and, 260
+Ecosystems. See also ASDEs (Agile Software Development Ecosystems)
+agility ratings for, 377-378
+articulating, 323-334
+cultural domains and, xxvi, 326-329
+emphasis on, 40
+opportunity domains and, 324-325
+problem domains and, 324-325
+selection of, 331-333
+use of the term, xxiv, xxvii-xxviii
+Eisenhardt, Kathleen, 32, 177, 201, 214-215
+Elbow, Peter, 369, 371
+Electrical engineering, 152-154, 192
+Emergent properties, 184-185
+Employees. See also Individuals; Teams
+morale of, 16, 175
+overtime worked by, 303-304
+Empowerment, 218, 219
+Entrepreneurship, 10, 286-288, 296
+ERP (enterprise resource planning), 37, 56-57, 292
+Lean Development and, 232
+methodology design and, 351, 352
+Evolutionary theory, 207
+Evolution of Useful Things, The (Petroski), 371
+e-volve! (Kanter), 216
+Excellence, technical, 145-167
+abstraction and, 157-160
+agility ratings and, 378
+anti-establishment style and, 165-166
+big-bang approach and, 156-157
+defect removal and, 151-152
+documentation and, 161-162
+domain recognition and, 160-161
+focus on code and, 152-154
+generalists and, 162-163
+incremental approach and, 156-157
+methodology design and, 340
+modeling and, 157-160
+quality and, 150-151
+simple design and, 154-156
+specialists and, 162-163
+testing and, 148-149, 152, 164-165
+Exploration. See also Exploratory Projects
+adaptation and, 222
+balancing structure and, 34
+conformance to business value and, 33
+inefficiency of, 41
+LD and, 296
+nimbleness and, 30
+oil, 9-10, 12, 38, 41
+optimization versus, 9-12
+product development and, 35
+staging strategies and, 38
+technical excellence and, 149
+venture capital model and, 75
+Exploratory Projects, 12-15. See also Exploration
+Extreme Programming (XP), xvii, xx, xxii, xix
+adaptation and, 211-213, 215, 222
+barely-sufficient methodologies and, 376
+basic description of, xxxiii, 297-306
+Beck on, 45-52, 297-298
+change-driven economy and, 4-5
+coding standards, 304
+collaborative culture and, 17
+contributions of, 306-307
+criticisms of, 167
+Cunningham on, 169-175
+development of, 46
+documentation and, 124-125
+encouraging collaboration and, 124-125, 130
+as an example of how methodology and culture fit together, xxvi
+extension of, in scope, 50-51
+FDD and, comparison of, xxxiii, 281-282, 284
+40-hour practice, 303-304, 305
+Fowler on, 133-134, 137-142, 144
+future of, 175
+Immersion Workshops, 183, 297
+Jeffries on, 62
+methodology design and, 340-342, 349, 355
+notoriety of, 140
+on-site customers, 67, 68-69, 257, 304
+practices, 299-304
+refactoring and, 25, 211
+reflections on, 52-53
+resurrection of programming and, 100-103
+Scrum and, comparison of, 242
+simplicity and, 154-156, 180, 181, 183-188, 300-301
+"spike" technique, 170, 172, 256
+technical excellence and, 147, 149, 154-157, 160-162, 167
+testing and, 152, 302
+ThoughtWorks and, 89-92
+values and principles, 304-306
+Extreme Programming Explained: Embrace Change (Beck), 4-5, 46, 143, 220, 298, 309, 379
+Failure, analysis of, 291, 296, 369
+Falkner, Dane, 251
+FDD (Feature-Driven Development), xvii, xx, xxviii, 368. See also Features
+adaptation and, 212
+barely-sufficient methodologies and, 376, 377
+basic description of, xxxiii, 269-284
+contributions of, 283-284
+methodology design and, 341
+process model, 272-278
+Singapore project, 269, 270-272
+technical excellence and, 152, 158, 159, 161-162
+Feature(s). See also FDD (Feature-Driven Development)
+building by, 278
+delivery capability, contracts and, 73-74
+design by, 277-278
+interim/final, accepting, 72
+lists of, building, 275-276
+planning by, 276-277
+practices that deliver useful, 67-76
+prioritizing, 52, 68, 69
+Feedback, 35, 36, 313, 370
+constant, at multiple levels, 213
+Fowler on, 135
+methodology design and, 340, 343
+technical excellence and, 156
+XP and, 51, 299-300, 305, 306
+First, Break All the Rules (Buckingham and Coffman), 95
+"Fix on occurrence" strategy, 182
+Flexibility
+customers and, 61
+encouraging collaboration and, 129
+enhancing, through ASDEs, 39, 40
+improvisation and, 31
+methodology design and, 337, 344
+simplicity and, 184, 186
+structure and, balancing, 33-34
+XP and, 47, 50
+Focus groups, 55, 63, 65
+ASD and, 67, 69
+feedback practices and, 213
+technical excellence and, 150, 152
+Fowler, Martin, xix, 89-90, 46, 204
+Analysis Patterns: Reusable Object Models, 133, 137
+on feedback, 135
+on the fundamental characteristics of ASDEs, xxv
+interview with, 133-144
+on iterative development, 143
+on maximizing "the people factor," 93
+on methodology, 138-139, 141
+Planning Extreme Programming, 46, 133, 136
+on refactoring, 210-211
+UML Distilled: A Brief Guide to Standard Object Modeling Language, 133, 137
+Frameworks, 344-350, 353-354
+Frequent delivery principle, 65-66
+Frontier projects, 13
+Functionality, 51, 56, 291
+customers and, 63
+frequent delivery and, 65-66
+Functional Model iteration, 254-256, 258
+Garmus, David, 357-358
+Generali Group, 145-150
+Generalists, specialists versus, 162-163
+Generative rules, 184-188, 217, 368
+Gilb, Tom, 299
+Goldratt, Eliyahu, 343
+Gould, Stephan Jay, 207
+Grenning, James, 183, 302
+GUI (graphical user interface), xxxvi, 82, 145, 149
+Hacker, original definition of, xx
+Hadfield, Tom, 135-136
+HAHT Commerce, 55-58, 70
+Harnessing Complexity (Cohen and Axelrod), 199
+Heathkits, 49
+Heaven in a Chip: Fuzzy Visions of Society and Science in the Digital Age (Kosko), 3
+Higgins, Dave, 211-212
+Hock, Dee, 185, 219, 227, 317, 372
+Holland, John, 173, 251
+Holliday, Ron, xviii
+Humphrey, Watts, 372
+Iansiti, Marco, 17, 35, 36, 129, 224
+IBM (International Business Machines), 220, 326
+Advanced Business Institute, 205
+Institute for Knowledge Management, 129
+MATE and, 107
+OS/2, 147
+Scrum and, 107
+WebSphere server, 57
+Zurich Research Laboratory, 80
+IDX Systems, 19-26, 105
+IEEE (Institute of Electrical and Electronics Engineers)
+Dynabook on Extreme Programming, 124
+standards, 229
+Transactions on Computers, 220
+Improving Software Organizations (Mathiassen), xxxvi
+Improvisation, 30-31
+Increment length, 84
+Incremental development
+Cockburn on, 80, 81, 82
+technical excellence and, 156-157
+India, xxx, 115-119, 191
+Individuals
+characterization of, as "average," 92-93
+"software through people" motto and, 103
+valuing, over processes and tools, xvii, xviii, 40, 218, 373
+Industrial Age, 380
+Information. See also Information Age
+engineering (IE), 156-157
+flow, 99
+strategy plan (ISP), 157
+Information Age, 3-4, 7, 15
+adaptation and, 207-208, 218
+simplicity and, 180
+Innovation
+adaptation and, 218, 219
+change-driven economy and, 4, 6
+controlling, 370-371
+creating change and, 29-30
+enhancing, through ASDEs, 40
+inefficiency and, 41
+paramount importance of, 4
+process-centric approaches and, 99-100
+simplicity and, 184-185
+Innovator's Dilemma: When New Technologies Cause Great Firms to Fail (Christensen), 206-207
+Integration
+continuous, 303
+cross-application, 61
+scaling, 363-366
+International Standards Organization (ISO), 115, 259, 361
+Internet
+Exploratory Projects and, 13
+time, product development in, 34-36, 116
+Iterative development, 55, 60
+adaptation and, 226
+ASD and, 312, 314-415
+contracts and, 73, 74
+demand-driven characteristics of, 73
+FDD and, 279-282
+Fowler on, 143
+methodology design and, 340, 345-346, 357
+RAD and, 195
+refactoring and, 143
+JAD (joint application development)
+ASD and, 314, 316
+documentation and, 126
+DSDM and, 252
+methodology design and, 362
+Japan, 11, 27-28, 79, 180-181
+Java Modeling in Color with UML (Coad, Lefebvre, and De Luca), 159, 269, 279
+Jeffries, Ron, xxii, xxxiii, 45, 204, 212, 298
+on building APIs, 61-62
+on courage, 305-306
+as a dynamist, 204
+on eliminating processes, 182
+FDD and, 281
+on handling customers, 61-62
+Jones, Capers, 160
+Keen, Ron, 25
+Kern, Jon, xxxiii, 153, 159-160, 270
+Kerth, Norm, 94
+Knowledge
+explicit, documentation of, 98
+tacit, 98, 125
+transfer, five categories of, 123
+LD (Lean Development), 181, 222
+basic description of, xxxiii, 285-296
+Charette on, 27, 229-237
+contributions of, 295-296
+Crystal Methods and, 267
+encouraging collaboration and, 120
+environment, 293-295
+evolution of, 230-231
+methodology design and, 342
+origins of, 289-290
+pushing, beyond its limits, 40
+strategic foundation of, 286-288
+success factors for, 291-292
+Leadership-Collaboration management model, xxxiv, 15-17, 227. See also Collaboration
+ASD and, 317-319
+chaordic perspective and, 368
+self-organization within, 219
+trust and, 94
+Lean Development (LD). See LD (Lean Development)
+Lean Thinking (Womack and Jones), 181
+Liability issues, 344
+Life cycles. See also Waterfall life cycle
+ASD and, 313-316
+contracts and, 74
+documentation and, 126
+DSDM and, 256
+emphasis on diagrams and documents in, 64-65
+FDD and, 278-280
+focusing on the end of, 195
+frameworks and, 344-350
+frequent delivery and, 65-66
+"phase and gate," 195-196, 344-350
+shortened, 13
+Speculate-Collaborate-Learn, 310, 311-313
+technology adoption, 34
+McBreen, Pete, 89, 115, 164
+McConnell, Steve, 138
+MacCormack, Alan, 35, 36
+Machine That Changed the World: The Story of Lean Production (Womack, Jones, and Roos), 27, 162-163, 289
+Mah, Michael, 357
+Main Street market phase, 324-325, 327, 329-331
+"Management's New Paradigms" (Drucker), 29
+Manifesto for Agile Software Development, xvii-xviii, xx-xxii, xxviii, 58, 92-93
+Markets
+Bowling Alley phase and, 324, 327, 330-331, 332
+Early Market phase and, 324, 327, 329-331
+Main Street phase and, 324-325, 327, 329-331
+fragmentation of, 28
+"time to," 60
+Tornado phase and, 324-325, 327, 330-331
+Martin, Bob, xix, xx, 183, 301-302
+Mass customization, 28
+MATE (Methods and Tool Expert), 106, 107
+Mellor, Steve, 159
+Mental model, xxv
+Mentoring, 49-50
+Metamorphoses (Ovid), 367
+Metamorphosis, use of the term, 367
+Metaphor, use of, 300
+Methodology
+articulating ecosystems and, 323-334
+barely-sufficient, xxvi-xxviii, 374-375, 378
+Cockburn on, 52, 79-88, 323
+concept of, restoring credibility to, xx
+Crystal Methods and, 262-263
+definition of, xxiii-xxiv, 85-86, 335
+designing, 262-263, 335-366
+elements of, 338-342
+embellishment and, 52
+for the enterprise, 365-366
+ethnology of, 79-88
+expectations of, 336-337
+failure of, 222
+fear and, 62
+Fowler on, 138-139, 141
+frameworks, 344-350, 353-354
+generative rules and, 185-186
+manuals, 40
+matching, to opportunity and culture, 329-331
+resurrection of programming and, 100-103
+scaling, 357-366
+scenarios, 344-350, 353-354
+Scrum and, 241
+simplicity and, 185-186, 187
+systems of practices and, 338-342
+technical excellence and, 148-150, 156, 167
+templates, 344-350, 353-357
+Meyer, Christopher, 186
+Microsoft, 36, 79, 100, 194-195. See also specific software
+articulating ecosystems and, 325-326
+continuous integration and, 303
+personality of, as a corporation, 381
+scaling and, 358
+Tornado markets and, 325
+Milestones, 196, 272-273, 344-345
+basing, on verifiable deliverables, 64-65
+length of, 84
+Mill, Harlan, 279
+Minimalism
+LD and, 292
+simplicity as, 180, 181-182
+XP and, 299
+MIT (Massachusetts Institute of Technology), 35, 170
+MIT Sloan Management Review, 35
+Moore, Geoffrey, 34, 236, 324, 326-327, 333
+Morale, of employees, 16, 175
+MSNBC Silicon Summit II, 7
+Multiplier effect, 192
+Musashi, Miyamoto, 180, 181
+Nebulon, 269, 274, 277
+Newkirk, Jim, 143
+New Pioneers, The (Petzinger). 216-217, 335
+"New Product Development Game" (Takeuchi and Nonaka), 107
+New Zealand, xxx, 79, 177, 191, 242, 309
+Nimbleness, 30-31
+Norway, 79, 81
+"Now, Discover Your Strengths" (Buckingham and Coffman), 95-96
+Object Mentor, xix
+Objectives, evaluating, 351
+O'Connor, Michael, 177-179
+Oil exploration, 9-10, 12, 38, 41
+OOP (Object-Oriented Programming), 91, 106
+Fowler and, 136
+methodology, 80-81
+OOPSLA conference, 99, 108, 133, 135, 140
+Opportunity domains, 324-325
+Optimization
+adaptation and, 218
+ASD and, 317, 318-319
+conformance to business value and, 33
+exploration versus, 9-12
+nimbleness and, 30
+scaling and, 360-361
+Orr, Ken, 169, 222, 309
+Outlines (writing models), 101-102
+Overtime, 303-304
+Ownership, collective, 303, 362
+Pair programming, 130, 213, 305
+basic description of, 302-303
+collective ownership and, 303
+methodology design and, 339, 357
+simplicity and, 181, 187
+technical excellence and, 148, 150
+traveling pairs and, 362
+Pattern-Oriented Software Architecture, Volume 2, Patterns for Concurrent and Networked Objects (Schmidt et al.), 174
+People. See Customers; Employees; Individuals
+PERT charts, 108, 222
+linear dependencies in, 348
+methodology design and, 345-346, 348
+Scrum and, 242, 249
+Petroski, Henry, 371
+Petzinger, Tom, 216-217, 304, 335
+Phase and gate life cycle, 195-196, 344-350
+Planning Extreme Programming (Beck and Fowler), 46, 133, 136
+Plans
+adaptation and, 214-216, 222-223, 225-226
+balancing flexibility and, 33-34
+conformance to, 32-33, 147
+Crystal Methods and, 266
+customer delivery principles and, 59
+encouraging collaboration and, 130-131
+FDD and, 276-277
+Scrum and, 243, 244-245
+simplicity and, 179
+technical excellence and, 147
+XP and, 52, 229
+Policies, 84, 86, 266-268
+Post-Sprint meeting, 243, 247. See also Scrum
+Postrel, Virginia, 5-6, 201
+Practices
+best, notion of, 123, 126
+focus on, 195
+process versus, xxvi-xxvii, 121-123
+system of, 154-155
+Pragmatism, xvii, 34
+Pre-Sprint planning, 243, 244-245
+Principles. See also Values
+articulating, 333
+collaborative, xxvi, 355, 372-375
+delivery, 58-67
+DSDM, 253-254, 259
+methodology design, 262-263, 343-344
+"working software," xvii-xviii, xxi, 63-65, 100-103
+"work together daily," 66-67
+XP, 304-306
+Problem domains, 324-325, 347
+Process(es)
+analysis workshops, 148
+-centric approach, 95-100
+creativity and, 96, 99-100
+defined, 108
+eliminating, 182
+empirical, 108, 213, 241-242, 246, 250
+folded-zippered, 139
+immature, 369
+multiple levels of, 214
+practice versus, xxvi-xxvii, 121-123
+skill versus, 97-99
+traditional approaches to, 96-97
+Product Backlog, 243, 244
+"Product-Development Practices that Work: How Internet Companies Build Software" (MacCormack), 35, 36
+Project Management Institute, 345
+Project scope
+adaptation and, 205, 210
+contracts and, 74-75
+creep, 74, 205, 210
+establishing, 72
+methodology design and, 351
+technical excellence and, 149
+Prototypes, 64, 101, 256
+Proxy users, 69-70
+Prusak, Laurence, 124, 129
+Psychology of Computer Programming (Weinberg), 173
+QSM Associates, 357
+Quality
+ASD and, 315-316
+rapid feedback and, 36
+reviews, 315-316
+speed versus, 163-165
+technical excellence and, 150-151, 163-165
+XP and, 46, 306
+RAD (rapid application development), xxxii, 60, 194
+Amdahl and, 195
+ASD and, 309
+criticism of, 150
+DSDM and, 251
+HAHT Commerce and, 55, 56
+Scrum and, 108
+technical excellence and, 150, 157
+RADical Software Development, 55, 309
+Rapid Development (McConnell), 138
+Refactoring, 25, 143
+Fowler on, 133, 301
+importance of, 155-156
+methodology design and, 349
+rework and, 210-212
+scaling and, 364
+simplicity and, 183
+technical excellence and, 150, 154-157
+XP and, 301-302
+Refactoring: Improving the Design of Existing Code (Fowler), 133, 301
+Regine, Birute, 219, 361
+Reinertsen, Donald, 123
+Relativism, cultural, 79-80, 85, 328-329
+Release Backlog, 244
+Release cycles, 111-112
+Requirement(s)
+adaptation and, 200
+changes, 76
+contracts and, 74
+creep, 51
+customer involvement and, 66-67
+FDD and, 278-280
+gathering, 67, 69, 194
+specifications, 72
+voice of the customer and, 61
+Response Ability (Dove), 27
+Rework, viewing, as a virtue, 210-212
+Rigorous, use of the term, xxxi. See also RSMs (Rigorous Software Methodologies)
+Risk
+adaptation and, 222
+addressing issues germane to, 10
+articulating ecosystems and, 324
+ASD and, 312
+business, 37, 38, 40
+categorization of, 37-38
+entrepreneurship, 10, 286-288, 296
+Exploratory Projects and, 13
+LD and, 286-288, 295, 296
+leadership, 286-288
+management, 10, 84
+methodology design and, 351, 352
+organizational, 37-38
+technical, 37, 38
+Robustness, 186
+Rowland Archer, 56
+RSMs (Rigorous Software Methodologies), 4, 5, 61
+adaptation and, 201
+the Agile metamorphosis and, 368, 370, 372, 375-376, 380
+articulating ecosystems and, 323, 329, 332
+barely-sufficient methodologies and, 376
+Crystal Methods and, 267
+delivering customer value and, 58, 59
+documentation and, 125
+employee morale and, 16
+encouraging collaboration and, 120, 125, 130
+Exploratory Projects and, 13
+LD and, 295
+management styles and, 96
+methodology design and, 335-336, 345, 359, 365
+scaling and, 359
+uncertainty and, 17
+Rule(s)
+adaptation and, 217, 218
+-breaking culture, 215
+generative, 184-188, 217, 368
+RUP (Rational Unified Process), 306, 139, 143
+Russell, Lou, 95, 380
+Samurai tradition, 180-181
+Scaling, 357-366
+Scenarios, 344-350, 353-354
+Schedules
+contracts and, 73
+encouraging collaboration and, 116
+Schwaber, Ken, xvii-xviii, xxvi, xxviii, xxix
+adaptation and, 204, 208, 213, 217, 222
+on chaos, 241
+on empirical processes, 208, 213
+on failure, 222
+IDX Systems and, 20-24
+personality of, 381
+scaling issues and, 358
+Scrum and, xxxii, 105-113, 241, 249
+Scope, project
+adaptation and, 205, 210
+contracts and, 74-75
+creep, 74, 205, 210
+establishing, 72
+methodology design and, 351
+technical excellence and, 149
+Scrum, xvii, xx, xxii, xxviii
+adaptation
+Preface
+From February 11 to 13, 2001, at the Lodge at Snowbird ski resort in the Wasatch Mountains of Utah, 17 people met to talk, ski, relax, and try to find common ground. What emerged was the Agile Software Development movement. Representatives from Extreme Programming (XP), Scrum, the Dynamic Systems Development Method (DSDM), Adaptive Software Development (ASD), Crystal Methods, Feature-Driven Development (FDD), Pragmatic Programming, and others sympathetic to the need for an alternative to document-driven, rigorous software development processes convened. What this meeting produced--The Manifesto for Agile Software Development, signed by all 17 of the participants--was symbolic. It declares that:
+We are uncovering better ways of developing software by doing it and helping others do it. Through this work we have come to value:
+Individuals and interactions over processes and tools
+Working software over comprehensive documentation
+Customer collaboration over contract negotiation
+Responding to change over following a plan.
+That is, while there is value in the items on the right, we value the items on the left more.
+This value statement has a number of fascinating aspects, not the least of which was getting 17 people to agree to it. Although this was a group of experienced and recognized software development "gurus," the word uncovering was selected to indicate that the authors don't have all the answers and don't subscribe to the silver-bullet theory.
+The phrase "by doing it" indicates that the authors actually practice these methods in their own work. Ken Schwaber told the story of his days of selling tools to automate comprehensive, "heavy" methodologies. Impressed by the responsiveness of Ken's company, Jeff Sutherland asked him which of these rigorous methodologies he used for internal development. "I still remember the look on Jeff's face," Ken remarked, "when I told him, ‘None. If we used any of them, we'd be out of business.'" The authors want to help others with Agile practices and to further our own knowledge by learning from those we try to help.
+The value statements have a form. In each statement, the first segment indicates a preference, while the latter segment describes an item that, while important, is of lesser priority. This distinction lies at the heart of agility, but simply asking people to list what's valuable doesn't flesh out essential differences. Roy Singham, CEO of ThoughtWorks, put it well when he said that it's the edge cases, the hard choices, that interest him. "Yes, we value planning, comprehensive documentation, processes, and tools. That's easy to say. The hard thing is to ask, ‘What do you value more?'" When push comes to shove--and it usually does--something must give, and we need to be clear about what stays and what gives.
+The first value statement recognizes the importance of processes and tools but stresses that the interaction of talented individuals is of far more importance. Rigorous methodologies and their business process reengineering brethren place more emphasis on process than people. Agile development reverses this trend. If individuals are unique, and we believe they are, then processes should be melded to individuals and teams, not the other way around.
+Similarly, while comprehensive documentation is not necessarily harmful, the primary focus must remain on the final product--working software. This means that every project team needs to determine, for itself, what documentation is absolutely essential to delivering working software. Working software tells the developers and sponsors what they really have in front of them--as opposed to promises of what they might have in front of them. Working software can be shipped, modified, or scrapped, but it is always real.
+Contract negotiation, whether through an internal project charter or an external legal contract, isn't a bad practice, just a seriously insufficient one. Customers want a product that conforms to their needs--at the time of delivery. "Contract negotiation encourages the addition of buffers contingency," says colleague Ron Holliday. "This makes projects take even longer, drives up costs, and reduces responsiveness to change. A collaborative arrangement is a team effort between customer and supplier to deliver the best possible solution." Contracts and project charters provide boundary conditions within which the parties can work, but only through ongoing collaboration can a development team hope to understand and deliver what the client wants.
+No one can argue that following a plan is a good idea--right? Well, yes and no. In a world of business and technology turbulence, scrupulously following a plan can have dire consequences, even if it's executed faithfully. However carefully a plan is crafted, it becomes dangerous if it blinds you to change. As you will see in several of the case studies presented in this book, few, if any, of the projects delivered what was planned for in the beginning. And yet they were successful because the development team was Agile enough to respond again and again to external changes. In the Information Age, planning is important, but accepting that deviations from any plan are "normal" is even more important.
+The meeting at Snowbird was incubated at a spring 2000 gathering of Extreme Programming leaders organized by Kent Beck. At that meeting in Oregon, a few "outsiders" but "sympathizers," such as myself, were invited, and attendees voiced support for a variety of "light" methodologies. During 2000, a number of articles referenced the category of "light" or "lightweight" practices. In conversation, the soon to be "Agile" authors didn't like the moniker "light," but it stuck at that time.
+In September 2000, "Uncle Bob" Martin of Object Mentor in Chicago started what was to become the Agile ball rolling with an email: "I'd like to convene a short (two-day) conference in the January to February 2001 time frame here in Chicago. The purpose of this conference is to get all the lightweight method leaders in one room. All of you are invited, and I'd be interested to know who else I should approach." Bob set up an online group site, and the discussions raged. Early on, Alistair Cockburn weighed in with an epistle that identified the general disgruntlement with the word "light": "I don't mind the methodology being called light in weight, but I'm not sure I want to be referred to as a lightweight attending a lightweight methodologists meeting. It somehow sounds like a bunch of skinny, feeble-minded lightweight people trying to remember what day it is."
+The fiercest debate was over location! There was serious concern about Chicago in wintertime--cold and nothing fun to do. Someone suggested Snowbird, Utah--cold, but fun things to do, at least for those who ski on their heads, as Martin Fowler tried on the first day. Someone else mentioned Anguilla in the Caribbean--warm and fun, but time consuming to get to. In the end, Snowbird and skiing won out.
+The Agile Manifesto value statements represent a deeper theme that drives many, but not all, of the Manifesto's authors. At the close of the two-day meeting, Bob Martin joked that he was about to make a "mushy" statement. Although tinged with humor, no one disagreed with Bob's sentiments--that we all felt privileged to work with a group of people who held a set of compatible values, based on trust and respect for each other, promotion of organizational models based on people, and the desire to build collaborative communities in which to work. At the core, I believe Agile developers are really about mushy stuff--about delivering products to customers while operating in a vibrant, sustaining workplace. So in the final analysis, the meteoric rise of interest in--and criticism of--Agile Software Development is about the mushy stuff of values and culture.
+For example, I think that, ultimately, XP has mushroomed in use and interest not because of pair programming or refactoring but because, taken as a whole, the practices define a developer community freed from the baggage of Dilbertesque corporations. Kent Beck tells the story of an early job in which he estimated a programming effort to be six weeks for two people. After his manager reassigned the other programmer at the beginning of the project (effectively halving the resources), Kent completed the project in twelve weeks--and felt terrible! The boss, of course, harangued Kent throughout the second six weeks. Somewhat despondent because he was such a "failure" as a programmer, Kent finally realized that his original estimate of six weeks was extremely accurate--for two people--and that his "failure" was really his manager's failure to take the responsibility for removing project resources. This type of situation goes on every day with individuals who don't want to make hard tradeoff decisions, so they impose irrational demands.
+The Agile movement is not anti-methodology; in fact, we seek to restore credibility to the concept of methodology. We want to restore a balance. We accept modeling, but not in order to file some diagram in a dusty corporate repository. We accept documentation, but not hundreds of pages of never-maintained and rarely used tomes. We plan, but recognize the limits of planning in a turbulent environment. Those who would brand proponents of FDD or Scrum or any of the other Agile approaches as "hackers" are ignorant of both the approaches and the original definition of the term hacker--a programmer who enjoys solving complex programming problems, rather than one who practices either ad hoc development or "cracking." Agile Software Development incorporates proven software engineering techniques, but without the overhead of traditional methodologies.
+The Agile Alliance was born in early 2001, but the history of the various approaches and the people who developed them goes back 10 to 15 years. This book describes these practices and the principles behind them, but more important, it delves into the people--the people who are developing the practices and the people who use them to deliver business value to their customers.
+Finding a Balance
+The left side of the Agile Manifesto value statements indicates what Agilists consider more important than the items on the right side. This should not be construed as indicating that tools, process, documentation, or contracts are unimportant. There is a tremendous difference between one thing being more or less important than another and being unimportant. Judicious use of tools is absolutely critical to speeding software development and reducing its costs. Contracts are one vital component to understanding developer-customer relationships. Documentation, in moderation, aids communication, enhances knowledge transfer, preserves historical information, and fulfills governmental and legal requirements.
+But Agilists take a certain perspective on these topics. Try this exercise. For each of the Manifesto value statements, construct two questions along the lines of the following:
+Could we have a successful project by delivering documentation without working software?
+Could we have a successful project by delivering working software without any documentation?
+By looking at these two end points, we can better grasp relative importance. Although there has to be a balance--documentation and working software, contracts and collaboration, responsiveness and planning, people and process--we have to delineate the extremes, the end points, so that organizations, teams, and individuals can find their own balance points. If we start out trying to find the middle ground, we never will.
+One of the great contributions of XP's "extremoes"--Kent Beck, Ron Jeffries, and Ward Cunningham--is that they have staked out positions that have stirred debate in ways that taking moderate positions never would. When Ron says, "Great designs emerge from zero anticipatory design and continuous refactoring," he is challenging himself, and us, to rethink our assumptions about software development. We have to understand the limits before we can understand the balance points.
+So although I realize the value of documentation, contracts, plans, and processes, there are numerous sources of material about these subjects. My intention is to identify and define Agile Software Development, to articulate its practices and principles, so you can make your own decision about where on the spectrum you, or your organization, need to be.
+Fundamental Questions
+There are three fundamental questions that this book answers: (1) What kinds of problems does agility solve best? (2) What is agility? and (3) What are Agile Software Development Ecosystems (ASDEs)?
+What Kinds of Problems Does Agility Solve Best?
+Problems characterized by change, speed, and turbulence are best solved by agility. Some people argue that good practices are good practices (pair programming, customer focus groups, or feature planning, for example) and therefore ASDEs should not be "limited" to a particular problem type. While true in part, the question asks what problems Agile practices best solve, not just solve. So, while XP, Crystal, or Scrum can surely be used for a wide range of projects, they are particularly relevant to extreme or complex projects--those that have an accelerated time schedule combined with significant risk and uncertainty that generate constant change during the project.
+As the level of change caused by rapidly evolving technology, business models, and products increases and the need for delivery speed accelerates, ASDEs' effectiveness increases quickly over rigorous methodologies.
+What Is Agility?
+Agility, like any other complex concept, has a number of definitions, but for me, the most clearly focused definition is
+Agility is the ability to both create and respond to change in order to profit in a turbulent business environment.
+Rather than shrink from change, Agile organizations harness or embrace change by being better than competitors at responding to changing conditions and by creating change that competitors can't respond to adequately. However, companies must determine what level of agility they require to remain competitive. Agility is only an advantage relative to competitors--a copper mining company doesn't need to be as agile as a biotechnology firm.
+Other aspects of agility are also important: nimbleness or flexibility on the one hand, and balance on the other. Agile organizations are nimble (able to change directions quickly) and flexible (able to see how things that worked for them last week may not work as well next week). An Agile organization also knows how to balance structure and flexibility. If everything changes all the time, forward motion becomes problematic. Agile organizations understand that balancing on the edge between order and chaos determines success.
+What Are Agile Software Development Ecosystems?
+I began writing this book about Agile Software Development methodologies, but I kept worrying about the word "methodology" because it didn't fit with the focal points of Agile development--people, relationships, and uncertainty. Furthermore, by using the word "methodology," Agile practices are instantly compared to traditional software development methodologies--thereby using the wrong measuring stick for comparison. So I use the term "Agile Software Development Ecosystem" to describe a holistic environment that includes three interwoven components--a "chaordic" perspective, collaborative values and principles, and a barely sufficient methodology--and the term Agilists to identify those who are proponents of ASDEs.
+Some people think that "Agile" means fewer processes, less ceremony, and briefer documents, but it has a much broader perspective, which is the primary reason for using the word ecosystem rather than methodology. Although fewer processes and less formality might lower development costs, they are not enough to produce agility. Focusing on people and their interactions and giving individuals the power to make quick decisions and to self-adapt their own processes are key to Agile ecosystems.
+The American Heritage Dictionary defines ecosystem as "organisms and their environment: a localized group of interdependent organisms together with the environment that they inhabit and depend on." The Oxford English Dictionary extends this definition to include a constant interchange within the system, including both organic and inorganic elements. The word methodology conjures up a vision of things--activities, processes, tools. These are not inconsequential elements, but incomplete ones. The word ecosystem conjures up a vision of living things and their interactions with each other. Within an organizational context, an ecosystem can then be thought of as a dynamic, ever-changing environment in which people and organizations constantly initiate actions and respond to each other's actions. The word ecosystem focuses us on the dynamic interactions of individuals and teams rather than on the static lines on organization charts.
+A Chaordic Perspective
+To fully understand ASDEs, we need to understand each of the three components and how they relate to each other. First, Agilists share a view that organizations are chaordic--that every organization exhibits properties of both chaos and order that defy management through the use of linear, predictive planning and execution practices. Viewing organizations as chaordic means understanding that the predictability upon which traditional project management and development life cycle practices are built is a root cause of dysfunctionality between customer, management, and development organizations. A chaordic perspective impacts both how we respond to change and how we manage project teams and organizations.
+In day-to-day project work, a chaordic perspective creates two outcomes that are 180 degrees out of sync with rigorous methodologies.
+Product goals are achievable, but they are not predictable.
+Processes can aid consistency, but they are not repeatable.
+Although ASDEs involve careful planning, the fundamental assumption remains that plans, in a turbulent environment, are not predictable, at least at the level of project scope, schedule, and cost. Plans are hypotheses to be tested rather than predictions to be realized. However, the product goals of the business are achievable, in large part because Agile people adapt. They can "adapt" to an articulated vision and a schedule, scope, or cost goal through tradeoffs in the other two dimensions. Second, while process can aid people in working together, in volatile environments the idea of driving out process variation through measurement and correction--statistical process control--becomes an unworkable hypothesis. Changes that are the result of knowledge gained during the project, knowledge not discernable early in the project, require processes that can respond to change, not ones that attempt to eliminate it.
+As Martin Fowler points out, the two fundamental characteristics of ASDEs are their focus on adaptability rather than predictability and on people rather than process (Fowler 2000). As you read through this book, you will see just how fundamental--and challenging to the status quo--these two principles really are. Being Agile means accepting that outcomes are not predictable and that processes are not repeatable. It even implies that as process repeatability increases, project predictability decreases.
+Peter Senge uses the term "mental model" to identify the perspective, set of assumptions, stories, and beliefs that each of us carries in our mind that provide a context for thinking (Senge 1990). In organizations, the collective set of mental models defines an overall cultural context. Companies that are heavily sales oriented differ from those that are heavily engineering oriented. Companies whose driving strategy is customer intimacy differ from those whose driving force is product innovation. Companies whose mental model includes linearity, cause and effect, hierarchy, predictability, and control will operate very differently from one whose mental model includes collaborative networks, emergence, decentralization of power, and acceptance of unpredictability. One is Newtonian, the other chaordic.
+A chaordic perspective draws on a complex adaptive systems model in which decentralized, independent agents (each of us) interact in self-organizing ways, guided by a set of simple, generative rules that create complex, emergent results. This perspective is examined in detail in my book Adaptive Software Development (Highsmith 2000) and is explicitly embraced in the philosophies of Agilists Ken Schwaber, Bob Charette, and Kent Beck.
+XP provides an example of how methodology and culture fit together. At one level, XP is defined by a system of practices--pair programming, test-first development, refactoring, coding standards. But the values and principles of XP define a collaborative culture--how developers work together with customers, how individuals interact and treat each other as human beings.
+Collaborative Values and Principles
+The second piece of the interconnected web that defines ASDEs is the statement of collaborative values and principles. While it is difficult to characterize the Agile Manifesto in one word, "collaborative" seems to be the best single adjective. Values and principles shape the ecosystem. Without a set of stated values and principles, an ecosystem is sterile, reflecting practices but not the people who interact within it.
+A collaborative culture includes people and their relationships within a development team and with customers, management, and partnering teams within or external to their own company. Human dynamics, communications, and collaboration may be known as the "soft" sciences, but in practice, they may be the hardest to master. Principles and values help define a culture--the environment in which people want to work.
+A Barely Sufficient Methodology
+The final component of an ASDE is methodology. The traditional definition of methodology includes things such as roles, activities, processes, techniques, and tools. Alistair Cockburn summarizes these components when he defines methodology as "the conventions we agree to"--the ways in which people work together on a project. In The Social Life of Information, John Seely Brown and Paul Duguid (2000) discuss the major differences between process (as used by the business process reengineering movement) and practice. Processes are described in manuals; practices are what happen in reality. Process centrists relegate people to second place; practice centrists place people first. Process centrists focus on explicit (written down) knowledge, while practice centrists focus on tacit (internal) knowledge. The ASDE model provides a practice-centered, rather than a process-centered, approach to methodology.
+There are two reasons to pursue barely sufficient methodologies: value and innovation. Streamlined methodologies concentrate on those activities that create value and ruthlessly eliminate non-value-adding activities. Programming usually adds value; process management often adds overhead. Bare sufficiency means keeping the former and eliminating the latter. Second, innovation and creativity flourish in chaordic environments, not orderly ones. Barely sufficient methodologies are cauldrons for breeding innovation.
+Methodology also relates to organizational model. Agile methodologies contain minimal processes and documentation and reduced ceremony (formality). Agile methodologies are labeled "barely sufficient" (Cockburn) or "a little bit less than just enough" (Highsmith), or "minimal" (Charette). However, this streamlining of methodology isn't based just on reducing work effort but, more important, it is based on understanding the chaordic world view--one in which emergent (innovative) results are best generated at the "edge of chaos," perched midway between chaos and order.
+Practices (or techniques) are the lifeblood of methodology. Whether it's pair programming, Scrum meetings, customer focus groups, or automated testing, the practices of ASDEs, carried out by talented and skilled individuals, produce results.
+Changing Perspectives
+In the software profession, we've used the words "methodology" and "process" for so long that they roll off the tongue and the pen without trouble. "Ecosystem" will take getting used to, but then, that's why I'm using the word--to foster a different perspective. "There is accumulating evidence that corporations fail because the prevailing thinking and language of management are too narrowly based on the prevailing thinking and language of economics," says Arie De Geus (1997). "They forget that their organizations' true nature is that of a community of humans."
+To change thinking, we must change the language we use, so I use the word "ecosystem" to change our thinking about how software projects should be viewed. A chaordic perspective, a collaborative set of values and principles, and a barely sufficient methodology all combine and interact to form an Agile ecosystem. We cannot separate the three, at least in my mind, and I think most Agilists would agree. One could have a streamlined methodology but a linear, Newtonian view of organizations, and the result would not be Agile. One could have a streamlined methodology but a hierarchical, control-based work culture, and it would not be Agile. One could have a collaborative, people-oriented work culture but a rigid, predictive approach to planning and managing projects, and it would not be Agile. Agility requires all three.
+The ultimate objective of this book is to describe new ways of working together to deliver business value to software customers. The heart of ASDEs is a core belief in people--their individuality and their interactions. It's impossible to discuss people and their ways of working together (ecosystem) without discussing values and principles. It's impossible to discuss values and principles without also discussing assumptions about how organizations do, or should, work. It's impossible to compare Agile approaches with non-Agile approaches using "methodology" as the only mechanism for comparison.
+In closing, I need to state that I don't speak for anyone in the Agile community other than myself. I may interpret what Ken Schwaber says about Scrum, what Jeff De Luca says about FDD, or what Alistair Cockburn says about Crystal Methods, but they are my interpretations. In making generalizations about ASDEs, I'm sure I've made statements that would generate disagreement from 1 or more of the other 16 authors of the Agile Manifesto. However, I have talked to, corresponded with, or worked with all these authors, so although they are my own interpretations, they also reflect a deep sense of being part of, and contributor to, this community.
+Although 17 individuals authored the Agile Manifesto, thousands support this effort. Many, many individuals have signed the Manifesto Web page, and an array of Web sites prominently display the statement "We support the Agile Manifesto." Agilists have stirred a healthy debate within the software development and project management communities. I hope this book will contribute to that debate and encourage others to join in it.
+Jim Highsmith
+Salt Lake City, Utah
+0201760436P04092002
+Foreword
+The 1990s were the Decade of Process for IT. We prostrated ourselves before the CMM and ISO. We sought not just perfection in the way we built software, but total predictability. We concluded that it wasn't enough just to do things right; we also had to "call our shot"--to say in advance exactly what we intended to do, and then do exactly that. Nothing more and nothing less. We were determined (in CMM terms) to "plan the work and work the plan."
+A big part of our process focus in the 1990s had to do with our obsession with all things Japanese. Think back to 1990 and remember your own take on the subject at that time. There was a general malaise and a feeling that the West had lost its momentum and the Japanese had a lock on the future. After all, they worked harder, stayed later, had far more rigorous discipline, and were regularly achieving levels of quality that the rest of the world could only dream of. The Japanese phenomenon, the relentless advance of the "Pacific Tiger," was all the talk that year. If we're going to survive, we thought, we had better become more like the Japanese. And so we moved to a more Japanese kind of rigor and process.
+But the 1990s were not kind to Japan. By the end of the decade, the Japanese economy had been in a slump that was as bad as, and had lasted as long as, the Great Depression. Somehow, hard work, discipline, efficiency, and rigor--the very qualities that had been essential in the 1980s--were not a winning combination for the 1990s. What mattered in the 1990s was being able to turn on a dime. The Internet changed everything, and only those who were ready to change quickly with it would prosper. Agility: 1; everything else: 0.
+Similarly, the process obsession did not stand its adherents in very good stead. The list of companies most successful at climbing up the CMM ladder early in the decade reads like a Who's Who of downsizing by the end. Process rigor was simply not the right recipe for an era in which everything was changing. Predicting in advance what your every step would be ended up seeming like a dumb obsession. What sense does it make to predict your steps in advance when you're not even sure where you're headed?
+Today the era of fat process is over. As Jim Highsmith has said, "Thin is in." To optimize for speed and responsiveness, we need to put process on a diet. We need to shed paperwork and bureaucratic burden, eliminate endless code inspections, and invest in our people so they can steer themselves sensibly through the chaotic maze that is a modern-day IT project. This is the genesis of the Agile approaches to software development.
+Jim Highsmith has put all this together into a kind of survey introduction to the Agile methodologies. He has had the good sense not just to present this as a discussion of a concept, but to tell it as a story. As in any good story, it is the people who matter most. And so he tells us about Agile approaches by telling us about their principal advocates and inventors, people like Kent Beck, Alistair Cockburn, Martin Fowler, and the other "light methodologists." These are the minds that are changing how IT gets done. Their story is what Agile Software Development Ecosystems is all about.
+Tom DeMarco
+Camden, Maine
+Table of Contents
+Foreword.
+Preface.
+Finding a Balance.
+Fundamental Questions.
+What Kinds of Problems Does Agility Solve Best?
+What Is Agility?
+What Are Agile Software Development Ecosystems?
+A Chaordic Perspective.
+Collaborative Values and Principles.
+A Barely Sufficient Methodology.
+Changing Perspectives.
+Introduction.
+Book Organization and Conventions.
+The Major Agile Ecosystems and Leaders.
+Scrum.
+Dynamic Systems Development Method (DSDM).
+Crystal Methods.
+Feature-Driven Development (FDD).
+Lean Development (LD).
+Extreme Programming (XP).
+Adaptive Software Development (ASD).
+Acknowledgments.
+The Agile Software Development Series.
+I. PROBLEMS AND SOLUTIONS.
+1. The Change-Driven Economy.
+Turbulence: Bubbles versus Trends.
+Exploration versus Optimization.
+Exploratory Projects.
+Command-Control versus Leadership-Collaboration Cultures.
+Thriving at the Edge.
+2. IDX Systems Corporation.
+The IDX Story.
+An Agile Group in Action.
+3. Agility.
+Agility.
+Creating and Responding to Change.
+Nimbleness and Improvisation.
+Conformance to Actual.
+Balancing Flexibility and Structure.
+“Agile” Studies.
+Product Development in Internet Time.
+“Heavy” Agile Projects.
+Agile Software Development Ecosystems.
+II. PRINCIPLES AND PEOPLE.
+4. Kent Beck.
+Reflections.
+5. Deliver Something Useful.
+HAHT Commerce, Inc.
+Customer Delivery Principles.
+Delivering Customer Value.
+Voice of the Customer.
+Working Software.
+Frequent Delivery.
+Work Together Daily.
+Practices That Deliver Useful Features.
+The Customer-Developer Interface.
+Proxy Users.
+Domain-Knowledgeable Developers.
+Contracts: Shaping Customer Relationships.
+Obviously It's Not Obvious.
+6. Alistair Cockburn.
+Reflections.
+7. Rely on People.
+ThoughtWorks.
+Who Are You Calling Average?
+Trust, Mistrust, and Communications.
+Talent, Skill, and Process.
+Process versus Skill.
+Artifacts and Information Flow.
+Innovation and Creativity.
+The Fall and Resurrection of Programming.
+Software through People.
+8. Ken Schwaber.
+Reflections.
+9. Encourage Collaboration.
+The Modern Transport Team at ITL.
+A Cooperative Game of Invention and Communication.
+Practice versus Process.
+Documentation Is Not Understanding.
+The Dimensions of Collaboration.
+Real Teams.
+10. Martin Fowler.
+Reflections.
+11. Technical Excellence.
+The PDFS Team at Generali Group.
+Agile Is Not Ad Hoc.
+Removal of Defects.
+Focus on Code.
+Simple Design.
+Big Bang versus Incremental.
+Modeling and Abstraction.
+Domain Recognition.
+Documentation versus Conversation.
+Specialists versus Generalists.
+Quality versus Speed.
+Establishment versus Anti-establishment.
+Values and Principles.
+Reflections.
+12. Ward Cunningham.
+Reflections.
+13. Do the Simplest Thing Possible.
+The Survey Controller Team at Trimble Navigation.
+Musashi.
+The Three Faces of Simplicity.
+Simplicity as Minimalism.
+Simplicity as Good Design.
+Simplicity as Generative Rules.
+Adapting Simple Rules.
+A Final Note on Simplicity.
+14. Jim Highsmith.
+15. Be Adaptable.
+The Mustang Team at Cellular, Inc.
+The Great Divide: Predictability or Adaptability.
+Our Changing Business Ecosystem.
+Embracing Change.
+Facilitate Change.
+View Rework as a Virtue.
+Control Final Components.
+Constant Feedback at Multiple Levels.
+Multiple Process Levels.
+Balancing Adaptation with Anticipation.
+Putting Lipstick on a Bulldog.
+The Cost of Change.
+Conform to Actual: Measuring Success.
+Adaptability Is a Mindset.
+16. Bob Charette.
+Reflections.
+III. AGILE SOFTWARE DEVELOPMENT ECOSYSTEMS.
+17. Scrum.
+The Scrum Process.
+Pre-Sprint Planning.
+Sprint.
+Post-Sprint Meeting.
+Monitoring Progress.
+Scrum's Contributions.
+18. Dynamic Systems Development Method.
+Arie van Bennekum.
+DSDM Principles.
+The DSDM Process.
+DSDM's Contributions.
+19. Crystal Methods.
+Methodology Design Principles.
+The Crystal Framework.
+Crystal Method Example: Crystal Clear.
+Crystal's Contributions.
+20. Feature-Driven Development.
+The Singapore Project.
+The FDD Process Model.
+Process 1: Develop an Overall Model.
+Process 2: Build a Features List.
+Process 3: Plan by Feature.
+Process 4: Design by Feature.
+Process 5: Build by Feature.
+Beyond the FDD Process Description.
+Conceptual Similarities and Differences.
+FDD's Contributions.
+21. Lean Development.
+EuroTel.
+The Strategic Foundation of Lean Development.
+Lean Development's Origins.
+What Is Lean Development?
+The Lean Development Environment.
+Lean Development's Contributions.
+22. Extreme Programming.
+XP--The Basics.
+XP Practices.
+Values and Principles.
+XP's Contributions.
+23. Adaptive Software Development.
+A Change-Oriented Life Cycle.
+The Basic ASD Life Cycle.
+Speculate: Initiation and Planning.
+Collaborate: Concurrent Feature Development.
+Learn: Quality Review.
+Leadership-Collaboration Management.
+ASD's Contributions.
+IV. DEVELOPING AN ASDE.
+24. Articulating Your Ecosystem.
+Opportunity and Problem Domains.
+Cultural Domain.
+The Competence Culture.
+The Control Culture.
+The Collaboration Culture.
+The Cultivation Culture.
+Cultural Relativism.
+Matching Methodology to Opportunity and Culture.
+Methodology Selection.
+Articulate Values and Principles.
+25. Designing Your Agile Methodology.
+Methodology Expectations.
+Methodology Elements and the System of Practices.
+Keep It Simple.
+Practices and Principles
+Methodology Design Principles.
+Frameworks, Templates, and Scenarios.
+Phase and Gate Life Cycle Frameworks.
+Problem Domain Templates.
+Scenarios.
+Collaborative Methodology Design Steps.
+Evaluate Project Objectives and Characteristics.
+Design a Methodology Framework, Templates, and Scenarios.
+Customize Templates to the Team.
+A Customizing Approach.
+Adapt the Template to Use.
+Scaling.
+Methodology Scaling: Balancing Optimizing and Adapting Elements.
+Collaboration Scaling.
+Architecture and Integration Scaling.
+Agile Methodologies for the Enterprise.
+26. The Agile Metamorphosis.
+Chaordic Perspective.
+Collaborative Values and Principles.
+Barely Sufficient Methodology.
+The Agility Ratings.
+Final Thoughts.
+Bibliography.
+Index. 0201760436T04092002
+Book $54.99 $43.99
+Usually ships in 24 hours.
+This book includes Instant Online Access with and free shipping!
+With your book purchase you are entitled to free, instant online access to that book on Safari Books Online for 45 days. After you've completed your purchase, you will receive instructions on how to log into Safari Books Online. If you do not want to receive online access to the book, simply uncheck the box for Instant Online Access in your cart.
+Request an Instructor or Media review copy.
+Corporate, Academic, and Employee Purchases
+International Buying Options
+What is this?
+Online access to books, videos, and tutorials from Addison Wesley, Prentice Hall, Cisco Press, IBM Press, O'Reilly Media and others - starting as low as $22.99. Learn more and start a free trial.
+Other Things You Might Like
+Analyzing Computer Security: A Threat / Vulnerability / Countermeasure Approach
+By Charles P. Pfleeger, Shari Lawrence Pfleeger
+Aug 25, 2011
+$88.00
+Essential Skills for the Agile Developer: A Guide to Better Programming and Design
+By Alan Shalloway, Scott Bain, Ken Pugh, Amir Kolsky
+Aug 19, 2011
+$44.99
+Analyzing Computer Security: A Threat/Vulnerability/Countermeasure Approach
+By Charles P. Pfleeger, Shari Lawrence Pfleeger
+Aug 18, 2011
+$70.40
+The Trusted Technology Learning Source
+Topics
+Business & Management
+Certification
+Databases
+Engineering
+Graphics & Web Design
+Hardware
+Home & Office Computing
+Information Technology
+Networking
+Operating Systems, Server
+Open Source
+Process Improvement
+Programming
+Security
+Software Development & Management
+Web Development
+Web Services
+Store
+Authors
+Safari Books Online
+How it Works
+Browse the Library
+Free Trial
+Subscriber Login
+Imprints
+Addison-Wesley Professional
+Cisco Press
+IBM Press
+Pearson IT Certification
+Prentice Hall Professional
+Que Publishing
+Sams Publishing
+VMWARE PRESS
+Explore
+About
+Affiliates
+Articles
+Blogs
+Data Center Guide – Sponsored
+Newsletters
+Podcasts
+Press
+Promotions
+Reference Guides
+Reference Library
+User Groups
+Account Sign In
+View Your Cart
+Search
+About | Advertise | Affiliates | Contact Us | Jobs | Legal Notice | Privacy Policy | Press | Promotions | Site Map | Write for Us
+© 2011 Pearson Education, Informit. All rights reserved.
+800 East 96th Street, Indianapolis, Indiana 46240
+Other Network SitesAdobe PressCisco PressFT PressIBM PressInformITPeachpitPearson Corporate StorePearson IT CertificationQue PublishingVoices That Matter
