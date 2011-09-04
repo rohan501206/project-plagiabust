@@ -1333,7 +1333,6 @@ public class WizardForm extends javax.swing.JFrame {
         if (returnVal == JFileChooser.APPROVE_OPTION) {
             File selectedFolder = fc.getSelectedFile();
             peerSourceTextField.setText(selectedFolder.getAbsolutePath());
-            //peerSourceTextField.setText(selectedFolder.getAbsolutePath() + File.separatorChar + ProjectNameTextField.getText());
             fc.setVisible(false);
         }
     }//GEN-LAST:event_LocationBrowseButton1ActionPerformed
