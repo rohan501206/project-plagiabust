@@ -70,7 +70,7 @@ public class PlagiabustServerManager extends javax.swing.JFrame {
         setResizable(false);
 
         PlagiabustServerImageLabel.setBackground(new java.awt.Color(255, 255, 255));
-        PlagiabustServerImageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/gui/resource/image/background/DocumentManager.png"))); // NOI18N
+        PlagiabustServerImageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/IconImage.png"))); // NOI18N
 
         CommandPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Commands :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
