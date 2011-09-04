@@ -42,7 +42,7 @@ public class SingleSearchDownloadFileProcessor implements Callable {
      documentToCompare=documentToCompareTemp;
       paraphaseDetection=paraphaseDetectionTemp;
       iteration= iterationTemp;
-      //resultsMap=resultsMapTemp;
+     
 
     }
 
@@ -80,7 +80,11 @@ public class SingleSearchDownloadFileProcessor implements Callable {
             System.out.println();
             System.out.println(firstFile);
             System.out.println(secondFile);
+           if (match.length() > 0) {
             System.out.println("match is " + match);
+        } else {
+            System.out.println("There is no match between the above two files");
+        }
             System.out.println();
 
 
