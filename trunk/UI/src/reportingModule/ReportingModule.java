@@ -911,11 +911,11 @@ public class ReportingModule extends javax.swing.JFrame {
      * Text Highlighter of the On-Screen View of the report
      */
     public void texthighlighterOnScreenView() {
-        Iterator it = indexHighligherMap.entrySet().iterator();
+        Iterator indexMapIterator = indexHighligherMap.entrySet().iterator();
         ArrayList<Integer> phraseIndexes = new ArrayList<Integer>();
         StyledDocument doc = showFileContentTextPane.getStyledDocument();
-        while (it.hasNext()) {
-            Map.Entry pair = (Map.Entry) it.next();
+        while (indexMapIterator.hasNext()) {
+            Map.Entry pair = (Map.Entry) indexMapIterator.next();
             String match = (String) pair.getKey();
             phraseIndexes = indexHighligherMap.get(match);
             for (int i = 0; i < phraseIndexes.size(); i++) {
@@ -923,7 +923,7 @@ public class ReportingModule extends javax.swing.JFrame {
                 int endIndex = phraseIndexes.get(1);
                 try {
                     doc.remove(startIndex, endIndex - startIndex);
-                    Style style = showFileContentTextPane.addStyle("", null);
+                    Style style = showFileContentTextPane.addStyle(match, null);
                     StyleConstants.setForeground(style, Color.red);
                     StyleConstants.setBold(style, true);
                     StyleConstants.setItalic(style, true);

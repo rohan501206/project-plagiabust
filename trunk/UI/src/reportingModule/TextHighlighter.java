@@ -42,8 +42,7 @@ public class TextHighlighter {
             }
         }
         String firstWord = preprocessedModifiedArrayList.get(0);
-        String secondWord = preprocessedModifiedArrayList.get(1);
-        
+        String secondWord = preprocessedModifiedArrayList.get(1);        
         String modifiedQueryPattern = "";
         modifiedQueryPattern=getSearchQueryPattern(preprocessedModifiedArrayList);
         pattern = Pattern.compile(modifiedQueryPattern);
@@ -69,21 +68,18 @@ public class TextHighlighter {
                 indexArrayListForSecondWord.add(secondWordIndex);
             }
         }
-
         for (int j = 0; j < indexArrayListforFirstWord.size(); j++) {
             int distance = endIndex - indexArrayListforFirstWord.get(j);
             if (distance > 0) {
                 selectedIndicesFirstWord.add(indexArrayListforFirstWord.get(j));
             }
         }
-
         for (int j = 0; j < indexArrayListForSecondWord.size(); j++) {
             int distance = endIndex - indexArrayListForSecondWord.get(j);
             if (distance > 0) {
                 selectedIndicesSecondWord.add(indexArrayListForSecondWord.get(j));
             }
         }
-
         try {
             startIndexTemp = this.getMaximum(selectedIndicesFirstWord);
             secondWordIndex = this.getMaximum(selectedIndicesSecondWord);
@@ -97,9 +93,7 @@ public class TextHighlighter {
             System.out.println("Error in word indexing has occured");
         }
 
-        match = content.substring(startIndex, endIndex);
-        //SearchQuery=Pattern.quote(SearchQuery+"("+preprocessedModifiedArrayList.get(i)+")")+"[\\w\\s\\W]*?";
-        //SearchQuery=Pattern.quote(SearchQuery+"("+preprocessedModifiedArrayList.get(i)+")");
+        match = content.substring(startIndex, endIndex);       
         indexedInfo[0] = String.valueOf(startIndex);
         indexedInfo[1] = String.valueOf(endIndex);
         indexedInfo[2] = match;
@@ -107,11 +101,7 @@ public class TextHighlighter {
         return indexedInfo;
     }
 
-
-
-
-    
-/**
+  /**
      public String[] highlightTexts(String contentOftheFile, String query) {
 
         String contenttemp = contentOftheFile;
