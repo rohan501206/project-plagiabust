@@ -48,7 +48,7 @@ public class InternetDocumentDownloadManager {
         sd.setMaxNumOfSourcesPerDocument(maxNumOfSourcesPerDocument);
         downloadFolderPath = sd.downloadSourcesForFile(destFolderPath + File.separator + fName, pbar);
         urlList = sd.getUrlList();
-        urlFileMap = sd.getMap();
+        urlFileMap = sd.getUrlFileMap();
         return downloadFolderPath;
     }
 

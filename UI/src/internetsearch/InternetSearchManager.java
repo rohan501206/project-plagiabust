@@ -89,7 +89,7 @@ public class InternetSearchManager {
         return this.urlList;
     }
 
-    public HashMap<String, String> getMap() {
+    public HashMap<String, String> getUrlFileMap() {
         return this.urlFileMap;
     }
 
@@ -181,6 +181,13 @@ public class InternetSearchManager {
                     }
                 }
                 fileAndSorcesMap.put(filePath, downloadedFilesList);
+            }
+            Iterator it = urlAndDownloadedPathMap.entrySet().iterator();
+            while (it.hasNext()) {
+                Map.Entry pair = (Map.Entry) it.next();
+                String url = (String) pair.getKey();
+                String path = (String) pair.getValue();
+                urlFileMap.put(path, url);
             }
         } else {
             downloadProgressBar.runProgress(100);

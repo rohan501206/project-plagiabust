@@ -4,6 +4,7 @@
  */
 package internetsearch;
 
+import gui.form.AdminInforForm;
 import java.util.ArrayList;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -43,12 +44,11 @@ public class GoogleSearchTest {
     @Test
     public void testSearchInternet() {
         System.out.println("searchInternet");
-        String search = "";
+        String search = "plagiarism";
         GoogleSearch instance = null;
         ArrayList expResult = null;
         ArrayList result = instance.searchInternet(search);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 }
