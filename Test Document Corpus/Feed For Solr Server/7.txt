@@ -1,0 +1,180 @@
+appdesinger
+Scribd
+Upload a Document
+Search Documents
+Explore
+Documents
+Books - Fiction
+Books - Non-fiction
+Health & Medicine
+Brochures/Catalogs
+Government Docs
+How-To Guides/Manuals
+Magazines/Newspapers
+Recipes/Menus
+School Work
++ all categories
+Featured
+Recent
+People
+Authors
+Students
+Researchers
+Publishers
+Government & Nonprofits
+Businesses
+Musicians
+Artists & Designers
+Teachers
++ all categories
+Most Followed
+Popular
+Sign Up
+|
+Log In
+1
+/ 538
+View ModeSlideshowScroll
+Reading should be social! Post a message on your social networks to let others know what you're reading. Select the sites below and start sharing.
+Readcast this Document
+Login to Add a Comment
+Share & Embed
+Download this Document for Free
+/g, '>'); $('disable_highlighting').show(); $('ipaper_highlighting_box').show(); }
+PeopleTools 8.4: PeopleCodeDeveloper's Guide
+PeopleTools 8.4: PeopleCode Developer's GuideSKU Tr84PCD-B 0302
+PeopleBooks Contributors:
+Teams from PeopleSoft Product Documentation andDevelopment.Copyright © 2002 PeopleSoft, Inc. All rights reserved.Printed in the United States.All material contained in this documentation is proprietary and confidential to PeopleSoft,Inc. ("PeopleSoft"), protected by copyright laws and subject to the nondisclosure provisionsof the applicable PeopleSoft agreement. No part of this documentation may be reproduced,stored in a retrieval system, or transmitted in any form or by any means, including, but notlimited to, electronic, graphic, mechanical, photocopying, recording, or otherwise without theprior written permission of PeopleSoft.This documentation is subject to change without notice, and PeopleSoft does not warrant thatthe material contained in this documentation is free of errors. Any errors found in thisdocument should be reported to PeopleSoft in writing.The copyrighted software that accompanies this document is licensed for use only in strictaccordance with the applicable license agreement which should be read carefully as itgoverns the terms of use of the software and this document, including the disclosure thereof.PeopleSoft, the PeopleSoft logo, PeopleTools, PS/nVision, PeopleCode, PeopleBooks,
+PeopleTalk,
+and Vantive are registered trademarks, and "People power the internet." and PureInternet Architecture are trademarks of PeopleSoft, Inc. All other company and productnames may be trademarks of their respective owners. The information contained herein issubject to change without notice.
+P
+EOPLE
+S
+OFT
+P
+ROPRIETARY AND
+C
+ONFIDENTIAL
+C
+ONTENTS
+iii
+Contents
+PeopleCode Developer's Guide Preface
+About This PeopleBook...................................................................................................xiiiBefore You Begin............................................................................................................xiii
+PeopleSoft Application Fundamentals
+............................................................................ xivRelated Documentation................................................................................................... xivHard-copy Documentation..........................................................................................xvPeopleBooks Standard Field Definitions...........................................................................xvTypographical Conventions and Visual Cues.................................................................xviiPage and Panel Introductory Table................................................................................xviiiComments and Suggestions...........................................................................................xviii
+Chapter 1
+Introducing What’s New
+Understanding What’s New.............................................................................................1-1New Classes.....................................................................................................................1-1Writing Your Own Classes..............................................................................................1-2Considerations Using Application Classes...............................................................1-2Using Binary Sorts ..........................................................................................................1-3Additional Changes.........................................................................................................1-4PeopleCode Debugger.....................................................................................................1-7Database Changes in the FieldChange Event..................................................................1-7
+Chapter 2
+Understanding PeopleCode and Events
+Understanding PeopleCode Programs and Events ..........................................................2-1Accessing PeopleCode in Application Designer.............................................................2-2Using Record Field PeopleCode......................................................................................2-4Accessing Record Field PeopleCode From a Record Definition..............................2-4Accessing Record Field PeopleCode From a Page Definition..................................2-5Distinguishing Between Fields and Record Fields...................................................2-7Record Field Event Set .............................................................................................2-7Using Component Record Field PeopleCode..................................................................2-8Component Record Field Event Set..........................................................................2-9Using Component Record PeopleCode...........................................................................2-9
+appdesinger
+Download this Document for FreePrintMobileCollectionsReport Document
+Report this document?
+Please tell us reason(s) for reporting this document
+Spam or junk
+Porn adult content
+Hateful or offensive
+If you are the copyright owner of this document and want to report it, please follow these directions to submit a copyright infringement notice.
+Report Cancel
+This is a private document.
+Info and Rating
+Reads:
+967
+Uploaded:
+03/10/2011
+Category:
+Uncategorized.
+Rated:
+Copyright:
+Attribution Non-commercial
+Follow
+Milly Strelzoff
+Share & Embed
+Related Documents
+PreviousNext
+p.
+p.
+p.
+p.
+p.
+p.
+p.
+p.
+p.
+p.
+p.
+p.
+p.
+p.
+p.
+p.
+p.
+More from this user
+PreviousNext
+2 p.
+538 p.
+1 p.
+23 p.
+Add a Comment
+Submit
+Characters: ...
+Print this document
+High Quality
+Open the downloaded document, and select print from the file menu (PDF reader required).Download and Print
+Sign up
+Use your Facebook login and see what your friends are reading and sharing.
+Other login optionsLogin with Facebook
+Signup
+I don't have a Facebook account
+email address (required)
+create username (required)
+password (required)
+Send me the Scribd Newsletter, and occasional account related communications.
+Sign Up Privacy policy
+You will receive email notifications regarding your account activity. You can manage these notifications in your account settings. We promise to respect your privacy.
+Why Sign up?
+Discover and connect with people of similar interests.
+Publish your documents quickly and easily.
+Share your reading interests on Scribd and social sites.
+Already have a Scribd account?
+email address or username
+password
+Log In Trouble logging in?
+Login Successful
+Now bringing you back...
+« Back to Login
+Reset your password
+Please enter your email address below to reset your password. We will send you an email with instructions on how to continue.
+Email address:
+You need to provide a login for this account as well.
+Login:
+Submit
+Upload a Document
+Search Documents
+Follow Us!
+scribd.com/scribd
+twitter.com/scribd
+facebook.com/scribd
+About
+Press
+Blog
+Partners
+Scribd 101
+Web Stuff
+Scribd Store
+Support
+FAQ
+Developers / API
+Jobs
+Terms
+Copyright
+Privacy
+Copyright © 2011 Scribd Inc.
+Language:
+Choose the language in which you want to experience Scribd:
+English
+Español
+Português (Brasil)
+*/ } }); (function() { document.observe('dom:loaded', function() { new Scribd.Toolbar.Tooltips.Tooltip("toolbar_readcast"); }); })(); (function() { document.observe('dom:loaded', function() { new Scribd.Toolbar.Tooltips.Tooltip("toolbar_comment"); }); })(); (function() { document.observe('dom:loaded', function() { new Scribd.Toolbar.Tooltips.Tooltip("toolbar_embed"); }); })(); Scribd.Readcast = Scribd.Readcast || {}; Scribd.Readcast.Dialog = Scribd.Readcast.Dialog || {}; Scribd.Readcast.Dialog.animation = 'fourgen'; Scribd.comment = new Scribd.commentManager(); Event.observe('document_comment_form', 'submit', Scribd.comment.submitCommentEvent.bindAsEventListener(Scribd.comment)); Scribd.scribbleComment($('comment_input')); Scribd.enforceMaxLength($("autogen_id_422222238").down('textarea'), $("autogen_id_422222238").down('.number'), 400); var closeButton = $('autogen_id_422222238').down('.close_button'); if(closeButton) closeButton.observe('click', function(e) { Scribd.Toolbar.actions.comment(e) }); $('toolbar_exposed_share_panel').down('.more_share_options').down('.pseudoLink').observe('click', function(e){ e.stop(); Scribd.Lightbox.remoteOpen('toolbar_share_lightbox', '/word/toolbar_share', Scribd.Toolbar.toolbarParams(), {close: true}); $rat('sharebox.toolbar.more_share_options'); }); $$('#toolbar_exposed_share_panel a.disabled').invoke('observe', 'click', function(e) { e.stop(); Scribd.Alerts.error('flashes_placeholder', "Sharing is disabled for this document."); }); var closeButton = $('autogen_id_422223748').down('.close_button'); if(closeButton) closeButton.observe('click', function(e) { Scribd.Toolbar.actions.embed(e) }); (function() { document.observe('dom:loaded', function() { new Scribd.Toolbar.Tooltips.Tooltip("add_to_collections"); }); })(); (function() { document.observe('dom:loaded', function() { new Scribd.Toolbar.Tooltips.Tooltip("hide_switch"); }); })(); Scribd.HotSpot.initialize(); $('flag_document_link').observe('click', function(e) { e.stop(); if (!$('flag_document_link').hasClassName('disabled')){ $('flag_document_container').toggle(); } }); $$('#flag_document_container .cancel').each(function(el) { el.observe('click', function(e) { e.stop(); $('flag_document_container').hide(); }); }); document.observe('dom:loaded', function() { function ratingLogin(event) { Scribd.login.open({"next_url":"http://www.scribd.com/doc/50476702/appdesinger","fallback_url":"/","context":"rate"}); } function saveRating(event) { new Ajax.Request(["/", "r", "a", "t", "i", "n", "g", "s", "?", "w", "o", "r", "d", "_", "d", "o", "c", "u", "m", "e", "n", "t", "_", "i", "d", "=", "5", "0", "4", "7", "6", "7", "0", "2"].join(''), { parameters: event.memo }); } function enableRating() { var rating = $('rating'); if(rating) { var save = saveRating; var login = ratingLogin; $('rating').observe('starbox:rated', function(event){ Scribd.Facebook.isSessionTransitioned() ? save(event) : login(event); }); } } try { new Starbox("rating_50476702", 0, { className: 'pointy', locked: false, effect: { mouseout: false } }); } catch(e) {} enableRating(); var tag_list = $('tag_list'); if(tag_list) { var fullList = $('tags_all'); var truncatedList = $('tags_truncated'); tag_list.select('.control_btn').invoke('observe', 'click', function(e) { e.stop(); fullList.toggle(); truncatedList.toggle(); }); } }); new Scribd.LikeButtonManager(null, 'facebook_like_button', "http://www.scribd.com/doc/50476702/appdesinger", 300, "standard", "show_faces=\"true\""); $('exposed_share_panel').down('.more_share_options').down('.pseudoLink').observe('click', function(e){ e.stop(); Scribd.Lightbox.remoteOpen('toolbar_share_lightbox', '/word/toolbar_share', Scribd.Toolbar.toolbarParams(), {close: true}); $rat('sharebox.viewbar.more_share_options'); }); $$('#exposed_share_panel a.disabled').invoke('observe', 'click', function(e) { e.stop(); Scribd.Alerts.error('flashes_placeholder', "Sharing is disabled for this document."); }); var activate_scribble = function(){ var toggler = function(comments_selector) { var top = $$(comments_selector); if(top.length > 0 && top[0].down('.toggle')) { var toggle = top[0].down('.toggle'); var panel = top[0].down('.events'); var open = panel.visible(); var animationScope = 'comments:' + comments_selector; var switchFunc = function(e) { if(e) e.stop(); if(open) { animation = new Effect.BlindUp(panel, { duration: 0.5, beforeSetup: function() { toggle.removeClassName('open'); }, queue: { scope: animationScope, limit: 2 } }); } else { toggle.addClassName('open'); animation = new Effect.BlindDown(panel, { duration: 0.5, beforeSetup: function() { toggle.addClassName('open'); }, queue: { scope: animationScope, limit: 2 } }); } open ^= true; }; toggle.observe('click', switchFunc); return switchFunc; } else { return function(e) { if(e) e.stop(); }; } } var toggleFriends = toggler('.comments.friends'); var toggleOther = toggler('.comments.other'); // Toggle comment form document.observe('click', function(e) { var clicker = e.findElement(); var textElement = $$('#document_comment textarea').first(); if (clicker === textElement) { clicker.up('.add_a_comment').addClassName('on'); document.fire('scribd:dom_height_changed'); return; } // we only close the textarea if the user click outside of the form var formElement = clicker.up('#document_comment'); if (!formElement) { if(textElement.getValue().blank()) { textElement.up('.add_a_comment').removeClassName('on'); document.fire('scribd:dom_height_changed'); } } }); $('document_comment').observe('submit', Scribd.comment.submitCommentEvent.bindAsEventListener(Scribd.comment)); $('document_comment').observe('submit', function(e) { var other = e.element().up('#comments_section').down('.comments.other .events'); var friends = e.element().up('#comments_section').down('.comments.friends .events'); if(other && !other.visible()) toggleOther(); if(friends && friends.visible()) toggleFriends(); document.fire('scribd:dom_height_changed'); }); var revealer = $('document_activity').down('.revealer'); if(revealer) revealer.observe('click', Scribd.getMoreComments.bindAsEventListener(revealer, "50476702", 2, { per_page: 5, context: 'r3' })); }; document.observe('dom:loaded', activate_scribble); document.observe(Scribd.Facebook.EVENTS.transition, activate_scribble); Scribd.enforceMaxLength($("autogen_id_422233229").down('textarea'), $("autogen_id_422233229").down('.number'), 400); document.observe("dom:loaded", function() { Scribd.Pingback.run(["/", "d", "o", "c", "u", "m", "e", "n", "t", "s", "/", "5", "0", "4", "7", "6", "7", "0", "2", "/", "p", "i", "n", "g", "b", "a", "c", "k"].join('')); }); new Scribd.printLightboxManager4Gen({ container: $('lightbox_print'), logged_in: false, document_id: 50476702, autodown_base_url: '/doc/50476702/appdesinger', base_url: 'http://www.scribd.com/document_downloads/50476702', page_count: 538, show_gate: true}); Scribd.Facebook.isReadPage = true;Scribd.Facebook.setPageTransitionURL('/session_transition/new_4gen_page_content/50476702');Scribd.Premium.ReadPage.initialize({logged_in:false, show_gate: true, extension: 'pdf', document_id: 50476702, secret_password: ""});document.observe('Scribd.Facebook.EVENTS.auto_logged_in', Scribd.enableDocumentCollectionForm);Scribd.SharedLink.trackDocumentLink('50476702');document.observe('dom:loaded', Scribd.processHash); document.observe(Scribd.Facebook.EVENTS.loaded, function() { FB.Event.subscribe('edge.create', function() { $rat('fb.like'); }); }); Scribd.Tracker.run(50476702, "html"); Scribd.Lightbox.initialize(); $('word_user_login_login_lb').observe('keypress', Scribd.restrictCharactersForUsername); Event.observe(window, 'load', function(){ $(document.forms.lb_forgot_password_form).observe('submit', Scribd.login.sendForm); }); Scribd.login = new Scribd.loginManager(); // Load the FB JS API Asychronously document.observe('dom:loaded', function() { var e = document.createElement('script'); e.async = true; e.src = document.location.protocol + '//connect.facebook.net/en_US/all.js'; document.getElementById('fb-root').appendChild(e); if (document.cookie.match('user_forced_logout=true')) { $$('.facepile_wrap').invoke('hide'); } }); // Handle DOM updates to re-parse FBML tags document.observe('Scribd:dom_updated', function(e){ var el = e.element(); if(window.FB && FB.XFBML) FB.XFBML.parse(el); }); document.observe(Scribd.Facebook.EVENTS.loaded, Scribd.blueBarUtil.onLoadHandler); var facebookUser = false; Event.observe(window, 'load', function() { new Scribd.AdHider(); }); Scribd.Smartling = new Scribd.SmartlingManager();
