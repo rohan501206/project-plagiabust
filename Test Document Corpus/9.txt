@@ -1,0 +1,323 @@
+Agile software development - Wikipedia, the free encyclopedia
+Agile software development
+From Wikipedia, the free encyclopedia
+Jump to: navigation, search
+This article's introduction section may not adequately summarize its contents. To comply with Wikipedia's lead section guidelines, please consider modifying the lead to provide an accessible overview of the article's key points in such a way that it can stand on its own as a concise version of the article. (August 2011)
+Agile software development poster
+Agile software development is a group of software development methodologies based on iterative and incremental development, where requirements and solutions evolve through collaboration between self-organizing, cross-functional teams. It promotes adaptive planning, evolutionary development and delivery; time boxed iterative approach and encourages rapid and flexible response to change. It is a conceptual framework that promotes foreseen interactions throughout the development cycle. The Agile Manifesto[1] introduced the term in 2001. Agile management methods can also be applied in other development projects than software development.[citation needed]
+Software development process
+Activities and steps
+Requirements · Specification
+Architecture · Design
+Implementation · Testing
+Deployment · Maintenance
+Methodologies
+Agile · Cleanroom · Iterative
+RAD · RUP · Spiral
+Waterfall · XP · Lean
+Scrum · V-Model · TDD
+Supporting disciplines
+Configuration management
+Documentation
+Quality assurance (SQA)
+Project management
+User experience design
+Tools
+Compiler · Debugger · Profiler
+GUI designer · IDE
+v · d · e
+Contents
+1 History
+1.1 Predecessors
+1.2 Agile Manifesto
+2 Characteristics
+3 The Four Phases of Traditional Software Development
+4 Comparison with other methods
+5 Agile methods
+5.1 Method tailoring
+5.2 Software development life cycle
+6 Measuring agility
+7 Experience and reception
+7.1 Suitability
+8 See also
+9 References
+10 Further reading
+11 External links
+[edit] History
+[edit] Predecessors
+Jeff Sutherland, one of the developers of the Scrum agile software development process
+Incremental software development methods have been traced back to 1957.[2] In 1974, a paper by E. A. Edmonds introduced an adaptive software development process.[3]
+So-called lightweight software development methods evolved in the mid-1990s as a reaction against heavyweight methods, which were characterized by their critics as a heavily regulated, regimented, micromanaged, waterfall model of development. Proponents of lightweight methods (and now agile methods) contend that they are a return to development practices from early in the history of software development.[2]
+Early implementations of lightweight methods include Scrum (1995), Crystal Clear, Extreme Programming (1996), Adaptive Software Development, Feature Driven Development, and Dynamic Systems Development Method (DSDM) (1995). These are now typically referred to as agile methodologies, after the Agile Manifesto published in 2001.[4]
+[edit] Agile Manifesto
+In February 2001, 17 software developers[5] met at the Snowbird, Utah resort, to discuss lightweight development methods. They published the Manifesto for Agile Software Development[1] to define the approach now known as agile software development. Some of the manifesto's authors formed the Agile Alliance, a nonprofit organization that promotes software development according to the manifesto's principles.
+Agile Manifesto reads, in its entirety, as follows:[1]
+We are uncovering better ways of developing software by doing it and helping others do it. Through this work we have come to value:
+Individuals and interactions over processes and tools
+Working software over comprehensive documentation
+Customer collaboration over contract negotiation
+Responding to change over following a plan That is, while there is value in the items on the right, we value the items on the left more.
+The meanings of the Manifesto items on the left within the agile software development context are described below.
+Individuals and Interactions – in agile development, self-organization and motivation are important, as are interactions like co-location and pair programming.
+Working software – working software will be more useful and welcome than just presenting documents to clients in meetings.
+Customer collaboration – requirements cannot be fully collected at the beginning of the software development cycle, therefore continuous customer or stakeholder involvement is very important.
+Responding to change – agile development is focused on quick responses to change and continuous development.[6]
+Twelve principles underlie the Agile Manifesto, including:[7]
+Customer satisfaction by rapid delivery of useful software
+Welcome changing requirements, even late in development
+Working software is delivered frequently (weeks rather than months)
+Working software is the principal measure of progress
+Sustainable development, able to maintain a constant pace
+Close, daily co-operation between business people and developers
+Face-to-face conversation is the best form of communication (co-location)
+Projects are built around motivated individuals, who should be trusted
+Continuous attention to technical excellence and good design
+Simplicity
+Self-organizing teams
+Regular adaptation to changing circumstances
+In 2005, a group headed by Alistair Cockburn and Jim Highsmith wrote an addendum of project management principles, the Declaration of Interdependence,[8] to guide software project management according to agile development methods.
+[edit] Characteristics
+Pair programming, an XP development technique used by agile
+There are many specific agile development methods. Most promote development, teamwork, collaboration, and process adaptability throughout the life-cycle of the project.
+Agile methods break tasks into small increments with minimal planning, and do not directly involve long-term planning. Iterations are short time frames (timeboxes) that typically last from one to four weeks. Each iteration involves a team working through a full software development cycle including planning, requirements analysis, design, coding, unit testing, and acceptance testing when a working product is demonstrated to stakeholders. This minimizes overall risk and allows the project to adapt to changes quickly. Stakeholders produce documentation as required. An iteration may not add enough functionality to warrant a market release, but the goal is to have an available release (with minimal bugs) at the end of each iteration.[9] Multiple iterations may be required to release a product or new features.
+Team composition in an agile project is usually cross-functional and self-organizing without consideration for any existing corporate hierarchy or the corporate roles of team members. Team members normally take responsibility for tasks that deliver the functionality an iteration requires. They decide individually how to meet an iteration's requirements.
+Agile methods emphasize face-to-face communication over written documents when the team is all in the same location. Most agile teams work in a single open office (called a bullpen), which facilitates such communication. Team size is typically small (5-9 people) to simplify team communication and team collaboration. Larger development efforts may be delivered by multiple teams working toward a common goal or on different parts of an effort. This may require a co-ordination of priorities across teams. When a team works in different locations, they maintain daily contact through videoconferencing, voice, e-mail, etc.
+No matter what development disciplines are required, each agile team will contain a customer representative. This person is appointed by stakeholders to act on their behalf[10] and makes a personal commitment to being available for developers to answer mid-iteration problem-domain questions. At the end of each iteration, stakeholders and the customer representative review progress and re-evaluate priorities with a view to optimizing the return on investment (ROI) and ensuring alignment with customer needs and company goals.
+Most agile implementations use a routine and formal daily face-to-face communication among team members. This specifically includes the customer representative and any interested stakeholders as observers. In a brief session, team members report to each other what they did the previous day, what they intend to do today, and what their roadblocks are. This face-to-face communication exposes problems as they arise.
+Agile development emphasizes working software as the primary measure of progress. This, combined with the preference for face-to-face communication, produces less written documentation than other methods. The agile method encourages stakeholders to prioritize wants with other iteration outcomes based exclusively on business value perceived at the beginning of the iteration (also known as value-driven).[11]
+Specific tools and techniques such as continuous integration, automated or xUnit test, pair programming, test driven development, design patterns, domain-driven design, code refactoring and other techniques are often used to improve quality and enhance project agility.
+[edit] The Four Phases of Traditional Software Development
+This section does not cite any references or sources. Please help improve this section by adding citations to reliable sources. Unsourced material may be challenged and removed. (June 2011)
+Unlike the agile software development model, the traditional waterfall model of software design contains four distinct phases.
+Requirements. The first step in the traditional software development process is to identify requirements as well as the scope of the release. It encompasses those tasks that go into determining the needs or conditions to meet for a new or altered product, taking account of the possibly conflicting requirements of the various stakeholders, such as beneficiaries or users.
+Architecture and Design. The goal of the architecture and design phase is to try to identify an architecture that has a good chance of working. The architecture is often defined using free-form diagrams which explore the technical infrastructure, and the major business entities and their relationships. The design is derived in a modeling session, in which issues are explored, until the team is satisfied that they understand what needs to be delivered.
+Development. The development phase produces code in an environment that is specific to the culture of the development team and the skills of the individuals. In large projects the tasks are structured and distributed to teams. In small projects, or within smaller teams, the tasks are distributed according to team culture and skills. Development continues until goals or milestones are reached.
+Testing, delivery, and feedback. Testing is ongoing at the local level and becomes more structured on larger scales and as the project approaches delivery. In large projects the testing is formalized. The customer is engaged in testing and feedback cycles when the development teams are relatively convinced that the software meets the requirements.
+One of the similarities of the Agile Methodology and the traditional method is to conduct the testing of the software as it is being developed. The unit testing is achieved from the developer’s perspective and the acceptance testing is conducted from the customer’s perspective. The key difference in this regard is that in the Agile method the customer and developers are in close communication, where as in the traditional method, the "customer" is initially represented by the requirement and design documents.
+[edit] Comparison with other methods
+This section needs additional citations for verification. Please help improve this article by adding reliable references. Unsourced material may be challenged and removed. (August 2010)
+Agile methods are sometimes characterized as being at the opposite end of the spectrum from plan-driven or disciplined methods; agile teams may, however, employ highly disciplined formal methods.[12] A more accurate distinction is that methods exist on a continuum from adaptive to predictive.[13] Agile methods lie on the adaptive side of this continuum. Adaptive methods focus on adapting quickly to changing realities. When the needs of a project change, an adaptive team changes as well. An adaptive team will have difficulty describing exactly what will happen in the future. The further away a date is, the more vague an adaptive method will be about what will happen on that date. An adaptive team cannot report exactly what tasks are being done next week, but only which features are planned for next month. When asked about a release six months from now, an adaptive team may only be able to report the mission statement for the release, or a statement of expected value vs. cost.
+Predictive methods, in contrast, focus on planning the future in detail. A predictive team can report exactly what features and tasks are planned for the entire length of the development process. Predictive teams have difficulty changing direction. The plan is typically optimized for the original destination and changing direction can require completed work to be started over. Predictive teams will often institute a change control board to ensure that only the most valuable changes are considered.
+Formal methods, in contrast to adaptive and predictive methods, focus on computer science theory with a wide array of types of provers. A formal method attempts to prove the absence of errors with some level of determinism. Some formal methods are based on model checking and provide counterexamples for code that cannot be proven. Generally, mathematical models (often supported through special languages - see SPIN model checker) map to assertions about requirements. Formal methods are dependent on a tool driven approach, and may be combined with other development approaches. Some provers do not easily scale. Like agile methods, manifestos relevant to high integrity software have been proposed in Crosstalk.
+Agile methods have much in common with the Rapid Application Development techniques from the 1980/90s as espoused by James Martin and others.[citation needed]
+[edit] Agile methods
+Well-known agile software development methods include:
+Agile Modeling
+Agile Unified Process (AUP)
+Dynamic Systems Development Method (DSDM)
+Essential Unified Process (EssUP)
+Extreme Programming (XP)
+Feature Driven Development (FDD)
+Open Unified Process (OpenUP)
+Scrum
+Velocity tracking
+[edit] Method tailoring
+In the literature, different terms refer to the notion of method adaptation, including ‘method tailoring’, ‘method fragment adaptation’ and ‘situational method engineering’. Method tailoring is defined as:
+A process or capability in which human agents through responsive changes in, and dynamic interplays between contexts, intentions, and method fragments determine a system development approach for a specific project situation.[14]
+Potentially, almost all agile methods are suitable for method tailoring. Even the DSDM method is being used for this purpose and has been successfully tailored in a CMM context.[15] Situation-appropriateness can be considered as a distinguishing characteristic between agile methods and traditional software development methods, with the latter being relatively much more rigid and prescriptive. The practical implication is that agile methods allow project teams to adapt working practices according to the needs of individual projects. Practices are concrete activities and products that are part of a method framework. At a more extreme level, the philosophy behind the method, consisting of a number of principles, could be adapted (Aydin, 2004).[14]
+Extreme Programming (XP) makes the need for method adaptation explicit. One of the fundamental ideas of XP is that no one process fits every project, but rather that practices should be tailored to the needs of individual projects. Partial adoption of XP practices, as suggested by Beck, has been reported on several occasions.[16] A tailoring practice is proposed by Mehdi Mirakhorli which provides sufficient roadmap and guideline for adapting all the practices. RDP Practice is designed for customizing XP. This practice, first proposed as a long research paper in the APSO workshop at the ICSE 2008 conference, is currently the only proposed and applicable method for customizing XP. Although it is specifically a solution for XP, this practice has the capability of extending to other methodologies. At first glance, this practice seems to be in the category of static method adaptation but experiences with RDP Practice says that it can be treated like dynamic method adaptation. The distinction between static method adaptation and dynamic method adaptation is subtle.[17] The key assumption behind static method adaptation is that the project context is given at the start of a project and remains fixed during project execution. The result is a static definition of the project context. Given such a definition, route maps can be used in order to determine which structured method fragments should be used for that particular project, based on predefined sets of criteria. Dynamic method adaptation, in contrast, assumes that projects are situated in an emergent context. An emergent context implies that a project has to deal with emergent factors that affect relevant conditions but are not predictable. This also means that a project context is not fixed, but changing during project execution. In such a case prescriptive route maps are not appropriate. The practical implication of dynamic method adaptation is that project managers often have to modify structured fragments or even innovate new fragments, during the execution of a project (Aydin et al., 2005).[17]
+[edit] Software development life cycle
+See also: Software development life cycle
+Software development life-cycle support[16]
+The Agile methods are focused on different aspects of the software development life-cycle. Some focus on the practices (extreme programming, pragmatic programming, agile modeling), while others focus on managing the software projects (Scrum). Yet, there are approaches providing full coverage over the development life cycle (DSDM, RUP), while most of them are suitable from the requirements specification phase on (e.g. FDD). Thus, there is a clear difference between the various agile software development methods in this regard. Whereas DSDM and RUP do not need complementing approaches to support software development, the others do to a varying degree. DSDM can be used by anyone (although only DSDM Members may offer DSDM products or services). RUP, then, is a commercially sold development environment (Abrahamsson, Salo, Rankainen, & Warsta, 2002). [16]
+[edit] Measuring agility
+While agility can be seen as a means to an end, a number of approaches have been proposed to quantify agility. Agility Index Measurements (AIM)[18] score projects against a number of agility factors to achieve a total. The similarly named Agility Measurement Index,[19] scores developments against five dimensions of a software project (duration, risk, novelty, effort, and interaction). Other techniques are based on measurable goals.[20] Another study using fuzzy mathematics[21] has suggested that project velocity can be used as a metric of agility. There are agile self assessments to determine whether a team is using agile practices (Nokia test,[22] Karlskrona test,[23] 42 points test[24]).
+While such approaches have been proposed to measure agility, the practical application of such metrics has yet to be seen.
+[edit] Experience and reception
+The neutrality of this article is disputed. Please see the discussion on the talk page. Please do not remove this message until the dispute is resolved. (August 2011)
+One of the early studies reporting gains in quality, productivity, and business satisfaction by using Agile methods was a survey conducted by Shine Technologies from November 2002 to January 2003.[25] A similar survey conducted in 2006 by Scott Ambler, the Practice Leader for Agile Development with IBM Rational's Methods Group reported similar benefits.[26] In a survey conducted by VersionOne (a provider of software for planning and tracking agile software development projects) in 2008, 55% of respondents answered that Agile methods had been successful in 90-100% of cases.[27] Others claim that agile development methods are still too young to require extensive academic proof of their success.[28]
+[edit] Suitability
+Large-scale agile software development remains an active research area.[29][30]
+Agile development has been widely seen as being more suitable for certain types of environment, including small teams of experts.[31][32]:157
+Some things that may negatively impact the success of an agile project are:
+Large-scale development efforts (>20 developers), through scaling strategies[30] and evidence of some large projects[33] have been described.
+Distributed development efforts (non-colocated teams). Strategies have been described in Bridging the Distance[34] and Using an Agile Software Process with Offshore Development[35]
+Forcing an agile process on a development team[36]
+Mission-critical systems where failure is not an option at any cost (e.g. software for surgical procedures).
+The early successes, challenges and limitations encountered in the adoption of agile methods in a large organization have been documented.[37]
+In terms of outsourcing agile development, Michael Hackett, Sr. Vice President of LogiGear Corporation has stated that "the offshore team ... should have expertise, experience, good communication skills, inter-cultural understanding, trust and understanding between members and groups and with each other."[38]
+Risk analysis can also be used to choose between adaptive (agile or value-driven) and predictive (plan-driven) methods.[11]. Barry Boehm and Richard Turner suggest that each side of the continuum has its own home ground, as follows:[31] Suitability of different development methods
+Agile home ground
+Plan-driven home ground
+Formal methods
+Low criticality
+High criticality
+Extreme criticality
+Senior developers
+Junior developers
+Senior developers
+Requirements change often
+Requirements do not change often
+Limited requirements, limited features see Wirth's law
+Small number of developers
+Large number of developers
+Requirements that can be modeled
+Culture that thrives on chaos
+Culture that demands order
+Extreme quality
+[edit] See also
+Agile testing
+Collaborative software development model
+Lean Startup
+List of software development philosophies
+Perpetual beta
+Small-scale Project Management
+Software Craftsmanship
+[edit] References
+^ a b c Beck, Kent; et al. (2001). "Manifesto for Agile Software Development". Agile Alliance. http://agilemanifesto.org/. Retrieved 2010-06-14.
+^ a b Gerald M. Weinberg, as quoted in Larman, Craig; Basili, Victor R. (June 2003). "Iterative and Incremental Development: A Brief History". Computer 36 (6): 47–56. doi:10.1109/MC.2003.1204375. ISSN 0018-9162. "We were doing incremental development as early as 1957, in Los Angeles, under the direction of Bernie Dimsdale [at IBM's ServiceBureau Corporation]. He was a colleague of John von Neumann, so perhaps he learned it there, or assumed it as totally natural. I do remember Herb Jacobs (primarily, though we all participated) developing a large simulation for Motorola, where the technique used was, as far as I can tell .... All of us, as far as I can remember, thought waterfalling of a huge project was rather stupid, or at least ignorant of the realities. I think what the waterfall description did for us was make us realize that we were doing something else, something unnamed except for 'software development.'".
+^ Edmonds, E. A. (1974). "A Process for the Development of Software for Nontechnical Users as an Adaptive System". General Systems 19: 215–18.
+^ Larman, Craig (2004). Agile and Iterative Development: A Manager's Guide. Addison-Wesley. p. 27. ISBN 978-0-13-111155-4
+^ Kent Beck, Mike Beedle, Arie van Bennekum, Alistair Cockburn, Ward Cunningham, Martin Fowler, James Grenning, Jim Highsmith, Andrew Hunt, Ron Jeffries, Jon Kern, Brian Marick, Robert C. Martin, Stephen J. Mellor, Ken Schwaber, Jeff Sutherland, and Dave Thomas
+^ Ambler, S.W. "Examining the Agile Manifesto". Retrieved 6 April 2011.
+^ Beck, Kent; et al. (2001). "Principles behind the Agile Manifesto". Agile Alliance. http://www.agilemanifesto.org/principles.html. Retrieved 2010-06-06.
+^ Anderson, David (2005). "Declaration of Interdependence". http://pmdoi.org.
+^ Beck, Kent (1999). "Embracing Change with Extreme Programming". Computer 32 (10): 70–77. doi:10.1109/2.796139.
+^ Gauthier, Alexandre (August 17th, 2011). "What is scrum". Planbox. http://www.planbox.com/resources/agile-artifacts#roles.
+^ a b Sliger, Michele; Broderick, Stacia (2008). The Software Project Manager's Bridge to Agility. Addison-Wesley. p. 46. ISBN 0321502752.
+^ Black, S. E.; Boca., P. P.; Bowen, J. P.; Gorman, J.; Hinchey, M. G. (September 2009). "Formal versus agile: Survival of the fittest". IEEE Computer 49 (9): 39–45.
+^ Boehm, B.; R. Turner (2004). Balancing Agility and Discipline: A Guide for the Perplexed. Boston, MA: Addison-Wesley. ISBN 0-321-18612-5. Appendix A, pages 165-194
+^ a b Aydin, M.N., Harmsen, F., Slooten, K. v., & Stagwee, R. A. (2004). An Agile Information Systems Development Method in use. Turk J Elec Engin, 12(2), 127-138
+^ Abrahamsson, P., Warsta, J., Siponen, M.T., & Ronkainen, J. (2003). New Directions on Agile Methods: A Comparative Analysis. Proceedings of ICSE'03, 244-254
+^ a b c Abrahamsson, P., Salo, O., Ronkainen, J., & Warsta, J. (2002). Agile Software Development Methods: Review and Analysis. VTT Publications 478
+^ a b Aydin, M.N., Harmsen, F., Slooten van K., & Stegwee, R.A. (2005). On the Adaptation of An Agile Information(Suren) Systems Development Method. Journal of Database Management Special issue on Agile Analysis, Design, and Implementation, 16(4), 20-24
+^ "David Bock's Weblog : Weblog". Jroller.com. http://jroller.com/page/bokmann?entry=improving_your_processes_aim_high. Retrieved 2010-04-02.
+^ "Agility measurement index". Doi.acm.org. http://doi.acm.org/10.1145/1185448.1185509. Retrieved 2010-04-02.
+^ Peter Lappo; Henry C.T. Andrew. "Assessing Agility". http://www.smr.co.uk/presentations/measure.pdf. Retrieved 2010-06-06.
+^ Kurian, Tisni (2006). Agility Metrics: A Quantitative Fuzzy Based Approach for Measuring Agility of a Software Process, ISAM-Proceedings of International Conference on Agile Manufacturing'06(ICAM-2006), Norfolk, U.S.
+^ Joe Little (2007-12-02). "Nokia test, A Scrum specific test". Agileconsortium.blogspot.com. http://agileconsortium.blogspot.com/2007/12/nokia-test.html. Retrieved 2010-06-06.
+^ Mark Seuffert, Piratson Technologies, Sweden. "Karlskrona test, A generic agile adoption test". Piratson.se. http://www.piratson.se/archive/Agile_Karlskrona_Test.html. Retrieved 2010-06-06.
+^ "How agile are you, A Scrum specific test". Agile-software-development.com. http://www.agile-software-development.com/2008/01/how-agile-are-you-take-this-42-point.html. Retrieved 2010-06-06.
+^ "Agile Methodologies Survey Results" (PDF). Shine Technologies. January 2003. http://www.shinetech.com/attachments/104_ShineTechAgileSurvey2003-01-17.pdf. Retrieved 2010-06-03. "95% [stated] that there was either no effect or a cost reduction . . . 93% stated that productivity was better or significantly better . . . 88% stated that quality was better or significantly better . . . 83% stated that business satisfaction was better or significantly better"
+^ Ambler, Scott (August 3, 2006). "Survey Says: Agile Works in Practice". Dr. Dobb's. http://www.drdobbs.com/architecture-and-design/191800169;jsessionid=2QJ23QRYM3H4PQE1GHPCKH4ATMY32JVN?queryText=agile+survey. Retrieved 2010-06-03. "Only 6 percent indicated that their productivity was lowered . . . No change in productivity was reported by 34 percent of respondents and 60 percent reported increased productivity. . . . 66 percent [responded] that the quality is higher. . . . 58 percent of organizations report improved satisfaction, whereas only 3 percent report reduced satisfaction."
+^ "The State of Agile Development" (PDF). VersionOne, Inc.. 2008. http://www.versionone.com/pdf/3rdAnnualStateOfAgile_FullDataReport.pdf. Retrieved 2010-07-03. "Agile delivers"
+^ "Answering the "Where is the Proof That Agile Methods Work" Question". Agilemodeling.com. 2007-01-19. http://www.agilemodeling.com/essays/proof.htm. Retrieved 2010-04-02.
+^ Agile Processes Workshop II Managing Multiple Concurrent Agile Projects. Washington: OOPSLA 2002
+^ a b W. Scott Ambler (2006) Supersize Me in Dr. Dobb's Journal, February 15, 2006.
+^ a b Boehm, B.; R. Turner (2004). Balancing Agility and Discipline: A Guide for the Perplexed. Boston, MA: Addison-Wesley. pp. 55–57. ISBN 0-321-18612-5.
+^ Beck, K. (1999). Extreme Programming Explained: Embrace Change. Boston, MA: Addison-Wesley. ISBN 0-321-27865-8.
+^ Schaaf, R.J. (2007). Agility XL Systems and Software Technology Conference 2007, Tampa, FL
+^ "Bridging the Distance". Sdmagazine.com. http://www.drdobbs.com/architecture-and-design/184414899. Retrieved 2011-02-01.
+^ Martin Fowler. "Using an Agile Software Process with Offshore Development". Martinfowler.com. http://www.martinfowler.com/articles/agileOffshore.html. Retrieved 2010-06-06.
+^ [The Art of Agile Development James Shore & Shane Warden pg 47]
+^ Evans, Ian. "Agile Delivery at British Telecom". http://www.methodsandtools.com/archive/archive.php?id=43. Retrieved 21 February 2011.
+^ [1] LogiGear, PC World Viet Nam, Jan 2011
+[edit] Further reading
+Abrahamsson, P., Salo, O., Ronkainen, J., & Warsta, J. (2002). Agile Software Development Methods: Review and Analysis. VTT Publications 478.
+Cohen, D., Lindvall, M., & Costa, P. (2004). An introduction to agile methods. In Advances in Computers (pp. 1–66). New York: Elsevier Science.
+Dingsøyr, Torgeir, Dybå, Tore and Moe, Nils Brede (ed.): Agile Software Development: Current Research and Future Directions, Springer, Berlin Heidelberg, 2010.
+Fowler, Martin. Is Design Dead?. Appeared in Extreme Programming Explained, G. Succi and M. Marchesi, ed., Addison-Wesley, Boston. 2001.
+Larman, Craig and Basili, Victor R. Iterative and Incremental Development: A Brief History IEEE Computer, June 2003
+Riehle, Dirk. A Comparison of the Value Systems of Adaptive Software Development and Extreme Programming: How Methodologies May Learn From Each Other. Appeared in Extreme Programming Explained, G. Succi and M. Marchesi, ed., Addison-Wesley, Boston. 2001.
+Rother, Mike (2009). Toyota Kata. McGraw-Hill. ISBN 0-07-163523-8. http://books.google.com/?id=_1lhPgAACAAJ&dq=toyota+kata
+M. Stephens, D. Rosenberg. Extreme Programming Refactored: The Case Against XP. Apress L.P., Berkeley, California. 2003. (ISBN 1-59059-096-1)
+Shore, J., & Warden S. (2008). The Art of Agile Development. O’Reilly Media, Inc.
+[edit] External links
+Myths about Agile
+Listen to this article (info/dl)
+This audio file was created from a revision of Agile software development dated 2011-04-12, and does not reflect subsequent edits to the article. (Audio help)
+More spoken articles
+Agile at the Open Directory Project
+The Agile Alliance
+The Agile Software Development Community
+Article Two Ways to Build a Pyramid by John Mayo-Smith
+The New Methodology Martin Fowler's description of the background to agile methods
+Ten Authors of The Agile Manifesto Celebrate its Tenth Anniversary
+James Shore's Agile book
+A look into the PMI-ACP (Agile Certified Practitioner)
+v · d · eSoftware engineering
+Fields
+Requirements analysis • Systems analysis • Software design • Computer programming • Formal methods • Software testing • Software deployment • Software maintenance
+Concepts
+Data modeling • Enterprise architecture • Functional specification • Modeling language • Programming paradigm • Software • Software architecture • Software development methodology • Software development process • Software quality • Software quality assurance • Software archaeology • Structured analysis
+Orientations
+Agile • Aspect-oriented • Object orientation • Ontology • Service orientation • SDLC
+Models
+Development models
+Agile • Iterative model • RUP • Scrum • Spiral model • Waterfall model • XP • V-Model • Incremental model • Prototype model
+Other models
+Automotive SPICE • CMMI • Data model • Function model • Information model • Metamodeling • Object model • Systems model • View model
+Modeling languages
+IDEF • UML
+Software
+engineers
+Kent Beck • Grady Booch • Fred Brooks • Barry Boehm • Ward Cunningham • Ole-Johan Dahl • Tom DeMarco • Martin Fowler • C. A. R. Hoare • Watts Humphrey • Michael A. Jackson • Ivar Jacobson • Craig Larman • James Martin • Bertrand Meyer • David Parnas • Winston W. Royce • Colette Rolland • James Rumbaugh • Niklaus Wirth • Edward Yourdon • Victor Basili
+Related fields
+Computer science • Computer engineering • Enterprise engineering • History • Management • Project management • Quality management • Software ergonomics • Systems engineering
+Retrieved from "http://en.wikipedia.org/wiki/Agile_software_development"
+Categories: Software development process | Software project management | Software development philosophies | Agile software development
+Hidden categories: Wikipedia introduction cleanup from August 2011 | All pages needing cleanup | All articles with unsourced statements | Articles with unsourced statements from August 2011 | Articles needing additional references from June 2011 | All articles needing additional references | Articles needing additional references from August 2010 | NPOV disputes from August 2011 | All NPOV disputes | Spoken articles | Articles with hAudio microformats
+Personal tools
+Log in / create account
+Namespaces
+Article
+Discussion
+Variants
+Views
+Read
+Edit
+View history
+Actions
+Search
+Navigation
+Main page
+Contents
+Featured content
+Current events
+Random article
+Donate to Wikipedia
+Interaction
+Help
+About Wikipedia
+Community portal
+Recent changes
+Contact Wikipedia
+Toolbox
+What links here
+Related changes
+Upload file
+Special pages
+Permanent link
+Cite this page
+Print/export
+Create a book
+Download as PDF
+Printable version
+Languages
+العربية
+Български
+Català
+Dansk
+Deutsch
+Español
+Français
+한국어
+Italiano
+עברית
+Latviešu
+Lietuvių
+Nederlands
+日本語
+Polski
+Português
+Română
+Русский
+Slovenščina
+Српски / Srpski
+Srpskohrvatski / Српскохрватски
+Suomi
+Svenska
+தமிழ்
+ไทย
+Türkçe
+Українська
+Tiếng Việt
+中文
+This page was last modified on 31 August 2011 at 21:46.
+Text is available under the Creative Commons Attribution-ShareAlike License; additional terms may apply. See Terms of use for details.
+Wikipedia® is a registered trademark of the Wikimedia Foundation, Inc., a non-profit organization.
+Contact us
+Privacy policy
+About Wikipedia
+Disclaimers
+Mobile view

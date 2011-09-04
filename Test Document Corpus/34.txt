@@ -1,0 +1,231 @@
+Project Management
+skip to main | skip to sidebar
+Project Management
+for Enterprise project management implementation , contact vishalmalus at yahoo dot com
+Wednesday, March 30, 2011
+few slides
+http://www.slideshare.net/Salesforce/it-success-with-agile-development
+http://www.slideshare.net/prasad_keral/agile-methods-overview-compatibility-mode
+http://www.slideshare.net/srinikumar66/reducing-cost-with-agile
+http://www.slideshare.net/Samuel90/agile-project-management-implementation-approach
+http://www.slideshare.net/seimel/requirements-at-the-speed-of-light
+Posted by Vishal Sharma at 12:58 PM 0 comments
+Agile project management implementation approach
+The key drivers for adopting agile project were to manage changing priorities and to accelerate time to market. 90% of the organizations reported increased productivity. 85% of the organizations reported reduced software defects. 83% of the organizations reported accelerated time to market and a 66% reported reduced cost.
+Adoption rate of different flavors of agile methodologies
+SCRUM, SCRUM/XP hybrid and XP collectively accounts for more than 80% of the agile implementations. SCRUM focuses on the agile project management practices where as XP focuses on the engineering practices. My recommendation is to start with SCRUM (focus on the management practices) and then adopt the engineering practices from XP.
+http://www.collabteam.com/scrum3/AgileProjectManagementImplemantationApproach.pdf
+Posted by Vishal Sharma at 12:29 PM 0 comments
+Wednesday, March 23, 2011
+Project Portfolio Management (PPM) options in MS Project Server 2010
+Demand Management (Portfolio Management) is about capturing all work proposals in one single place, taking these proposals through a multi-stage governance process, making decisions on which proposals to approve and tracking progress on their execution until the work is completed. In project portfolio management (PPM), a project lifecycle is a long-running process that spans various governance phases. Typical demand management phases are create, select, plan, and manage (customers can create their own. If your organization is looking to implement project portfolio management (PPM) in MS Project Server 2010, you have the following options:
+http://www.epmcentral.com/articles/ps10/ppmoptions.php
+Posted by Vishal Sharma at 1:10 PM 0 comments
+Thursday, March 17, 2011
+Scrum Methodology
+For many developers in the software industry, the agile methodology is nothing new. Most folks know that agile was a direct response to the dominant project management paradigm, waterfall, and borrows many principles from lean manufacturing. In 2001, as this new management paradigm began to pick up momentum, agile was formalized when 17 pioneers of the agile methodology met at the Snowbird Ski Resort in Utah and issued the Agile Manifesto. Their manifesto is now considered the foundational text for agile practices and principles. Most importantly, the manifesto spelled out the philosophy behind agile, which places a new emphasis on communication and collaboration; functioning software; and the flexibility to adapt to emerging business realities.
+But for all of the strides the Agile Manifesto made in revising a philosophical approach to software development, it didn’t provide the concrete processes that development teams depend on when deadlines — and stakeholders — start applying pressure. As a result, when it comes to the nuts and bolts of running a team with agile every day, organizations turn to particular subsets of the agile methodology. These include Crystal Clear, Extreme Programming, Feature Driven Development, Dynamic Systems Development Method (DSDM), Scrum, and others. At my organization, we use Scrum and I’ve found it to be an incredibly effective management methodology for everyone involved, including developers and stakeholders. If you’re interested in learning about the other agile methodologies, there are plenty of resources out there. This blog is designed to provide some essential background for those who are new to Scrum.
+What’s Unique about Scrum?
+Of all the agile methodologies, Scrum is unique because it introduced the idea of “empirical process control.” That is, Scrum uses the real-world progress of a project — not a best guess or uninformed forecast — to plan and schedule releases. In Scrum, projects are divided into succinct work cadences, known as sprints, which are typically one week, two weeks, or three weeks in duration. At the end of each sprint, stakeholders and team members meet to assess the progress of a project and plan its next steps. This allows a project’s direction to be adjusted or reoriented based on completed work, not speculation or predictions.
+Philosophically, this emphasis on an ongoing assessment of completed work is largely responsible for its popularity with managers and developers alike. But what allows the Scrum methodology to really work is a set of roles, responsibilities, and meetings that never change. If Scrum’s capacity for adaption and flexibility makes it an appealing option, the stability of its practices give teams something to lean on when development gets chaotic.
+The Roles of Scrum
+Scrum has three fundamental roles: Product Owner, ScrumMaster, and team member.
+Product Owner: In Scrum, the Product Owner is responsible for communicating the vision of the product to the development team. He or she must also represent the customer’s interests through requirements and prioritization. Because the Product Owner has the most authority of the three roles, it’s also the role with the most responsibility. In other words, the Product Owner is the single individual who must face the music when a project goes awry.
+The tension between authority and responsibility means that it’s hard for Product Owners to strike the right balance of involvement. Because Scrum values self-organization among teams, a Product Owner must fight the urge to micro-manage. At the same time, Product Owners must be available to answer questions from the team.
+ScrumMaster: The ScrumMaster acts as a liaison between the Product Owner and the team. The ScrumMaster does not manage the team. Instead, he or she works to remove any impediments that are obstructing the team from achieving its sprint goals. In short, this role helps the team remain creative and productive, while making sure its successes are visible to the Product Owner. The ScrumMaster also works to advise the Product Owner about how to maximize ROI for the team.
+Team Member: In the Scrum methodology, the team is responsible for completing work. Ideally, teams consist of seven cross-functional members, plus or minus two individuals. For software projects, a typical team includes a mix of software engineers, architects, programmers, analysts, QA experts, testers, and UI designers. Each sprint, the team is responsible for determining how it will accomplish the work to be completed. This grants teams a great deal of autonomy, but, similar to the Product Owner’s situation, that freedom is accompanied by a responsibility to meet the goals of the sprint.
+Posted by Vishal Sharma at 10:57 AM 0 comments
+Friday, January 16, 2009
+stat.
+Most IT projects fail due to insufficient professional project management. A PMI study from September 2006 indicated that without well trained project managers, "56% of projects saw cost overruns of more than 50% and 84% had time overruns."
+Posted by Vishal Sharma at 1:24 AM 0 comments
+Saturday, January 26, 2008
+101 Ways To Know Your Software Project Is Doomed
+1. Management has renamed its Waterfall process to Agile Waterfall
+2. You start hiring consultants so they can take the blame
+3. The Continuous Integration server has returned the error message “Fuck it, I give up”
+4. You have implemented your own Ruby framework that uses XML configuration files
+5. Your eldest team member references Martin Fowler as a ’snot-nosed punk’
+6. Your source code control system is a series of folders on a shared drive
+7. Allocated QA time is for Q and A why your crap is broken
+8. All of your requirements are written on a used cocktail napkin
+9. You start considering a new job so you don’t have to maintain the application you are building
+10. The lead web developer thinks the X in XHTML means ‘extreme’
+11. Ever iteration meeting starts with “Do you want the good news or the bad news…”
+12. Your team still gives a crap about its CMM Level
+13. Progress is now measured by the number of fixed bugs and not completed features
+14. Continuous Integration is getting new employees to read the employee handbook
+15. You are friends with the janitor
+16. The SCRUM master doesn’t really care what you did yesterday or what you will do today
+17. Every milestone ends in a dead sprint
+18. Your best developer only has his A+ Certification
+19. You do not understand the acronyms DRY, YAGNI, or KISS; but you do understand WTF, PHB, and FUBAR
+20. Your manager could be replaced by an email redirection batch file
+21. The only certification your software process has is ISO 9001/2000
+22. Your manager thinks ‘Metrics’ is a type of protein drink
+23. Every bug is prioritized as Critical
+24. Every feature is prioritized as Trivial
+25. Project estimates magically match the budget
+26. Developers use the excuse of ’self documenting code’ for no comments
+27. Your favorite software pattern is God Object
+28. You still believe compiling is a form of testing
+29. Developers still use Notepad as an IDE
+30. Your manager wastes 7 hours a week asking for progress reports (true story)
+31. You do not have your own machine and you are not doing pair programming
+32. Team Rule - No meetings until 10 AM since we were all here until 2 AM
+33. Your team believes ORM is a ‘fad’
+34. Your team believes the transition from VB6 to VB.NET will be ’seamless’
+35. Your manager thinks MS Project is the best management tool the market offers
+36. Your spouse only gets to see you on a webcam
+37. None of your unit tests have asserts in them
+38. FrontPage is your web page editor of choice
+39. You get into flame wars if { should be on new line, but you are impartial to patterns such as MVC
+40. The company motto is ‘Do more with less’
+41. The phrase ‘It works on my machine’ is heard more than once a day
+42. The last conference your .NET team attended was Apple WWDC 2000
+43. Your manager insists that you track all activity but never uses the information to make decisions
+44. All debugging occurs on the live server
+45. Your manager does not know how to check email
+46. Your manager thinks being SOX compliant means not working on baseball nights
+47. The company hires Senetor Ted Stevens to give your project kick-off inspiration speech
+48. The last book you read - Visual InterDev 6 Bible
+49. The overall budget is mistaken for your weekly Mountain Dew bill
+50. Your manager spends his lunch hour crying in his car (another true story)
+51. Your lead web developer defines AJAX as a cleaning product
+52. Your boss expects you to spend the next 2 days creating a purchase request for a $50 component
+53. The sales team decreased your estimates because they believe you can work faster
+54. Requirement - Rank #1 on Google
+55. Everyday you work until Midnight, everyday your boss leaves at 4:30
+56. Your manager loves to say “Why do the developers care? They get paid by the hour.”
+57. The night shift at Starbucks knows you by name
+58. Management can not understand why anyone needs more than a single monitor
+59. Your development team only uses source control as a power failure backup system
+60. Developers are not responsible for any testing
+61. The team does not use SVN because they believe the merge algorithms are black voodoo magic
+62. Your white boards are mostly white (VersionOne)
+63. The client continually mistakes your burn-down chart for a burn-up chart
+64. The project code name is renamed to ‘The Death March’
+65. Now it physically pains you to say the word - Yes
+66. Your teammates don’t refactor, they refuctor
+67. To reward you for all of your overtime your boss purchases a new coffee maker
+68. Your project budget is entered in the company ledger as ‘Corporate Overhead’
+69. You secretly outsource pieces of the project so you can blog at work
+70. A Change Control Board is created and your product isn’t even its first alpha version
+71. Daily you consider breaking your fingers for the short term disability check
+72. The deadline has been renamed a ‘milestone’…just like the last ‘milestone’
+73. Your project managers ‘open door’ policy only applies between 5:01 PM - 7:59 AM
+74. Your boss argues “Why buy it when we can built it!”
+75. You bring beer to the office during your 2nd shift
+76. The project manager is spotted consulting a Ouija board
+77. You give misinformation to your teammates so you look better on your personal review
+78. All code reviews are scheduled a week before product launch
+79. Budget for testing exists as “if we have time”
+80. The client will only talk about the requirements after they receive a fixed estimation
+81. The boss does not find the humor in Dilbert
+82. You start noticing your boss’s poker tells during planning poker
+83. You start wondering if working 2 shifts at Pizza Hut is a better career alternative
+84. All performance issues are resolved by getting larger machines
+85. The project has been demoted to being released as a permanent ‘Beta’ version
+86. Your car is towed from the office parking lot as it was thought to be abandoned
+87. The project manager likes to doodle during requirements gathering meetings
+88. You are using MOSS 2007
+89. Your SCRUM team consists of 1
+90. Your timesheet looks like a Powerball ticket
+91. The web developer thinks being 508 means looking good in her Levi Red Tabs
+92. You think you need Multiple Personality Disorder medication because you are Mort, Elvis, and Einstein
+93. Your manager substitutes professional consultant advice for a Magic 8 Ball
+94. You know exactly how many compile warnings cause an ‘Out of Memory’ exception in your IDE
+95. I have used IDE twice in this list and you still don’t know what it stands for
+96. You have cut and pasted code from The Daily WTF
+97. Broken unit tests are deleted because they are obviously out of date
+98. You are sent to a conference to learn, but you skip sessions to go hunting for swag
+99. QA has nicknamed you Chief Off-By-One
+100. You have been 90% complete 90% of the time
+101. “Oh, oh, and I almost forgot. Ahh, I’m also gonna need you to go ahead and come in on Sunday, too… thanks”
+Check out this article and other articles like it at codesqueeze.
+Posted by Vishal Sharma at 12:55 AM 1 comments
+Saturday, December 22, 2007
+The Seven Deadly Sins of Software Project Management
+TABLE OF CONTENTS
+Introduction
+Sin 1: Trying to Define All Requirements Up Front
+Sin 2: Ignoring the Iron Triangle
+Sin 3: Trying to Define All Development Tasks Up Front
+Sin 4: Setting Unrealistic Customer Expectations
+Sin 5: Tracking Activities Instead of Features
+Sin 6: Failing to Update the Plan Based on Reality
+Sin 7: Waiting Months to Get User
+to download full pdf .. visit http://www.extremeplanner.com
+Posted by Vishal Sharma at 12:03 PM 0 comments
+Older Posts Home
+Subscribe to: Posts (Atom)
+Blog Archive
+▼ 2011 (4)
+▼ March (4)
+few slides
+Agile project management implementation approach
+Project Portfolio Management (PPM) options in MS P...
+Scrum Methodology
+► 2009 (1)
+► January (1)
+stat.
+► 2008 (1)
+► January (1)
+101 Ways To Know Your Software Project Is Doomed
+► 2007 (39)
+► December (2)
+The Seven Deadly Sins of Software Project Manageme...
+"Are We There Yet?" Estimation and Tracking on the...
+► November (1)
+PRINCE2 - PRojects IN Controlled Environments
+► October (3)
+Planning and Maintaining the Rhythm of Distributed...
+Implementing Automated Governance for Coding Stand...
+nice books
+► August (9)
+Fundamental Estimation Techniques
+Estimating Effort
+Measuring Complexity
+Measuring Complexity
+Measuring the Size of Software
+Measurement Fundamentals
+Software Measurement and Estimation
+Adaptability
+Software Configuration Management Software config...
+► July (15)
+Reusable Software Components
+Stabilizing the Application
+Unit Testing—The First Line of Defense
+Planning for Testing
+Project Quality Management
+Project Cost Management
+Project Procurement Management
+Project Scope Management
+Project Communications Management
+Project Time Management
+Project Risk Management
+Project Human Resource Management
+Project Management Processes for a Project
+Project Life Cycle and Organization .. my version
+As I am going thru PMP book so.... -1
+► February (9)
+Architecture and Design Review of a .NET Applicati...
+Extreme Programming (XP) - Part 2
+Extreme Programming (XP) - Part 1
+Selecting a Development Approach
+Project Human Resource Management
+This blogs gonna cover ... + more
+Project Scope Management - Part 1
+Scope Change Management: Keeping Projects on Track...
+Scope Change Management - Introduction
+http://epmsource.com/
+http://epmsource.com/
+http://marcsoester.blogspot.com/
+http://www.projectserverhelp.com/default.aspx
+Dot Net Blog
+PMP Research News Section
+About Me
+Vishal Sharma
+Vishal has 10+ years of experience in Information Technology & association with top IT companies. These days doing research in Project Management :) View my complete profile
+Followers
+'); }
