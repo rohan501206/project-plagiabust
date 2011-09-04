@@ -16,24 +16,27 @@ import preprocess.StopWordRemover;
 
 /**
  *
- * @author Compaq
+ * @author Udana Chathuranga
  */
 public class ParaphaseManage {
     
     String matchList[] = new String[2];
     String firstString = null;
     String secondString = null;
-    
     String firstfileName = null;
     String secondfileName = null;
-    
     DocumentReader docreader = new DocumentReader();
-    Manager manager = new Manager();
-    Double threshod =  0.27;       // best one so far
-    
+    CalculationManager manager = new CalculationManager();
+    Double threshod =  0.27;   // best one so far
     StopWordRemover stopremover = new StopWordRemover();
     Stemmer stem = new Stemmer();
     
+    /**
+     * Constructor for the ParaphaseManager 
+     * @param firstFile
+     * @param secondFile
+     * @param path 
+     */
     public ParaphaseManage(String firstFile, String secondFile, String path){   
        firstString = docreader.processFileAndGetText(firstFile);
        secondString = docreader.processFileAndGetText(secondFile);  
@@ -41,6 +44,13 @@ public class ParaphaseManage {
        secondfileName = secondFile;
     }
     
+    /**
+     * Check and return the paraphrased sentences
+     * @param firstString
+     * @param secondString
+     * @return
+     * @throws IOException 
+     */
     public String[] checkForParaPhase(String firstString,String secondString) throws IOException{
         ArrayList<String> firstStringSentences = new ArrayList<String> ();
         ArrayList<String> secondStringSentences = new ArrayList<String> ();        
@@ -48,13 +58,11 @@ public class ParaphaseManage {
         secondStringSentences = this.getSentences(secondString);
         String result[] = new String[2];
         String firstfileMatch = "";
-        String secondfileMatch = "";       
-      
-        //System.err.println(firstfileName);
-        //System.err.println(secondfileName);
+        String secondfileMatch = "";             
         
         for (int i = 0; i < firstStringSentences.size(); i++) {   
             boolean isParaphased = false;
+            
             for (int j = 0; j < secondStringSentences.size(); j++) {           
                 double similarityValue = manager.similarity(firstStringSentences.get(i),secondStringSentences.get(j));  
                 if (similarityValue > threshod) { 
@@ -63,16 +71,18 @@ public class ParaphaseManage {
                     break;
                 }
             }
+            
             if(isParaphased){
                 firstfileMatch = firstfileMatch+firstStringSentences.get(i).toLowerCase()+"~";
             }
+            
         }
-        //System.err.println(firstfileMatch);
-        //System.err.println(secondfileMatch);
+        
         result[0] = firstfileMatch;
         result[1] = secondfileMatch;
         return result;
     }
+    
     
     public String arraylistToSting(ArrayList<String> token) {
         StringBuilder out = new StringBuilder();
@@ -82,6 +92,7 @@ public class ParaphaseManage {
         }
         return out.toString();
     }
+    
     
     public float getPlagiarismValueForParaphraseDetect(String match) throws IOException{
         
@@ -93,31 +104,16 @@ public class ParaphaseManage {
         int all = firstString.length();
         int para = onlyParaphasedText.length();
         
-        /*System.err.println(firstfileName);
-        System.err.println(secondfileName);
-        System.err.println("Shingle cloud match:"+match);
-        System.err.println("paraphaseed string:"+paraphasedString);
-        System.err.println("onlyparapahrase text:"+onlyParaphasedText);
-        System.err.println("File lenth:"+all);
-        System.err.println("Only paraphas lenth:"+para);
-        System.err.println();*/
-        
         return (para*100)/all;
         
     }
     
-    
-    
-    
-    
-    
+   
     public List<String> getParagraphs (String document){
 		String [] temp = document.split("[\\r\\n]+");
 		return Arrays.asList(temp);
 	}
-    
-    
-    
+
     
     public ArrayList<String> getSentences(String paragraph) {
         BreakIterator bi = BreakIterator.getSentenceInstance();
@@ -133,9 +129,7 @@ public class ParaphaseManage {
     }
     
     
-    
-    
-    
+
     public String[] getMatchList() throws IOException{
         matchList = this.checkForParaPhase(firstString, secondString);
         return matchList;
