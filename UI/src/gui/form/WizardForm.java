@@ -359,7 +359,7 @@ public class WizardForm extends javax.swing.JFrame {
         NameLocationBannerLabel.setText("Step 1 - Select Name and Location");
         NameLocationBannerLabel.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         NameLocationBannerLabel.setPreferredSize(new java.awt.Dimension(212, 32));
-        ProjectLocationPanel.add(NameLocationBannerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, -1, -1));
+        ProjectLocationPanel.add(NameLocationBannerLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 240, -1));
 
         DeleteProjectFilesCheckBox.setBackground(new java.awt.Color(255, 255, 255));
         DeleteProjectFilesCheckBox.setFont(new java.awt.Font("Tahoma", 0, 12));
