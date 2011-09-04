@@ -19,39 +19,28 @@ import ui.FileOperator;
  */
 public class CrossCheckModule extends javax.swing.JFrame {
 
-    String sourceFileName;
-    String suspectedFileName;
-    String matchStringShingleCloud;
-    String matchStringfirstFile;
-    String matchStringsecondFile;
-    String selectedDocumentPath;
-    int numberOfFiles;
-    Highlighter hilit = new DefaultHighlighter();
-    Highlighter hilit2 = new DefaultHighlighter();
-    Highlighter hilit3 = new DefaultHighlighter();
-    final static Color HILIT_COLOR = new Color(255, 160, 122);
-    Highlighter.HighlightPainter painter;
-
-    public CrossCheckModule(String sFile, String susFile, String match) {
-        sourceFileName = sFile;
-        suspectedFileName = susFile;
-        matchStringShingleCloud = match;
-        initComponents();
-        testMatch.setVisible(false);
-
-    }
+    private String sourceFileName;
+    private String suspectedFileName;
+    private String matchStringShingleCloud;
+    private String matchStringfirstFile;
+    private String matchStringsecondFile;
+    private String selectedDocumentPath;
+    private int numberOfFiles;
+    private Highlighter hilit = new DefaultHighlighter();
+    private Highlighter hilit2 = new DefaultHighlighter();
+    
+    private final static Color HILIT_COLOR = new Color(255, 160, 122);
+    private Highlighter.HighlightPainter painter;
 
     CrossCheckModule(String sourceFile, String suspectedFile, String matchstring, String matchstring1, String matchstring2) {
-
         sourceFileName = sourceFile;
         suspectedFileName = suspectedFile;
         matchStringShingleCloud = matchstring;
         matchStringfirstFile=matchstring1;
         matchStringsecondFile=matchstring2;
-        initComponents();
-        testMatch.setVisible(false);
-
+        initComponents();       
    }
+
 
     public void setData() {
         FileOperator setTextToTextAreas = new FileOperator();
@@ -170,7 +159,6 @@ public class CrossCheckModule extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         selectedFileTextField = new javax.swing.JTextField();
         suspectedFileTextField1 = new javax.swing.JTextField();
-        testMatch = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -207,9 +195,6 @@ public class CrossCheckModule extends javax.swing.JFrame {
             }
         });
 
-        testMatch.setEditable(false);
-        testMatch.setText("jTextField1");
-
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -221,9 +206,8 @@ public class CrossCheckModule extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(selectedFileTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(testMatch, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 552, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
+                        .addComponent(selectedFileTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(49, 49, 49)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel6)
@@ -240,14 +224,12 @@ public class CrossCheckModule extends javax.swing.JFrame {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(testMatch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
+                .addGap(54, 54, 54)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(selectedFileTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(selectedFileTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6)
-                    .addComponent(suspectedFileTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(suspectedFileTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(127, 127, 127)
@@ -275,7 +257,7 @@ public class CrossCheckModule extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 518, Short.MAX_VALUE)
+            .addGap(0, 527, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                     .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -308,7 +290,6 @@ public class CrossCheckModule extends javax.swing.JFrame {
     private javax.swing.JTextField selectedFileTextField;
     private javax.swing.JEditorPane suspectedFileEditorPane;
     private javax.swing.JTextField suspectedFileTextField1;
-    private javax.swing.JTextField testMatch;
     // End of variables declaration//GEN-END:variables
 
     private void setHighlighterToFirstTextFile(String[] queryforFirstFile, String content, ArrayList<Color> colourArrayTemp) {
