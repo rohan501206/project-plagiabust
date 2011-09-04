@@ -72,7 +72,7 @@ public class PlagiabustWebSearchManager {
                 String path = downloadedFilesFolder + File.separatorChar + downloadedDocuments + ".txt";
                 downloadedDocuments++;
                 this.downloadWebPageAsText(id, path);
-                id = "http://localhost:8983/solr/select/?q=id%3A"+ id +"&version=2.2&start=0&rows=10&indent=on";
+                id = "http://localhost:8983/solr/select/?q=id%3A" + id + "&version=2.2&start=0&rows=10&indent=on";
                 idList.add(id);
                 idFileMap.put(path, id);
                 pmanager.runProgress((downloadedDocuments * 100) / total);
@@ -180,6 +180,14 @@ public class PlagiabustWebSearchManager {
                     }
                 }
                 fileAndSorcesMap.put(filePath, downloadedFilesList);
+            }
+            Iterator it = urlAndDownloadedPathMap.entrySet().iterator();
+            while (it.hasNext()) {
+                Map.Entry pair = (Map.Entry) it.next();
+                String id = (String) pair.getKey();
+                id = "http://localhost:8983/solr/select/?q=id%3A" + id + "&version=2.2&start=0&rows=10&indent=on";
+                String path = (String) pair.getValue();
+                idFileMap.put(path, id);
             }
         } else {
             downloadProgressBar.runProgress(100);

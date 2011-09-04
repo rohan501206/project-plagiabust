@@ -98,14 +98,14 @@ public class InternetSearchManagerTest {
     }
 
     /**
-     * Test of getMap method, of class InternetSearchManager.
+     * Test of getUrlFileMap method, of class InternetSearchManager.
      */
     @Test
     public void testGetMap() {
         System.out.println("getMap");
         InternetSearchManager instance = null;
         HashMap expResult = null;
-        HashMap result = instance.getMap();
+        HashMap result = instance.getUrlFileMap();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

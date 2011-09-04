@@ -68,9 +68,11 @@ public class PeerSearchWorker extends SwingWorker<peerSearchReportData, String> 
     @Override
     protected peerSearchReportData doInBackground() throws Exception {
         HashMap<String, ArrayList<String>> downloadedFileList = new HashMap<String, ArrayList<String>>();
+        HashMap<String, String> urlFileMap = new HashMap<String, String>();
         if (UsePlagiabustWebServer) {
             System.out.println("Start Downloading Sources From Plaiabust Web Server.");
             downloadedFileList = plagiabustServerSourceDownloadManager.downloadFilesForMultiplePeerSearch(fileArrayList, destFolderPath, plagiabustSearchProgressBar);
+            urlFileMap = plagiabustServerSourceDownloadManager.getIdFileMap();
             System.out.println("Finished Downloading the Plaiabust Web Server files.");
 
         }
@@ -83,6 +85,13 @@ public class PeerSearchWorker extends SwingWorker<peerSearchReportData, String> 
             while (it.hasNext()) {
                 Map.Entry pairs = (Map.Entry) it.next();
                 downloadedFileList.put((String)pairs.getKey(), (ArrayList<String>)pairs.getValue());
+            }
+
+            HashMap<String, String> tempUrlFileMap = idm.getMap();
+            Iterator it2 = tempUrlFileMap.entrySet().iterator();
+            while (it2.hasNext()) {
+                Map.Entry pairs = (Map.Entry) it2.next();
+                urlFileMap.put((String)pairs.getKey(), (String)pairs.getValue());
             }
             
             System.out.println("Finished Downloading the Internet Sources.");
@@ -97,7 +106,7 @@ public class PeerSearchWorker extends SwingWorker<peerSearchReportData, String> 
 
         try {
             System.out.println("Start comparing files........................");
-            temp = manager.compareAllFiles(indexedFileList, downloadedFileList, pbar3, pbar4, paraphaseDetection);
+            temp = manager.compareAllFiles(indexedFileList, downloadedFileList, urlFileMap, pbar3, pbar4, paraphaseDetection);
             System.out.println("Finished comparing files........................");
         } catch (IOException ex) {
             System.out.println("There are no similar files or some error has occured");

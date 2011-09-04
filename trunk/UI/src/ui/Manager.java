@@ -127,7 +127,7 @@ public class Manager {
      * @return he possible matching phrases with relevant files.
      * @throws IOException
      */
-    public peerSearchReportData compareAllFiles(HashMap<File, ArrayList<String>> indexedFilesList, HashMap<String, ArrayList<String>> downloadedFilesList, JProgressBar preprocesspbar, JProgressBar crosscheckpbar,boolean paraphraseDetection) throws IOException {
+    public peerSearchReportData compareAllFiles(HashMap<File, ArrayList<String>> indexedFilesList, HashMap<String, ArrayList<String>> downloadedFilesList, HashMap<String, String> urlFileMap, JProgressBar preprocesspbar, JProgressBar crosscheckpbar,boolean paraphraseDetection) throws IOException {
 
         peerSearchReportData repData = new peerSearchReportData();
         Iterator downloadIterator = null;
