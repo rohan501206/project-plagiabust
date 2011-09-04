@@ -4,6 +4,7 @@
  */
 package reportingModule;
 
+import gui.form.Main;
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -35,6 +36,8 @@ public class CrossCheckModule extends javax.swing.JFrame {
         matchStringfirstFile = matchstring1;
         matchStringsecondFile = matchstring2;
         initComponents();
+        this.setIconImage(Main.getPlagiabustImage());
+        this.setTitle("Document Cross Check Viewer");
     }
 
     /**
