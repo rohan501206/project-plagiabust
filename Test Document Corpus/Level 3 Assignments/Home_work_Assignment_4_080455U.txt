@@ -1,0 +1,159 @@
+ 
+ 
+ 
+ 
+Home work Assignment 4 
+Software Engineering  
+CS3020 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+Sandeepani G.C. 
+080455U 
+ 
+CS3020 Assignment4 
+ 
+1 
+080455U  
+1. A).  Scrum 
+Scrum uses the real-world progress of a project, not a best guess or uninformed 
+forecast to plan and schedule releases. In Scrum, projects are divided into succinct 
+work cadences, known as sprints, which are typically one week, two weeks, or three 
+weeks in duration. At the end of each sprint, stakeholders and team members meet to 
+assess the progress of a project and plan its next steps. This allows a project’s 
+direction to be adjusted or reoriented based on completed work, not speculation or 
+predictions. 
+ 
+References: -   http://en.wikipedia.org/wiki/Scrum_(development) 
+http://scrummethodology.com   
+http://www.mountaingoatsoftware.com/topics/scrum 
+(Last Accessed: - Dec 2010) 
+   
+B). Extreme Programming (XP) 
+XP is known as a methodology of Agile development. This is used in small, 
+collocated project teams up to 10 members, more is probable. Development is flexible 
+and lightweight. XP is based on twelve practices and four groups - collaboration, 
+feedback, revision and respect. 
+ 
+References: -   http://www.extremeprogramming.org/ 
+  http://en.wikipedia.org/wiki/Extreme_Programming 
+  http://www.agilemodeling.com/essays/agileModelingXP.htm   
+(Last Accessed: - Dec 2010) 
+ 
+C) Crystal Methods 
+Crystal is actually comprised of a family of methodologies (Crystal Clear, Crystal 
+Yellow, Crystal Orange, etc.) whose unique characteristics are driven by several 
+factors such as team size, system criticality, and project priorities. This Crystal family 
+addresses the realization that each project may require a slightly tailored set of 
+policies, practices, and processes in order to meet the project’s unique characteristics. 
+Several of the key tenets of Crystal include teamwork, communication, and 
+simplicity, as well as reflection to frequently adjust and improve the process.  
+ 
+References:-    http://en.wikiversity.org/wiki/Crystal_Methods 
+http://productdevelop.blogspot.com/2009/10/quick-overview-of-crystal-
+methods-type.html 
+(Last Accessed: - Dec 2010)       
+2.  
+? Individuals and interactions over processes and tools 
+? Working software over comprehensive documentation 
+? Customer collaboration over contract negotiation 
+? Responding to change over following a plan 
+ 
+CS3020 Assignment4 
+ 
+2 
+080455U  
+3.  
+ Customer collaboration Individuals and interactions  
+Scrum 
+ 
+A key principle of Scrum is its 
+recognition that during a project the 
+customers can change their minds 
+about what they want and need 
+(often called requirements churn), 
+and that unpredicted challenges 
+cannot be easily addressed in a 
+traditional predictive or planned 
+manner.  
+The scrum team is self-organizing 
+in that there is no overall team 
+leader who decides which person 
+will do which task or how a 
+problem will be solved. Those are 
+issues that are decided by the team 
+as a whole. The team is cross-
+functional so that everyone 
+necessary to take a feature from 
+idea to implementation is 
+involved. These teams are 
+supported by two specific 
+individuals: a Scrum Master and 
+a product owner 
+Extreme 
+Programming 
+(XP) 
+ 
+Extreme Programmers constantly 
+communicate with their customers 
+and fellow programmers. They 
+keep their design simple and clean. 
+They get feedback by testing their 
+software starting on day one. They 
+deliver the system to the customers 
+as early as possible and implement 
+changes as suggested.  
+Extreme Programming emphasizes 
+teamwork. Managers, customers, 
+and developers are all equal 
+partners in a collaborative team. 
+Extreme Programming implements 
+a simple, yet effective 
+environment enabling teams to 
+become highly productive. The 
+team self-organizes around the 
+problem to solve it as efficiently as 
+possible.  
+Crystal Methods 
+ 
+Getting the customer involved in 
+the software development process 
+is essential to success. 
+Collaborating with the customer (or 
+customer proxy) on a daily basis is 
+one of the key reasons why industry 
+data shows that agile projects have 
+more than twice the success rate of 
+traditional projects on average 
+worldwide. Crystal method has 
+recognize this and, as such, have 
+created a place on their 
+development teams that is 
+specifically for the customer 
+representative. 
+Crystal Methods recommend a 
+specific methodology for each 
+project based on three critical 
+factors: communication density, 
+system criticality, and project 
+prioritization. The smaller the 
+team, the more likely it can just 
+retire into a conference room and 
+build the product, without a lot of 
+status reporting, knowledge 
+transfer, or written documentation. 
+All the members in those small 
+groups work together to achieve 
+the common goal of creating the 
+software. 
+ 

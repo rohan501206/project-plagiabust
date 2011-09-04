@@ -1,0 +1,43 @@
+Homework Assignment 4
+1.
+• Agile Modeling
+• Agile Unified Process (AUP)
+• Extreme Programming (XP)
+Agile Modeling is a practice-based methodology for Modeling and documentation of software-based 
+systems. It is intended to be a collection of values, principles, and practices for Modeling software that 
+can be applied on a software development project in a more flexible manner than traditional Modeling 
+methods. 
+Agile Modeling is a supplement to other Agile methodologies such as:
+• Extreme Programming 
+• Agile Unified Process 
+• Scrum 
+In which it is used to replace the more standard UML, or other standard design tools.
+Agile Unified Process (AUP) is a simplified version of the IBM Rational Unified Process (RUP) 
+developed by Scott Ambler. It describes a simple, easy to understand approach to developing business 
+application software using agile techniques and concepts yet still remaining true to the RUP. The AUP 
+applies agile techniques including test driven development (TDD), Agile Modeling, agile change 
+management, and database refactoring to improve productivity. 
+Extreme Programming is a software development methodology which is intended to improve 
+software quality and responsiveness to changing customer requirements. As a type of agile software 
+development, it advocates frequent "releases" in short development cycles (time-boxing), which is 
+intended to improve productivity and introduce checkpoints where new customer requirements can be 
+adopted. 
+References: http://en.wikipedia.org/wiki/Agile_Modeling
+http://en.wikipedia.org/wiki/Agile_Unified_Process
+http://en.wikipedia.org/wiki/Extreme_Programming
+2.
+• Reduce design complexity
+• Working software over comprehensive documentation 
+• Customer collaboration over contract negotiation 
+• Responding to change over following a plan 
+3.
+Reduce design complexity Comprehensive documentation
+Agile Modeling Agile Modeling gives more 
+flexibility to the design process
+Ability to draw UML diagrams
+Agile Unified Process Simplifies the designing process
+ex:-database refactoring ability
+A lot of templates
+Extreme Programming (XP) Improves the quality of the 
+product.
+Frequent releases

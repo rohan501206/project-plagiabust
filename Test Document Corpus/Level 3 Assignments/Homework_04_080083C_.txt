@@ -1,0 +1,138 @@
+W.D.M. Dhanuushka 
+080083C 
+Homework Assignment 4 
+ 
+ 
+1.) 
+? Agile Modeling 
+ 
+Agile Modeling is a practice-based methodology for Modeling and documentation of 
+software-based systems. It is intended to be a collection of values, principles, and 
+practices for modeling software that can be applied on a software development project in 
+a more flexible manner than traditional Modeling methods. 
+ 
+? Extreme Programming 
+ 
+Extreme Programming is a software development methodology which is intended to 
+improve software quality and responsiveness to changing customer requirements. As a 
+type of agile software development, it advocates frequent "releases" in short development 
+cycles, which is intended to improve productivity and introduce checkpoints where new 
+customer requirements can be adopted. 
+ 
+? Feature Driven Development 
+ 
+Feature Driven Development (FDD) is an iterative and incremental software development 
+process. It is one of a number of Agile methods for developing software and forms part of 
+the Agile Alliance. FDD blends a number of industry-recognized best practices into a 
+cohesive whole. These practices are all driven from a client-valued functionality (feature) 
+perspective. Its main purpose is to deliver tangible, working software repeatedly in a 
+timely manner. 
+ 
+References: 
+http://en.wikipedia.org/wiki/Agile_Modeling 
+http://en.wikipedia.org/wiki/Extreme_Programming 
+http://en.wikipedia.org/wiki/Feature_Driven_Development 
+ 
+2.) 
+? Individuals and interactions over processes and tools 
+? Working software over comprehensive documentation 
+? Customer collaboration over contract negotiation 
+? Responding to change over following a plan 
+ 
+ 
+ 
+3.) 
+ Working software over comprehensive 
+documentation 
+Responding to change over following a 
+plan 
+Agile 
+Modeling 
+ 
+The principles and values of Agile 
+Modeling practices are intended to 
+help mitigate the perceived flaws of 
+Agile Software Development. The 
+principle "Maximize Stakeholder 
+Value" aims to inspire the developer to 
+collaborate with the customer in 
+providing an adequate level of 
+documentation & produce high quality 
+software at the end of the cycle. 
+There is another principle called 
+"Model With Others" in Agile 
+modeling attempts to involve project 
+stakeholders such as the client or 
+customer in the Modeling process to 
+attempt to bring the model more into 
+line with the end user requirements. So 
+this method is very flexible to model 
+the final product according to feedback 
+of the client. 
+Extreme 
+Programming 
+ 
+Extreme programming has been 
+described as having 12 practices, 
+grouped into four areas: 
+? Fine scale feedback 
+? Continuous process 
+? Shared understanding 
+? Programmer welfare 
+These are very helpful to produce 
+working & high quality software at the 
+end of the process. 
+Within extreme programming, 
+feedback relates to different 
+dimensions of the system development. 
+Feedback from the system: by writing 
+unit tests, or running periodic 
+integration tests. 
+Feedback from the customer: This 
+review is planned once in every two or 
+three weeks so the customer can easily 
+steer the development. 
+Feedback from the team: When 
+customers come up with new 
+requirements in the planning game the 
+team directly gives an estimation of the 
+time that it will take to implement. 
+Feature 
+Driven 
+Development 
+ 
+FDD is a model-driven short-iteration 
+process that consists of five basic 
+activities. First three of them are 
+helpful to produce workable software. 
+Develop Overall Model 
+The project starts with a high-level 
+walkthrough of the scope of the 
+system and its context. Next, detailed 
+domain walkthroughs are held for each 
+modeling area. 
+Build Feature List 
+The knowledge that is gathered during 
+the initial modeling is used to identify 
+a list of features 
+Plan By Feature 
+The next step is to produce the 
+development plan. 
+Next two of five basic activities helpful 
+to interact with the stockholders & 
+remodel the development process. 
+Design By Feature 
+A design package is produced for each 
+feature. A chief programmer selects a 
+small group of features that are to be 
+developed within two weeks. Together 
+with the corresponding class owners, 
+the chief programmer works out 
+detailed sequence diagrams for each 
+feature and refines the overall model. 
+Build By Feature 
+After a successful design inspection a 
+per feature activity to produce a 
+completed client-valued function 
+(feature) is being produced. 
+ 

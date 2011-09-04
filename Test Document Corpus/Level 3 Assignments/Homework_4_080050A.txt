@@ -1,0 +1,136 @@
+CS 3020 
+Software Engineering 
+Homework Assignment 4 
+ 
+1)  
+• Extreme Programming 
+Extreme Programming is a discipline of software development based on values of simplicity, communication, 
+feedback, and courage. As a type of agile software development, extreme programming advocates frequent 
+"releases" in short development cycles, which is intended to improve productivity and introduce checkpoints 
+where new customer requirements can be adopted. Extreme programming also include programming in pairs or 
+doing extensive code review, unit testing of all code, avoiding programming of features until they are actually 
+needed, a flat management structure, simplicity and clarity in code, expecting changes in the customer's 
+requirements as time passes and the problem is better understood, and frequent communication with the 
+customer and among programmers. 
+ 
+• Scrum 
+Scrum is an iterative, incremental methodology for project management often seen in agile software 
+development. Rather than a full process or methodology, it is a framework. Although Scrum was intended for 
+management of software development projects, it can be used to run software maintenance teams, or as a general 
+project/program management approach. Scrum relies on a self-organizing, cross-functional team. The scrum team 
+is self-organizing in that there is no overall team leader who decides which person will do which task or how a 
+problem will be solved. Those are issues that are decided by the team as a whole. 
+ 
+• Crystal Methods 
+The Crystal methodology is one of the most lightweight, adaptable approaches to software development. Crystal is 
+actually comprised of a family of methodologies (Crystal Clear, Crystal Yellow, Crystal Orange, etc.) whose unique 
+characteristics are driven by several factors such as team size, system criticality, and project priorities. Several of 
+the key tenets of Crystal include teamwork, communication, and simplicity, as well as reflection to frequently 
+adjust and improve the process. Like other agile methodologies, Crystal promotes early, frequent delivery of 
+working software, high user involvement, adaptability, and the removal of bureaucracy or distractions. 
+ 
+References 
+• http://xprogramming.com/book/whatisxp/  
+• http://en.wikipedia.org/wiki/Extreme_Programming 
+• http://www.mountaingoatsoftware.com/topics/scrum 
+• http://en.wikipedia.org/wiki/Scrum_(development) 
+• http://www.versionone.com/Agile101/Methodologies.asp 
+ 
+ 
+2)  
+• Individuals and interactions over processes and tools 
+• working software over comprehensive documentation 
+• Customer collaboration over contract negotiation 
+• Responding to change over following a plan 
+ 
+ 
+3)  
+ Individuals and interactions 
+over processes and tools 
+ 
+Responding to change over 
+following a plan 
+Extreme Programming 
+ 
+Valuing individuals and interactions 
+is a key in extreme programming. 
+Extreme Programming sometimes 
+devalues the experience of 
+individuals. We can use any coding 
+standard we like, just not on this 
+project - the team outweighs 
+individuals. Although they are just 
+rules, extreme programming is 
+intolerant of 
+variations that could reduce 
+predictability 
+In actual life, requirements keep 
+changing either because of 
+emergence of new business 
+opportunities or simply because the 
+initial requirement-gathering phase 
+was incomplete. Extreme 
+Programming in-builds 
+accommodation of such changed 
+requirements through getting user 
+stories at the start of iterations, and 
+through feedback during the course 
+of iterations. 
+ 
+ 
+ 
+Scrum 
+ 
+Scrum is a framework, which assigns 
+roles and responsibilities, and leaves 
+room for people to self organize and 
+interact. People can self-organize 
+within the scrum framework. In 
+scrum some teams, having an on-
+site customer is a great way to build 
+trust, and effective communication 
+between the business and the 
+development team. This satisfies 
+the above agile manifesto value. 
+In scrum process the team has a 
+certain amount of time, a sprint, to 
+complete its work - usually two to 
+four weeks. But meets each day 
+(during a daily scrum) to share 
+struggles and progress and update 
+the sprint backlog and burn down 
+chart accordingly. Therefore they 
+get new updates everyday and they 
+can respond them easily. 
+Crystal Methods 
+ 
+Crystal method aims to be the least 
+intrusive set of rules that puts a 
+project in the "Safety Zone". It aims 
+to keep people informed. Its 
+philosophy is that people work 
+differently and have different 
+needs. Software is communication 
+intensive and experiment based and 
+so requires constant feedback from 
+all parties. It does not aim to be the 
+most efficient, but the safest. So the 
+crystal method satisfies the above 
+agile manifesto value. 
+In crystal methods the deliverables 
+are shown, the accomplishments 
+needed to produce these 
+deliverables are defined and 
+connected to the deliverables, the 
+criteria by which the 
+accomplishments are measured are 
+defined, the work needed to 
+produce the criteria are defined, 
+resources assigned, and materials 
+purchased. Therefore crystal 
+method satisfies the above agile 
+manifesto value.  
+ 
+ 
+J. A. R. Chathunga 
+080050A 

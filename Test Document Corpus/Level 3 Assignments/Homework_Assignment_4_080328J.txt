@@ -1,0 +1,139 @@
+    Homework Assignment 4 
+    Name     :  M.D.L Padmakumara 
+    Index No: 080328J 
+ 
+ 
+1. Agile software development methods/approaches 
+ 
+1. Extreme Programming 
+? Extreme Programming is a discipline of software development based on values of 
+simplicity, communication, feedback, and courage.  
+ 
+? It works by bringing the whole team together in the presence of simple practices, 
+with enough feedback to enable the team to see where they are and to tune the 
+practices to their unique situation. 
+ 
+? It is applicable in projects with dynamically changing requirements, risky projects, 
+and projects with Small dev groups (up to 100) and also non-fixed scope (price) 
+contracts.[1] 
+ 
+ 
+ 
+2. Crystal Methods 
+? Crystal introduces the importance of people and communications, and adjusting the 
+techniques used in a project to the characteristics of that particular project.  
+ 
+? While other software development methods, particularly other agile methods, do 
+stress the importance of people, the Crystal family uses a focus on people and 
+communications as its organizing principle.  
+ 
+? And most of the properties and techniques are based on strengthening that process.[2] 
+ 
+ 
+3. Scrum Methodology  
+   
+? Scrum is unique because it introduced the idea of “empirical process control.” That 
+is, Scrum uses the real-world progress of a project — not a best guess or uninformed 
+forecast — to plan and schedule releases. 
+ 
+? In Scrum, projects are divided into succinct work cadences, known as sprints, which 
+are typically one week, two weeks, or three weeks in duration. 
+ 
+? At the end of each sprint, stakeholders and team members meet to assess the 
+progress of a project and plan its next steps. This allows a project’s direction to be 
+adjusted or reoriented based on completed work, not speculation or predictions.[3] 
+  
+ 
+ 
+ 
+ 
+2. Values of Agile Manifesto 
+ 1) Individuals and interactions over processes and tools 
+ 2) Working software over comprehensive documentation 
+ 3) Customer collaboration over contract negotiation 
+ 4) Responding to change over following a plan 
+ 
+ 
+3 
+.  
+ Customer collaboration over contract 
+negotiation 
+Responding to change over 
+following a plan 
+Extreme 
+Programming (XP) 
+XP improves software quality by five 
+critical ways;  
+? communication,  
+? simplicity,  
+? feedback,  
+? respect,  
+? Courage.  
+XP uses continuous communication 
+between customer and fellow 
+programmers and get the feedback from 
+any of them. It depicts the customer 
+collaboration of XP. 
+In XP there are quite a few gatherings 
+between customers and programmers. 
+ 
+ Software will be implemented 
+depending on these meeting decisions.  
+ 
+Customers are free to change user 
+requirements and programmers are 
+flexible to modify their developed 
+portions according to them. There is no 
+specific plan for the project. 
+Crystal Methods The Crystal family uses a focus on 
+people and communications as its 
+organizing principle. 
+ 
+It uses a procedure which has frequent 
+delivery of usable code to customers 
+Crystal is always focusing on the 
+importance of communication. 
+ 
+It is an Agile, Agile methodology and 
+it encourages the participants to stop 
+and reflect on how they are using it and 
+how they can alter it to make it work 
+more effectively 
+Scrum Scrum has the best customer 
+collaboration approach out of the other 
+Agile software development methods.  
+ 
+Because it collaborate with customer 
+once a “sprint” and decide the future 
+plans.  
+ 
+All the decisions are made in front of 
+the customers. Therefore it highly uses 
+customer collaboration over contract 
+negotiation 
+There isn’t any plan. It has only 
+incremental iterative method.  
+ 
+Sprint is the basic time duration which 
+decides what will do in future sprints.  
+ 
+Customer is free to change the 
+requirements in any sprint which leads 
+to change in the software. Therefore 
+programmers always respond to 
+change.  
+ 
+ 
+ 
+  
+ 
+ 
+4.  References  
+ 
+? [1]http://download.microsoft.com/download/3/7/f/37f07f43-9783-465b-ac66-        
+ e96a9cda582f/XpAgileConcepts.ppt 
+? [2] http://www.projectconnections.com/templates/detail/agile-techniques-crystal.html 
+? [3] http://scrummethodology.com/ 
+? [4] http://mrjaba.posterous.com/crystal-agile-methodology 
+ 
+ 

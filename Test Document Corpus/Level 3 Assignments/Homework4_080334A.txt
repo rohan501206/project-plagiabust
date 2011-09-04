@@ -1,0 +1,107 @@
+Software Engineering – Homewrok 4 W.S.S. Pathirana 080334A 
+ 
+1) Agile Software Development Approaches 
+ 
+1.1 Extreme Programming(XP) 
+XP is a one of the agile software development approach which intended to improve 
+software quality and responsiveness to changing customer requirements. 
+The Life cycle of the XP consist of five basic phases : Exploration, Planning, Iterations to 
+release, Testing and Maintenance. 
+ 
+1.2 Scrum 
+The scrum approach has been developed for the managing the systems development 
+process which reintroduces the ideas of flexibility, adaptability and productivity. This 
+method concentrated on how the team members should contribute to the production in 
+order to produce the system flexibility in a changing environment. 
+ 
+1.3 Essential Unified Process(EssUP) 
+EssUP is an improvement on the rational unified process(RUP – industry standard 
+software modeling process). It uses the practices like use cases, iterative development, 
+architecture driven development which are taken from RUP, CMMI. Here the idea is that 
+you pick those practices that can be applicable to a situation and then combine them 
+into the process. 
+ 
+References: 
+Agile software development methods – Pekka Abrahamsson, Outi Salo, Jussi Ronkainen 
+& Juhani Warsta  
+http://en.wikipedia.org/wiki/Extreme_Programming 
+http://en.wikipedia.org/wiki/Scrum_(development) 
+http://en.wikipedia.org/wiki/Essential_Unified_Process 
+ 
+2) Agile Manifesto 
+Individuals and interactions over processes and tools 
+Working software over comprehensive documentation 
+Customer collaboration over contract negotiation 
+Responding to change over following a plan 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+3)  
+ Customer collaboration over contract negotiation Responding to change over following a plan 
+Extreme Programming 
+Customer has to be onsite 
+during the contract 
+negotiation and he has to 
+fully engage with the 
+process. He writes user 
+requirements which 
+express the end user 
+functionality and features. 
+The development cycle is 
+divided in to several stages, 
+each having 2 to 3 weeks. 
+Programmers have to plan 
+iterations at the beginning. 
+So customers assign 
+priorities at each iteration 
+starts. So plan can be 
+change easily. 
+Scrum 
+Customers become a part 
+of the development team. 
+Frequent stakeholder 
+meetings to monitor 
+progress—balanced 
+dashboard updates. The 
+customer writes customer-
+centric items, prioritizes 
+them and then places them 
+in the product backlog. 
+Scrum has frequent 
+intermediate deliveries 
+with working functionality, 
+like all other forms of agile 
+software processes. This 
+enables the customer to 
+have working software 
+earlier and enables the 
+project to change its 
+requirements according to 
+changing needs. customers 
+can change their minds 
+about what they want and 
+need 
+EssUP 
+Customer can have the 
+software in an increment of 
+is and he can suggest the 
+changes and give feedbacks 
+which will make it easier to 
+the developers to 
+understand what he really 
+need.  
+Software is developed in 
+small increments and short 
+iterations which allow 
+identifying risks and 
+problems early on and 
+reacting to them 
+adequately. 
+ 

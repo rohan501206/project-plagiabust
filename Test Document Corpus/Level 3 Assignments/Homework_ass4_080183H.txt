@@ -1,0 +1,113 @@
+CS 3020 
+Software Engineering 
+Homework Assignment 4 
+080183H 
+1.) Agile software development methods 
+ 
+? Extreme programming – this is an agile software development methodology which 
+consists of short development life cycles which will improve productivity and which also 
+introduce check points for the new customer requirements. This methodology includes 
+elements like programming in pairs, code reviews and unit testing. This has a flat 
+management structure. This also introduces basic values, principles and practices on top 
+of agile programming frame work. 
+ 
+? Feature driven development – this is an iterative and incremental s/w development 
+process. It contains best practices which are all driven from a client-valued functionality. 
+Purpose is to deliver working s/w in a timely manner. This methodology is a model 
+driven short iteration process which consists of five basic activities. (feature teams, 
+regular builds, inspections..). Lot of models are used throughout the process.(meta-
+process model, overall model) 
+ 
+? Scrum – this is also an iterative incremental approach which is used to s/w management 
+as well as for s/w maintenance. It contains set of practices and predefined roles. 
+“Working more hours doesn’t mean producing more output, “Happy team makes a 
+tough task simple” are some general practices. Scrum Master, Product Owner, Team are 
+the three main roles. In a short time period which is called a sprint the team creates a 
+one increment of the product.  
+References  
+Extreme programming – Wikipedia 
+http://en.wikipedia.org/wiki/Extreme_Programming#Values 
+Feature driven development – Wikipedia  
+http://en.wikipedia.org/wiki/Feature_Driven_Development 
+Scrum (development)  – Wikipedia  
+http://en.wikipedia.org/wiki/Scrum_(development) 
+ 
+2.) Four values in the Agile manifesto 
+? Individuals and interactions over processes and tools. 
+? Working software over comprehensive documents. 
+? Customer collaboration over contract negotiation. 
+? Responding to change over following plan. 
+ 
+3.) How each method satisfies the manifesto value. 
+ 
+Agile method Manifesto value – customer 
+collaboration 
+Manifesto value – Individuals and 
+interactions 
+Extreme 
+programming 
+In this method to get the customer 
+feedback functional tests are written by 
+the customer as well as the testers. 
+From this they’ll get a concrete 
+feedback about the current state of the 
+system. This is planned once in every 
+two or three weeks so that the 
+customer can easily steer the 
+development. 
+Uses programming in pairs which will 
+enhance a particular set of code written 
+by both developers. They can always 
+interact each other fix bugs and come up 
+with a very good program. Uses a flat 
+management structure where any 
+individual in the project team can directly 
+interact with each other.  
+Feature driven 
+development 
+This uses the regular builds best 
+practice to get the customer 
+collaboration into the system. Regular 
+builds ensures that there will always be 
+an up to date system that can be 
+demonstrated to the clients and get 
+their feedback. This will help to 
+highlight integration errors for the 
+features developed for the system. 
+This has feature teams which is a small 
+dynamically formed team that develops a 
+small activity in the system. Therefore 
+each individual gets the chance of coming 
+up with innovative ideas that needs to 
+added to the feature. By doing this 
+multiple mind are always applied to each 
+decision of the system and these options 
+are always evaluated before one is 
+chosen. That way the team can come up 
+with the best possible outcome. 
+Scrum Key principle of this approach is the 
+recognition of requirements churn. i.e. 
+the customers can always change their 
+mind and their wants.  Therefore the 
+features that need to be added to the 
+next sprint will be decided by the 
+product backlog which is prioritized set 
+of requirements which has taken from 
+the customers after submitting the 
+previous sprint. That way this includes 
+the customer collaboration  
+Team is one of the main role in Scrum. 
+This is group which consists of people 
+which has cross-functional skills in the 
+actual work they do. This team would be 
+responsible for deliver the product. They 
+hold meetings each day during the sprint. 
+Each team member would answer a set 
+of question in terms of the work they 
+have done, the work they planned the 
+problems they faced and so on. This way 
+other members would get an idea, 
+suggest solutions for the problems. 
+ 
+ 
+ 
