@@ -13,15 +13,10 @@ package gui.form;
 import dataExtraction.DocumentFilter;
 import java.awt.Toolkit;
 import java.io.File;
-import java.util.AbstractList;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Vector;
-import javax.swing.JCheckBox;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -39,8 +34,7 @@ public class DocumentManagerForm extends javax.swing.JFrame {
     /** Creates new form DocumentManagerForm */
     private DocumentManagerForm() {
         initComponents();
-        java.awt.Image image = Toolkit.getDefaultToolkit().getImage("D:/Project/Codes/Development/UI/src/Images/logo new.png");
-        this.setIconImage(image);
+        this.setIconImage(Main.getPlagiabustImage());
         setFormStyle();
         tableModel = getDefaultTableModel();
         DocumentTable.setModel(tableModel);
@@ -266,7 +260,7 @@ public class DocumentManagerForm extends javax.swing.JFrame {
 
     private void DoneButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DoneButtonActionPerformed
         if (DocumentTable.getSelectedRowCount() > 1 || DocumentTable.getSelectedRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Please select a single file to continue.");
+            JOptionPane.showMessageDialog(this, "Please select a single file to continue.", "Notification", JOptionPane.ERROR_MESSAGE, Main.getPlagiabustIcon());
         } else {
             int index = DocumentTable.getSelectedRow();
             fileName = (String) tableModel.getValueAt(index, 0);
