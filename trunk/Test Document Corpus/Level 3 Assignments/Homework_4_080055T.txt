@@ -1,0 +1,132 @@
+CS 3020 - Software Engineering 
+Homework Assignment 4 
+Index Number: 080055T 
+ 
+1) Name three agile software development methods/approaches and give a brief description of each method. 
+ 
+a) Extreme Programming (XP) 
+The name comes in because this method takes an ‘extreme’ approach to iterative development. Here, all 
+requirements are expressed as scenarios, which are directly implemented as a series of tasks. A pair of 
+programmers work together in this, and before writing the code, they develop tests for each task. All 
+tests must be successfully completed before new code is integrated into the system. 
+Customers are treated as part of the development team, and are welcomed to intimately discuss about 
+scenarios with other team members rather than just listing a set of requirements. [1] 
+ 
+b) Scrum 
+This method introduces the idea of ‘empirical process control’, which is the use of the real-world 
+progress of a project to plan and schedule releases. Projects are divided into distinct phases, called 
+‘sprints’, which are one to three weeks in duration. At the end of each sprint, development team and 
+stakeholders gather to assess the progress. Here, the next steps of the project are decided based on the 
+complete work, rather than relying on predictions or speculations. [2] 
+Three main roles are defined in this method, which are namely Scrum Master, Product Owner and Team 
+Member. The Scrum Master maintains the processes, and has similarities with project managers. Product 
+Owner represents stakeholders and the business, while Team Members do the actual analysis, design, 
+implementation, testing, etc. [3] 
+ 
+c) Feature Driven Development (FDD) 
+Originally found by the global IT strategist and technical writer Jeff De Luca, this method is a model-
+driven, short-iteration process that consists of five main activities.  
+Of these activities, the first step is developing an Overall Model, the result being a high-level object 
+model and notes. Secondly, a Features List is built, in which the items gathered during the initial 
+modeling are grouped into related sets and subject areas. Next, Plan By Feature happens, where the 
+development plan is produced. Class and Feature Set owners are also identified. 
+The next two steps, which comprise roughly 75% of the of the overall project, are named Design By 
+Feature and Build By Feature. From the production of design packages for each feature to finally 
+promoting tested and completed features to the main build take place within these two steps. [4] 
+ 
+ 
+2) Name the four values in the Agile Manifesto. 
+ 
+a) Individuals and interactions over processes and tools 
+b) Working software over comprehensive documentation 
+c) Customer collaboration over contract negotiation 
+d) Responding to change over following a plan 
+3) Select two from the above values, and briefly describe how each of the three agile methods named in 
+question (1) satisfies the chosen Agile Manifesto values. 
+ 
+ Responding to change over following a 
+plan 
+Customer collaboration over contract 
+negotiation 
+Extreme Programming Rather than following a pre-set plan, 
+change is responded with regular 
+system releases, test-first development 
+and continuous integration. Releases of 
+the system are frequent and 
+functionalities are added incrementally. 
+These functionalities are tested before 
+implementation. So any changes in 
+specification or other requirements can 
+be responded without fuss. [1] 
+Customers are engaged in the 
+development process on a full-time 
+basis. In a XP process, the customer is a 
+member of the development team, and 
+is responsible for defining acceptance 
+tests and bringing system requirements 
+for implementation. This is a huge 
+amount of customer involvement when 
+compared with negotiating a contract. 
+[1] 
+Scrum At the completion of each Sprint, the 
+team and stakeholders gather to assess 
+the project progress, and to plan the 
+next steps. The next Sprint starts based 
+on this discussion. So the project’s 
+direction is adjusted or re-oriented 
+purely based on completed work and 
+current environmental changes, rather 
+than an initially set up plan. [2] 
+Customers are very much involved in the 
+project throughout the duration. 
+Continuous discussions are held at the 
+end of each Sprint, in which customers 
+have a major say. Also, the role of 
+Product Owner keeps the development 
+team and stakeholders in touch during 
+the process, which additionally strikes 
+the right balance in the customer 
+involvement. [2] 
+Feature Driven 
+Development 
+The iterative nature of FDD ensures that 
+adaptability is a key ingredient. If an 
+area of risk is identified during the 
+modeling phase, where requirements 
+may change, or are not yet fixed 
+permanently, the particular area in 
+concern could be decoupled and 
+isolated to ensure the impact of change 
+is minimized. [5] 
+Direct collaboration is highly encouraged 
+in this method. During the code reviews 
+of the construction phase, discussion 
+meetings make way for open 
+communication. Also, the Knowledge 
+Management System, a repository 
+which is put in place to capture and 
+publish all essential communication 
+regarding the project, helps to engage 
+and involve the customer in an active 
+manner. [5] 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+References 
+ 
+[1] “Software Engineering – 8th Edition” by Ian Sommerville. Copyright: Pearson Education Limited and Addison-
+Wesley Publisher Limited 
+[2] “Scrum Methodology and Agile Scrum Methodologies” [Online] Available: http://scrummethodology.com/ 
+[Accessed: 13-Dec-2010] 
+[3] “Scrum (Development) – Wikipedia, The free Encyclopedia” [Online] Available: http://en.wikipedia.org/wiki 
+/Scrum_(development) [Accessed: 13-Dec-2010] 
+[4] “Feature Driven Development (FDD) and Agile Modeling” [Online] Available: http://www.agilemodeling.com 
+/essays/fdd.htm [Accessed: 13-Dec-2010] 
+[5] “The Agile Umbrella | Feature Driven Development” [Online] Available: 
+http://www.featuredrivendevelopment.com/node/531 [Accessed: 13-Dec-2010] 
+ 

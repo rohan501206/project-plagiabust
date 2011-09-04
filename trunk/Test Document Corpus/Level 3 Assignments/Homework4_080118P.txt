@@ -1,0 +1,120 @@
+ 
+Homework 4 
+Software Engineering 
+ 
+ 
+HDK Gamage 
+080118P 
+ 
+  
+2 | P a g e  
+ 
+1. Extreme programming is used in software development to improve software quality 
+and will react to changing customer requirements. In order to improve the productivity, 
+it produces frequent releases in short development cycles. XP is designed in a way that 
+any organization would be able to adopt the methodology. This will also reduce the cost 
+while make it easy to adopt new customer requirements.  
+ 
+Scrum is used in project management as an iterative incremental methodology. This 
+can also be used to run software maintenance teams, or as a general project 
+management approach. Scrum contains a set of practices and predefined roles. The 
+main roles are, “Scrum Master”, “Product Owner”, and “Team”.   
+ 
+The Crystal methodology is a lightweight, adaptable approach to software 
+development. Crystal Clear, Crystal Yellow, Crystal Orange are some of the 
+methodologies in the family of Crystal methodology. The characteristics of these 
+methodologies are driven by several factors which can be identified as team size, system 
+criticality, and project priorities. 
+ 
+2. The four values of an agile process are, 
+? Individuals and interactions over processes and tools 
+? Working software over comprehensive documentation 
+? Customer collaboration over contract negotiation 
+? Responding to change over following a plan 
+ 
+3.  
+ Customer collaboration Responding to change 
+Extreme Programming In XP, contact with the customers 
+occurs very frequently. The customer 
+has a very clear idea about the 
+development process. Programmers 
+should listen to the customer needs 
+for the system and what “business 
+logic” is needed. They must 
+understand these needs well enough 
+to provide customer feedback of how 
+to solve the problem, or that it cannot 
+be solved. They will get an actual 
+feedback of the current state of the 
+system once in every two or three 
+“Unit test” will give a direct 
+feedback of how the system reacts 
+to change. The principle of 
+accepting change in XP is about not 
+working against changes but 
+embracing them. If we consider a 
+situation in one iteration the 
+customer’s requirements seemed 
+to be changed dramatically, 
+programmers will accept the 
+situation and plan the new 
+requirements for the next 
+iteration.  
+3 | P a g e  
+ 
+weeks time so that the customer can 
+easily keep track of the development 
+process. Customers will write the 
+functional tests along with the testers.  
+ 
+Scrum In Scrum, the customers are only 
+directly involved during the sprint 
+reviews. The customers will produce 
+the agreed-upon benefits, which will 
+justify the production. The product 
+owner represents the voice of the 
+customer. They will make sure that the 
+“Scrum team” (Product Owner, Scrum 
+Master and Team) works towards the 
+correct goal by writing customer 
+centered items and prioritizing them in 
+the product backlog. 
+A main principle of Scrum is that 
+the customers can change their 
+minds about what they want and 
+those changes cannot be easily 
+addressed in a planned way. So 
+Scrum uses an experimental 
+approach accepting that the 
+problem cannot be fully defined, 
+focusing on the team’s ability to 
+respond to upcoming 
+requirements. 
+ 
+Crystal Methodology In crystal methodology at every 
+iteration the customer get a chance to 
+check progress and alter the direction 
+of the development process. So the 
+customer is considered to have a 
+powerful control over the 
+development process. This creates a 
+closer relationship between the 
+developers and the customer. Even 
+though this engagement level is not for 
+every developer and customer, it is 
+very helpful in making an adaptive 
+process work properly. 
+In each iteration a regular review 
+of the process will be done which 
+would help for the self- adaption of 
+the project. The improvements for 
+the project will be implemented as 
+the project moves on.  
+ 
+ 
+References: 
+http://en.wikipedia.org/wiki/Agile_software_development 
+http://en.wikipedia.org/wiki/Scrum_(development)#Characteristics 
+http://en.wikipedia.org/wiki/Extreme_Programming#Values 
+http://www.slideshare.net/ifsse3/overview-agile-methods 
+http://martinfowler.com/articles/newMethodology.html 

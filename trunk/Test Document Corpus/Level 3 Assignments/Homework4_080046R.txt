@@ -1,0 +1,105 @@
+Software Engineering 
+Homework 4 
+ 
+ 
+1. Agile software development methods 
+? Extreme programming 
+? Scrum 
+? Feature driven development 
+ 
+Extreme programming 
+As Extreme programming has been successful in many companies of different sizes 
+throughout the world, it is one of the popular agile processes. It is all about teamwork where 
+the managers, customers, developers and etc. all are the part of the team. It is successful 
+because it is targeted towards the customer satisfaction instead of delivering software that 
+the programmers and the developing team needs. 
+ 
+Scrum 
+Scrum is a methodology that uses incremental or iterative for project management which 
+uses the real world progress of the project. In this, first project is divided into blocks of equal 
+sizes (2 or 3 weeks) which are known as Sprints. At the end of the each Sprint all the team 
+members of the developing team and stakeholders are get together and assess the progress 
+of the project and plan the future steps. 
+ 
+Feature driven development 
+Feature driven development (FDD) has target of delivering a working software according a 
+time plan which is an iterative and incremental development software development process. 
+This is model-driven process containing five steps. To keep track of the progress of each 
+feature in the project the milestones are used. 
+ 
+2. Values of Agile Manifesto 
+? Individuals and interactions 
+? Working software 
+? Customer collaboration 
+? Responding to change 
+ 
+ 
+ 
+ 
+ 
+ 
+3. How agile processes contain the values of the Agile Manifesto 
+ 
+ Individuals and interactions Responding to change 
+Extreme programming As all the team members and 
+stakeholders are a part of the 
+team they all have interactions 
+with each other. So this helps to 
+get to know the requirements of 
+the stakeholders easily. 
+As the communication 
+between the stakeholders 
+and the development team is 
+very well, the changes can be 
+made to the software even 
+late in the life cycle. 
+Scrum The stakeholders and the 
+developing team get together to 
+assess the progress of the 
+project soon after a sprint 
+complete. This gives the 
+opportunity to the developing 
+team to understand the 
+stakeholders’ point of view 
+about the software and how to 
+improve it.  
+In the sessions after a sprint is 
+completed the development 
+team can adjust the direction 
+of the project if they have 
+deviated from the desired 
+solution by the stakeholders. 
+Feature driven development In this the system is 
+demonstrated to the clients to 
+see the customers’ point of view 
+about the software. So here the 
+development team can get to 
+the exact requirements of the 
+stakeholders. But the 
+interactions are not so well as in 
+Scrum or the Extreme 
+programming. 
+Responding to change is not 
+much good as in Scrum or 
+Extreme programming as the 
+developing team and 
+stakeholders meet each other 
+only at the demonstrations. 
+But the changes can be made 
+according to the stakeholders 
+inquiries.  
+ 
+ 
+References 
+i. http://www.extremeprogramming.org/ 
+ii. http://scrummethodology.com/ 
+iii. http://en.wikipedia.org/wiki/Scrum_%28development%29#Artifacts 
+iv. http://en.wikipedia.org/wiki/Feature_Driven_Development 
+ 
+ 
+ 
+ 
+ 
+ 
+W.K.M.S.P. Chandrasekara 
+080046R 

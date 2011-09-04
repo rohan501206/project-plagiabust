@@ -1,0 +1,92 @@
+Home Work Assignment 4 
+K.A.S.S. Kodithuwakku – 080240G 
+ 
+1.   
+ 
+1.1. Extreme Programming 
+Extreme Programming is an agile software development approach which is intended to improve 
+software quality and responsiveness to changing customer requirements. In this approach 
+releases are introduced frequently with shorter development cycles which in turns improve the 
+productivity and more customer requirements can be adopted. 
+Reference (13/12/2010): http://en.wikipedia.org/wiki/Extreme_Programming 
+ 
+1.2. Feature Driven Development  
+Feature Driven Development (FDD) is an iterative and incremental software development 
+process which is one of the agile approaches for software development. FDD combines number 
+of industry-recognized best practices into a single approach. Its main purpose is to provide 
+tangible, working software repeatedly in a timely manner. 
+Reference (13/12/2010): http://en.wikipedia.org/wiki/Feature_Driven_Development 
+ 
+1.3. Scrum 
+Scrum is an agile approach to software development. Scrum is a framework which does not 
+provide complete, detailed descriptions of how everything is to be done on the project; instead 
+it is left to the team to decide how it is done.  
+Reference (13/12/2010): http://www.mountaingoatsoftware.com/topics/scrum 
+ 
+ 
+ 
+2. Four values in the Agile Manifesto are   
+ 
+? Individuals and interactions over processes and tools 
+? Working software over comprehensive documentation 
+? Customer collaboration over contract negotiation 
+? Responding to change over following a plan 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+3.    
+ Responding to change over 
+following a plan 
+Working software over 
+comprehensive documentation 
+ 
+Extreme Programming In this method customers’ 
+requirements are always 
+gathered and according to those 
+the product is changed 
+Since products are released 
+frequently in shorter period with 
+changing customer requirements  
+the software will work according 
+to customers’ requirements but 
+due to the large number of 
+releases documentation is less 
+Feature Driven Development Since lot of software 
+development practices are 
+involved there isn’t any specific 
+plans, but the work is carried 
+according to the needs that arise. 
+Since there are many practices 
+involved in development 
+documentation process needs to 
+be reduced because it will be 
+tough to do the documentation 
+according to all the practices that 
+is being used. Since lot of practices 
+are involved, if one method is not 
+giving the desired results a new 
+method can be adopted. So finally 
+working software can be made. 
+Scrum Scrum is a framework which does 
+not provide complete, detailed 
+descriptions. So the project will 
+be carried according to the needs 
+which arise and the decisions will 
+be taken by the team. 
+Since the team can decide on how 
+the project is done they have the 
+ability to reduce documentation 
+processes and focus more on 
+developing a working  product  
+ 
+ 
+ 
+ 
+ 

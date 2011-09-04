@@ -1,0 +1,115 @@
+H. P. M. Tissera 
+080511n 
+CS 3020 Software Engineering 
+Homework Assignment 4 
+1) 1. Extreme Programming 
+  This is the best known and most widely used agile development method. Extreme 
+Programming is intended to improve software quality and responsiveness to changing 
+customer requirements. Other elements of extreme programming include: programming in pairs or 
+doing extensive code review, unit testing of all code, avoiding programming of features until they 
+are actually needed, a flat management structure, simplicity and clarity in code, expecting changes 
+in the customer's requirements as time passes and the problem is better understood, and frequent 
+communication with the customer and among programmers. 
+Reference -  http://en.wikipedia.org/wiki/Extreme_Programming - 14/12/2010 12.44pm 
+2. Dynamic Systems Development Method  
+  Dynamic Systems Development Method (DSDM) is a software development 
+methodology originally based upon the Rapid Application Development methodology. DSDM is 
+an iterative and incremental approach that emphasizes continuous user involvement. Its goal is to 
+deliver software systems on time and on budget while adjusting for changing requirements along 
+the development process. 
+Reference - http://en.wikipedia.org/wiki/Dynamic_Systems_Development_Method - 14/12/2010 
+12.44pm 
+3. Feature Driven Development  
+  Feature Driven Development (FDD) is an iterative and incremental software 
+development process. It is one of a number of agile methods for developing software and forms part 
+of the Agile Alliance. FDD blends a number of industry-recognized best practices into a cohesive 
+whole. These practices are all driven from a client-valued functionality perspective. Its main purpose 
+is to deliver tangible, working software repeatedly in a timely manner.   
+Reference - http://en.wikipedia.org/wiki/Feature_Driven_Development - 14/12/2010 12.44pm 
+2) • Individuals and interactions over processes and tools 
+• Working software over comprehensive documentation 
+• Customer collaboration over contract negotiation 
+• Responding to change over following a plan 
+Reference – http://lms.uom.lk/moodle192/file.php/339/Lectures/Lecture_14_-_RAD_and_Reuse_-
+_white.pdf - 14/12/2010 12.44pm (Lecture Slides) 
+3) 
+ Working software Customer collaboration 
+Extreme Programming Extreme Programming 
+encourages starting with the 
+simplest solution. Extra 
+functionality can then be added 
+later. The difference between 
+this approach and more 
+conventional system 
+development methods is the 
+focus on designing and coding 
+for the needs of today instead of 
+those of tomorrow, next week, 
+or next month.[1] 
+In Extreme Programming 
+Programmers must listen to 
+what the customers need the 
+system to do, what "business 
+logic" is needed. They must 
+understand these needs well 
+enough to give the customer 
+feedback about the technical 
+aspects of how the problem 
+might be solved, or cannot be 
+solved. [1] 
+Feature Driven Development  
+ 
+Any function that is too complex 
+to be implemented within two 
+weeks is further decomposed 
+into smaller functions until each 
+sub-problem is small enough to 
+be called a feature. This makes 
+it easier to deliver correct 
+functions and to extend or 
+modify the system.[2] 
+In Feature Driven Development  
+Regular builds ensure there is 
+always an up to date system 
+that can be demonstrated to the 
+client and helps highlighting 
+integration errors of source 
+code for the features early.[2] 
+Dynamic Systems 
+Development Method  
+This method  focus on frequent 
+delivery of products, with 
+assumption that to deliver 
+something "good enough" 
+earlier is always better than to 
+deliver everything "perfectly" in 
+the end. By delivering product 
+frequently from an early stage 
+of the project, the product can 
+be tested and reviewed where 
+the test record and review 
+document can be taken into 
+account at the next iteration or 
+phase.[3] 
+In the DSDM Project lifecycle 
+the Business Stage is the Stage 
+where the essential 
+characteristics of business and 
+technology are analysed. 
+Approach to organise 
+workshops, where a sufficient 
+number of the customer’s 
+experts are gathered to be able 
+to consider all relevant facets 
+of the system, and to be able to 
+agree on development 
+priorities. [3] 
+ 
+Reference [1] -  http://en.wikipedia.org/wiki/Extreme_Programming - 14/12/2010 12.44pm 
+ 
+Reference [2]- http://en.wikipedia.org/wiki/Feature_Driven_Development - 14/12/2010 12.44pm 
+Reference [3] - http://en.wikipedia.org/wiki/Dynamic_Systems_Development_Method - 14/12/2010 
+12.44pm 
+ 
+ 
+ 

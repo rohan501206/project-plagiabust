@@ -1,0 +1,102 @@
+Homework Assignment 04 
+D.S.P.Jayathilake 
+080198H 
+ 
+1. Name 3 agile software development methods/approaches and give a brief description (about 3-
+4 sentences each) of each method. List the reference(s). (including URLs) that you used to 
+answer this question.  
+ 
+? Scrum – 
+ 
+Scrum is a framework, rather than a full process or methodology. Instead of providing detailed 
+descriptions on project management, much is decided by the development team, because the 
+team knows best on how to solve its problem. Scrum depends on a cross functional, self 
+organizing team. There is no overall team leader. Issues are faced by the team as a whole. Scrum 
+projects make progress in sprints of no more than a month long. At the end of each sprint a 
+sprint review is held.  
+ 
+Ref - http://www.mountaingoatsoftware.com/topics/scrum 
+ 
+? Crystal Methods –  
+ 
+The Crystal Method, developed by Alistaire Cockburn, focuses on the people, interaction, 
+community, skills, talents, and communications with the belief that these are what have the 
+first-order effect on performance. Process, he says, is important, but secondary. This is one 
+approach which makes agile development processes possible. This philosophie recognizes that 
+each team has a different set of talents and skills based on its members, so a unique process 
+must be tailored for each team. Hence the process should be minimized.  
+ 
+ Ref - http://www.mariosalexandrou.com/methodologies/crystal-methods.asp 
+ 
+? Context Driven Testing - 
+ 
+This is a paradigm for developing and debugging software that takes into account the way in 
+which the programs are expected to be used in the real world. This kind of testing requires the 
+developers to know the intended market and used environment well. It takes In to account 
+there is no single best solution for all cases, and that complex projects evolve in unpredictable 
+ways. Advantages include increased user friendliness, and optimized functionality for intended 
+users. 
+ 
+ Ref - http://c2.com/cgi/wiki?ContextDrivenTesting 
+ 
+ 
+ 
+ 
+ 
+2. Name the four values in Agile Development 
+ 
+? Individuals and interactions over processes and tools 
+? Working software over comprehensive documentation 
+? Customer collaboration over contract negotiation 
+? Responding to change over following a plan  
+ 
+3. Select two form the above values, and briefly describe each of the three agile methods named in 
+question 1 satisfies the chosen agile manifesto values.  
+ 
+ Individuals and interactions 
+over processes and tools 
+ 
+Responding to change over 
+following a plan 
+Scrum Scrum relies on a self organizing 
+cross functional team, with no 
+team leader. So decisions are 
+taken as a whole, with 
+intercommunication of team, 
+Scrum master (facilitator) and 
+product owner.  
+Scrum projects progress in 
+sprints. In each sprint a specific 
+increment is developed and at 
+the end of the sprint which is 
+about 2 to 4 weeks ling a review 
+is held and the next sprint is 
+tailored to the changes discussed 
+in the review. 
+Crystal Method This focuses on the people, 
+interaction, community, skills, 
+talents, and communications 
+with the belief that these are 
+what have the first-order effect 
+on performance. Process is 
+important, but secondary. 
+Generally process is time boxed 
+in to few iterations of few weeks 
+each. And the after the end of 
+each process decisions are taken 
+according to change. 
+Context Driven Testing It revolves around the fact that 
+software users are human beings 
+with diverse preferences, needs, 
+abilities and limitations. So This 
+method focuses on addressing 
+these different needs instead of 
+testing on a fixed process.  
+it takes into account the fact that 
+complex software projects often 
+evolve in unpredictable ways. So 
+No specific plan is followed and 
+testing is done according to the 
+environment used and changing 
+product context. 
+ 

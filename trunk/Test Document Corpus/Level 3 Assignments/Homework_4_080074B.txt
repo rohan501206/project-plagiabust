@@ -1,0 +1,88 @@
+Homework assignment 4 
+(1)  
+• Scrum:- 
+This is an empirical approach that has been developed for managing the systems 
+development process applying the ideas of industrial process control theory to systems 
+development resulting in an approach that introduces the ideas of flexibility, adaptability 
+and productivity. This does not define any specific software development techniques for the 
+implementation phase and it concentrates only on how the team members should function 
+in order to produce the system flexibility in a constantly changing environment. The main 
+idea of scrum is that systems development involves several environmental and technical 
+variables (e.g. requirements, time frame, resources and technology) that are likely to change 
+during the process. This makes the development process unpredictable and complex, 
+requiring flexibility of the systems development process for it to be able to respond to the 
+changes.  
+• Crystal family:- 
+Crystal family of methodologies includes a number of different methodologies for selecting 
+the most suitable methodology for each individual project and the crystal approach includes 
+principles for tailoring the methodologies to fit the varying circumstances of different 
+projects. Each member of the crystal family is marked with a colour indicating the 
+‘heaviness’ of the methodology (i.e. the darker the colour the heavier the methodology), 
+and crystal suggests choosing the appropriate colour of methodology for a project based on 
+its size and criticality. Larger projects are likely to ask for more coordination and heavier 
+methodologies than smaller ones. 
+• Feature driven development:- 
+FDD is an agile and adaptive approach for developing systems that does not cover entire 
+software development process, but rather focuses on the design and building phases. It has 
+been designed to work with the other activities of a software development project and does 
+not require any specific process model to be used. FDD embodies iterative development and 
+the best practices found to be effective in industry. It emphases quality aspects throughout 
+the process and includes frequent and tangible deliveries, along with accurate monitoring of 
+the progress of the project. FDD also include roles, artefacts, goals, and timelines needed in 
+a project. FDD claim to suitable for the development of critical systems. 
+(2)  
+• Individuals and interactions over processes and tools 
+• Working software over comprehensive documentation 
+• Customer collaboration over contract negotiation 
+• Responding to change over following a plan 
+ 
+(3)  
+ Customer collaboration Responding to change 
+Scrum At the end of each sprint, stakeholders 
+and team members meet to assess the 
+progress of a project and plan its next 
+steps. This allows a project’s direction 
+to be adjusted or reoriented based on 
+completed work, not speculation or 
+predictions.  
+Accepts that the requirement cannot be fully 
+understood and defined and accepts 
+emerging requirements. Each changed 
+requirement can be taken into care during 
+meetings held at the end of each sprint. 
+Crystal The sponsors get critical feedback on 
+the rate of progress of the team. Users 
+get a chance to discover whether their 
+original request was for what they 
+actually need and to get their 
+discoveries fed back into development. 
+ 
+Here the development is done in iterations 
+and results are released to users at the end 
+of each iteration. Then they can suggest any 
+change in requirement they need. But during 
+an iteration requirements cannot be 
+changed. 
+FDD In FDD a special role called ‘Domain 
+Expert’ has been established and they 
+are responsible for keeping in touch 
+with stakeholders and passing the 
+knowledge to developers in order to 
+ensure that the developer delivers a 
+competent system. 
+Process is carried out in smaller granular 
+mode (i.e. iterations are small) so the 
+changes can be responded as soon as 
+possible. 
+ 
+ 
+Reference:- 
+PDF that can be downloaded from below URL 
+http://www.google.lk/url?sa=t&source=web&cd=2&ved=0CCwQFjAB&url=http%3A%2F%2Fciteseerx
+.ist.psu.edu%2Fviewdoc%2Fdownload%3Fdoi%3D10.1.1.161.5931%26rep%3Drep1%26type%3Dpdf
+&rct=j&q=agile%20software%20development%20methods&ei=_fwGTdqFHcrsrQeG-
+eXuDQ&usg=AFQjCNHw4sDvMCIrOg2LJkyxnN6Riwn5YA  
+http://scrummethodology.com/ 
+http://en.wikipedia.org/wiki/Scrum_(development)  
+http://www.informit.com/articles/article.aspx?p=345009  
+ 
