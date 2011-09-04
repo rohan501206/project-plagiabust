@@ -63,10 +63,10 @@ public class InternetDocumentDownloadManager {
     public HashMap<String, ArrayList<String>> downloadFilesForMultiplePeerSearch(ArrayList<String> arr, String folderPath, JProgressBar pbar) {
         fileArrayList = arr;
         String destFolderPath = folderPath;
-
         InternetSearchManager sd = new InternetSearchManager(searchAPI);
         sd.setMaxNumOfSourcesPerDocument(maxNumOfSourcesPerDocument);
         downloadedFileList = sd.downloadSourcesForFileFolder(fileArrayList, destFolderPath, pbar);
+        urlFileMap = sd.getUrlFileMap();
         return downloadedFileList;
     }
 
