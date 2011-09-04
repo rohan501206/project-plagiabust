@@ -28,6 +28,7 @@ public class AdminInforForm extends javax.swing.JFrame {
     public AdminInforForm() {
         initComponents();
         this.setDefaults();
+        this.setIconImage(Main.getPlagiabustImage());
     }
 
     public static InternetSearchAPI getInternetSearchAPI() {
@@ -68,6 +69,7 @@ public class AdminInforForm extends javax.swing.JFrame {
         CancelButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Internet Search Configuration Manager");
 
         DeleteDocumentPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Google", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
         DeleteDocumentPanel.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
