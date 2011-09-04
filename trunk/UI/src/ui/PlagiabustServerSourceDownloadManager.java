@@ -55,9 +55,9 @@ public class PlagiabustServerSourceDownloadManager {
         String destFolderPath = folderPath;
         Client client = new Client();
         PlagiabustWebSearchManager sd = new PlagiabustWebSearchManager(client);
-
         sd.setMaxNumOfSourcesPerDocument(maxNumOfSourcesPerDocument);
         downloadedFileList = sd.downloadSourcesForFileFolder(fileArrayList, destFolderPath, pbar);
+        idFileMap = sd.getIdFileMap();
         return downloadedFileList;
     }
 
