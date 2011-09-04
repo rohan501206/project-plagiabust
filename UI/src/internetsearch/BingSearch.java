@@ -19,7 +19,7 @@ import java.util.ArrayList;
  *
  * @author Brave Heart
  */
-public class BingSearch extends InternetSearchAPI{
+public class BingSearch extends InternetSearchAPI {
     // Search Internet and get results
 
     public BingSearch(String appId) {
@@ -34,17 +34,18 @@ public class BingSearch extends InternetSearchAPI{
         BingSearchClient client = factory.createBingSearchClient();
 
         SearchResponse response = client.search(createSearchRequest(client, appId, searchWord));
+        if (response.getWeb() != null) {
+            for (WebResult result : response.getWeb().getResults()) {
 
-        for (WebResult result : response.getWeb().getResults()) {
+                ResponseResult responseResult = new ResponseResult();
 
-            ResponseResult responseResult = new ResponseResult();
+                responseResult.setUrl(result.getUrl());
+                responseResult.setDescription(result.getDescription());
+                responseResult.setDisplayUrl(result.getDisplayUrl());
+                responseResult.setTitle(result.getTitle());
 
-            responseResult.setUrl(result.getUrl());
-            responseResult.setDescription(result.getDescription());
-            responseResult.setDisplayUrl(result.getDisplayUrl());
-            responseResult.setTitle(result.getTitle());
-
-            responseResultsList.add(responseResult);
+                responseResultsList.add(responseResult);
+            }
         }
 
         return responseResultsList;

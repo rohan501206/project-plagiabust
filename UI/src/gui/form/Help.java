@@ -29,7 +29,7 @@ public class Help extends javax.swing.JFrame {
     public Help() throws IOException {
         initComponents();
         loadFiles(afile);
-        
+        this.setIconImage(Main.getPlagiabustImage());
     }
     
     public void loadFiles(File f)
