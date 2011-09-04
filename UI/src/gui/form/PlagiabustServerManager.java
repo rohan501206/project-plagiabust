@@ -11,7 +11,6 @@
 package gui.form;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import javax.swing.JOptionPane;
 import plagiabustwebserver.Client;
 
@@ -31,6 +30,7 @@ public class PlagiabustServerManager extends javax.swing.JFrame {
         serverDocumentServerManager = new PlagiabustServerDocumentManagerForm();
         documentList = new ArrayList<String>();
         ServerUrlTextField.setText(DefaultSolrUrl);
+        this.setIconImage(Main.getPlagiabustImage());
     }
 
     public static String getSolrURL(){
@@ -66,6 +66,7 @@ public class PlagiabustServerManager extends javax.swing.JFrame {
         currentProgressTextArea = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Plagiabust Web Server Manager");
         setResizable(false);
 
         PlagiabustServerImageLabel.setBackground(new java.awt.Color(255, 255, 255));
@@ -73,7 +74,7 @@ public class PlagiabustServerManager extends javax.swing.JFrame {
 
         CommandPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Commands :", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
-        DoneButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        DoneButton.setFont(new java.awt.Font("Tahoma", 0, 12));
         DoneButton.setText("Done");
         DoneButton.setPreferredSize(new java.awt.Dimension(180, 40));
         DoneButton.addActionListener(new java.awt.event.ActionListener() {
@@ -114,7 +115,7 @@ public class PlagiabustServerManager extends javax.swing.JFrame {
         SubmitToServerLable.setFont(new java.awt.Font("Tahoma", 0, 12));
         SubmitToServerLable.setText("Submit To Plagiabust Server");
 
-        progressLabel.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        progressLabel.setFont(new java.awt.Font("Tahoma", 0, 12));
         progressLabel.setText("Progress");
 
         javax.swing.GroupLayout AddDocumentPanelLayout = new javax.swing.GroupLayout(AddDocumentPanel);
@@ -157,7 +158,7 @@ public class PlagiabustServerManager extends javax.swing.JFrame {
                     .addComponent(progressLabel, javax.swing.GroupLayout.Alignment.TRAILING)))
         );
 
-        SetDefaultsButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        SetDefaultsButton.setFont(new java.awt.Font("Tahoma", 0, 12));
         SetDefaultsButton.setText("Set Defaults");
         SetDefaultsButton.setPreferredSize(new java.awt.Dimension(180, 40));
         SetDefaultsButton.addActionListener(new java.awt.event.ActionListener() {
@@ -168,7 +169,7 @@ public class PlagiabustServerManager extends javax.swing.JFrame {
 
         DeleteDocumentPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Delete Documents : ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
-        DeleteDocumentButton.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        DeleteDocumentButton.setFont(new java.awt.Font("Tahoma", 0, 12));
         DeleteDocumentButton.setText("Delete");
         DeleteDocumentButton.setPreferredSize(new java.awt.Dimension(180, 40));
         DeleteDocumentButton.addActionListener(new java.awt.event.ActionListener() {
@@ -239,7 +240,7 @@ public class PlagiabustServerManager extends javax.swing.JFrame {
         currentProgressTextArea.setBackground(new java.awt.Color(0, 0, 0));
         currentProgressTextArea.setColumns(20);
         currentProgressTextArea.setEditable(false);
-        currentProgressTextArea.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        currentProgressTextArea.setFont(new java.awt.Font("Tahoma", 0, 12));
         currentProgressTextArea.setForeground(new java.awt.Color(255, 255, 255));
         currentProgressTextArea.setLineWrap(true);
         currentProgressTextArea.setRows(4);

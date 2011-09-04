@@ -67,8 +67,7 @@ public class WizardForm extends javax.swing.JFrame {
     WizardForm() {
         initComponents();
 
-        java.awt.Image image = Toolkit.getDefaultToolkit().getImage("src"+File.separator+"Images"+File.separator+"IconImage.png");
-        this.setIconImage(image);
+        this.setIconImage(Main.getPlagiabustImage());
         ViewButton.setVisible(false);
         ProjectLocationLabel2.setVisible(false);
         singleDetectionButton.setSelected(true);
