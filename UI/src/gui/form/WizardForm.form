@@ -229,113 +229,8 @@
                 </Constraint>
               </Constraints>
 
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="AddDocumentSeparator1" alignment="0" min="-2" pref="724" max="-2" attributes="0"/>
-                              <Group type="102" attributes="0">
-                                  <Component id="NameLocationBannerLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="122" max="-2" attributes="0"/>
-                                  <Component id="NameLocationTopSeparator" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="NameLocationLabel" min="-2" max="-2" attributes="0"/>
-                                      <Component id="DeleteProjectFilesCheckBox" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="ProjectLocationLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="ProjectFolderLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="ProjectFolderLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              <Component id="ProjectNameLabel" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Group type="102" alignment="0" attributes="0">
-                                                  <Component id="singleDetectionButton" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="peerDetectionButton" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                                  <Component id="ProjectFolderTextField" alignment="0" max="32767" attributes="1"/>
-                                                  <Component id="ProjectNameTextField" alignment="0" max="32767" attributes="1"/>
-                                                  <Component id="ProjectLocationTextField" alignment="0" min="-2" pref="398" max="-2" attributes="1"/>
-                                              </Group>
-                                          </Group>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace pref="14" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="Step1ImageLabel" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Group type="102" alignment="1" attributes="0">
-                                          <Component id="LocationBrowseButton" min="-2" pref="77" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                                  <Component id="NameLocationTopSeparator" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="NameLocationBannerLabel" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="NameLocationLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="AddDocumentSeparator1" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="Step1ImageLabel" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="ProjectNameLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ProjectNameTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="ProjectLocationLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ProjectLocationTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="LocationBrowseButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="ProjectFolderLabel" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="ProjectFolderTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="ProjectFolderLabel1" min="-2" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="1" groupAlignment="3" attributes="0">
-                                          <Component id="singleDetectionButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="peerDetectionButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="DeleteProjectFilesCheckBox" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <EmptySpace pref="234" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+                <Property name="useNullLayout" type="boolean" value="false"/>
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="ProjectNameLabel">
@@ -345,6 +240,11 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Project Name:"/>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="89" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="ProjectLocationLabel">
                   <Properties>
@@ -353,6 +253,11 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Project Location:"/>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="133" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="ProjectFolderLabel">
                   <Properties>
@@ -361,8 +266,18 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Project Folder:"/>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="186" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JSeparator" name="NameLocationTopSeparator">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="344" y="19" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="NameLocationLabel">
                   <Properties>
@@ -372,6 +287,11 @@
                     <Property name="text" type="java.lang.String" value="Name and Location"/>
                     <Property name="verticalAlignment" type="int" value="1"/>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="49" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JTextField" name="ProjectNameTextField">
                   <Properties>
@@ -383,6 +303,11 @@
                   <Events>
                     <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="ProjectNameTextFieldKeyReleased"/>
                   </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="145" y="86" width="398" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JTextField" name="ProjectLocationTextField">
                   <Properties>
@@ -391,6 +316,11 @@
                       <Font name="Tahoma" size="12" style="0"/>
                     </Property>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="145" y="130" width="398" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JTextField" name="ProjectFolderTextField">
                   <Properties>
@@ -399,6 +329,11 @@
                       <Font name="Tahoma" size="12" style="0"/>
                     </Property>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="145" y="183" width="398" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JButton" name="LocationBrowseButton">
                   <Properties>
@@ -413,8 +348,18 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LocationBrowseButtonActionPerformed"/>
                   </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="557" y="125" width="77" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JSeparator" name="NameLocationBottomSeparator">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="0" y="0" width="-1" height="0"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="NameLocationBannerLabel">
                   <Properties>
@@ -427,6 +372,11 @@
                       <Dimension value="[212, 32]"/>
                     </Property>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="11" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JCheckBox" name="DeleteProjectFilesCheckBox">
                   <Properties>
@@ -438,6 +388,11 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Delete Project Related Files After Completion"/>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="266" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="Step1ImageLabel">
                   <Properties>
@@ -445,6 +400,11 @@
                       <Dimension value="[32, 32]"/>
                     </Property>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="702" y="78" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="singleDetectionButton">
                   <Properties>
@@ -462,6 +422,11 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="singleDetectionButtonActionPerformed"/>
                   </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="145" y="225" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JRadioButton" name="peerDetectionButton">
                   <Properties>
@@ -476,6 +441,11 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Peer"/>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="220" y="225" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="ProjectFolderLabel1">
                   <Properties>
@@ -486,8 +456,18 @@
                     <Property name="requestFocusEnabled" type="boolean" value="false"/>
                     <Property name="verifyInputWhenFocusTarget" type="boolean" value="false"/>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="233" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JSeparator" name="AddDocumentSeparator1">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="70" width="724" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
               </SubComponents>
             </Container>
@@ -664,51 +644,8 @@
                 </Constraint>
               </Constraints>
 
-              <Layout>
-                <DimensionLayout dim="0">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="AddDocumentLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="AddDocumentSeparator2" alignment="0" min="-2" pref="724" max="-2" attributes="0"/>
-                                      <Component id="AddDocumentBannerLabel1" alignment="0" min="-2" pref="430" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="32767" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="ProjectLocationLabel1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
-                                  <Component id="peerSourceTextField" pref="338" max="32767" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="LocationBrowseButton1" min="-2" pref="77" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="186" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
-                <DimensionLayout dim="1">
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
-                          <Component id="AddDocumentBannerLabel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="AddDocumentLabel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="AddDocumentSeparator2" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="ProjectLocationLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="peerSourceTextField" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="LocationBrowseButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <EmptySpace pref="401" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-                </DimensionLayout>
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
+                <Property name="useNullLayout" type="boolean" value="false"/>
               </Layout>
               <SubComponents>
                 <Component class="javax.swing.JLabel" name="AddDocumentBannerLabel1">
@@ -722,6 +659,11 @@
                       <Dimension value="[327, 32]"/>
                     </Property>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="13" width="430" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="AddDocumentLabel1">
                   <Properties>
@@ -731,6 +673,11 @@
                     <Property name="text" type="java.lang.String" value="Select Sources"/>
                     <Property name="verticalTextPosition" type="int" value="1"/>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="51" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JLabel" name="ProjectLocationLabel1">
                   <Properties>
@@ -739,6 +686,11 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Source Location"/>
                   </Properties>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="100" width="-1" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JTextField" name="peerSourceTextField">
                   <Properties>
@@ -750,6 +702,11 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="peerSourceTextFieldActionPerformed"/>
                   </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="133" y="97" width="338" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JButton" name="LocationBrowseButton1">
                   <Properties>
@@ -764,8 +721,18 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="LocationBrowseButton1ActionPerformed"/>
                   </Events>
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="481" y="92" width="77" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
                 <Component class="javax.swing.JSeparator" name="AddDocumentSeparator2">
+                  <Constraints>
+                    <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+                      <AbsoluteConstraints x="10" y="72" width="724" height="-1"/>
+                    </Constraint>
+                  </Constraints>
                 </Component>
               </SubComponents>
             </Container>
