@@ -146,8 +146,10 @@ public class InternetSearchManager {
 
         File fi = new File(downloadedFileFolderPath);
         if (!(fi.exists())) {
+            int fileCounter = 0;
             boolean folderCreated = new File(downloadedFileFolderPath).mkdir();
             for (Iterator<String> it = filePathList.iterator(); it.hasNext();) {
+                
                 String filePath = it.next();
                 // take sources for file
                 HashMap<String, Integer> sourcesOfFile = this.getInternetSourceForFile(filePath);
@@ -155,15 +157,7 @@ public class InternetSearchManager {
                 // download file
                 Iterator sourceIterator = sourcesOfFile.entrySet().iterator();
 
-
-                int fileCounter = 0;
                 while (sourceIterator.hasNext()) {
-
-                    // progress bar
-                    fileCounter++;
-                    downloadProgressBar.runProgress((fileCounter * 100) / sourcesOfFile.size());
-
-
 
                     Map.Entry pair = (Map.Entry) sourceIterator.next();
                     String url = (String) pair.getKey();
@@ -181,7 +175,15 @@ public class InternetSearchManager {
                     }
                 }
                 fileAndSorcesMap.put(filePath, downloadedFilesList);
+                // progress bar
+
+                fileCounter++;
+                downloadProgressBar.runProgress((fileCounter * 100) / filePathList.size());
+  
             }
+            
+            
+            
             Iterator it = urlAndDownloadedPathMap.entrySet().iterator();
             while (it.hasNext()) {
                 Map.Entry pair = (Map.Entry) it.next();
