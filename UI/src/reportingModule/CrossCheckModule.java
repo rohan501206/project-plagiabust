@@ -3,13 +3,7 @@
  * and open the template in the editor.
  */
 
-/*
- * NewJFrame1.java
- *
- * Created on Jul 17, 2011, 6:56:04 PM
- */
 package reportingModule;
-
 import java.awt.Color;
 import java.util.ArrayList;
 import java.util.logging.Level;
