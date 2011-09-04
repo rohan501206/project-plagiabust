@@ -27,9 +27,7 @@ public class ReportWorker extends SwingWorker<ReportingModule, String> {
 
     @Override
     protected ReportingModule doInBackground() throws Exception {
-        //MsgBox msg =new MsgBox(rp,true);
-       // msg.setVisible(true);
-        //rp.setVisible(true);
+        
         System.out.println("Generating Results Please Wait...............");
 
         rp.setDocument(selectedDocumentPath);
