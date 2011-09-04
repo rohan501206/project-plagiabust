@@ -33,7 +33,7 @@ public class KeywordManager extends javax.swing.JFrame {
         initComponents();
         String[] columns = {"No","Keyword"};
         model = new DefaultTableModel(columns, 0);
-
+        this.setIconImage(Main.getPlagiabustImage());
      }
 
     public static KeywordManager getInstance() {

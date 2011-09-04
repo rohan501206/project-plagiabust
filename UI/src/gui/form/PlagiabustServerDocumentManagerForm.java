@@ -59,6 +59,8 @@ public class PlagiabustServerDocumentManagerForm extends javax.swing.JFrame {
                 NumOfDocumentsLabel.setText("Documents added. - " + DocumentTable.getRowCount());
             }
         });
+
+        this.setIconImage(Main.getPlagiabustImage());
     }
 
     private DefaultTableModel getDefaultTableModel() {
