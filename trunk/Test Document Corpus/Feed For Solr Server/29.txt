@@ -1,0 +1,132 @@
+Agile Consultant | Agile Consultant Agile Consultant
+Agile Consultant
+Project Management in today’s world
+Home
+About me
+Agile Consultant
+Charting Progress
+Feature Estimation
+Iteration Planning
+Management Practice
+Members
+Release Planning
+Velocity
+Agile Consultant
+What Is Agile?
+Agile methodology is an approach to project management, typically used in software development. It helps teams respond to the unpredictability of building software through incremental, iterative work cadences, known as sprints. But before discussing agile methodologies further, it’s best to first turn to the methodology that inspired it: waterfall, or traditional sequential development.
+Where Did Agile Come From?
+In 1970, Dr. Winston Royce presented a paper entitled “Managing the Development of Large Software Systems,” which outlined his ideas on sequential development. In essence, his presentation asserted that a project could be developed much like an automobile on an assembly line, in which each piece is added in sequential phases. This means that every phase of the project must be completed before the next phase can begin. Thus, developers first gather all of a project’s requirements, then complete all of its architecture and design, then write all of the code, and so on. There is little, if any, communication between the specialized groups that complete each phase of work.
+Agile Consultant
+It’s easy to see how this development agile methodology is far from optimized. First of all, it assumes that every requirement of the project can be identified before any design or coding occurs. Put another way, do you think you could tell a team of developers everything that needed to be in a piece of software before it was up and running? Or would it be easier to describe your vision to the team if you could react to functional software? Many software developers have learned the answer to that question the hard way: At the end of a project, a team might have built the software it was asked to build, but, in the time it took to create, business realities have changed so dramatically that the product is irrelevant. In that scenario, a company has spent time and money to create software that no one wants. Couldn’t it have been possible to ensure the end product would still be relevant before it was actually finished?
+Agile Consultant
+Why Agile?
+Agile development methodology attempts to provide many opportunities to assess the direction of a project throughout the development lifecycle. This is achieved through regular cadences of work, known as sprints or iterations, at the end of which teams must present a shippable increment of work. Thus by focusing on the repetition of abbreviated work cycles as well as the functional product they yield, agile methodology could be described as “iterative” and “incremental.” In waterfall, development teams only have one chance to get each aspect of a project right. In an agile paradigm, every aspect of development — requirements, design, etc. — is continually revisited throughout the lifecycle. When a team stops and re-evaluates the direction of a project every two weeks, there’s always time to steer it in another direction.
+Agile consultant
+The results of this “inspect-and-adapt” approach to development greatly reduce both development costs and time to market. Because teams can gather requirements at the same time they’re gathering requirements, the phenomenon known as “analysis paralysis” can’t really impede a team from making progress. And because a team’s work cycle is limited to two weeks, it gives stakeholders recurring opportunities to calibrate releases for success in the real world. In essence, it could be said that the agile development methodology helps companies build the right product. Instead of committing to market a piece of software that hasn’t even been written yet, agile empowers teams to optimize their release as it’s developed, to be as competitive as possible in the marketplace. In the end, a development agile methodology that preserves a product’s critical market relevance and ensures a team’s work doesn’t wind up on a shelf, never released, is an attractive option for stakeholders and developers alike.
+Agile consultant
+The various Agile methodologies share much of the same philosophy, as well as many of the same characteristics and practices (as we discuss separately on the site). But from an implementation standpoint, each has its own recipe of practices, terminology, and tactics. Here we have summarized a few of the main contenders these days:
+Scrum
+Extreme Programming (XP)
+Crystal
+Dynamic Systems Development Method (DSDM)
+Feature-Driven Development (FDD)
+Lean Software Development
+Scrum is a lightweight management framework with broad applicability for managing and controlling iterative and incremental projects of all types. Ken Schwaber, Mike Beedle, Jeff Sutherland and others have contributed significantly to the evolution of Scrum over the last decade. Over the last couple of years in particular, Scrum has garnered increasing popularity in the software community due to its simplicity, proven productivity, and ability to act as a wrapper for various engineering practices promoted by other Agile methodologies.
+Scrum
+Ken Schwaber, has depicted the Scrum process in a diagram on the Control Chaos website.
+In Scrum, the “Product Owner” works closely with the team to identify and prioritize system functionality in form of a “Product Backlog”. The Product Backlog consists of features, bug fixes, non-functional requirements, etc. – whatever needs to be done in order to successfully deliver a working software system. With priorities driven by the Product Owner, cross-functional teams estimate and sign-up to deliver “potentially shippable increments” of software during successive Sprints, typically lasting 30 days. Once a Sprint’s Product Backlog is committed, no additional functionality can be added to the Sprint except by the team. Once a Sprint has been delivered, the Product Backlog is analyzed and reprioritized, if necessary, and the next set of functionality is selected for the next Sprint.
+Agile consultant
+Scrum has been proven to scale to multiple teams across very large organizations (800+ people).
+XP, originally described by Kent Beck, has emerged as one of the most popular and controversial Agile methods. XP is a disciplined approach to delivering high-quality software quickly and continuously. It promotes high customer involvement, rapid feedback loops, continuous testing, continuous planning, and close teamwork to deliver working software at very frequent intervals, typically every 1-3 weeks.
+Agile consultant
+Extreme Programming (XP)
+The original XP recipe is based on four simple values – simplicity, communication, feedback, and courage – and twelve supporting practices:
+Planning Game
+Small Releases
+Customer Acceptance Tests
+Simple Design
+Pair Programming
+Test-Driven Development
+Refactoring
+Continuous Integration
+Collective Code Ownership
+Coding Standards
+Metaphor
+Sustainable Pace
+Don Wells has depicted the XP process in a popular diagram.
+In XP, the “Customer” works very closely with the development team to define and prioritize granular units of functionality referred to as “User Stories”. The development team estimates, plans, and delivers the highest priority user stories in the form of working, tested software on an iteration by iteration basis. In order to maximize productivity, the practices provide a supportive, lightweight framework to guide a team and ensure high-quality software.
+The Crystal methodology is one of the most lightweight, adaptable approaches to software development. Crystal is actually comprised of a family of methodologies (Crystal Clear, Crystal Yellow, Crystal Orange, etc.) whose unique characteristics are driven by several factors such as team size, system criticality, and project priorities. This Crystal family addresses the realization that each project may require a slightly tailored set of policies, practices, and processes in order to meet the project’s unique characteristics.
+Crystal
+Agile Consultant
+Several of the key tenets of Crystal include teamwork, communication, and simplicity, as well as reflection to frequently adjust and improve the process. Like other Agile methodologies, Crystal promotes early, frequent delivery of working software, high user involvement, adaptability, and the removal of and bureaucracy or distractions. Alistair Cockburn, the originator the Crystal, has created the Crystal website and has also recently released a new book “Crystal Clear: A Human-Powered Methodology for Small Teams”.
+DSDM, dating back to 1994, grew out of the need to provide an industry standard project delivery framework for what was referred to as Rapid Application Development (RAD) at the time. While RAD was extremely popular in the early 1990’s, the RAD approach to software delivery evolved in a fairly unstructured manner. As a result, the DSDM Consortium was created and convened in 1994 with the goal of devising and promoting a common industry framework for rapid software delivery. Since 1994, the DSDM methodology has evolved and matured to provide a comprehensive foundation for planning, managing, executing, and scaling Agile and iterative software development projects.
+Dynamic Systems Development Method (DSDM)
+Agile Consultant
+DSDM is based on nine key principles that primarily revolve around business needs/value, active user involvement, empowered teams, frequent delivery, integrated testing, and stakeholder collaboration. DSDM specifically calls out “fitness for business purpose” as the primary criteria for delivery and acceptance of a system, focusing on the useful 80% of the system that can be deployed in 20% of the time.
+Requirements are baselined at a high level early in the project. Rework is built into the process, and all development changes must be reversible. Requirements are planned and delivered in short, fixed-length time-boxes, also referred to as iterations, and requirements for DSDM projects are prioritized using MoSCoW Rules:
+M – Must have requirements
+S – Should have if at all possible
+C – Could have but not critical
+W – Won’t have this time, but potentially later
+All critical work must be completed in a DSDM project. It is also important that not every requirement in a project or time-box is considered critical. Within each time-box, less critical items are included so that if necessary, they can be removed to keep from impacting higher priority requirements on the schedule.
+Agile Consultant
+The DSDM project framework is independent of, and can be implemented in conjunction with, other iterative methodologies such as Extreme Programming and the Rational Unified Process.
+FDD was originally developed and articulated by Jeff De Luca, with contributions by M.A. Rajashima, Lim Bak Wee, Paul Szego, Jon Kern and Stephen Palmer. The main FDD website is here. The first incarnations of FDD occured as a result of collaboration between De Luca and OOD thought leader Peter Coad. FDD is a model-driven, short-iteration process. It begins with establishing an overall model shape. Then it continues with a series of two-week “design by feature, build by feature” iterations. The features are small, “useful in the eyes of the client” results. FDD designs the rest of the development process around feature delivery using the following eight practices:
+Feature-Driven Development (FDD)
+Domain Object Modeling
+Developing by Feature
+Component/Class Ownership
+Feature Teams
+Inspections
+Configuration Management
+Regular Builds
+Visibility of progress and results
+FDD recommends specific programmer practices such as “Regular Builds” and “Component/Class Ownership”. FDD’s proponents claim that it scales more straightforwardly than other approaches, and is better suited to larger teams. Unlike other Agile approaches, FDD describes specific, very short phases of work which are to be accomplished separately per feature. These include Domain Walkthrough, Design, Design Inspection, Code, Code Inspection, and Promote to Build.
+The notion of “Domain Object Modeling” is increasingly interesting outside the FDD community, following the success of Eric Evans’ book Domain-Driven Design.
+Lean Software Development is an iterative methodology originally developed by Mary and Tom Poppendieck, and the main on-line resource for it remains their site. Lean Software Development owes much of its principles and practices to the Lean Enterprise movement, and the practices of companies like Toyota. Lean Software Development focuses the team on delivering Value to the customer, and on the efficiency of the “Value Stream,” the mechanisms that deliver that Value. The main principles of Lean include:
+Lean Software Development
+Eliminating Waste
+Amplifying Learning
+Deciding as Late as Possible
+Delivering as Fast as Possible
+Empowering the Team
+Building Integrity In
+Seeing the Whole
+Lean eliminates waste through such practices as selecting only the truly valuable features for a system, prioritizing those selected, and delivering them in small batches. It emphasizes the speed and efficiency of development workflow, and relies on rapid and reliable feedback between programmers and customers. Lean uses the idea of work product being “pulled” via customer request. It focuses decision-making authority and ability on individuals and small teams, since research shows this to be faster and more efficient than hierarchical flow of control. Lean also concentrates on the efficiency of the use of team resources, trying to ensure that everyone is productive as much of the time as possible. So it concentrates on concurrent work, and the fewest possible intra-team workflow dependencies. Lean also strongly recommends that automated unit tests be written at the same time the code is written.
+Agile Consultant
+Translators
+Pages
+About me
+Agile Consultant
+Charting Progress
+Feature Estimation
+Iteration Planning
+Management Practice
+Members
+Release Planning
+Velocity
+Recent Entries
+Winning Forex Methods
+Real Life Project Management
+How do you handle Scope Creep with Scrum
+Innovative way for Managing Projects
+Project Management Articles
+Agile Videos
+Login or Register
+Username:
+Password:
+Remember me
+Register
+Lost your password?
+Blogroll
+Additional PM Templates
+Agile Change Management
+Agile Project Management Software
+Edge of Chaos – Agile Development
+Free PM templates
+High Level Process Flow
+PM Templates
+Project Connections
+Project Management software by Rally
+Top 10 qualities of Project Manager
+Fatal error: Allowed memory size of 33554432 bytes exhausted (tried to allocate 1106109 bytes) in /home/p14l37vl/public_html/wp-includes/wp-db.php on line 478

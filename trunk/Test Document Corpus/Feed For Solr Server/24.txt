@@ -1,0 +1,45 @@
+Collaboration Tools for Global Software Engineering ",false,false); ColdFusion.Layout.selectTab('citationdetails','abstract');_cf_bind_init_1315140374388=function() { ColdFusion.Bind.register([],{'bindTo':'abstract','bindExpr':['tab_abstract.cfm?id=1731158&usebody=tabbody&cfid=40621781&cftoken=87552457']},ColdFusion.Bind.urlBindHandler,true); };ColdFusion.Event.registerOnLoad(_cf_bind_init_1315140374388); ColdFusion.Layout.addTab(_cf_layout,"authors","Authors",false,false);_cf_bind_init_1315140374389=function() { ColdFusion.Bind.register([],{'bindTo':'authors','bindExpr':['tab_authors2.cfm?id=1731158&usebody=tabbody&cfid=40621781&cftoken=87552457']},ColdFusion.Bind.urlBindHandler,true); };ColdFusion.Event.registerOnLoad(_cf_bind_init_1315140374389); ColdFusion.Layout.addTab(_cf_layout,"references","References",false,false);_cf_bind_init_1315140374390=function() { ColdFusion.Bind.register([],{'bindTo':'references','bindExpr':['tab_references.cfm?id=1731158&type=article&usebody=tabbody&cfid=40621781&cftoken=87552457']},ColdFusion.Bind.urlBindHandler,true); };ColdFusion.Event.registerOnLoad(_cf_bind_init_1315140374390); ColdFusion.Layout.addTab(_cf_layout,"citedby","Cited By",false,false);_cf_bind_init_1315140374391=function() { ColdFusion.Bind.register([],{'bindTo':'citedby','bindExpr':['tab_citings.cfm?id=1731158&usebody=tabbody&cfid=40621781&cftoken=87552457']},ColdFusion.Bind.urlBindHandler,true); };ColdFusion.Event.registerOnLoad(_cf_bind_init_1315140374391); ColdFusion.Layout.addTab(_cf_layout,"indexterms","Index Terms",false,false);_cf_bind_init_1315140374392=function() { ColdFusion.Bind.register([],{'bindTo':'indexterms','bindExpr':['tab_indexterms.cfm?id=1731158&usebody=tabbody&cfid=40621781&cftoken=87552457']},ColdFusion.Bind.urlBindHandler,true); };ColdFusion.Event.registerOnLoad(_cf_bind_init_1315140374392); ColdFusion.Layout.addTab(_cf_layout,"source","Publication",false,false);_cf_bind_init_1315140374393=function() { ColdFusion.Bind.register([],{'bindTo':'source','bindExpr':['tab_source.cfm?id=1731158&usebody=tabbody&type=article&sellOnline=0&purchaseable=no&cfid=40621781&cftoken=87552457']},ColdFusion.Bind.urlBindHandler,true); };ColdFusion.Event.registerOnLoad(_cf_bind_init_1315140374393); ColdFusion.Layout.addTab(_cf_layout,"revs","Reviews",false,false);_cf_bind_init_1315140374394=function() { ColdFusion.Bind.register([],{'bindTo':'revs','bindExpr':['tab_reviews.cfm?id=1731158&logged=0&curclient_no=NO&usebody=tabbody&cfid=40621781&cftoken=87552457']},ColdFusion.Bind.urlBindHandler,true); };ColdFusion.Event.registerOnLoad(_cf_bind_init_1315140374394); ColdFusion.Layout.addTab(_cf_layout,"comments","Comments",false,true);_cf_bind_init_1315140374395=function() { ColdFusion.Bind.register([],{'bindTo':'comments','bindExpr':['tab_comments.cfm?id=1731158&logged=0&loggedbyip=0&curclient_no=NO&usebody=tabbody&full_name=&email=&cfid=40621781&cftoken=87552457']},ColdFusion.Bind.urlBindHandler,true); };ColdFusion.Event.registerOnLoad(_cf_bind_init_1315140374395); ColdFusion.Layout.addTab(_cf_layout,"prox","Table of Contents",false,false);_cf_bind_init_1315140374396=function() { ColdFusion.Bind.register([],{'bindTo':'prox','bindExpr':['tab_about.cfm?id=1731158&type=article&parent_id=1731104&parent_type=issue&title=Collaboration%20Tools%20for%20Global%20Software%20Engineering&toctitle=IEEE%20Software&tocissue_date=Volume%2027%20Issue%202%2C%20March%202010¬oc=0&usebody=tabbody&tocnext_id=1803938&tocnext_str=Volume 27 Issue 3, May 2010&tocprev_id=1729468&tocprev_str=Volume 27 Issue 1, January 2010&toctype=issue&cfid=40621781&cftoken=87552457']},ColdFusion.Bind.urlBindHandler,true); };ColdFusion.Event.registerOnLoad(_cf_bind_init_1315140374396); };ColdFusion.Event.registerOnLoad(_cf_layout_init_1315140374387);
+SIGN IN SIGN UP
+Collaboration Tools for Global Software Engineering
+Authors:
+Filippo Lanubile
+University of Bari
+Christof Ebert
+Vector Consulting Services
+Rafael Prikladnicki
+Pontifícia Universidade do Rio Grande do Sul
+Aurora Vizcaíno
+University of Castilla-La Mancha
+2010 Article
+Bibliometrics
+· Downloads (6 Weeks): 0
+· Downloads (12 Months): 0
+· Citation Count: 1
+Published in:
+· Journal
+IEEE Software archive
+Volume 27 Issue 2, March 2010
+IEEE Computer Society Press Los Alamitos, CA, USA
+table of contents doi>10.1109/MS.2010.39
+Tools and Resources
+TOC Service:
+Email
+RSS
+Save to Binder
+Export Formats:
+BibTeX
+EndNote
+ACM Ref
+Publisher Site
+Share:
+|
+Tags: software engineering, collaboration, global software development
+Feedback | Switch to single page view (no tabs) **Javascript is not enabled and is required for the "tabbed view" or switch to the single page view**
+Powered by
+The ACM Digital Library is published by the Association for Computing Machinery. Copyright © 2011 ACM, Inc.
+Terms of Usage Privacy Policy Code of Ethics Contact Us
+Useful downloads: Adobe Acrobat QuickTime Windows Media Player Real Player
+The ACM Guide to Computing Literature
+All Tags
+Export Formats
+Save to Binder

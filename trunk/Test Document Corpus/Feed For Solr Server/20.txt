@@ -1,0 +1,344 @@
+Feature-Driven Development - an Agile Alternative to Extreme Programming
+Login Register
+Did you forget your: Username / Password ?
+Local Web
+'); }, success: function(data){ jQuery("#result").html(''); if(data=="false"){ ok = false } } }) return ok } function check_mail(){ var ok=true; jQuery.ajax({ async: false, url: 'index.php?option=com_user&task=check_mail&no_html=1', data:({ mail: jQuery("#emailt").val() }), type: "POST", beforeSend: function(){ jQuery("#result").html('
+'); }, success: function(data){ jQuery("#result").html(''); if(data=="true"){ ok=false } } }) return ok } function check_username(){ var ok=true; jQuery.ajax({ async: false, url: 'index.php?option=com_user&task=check_username&no_html=1', data:({ username: jQuery("#usernamet").val() }), type: "POST", beforeSend: function(){ jQuery("#result").html('
+'); }, success: function(data){ jQuery("#result").html(''); if(data=="true"){ ok=false } } }) return ok } function alo(){ var password2 = document.getElementById('password2t').value var password = document.getElementById('passwordt').value var email = document.getElementById('emailt').value var username = document.getElementById('usernamet').value var i=0 if(document.getElementById('namet').value==''){ jQuery(".name_err").html('please enter your name').fadeIn("slow") i++ }else{ jQuery(".name_err").html('') } regex = new RegExp("[\<|\>|\"|\'|\%|\;|\(|\)|\&]", "i"); if(document.getElementById('usernamet').value=='' || regex.test(username)){ jQuery(".username_err").html('please enter a valid username').fadeIn("slow") i++ }else{ jQuery(".username_err").html('') } if(email=='' || !(email.indexOf(".") > 2) || !(email.indexOf("@") > 0)){ jQuery(".email_err").html('please enter a valid email').fadeIn("slow") i++ }else{ jQuery(".email_err").html('') } if(document.getElementById('passwordt').value=='' || document.getElementById('passwordt').value.length<6){ jQuery(".password_err").html('please enter a valid password').fadeIn("slow") i++ }else{ jQuery(".password_err").html('') } if(password2=='' || password !=password2){ jQuery(".password2_err").html('passwords do not match').fadeIn("slow") i++ }else{ jQuery(".password2_err").html('') } if(document.getElementById("check_agree1").checked==0){ jQuery(".agree_err").html('please accept terms and conditions').fadeIn("slow") i++ }else{ jQuery(".agree_err").html('') } if(jQuery("#osolCatchaTxt1").val()==''){ jQuery("#err_captcha").html('please try captcha again').fadeIn("slow") }else{ jQuery("#err_captcha").html('') } if(i==0){ if(check_mail()==false){ jQuery(".email_err").html('Email is already exists').fadeIn("slow") } if(check_captcha()==false){ jQuery("#err_captcha").html('Please enter a valid captcha').fadeIn("slow") } if(check_username()==false){ jQuery(".username_err").html('Username is already exists!').fadeIn("slow") } if(check_mail() && check_captcha() && check_username()){ jQuery("#josFormcc").submit(); } } return false } jQuery(function(){ })
+CM Crossroads Registration
+Name:
+*
+User name:
+*
+E-mail:
+*
+Password:
+*
+Verify Password:
+*
+Please Accept the terms and conditions *
+Fields marked with an asterisk (*) are required.
+Please enter the following characters you see into the textbox below.
+Refresh
+Create an account
+Home
+Company
+Advertising
+About Us
+Editorial Calendar
+Submission Guidelines
+Privacy Statement
+Website Terms
+Contact Us
+Search
+Write For Us
+Site Map
+Community SIte Map
+Articles
+Subscribe to CM Journal
+CM Journal
+Previous Editions
+Editorial Calendar
+CM Basics
+Product Reviews
+Columns
+Agile in the Cloud
+Agile SCM
+Ask Mr. Make
+Behaviorally Speaking
+CM: The Next Generation
+Implementation Excellence
+The Road to Quality
+Implementing Standards
+Better Software Magazine
+Events
+Online Event Series
+Webcasts
+Agile Webcast Series
+Events Calendar
+Add an Event
+Support
+Live Cast System Test
+Contact Us
+SQE Conferences
+Blogs
+Featured Blogs
+Brad Appleton's ACME Blog
+From the Editor
+Steve Berczuk's Blog
+Johanna Rothman's Blog
+Mark Bools
+CM for Agile
+Software CM
+Community Blogs
+Software Quality Blogs
+Community
+My Profile
+Groups
+Photo Albums
+Change Password
+Join Today
+Forums
+Latest Posts
+Edit Forum Profile
+Media Center
+Video Spotlight - cmTube
+Educational Videos
+The Crossroads - Podcast
+CM Today - Podcast
+Whitepapers
+IT Compliance Whitepapers
+Requirements Whitepapers
+Software Quality Whitepapers
+News
+Resources
+Tool Spotlight
+CM Yellow Pages
+CM Wiki
+Books
+Tools and Services Guide
+StickyMinds Tools
+Jobs
+Job Listings
+How to Post a Job
+Jobs Homepage
+Training
+Latest Discussion in the Forums
+No posts to display.
+More Topics »
+We have 4782 guests and 42 members online
+Sponsors
+TechWell
+Home Agile SCM Feature-Driven Development - an Agile Alternative to Extreme Programming
+Feature-Driven Development - an Agile Alternative to Extreme Programming
+Written by Brad Appleton
+Monday, 17 April 2006 02:56
+Many people today judge all of "Agile development" based on what they know about Extreme Programming (XP), quite possibly because that is all or most of what they've heard about agile development. I wish all of those folks (especially agile skeptics) would take a close look at Feature-Driven Development (FDD) if for no other reason than because it is an example of an agile method that is very different from XP. FDD is quite agile while still employing many of the traditional practices that agile skeptics are probably more accustomed to seeing.
+For example, FDD has the more traditional progression of a systems-engineering lifecycle model. It uses distinct phases in its iterations while still being highly iterative and collaborative. FDD does conduct up-front planning, design and documentation and relies very heavily upon domain modeling (including "Color Modeling" with UML). FDD also uses feature-teams with chief architects/programmers and traditional code-ownership and code-review (as opposed to pair-programming and refactoring).
+A Whirlwind Tour of FDD
+Feature-Driven Development grew out of the method initially described by Peter Coad and Jeff DeLuca in chapter six of the book Java Modeling in Color with UML. It is a highly iterative and collaborative agile development method that focuses on:
+Delivering "frequent, tangible, working results" (about every 2 weeks)
+Domain-driven modeling and design
+Building-in quality at each step
+Producing accurate and meaningful progress/status with minimal overhead and disruption for developers
+Being useful and desirable to managers and clients (in addition to developers)
+DeLuca and Coad first employed FDD with great success on a large (1M+ lines of code) Java project for an international bank in Singapore. Since then it has been increasingly used in other parts of globe with increasing success (including parts of large companies like Sprint and Motorola) and is described in more depth in more recent books like a A Practical Guide to Feature-Driven Development and parts of Agile Management for Software Engineering.
+The Five Processes of FDD
+FDD is composed of five processes:
+Develop an Overall Model
+Build a Features List
+Plan By Feature
+Design By Feature
+Build By Feature
+These 5 processes are described using traditional ETVX-based (Entry-Task-Verify-eXit) process descriptions. FDD can be done by itself for substantial projects with modest-sized teams. For much larger projects and many teams, the overall FDD method fits quite nicely inside a larger systems development model where market-level and system-level technical requirements have already been produced, and some kind of independent V&V/QA activity takes place after development releases a production-candidate version of the software.
+So FDD can start with the high-level system requirements in place, or it can begin with the domain modeling to build the initial shared understanding of what the overall system is and must accomplish. In either event, FDD has more roles that are formally defined than many of the other agile methods, employing a chief architect, chief programmers, project managers (along with domain experts, developers (who serve as class-owners), and several other supporting roles (like build & release managers) to create an overall domain model, partition the system up into features, feature-teams and objects, and develop, build and deliver the results in an incremental and iterative manner.
+Develop an Overall Model
+To develop the overall domain model, the chief architect collaborates with the domain experts and developers to create an overall object-model using Color Modeling techniques and patterns. This is produced after a number of hi-level walkthroughs of the scope and context of the system for each area of the problem domain.
+After a walkthrough, they split up into small groups of 3-4 people to produce object models for their respective portions of the domain, and then they return and review and compare each others models for consistency, correctness, completeness and clarity. Eventually they arrive at a domain object model that captures and conveys the key abstractions and relationships of the system.
+Build a List of Features
+With the initial domain model in place, the team then produces a list of features, where a "feature" is defined as a small, deliverable client-valued piece of functionality that is succinctly expressed using the format:
+action result object [parameters]
+Or, more precisely, with the following grammatical structure:
+action {a|the} result {of|to|from|for|...} object [{with|for|of|...} parameters]
+These are captured in traditional requirements documents, such as use-cases or formal specifications, and referenced in the corresponding use-cases and designs. Features are then grouped into subject-areas (or subject-domains) containing one or more feature-sets of several individual features. Each subject-area tends to take on the name of a core capability, such as "subject-name management."
+Feature-sets within a subject-area can be integration-tested together, and each feature within a feature-set maps to a method in the domain-model. In business systems, a subject-area often maps to a business-function or business-domain, a feature-set to a particular business-process within that domain, and a feature to a particular business-activity or business-transaction within the overall business process/workflow.
+Once an initial feature-list has been compiled and collated into feature-sets and subject-areas, a system review is conducted with domain experts/analysts and other stakeholders to evaluate the list for correctness, completeness, and consistency.
+Plan by Feature
+With a features list in place, the feature-sets and features are analyzed and estimated, and the feature-sets (or major feature-sets, depending on the size of the system) are sorted into a sequence of (possibly nested) time-boxes for releases, major-milestones (e.g., at least quarterly) and iterations (at least monthly, preferably 2-4 weeks). The sequencing is based on customer-assigned priorities, estimates, and technical dependencies among the feature-sets. Feature-sets are assigned to individual feature-teams (each led by a chief-programmer) and classes from the domain-model are assigned to individual developers, who are responsible for the creation and maintenance of the class.
+Design by Feature & Build by Feature
+Note that, thus far, the FDD process has been very different from other agile methods in that it does a substantial amount of up-front requirements, analysis, modeling, and planning for the entire system. FDD still tries to limit this to the minimally sufficient set of artifacts, and keep them as streamlined as is convenient, but it nonetheless performs this amount of up-front activity for requirements, modeling, and planning.
+Once development is ready to start, the FDD feature-production "machine" kicks-in to high-gear: Iterations of the sequence "Design by Feature" & "Build by Feature" begin churning out tangible working results at a frequent and steady pace (about every two weeks, or less).
+Chief programmers select small groups of features to form "Chief-Programmer Work Packages" (CPWPs) which are the basic units of integration with the other feature-sets and feature-teams.
+The CPWPs are planned at a regular intervals (no less than bi-weekly), and the classes involved are identified and the class-owners are assigned the corresponding development tasks.
+The feature-team then collaborates to devise very detailed sequence diagrams and develops the interfaces and declarations for the corresponding classes and methods.
+A design inspection is held, and once successfully passed, the class-owners develop the code and unit-tests for their classes, then integrate their created/updated classes and conduct code-inspections.
+When all updates are inspected and the chief-programmer is satisfied with the results, the completed work-package and its features are "promoted" to the "main build" and the development and build processes are repeated for the next batch of features that make-up the next CPWP.
+Notice that not all of the design is "up front" before implementation begins. The domain modeling work performed at the beginning fleshes out the overall shape of the problem domain and design model, but detailed design and dynamic interactions are done during the "Design by Feature" phase.
+FDD Best Practices
+And that is the essence of the FDD process. It has the ability to fit securely in-between a set of front-end system engineering process of creating initial high-level requirements, and a back-end process of system build/package, and independent system-level testing. It also resembles more traditional plan-based development in its approach to requirements, design and planning.
+Throughout the FDD process, the set of key or "best" practices that form the "gears" of the "FDD machine" are:
+Domain Object Modeling (typically using Color Modeling, though not always explicitly stated) done highly collaboratively with a chief architect and domain experts
+Iterative/incremental Development driven by Feature-sets and features as the units of integration, build, and promotion
+Feature Teams (led by "Chief Programmers")
+Individual Code Ownership (on a per-class basis)
+Inspections and Reviews (for models/designs, feature-lists, and code)
+Regular Builds
+Configuration Management
+Visible and meaningful Reporting of Status/Results
+The first five practices above are evident from the description of the five processes of FDD. The later three practices are a bit less apparent, and all strongly relate to CM, so let's discuss the CM aspects of FDD in a bit more detail in the next section.
+FDD and SCM
+Juha Kolska's 2003 report on Software Configuration Management in Agile Methods describes FDD as one of the few agile methods that explicitly mentions software CM (not just version control) and specific software CM practices as a key element. FDD contains the following practices which relate to configuration planning, identification & baselining, control, status-accounting, and auditing & reviews:
+Requirements are explicitly captured, and traceability is explicitly maintained from requirements to features, to model-elements, to source-code classes and tests
+Features are tracked ("Track by Feature") with six milestones per feature: domain walkthrough, design, design inspection, code, code-inspection, promote-to-build (planned and actual dates are tracked)
+Features & feature-sets have status and progress visibly reported to the development team, to project/program leads, and to stakeholders and upper management. FDD defines the content and format for each of these different types of status-accounting reports (see chapter 5 of A Practical Guide to Feature-Driven Development)
+New requirements and features are subject to explicit change-control once development plans are made and development begins
+Change authorization happens by allocating feature-sets to feature-teams, assigning features (and CPWPs) to chief-programmers, and assigning individual owners to control all source-code changes to individual classes/modules (Does Class Ownership really work? and the "Code Stewardship revisited" discussion from the AgileManagement YahooGroup)
+Regular build & integration plans are made and monitored using Chief-Programmer Work-Packages (CPWPs), which are then promoted to the "main build." (See also Class Ownership and Regular Integration)
+CPWPs are more than just a "build" or a branch/label; CPWPs contain all the information necessary to perform CM audits on the promoted build, such as:
+unique identification of each work-package
+completed line-items for the status of each delivered feature
+outputs from the tasks defined in the task-descriptions of the feature-development plan
+lists of all the deliverables in each work-package It should be noted that FDD does not specify the precise content of CPWPs. The above is just an example summarized from chapter 6 of A Practical Guide to Feature-Driven Development. (The example given also includes hyperlinks to documentation and JavaDocs.)
+Each feature-team uses a feature-team integration "area" (an integration "workspace" and/or a feature-team integration branch) to base their current in -progress work of the appropriate "main build" version, and to develop, test, and promote changes and work-packages from the feature-team area to the "main build." (See Integration in FDD and also Promotion Groups and modern CM systems)
+Formal design reviews/walkthroughs and code-inspections are required and tracked before the design/code is "promoted" to the next level of development readiness.
+The use of both change-tracking & version-control tools are mandated for carrying out the CM-related activities of FDD.
+The above is a sufficient overview of CM-related activities of FDD. Notice how FDD embraces (rather than eschews) documentation and traceability while still taking great strides to keep it as light and simple as possible. The feature-lists and the detailed domain model are the enabling mechanisms for traceability and status-reporting and make substantial use of tools and technologies to automatically track and report status/progress of features.
+In some ways, FDD attempts to use feature-sets and features as configuration-items not merely for the functional (requirements) baselined, but for the development and product baselines and configurations. Organizing and aligning the work and work-packages along feature-boundaries vastly simplifies and facilitates traceability and status accounting/reporting.
+FDD and Color Modeling
+The Four Color Archetypes and their "Grammar"
+Coad's Color Modeling method describes four basic archetypes for the kinds of objects that participate in an object-oriented domain model:
+The moment-interval archetype
+These are events (an important "moment" in time) and transactions (an important "interval" in time) that are the context or backdrop for important system operations and user-interactions. Examples might be: a sale, a purchase order, opening/closing an account or withdrawing/depositing to or from an account. They are similar to the states, transitions, and activities in a traditional state-model diagram. Moment-interval classes and objects are depicted in UML color modeling diagrams using the color pink.
+The role archetype
+A role is a particular way in which an actor or an agent (a party, place or thing) participates in an interaction with the system. Role objects are depicted in UML color models with the color yellow.
+The catalog-entry description archetype
+A description is quite simply a catalog-like entry that classifies or labels an object. Such objects typically represent some abstract collection of values that "catalog" or classify all objects of their type. Descriptions provide behavior to access information about their characteristics, but they do not, by themselves, change the way the system behaves. They provide structured information but no real overall functionality to the system. They don't do much of anything, they just "exist" and have attributes and characteristics that need to be used by the system. Description objects are blue in a UML color model.
+The party, place or thing archetype
+These are objects that are uniquely identifiable entities that may play different roles in initiating, influencing, or realizing the results of system behavior/functionality. These are made green in UML color models.
+These different archetypes from the basic grammatical elements of a sentence that describe a feature or requirement of the system: a subject comprised of a noun (or pronoun) and any descriptive adjectives; and a predicate that consist of a verb (action), an object (or complement) that receives the action of the sentence, along with any descriptive modifiers or qualifiers.
+There are some other basic color modeling rules that are pretty much the visual equivalent of grammatical rules for the valid and invalid ways of connecting these archetypes together in a domain model. The colors used in the model help make it very easy to see when correct grammatical structure and semantics are and are not present in each part of the model.
+The Domain-Neutral Component (DNC) Pattern
+When the different archetypes are plugged together according to these basic grammatical rules, a resulting structure is a Domain-Neutral Component. The domain-neutral component is a particular structural pattern of interactions between archetypes in a "sentence" that recur over and over again throughout all systems. It has a mostly symmetrical shape, and occurs at all levels of scale within a system (fractal-like in nature).
+These Domain-Neutral Components are the higher-level building blocks (components) of the system: they represent business-flows and "plug-in" to each other in predictable ways. They also embody a traceable and transparent mapping between features, designs, and code in an FDD project. When a particular instance of a domain-neutral component is created for a particular part of the system, it is sometimes called a Domain-Specific Component. Numerous kinds of domain-specific components recur throughout many different products and programs within the same domain, and their essential essence may be catalogued and reused as a domain-specific component patterns.
+Domain-specific components can themselves be connected to other such components in commonly recurring ways, and the result can be called a "compound component". Each component takes on a characteristic shape and the commonly recurring object types and extension points. The Java Modeling in Color with UML book defines 60+ "enterprise component models" and 10+ "compound components" representing patterns that can be used, extended, tailored, and applied to a variety of systems and domains.
+It should be noted that Color Modeling is not explicitly required in order to do FDD. There are however those who feel it is an implicit part of FDD as originally put forth by DeLuca Coad; they would liken doing FDD without consistently applying Color Modeling, to doing XP without consistently applying refactoring. The color modeling patterns impose a structure and semantics on the model that encapsulate and separate concerns, and isolate and insulate features for parallel work and integration. The resulting code often needs little or no significant refactoring (restructuring). See the following for more resources on Color Modeling:
+Wikipedia page on UML Colors
+A History of Color Modeling
+Peter Coad's descriptions of feature-sets and color modeling patterns including a color modeling overview, and Archetypes, Color, and the Domain-neutral Component
+Color Modeling and The Law of Demeter, by David J. Anderson
+Whole Part Relationships in Color Models, by David J. Anderson
+Arguments about Color, by Daniel J. Vacanti
+The Coad Letter: Modeling and Design Edition, Issue 68, a New Beginning
+The Coad Letter: Modeling and Design Edition, Issue 44, Strategies -- Boundary; Colors; Time Line; Status
+Other "Coad Letter" articles related to Color Modeling
+An excerpt from "Object Modeling in Color with UML"
+UML Color Modeling with Archetypes
+UML in Color to UI Design : White Paper : uidesign.net
+the colormodeling YahooGroup
+FDD is Football-Driven Development (and XP is Rugby)
+When I first heard about FDD and saw an overview presentation, my initial reaction was that it didn't look very agile to me at all. Other than the fact that it used iterative development, everything else about it resembled more traditional plan-driven approaches with Waterfall/V-model phases, apparent elements of CMM, and formal ETVX-based process descriptions. I asked if others had the same impression. Several did, but Jim Highsmith chimed in saying he has seen it "live and in person" and that it is indeed agile; he said that, what makes it agile for him (besides the iterations) is the intense focus on collaboration when he has seen FDD practiced.
+Bill Wake has a nice review of Nonaka and Takeuchi's book The Knowledge Creating Company. He describes how the book compares a "Relay Race" with what we call "Waterfall" and how something else they describe (that is very Scrum-like) is more like "Rugby". (This is the book which inspired the Scrum method after all!) The book also goes on to explain how the authors feel it is possible to combine the best of both, and liken the result to "American Football".
+From this perspective, FDD is an agile method that is more like American Football than like Rugby. This explains why many proponents of other agile methods perceive FDD as very waterfall-like, document-heavy, and command-and-control as opposed to "barely sufficient", self-organizing, and emergent.
+XP, Scrum, Crystal, Agile Modeling and most other agile methods (except possibly DSDM) are more like Rugby. They are also predominantly code-centric rather than model-centric in that they regard the source-code as the primary artifact for disseminating system knowledge; whereas in FDD, the domain model is the primary artifact for disseminating knowledge of the system. From an XP-based perspective this is an alien concept, and would suggest that XP practices might translate to model-centric practices as follows:
+Test-first coding would be test-first modeling -- some of the basic FDD domain/color modeling "grammar" rules serve this purpose
+Pair-programming would be Pair-modeling -- FDD actually does domain-modeling as a collaborative team-wide activity led by the chief programmer/architect.
+Refactoring would be behavior preserving transformations of a model's structure rather than of the code -- and many of the Color Modeling patterns do just that (see Coad’s book or David Anderson’s Advanced Modeling paper)
+So those parts of FDD are actually highly iterative and collaborative, and indeed quite agile. The seemingly less-agile (more heavyweight) aspects of FDD comes into play when the model is translated into code use formal inspections and reviews, strict code ownership, very little refactoring, and significant documentation for feature requirements and design (some might argue that FDD also lacks test-driven development, even though FDD places a string emphasis on testing and unit-tests).
+These are the tradeoffs that FDD makes in the particular way it chooses to be more like "American Football" rather than "Rugby" when it makes the choice to treat the domain model as the primary knowledge artifact rather than the source code. It's a different way of getting there, and it is very "agile" in the way it develops the model, but looks very "plan-based" in the way it transforms domain models into source code. The first step an XP-er or Scrum-er needs to take in order to understand it is to temporarily suspend their belief that "the code is King" and imagine it might be possible if the domain model were "King" instead.
+FDD is an agile method that treats the model as if it was "the source code" for nearly all but the implementation details of individual classes. In FDD, the domain model is valued over documentation, and it is also valued over the source code (which must be written under closer control/supervision than with XP/Scrum). The source code is still valued, but the model is valued more, and it is a much more visual (and to many, much more effective) way of communicating system information to more than just programmers.
+For some interesting and profoundly insightful (and practical) extensions of FDD that tie it together with other process improvement methods like Lean, the Theory of Constraints, and Six Sigma, I strongly recommend taking a close look at the work of David Anderson, author of Agile Management for Software Engineering, particular his paper and presentation on Feature-Driven Development: towards a TOC, Lean and Six Sigma solution for software engineering.
+Here are some further resources about FDD so folks can learn more about it and become more aware of the fact that XP isn't the only agile "game" in town when it comes to development practices (SCRUM and DSDM are focused primarily on planning rather than development practices):
+Feature-Driven Development and Extreme Programming, by Stephen Palmer -- Superficial similarities between Feature-Driven Development (FDD) and Extreme Programming (XP) hide a number of very important differences between the two processes. This article provides a short comparison of FDD and XP.
+The Original description of FDD from Chapter 6 of Peter Coad's Java Modeling in Color with UML
+An excerpt from Stephen Palmer's and John M. (Mac) Felsing's book A Practical Guide to Feature-Driven Development describing FDD Best-Practices
+Jeff DeLuca's FDD website including the latest description of FDD processes and an FDD Overview presentation
+The FDD Portal
+Stephen Palmer's set of articles on FDD and articles on Color Modeling
+Peter Coad's descriptions of feature-sets and color modeling patterns including a color modeling overview, and Archetypes, Color, and the Domain-neutral Component
+David Anderson's Channel FDD articles (scroll to the far right-hand-side)
+Implementing Cognizant Feature-Driven Development using MS VSTS (whitepaper)
+Delivering Business Value using FDD, by Grant Cause, from the Winter 2004 Methods and Tools Newsletter, pp.23-35
+Brad Appleton is an enterprise SCM/ALM solution architect for a Fortune 100 technology company. He is co-author of Software Configuration Management Patterns: Effective Teamwork, Practical Integration, the "Agile SCM" column in CMCrossroads.com's CM Journal, and a former section editor for The C++ Report. Since 1987, Brad has extensive experience using, developing, and supporting SCM environments for teams of all shapes and sizes. He holds an M.S. in Software Engineering and a B.S. in Computer Science and Mathematics. You can reach Brad by email at brad@bradapp.net
+Set as favorite
+Bookmark
+Email this
+Hits: 87101
+Trackback(0)
+TrackBack URI for this entry
+Comments (6)
+Subscribe to this comment's feed
+Sparx said:
+...
+Can somebody send me an example of Plan by Feature Process in FDD.
+My email adrs : mega_pm@yahoo.co.uk
+HELP!
+HELP!
+HELP!
+HELP!
+report abuse
+vote down
+vote up
+October 27, 2008
+Votes: +0
+Mac Felsing said:
+...
+The Five Steps of FDD can be summarized as (Model List, Plan, Design, Build) and applied to virtually all phases of the Software Development Life Cycle and many disciplines including CM, Contract Management and Development Requirements Management, etc.
+Traditional FDD is an instance of a simple-yet-elegant meta-process or process pattern that an be applied to anything that has a deliverable - whether it is software centric or completely unrelated.
+I once described the FDD process to a person who was a gourmet chef using the example of preparing a large holiday meal. He instantly understood the anology.
+Model - a picture, photograph, drawing, UML representation or some other representation of the finished product or deliverable. For a document, this could be a table of contents.
+List - List out the parts of the finished product (inventory)
+Plan - assign responsibility - ownership, dependencies, relative shedules, apply estimates (if required)
+Design - Pick an item from the list(inventory) - based on schedule and dependencies discovered during planning - and lay out the details of it, check of the completed milestones as appropriate, review the design to make sure it still fits in the original picture(model) And...
+Build - build the item from inventory, review the finished item with the team and the customer to make sure everyone is satisfied that the item fits in the overall product, complete the appropriate milestones, prepare everything for delivery - either to the next phase in the overall life cycle such as testing
+and...
+go get the next piece from inventory.
+If the picture(model) is really big - iterate through sections of the picture using all five steps
+You will find that FDD is a relatively natural process that we tend to do in some form or another over, and over, and over in most of the things we do in our lives. Applying it to software development, or requirements development, or test development make sense and can be a lot easier and natural than we usually make it.
+for comments on this, send mail to john.felsing at ngc.com
+report abuse
+vote down
+vote up
+August 21, 2008
+Votes: +0
+Alex Forbes said:
+...
+It's certainly more popular than I once believed haven spoken with several people now that practice FDD.
+Alex
+report abuse
+vote down
+vote up
+August 14, 2008
+Votes: +0
+Stephen Palmer said:
+...
+I'd say XP was more like the 3-legged charity football matches I've taken part - everything you do is hindered or helped by being tied to another person :-)
+report abuse
+vote down
+vote up
+May 29, 2008
+Votes: +0
+David said:
+...
+"FDD is Football-Driven Development (and XP is Rugby)"
+this has to be the best analogy of the day for me
+university work is so boring and seeing this has made my day
+report abuse
+vote down
+vote up
+January 16, 2007
+Votes: +0
+Neda said:
+...
+configuration management
+report abuse
+vote down
+vote up
+January 02, 2007
+Votes: +0
+Write comment
+You must be logged in to post a comment. Please register if you do not have an account yet.
+Like 0 Please log-in to like this.
+Last Updated on Thursday, 28 August 2008 00:31
+Latest Articles
+UrbanCode Announces General Availability of UrbanDeploy
+Release Management and Deployment Essentials
+Release Management and Deployment Essentials
+Taking DevOps Mainstream
+How Do Agile Rapid Iterations Improve Software Quality?
+Aspects of Release Management
+Testing Release Management in the Cloud
+Managing and Tracking Distributables
+Behaviorally Speaking - Release Management and Deployment Essentials
+CM and ALM Strategies
+Personality Matters - CM and ALM Strategies
+Industry News
+UrbanCode Announces General Availability of UrbanDeploy
+Electric Cloud Named HP AllianceONE Partner of the Year for Cloud Computing
+Agile Alliance Announces Keynote Presenters for Agile 2011 Conference
+Neotys Partners with Global Quality Partners to Provide Stress Testing of Internet Applications for Small and Mid-Sized Businesses
+MSPAlliance Establishes Unified Certification Standard For Cloud And Managed Service Providers
+OPNET Extends Application Performance Management to Encompass Storage Infrastructure
+Veeam Software Releases Update to Award-Winning Veeam One Solution
+Copyright © 1998 - 2011 CMC Media, Inc. All rights reserved. All marks are trademarks of CMC Media
+Reproduction in whole or in part in any form or medium without the express written permission of CMC Media, Inc. is prohibited
+Home | Articles | Login | Blogs | Webcasts | Resources | Forums | Media Center | About Us | Contact Us | Privacy Policy | Agile Journal
