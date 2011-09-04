@@ -98,8 +98,12 @@ public class SingleSearchIndexedFileProcessor implements Callable {
         if ((!match.isEmpty() && !(firstFile.equalsIgnoreCase(secondFile))) || (!(firstFile.equalsIgnoreCase(secondFile)) && !matchedText[0].isEmpty())) {
             //////////////// just for testing purposes
             matchValue[0] = match;
-            matchValue[1] = String.valueOf(roundNumber(output, 2) * 100 / 2 + paraphasedValue);
-            ;
+            if(roundNumber(output, 2) * 100 / 2 + paraphasedValue > 100){
+                matchValue[1] = "100";
+            }
+            else{
+                matchValue[1] = String.valueOf(roundNumber(output, 2) * 100 / 2 + paraphasedValue);
+            }
             matchValue[2] = matchedText[0];
             matchValue[3] = matchedText[1];
             resultsMap.put(secondFile, matchValue);

@@ -62,7 +62,12 @@ public class PeerSearchMatchInfo implements Callable {
             paraphasedValue = 0;
         }
         matchValuePair[0] = match;
-        matchValuePair[1] = String.valueOf(roundNumber(output, 2) * 100 / 2 + paraphasedValue);
+        if (roundNumber(output, 2) * 100 / 2 + paraphasedValue > 100) {
+            matchValuePair[1] = "100";
+        } else {
+            matchValuePair[1] = String.valueOf(roundNumber(output, 2) * 100 / 2 + paraphasedValue);
+        }
+
         matchValuePair[2] = matchedText[0];
         matchValuePair[3] = matchedText[1];
         String firstFile = filePath.getAbsolutePath();

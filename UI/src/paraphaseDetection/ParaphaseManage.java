@@ -27,7 +27,8 @@ public class ParaphaseManage {
     String secondfileName = null;
     DocumentReader docreader = new DocumentReader();
     CalculationManager manager = new CalculationManager();
-    Double threshod =  0.27;   // best one so far
+     
+       Double threshod =  0.60;   // best one so far
     StopWordRemover stopremover = new StopWordRemover();
     Stemmer stem = new Stemmer();
     
