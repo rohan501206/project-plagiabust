@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package reportingModule;
 
 /**
@@ -10,18 +9,17 @@ package reportingModule;
  * @author nuwan
  */
 public class FileMarkerGraph {
-private String filename;
 
-public FileMarkerGraph(String nameTemp){
+    private String filename;
 
-    filename=nameTemp;
+    public FileMarkerGraph(String nameTemp) {
 
-}
+        filename = nameTemp;
 
-public FileMarkerGraph()
-{
+    }
 
-}
+    public FileMarkerGraph() {
+    }
 
     /**
      * @return the filename
@@ -36,7 +34,4 @@ public FileMarkerGraph()
     public void setFilename(String filename) {
         this.filename = filename;
     }
-
-
-
 }

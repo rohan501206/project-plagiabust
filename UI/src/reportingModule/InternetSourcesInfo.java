@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package reportingModule;
 
 /**
@@ -10,15 +9,15 @@ package reportingModule;
  * @author nuwan
  */
 public class InternetSourcesInfo {
-private String urlName;
 
-   public  InternetSourcesInfo(String name){
-urlName=name;
-   }
+    private String urlName;
 
-   public  InternetSourcesInfo(){
+    public InternetSourcesInfo(String name) {
+        urlName = name;
+    }
 
-   }
+    public InternetSourcesInfo() {
+    }
 
     /**
      * @return the urlname
@@ -33,7 +32,4 @@ urlName=name;
     public void setUrlName(String urlname) {
         this.urlName = urlname;
     }
-
-
-
 }

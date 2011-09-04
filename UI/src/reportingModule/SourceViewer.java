@@ -36,47 +36,51 @@ import javax.swing.event.HyperlinkListener;
  */
 public class SourceViewer implements KeyListener, MouseListener, FocusListener, HyperlinkListener {
 
-    private JFrame popup;
-    private JPanel toolTip;
-    private JScrollPane help;
-    private JEditorPane h;
+    private JFrame popup;    
+    private JScrollPane toolTipScrollPane;
+    private JEditorPane editorPan;
     private JComponent owner;
     private JEditorPane browser;
     private JPanel browserpanel;
     private boolean helpActive = false;
-    private Thread t;
+    private String contentText;
+    private String headingTexts;
     private int WIDTH_HTML = 400;
     private int WIDTH_SC = 600;
     private int HEIGHT_SC = 200;
-    private int WIDTH_TT = 400;
-    private int HEIGHT_TT = 100;
+    
 
-    public SourceViewer(String toolTipText, String helpText, JComponent owner, JEditorPane browser, JPanel browserpanel) {
+    public SourceViewer(String headingText, String helpTextTemp, JComponent owner, JEditorPane browser, JPanel browserpanel) {
         this.owner = owner;
         this.browser = browser;
         this.browserpanel = browserpanel;
+        this.contentText=helpTextTemp;
+        this.headingTexts=headingText;
+    }
+
+    public void showDetails(){
         owner.addMouseListener(this);
-        JPanel helpContent = new JPanel();
-        helpContent.setBackground(Color.WHITE);
-        h = new JEditorPane();
-        h.setEditable(false);
-        h.setContentType("text/html");
-        h.addHyperlinkListener(this);
-        String context = "<html><body><table width='" + WIDTH_HTML + "'><tr><td><p><font size=+1>" + toolTipText + "</font></p>" + helpText + "</td></tr></table></body></html>";
-        h.setText(context);
-        helpContent.add(h);
-        help = new JScrollPane(helpContent);
-        help.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        help.setPreferredSize(new Dimension(WIDTH_SC, HEIGHT_SC));
+        JPanel contentPanel = new JPanel();
+        contentPanel.setBackground(Color.WHITE);
+        editorPan = new JEditorPane();
+        editorPan.setEditable(false);
+        editorPan.setContentType("text/html");
+        editorPan.addHyperlinkListener(this);
+        String context = "<html><body><table width='" + WIDTH_HTML + "'><tr><td><p><font size=+1>" + headingTexts + "</font></p>" + contentText + "</td></tr></table></body></html>";
+        editorPan.setText(context);
+        contentPanel.add(editorPan);
+        toolTipScrollPane = new JScrollPane(contentPanel);
+        toolTipScrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        toolTipScrollPane.setPreferredSize(new Dimension(WIDTH_SC, HEIGHT_SC));
         popup = new JFrame();
         popup.setUndecorated(true);
         helpActive = true;
         popup.setLocation(MouseInfo.getPointerInfo().getLocation().x, MouseInfo.getPointerInfo().getLocation().y);
-        popup.add(help);
+        popup.add(toolTipScrollPane);
         popup.pack();
         popup.setVisible(true);
-        h.requestFocus();
-        h.addFocusListener(this);
+        editorPan.requestFocus();
+        editorPan.addFocusListener(this);
     }
 
     public void keyPressed(KeyEvent arg0) {

@@ -259,7 +259,7 @@ public class PeerSearchUI extends javax.swing.JFrame {
 
         jScrollPane4.setViewportView(topPlagList);
 
-        jLabel5.setText("Top Possble Plagiarized External Sources");
+        jLabel5.setText("Top Possible Plagiarized External Sources");
 
         jScrollPane5.setViewportView(topInternetList);
 
@@ -629,7 +629,7 @@ public class PeerSearchUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * Action Listner for the fileSelection List
+     * Action Listener for the fileSelection List
      * @param evt
      */
     private void fileNameListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_fileNameListValueChanged
