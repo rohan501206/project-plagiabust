@@ -112,7 +112,7 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/settings icon.png"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/Search server.png"))); // NOI18N
 
         javax.swing.GroupLayout KBManagerPanelLayout = new javax.swing.GroupLayout(KBManagerPanel);
         KBManagerPanel.setLayout(KBManagerPanelLayout);
