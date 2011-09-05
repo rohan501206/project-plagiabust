@@ -47,7 +47,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="WizardMainPanel" pref="657" max="32767" attributes="0"/>
+              <Component id="WizardMainPanel" pref="663" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -97,19 +97,20 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="WizardSeparator" alignment="0" pref="629" max="32767" attributes="0"/>
+              <Component id="WizardSeparator" alignment="0" pref="635" max="32767" attributes="0"/>
               <Group type="102" alignment="1" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="WizardTabbedPane" pref="552" max="32767" attributes="0"/>
+                  <Component id="WizardTabbedPane" pref="558" max="32767" attributes="0"/>
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="WizardPreviousButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="WizardNextButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <Group type="102" alignment="1" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="DescriptionPanel" pref="618" max="32767" attributes="0"/>
+                  <Component id="DescriptionPanel" min="-2" pref="363" max="-2" attributes="0"/>
+                  <EmptySpace pref="261" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -135,8 +136,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="WizardImageLabel" alignment="1" pref="268" max="32767" attributes="0"/>
                           <Component id="DescriptionScrollPane" alignment="1" pref="268" max="32767" attributes="0"/>
+                          <Component id="WizardImageLabel" alignment="1" pref="268" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -147,7 +148,8 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="WizardImageLabel" pref="202" max="32767" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="DescriptionScrollPane" min="-2" pref="370" max="-2" attributes="0"/>
+                      <Component id="DescriptionScrollPane" min="-2" pref="104" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -542,7 +544,7 @@
                               <Component id="ProjectLocationLabel2" min="-2" max="-2" attributes="0"/>
                               <Component id="selectedDocumentLabel" min="-2" pref="15" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="309" max="32767" attributes="0"/>
+                          <EmptySpace pref="315" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -820,7 +822,7 @@
                           <Component id="AddDocumentBannerLabel3" min="-2" pref="25" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="AddDocumentBannerLabel4" min="-2" pref="25" max="-2" attributes="0"/>
-                          <EmptySpace pref="13" max="32767" attributes="0"/>
+                          <EmptySpace pref="19" max="32767" attributes="0"/>
                           <Component id="KBManagerButton" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                           <Component id="KeywordLabel" min="-2" max="-2" attributes="0"/>
@@ -1023,7 +1025,7 @@
                           <Component id="PharaphraseCheckBox" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                           <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="124" max="32767" attributes="0"/>
+                          <EmptySpace pref="130" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
