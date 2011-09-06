@@ -96,21 +96,21 @@
 				</graphicElement>
 			</rectangle>
 			<textField isStretchWithOverflow="true">
-				<reportElement isPrintRepeatedValues="false" x="2" y="2" width="206" height="20" isPrintWhenDetailOverflows="true"/>
+				<reportElement isPrintRepeatedValues="false" x="2" y="2" width="206" height="28" isPrintWhenDetailOverflows="true"/>
 				<textElement>
 					<font size="8" isBold="false" isItalic="false"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{documentName}]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true">
-				<reportElement x="497" y="2" width="99" height="19" forecolor="#DE1515"/>
+				<reportElement x="497" y="2" width="99" height="28" forecolor="#DE1515"/>
 				<textElement>
 					<font size="8" isBold="true" isItalic="true"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{plagValue}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="237" y="0" width="235" height="20"/>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="237" y="0" width="235" height="30"/>
 				<textElement>
 					<font size="8" isBold="true" isItalic="false"/>
 				</textElement>
