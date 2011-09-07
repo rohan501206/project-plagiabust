@@ -23,6 +23,7 @@ public class ColourMap {
      * @param queries
      * @return List of Colours
      */
+    
     public ArrayList<Color> getColourArray(String[] queries) {
         int queryCount = queries.length;
         ArrayList<Color> colourArray = new ArrayList<Color>();
