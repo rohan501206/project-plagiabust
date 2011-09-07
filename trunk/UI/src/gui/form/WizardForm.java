@@ -247,6 +247,8 @@ public class WizardForm extends javax.swing.JFrame {
         DownloadFromPlagiabustProgressBar = new javax.swing.JProgressBar();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        preprocessLabel = new javax.swing.JLabel();
+        crosscheckLabel = new javax.swing.JLabel();
         WizardNextButton = new javax.swing.JButton();
         WizardPreviousButton = new javax.swing.JButton();
 
@@ -268,7 +270,7 @@ public class WizardForm extends javax.swing.JFrame {
         DescriptionTextArea.setBackground(new java.awt.Color(240, 240, 240));
         DescriptionTextArea.setColumns(20);
         DescriptionTextArea.setEditable(false);
-        DescriptionTextArea.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        DescriptionTextArea.setFont(new java.awt.Font("Tahoma", 0, 12));
         DescriptionTextArea.setLineWrap(true);
         DescriptionTextArea.setRows(5);
         DescriptionTextArea.setText("This area contains helpful information for each step of plagiarism detection process.");
@@ -875,6 +877,8 @@ public class WizardForm extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 12));
         jLabel2.setText("terminate and view check results");
         StartCheckPanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, -1, -1));
+        StartCheckPanel.add(preprocessLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 150, 70, -1));
+        StartCheckPanel.add(crosscheckLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(660, 170, 70, -1));
 
         WizardTabbedPane.addTab("Start Check   ", StartCheckPanel);
 
@@ -1492,6 +1496,7 @@ public class WizardForm extends javax.swing.JFrame {
     private javax.swing.JSeparator WizardSeparator;
     private javax.swing.JTabbedPane WizardTabbedPane;
     private javax.swing.ButtonGroup buttonGroup1;
+    public static javax.swing.JLabel crosscheckLabel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -1500,6 +1505,7 @@ public class WizardForm extends javax.swing.JFrame {
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JRadioButton peerDetectionButton;
     private javax.swing.JTextField peerSourceTextField;
+    public static javax.swing.JLabel preprocessLabel;
     static javax.swing.JLabel selectedDocumentLabel;
     private javax.swing.JRadioButton singleDetectionButton;
     // End of variables declaration//GEN-END:variables

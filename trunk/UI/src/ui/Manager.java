@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import ComparisonEngine.ComparisonResult;
 import Helper.TextFileFilter;
 import gui.form.ProgressBarManager;
+import gui.form.WizardForm;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -53,12 +54,17 @@ public class Manager {
         int threads = Runtime.getRuntime().availableProcessors();
         ExecutorService service = Executors.newFixedThreadPool(threads);
         List<Future> futures = new ArrayList<Future>();
+        String  text1 = "";
+        String  text2 = "";
+        String  text3 = "";
         int number = 0;
         if (downloadedFolderPath != null) {
+            text1 = "Internet";
             File downloadedFiles = new File(downloadedFolderPath);
             downloadedFilesList = downloadedFiles.list();
         }
         if (downloadedFilePathforServer != null) {
+            text2 = "Server";
             File downloadedFiles2 = new File(downloadedFilePathforServer);
             downloadedFilesList2 = downloadedFiles2.list();
         }
@@ -68,16 +74,19 @@ public class Manager {
             }
         }
         for (int i = 0; i < indexedFiles.size(); i++) {
+            text3 ="Peer";
             System.out.println("document indexed " + i + " " + indexedFiles.get(i));
         }
         String preprocessTextOfTheComparisonFile = preprocessText(documentToCompare);
         ProgressBarManager preprocessProgressBar = new ProgressBarManager(preprocesspbar);        
-        documentPreprocessorForDownloadedFiles(downloadedFilesList,downloadedFolderPath,hm,preprocessProgressBar);
-        documentPreprocessorForDownloadedFiles(downloadedFilesList2,downloadedFolderPath2,hm,preprocessProgressBar);
-        documentPreprocessorforIndexedFiles(preIndexedFiles,hm,preprocessProgressBar);
+        documentPreprocessorForDownloadedFiles(downloadedFilesList,downloadedFolderPath,hm,preprocessProgressBar,text1);
+        documentPreprocessorForDownloadedFiles(downloadedFilesList2,downloadedFolderPath2,hm,preprocessProgressBar,text2);
+        documentPreprocessorforIndexedFiles(preIndexedFiles,hm,preprocessProgressBar,text3);
+        WizardForm.preprocessLabel.setText("");
         if (downloadedFilesList != null) {
             for (final String downloadedFileName : downloadedFilesList) {
-                SingleSearchDownloadFileProcessor processFiles = new SingleSearchDownloadFileProcessor(downloadedFilesList, crossCheck, preprocessTextOfTheComparisonFile, hm, downloadedFolderPath, documentToCompare, paraphaseDetection, number, resultsMap);
+                String text = "Internet";
+                SingleSearchDownloadFileProcessor processFiles = new SingleSearchDownloadFileProcessor(downloadedFilesList, crossCheck, preprocessTextOfTheComparisonFile, hm, downloadedFolderPath, documentToCompare, paraphaseDetection, number, resultsMap,text);
                 number++;
                 futures.add(service.submit(processFiles));
             }
@@ -85,19 +94,22 @@ public class Manager {
         if (downloadedFilesList2 != null) {
             number = 0;
             for (final String downloadedFileName : downloadedFilesList2) {
-                SingleSearchDownloadFileProcessor processFiles = new SingleSearchDownloadFileProcessor(downloadedFilesList2, crossCheck, preprocessTextOfTheComparisonFile, hm, downloadedFolderPath2, documentToCompare, paraphaseDetection, number, resultsMap);
+                String text = "Server";
+                SingleSearchDownloadFileProcessor processFiles = new SingleSearchDownloadFileProcessor(downloadedFilesList2, crossCheck, preprocessTextOfTheComparisonFile, hm, downloadedFolderPath2, documentToCompare, paraphaseDetection, number, resultsMap,text);
                 number++;
                 futures.add(service.submit(processFiles));
             }
         }
         number = 0;
         for (final String indexedFileName : preIndexedFiles) {
-            SingleSearchIndexedFileProcessor processFiles = new SingleSearchIndexedFileProcessor(preIndexedFiles, crossCheck, preprocessTextOfTheComparisonFile, hm, downloadedFolderPath, documentToCompare, paraphaseDetection, number, resultsMap);
+               String text ="Peer";
+            SingleSearchIndexedFileProcessor processFiles = new SingleSearchIndexedFileProcessor(preIndexedFiles, crossCheck, preprocessTextOfTheComparisonFile, hm, downloadedFolderPath, documentToCompare, paraphaseDetection, number, resultsMap,text);
             number++;
             futures.add(service.submit(processFiles));
         }
         service.shutdown();
         resultsMap = setDetailsToOutput(futures);
+         WizardForm.crosscheckLabel.setText("");
         return resultsMap;
     }
 
@@ -292,8 +304,9 @@ public HashMap<String, String[]> setDetailsToOutput(List<Future> futureList) {
     }
 
 
-    private void documentPreprocessorForDownloadedFiles(String[] downloadedFilesList, String downloadedFolderPath, HashMap hm, ProgressBarManager preprocessProgressBar) {
+    private void documentPreprocessorForDownloadedFiles(String[] downloadedFilesList, String downloadedFolderPath, HashMap hm, ProgressBarManager preprocessProgressBar,String text) {
         if (downloadedFilesList != null) {
+            WizardForm.preprocessLabel.setText(text);
             for (int i = 0; i < downloadedFilesList.length; i++) {
                 try {
                     String downloadedFileName = downloadedFilesList[i];
@@ -312,8 +325,9 @@ public HashMap<String, String[]> setDetailsToOutput(List<Future> futureList) {
     }
 
 
-    private void documentPreprocessorforIndexedFiles(ArrayList<String> indexedFilesList, HashMap hm, ProgressBarManager preprocessProgressBar) {
+    private void documentPreprocessorforIndexedFiles(ArrayList<String> indexedFilesList, HashMap hm, ProgressBarManager preprocessProgressBar,String text ) {
         if (indexedFilesList != null) {
+            WizardForm.preprocessLabel.setText(text);
             for (int i = 0; i < indexedFilesList.size(); i++) {
                 try {
                     String preprocessText = preprocessText(indexedFilesList.get(i));
