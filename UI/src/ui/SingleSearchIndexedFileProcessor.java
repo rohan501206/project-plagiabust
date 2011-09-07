@@ -18,6 +18,7 @@ import java.util.ArrayList;
 
 import ComparisonEngine.ShingleCloudAlgorithm;
 import gui.form.ProgressBarManager;
+import gui.form.WizardForm;
 import java.util.HashMap;
 import java.util.concurrent.Callable;
 import paraphaseDetection.ParaphaseManage;
@@ -37,11 +38,12 @@ public class SingleSearchIndexedFileProcessor implements Callable {
     private boolean paraphaseDetection;
     private int iteration;
     private HashMap<String, String[]> resultsMap = new HashMap<String, String[]>();
+    String Text = "";
 
     public SingleSearchIndexedFileProcessor() {
     }
 
-    public SingleSearchIndexedFileProcessor(ArrayList<String> preIndexedFilesTemp, ProgressBarManager crossCheckTemp, String preprocessTextOfTheComparisonFileTemp, HashMap hmTemp, String downloadedFolderPathTemp, String documentToCompareTemp, boolean paraphaseDetectionTemp, int iterationTemp, HashMap<String, String[]> resultsMapTemp) {
+    public SingleSearchIndexedFileProcessor(ArrayList<String> preIndexedFilesTemp, ProgressBarManager crossCheckTemp, String preprocessTextOfTheComparisonFileTemp, HashMap hmTemp, String downloadedFolderPathTemp, String documentToCompareTemp, boolean paraphaseDetectionTemp, int iterationTemp, HashMap<String, String[]> resultsMapTemp,String text) {
         preIndexedFiles = preIndexedFilesTemp;
         crossCheck = crossCheckTemp;
         preprocessTextOfTheComparisonFile = preprocessTextOfTheComparisonFileTemp;
@@ -50,13 +52,13 @@ public class SingleSearchIndexedFileProcessor implements Callable {
         documentToCompare = documentToCompareTemp;
         paraphaseDetection = paraphaseDetectionTemp;
         iteration = iterationTemp;
-      
+        this.Text = text;
 
     }
 
     public HashMap<String, String[]> call() throws Exception {
 
-
+        WizardForm.crosscheckLabel.setText(Text);
         String[] matchValue = new String[4];
 
         if (iteration == preIndexedFiles.size() - 1) {
