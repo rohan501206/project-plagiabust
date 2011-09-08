@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report3" language="groovy" pageWidth="700" pageHeight="1200" whenNoDataType="AllSectionsNoDetail" columnWidth="660" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryNewPage="true" whenResourceMissingType="Empty">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="51"/>
 	<style name="Title" fontName="Arial" fontSize="26" isBold="true" pdfFontName="Helvetica-Bold"/>
 	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
 	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
@@ -53,13 +53,6 @@
 				<textElement/>
 				<textFieldExpression class="java.lang.String"><![CDATA[$P{time}]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement x="-20" y="59" width="219" height="20" forecolor="#808080"/>
-				<textElement>
-					<font size="12" isBold="true"/>
-				</textElement>
-				<text><![CDATA[Online Plagiarized Sources]]></text>
-			</staticText>
 		</band>
 	</title>
 	<pageHeader>
