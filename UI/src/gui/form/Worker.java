@@ -73,7 +73,7 @@ public class Worker extends SwingWorker<ReportData, String> {
         ArrayList<String> urlList = new ArrayList<String>();
         HashMap<String, String> map = new HashMap<String, String>();
         
-        long Start = System.currentTimeMillis();
+        
         if (UsePlagiabustWebServer) {
             System.out.println("Start Downloading Sources From Plaiabust Web Server.");
             downloadPathForPlagiabust = plagiabustServerSourceDownloadManager.downloadFiles(destFolderPath, fName);
@@ -115,14 +115,7 @@ public class Worker extends SwingWorker<ReportData, String> {
         } catch (IOException ex) {
             System.out.println("There are no similar files or some error has occured");
         }
-        long End = System.currentTimeMillis();
-        long timeInSeconds = (End-Start)/1000;
-        if(timeInSeconds > 60){
-            System.out.println("Execution Time: "+(timeInSeconds)/60+"min");
-        }
-        else{
-            System.out.println("Execution Time: "+timeInSeconds+"s");
-        }
+        
         ReportData repData = new ReportData(temp, map, urlList);
         return repData;
     }
